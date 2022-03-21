@@ -47,31 +47,38 @@ class Posts extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(itemBuilder: (context, index) {
       return Card(
-          child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          const ListTile(
-            leading: Icon(Icons.album),
-            title: Text('The Enchanted Nightingale'),
-            subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              TextButton(
-                child: const Text('BUY TICKETS'),
-                onPressed: () {/* ... */},
-              ),
-              const SizedBox(width: 8),
-              TextButton(
-                child: const Text('LISTEN'),
-                onPressed: () {/* ... */},
-              ),
-              const SizedBox(width: 8),
-            ],
-          ),
-        ],
-      ));
+        child: Row(
+          children: [
+            Image.network(
+              "https://source.unsplash.com/random/100x150",
+            ),
+            Expanded(
+                child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [Icon(Icons.lightbulb), Text("ここはタイトルです")],
+                ),
+                const Text(
+                  "ここはコンテンツです",
+                ),
+                Row(
+                  children: const [
+                    CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            "https://i1.wp.com/hanenews.com/wp-content/uploads/2018/12/b34ea738486a9ced02c5bc7152595187.jpg?fit=265%2C335&ssl=1")),
+                    Text("満島ひかり"),
+                    Spacer(),
+                    Icon(Icons.favorite),
+                    Text("27"),
+                  ],
+                )
+              ],
+            ))
+          ],
+        ),
+      );
     });
   }
 }
