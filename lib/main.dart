@@ -80,14 +80,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _widgetOptions = <Widget>[
-    const HomePageNavigator(),
-    const SearchPageNavigator(),
-    const PostPage(),
-    const MailPage(),
-    const NotificationPage(),
-  ];
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -96,6 +88,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _widgetOptions = <Widget>[
+      const HomePageNavigator(),
+      const SearchPageNavigator(),
+      PostPage(
+        navigate: () {
+          setState(() {
+            _selectedIndex = 0;
+          });
+        },
+      ),
+      const MailPage(),
+      const NotificationPage(),
+    ];
+
     return Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(

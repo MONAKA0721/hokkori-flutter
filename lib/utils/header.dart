@@ -23,6 +23,5 @@ class Header extends StatelessWidget {
                 icon: const Icon(Icons.settings, size: 30), onPressed: () {}),
           ],
         ));
-    ;
   }
 }

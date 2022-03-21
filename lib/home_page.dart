@@ -72,7 +72,8 @@ class Posts extends StatelessWidget {
           return ListView.builder(
               itemCount: letters.length,
               itemBuilder: (context, index) {
-                final letter = letters[index];
+                // TODO: GraphQL のクエリを最新順にする
+                final letter = letters[letters.length - index - 1];
                 return Card(
                   child: Row(
                     children: [
