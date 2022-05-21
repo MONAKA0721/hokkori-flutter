@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/header.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -82,35 +84,85 @@ class Posts extends StatelessWidget {
                 // TODO: GraphQL のクエリを最新順にする
                 final letter = letters[letters.length - index - 1];
                 return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.network(
                       "https://source.unsplash.com/random/100x100",
                       width: 100,
                       height: 100,
                     ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Expanded(
                         child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Icon(Icons.lightbulb),
-                            Text("ここはタイトルです")
+                          children: [
+                            CircleAvatar(
+                                backgroundColor: primaryColor,
+                                radius: 15,
+                                child: SvgPicture.asset('assets/palette.svg')),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            const Expanded(
+                                child: Text(
+                              "スマッシュブラザーズ SP が面白い理由",
+                              style: TextStyle(fontWeight: FontWeight.w700),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                            ))
                           ],
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         Text(
                           letter['content'],
+                          style:
+                              const TextStyle(color: Colors.grey, fontSize: 12),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 3,
+                        ),
+                        const SizedBox(
+                          height: 10,
                         ),
                         Row(
                           children: const [
-                            CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                    "https://i1.wp.com/hanenews.com/wp-content/uploads/2018/12/b34ea738486a9ced02c5bc7152595187.jpg?fit=265%2C335&ssl=1")),
-                            Text("満島ひかり"),
+                            Icon(
+                              Icons.person,
+                              color: Color(0xffa2a2a2),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              "accountname",
+                              style: TextStyle(
+                                  color: Color(0xffa2a2a2),
+                                  decoration: TextDecoration.underline,
+                                  decorationThickness: 2),
+                            ),
                             Spacer(),
-                            Icon(Icons.favorite),
-                            Text("27"),
+                            Icon(
+                              Icons.favorite,
+                              color: Color(0xffa2a2a2),
+                              size: 16,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              "27",
+                              style: TextStyle(
+                                  color: Color(0xffa2a2a2), fontSize: 14),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
                           ],
                         )
                       ],
