@@ -1,4 +1,4 @@
-package com.example.hokkori
+package com.hokkori.hokkori
 
 import io.flutter.embedding.android.FlutterActivity
 
