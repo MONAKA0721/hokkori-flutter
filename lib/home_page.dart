@@ -69,46 +69,53 @@ class Posts extends StatelessWidget {
           }
 
           List letters = result.data?['letters'] ?? [];
-          return ListView.builder(
+          return ListView.separated(
+              padding: const EdgeInsets.all(12),
+              separatorBuilder: (context, index) {
+                return Divider(
+                  thickness: 1.5,
+                  color: Colors.grey.shade300,
+                );
+              },
               itemCount: letters.length,
               itemBuilder: (context, index) {
                 // TODO: GraphQL のクエリを最新順にする
                 final letter = letters[letters.length - index - 1];
-                return Card(
-                  child: Row(
-                    children: [
-                      Image.network(
-                        "https://source.unsplash.com/random/100x150",
-                      ),
-                      Expanded(
-                          child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(Icons.lightbulb),
-                              Text("ここはタイトルです")
-                            ],
-                          ),
-                          Text(
-                            letter['content'],
-                          ),
-                          Row(
-                            children: const [
-                              CircleAvatar(
-                                  backgroundImage: NetworkImage(
-                                      "https://i1.wp.com/hanenews.com/wp-content/uploads/2018/12/b34ea738486a9ced02c5bc7152595187.jpg?fit=265%2C335&ssl=1")),
-                              Text("満島ひかり"),
-                              Spacer(),
-                              Icon(Icons.favorite),
-                              Text("27"),
-                            ],
-                          )
-                        ],
-                      ))
-                    ],
-                  ),
+                return Row(
+                  children: [
+                    Image.network(
+                      "https://source.unsplash.com/random/100x100",
+                      width: 100,
+                      height: 100,
+                    ),
+                    Expanded(
+                        child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(Icons.lightbulb),
+                            Text("ここはタイトルです")
+                          ],
+                        ),
+                        Text(
+                          letter['content'],
+                        ),
+                        Row(
+                          children: const [
+                            CircleAvatar(
+                                backgroundImage: NetworkImage(
+                                    "https://i1.wp.com/hanenews.com/wp-content/uploads/2018/12/b34ea738486a9ced02c5bc7152595187.jpg?fit=265%2C335&ssl=1")),
+                            Text("満島ひかり"),
+                            Spacer(),
+                            Icon(Icons.favorite),
+                            Text("27"),
+                          ],
+                        )
+                      ],
+                    ))
+                  ],
                 );
               });
         });
