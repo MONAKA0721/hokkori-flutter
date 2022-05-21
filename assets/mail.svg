@@ -1,0 +1,11 @@
+<svg id="グループ_5217" data-name="グループ 5217" xmlns="http://www.w3.org/2000/svg" width="43" height="25" viewBox="0 0 43 25">
+  <g id="グループ_5145" data-name="グループ 5145" transform="translate(8.956 1)">
+    <path id="パス_9808" data-name="パス 9808" d="M14.044,1c7.2,0,13.044,4.279,13.044,9.558,0,3.52-2.6,6.587-6.469,8.245v4.57a.582.582,0,0,1-.938.461l-4.843-3.748c-.264.012-.526.029-.794.029C6.84,20.116,1,15.837,1,10.558S6.84,1,14.044,1Z" transform="translate(-1 -1)" fill="none" stroke="#eb9a9a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <g id="グループ_4929" data-name="グループ 4929" transform="translate(4.711 7.569)">
+      <ellipse id="楕円形_76" data-name="楕円形 76" cx="1.889" cy="1.892" rx="1.889" ry="1.892" transform="translate(0 0)" fill="#eb9a9a"/>
+      <ellipse id="楕円形_77" data-name="楕円形 77" cx="1.889" cy="1.892" rx="1.889" ry="1.892" transform="translate(6.612 0)" fill="#eb9a9a"/>
+      <ellipse id="楕円形_78" data-name="楕円形 78" cx="1.889" cy="1.892" rx="1.889" ry="1.892" transform="translate(13.225 0)" fill="#eb9a9a"/>
+    </g>
+  </g>
+  <rect id="長方形_569" data-name="長方形 569" width="43" height="25" fill="none"/>
+</svg>

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/home_page.dart';
 import 'package:hokkori/login.dart';
@@ -12,6 +13,7 @@ import 'package:hokkori/mail_page.dart';
 import 'package:hokkori/notification_page.dart';
 import 'package:hokkori/post_page.dart';
 import 'package:hokkori/search_page.dart';
+import 'package:hokkori/utils/colors.dart';
 import 'package:http/http.dart' as http;
 
 final FlutterAppAuth appAuth = FlutterAppAuth();
@@ -235,32 +237,48 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.grey[800],
-        unselectedItemColor: Colors.grey[400],
+        selectedItemColor: primaryColor,
+        unselectedItemColor: primaryColor.withOpacity(0.3),
         iconSize: 30,
         onTap: _onItemTapped,
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: SvgPicture.asset(
+              'assets/home.svg',
+              color: _selectedIndex == 0
+                  ? primaryColor
+                  : primaryColor.withOpacity(0.3),
+            ),
             label: 'ホーム',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'しらべる',
+            icon: SvgPicture.asset(
+              'assets/search.svg',
+              color: _selectedIndex == 1
+                  ? primaryColor
+                  : primaryColor.withOpacity(0.3),
+            ),
+            label: 'さがす',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.campaign),
+            icon: SvgPicture.asset(
+              'assets/tell.svg',
+              color: _selectedIndex == 2
+                  ? primaryColor
+                  : primaryColor.withOpacity(0.3),
+            ),
             label: 'つたえる',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.email),
+            icon: SvgPicture.asset(
+              'assets/mail.svg',
+              color: _selectedIndex == 3
+                  ? primaryColor
+                  : primaryColor.withOpacity(0.3),
+            ),
             label: 'メール',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'おしらせ',
           ),
         ],
       ),
