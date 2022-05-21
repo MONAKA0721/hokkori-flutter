@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
-  final loginAction;
+  final Function loginAction;
   final String loginError;
 
-  const Login(this.loginAction, this.loginError);
+  const Login({Key? key, required this.loginAction, required this.loginError})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        RaisedButton(
+        ElevatedButton(
           onPressed: () {
             loginAction();
           },
-          child: Text('Login'),
+          child: const Text('Login'),
         ),
-        Text(loginError ?? ''),
+        Text(loginError),
       ],
     );
   }

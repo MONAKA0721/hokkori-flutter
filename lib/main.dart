@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
@@ -69,15 +70,15 @@ class _MyAppState extends ConsumerState<MyApp> {
         additionalParameters: {'audience': "https://hokkori-dev/api"},
       ));
 
-      final idToken = parseIdToken(response!.idToken!);
-      final profile = await getUserDetails(response.accessToken!);
+      // final idToken = parseIdToken(response!.idToken!);
+      // final profile = await getUserDetails(response.accessToken!);
 
-      secureStorage.write(key: 'refresh_token', value: response.refreshToken);
+      secureStorage.write(key: 'refresh_token', value: response!.refreshToken);
 
       ref.watch(isBusyProvider.notifier).state = false;
       ref.watch(isLoggedInProvider.notifier).state = true;
     } catch (e, s) {
-      print('error on refresh token: $e - stack: $s');
+      log('error on refresh token: $e - stack: $s');
       logoutAction();
     }
   }
@@ -110,16 +111,16 @@ class _MyAppState extends ConsumerState<MyApp> {
         ),
       );
 
-      final idToken = parseIdToken(result!.idToken!);
-      final profile = await getUserDetails(result.accessToken!);
+      // final idToken = parseIdToken(result!.idToken!);
+      // final profile = await getUserDetails(result.accessToken!);
 
       await secureStorage.write(
-          key: 'refresh_token', value: result.refreshToken);
+          key: 'refresh_token', value: result!.refreshToken);
 
       ref.watch(isBusyProvider.notifier).state = false;
       ref.watch(isLoggedInProvider.notifier).state = true;
     } catch (e, s) {
-      print('login error: $e - stack: $s');
+      log('login error: $e - stack: $s');
 
       ref.watch(isBusyProvider.notifier).state = false;
       ref.watch(isLoggedInProvider.notifier).state = false;
@@ -182,8 +183,8 @@ class _MyAppState extends ConsumerState<MyApp> {
                     : ref.watch(isLoggedInProvider)
                         ? const MyHomePage(title: 'ほっこり')
                         : Login(
-                            loginAction,
-                            errorMessage,
+                            loginAction: loginAction,
+                            loginError: errorMessage,
                           ))));
   }
 }

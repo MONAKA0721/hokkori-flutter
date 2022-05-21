@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
-  final logoutAction;
+  final Function logoutAction;
   final String name;
   final String picture;
 
-  Profile(this.logoutAction, this.name, this.picture);
+  const Profile(
+      {Key? key,
+      required this.logoutAction,
+      required this.name,
+      required this.picture})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +25,18 @@ class Profile extends StatelessWidget {
             shape: BoxShape.circle,
             image: DecorationImage(
               fit: BoxFit.fill,
-              image: NetworkImage(picture ?? ''),
+              image: NetworkImage(picture),
             ),
           ),
         ),
-        SizedBox(height: 24.0),
+        const SizedBox(height: 24.0),
         Text('Name: $name'),
-        SizedBox(height: 48.0),
-        RaisedButton(
+        const SizedBox(height: 48.0),
+        ElevatedButton(
           onPressed: () {
             logoutAction();
           },
-          child: Text('Logout'),
+          child: const Text('Logout'),
         ),
       ],
     );
