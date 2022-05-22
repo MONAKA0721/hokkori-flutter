@@ -14,7 +14,7 @@ mutation CreateLetter(
 
 class PostPage extends StatefulWidget {
   final Function? navigate;
-  const PostPage({Key? key, required this.navigate}) : super(key: key);
+  const PostPage({super.key, required this.navigate});
 
   @override
   State<PostPage> createState() => _PostPageState();

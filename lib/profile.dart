@@ -6,11 +6,10 @@ class Profile extends StatelessWidget {
   final String picture;
 
   const Profile(
-      {Key? key,
+      {super.key,
       required this.logoutAction,
       required this.name,
-      required this.picture})
-      : super(key: key);
+      required this.picture});
 
   @override
   Widget build(BuildContext context) {

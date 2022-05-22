@@ -42,7 +42,7 @@ final HttpLink httpLink = HttpLink(
 );
 
 class MyApp extends ConsumerStatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -192,7 +192,7 @@ class _MyAppState extends ConsumerState<MyApp> {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect

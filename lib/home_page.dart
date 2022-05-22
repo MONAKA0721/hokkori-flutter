@@ -16,7 +16,7 @@ query Letters {
 """;
 
 class HomePageNavigator extends StatelessWidget {
-  const HomePageNavigator({Key? key}) : super(key: key);
+  const HomePageNavigator({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class HomePageNavigator extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
 }
 
 class Posts extends StatelessWidget {
-  const Posts({Key? key}) : super(key: key);
+  const Posts({super.key});
 
   @override
   Widget build(BuildContext context) {
