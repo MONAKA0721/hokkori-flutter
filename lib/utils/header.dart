@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hokkori/utils/colors.dart';
 
 class Header extends StatelessWidget {
-  const Header({Key? super.key});
+  const Header({super.key});
 
   @override
   Widget build(BuildContext context) {
