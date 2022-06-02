@@ -55,9 +55,9 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         manifestPlaceholders = [
-            'appAuthRedirectScheme': 'com.hokkori.hokkori',
-            'applicationName': 'com.hokkori.hokkori.Application'
+            'appAuthRedirectScheme': 'com.hokkori.hokkori'
         ]
+        multiDexEnabled true
     }
 
     signingConfigs {
