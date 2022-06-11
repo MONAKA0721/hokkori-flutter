@@ -8,8 +8,14 @@ final navigatorKey = GlobalKey<NavigatorState>();
 
 String listPosts = r"""
 query Posts {
-  nodes(ids: []) {
-    id
+  posts(orderBy: { direction: DESC, field: CREATE_TIME }) {
+    edges {
+      node {
+        title
+        id
+        content
+      }
+    }
   }
 }
 """;
@@ -69,7 +75,7 @@ class Posts extends StatelessWidget {
             return const Text('Loading');
           }
 
-          List posts = result.data?['nodes'] ?? [];
+          List posts = result.data?['posts']['edges'] ?? [];
           return ListView.separated(
               padding: const EdgeInsets.all(12),
               separatorBuilder: (context, index) {
@@ -80,8 +86,7 @@ class Posts extends StatelessWidget {
               },
               itemCount: posts.length,
               itemBuilder: (context, index) {
-                // TODO: GraphQL のクエリを最新順にする
-                final post = posts[posts.length - index - 1];
+                final post = posts[index]['node'];
                 return Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -107,10 +112,11 @@ class Posts extends StatelessWidget {
                             const SizedBox(
                               width: 5,
                             ),
-                            const Expanded(
+                            Expanded(
                                 child: Text(
-                              "スマッシュブラザーズ SP が面白い理由",
-                              style: TextStyle(fontWeight: FontWeight.w700),
+                              post['title'],
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.w700),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                             ))
