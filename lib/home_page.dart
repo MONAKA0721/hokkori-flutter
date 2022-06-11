@@ -6,11 +6,10 @@ import 'package:hokkori/utils/header.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
-String listLetters = r"""
-query Letters {
-  letters {
+String listPosts = r"""
+query Posts {
+  nodes(ids: []) {
     id
-    content
   }
 }
 """;
@@ -59,7 +58,7 @@ class Posts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Query(
         options: QueryOptions(
-            document: gql(listLetters), fetchPolicy: FetchPolicy.networkOnly),
+            document: gql(listPosts), fetchPolicy: FetchPolicy.networkOnly),
         builder: (QueryResult result,
             {Future<QueryResult?> Function()? refetch, FetchMore? fetchMore}) {
           if (result.hasException) {
@@ -70,7 +69,7 @@ class Posts extends StatelessWidget {
             return const Text('Loading');
           }
 
-          List letters = result.data?['letters'] ?? [];
+          List posts = result.data?['nodes'] ?? [];
           return ListView.separated(
               padding: const EdgeInsets.all(12),
               separatorBuilder: (context, index) {
@@ -79,10 +78,10 @@ class Posts extends StatelessWidget {
                   color: Colors.grey.shade300,
                 );
               },
-              itemCount: letters.length,
+              itemCount: posts.length,
               itemBuilder: (context, index) {
                 // TODO: GraphQL のクエリを最新順にする
-                final letter = letters[letters.length - index - 1];
+                final post = posts[posts.length - index - 1];
                 return Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -121,7 +120,7 @@ class Posts extends StatelessWidget {
                           height: 10,
                         ),
                         Text(
-                          letter['content'],
+                          post['content'],
                           style:
                               const TextStyle(color: Colors.grey, fontSize: 12),
                           overflow: TextOverflow.ellipsis,

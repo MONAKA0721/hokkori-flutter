@@ -27,6 +27,7 @@ const auth0Issuer = 'https://$auth0Domain';
 
 final isLoggedInProvider = StateProvider<bool>((ref) => false);
 final isBusyProvider = StateProvider<bool>((ref) => false);
+final accessTokenProvider = StateProvider<String>((ref) => "");
 
 void main() async {
   // We're using HiveStore for persistence,
@@ -36,7 +37,8 @@ void main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-const apiQueryURL = 'http://152.70.81.218:30818/query';
+const apiQueryURL =
+    'http://hokkori-alb-2086831510.ap-northeast-1.elb.amazonaws.com/query';
 final HttpLink httpLink = HttpLink(
   apiQueryURL,
 );
@@ -50,6 +52,7 @@ class MyApp extends ConsumerStatefulWidget {
 
 class _MyAppState extends ConsumerState<MyApp> {
   String errorMessage = "";
+  late ValueNotifier<GraphQLClient> client;
 
   @override
   void initState() {
@@ -58,6 +61,17 @@ class _MyAppState extends ConsumerState<MyApp> {
   }
 
   void initAction() async {
+    final authLink =
+        AuthLink(getToken: () => "Bearer " + ref.watch(accessTokenProvider));
+
+    client = ValueNotifier(
+      GraphQLClient(
+        link: authLink.concat(httpLink),
+        // The default store is the InMemoryStore, which does NOT persist to disk
+        cache: GraphQLCache(store: HiveStore()),
+      ),
+    );
+
     final storedRefreshToken = await secureStorage.read(key: 'refresh_token');
     if (storedRefreshToken == null) return;
 
@@ -72,26 +86,16 @@ class _MyAppState extends ConsumerState<MyApp> {
         additionalParameters: {'audience': "https://hokkori-dev/api"},
       ));
 
-      // final idToken = parseIdToken(response!.idToken!);
-      // final profile = await getUserDetails(response.accessToken!);
-
       secureStorage.write(key: 'refresh_token', value: response!.refreshToken);
 
       ref.watch(isBusyProvider.notifier).state = false;
       ref.watch(isLoggedInProvider.notifier).state = true;
+      ref.watch(accessTokenProvider.notifier).state = response.accessToken!;
     } catch (e, s) {
       log('error on refresh token: $e - stack: $s');
       logoutAction();
     }
   }
-
-  final ValueNotifier<GraphQLClient> client = ValueNotifier(
-    GraphQLClient(
-      link: httpLink,
-      // The default store is the InMemoryStore, which does NOT persist to disk
-      cache: GraphQLCache(store: HiveStore()),
-    ),
-  );
 
   Future<void> loginAction() async {
     ref.watch(isBusyProvider.notifier).state = true;
@@ -113,14 +117,12 @@ class _MyAppState extends ConsumerState<MyApp> {
         ),
       );
 
-      // final idToken = parseIdToken(result!.idToken!);
-      // final profile = await getUserDetails(result.accessToken!);
-
       await secureStorage.write(
           key: 'refresh_token', value: result!.refreshToken);
 
       ref.watch(isBusyProvider.notifier).state = false;
       ref.watch(isLoggedInProvider.notifier).state = true;
+      ref.watch(accessTokenProvider.notifier).state = result.accessToken!;
     } catch (e, s) {
       log('login error: $e - stack: $s');
 
