@@ -9,7 +9,7 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: const BoxDecoration(
-          color: primaryColor,
+          color: Color(0xfffcf5f5),
         ),
         padding: const EdgeInsets.all(12),
         child: Row(
@@ -21,7 +21,10 @@ class Header extends StatelessWidget {
             const SizedBox(
               width: 20,
             ),
-            SvgPicture.asset('assets/logo.svg'),
+            SvgPicture.asset(
+              'assets/logo.svg',
+              color: primaryColor,
+            ),
             const Spacer(),
             IconButton(
                 icon: SvgPicture.asset('assets/bell.svg'), onPressed: () {}),

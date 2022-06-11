@@ -52,8 +52,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: const [Header(), Expanded(child: Scaffold(body: Posts()))]);
+    return Column(children: const [
+      Header(),
+      Expanded(
+          child: Scaffold(
+        body: Posts(),
+        backgroundColor: Color(0xffFCF5F5),
+      ))
+    ]);
   }
 }
 
@@ -76,105 +82,146 @@ class Posts extends StatelessWidget {
           }
 
           List posts = result.data?['posts']['edges'] ?? [];
+          List hashTags = ["#あああああああああああ", "#あああ", "#あああ", "#あああああ"];
+
           return ListView.separated(
               padding: const EdgeInsets.all(12),
               separatorBuilder: (context, index) {
-                return Divider(
-                  thickness: 1.5,
-                  color: Colors.grey.shade300,
-                );
+                return (index % 2 == 1)
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Wrap(
+                            children:
+                                hashTags.map((e) => HashTag(name: e)).toList(),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      )
+                    : const SizedBox(
+                        height: 20,
+                      );
               },
               itemCount: posts.length,
               itemBuilder: (context, index) {
                 final post = posts[index]['node'];
-                return Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.network(
-                      "https://source.unsplash.com/random/100x100",
-                      width: 100,
-                      height: 100,
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                        child: Column(
+                return Container(
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 20),
+                    child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        Image.network(
+                          "https://source.unsplash.com/random/100x100",
+                          width: 100,
+                          height: 100,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                            child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CircleAvatar(
-                                backgroundColor: primaryColor,
-                                radius: 15,
-                                child: SvgPicture.asset('assets/palette.svg')),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircleAvatar(
+                                    backgroundColor: primaryColor,
+                                    radius: 15,
+                                    child:
+                                        SvgPicture.asset('assets/palette.svg')),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Expanded(
+                                    child: Text(
+                                  post['title'],
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w700),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                ))
+                              ],
+                            ),
                             const SizedBox(
-                              width: 5,
+                              height: 10,
                             ),
-                            Expanded(
-                                child: Text(
-                              post['title'],
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.w700),
+                            Text(
+                              post['content'],
+                              style: const TextStyle(
+                                  color: Colors.grey, fontSize: 12),
                               overflow: TextOverflow.ellipsis,
-                              maxLines: 2,
-                            ))
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          post['content'],
-                          style:
-                              const TextStyle(color: Colors.grey, fontSize: 12),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 3,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: const [
-                            Icon(
-                              Icons.person,
-                              color: Color(0xffa2a2a2),
+                              maxLines: 3,
                             ),
-                            SizedBox(
-                              width: 5,
+                            const SizedBox(
+                              height: 10,
                             ),
-                            Text(
-                              "accountname",
-                              style: TextStyle(
+                            Row(
+                              children: const [
+                                Icon(
+                                  Icons.person,
                                   color: Color(0xffa2a2a2),
-                                  decoration: TextDecoration.underline,
-                                  decorationThickness: 2),
-                            ),
-                            Spacer(),
-                            Icon(
-                              Icons.favorite,
-                              color: Color(0xffa2a2a2),
-                              size: 16,
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              "27",
-                              style: TextStyle(
-                                  color: Color(0xffa2a2a2), fontSize: 14),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "accountname",
+                                  style: TextStyle(
+                                      color: Color(0xffa2a2a2),
+                                      decoration: TextDecoration.underline,
+                                      decorationThickness: 2),
+                                ),
+                                Spacer(),
+                                Icon(
+                                  Icons.favorite,
+                                  color: Color(0xffa2a2a2),
+                                  size: 16,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "27",
+                                  style: TextStyle(
+                                      color: Color(0xffa2a2a2), fontSize: 14),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                              ],
+                            )
                           ],
-                        )
+                        ))
                       ],
-                    ))
-                  ],
-                );
+                    ));
               });
         });
+  }
+}
+
+class HashTag extends StatelessWidget {
+  final String name;
+
+  const HashTag({super.key, required this.name});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(right: 8, bottom: 10),
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(5)),
+      child: Text(name),
+    );
   }
 }
