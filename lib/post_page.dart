@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/utils/colors.dart';
+import 'package:hokkori/utils/post.dart';
 
-String createLetter = r"""
+String createPost = r"""
 mutation CreatePost(
   $createPostInput: CreatePostInput!
 ) {
-  createPost(input: $createLetterInput) {
+  createPost(input: $createPostInput) {
     id
   }
 }
@@ -21,11 +22,15 @@ class PostPage extends StatefulWidget {
 }
 
 class _PostPageState extends State<PostPage> {
-  final contentController = TextEditingController();
+  final titleController = TextEditingController();
+  final praiseContentController = TextEditingController();
+  final letterContentController = TextEditingController();
 
   @override
   void dispose() {
-    contentController.dispose();
+    titleController.dispose();
+    praiseContentController.dispose();
+    letterContentController.dispose();
     super.dispose();
   }
 
@@ -61,7 +66,7 @@ class _PostPageState extends State<PostPage> {
                   onPressed: () {},
                 ),
                 Mutation(
-                    options: MutationOptions(document: gql(createLetter)),
+                    options: MutationOptions(document: gql(createPost)),
                     builder: (RunMutation runMutation, QueryResult? result) {
                       if (result!.hasException) {
                         return Text(
@@ -92,9 +97,9 @@ class _PostPageState extends State<PostPage> {
                         onPressed: () {
                           runMutation({
                             "createPostInput": {
-                              "title": "",
-                              "content": contentController.text,
-                              "type": ""
+                              "title": titleController.text,
+                              "content": letterContentController.text,
+                              "type": letterType,
                             }
                           });
                           widget.navigate!();
@@ -103,16 +108,127 @@ class _PostPageState extends State<PostPage> {
                     })
               ],
             ),
-            SizedBox(
-              width: double.infinity,
-              child: TextField(
-                controller: contentController,
-                autofocus: true,
-                decoration: const InputDecoration(
-                    border: InputBorder.none, hintText: "あなたの思いを伝える"),
-              ),
-            )
+            const SizedBox(
+              height: 30,
+            ),
+            Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20)),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                child: (Column(
+                  children: [
+                    Step1(controller: titleController),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Step2(
+                      controller: praiseContentController,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Step3(
+                      controller: letterContentController,
+                    ),
+                  ],
+                ))),
           ])),
+    );
+  }
+}
+
+class Step1 extends StatelessWidget {
+  final TextEditingController controller;
+  const Step1({super.key, required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: const [
+            Text(
+              "Step 01",
+              style: TextStyle(
+                  color: blueColor, fontWeight: FontWeight.bold, fontSize: 18),
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Text(
+              "どんな作品ですか？",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            )
+          ],
+        ),
+        TextField(
+          controller: controller,
+        )
+      ],
+    );
+  }
+}
+
+class Step2 extends StatelessWidget {
+  final TextEditingController controller;
+  const Step2({super.key, required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(children: const [
+          Text(
+            "Step 02",
+            style: TextStyle(
+                color: blueColor, fontWeight: FontWeight.bold, fontSize: 18),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Text(
+            "ほっこりメッセージを入力",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          )
+        ]),
+        TextField(
+          controller: controller,
+        ),
+      ],
+    );
+  }
+}
+
+class Step3 extends StatelessWidget {
+  final TextEditingController controller;
+  const Step3({super.key, required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: const [
+            Text(
+              "Step 03",
+              style: TextStyle(
+                  color: blueColor, fontWeight: FontWeight.bold, fontSize: 18),
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Text(
+              "文字数を気にせずつたえる",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            )
+          ],
+        ),
+        TextField(
+          controller: controller,
+        ),
+      ],
     );
   }
 }
