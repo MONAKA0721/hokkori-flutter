@@ -1,0 +1,109 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:hokkori/home_page.dart';
+import 'package:hokkori/mail_page.dart';
+import 'package:hokkori/notification_page.dart';
+import 'package:hokkori/post_page.dart';
+import 'package:hokkori/search_page.dart';
+import 'package:hokkori/utils/colors.dart';
+import 'package:hokkori/utils/providers.dart';
+import 'package:hokkori/utils/user.dart';
+
+class Index extends ConsumerStatefulWidget {
+  const Index({super.key, required this.title});
+
+  final String title;
+
+  @override
+  _IndexState createState() => _IndexState();
+}
+
+class _IndexState extends ConsumerState<Index> {
+  int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // TODO: userID を使って GraphQL サーバーから情報を取得する
+    ref.watch(userProvider.notifier).state = const User(4294967296, "ひかり");
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final List<Widget> _widgetOptions = <Widget>[
+      const HomePageNavigator(),
+      const SearchPageNavigator(),
+      PostPage(
+        navigate: () {
+          setState(() {
+            _selectedIndex = 0;
+          });
+        },
+      ),
+      const MailPage(),
+      const NotificationPage(),
+    ];
+
+    return Scaffold(
+      body: _widgetOptions.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: primaryColor,
+        unselectedItemColor: primaryColor.withOpacity(0.3),
+        iconSize: 30,
+        onTap: _onItemTapped,
+        currentIndex: _selectedIndex,
+        type: BottomNavigationBarType.fixed,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/home.svg',
+              color: _selectedIndex == 0
+                  ? primaryColor
+                  : primaryColor.withOpacity(0.3),
+            ),
+            label: 'ホーム',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/search.svg',
+              color: _selectedIndex == 1
+                  ? primaryColor
+                  : primaryColor.withOpacity(0.3),
+            ),
+            label: 'さがす',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/tell.svg',
+              color: _selectedIndex == 2
+                  ? primaryColor
+                  : primaryColor.withOpacity(0.3),
+            ),
+            label: 'つたえる',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/mail.svg',
+              color: _selectedIndex == 3
+                  ? primaryColor
+                  : primaryColor.withOpacity(0.3),
+            ),
+            label: 'メール',
+          ),
+        ],
+      ),
+    );
+  }
+}

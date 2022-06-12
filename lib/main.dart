@@ -5,15 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:hokkori/home_page.dart';
+import 'package:hokkori/index.dart';
 import 'package:hokkori/login.dart';
-import 'package:hokkori/mail_page.dart';
-import 'package:hokkori/notification_page.dart';
-import 'package:hokkori/post_page.dart';
-import 'package:hokkori/search_page.dart';
-import 'package:hokkori/utils/colors.dart';
+import 'package:hokkori/utils/providers.dart';
 import 'package:http/http.dart' as http;
 
 final FlutterAppAuth appAuth = FlutterAppAuth();
@@ -24,10 +19,6 @@ const auth0ClientID = 'P5erAWsGpNGkVo6BhaX2qumufxcO5bwt';
 
 const auth0RedirectURI = 'com.hokkori.hokkori://login-callback';
 const auth0Issuer = 'https://$auth0Domain';
-
-final isLoggedInProvider = StateProvider<bool>((ref) => false);
-final isBusyProvider = StateProvider<bool>((ref) => false);
-final accessTokenProvider = StateProvider<String>((ref) => "");
 
 void main() async {
   // We're using HiveStore for persistence,
@@ -187,105 +178,10 @@ class _MyAppState extends ConsumerState<MyApp> {
                 child: ref.watch(isBusyProvider)
                     ? const Center(child: CircularProgressIndicator())
                     : ref.watch(isLoggedInProvider)
-                        ? const MyHomePage(title: 'ほっこり')
+                        ? const Index(title: 'ほっこり')
                         : Login(
                             loginAction: loginAction,
                             loginError: errorMessage,
                           ))));
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final List<Widget> _widgetOptions = <Widget>[
-      const HomePageNavigator(),
-      const SearchPageNavigator(),
-      PostPage(
-        navigate: () {
-          setState(() {
-            _selectedIndex = 0;
-          });
-        },
-      ),
-      const MailPage(),
-      const NotificationPage(),
-    ];
-
-    return Scaffold(
-      body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: primaryColor,
-        unselectedItemColor: primaryColor.withOpacity(0.3),
-        iconSize: 30,
-        onTap: _onItemTapped,
-        currentIndex: _selectedIndex,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/home.svg',
-              color: _selectedIndex == 0
-                  ? primaryColor
-                  : primaryColor.withOpacity(0.3),
-            ),
-            label: 'ホーム',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/search.svg',
-              color: _selectedIndex == 1
-                  ? primaryColor
-                  : primaryColor.withOpacity(0.3),
-            ),
-            label: 'さがす',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/tell.svg',
-              color: _selectedIndex == 2
-                  ? primaryColor
-                  : primaryColor.withOpacity(0.3),
-            ),
-            label: 'つたえる',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/mail.svg',
-              color: _selectedIndex == 3
-                  ? primaryColor
-                  : primaryColor.withOpacity(0.3),
-            ),
-            label: 'メール',
-          ),
-        ],
-      ),
-    );
   }
 }

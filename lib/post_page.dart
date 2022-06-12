@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/post.dart';
+import 'package:hokkori/utils/providers.dart';
 
 String createPost = r"""
 mutation CreatePost(
@@ -13,15 +15,15 @@ mutation CreatePost(
 }
 """;
 
-class PostPage extends StatefulWidget {
+class PostPage extends ConsumerStatefulWidget {
   final Function? navigate;
   const PostPage({super.key, required this.navigate});
 
   @override
-  State<PostPage> createState() => _PostPageState();
+  ConsumerState<PostPage> createState() => _PostPageState();
 }
 
-class _PostPageState extends State<PostPage> {
+class _PostPageState extends ConsumerState<PostPage> {
   final titleController = TextEditingController();
   final praiseContentController = TextEditingController();
   final letterContentController = TextEditingController();
@@ -97,6 +99,7 @@ class _PostPageState extends State<PostPage> {
                         onPressed: () {
                           runMutation({
                             "createPostInput": {
+                              "ownerID": ref.watch(userProvider).id,
                               "title": titleController.text,
                               "content": letterContentController.text,
                               "type": letterType,
