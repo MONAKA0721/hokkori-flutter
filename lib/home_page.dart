@@ -14,6 +14,10 @@ query Posts {
         title
         id
         content
+        owner {
+          id
+          name
+        }
       }
     }
   }
@@ -113,100 +117,7 @@ class Posts extends StatelessWidget {
               },
               itemCount: posts.length,
               itemBuilder: (context, index) {
-                final post = posts[index]['node'];
-                return Container(
-                    decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 15),
-                    child: Column(children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                              backgroundColor: primaryColor,
-                              radius: 15,
-                              child: SvgPicture.asset('assets/palette.svg')),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Expanded(
-                              child: Text(
-                            post['title'],
-                            style: const TextStyle(fontWeight: FontWeight.w700),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
-                          ))
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      IntrinsicHeight(
-                          child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Image.network(
-                            "https://source.unsplash.com/random/100x100",
-                            width: 100,
-                            height: 100,
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Expanded(
-                              child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                post['content'],
-                                style: const TextStyle(
-                                    color: Colors.black87, fontSize: 12),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 3,
-                              ),
-                              Row(
-                                children: const [
-                                  Icon(
-                                    Icons.person,
-                                    color: Color(0xffa2a2a2),
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    "accountname",
-                                    style: TextStyle(
-                                        color: Colors.black87,
-                                        decoration: TextDecoration.underline,
-                                        decorationThickness: 2),
-                                  ),
-                                  Spacer(),
-                                  Icon(
-                                    Icons.favorite,
-                                    color: primaryColor,
-                                    size: 16,
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                    "27",
-                                    style: TextStyle(
-                                        color: Colors.black87, fontSize: 14),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                ],
-                              )
-                            ],
-                          ))
-                        ],
-                      ))
-                    ]));
+                return Post(post: posts[index]['node']);
               });
         });
   }
@@ -226,5 +137,104 @@ class HashTag extends StatelessWidget {
           color: Colors.white, borderRadius: BorderRadius.circular(5)),
       child: Text(name),
     );
+  }
+}
+
+class Post extends StatelessWidget {
+  final dynamic post;
+  const Post({super.key, required this.post});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(20))),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        child: Column(children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                  backgroundColor: primaryColor,
+                  radius: 15,
+                  child: SvgPicture.asset('assets/palette.svg')),
+              const SizedBox(
+                width: 5,
+              ),
+              Expanded(
+                  child: Text(
+                post['title'],
+                style: const TextStyle(fontWeight: FontWeight.w700),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              ))
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          IntrinsicHeight(
+              child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Image.network(
+                "https://source.unsplash.com/random/100x100",
+                width: 100,
+                height: 100,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    post['content'],
+                    style: const TextStyle(color: Colors.black87, fontSize: 12),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
+                  ),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.person,
+                        color: Color(0xffa2a2a2),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        post['owner']['name'],
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            decoration: TextDecoration.underline,
+                            decorationThickness: 2),
+                      ),
+                      const Spacer(),
+                      const Icon(
+                        Icons.favorite,
+                        color: primaryColor,
+                        size: 16,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      const Text(
+                        "27",
+                        style: TextStyle(color: Colors.black87, fontSize: 14),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  )
+                ],
+              ))
+            ],
+          ))
+        ]));
   }
 }
