@@ -78,14 +78,18 @@ class Posts extends StatelessWidget {
           }
 
           if (result.isLoading) {
-            return const Text('Loading');
+            return const Center(
+              child: CircularProgressIndicator(
+                color: primaryColor,
+              ),
+            );
           }
 
           List posts = result.data?['posts']['edges'] ?? [];
           List hashTags = ["#あああああああああああ", "#あああ", "#あああ", "#あああああ"];
 
           return ListView.separated(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
               separatorBuilder: (context, index) {
                 return (index % 2 == 1)
                     ? Column(
@@ -115,95 +119,94 @@ class Posts extends StatelessWidget {
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(20))),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 20),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.network(
-                          "https://source.unsplash.com/random/100x100",
-                          width: 100,
-                          height: 100,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Expanded(
-                            child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                CircleAvatar(
-                                    backgroundColor: primaryColor,
-                                    radius: 15,
-                                    child:
-                                        SvgPicture.asset('assets/palette.svg')),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                Expanded(
-                                    child: Text(
-                                  post['title'],
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.w700),
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                ))
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              post['content'],
-                              style: const TextStyle(
-                                  color: Colors.grey, fontSize: 12),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 3,
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: const [
-                                Icon(
-                                  Icons.person,
-                                  color: Color(0xffa2a2a2),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  "accountname",
-                                  style: TextStyle(
-                                      color: Color(0xffa2a2a2),
-                                      decoration: TextDecoration.underline,
-                                      decorationThickness: 2),
-                                ),
-                                Spacer(),
-                                Icon(
-                                  Icons.favorite,
-                                  color: Color(0xffa2a2a2),
-                                  size: 16,
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  "27",
-                                  style: TextStyle(
-                                      color: Color(0xffa2a2a2), fontSize: 14),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                              ],
-                            )
-                          ],
-                        ))
-                      ],
-                    ));
+                        horizontal: 10, vertical: 15),
+                    child: Column(children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                              backgroundColor: primaryColor,
+                              radius: 15,
+                              child: SvgPicture.asset('assets/palette.svg')),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                              child: Text(
+                            post['title'],
+                            style: const TextStyle(fontWeight: FontWeight.w700),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                          ))
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      IntrinsicHeight(
+                          child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Image.network(
+                            "https://source.unsplash.com/random/100x100",
+                            width: 100,
+                            height: 100,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                              child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                post['content'],
+                                style: const TextStyle(
+                                    color: Colors.black87, fontSize: 12),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 3,
+                              ),
+                              Row(
+                                children: const [
+                                  Icon(
+                                    Icons.person,
+                                    color: Color(0xffa2a2a2),
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    "accountname",
+                                    style: TextStyle(
+                                        color: Colors.black87,
+                                        decoration: TextDecoration.underline,
+                                        decorationThickness: 2),
+                                  ),
+                                  Spacer(),
+                                  Icon(
+                                    Icons.favorite,
+                                    color: primaryColor,
+                                    size: 16,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    "27",
+                                    style: TextStyle(
+                                        color: Colors.black87, fontSize: 14),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                ],
+                              )
+                            ],
+                          ))
+                        ],
+                      ))
+                    ]));
               });
         });
   }

@@ -11,7 +11,11 @@ class Header extends StatelessWidget {
         decoration: const BoxDecoration(
           color: backgroundColor,
         ),
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.only(
+          left: 20,
+          right: 20,
+          top: 10,
+        ),
         child: Row(
           children: [
             const CircleAvatar(
