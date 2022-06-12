@@ -7,8 +7,6 @@ import 'package:hokkori/notification_page.dart';
 import 'package:hokkori/post_page.dart';
 import 'package:hokkori/search_page.dart';
 import 'package:hokkori/utils/colors.dart';
-import 'package:hokkori/utils/providers.dart';
-import 'package:hokkori/utils/user.dart';
 
 class Index extends ConsumerStatefulWidget {
   const Index({super.key, required this.title});
@@ -21,18 +19,6 @@ class Index extends ConsumerStatefulWidget {
 
 class _IndexState extends ConsumerState<Index> {
   int _selectedIndex = 0;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // TODO: userID を使って GraphQL サーバーから情報を取得する
-    ref.watch(userProvider.notifier).state = const User(4294967296, "ひかり");
-  }
 
   void _onItemTapped(int index) {
     setState(() {

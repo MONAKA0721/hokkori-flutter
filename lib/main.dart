@@ -9,6 +9,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/index.dart';
 import 'package:hokkori/login.dart';
 import 'package:hokkori/utils/providers.dart';
+import 'package:hokkori/utils/user.dart';
 import 'package:http/http.dart' as http;
 
 final FlutterAppAuth appAuth = FlutterAppAuth();
@@ -19,6 +20,19 @@ const auth0ClientID = 'P5erAWsGpNGkVo6BhaX2qumufxcO5bwt';
 
 const auth0RedirectURI = 'com.hokkori.hokkori://login-callback';
 const auth0Issuer = 'https://$auth0Domain';
+
+const String getUser = r'''
+query User(
+  $userID: ID!
+) {
+  node(id: $userID) {
+    ... on User {
+      id
+      name
+    }
+  }
+}
+''';
 
 void main() async {
   // We're using HiveStore for persistence,
@@ -84,6 +98,19 @@ class _MyAppState extends ConsumerState<MyApp> {
       ref.watch(isBusyProvider.notifier).state = false;
       ref.watch(isLoggedInProvider.notifier).state = true;
       ref.watch(accessTokenProvider.notifier).state = response.accessToken!;
+
+      final idToken = parseIdToken(response.idToken!);
+
+      final QueryResult queryResult = await client.value.query(
+        QueryOptions(document: gql(getUser), variables: {
+          'userID': idToken["https://hokkori.com/app_metadata"]["hokkoriID"]
+        }),
+      );
+
+      ref.watch(userProvider.notifier).state = User(
+        queryResult.data?['node']['id'],
+        queryResult.data?['node']['name'],
+      );
     } catch (e, s) {
       log('error on refresh token: $e - stack: $s');
       logoutAction();
@@ -116,6 +143,19 @@ class _MyAppState extends ConsumerState<MyApp> {
       ref.watch(isBusyProvider.notifier).state = false;
       ref.watch(isLoggedInProvider.notifier).state = true;
       ref.watch(accessTokenProvider.notifier).state = result.accessToken!;
+
+      final idToken = parseIdToken(result.idToken!);
+
+      final QueryResult queryResult = await client.value.query(
+        QueryOptions(document: gql(getUser), variables: {
+          'userID': idToken["https://hokkori.com/app_metadata"]["hokkoriID"]
+        }),
+      );
+
+      ref.watch(userProvider.notifier).state = User(
+        queryResult.data?['node']['id'],
+        queryResult.data?['node']['name'],
+      );
     } catch (e, s) {
       log('login error: $e - stack: $s');
 
