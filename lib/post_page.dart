@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hokkori/utils/categories.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/post.dart';
 import 'package:hokkori/utils/providers.dart';
@@ -142,9 +143,16 @@ class _PostPageState extends ConsumerState<PostPage> {
   }
 }
 
-class Step1 extends StatelessWidget {
+class Step1 extends StatefulWidget {
   final TextEditingController controller;
   const Step1({super.key, required this.controller});
+
+  @override
+  State<Step1> createState() => _Step1State();
+}
+
+class _Step1State extends State<Step1> {
+  int? selectedCategoryID;
 
   @override
   Widget build(BuildContext context) {
@@ -166,8 +174,40 @@ class Step1 extends StatelessWidget {
             )
           ],
         ),
-        TextField(
-          controller: controller,
+        const SizedBox(
+          height: 10,
+        ),
+        Row(
+          children: [
+            Image.asset(
+              "assets/noimage.png",
+              width: 100,
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+            Expanded(
+                child: Column(children: [
+              TextField(
+                controller: widget.controller,
+              ),
+              SizedBox(
+                  width: double.infinity,
+                  child: DropdownButton(
+                      isExpanded: true,
+                      value: selectedCategoryID,
+                      hint: const Text("カテゴリを選択"),
+                      items: masterCategories
+                          .map((e) => DropdownMenuItem(
+                                child: Text(e.name),
+                                value: e.id,
+                              ))
+                          .toList(),
+                      onChanged: (int? id) {
+                        setState(() => {selectedCategoryID = id});
+                      }))
+            ]))
+          ],
         )
       ],
     );
