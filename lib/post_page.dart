@@ -1,5 +1,7 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/utils/categories.dart';
 import 'package:hokkori/utils/colors.dart';
@@ -113,7 +115,7 @@ class _PostPageState extends ConsumerState<PostPage> {
               ],
             ),
             const SizedBox(
-              height: 30,
+              height: 10,
             ),
             Container(
                 decoration: BoxDecoration(
@@ -169,7 +171,7 @@ class _Step1State extends State<Step1> {
               width: 20,
             ),
             Text(
-              "どんな作品ですか？",
+              "どんな作品ですか？*",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             )
           ],
@@ -193,25 +195,72 @@ class _Step1State extends State<Step1> {
               ),
               SizedBox(
                   width: double.infinity,
-                  child: DropdownButton(
+                  child: DropdownButton2(
+                      dropdownDecoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: const Color(0xffF5F7FA),
+                      ),
                       isExpanded: true,
-                      value: selectedCategoryID,
                       hint: const Text("カテゴリを選択"),
-                      items: masterCategories
-                          .map((e) => DropdownMenuItem(
-                                child: Text(e.name),
-                                value: e.id,
-                              ))
-                          .toList(),
-                      onChanged: (int? id) {
-                        setState(() => {selectedCategoryID = id});
-                      }))
+                      itemPadding: const EdgeInsets.all(0),
+                      items: _addDividersAfterCategories(masterCategories),
+                      customItemsIndexes: _getDividersIndexes(),
+                      customItemsHeight: 4,
+                      value: selectedCategoryID,
+                      onChanged: (value) {
+                        setState(() => {selectedCategoryID = value as int});
+                      })),
             ]))
           ],
         )
       ],
     );
   }
+}
+
+List<DropdownMenuItem<int>> _addDividersAfterCategories(
+    List<Category> categories) {
+  List<DropdownMenuItem<int>> _menuItems = [];
+  for (var category in categories) {
+    _menuItems.addAll(
+      [
+        DropdownMenuItem<int>(
+          value: category.id,
+          child: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Row(children: [
+                CircleAvatar(
+                  child: SvgPicture.asset('assets/palette.svg'),
+                  radius: 14,
+                  backgroundColor: category.color,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(category.name),
+              ])),
+        ),
+        //If it's last item, we will not add Divider after it.
+        if (category != categories.last)
+          const DropdownMenuItem<int>(
+            enabled: false,
+            child: Divider(),
+          ),
+      ],
+    );
+  }
+  return _menuItems;
+}
+
+List<int> _getDividersIndexes() {
+  List<int> _dividersIndexes = [];
+  for (var i = 0; i < (masterCategories.length * 2) - 1; i++) {
+    //Dividers indexes will be the odd indexes
+    if (i.isOdd) {
+      _dividersIndexes.add(i);
+    }
+  }
+  return _dividersIndexes;
 }
 
 class Step2 extends StatelessWidget {
@@ -232,7 +281,7 @@ class Step2 extends StatelessWidget {
             width: 20,
           ),
           Text(
-            "ほっこりメッセージを入力",
+            "ほっこりメッセージを入力*",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
           )
         ]),
