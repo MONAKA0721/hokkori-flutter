@@ -18,6 +18,23 @@ mutation CreatePost(
 }
 """;
 
+String listHashtags = r"""
+query Hashtags($searchText: String) {
+  hashtags(where: {titleContainsFold: $searchText}) {
+    edges {
+      node {
+        id
+        title
+      }
+    }
+  }
+}
+""";
+
+final hashtagProvider = StateProvider<String>((ref) => "");
+final hashtagsProvider = StateNotifierProvider<HashtagsNotifier, List<String>>(
+    (ref) => HashtagsNotifier());
+
 class PostPage extends ConsumerStatefulWidget {
   final Function? navigate;
   const PostPage({super.key, required this.navigate});
@@ -28,12 +45,14 @@ class PostPage extends ConsumerStatefulWidget {
 
 class _PostPageState extends ConsumerState<PostPage> {
   final titleController = TextEditingController();
+  final hashtagController = TextEditingController();
   final praiseContentController = TextEditingController();
   final letterContentController = TextEditingController();
 
   @override
   void dispose() {
     titleController.dispose();
+    hashtagController.dispose();
     praiseContentController.dispose();
     letterContentController.dispose();
     super.dispose();
@@ -117,48 +136,130 @@ class _PostPageState extends ConsumerState<PostPage> {
             const SizedBox(
               height: 10,
             ),
-            Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                child: (Column(
-                  children: [
-                    Step1(controller: titleController),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Step2(
-                      controller: praiseContentController,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Step3(
-                      controller: letterContentController,
-                    ),
-                  ],
-                ))),
+            Expanded(
+                child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20)),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 10),
+                    child: (SingleChildScrollView(
+                        child: Column(
+                      children: [
+                        Step1(
+                          titleController: titleController,
+                          hashtagController: hashtagController,
+                        ),
+                        Stack(
+                          children: [
+                            Column(
+                              children: [
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Step2(
+                                  controller: praiseContentController,
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Step3(
+                                  controller: letterContentController,
+                                ),
+                              ],
+                            ),
+                            ref.watch(hashtagProvider) != ""
+                                ? Query(
+                                    options: QueryOptions(
+                                        document: gql(listHashtags),
+                                        variables: {
+                                          'searchText':
+                                              ref.watch(hashtagProvider),
+                                        }),
+                                    builder: (QueryResult result,
+                                        {Future<QueryResult?> Function()?
+                                            refetch,
+                                        FetchMore? fetchMore}) {
+                                      if (result.hasException) {
+                                        return Text(
+                                            result.exception.toString());
+                                      }
+
+                                      if (result.isLoading) {
+                                        return const Center(
+                                            child: CircularProgressIndicator());
+                                      }
+
+                                      var posts =
+                                          result.data?['hashtags']['edges'];
+
+                                      return posts.isNotEmpty
+                                          ? Container(
+                                              height: 300,
+                                              decoration: const BoxDecoration(
+                                                  color: Colors.white),
+                                              child: ListView.builder(
+                                                itemCount: posts.length,
+                                                itemBuilder: (context, index) {
+                                                  final post =
+                                                      posts[index]['node'];
+                                                  return SizedBox(
+                                                      height: 20,
+                                                      child: ListTile(
+                                                        dense: true,
+                                                        onTap: () {
+                                                          ref
+                                                              .read(
+                                                                  hashtagsProvider
+                                                                      .notifier)
+                                                              .addHashtag(post[
+                                                                  'title']);
+                                                          ref
+                                                              .read(
+                                                                  hashtagProvider
+                                                                      .notifier)
+                                                              .state = "";
+                                                          hashtagController
+                                                              .clear();
+                                                        },
+                                                        title: Text("#" +
+                                                            post['title']),
+                                                      ));
+                                                },
+                                              ),
+                                            )
+                                          : Container();
+                                    })
+                                : Container(),
+                          ],
+                        )
+                      ],
+                    ))))),
           ])),
     );
   }
 }
 
-class Step1 extends StatefulWidget {
-  final TextEditingController controller;
-  const Step1({super.key, required this.controller});
+class Step1 extends ConsumerStatefulWidget {
+  final TextEditingController titleController, hashtagController;
+  const Step1({
+    super.key,
+    required this.titleController,
+    required this.hashtagController,
+  });
 
   @override
-  State<Step1> createState() => _Step1State();
+  _Step1State createState() => _Step1State();
 }
 
-class _Step1State extends State<Step1> {
+class _Step1State extends ConsumerState<Step1> {
   int? selectedCategoryID;
 
   @override
   Widget build(BuildContext context) {
+    List<String> hashtags = ref.watch(hashtagsProvider);
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: const [
@@ -191,7 +292,11 @@ class _Step1State extends State<Step1> {
             Expanded(
                 child: Column(children: [
               TextField(
-                controller: widget.controller,
+                controller: widget.titleController,
+                decoration: const InputDecoration(
+                    hintText: "タイトルを入力...",
+                    hintStyle:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               ),
               SizedBox(
                   width: double.infinity,
@@ -212,9 +317,67 @@ class _Step1State extends State<Step1> {
                       })),
             ]))
           ],
-        )
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Wrap(
+            spacing: 8,
+            runSpacing: 5,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              ...hashtags
+                  .map((hashtag) => Hashtag(
+                        title: hashtag,
+                      ))
+                  .toList(),
+              HashtagTextfield(controller: widget.hashtagController)
+            ])
       ],
     );
+  }
+}
+
+class Hashtag extends StatelessWidget {
+  final String title;
+  const Hashtag({Key? key, required this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text("#" + title);
+  }
+}
+
+class HashtagTextfield extends ConsumerWidget {
+  final TextEditingController controller;
+  const HashtagTextfield({Key? key, required this.controller})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return SizedBox(
+        width: 150,
+        child: TextField(
+          controller: controller,
+          onChanged: (text) {
+            ref.watch(hashtagProvider.notifier).state = text;
+          },
+          style: const TextStyle(fontSize: 12),
+          decoration: InputDecoration(
+              filled: true,
+              fillColor: const Color(0xffF2F2F2),
+              contentPadding: const EdgeInsets.all(8),
+              isDense: true,
+              hintText: "#ハッシュタグを入力",
+              enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xfff2f2f2))),
+              focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xfff2f2f2)),
+              ),
+              border: OutlineInputBorder(
+                  borderSide: const BorderSide(color: Color(0xfff2f2f2)),
+                  borderRadius: BorderRadius.circular(5))),
+        ));
   }
 }
 
@@ -227,15 +390,15 @@ List<DropdownMenuItem<int>> _addDividersAfterCategories(
         DropdownMenuItem<int>(
           value: category.id,
           child: Padding(
-              padding: const EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 10),
               child: Row(children: [
                 CircleAvatar(
                   child: SvgPicture.asset('assets/palette.svg'),
-                  radius: 14,
+                  radius: 13,
                   backgroundColor: category.color,
                 ),
                 const SizedBox(
-                  width: 10,
+                  width: 15,
                 ),
                 Text(category.name),
               ])),
@@ -322,5 +485,13 @@ class Step3 extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class HashtagsNotifier extends StateNotifier<List<String>> {
+  HashtagsNotifier() : super([]);
+
+  void addHashtag(String hashtag) {
+    state = [...state, hashtag];
   }
 }

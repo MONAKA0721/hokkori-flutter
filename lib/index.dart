@@ -43,6 +43,7 @@ class _IndexState extends ConsumerState<Index> {
     ];
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: primaryColor,
