@@ -7,6 +7,7 @@ import 'package:hokkori/utils/categories.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/post.dart';
 import 'package:hokkori/utils/providers.dart';
+import 'package:searchfield/searchfield.dart';
 
 String createPost = r"""
 mutation CreatePost(
@@ -21,6 +22,19 @@ mutation CreatePost(
 String listHashtags = r"""
 query Hashtags($searchText: String) {
   hashtags(where: {titleContainsFold: $searchText}) {
+    edges {
+      node {
+        id
+        title
+      }
+    }
+  }
+}
+""";
+
+String searchWorks = r"""
+query Works($searchText: String) {
+  works(where: {titleContainsFold: $searchText}) {
     edges {
       node {
         id
@@ -254,6 +268,17 @@ class Step1 extends ConsumerStatefulWidget {
 
 class _Step1State extends ConsumerState<Step1> {
   int? selectedCategoryID;
+  List<String> suggestions = [
+    'suggestion 1',
+    'suggestion 2',
+  ];
+  final _workController = TextEditingController();
+
+  @override
+  void dispose() {
+    _workController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -298,6 +323,34 @@ class _Step1State extends ConsumerState<Step1> {
                     hintStyle:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               ),
+              Query(
+                  options: QueryOptions(
+                      document: gql(searchWorks),
+                      variables: {'searchText': _workController.text}),
+                  builder: (QueryResult result,
+                      {Future<QueryResult?> Function()? refetch,
+                      FetchMore? fetchMore}) {
+                    print(result);
+                    if (result.hasException) {
+                      return Text(result.exception.toString());
+                    }
+
+                    if (result.isLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+
+                    var works = result.data?['works']['edges'];
+                    return works.isNotEmpty
+                        ? SearchField(
+                            suggestions: works
+                                .map((e) => SearchFieldListItem(e['node']['id'],
+                                    child: Text(e['node']['title'])))
+                                .toList(),
+                            // hasOverlay: false,
+                            maxSuggestionsInViewPort: 6,
+                          )
+                        : Container();
+                  }),
               SizedBox(
                   width: double.infinity,
                   child: DropdownButton2(

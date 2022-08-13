@@ -40,6 +40,7 @@ dependencies:
   flutter_riverpod: ^1.0.3
   flutter_svg: ^1.0.3
   dropdown_button2: ^1.6.2
+  searchfield: ^0.6.9
 
 dev_dependencies:
   flutter_test:
