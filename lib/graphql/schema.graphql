@@ -1,0 +1,22 @@
+"""
+Maps a Time GraphQL scalar to a Go time.Time struct.
+"""
+scalar Time
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  createPost(input: CreatePostInput!): Post!
+  createHashtag(input: CreateHashtagInput!): Hashtag!
+  createWork(input: CreateWorkInput!): Work!
+}
+"""
+Maps a Time GraphQL scalar to a Go time.Time struct.
+"""
+scalar Time
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  createPost(input: CreatePostInput!): Post!
+  createHashtag(input: CreateHashtagInput!): Hashtag!
+  createWork(input: CreateWorkInput!): Work!
+}
