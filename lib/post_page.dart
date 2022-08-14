@@ -1,13 +1,14 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hokkori/post_page.graphql.dart';
 import 'package:hokkori/utils/categories.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/post.dart';
 import 'package:hokkori/utils/providers.dart';
-import 'package:searchfield/searchfield.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 String createPost = r"""
 mutation CreatePost(
@@ -22,19 +23,6 @@ mutation CreatePost(
 String listHashtags = r"""
 query Hashtags($searchText: String) {
   hashtags(where: {titleContainsFold: $searchText}) {
-    edges {
-      node {
-        id
-        title
-      }
-    }
-  }
-}
-""";
-
-String searchWorks = r"""
-query Works($searchText: String) {
-  works(where: {titleContainsFold: $searchText}) {
     edges {
       node {
         id
@@ -268,16 +256,40 @@ class Step1 extends ConsumerStatefulWidget {
 
 class _Step1State extends ConsumerState<Step1> {
   int? selectedCategoryID;
-  List<String> suggestions = [
-    'suggestion 1',
-    'suggestion 2',
-  ];
-  final _workController = TextEditingController();
 
-  @override
-  void dispose() {
-    _workController.dispose();
-    super.dispose();
+  Widget _workPopupItemBuilder(
+    BuildContext context,
+    WorkModel? item,
+    bool isSelected,
+  ) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      decoration: !isSelected
+          ? null
+          : BoxDecoration(
+              border: Border.all(color: Theme.of(context).primaryColor),
+              borderRadius: BorderRadius.circular(5),
+              color: Colors.white,
+            ),
+      child: ListTile(
+        selected: isSelected,
+        title: Text(item?.title ?? ''),
+        leading: const CircleAvatar(
+            // this does not work - throws 404 error
+            // backgroundImage: NetworkImage(item.avatar ?? ''),
+            ),
+      ),
+    );
+  }
+
+  Future<List<WorkModel>> getData(String filter, GraphQLClient client) async {
+    if (filter == "") return [];
+    var queryResult = await client.query$SearchWorks(Options$Query$SearchWorks(
+        variables: Variables$Query$SearchWorks(searchText: filter)));
+
+    final works = queryResult.parsedData?.works.edges;
+
+    return WorkModel.fromList(works!);
   }
 
   @override
@@ -323,34 +335,17 @@ class _Step1State extends ConsumerState<Step1> {
                     hintStyle:
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               ),
-              Query(
-                  options: QueryOptions(
-                      document: gql(searchWorks),
-                      variables: {'searchText': _workController.text}),
-                  builder: (QueryResult result,
-                      {Future<QueryResult?> Function()? refetch,
-                      FetchMore? fetchMore}) {
-                    print(result);
-                    if (result.hasException) {
-                      return Text(result.exception.toString());
-                    }
-
-                    if (result.isLoading) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-
-                    var works = result.data?['works']['edges'];
-                    return works.isNotEmpty
-                        ? SearchField(
-                            suggestions: works
-                                .map((e) => SearchFieldListItem(e['node']['id'],
-                                    child: Text(e['node']['title'])))
-                                .toList(),
-                            // hasOverlay: false,
-                            maxSuggestionsInViewPort: 6,
-                          )
-                        : Container();
-                  }),
+              GraphQLConsumer(
+                  builder: (client) => DropdownSearch<WorkModel>(
+                        asyncItems: (filter) => getData(filter, client),
+                        compareFn: (i, s) => i.isEqual(s),
+                        popupProps: PopupPropsMultiSelection.modalBottomSheet(
+                          isFilterOnline: true,
+                          showSelectedItems: true,
+                          showSearchBox: true,
+                          itemBuilder: _workPopupItemBuilder,
+                        ),
+                      )),
               SizedBox(
                   width: double.infinity,
                   child: DropdownButton2(
@@ -547,4 +542,26 @@ class HashtagsNotifier extends StateNotifier<List<String>> {
   void addHashtag(String hashtag) {
     state = [...state, hashtag];
   }
+}
+
+class WorkModel {
+  final String id;
+  final String title;
+  final String? avatar;
+
+  WorkModel({required this.id, required this.title, this.avatar});
+
+  ///custom comparing function to check if two users are equal
+  bool isEqual(WorkModel model) {
+    return id == model.id;
+  }
+
+  static List<WorkModel> fromList(List<Query$SearchWorks$works$edges?> list) {
+    return list
+        .map((item) => WorkModel(id: item!.node!.id, title: item.node!.title))
+        .toList();
+  }
+
+  @override
+  String toString() => title;
 }

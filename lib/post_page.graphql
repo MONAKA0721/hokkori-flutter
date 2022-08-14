@@ -1,0 +1,10 @@
+query SearchWorks($searchText: String) {
+  works(where: { titleContainsFold: $searchText }) {
+    edges {
+      node {
+        id
+        title
+      }
+    }
+  }
+}
