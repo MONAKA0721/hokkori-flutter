@@ -30,10 +30,12 @@ Input$CreatePostInput _$Input$CreatePostInputFromJson(
       content: json['content'] as String,
       type: $enumDecode(_$Enum$PostPostTypeEnumMap, json['type'],
           unknownValue: Enum$PostPostType.$unknown),
+      spoiled: json['spoiled'] as bool,
       ownerID: json['ownerID'] as String,
       hashtagIDs: (json['hashtagIDs'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      workID: json['workID'] as String,
     );
 
 Map<String, dynamic> _$Input$CreatePostInputToJson(
@@ -44,8 +46,10 @@ Map<String, dynamic> _$Input$CreatePostInputToJson(
       'title': instance.title,
       'content': instance.content,
       'type': _$Enum$PostPostTypeEnumMap[instance.type]!,
+      'spoiled': instance.spoiled,
       'ownerID': instance.ownerID,
       'hashtagIDs': instance.hashtagIDs,
+      'workID': instance.workID,
     };
 
 const _$Enum$PostPostTypeEnumMap = {
@@ -73,12 +77,15 @@ Input$CreateWorkInput _$Input$CreateWorkInputFromJson(
         Map<String, dynamic> json) =>
     Input$CreateWorkInput(
       title: json['title'] as String,
+      postIDs:
+          (json['postIDs'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$Input$CreateWorkInputToJson(
         Input$CreateWorkInput instance) =>
     <String, dynamic>{
       'title': instance.title,
+      'postIDs': instance.postIDs,
     };
 
 Input$HashtagWhereInput _$Input$HashtagWhereInputFromJson(
@@ -274,6 +281,8 @@ Input$PostWhereInput _$Input$PostWhereInputFromJson(
           ?.map((e) => $enumDecode(_$Enum$PostPostTypeEnumMap, e,
               unknownValue: Enum$PostPostType.$unknown))
           .toList(),
+      spoiled: json['spoiled'] as bool?,
+      spoiledNEQ: json['spoiledNEQ'] as bool?,
       hasOwner: json['hasOwner'] as bool?,
       hasOwnerWith: (json['hasOwnerWith'] as List<dynamic>?)
           ?.map((e) => Input$UserWhereInput.fromJson(e as Map<String, dynamic>))
@@ -282,6 +291,10 @@ Input$PostWhereInput _$Input$PostWhereInputFromJson(
       hasHashtagsWith: (json['hasHashtagsWith'] as List<dynamic>?)
           ?.map((e) =>
               Input$HashtagWhereInput.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      hasWork: json['hasWork'] as bool?,
+      hasWorkWith: (json['hasWorkWith'] as List<dynamic>?)
+          ?.map((e) => Input$WorkWhereInput.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -348,11 +361,15 @@ Map<String, dynamic> _$Input$PostWhereInputToJson(
       'typeNotIn': instance.typeNotIn
           ?.map((e) => _$Enum$PostPostTypeEnumMap[e]!)
           .toList(),
+      'spoiled': instance.spoiled,
+      'spoiledNEQ': instance.spoiledNEQ,
       'hasOwner': instance.hasOwner,
       'hasOwnerWith': instance.hasOwnerWith?.map((e) => e.toJson()).toList(),
       'hasHashtags': instance.hasHashtags,
       'hasHashtagsWith':
           instance.hasHashtagsWith?.map((e) => e.toJson()).toList(),
+      'hasWork': instance.hasWork,
+      'hasWorkWith': instance.hasWorkWith?.map((e) => e.toJson()).toList(),
     };
 
 Input$UpdateHashtagInput _$Input$UpdateHashtagInputFromJson(
@@ -383,6 +400,7 @@ Input$UpdatePostInput _$Input$UpdatePostInputFromJson(
       content: json['content'] as String?,
       type: $enumDecodeNullable(_$Enum$PostPostTypeEnumMap, json['type'],
           unknownValue: Enum$PostPostType.$unknown),
+      spoiled: json['spoiled'] as bool?,
       clearOwner: json['clearOwner'] as bool?,
       ownerID: json['ownerID'] as String?,
       addHashtagIDs: (json['addHashtagIDs'] as List<dynamic>?)
@@ -391,6 +409,8 @@ Input$UpdatePostInput _$Input$UpdatePostInputFromJson(
       removeHashtagIDs: (json['removeHashtagIDs'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      clearWork: json['clearWork'] as bool?,
+      workID: json['workID'] as String?,
     );
 
 Map<String, dynamic> _$Input$UpdatePostInputToJson(
@@ -400,10 +420,13 @@ Map<String, dynamic> _$Input$UpdatePostInputToJson(
       'title': instance.title,
       'content': instance.content,
       'type': _$Enum$PostPostTypeEnumMap[instance.type],
+      'spoiled': instance.spoiled,
       'clearOwner': instance.clearOwner,
       'ownerID': instance.ownerID,
       'addHashtagIDs': instance.addHashtagIDs,
       'removeHashtagIDs': instance.removeHashtagIDs,
+      'clearWork': instance.clearWork,
+      'workID': instance.workID,
     };
 
 Input$UpdateUserInput _$Input$UpdateUserInputFromJson(
@@ -430,12 +453,20 @@ Input$UpdateWorkInput _$Input$UpdateWorkInputFromJson(
         Map<String, dynamic> json) =>
     Input$UpdateWorkInput(
       title: json['title'] as String?,
+      addPostIDs: (json['addPostIDs'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      removePostIDs: (json['removePostIDs'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$Input$UpdateWorkInputToJson(
         Input$UpdateWorkInput instance) =>
     <String, dynamic>{
       'title': instance.title,
+      'addPostIDs': instance.addPostIDs,
+      'removePostIDs': instance.removePostIDs,
     };
 
 Input$UserWhereInput _$Input$UserWhereInputFromJson(
@@ -549,6 +580,10 @@ Input$WorkWhereInput _$Input$WorkWhereInputFromJson(
       titleHasSuffix: json['titleHasSuffix'] as String?,
       titleEqualFold: json['titleEqualFold'] as String?,
       titleContainsFold: json['titleContainsFold'] as String?,
+      hasPosts: json['hasPosts'] as bool?,
+      hasPostsWith: (json['hasPostsWith'] as List<dynamic>?)
+          ?.map((e) => Input$PostWhereInput.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$Input$WorkWhereInputToJson(
@@ -578,4 +613,6 @@ Map<String, dynamic> _$Input$WorkWhereInputToJson(
       'titleHasSuffix': instance.titleHasSuffix,
       'titleEqualFold': instance.titleEqualFold,
       'titleContainsFold': instance.titleContainsFold,
+      'hasPosts': instance.hasPosts,
+      'hasPostsWith': instance.hasPostsWith?.map((e) => e.toJson()).toList(),
     };

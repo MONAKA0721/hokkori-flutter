@@ -99,8 +99,10 @@ class Input$CreatePostInput {
       required this.title,
       required this.content,
       required this.type,
+      required this.spoiled,
       required this.ownerID,
-      this.hashtagIDs});
+      this.hashtagIDs,
+      required this.workID});
 
   @override
   factory Input$CreatePostInput.fromJson(Map<String, dynamic> json) =>
@@ -117,9 +119,13 @@ class Input$CreatePostInput {
   @JsonKey(unknownEnumValue: Enum$PostPostType.$unknown)
   final Enum$PostPostType type;
 
+  final bool spoiled;
+
   final String ownerID;
 
   final List<String>? hashtagIDs;
+
+  final String workID;
 
   Map<String, dynamic> toJson() => _$Input$CreatePostInputToJson(this);
   int get hashCode {
@@ -128,16 +134,20 @@ class Input$CreatePostInput {
     final l$title = title;
     final l$content = content;
     final l$type = type;
+    final l$spoiled = spoiled;
     final l$ownerID = ownerID;
     final l$hashtagIDs = hashtagIDs;
+    final l$workID = workID;
     return Object.hashAll([
       l$createTime,
       l$updateTime,
       l$title,
       l$content,
       l$type,
+      l$spoiled,
       l$ownerID,
-      l$hashtagIDs == null ? null : Object.hashAll(l$hashtagIDs.map((v) => v))
+      l$hashtagIDs == null ? null : Object.hashAll(l$hashtagIDs.map((v) => v)),
+      l$workID
     ]);
   }
 
@@ -161,6 +171,9 @@ class Input$CreatePostInput {
     final l$type = type;
     final lOther$type = other.type;
     if (l$type != lOther$type) return false;
+    final l$spoiled = spoiled;
+    final lOther$spoiled = other.spoiled;
+    if (l$spoiled != lOther$spoiled) return false;
     final l$ownerID = ownerID;
     final lOther$ownerID = other.ownerID;
     if (l$ownerID != lOther$ownerID) return false;
@@ -177,6 +190,9 @@ class Input$CreatePostInput {
       return false;
     }
 
+    final l$workID = workID;
+    final lOther$workID = other.workID;
+    if (l$workID != lOther$workID) return false;
     return true;
   }
 
@@ -198,8 +214,10 @@ abstract class CopyWith$Input$CreatePostInput<TRes> {
       String? title,
       String? content,
       Enum$PostPostType? type,
+      bool? spoiled,
       String? ownerID,
-      List<String>? hashtagIDs});
+      List<String>? hashtagIDs,
+      String? workID});
 }
 
 class _CopyWithImpl$Input$CreatePostInput<TRes>
@@ -218,8 +236,10 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           Object? title = _undefined,
           Object? content = _undefined,
           Object? type = _undefined,
+          Object? spoiled = _undefined,
           Object? ownerID = _undefined,
-          Object? hashtagIDs = _undefined}) =>
+          Object? hashtagIDs = _undefined,
+          Object? workID = _undefined}) =>
       _then(Input$CreatePostInput(
           createTime: createTime == _undefined
               ? _instance.createTime
@@ -236,12 +256,18 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           type: type == _undefined || type == null
               ? _instance.type
               : (type as Enum$PostPostType),
+          spoiled: spoiled == _undefined || spoiled == null
+              ? _instance.spoiled
+              : (spoiled as bool),
           ownerID: ownerID == _undefined || ownerID == null
               ? _instance.ownerID
               : (ownerID as String),
           hashtagIDs: hashtagIDs == _undefined
               ? _instance.hashtagIDs
-              : (hashtagIDs as List<String>?)));
+              : (hashtagIDs as List<String>?),
+          workID: workID == _undefined || workID == null
+              ? _instance.workID
+              : (workID as String)));
 }
 
 class _CopyWithStubImpl$Input$CreatePostInput<TRes>
@@ -256,8 +282,10 @@ class _CopyWithStubImpl$Input$CreatePostInput<TRes>
           String? title,
           String? content,
           Enum$PostPostType? type,
+          bool? spoiled,
           String? ownerID,
-          List<String>? hashtagIDs}) =>
+          List<String>? hashtagIDs,
+          String? workID}) =>
       _res;
 }
 
@@ -353,7 +381,7 @@ class _CopyWithStubImpl$Input$CreateUserInput<TRes>
 
 @JsonSerializable(explicitToJson: true)
 class Input$CreateWorkInput {
-  Input$CreateWorkInput({required this.title});
+  Input$CreateWorkInput({required this.title, this.postIDs});
 
   @override
   factory Input$CreateWorkInput.fromJson(Map<String, dynamic> json) =>
@@ -361,10 +389,16 @@ class Input$CreateWorkInput {
 
   final String title;
 
+  final List<String>? postIDs;
+
   Map<String, dynamic> toJson() => _$Input$CreateWorkInputToJson(this);
   int get hashCode {
     final l$title = title;
-    return Object.hashAll([l$title]);
+    final l$postIDs = postIDs;
+    return Object.hashAll([
+      l$title,
+      l$postIDs == null ? null : Object.hashAll(l$postIDs.map((v) => v))
+    ]);
   }
 
   @override
@@ -375,6 +409,19 @@ class Input$CreateWorkInput {
     final l$title = title;
     final lOther$title = other.title;
     if (l$title != lOther$title) return false;
+    final l$postIDs = postIDs;
+    final lOther$postIDs = other.postIDs;
+    if (l$postIDs != null && lOther$postIDs != null) {
+      if (l$postIDs.length != lOther$postIDs.length) return false;
+      for (int i = 0; i < l$postIDs.length; i++) {
+        final l$postIDs$entry = l$postIDs[i];
+        final lOther$postIDs$entry = lOther$postIDs[i];
+        if (l$postIDs$entry != lOther$postIDs$entry) return false;
+      }
+    } else if (l$postIDs != lOther$postIDs) {
+      return false;
+    }
+
     return true;
   }
 
@@ -390,7 +437,7 @@ abstract class CopyWith$Input$CreateWorkInput<TRes> {
   factory CopyWith$Input$CreateWorkInput.stub(TRes res) =
       _CopyWithStubImpl$Input$CreateWorkInput;
 
-  TRes call({String? title});
+  TRes call({String? title, List<String>? postIDs});
 }
 
 class _CopyWithImpl$Input$CreateWorkInput<TRes>
@@ -403,10 +450,14 @@ class _CopyWithImpl$Input$CreateWorkInput<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? title = _undefined}) => _then(Input$CreateWorkInput(
-      title: title == _undefined || title == null
-          ? _instance.title
-          : (title as String)));
+  TRes call({Object? title = _undefined, Object? postIDs = _undefined}) =>
+      _then(Input$CreateWorkInput(
+          title: title == _undefined || title == null
+              ? _instance.title
+              : (title as String),
+          postIDs: postIDs == _undefined
+              ? _instance.postIDs
+              : (postIDs as List<String>?)));
 }
 
 class _CopyWithStubImpl$Input$CreateWorkInput<TRes>
@@ -415,7 +466,7 @@ class _CopyWithStubImpl$Input$CreateWorkInput<TRes>
 
   TRes _res;
 
-  call({String? title}) => _res;
+  call({String? title, List<String>? postIDs}) => _res;
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -1091,10 +1142,14 @@ class Input$PostWhereInput {
       this.typeNEQ,
       this.typeIn,
       this.typeNotIn,
+      this.spoiled,
+      this.spoiledNEQ,
       this.hasOwner,
       this.hasOwnerWith,
       this.hasHashtags,
-      this.hasHashtagsWith});
+      this.hasHashtagsWith,
+      this.hasWork,
+      this.hasWorkWith});
 
   @override
   factory Input$PostWhereInput.fromJson(Map<String, dynamic> json) =>
@@ -1218,6 +1273,10 @@ class Input$PostWhereInput {
   @JsonKey(unknownEnumValue: Enum$PostPostType.$unknown)
   final List<Enum$PostPostType>? typeNotIn;
 
+  final bool? spoiled;
+
+  final bool? spoiledNEQ;
+
   final bool? hasOwner;
 
   final List<Input$UserWhereInput>? hasOwnerWith;
@@ -1225,6 +1284,10 @@ class Input$PostWhereInput {
   final bool? hasHashtags;
 
   final List<Input$HashtagWhereInput>? hasHashtagsWith;
+
+  final bool? hasWork;
+
+  final List<Input$WorkWhereInput>? hasWorkWith;
 
   Map<String, dynamic> toJson() => _$Input$PostWhereInputToJson(this);
   int get hashCode {
@@ -1285,10 +1348,14 @@ class Input$PostWhereInput {
     final l$typeNEQ = typeNEQ;
     final l$typeIn = typeIn;
     final l$typeNotIn = typeNotIn;
+    final l$spoiled = spoiled;
+    final l$spoiledNEQ = spoiledNEQ;
     final l$hasOwner = hasOwner;
     final l$hasOwnerWith = hasOwnerWith;
     final l$hasHashtags = hasHashtags;
     final l$hasHashtagsWith = hasHashtagsWith;
+    final l$hasWork = hasWork;
+    final l$hasWorkWith = hasWorkWith;
     return Object.hashAll([
       l$not,
       l$and == null ? null : Object.hashAll(l$and.map((v) => v)),
@@ -1357,6 +1424,8 @@ class Input$PostWhereInput {
       l$typeNEQ,
       l$typeIn == null ? null : Object.hashAll(l$typeIn.map((v) => v)),
       l$typeNotIn == null ? null : Object.hashAll(l$typeNotIn.map((v) => v)),
+      l$spoiled,
+      l$spoiledNEQ,
       l$hasOwner,
       l$hasOwnerWith == null
           ? null
@@ -1364,7 +1433,9 @@ class Input$PostWhereInput {
       l$hasHashtags,
       l$hasHashtagsWith == null
           ? null
-          : Object.hashAll(l$hasHashtagsWith.map((v) => v))
+          : Object.hashAll(l$hasHashtagsWith.map((v) => v)),
+      l$hasWork,
+      l$hasWorkWith == null ? null : Object.hashAll(l$hasWorkWith.map((v) => v))
     ]);
   }
 
@@ -1688,6 +1759,12 @@ class Input$PostWhereInput {
       return false;
     }
 
+    final l$spoiled = spoiled;
+    final lOther$spoiled = other.spoiled;
+    if (l$spoiled != lOther$spoiled) return false;
+    final l$spoiledNEQ = spoiledNEQ;
+    final lOther$spoiledNEQ = other.spoiledNEQ;
+    if (l$spoiledNEQ != lOther$spoiledNEQ) return false;
     final l$hasOwner = hasOwner;
     final lOther$hasOwner = other.hasOwner;
     if (l$hasOwner != lOther$hasOwner) return false;
@@ -1719,6 +1796,22 @@ class Input$PostWhereInput {
           return false;
       }
     } else if (l$hasHashtagsWith != lOther$hasHashtagsWith) {
+      return false;
+    }
+
+    final l$hasWork = hasWork;
+    final lOther$hasWork = other.hasWork;
+    if (l$hasWork != lOther$hasWork) return false;
+    final l$hasWorkWith = hasWorkWith;
+    final lOther$hasWorkWith = other.hasWorkWith;
+    if (l$hasWorkWith != null && lOther$hasWorkWith != null) {
+      if (l$hasWorkWith.length != lOther$hasWorkWith.length) return false;
+      for (int i = 0; i < l$hasWorkWith.length; i++) {
+        final l$hasWorkWith$entry = l$hasWorkWith[i];
+        final lOther$hasWorkWith$entry = lOther$hasWorkWith[i];
+        if (l$hasWorkWith$entry != lOther$hasWorkWith$entry) return false;
+      }
+    } else if (l$hasWorkWith != lOther$hasWorkWith) {
       return false;
     }
 
@@ -1795,10 +1888,14 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
       Enum$PostPostType? typeNEQ,
       List<Enum$PostPostType>? typeIn,
       List<Enum$PostPostType>? typeNotIn,
+      bool? spoiled,
+      bool? spoiledNEQ,
       bool? hasOwner,
       List<Input$UserWhereInput>? hasOwnerWith,
       bool? hasHashtags,
-      List<Input$HashtagWhereInput>? hasHashtagsWith});
+      List<Input$HashtagWhereInput>? hasHashtagsWith,
+      bool? hasWork,
+      List<Input$WorkWhereInput>? hasWorkWith});
   CopyWith$Input$PostWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$PostWhereInput>? Function(
@@ -1816,6 +1913,10 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
       Iterable<Input$HashtagWhereInput>? Function(
               Iterable<
                   CopyWith$Input$HashtagWhereInput<Input$HashtagWhereInput>>?)
+          _fn);
+  TRes hasWorkWith(
+      Iterable<Input$WorkWhereInput>? Function(
+              Iterable<CopyWith$Input$WorkWhereInput<Input$WorkWhereInput>>?)
           _fn);
 }
 
@@ -1887,10 +1988,14 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           Object? typeNEQ = _undefined,
           Object? typeIn = _undefined,
           Object? typeNotIn = _undefined,
+          Object? spoiled = _undefined,
+          Object? spoiledNEQ = _undefined,
           Object? hasOwner = _undefined,
           Object? hasOwnerWith = _undefined,
           Object? hasHashtags = _undefined,
-          Object? hasHashtagsWith = _undefined}) =>
+          Object? hasHashtagsWith = _undefined,
+          Object? hasWork = _undefined,
+          Object? hasWorkWith = _undefined}) =>
       _then(Input$PostWhereInput(
           not: not == _undefined
               ? _instance.not
@@ -1983,10 +2088,14 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           typeNEQ: typeNEQ == _undefined ? _instance.typeNEQ : (typeNEQ as Enum$PostPostType?),
           typeIn: typeIn == _undefined ? _instance.typeIn : (typeIn as List<Enum$PostPostType>?),
           typeNotIn: typeNotIn == _undefined ? _instance.typeNotIn : (typeNotIn as List<Enum$PostPostType>?),
+          spoiled: spoiled == _undefined ? _instance.spoiled : (spoiled as bool?),
+          spoiledNEQ: spoiledNEQ == _undefined ? _instance.spoiledNEQ : (spoiledNEQ as bool?),
           hasOwner: hasOwner == _undefined ? _instance.hasOwner : (hasOwner as bool?),
           hasOwnerWith: hasOwnerWith == _undefined ? _instance.hasOwnerWith : (hasOwnerWith as List<Input$UserWhereInput>?),
           hasHashtags: hasHashtags == _undefined ? _instance.hasHashtags : (hasHashtags as bool?),
-          hasHashtagsWith: hasHashtagsWith == _undefined ? _instance.hasHashtagsWith : (hasHashtagsWith as List<Input$HashtagWhereInput>?)));
+          hasHashtagsWith: hasHashtagsWith == _undefined ? _instance.hasHashtagsWith : (hasHashtagsWith as List<Input$HashtagWhereInput>?),
+          hasWork: hasWork == _undefined ? _instance.hasWork : (hasWork as bool?),
+          hasWorkWith: hasWorkWith == _undefined ? _instance.hasWorkWith : (hasWorkWith as List<Input$WorkWhereInput>?)));
   CopyWith$Input$PostWhereInput<TRes> get not {
     final local$not = _instance.not;
     return local$not == null
@@ -2030,6 +2139,15 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
       call(
           hasHashtagsWith: _fn(_instance.hasHashtagsWith
                   ?.map((e) => CopyWith$Input$HashtagWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasWorkWith(
+          Iterable<Input$WorkWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$WorkWhereInput<Input$WorkWhereInput>>?)
+              _fn) =>
+      call(
+          hasWorkWith: _fn(_instance.hasWorkWith
+                  ?.map((e) => CopyWith$Input$WorkWhereInput(e, (i) => i)))
               ?.toList());
 }
 
@@ -2097,10 +2215,14 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
           Enum$PostPostType? typeNEQ,
           List<Enum$PostPostType>? typeIn,
           List<Enum$PostPostType>? typeNotIn,
+          bool? spoiled,
+          bool? spoiledNEQ,
           bool? hasOwner,
           List<Input$UserWhereInput>? hasOwnerWith,
           bool? hasHashtags,
-          List<Input$HashtagWhereInput>? hasHashtagsWith}) =>
+          List<Input$HashtagWhereInput>? hasHashtagsWith,
+          bool? hasWork,
+          List<Input$WorkWhereInput>? hasWorkWith}) =>
       _res;
   CopyWith$Input$PostWhereInput<TRes> get not =>
       CopyWith$Input$PostWhereInput.stub(_res);
@@ -2108,6 +2230,7 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
   or(_fn) => _res;
   hasOwnerWith(_fn) => _res;
   hasHashtagsWith(_fn) => _res;
+  hasWorkWith(_fn) => _res;
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -2235,10 +2358,13 @@ class Input$UpdatePostInput {
       this.title,
       this.content,
       this.type,
+      this.spoiled,
       this.clearOwner,
       this.ownerID,
       this.addHashtagIDs,
-      this.removeHashtagIDs});
+      this.removeHashtagIDs,
+      this.clearWork,
+      this.workID});
 
   @override
   factory Input$UpdatePostInput.fromJson(Map<String, dynamic> json) =>
@@ -2253,6 +2379,8 @@ class Input$UpdatePostInput {
   @JsonKey(unknownEnumValue: Enum$PostPostType.$unknown)
   final Enum$PostPostType? type;
 
+  final bool? spoiled;
+
   final bool? clearOwner;
 
   final String? ownerID;
@@ -2261,21 +2389,29 @@ class Input$UpdatePostInput {
 
   final List<String>? removeHashtagIDs;
 
+  final bool? clearWork;
+
+  final String? workID;
+
   Map<String, dynamic> toJson() => _$Input$UpdatePostInputToJson(this);
   int get hashCode {
     final l$updateTime = updateTime;
     final l$title = title;
     final l$content = content;
     final l$type = type;
+    final l$spoiled = spoiled;
     final l$clearOwner = clearOwner;
     final l$ownerID = ownerID;
     final l$addHashtagIDs = addHashtagIDs;
     final l$removeHashtagIDs = removeHashtagIDs;
+    final l$clearWork = clearWork;
+    final l$workID = workID;
     return Object.hashAll([
       l$updateTime,
       l$title,
       l$content,
       l$type,
+      l$spoiled,
       l$clearOwner,
       l$ownerID,
       l$addHashtagIDs == null
@@ -2283,7 +2419,9 @@ class Input$UpdatePostInput {
           : Object.hashAll(l$addHashtagIDs.map((v) => v)),
       l$removeHashtagIDs == null
           ? null
-          : Object.hashAll(l$removeHashtagIDs.map((v) => v))
+          : Object.hashAll(l$removeHashtagIDs.map((v) => v)),
+      l$clearWork,
+      l$workID
     ]);
   }
 
@@ -2304,6 +2442,9 @@ class Input$UpdatePostInput {
     final l$type = type;
     final lOther$type = other.type;
     if (l$type != lOther$type) return false;
+    final l$spoiled = spoiled;
+    final lOther$spoiled = other.spoiled;
+    if (l$spoiled != lOther$spoiled) return false;
     final l$clearOwner = clearOwner;
     final lOther$clearOwner = other.clearOwner;
     if (l$clearOwner != lOther$clearOwner) return false;
@@ -2338,6 +2479,12 @@ class Input$UpdatePostInput {
       return false;
     }
 
+    final l$clearWork = clearWork;
+    final lOther$clearWork = other.clearWork;
+    if (l$clearWork != lOther$clearWork) return false;
+    final l$workID = workID;
+    final lOther$workID = other.workID;
+    if (l$workID != lOther$workID) return false;
     return true;
   }
 
@@ -2358,10 +2505,13 @@ abstract class CopyWith$Input$UpdatePostInput<TRes> {
       String? title,
       String? content,
       Enum$PostPostType? type,
+      bool? spoiled,
       bool? clearOwner,
       String? ownerID,
       List<String>? addHashtagIDs,
-      List<String>? removeHashtagIDs});
+      List<String>? removeHashtagIDs,
+      bool? clearWork,
+      String? workID});
 }
 
 class _CopyWithImpl$Input$UpdatePostInput<TRes>
@@ -2379,10 +2529,13 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           Object? title = _undefined,
           Object? content = _undefined,
           Object? type = _undefined,
+          Object? spoiled = _undefined,
           Object? clearOwner = _undefined,
           Object? ownerID = _undefined,
           Object? addHashtagIDs = _undefined,
-          Object? removeHashtagIDs = _undefined}) =>
+          Object? removeHashtagIDs = _undefined,
+          Object? clearWork = _undefined,
+          Object? workID = _undefined}) =>
       _then(Input$UpdatePostInput(
           updateTime: updateTime == _undefined
               ? _instance.updateTime
@@ -2393,6 +2546,8 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           type: type == _undefined
               ? _instance.type
               : (type as Enum$PostPostType?),
+          spoiled:
+              spoiled == _undefined ? _instance.spoiled : (spoiled as bool?),
           clearOwner: clearOwner == _undefined
               ? _instance.clearOwner
               : (clearOwner as bool?),
@@ -2403,7 +2558,12 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
               : (addHashtagIDs as List<String>?),
           removeHashtagIDs: removeHashtagIDs == _undefined
               ? _instance.removeHashtagIDs
-              : (removeHashtagIDs as List<String>?)));
+              : (removeHashtagIDs as List<String>?),
+          clearWork: clearWork == _undefined
+              ? _instance.clearWork
+              : (clearWork as bool?),
+          workID:
+              workID == _undefined ? _instance.workID : (workID as String?)));
 }
 
 class _CopyWithStubImpl$Input$UpdatePostInput<TRes>
@@ -2417,10 +2577,13 @@ class _CopyWithStubImpl$Input$UpdatePostInput<TRes>
           String? title,
           String? content,
           Enum$PostPostType? type,
+          bool? spoiled,
           bool? clearOwner,
           String? ownerID,
           List<String>? addHashtagIDs,
-          List<String>? removeHashtagIDs}) =>
+          List<String>? removeHashtagIDs,
+          bool? clearWork,
+          String? workID}) =>
       _res;
 }
 
@@ -2541,7 +2704,7 @@ class _CopyWithStubImpl$Input$UpdateUserInput<TRes>
 
 @JsonSerializable(explicitToJson: true)
 class Input$UpdateWorkInput {
-  Input$UpdateWorkInput({this.title});
+  Input$UpdateWorkInput({this.title, this.addPostIDs, this.removePostIDs});
 
   @override
   factory Input$UpdateWorkInput.fromJson(Map<String, dynamic> json) =>
@@ -2549,10 +2712,22 @@ class Input$UpdateWorkInput {
 
   final String? title;
 
+  final List<String>? addPostIDs;
+
+  final List<String>? removePostIDs;
+
   Map<String, dynamic> toJson() => _$Input$UpdateWorkInputToJson(this);
   int get hashCode {
     final l$title = title;
-    return Object.hashAll([l$title]);
+    final l$addPostIDs = addPostIDs;
+    final l$removePostIDs = removePostIDs;
+    return Object.hashAll([
+      l$title,
+      l$addPostIDs == null ? null : Object.hashAll(l$addPostIDs.map((v) => v)),
+      l$removePostIDs == null
+          ? null
+          : Object.hashAll(l$removePostIDs.map((v) => v))
+    ]);
   }
 
   @override
@@ -2563,6 +2738,32 @@ class Input$UpdateWorkInput {
     final l$title = title;
     final lOther$title = other.title;
     if (l$title != lOther$title) return false;
+    final l$addPostIDs = addPostIDs;
+    final lOther$addPostIDs = other.addPostIDs;
+    if (l$addPostIDs != null && lOther$addPostIDs != null) {
+      if (l$addPostIDs.length != lOther$addPostIDs.length) return false;
+      for (int i = 0; i < l$addPostIDs.length; i++) {
+        final l$addPostIDs$entry = l$addPostIDs[i];
+        final lOther$addPostIDs$entry = lOther$addPostIDs[i];
+        if (l$addPostIDs$entry != lOther$addPostIDs$entry) return false;
+      }
+    } else if (l$addPostIDs != lOther$addPostIDs) {
+      return false;
+    }
+
+    final l$removePostIDs = removePostIDs;
+    final lOther$removePostIDs = other.removePostIDs;
+    if (l$removePostIDs != null && lOther$removePostIDs != null) {
+      if (l$removePostIDs.length != lOther$removePostIDs.length) return false;
+      for (int i = 0; i < l$removePostIDs.length; i++) {
+        final l$removePostIDs$entry = l$removePostIDs[i];
+        final lOther$removePostIDs$entry = lOther$removePostIDs[i];
+        if (l$removePostIDs$entry != lOther$removePostIDs$entry) return false;
+      }
+    } else if (l$removePostIDs != lOther$removePostIDs) {
+      return false;
+    }
+
     return true;
   }
 
@@ -2578,7 +2779,8 @@ abstract class CopyWith$Input$UpdateWorkInput<TRes> {
   factory CopyWith$Input$UpdateWorkInput.stub(TRes res) =
       _CopyWithStubImpl$Input$UpdateWorkInput;
 
-  TRes call({String? title});
+  TRes call(
+      {String? title, List<String>? addPostIDs, List<String>? removePostIDs});
 }
 
 class _CopyWithImpl$Input$UpdateWorkInput<TRes>
@@ -2591,8 +2793,18 @@ class _CopyWithImpl$Input$UpdateWorkInput<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? title = _undefined}) => _then(Input$UpdateWorkInput(
-      title: title == _undefined ? _instance.title : (title as String?)));
+  TRes call(
+          {Object? title = _undefined,
+          Object? addPostIDs = _undefined,
+          Object? removePostIDs = _undefined}) =>
+      _then(Input$UpdateWorkInput(
+          title: title == _undefined ? _instance.title : (title as String?),
+          addPostIDs: addPostIDs == _undefined
+              ? _instance.addPostIDs
+              : (addPostIDs as List<String>?),
+          removePostIDs: removePostIDs == _undefined
+              ? _instance.removePostIDs
+              : (removePostIDs as List<String>?)));
 }
 
 class _CopyWithStubImpl$Input$UpdateWorkInput<TRes>
@@ -2601,7 +2813,11 @@ class _CopyWithStubImpl$Input$UpdateWorkInput<TRes>
 
   TRes _res;
 
-  call({String? title}) => _res;
+  call(
+          {String? title,
+          List<String>? addPostIDs,
+          List<String>? removePostIDs}) =>
+      _res;
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -3155,7 +3371,9 @@ class Input$WorkWhereInput {
       this.titleHasPrefix,
       this.titleHasSuffix,
       this.titleEqualFold,
-      this.titleContainsFold});
+      this.titleContainsFold,
+      this.hasPosts,
+      this.hasPostsWith});
 
   @override
   factory Input$WorkWhereInput.fromJson(Map<String, dynamic> json) =>
@@ -3209,6 +3427,10 @@ class Input$WorkWhereInput {
 
   final String? titleContainsFold;
 
+  final bool? hasPosts;
+
+  final List<Input$PostWhereInput>? hasPostsWith;
+
   Map<String, dynamic> toJson() => _$Input$WorkWhereInputToJson(this);
   int get hashCode {
     final l$not = not;
@@ -3235,6 +3457,8 @@ class Input$WorkWhereInput {
     final l$titleHasSuffix = titleHasSuffix;
     final l$titleEqualFold = titleEqualFold;
     final l$titleContainsFold = titleContainsFold;
+    final l$hasPosts = hasPosts;
+    final l$hasPostsWith = hasPostsWith;
     return Object.hashAll([
       l$not,
       l$and == null ? null : Object.hashAll(l$and.map((v) => v)),
@@ -3259,7 +3483,11 @@ class Input$WorkWhereInput {
       l$titleHasPrefix,
       l$titleHasSuffix,
       l$titleEqualFold,
-      l$titleContainsFold
+      l$titleContainsFold,
+      l$hasPosts,
+      l$hasPostsWith == null
+          ? null
+          : Object.hashAll(l$hasPostsWith.map((v) => v))
     ]);
   }
 
@@ -3400,6 +3628,22 @@ class Input$WorkWhereInput {
     final l$titleContainsFold = titleContainsFold;
     final lOther$titleContainsFold = other.titleContainsFold;
     if (l$titleContainsFold != lOther$titleContainsFold) return false;
+    final l$hasPosts = hasPosts;
+    final lOther$hasPosts = other.hasPosts;
+    if (l$hasPosts != lOther$hasPosts) return false;
+    final l$hasPostsWith = hasPostsWith;
+    final lOther$hasPostsWith = other.hasPostsWith;
+    if (l$hasPostsWith != null && lOther$hasPostsWith != null) {
+      if (l$hasPostsWith.length != lOther$hasPostsWith.length) return false;
+      for (int i = 0; i < l$hasPostsWith.length; i++) {
+        final l$hasPostsWith$entry = l$hasPostsWith[i];
+        final lOther$hasPostsWith$entry = lOther$hasPostsWith[i];
+        if (l$hasPostsWith$entry != lOther$hasPostsWith$entry) return false;
+      }
+    } else if (l$hasPostsWith != lOther$hasPostsWith) {
+      return false;
+    }
+
     return true;
   }
 
@@ -3439,7 +3683,9 @@ abstract class CopyWith$Input$WorkWhereInput<TRes> {
       String? titleHasPrefix,
       String? titleHasSuffix,
       String? titleEqualFold,
-      String? titleContainsFold});
+      String? titleContainsFold,
+      bool? hasPosts,
+      List<Input$PostWhereInput>? hasPostsWith});
   CopyWith$Input$WorkWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$WorkWhereInput>? Function(
@@ -3448,6 +3694,10 @@ abstract class CopyWith$Input$WorkWhereInput<TRes> {
   TRes or(
       Iterable<Input$WorkWhereInput>? Function(
               Iterable<CopyWith$Input$WorkWhereInput<Input$WorkWhereInput>>?)
+          _fn);
+  TRes hasPostsWith(
+      Iterable<Input$PostWhereInput>? Function(
+              Iterable<CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
           _fn);
 }
 
@@ -3485,7 +3735,9 @@ class _CopyWithImpl$Input$WorkWhereInput<TRes>
           Object? titleHasPrefix = _undefined,
           Object? titleHasSuffix = _undefined,
           Object? titleEqualFold = _undefined,
-          Object? titleContainsFold = _undefined}) =>
+          Object? titleContainsFold = _undefined,
+          Object? hasPosts = _undefined,
+          Object? hasPostsWith = _undefined}) =>
       _then(Input$WorkWhereInput(
           not: not == _undefined
               ? _instance.not
@@ -3540,7 +3792,12 @@ class _CopyWithImpl$Input$WorkWhereInput<TRes>
               : (titleEqualFold as String?),
           titleContainsFold: titleContainsFold == _undefined
               ? _instance.titleContainsFold
-              : (titleContainsFold as String?)));
+              : (titleContainsFold as String?),
+          hasPosts:
+              hasPosts == _undefined ? _instance.hasPosts : (hasPosts as bool?),
+          hasPostsWith: hasPostsWith == _undefined
+              ? _instance.hasPostsWith
+              : (hasPostsWith as List<Input$PostWhereInput>?)));
   CopyWith$Input$WorkWhereInput<TRes> get not {
     final local$not = _instance.not;
     return local$not == null
@@ -3565,6 +3822,15 @@ class _CopyWithImpl$Input$WorkWhereInput<TRes>
       call(
           or: _fn(_instance.or
                   ?.map((e) => CopyWith$Input$WorkWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasPostsWith(
+          Iterable<Input$PostWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+              _fn) =>
+      call(
+          hasPostsWith: _fn(_instance.hasPostsWith
+                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
               ?.toList());
 }
 
@@ -3598,12 +3864,15 @@ class _CopyWithStubImpl$Input$WorkWhereInput<TRes>
           String? titleHasPrefix,
           String? titleHasSuffix,
           String? titleEqualFold,
-          String? titleContainsFold}) =>
+          String? titleContainsFold,
+          bool? hasPosts,
+          List<Input$PostWhereInput>? hasPostsWith}) =>
       _res;
   CopyWith$Input$WorkWhereInput<TRes> get not =>
       CopyWith$Input$WorkWhereInput.stub(_res);
   and(_fn) => _res;
   or(_fn) => _res;
+  hasPostsWith(_fn) => _res;
 }
 
 enum Enum$OrderDirection {

@@ -1,0 +1,36 @@
+query SearchWorks($searchText: String) {
+  works(where: { titleContainsFold: $searchText }) {
+    edges {
+      node {
+        id
+        title
+      }
+    }
+  }
+}
+
+query SearchHashtags($searchText: String) {
+  hashtags(where: { titleContainsFold: $searchText }) {
+    edges {
+      node {
+        id
+        title
+      }
+    }
+  }
+}
+
+mutation CreatePost($createPostInput: CreatePostInput!) {
+  createPost(input: $createPostInput) {
+    id
+  }
+}
+
+mutation CreatePosts(
+  $createPostInput: CreatePostInput!
+  $createPostInput2: CreatePostInput!
+) {
+  createPosts(input: $createPostInput, input2: $createPostInput2) {
+    id
+  }
+}

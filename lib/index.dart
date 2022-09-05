@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hokkori/home_page.dart';
 import 'package:hokkori/mail_page.dart';
 import 'package:hokkori/notification_page.dart';
-import 'package:hokkori/post_page.dart';
+import 'package:hokkori/pages/post/post_page.dart';
 import 'package:hokkori/search_page.dart';
 import 'package:hokkori/utils/colors.dart';
 
