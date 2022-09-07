@@ -1,28 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hokkori/pages/home/home_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/header.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
-
-String listPosts = r"""
-query Posts {
-  posts(orderBy: { direction: DESC, field: CREATE_TIME }) {
-    edges {
-      node {
-        title
-        id
-        content
-        owner {
-          id
-          name
-        }
-      }
-    }
-  }
-}
-""";
 
 class HomePageNavigator extends StatelessWidget {
   const HomePageNavigator({super.key});
@@ -67,58 +51,53 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class Posts extends StatelessWidget {
+class Posts extends HookWidget {
   const Posts({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Query(
-        options: QueryOptions(
-            document: gql(listPosts), fetchPolicy: FetchPolicy.networkOnly),
-        builder: (QueryResult result,
-            {Future<QueryResult?> Function()? refetch, FetchMore? fetchMore}) {
-          if (result.hasException) {
-            return Text(result.exception.toString());
-          }
+    final result = useQuery$Posts(
+            Options$Query$Posts(fetchPolicy: FetchPolicy.networkOnly))
+        .result;
 
-          if (result.isLoading) {
-            return const Center(
-              child: CircularProgressIndicator(
-                color: primaryColor,
-              ),
-            );
-          }
+    if (result.hasException) {
+      return Text(result.exception.toString());
+    }
+    if (result.isLoading) {
+      return const Center(
+        child: CircularProgressIndicator(
+          color: primaryColor,
+        ),
+      );
+    }
+    final posts = result.parsedData?.posts.edges ?? [];
+    List hashTags = ["#あああああああああああ", "#あああ", "#あああ", "#あああああ"];
 
-          List posts = result.data?['posts']['edges'] ?? [];
-          List hashTags = ["#あああああああああああ", "#あああ", "#あああ", "#あああああ"];
-
-          return ListView.separated(
-              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-              separatorBuilder: (context, index) {
-                return (index % 2 == 1)
-                    ? Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Wrap(
-                            children:
-                                hashTags.map((e) => HashTag(name: e)).toList(),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                        ],
-                      )
-                    : const SizedBox(
-                        height: 20,
-                      );
-              },
-              itemCount: posts.length,
-              itemBuilder: (context, index) {
-                return Post(post: posts[index]['node']);
-              });
+    return ListView.separated(
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        separatorBuilder: (context, index) {
+          return (index % 2 == 1)
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Wrap(
+                      children: hashTags.map((e) => HashTag(name: e)).toList(),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                )
+              : const SizedBox(
+                  height: 20,
+                );
+        },
+        itemCount: posts.length,
+        itemBuilder: (context, index) {
+          return Post(post: posts[index]!.node!);
         });
   }
 }
@@ -141,7 +120,7 @@ class HashTag extends StatelessWidget {
 }
 
 class Post extends StatelessWidget {
-  final dynamic post;
+  final Query$Posts$posts$edges$node post;
   const Post({super.key, required this.post});
 
   @override
@@ -164,7 +143,7 @@ class Post extends StatelessWidget {
               ),
               Expanded(
                   child: Text(
-                post['title'],
+                post.title,
                 style: const TextStyle(fontWeight: FontWeight.w700),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
@@ -192,7 +171,7 @@ class Post extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    post['content'],
+                    post.content,
                     style: const TextStyle(color: Colors.black87, fontSize: 12),
                     overflow: TextOverflow.ellipsis,
                     maxLines: 3,
@@ -207,7 +186,7 @@ class Post extends StatelessWidget {
                         width: 5,
                       ),
                       Text(
-                        post['owner']['name'],
+                        post.owner.name,
                         style: const TextStyle(
                             color: Colors.black87,
                             decoration: TextDecoration.underline,

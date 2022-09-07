@@ -1,0 +1,15 @@
+query Posts {
+  posts(orderBy: { direction: DESC, field: CREATE_TIME }) {
+    edges {
+      node {
+        title
+        id
+        content
+        owner {
+          id
+          name
+        }
+      }
+    }
+  }
+}
