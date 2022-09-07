@@ -77,6 +77,7 @@ Input$CreateWorkInput _$Input$CreateWorkInputFromJson(
         Map<String, dynamic> json) =>
     Input$CreateWorkInput(
       title: json['title'] as String,
+      thumbnail: json['thumbnail'] as String?,
       postIDs:
           (json['postIDs'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
@@ -85,6 +86,7 @@ Map<String, dynamic> _$Input$CreateWorkInputToJson(
         Input$CreateWorkInput instance) =>
     <String, dynamic>{
       'title': instance.title,
+      'thumbnail': instance.thumbnail,
       'postIDs': instance.postIDs,
     };
 
@@ -453,6 +455,8 @@ Input$UpdateWorkInput _$Input$UpdateWorkInputFromJson(
         Map<String, dynamic> json) =>
     Input$UpdateWorkInput(
       title: json['title'] as String?,
+      clearThumbnail: json['clearThumbnail'] as bool?,
+      thumbnail: json['thumbnail'] as String?,
       addPostIDs: (json['addPostIDs'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -465,6 +469,8 @@ Map<String, dynamic> _$Input$UpdateWorkInputToJson(
         Input$UpdateWorkInput instance) =>
     <String, dynamic>{
       'title': instance.title,
+      'clearThumbnail': instance.clearThumbnail,
+      'thumbnail': instance.thumbnail,
       'addPostIDs': instance.addPostIDs,
       'removePostIDs': instance.removePostIDs,
     };
@@ -580,6 +586,25 @@ Input$WorkWhereInput _$Input$WorkWhereInputFromJson(
       titleHasSuffix: json['titleHasSuffix'] as String?,
       titleEqualFold: json['titleEqualFold'] as String?,
       titleContainsFold: json['titleContainsFold'] as String?,
+      thumbnail: json['thumbnail'] as String?,
+      thumbnailNEQ: json['thumbnailNEQ'] as String?,
+      thumbnailIn: (json['thumbnailIn'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      thumbnailNotIn: (json['thumbnailNotIn'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      thumbnailGT: json['thumbnailGT'] as String?,
+      thumbnailGTE: json['thumbnailGTE'] as String?,
+      thumbnailLT: json['thumbnailLT'] as String?,
+      thumbnailLTE: json['thumbnailLTE'] as String?,
+      thumbnailContains: json['thumbnailContains'] as String?,
+      thumbnailHasPrefix: json['thumbnailHasPrefix'] as String?,
+      thumbnailHasSuffix: json['thumbnailHasSuffix'] as String?,
+      thumbnailIsNil: json['thumbnailIsNil'] as bool?,
+      thumbnailNotNil: json['thumbnailNotNil'] as bool?,
+      thumbnailEqualFold: json['thumbnailEqualFold'] as String?,
+      thumbnailContainsFold: json['thumbnailContainsFold'] as String?,
       hasPosts: json['hasPosts'] as bool?,
       hasPostsWith: (json['hasPostsWith'] as List<dynamic>?)
           ?.map((e) => Input$PostWhereInput.fromJson(e as Map<String, dynamic>))
@@ -613,6 +638,21 @@ Map<String, dynamic> _$Input$WorkWhereInputToJson(
       'titleHasSuffix': instance.titleHasSuffix,
       'titleEqualFold': instance.titleEqualFold,
       'titleContainsFold': instance.titleContainsFold,
+      'thumbnail': instance.thumbnail,
+      'thumbnailNEQ': instance.thumbnailNEQ,
+      'thumbnailIn': instance.thumbnailIn,
+      'thumbnailNotIn': instance.thumbnailNotIn,
+      'thumbnailGT': instance.thumbnailGT,
+      'thumbnailGTE': instance.thumbnailGTE,
+      'thumbnailLT': instance.thumbnailLT,
+      'thumbnailLTE': instance.thumbnailLTE,
+      'thumbnailContains': instance.thumbnailContains,
+      'thumbnailHasPrefix': instance.thumbnailHasPrefix,
+      'thumbnailHasSuffix': instance.thumbnailHasSuffix,
+      'thumbnailIsNil': instance.thumbnailIsNil,
+      'thumbnailNotNil': instance.thumbnailNotNil,
+      'thumbnailEqualFold': instance.thumbnailEqualFold,
+      'thumbnailContainsFold': instance.thumbnailContainsFold,
       'hasPosts': instance.hasPosts,
       'hasPostsWith': instance.hasPostsWith?.map((e) => e.toJson()).toList(),
     };

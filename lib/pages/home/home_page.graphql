@@ -1,5 +1,45 @@
-query Posts {
-  posts(orderBy: { direction: DESC, field: CREATE_TIME }) {
+query TopPraises($first: Int) {
+  posts(
+    first: $first
+    orderBy: { direction: DESC, field: CREATE_TIME }
+    where: { type: praise }
+  ) {
+    edges {
+      node {
+        title
+        id
+        content
+        hashtags {
+          id
+          title
+        }
+        owner {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+
+query TopWorks($first: Int) {
+  works(first: $first) {
+    edges {
+      node {
+        id
+        title
+        thumbnail
+      }
+    }
+  }
+}
+
+query TopLetters($first: Int) {
+  posts(
+    first: $first
+    orderBy: { direction: DESC, field: CREATE_TIME }
+    where: { type: letter }
+  ) {
     edges {
       node {
         title

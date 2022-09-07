@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/pages/home/home_page.graphql.dart';
+import 'package:hokkori/pages/home/letter.dart';
+import 'package:hokkori/pages/home/praise.dart';
+import 'package:hokkori/pages/home/work.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/header.dart';
 
@@ -40,24 +42,42 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: const [
-      Header(),
+    return Column(children: [
+      const Header(),
       Expanded(
-          child: Scaffold(
-        body: Posts(),
-        backgroundColor: Color(0xffFCF5F5),
-      ))
+          child: Container(
+              padding: const EdgeInsets.only(left: 16, right: 16, top: 12),
+              decoration: const BoxDecoration(color: backgroundColor),
+              child: SingleChildScrollView(
+                  child: Column(
+                children: const [
+                  TopPraises(),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  TopWorks(),
+                  TopLetters(),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Praises(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                ],
+              )))),
     ]);
   }
 }
 
-class Posts extends HookWidget {
-  const Posts({super.key});
+class TopPraises extends HookWidget {
+  const TopPraises({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final result = useQuery$Posts(
-            Options$Query$Posts(fetchPolicy: FetchPolicy.networkOnly))
+    final result = useQuery$TopPraises(Options$Query$TopPraises(
+            fetchPolicy: FetchPolicy.networkOnly,
+            variables: Variables$Query$TopPraises(first: 3)))
         .result;
 
     if (result.hasException) {
@@ -70,150 +90,146 @@ class Posts extends HookWidget {
         ),
       );
     }
-    final posts = result.parsedData?.posts.edges ?? [];
-    List hashTags = ["#あああああああああああ", "#あああ", "#あああ", "#あああああ"];
+    final praises = result.parsedData?.posts.edges ?? [];
 
-    return ListView.separated(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-        separatorBuilder: (context, index) {
-          return (index % 2 == 1)
-              ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Wrap(
-                      children: hashTags.map((e) => HashTag(name: e)).toList(),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                  ],
-                )
-              : const SizedBox(
-                  height: 20,
-                );
-        },
-        itemCount: posts.length,
-        itemBuilder: (context, index) {
-          return Post(post: posts[index]!.node!);
-        });
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      const Text(
+        "ほっこり",
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      ...praises.map((praise) => Praise(praise: praise!.node!)).toList()
+    ]);
   }
 }
 
-class HashTag extends StatelessWidget {
-  final String name;
-
-  const HashTag({super.key, required this.name});
+class TopWorks extends HookWidget {
+  const TopWorks({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(right: 8, bottom: 10),
-      padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(5)),
-      child: Text(name),
-    );
-  }
-}
+    final result = useQuery$TopWorks(Options$Query$TopWorks(
+            fetchPolicy: FetchPolicy.networkOnly,
+            variables: Variables$Query$TopWorks(first: 6)))
+        .result;
 
-class Post extends StatelessWidget {
-  final Query$Posts$posts$edges$node post;
-  const Post({super.key, required this.post});
+    if (result.hasException) {
+      return Text(result.exception.toString());
+    }
+    if (result.isLoading) {
+      return const Center(
+        child: CircularProgressIndicator(
+          color: primaryColor,
+        ),
+      );
+    }
+    final works = result.parsedData?.works.edges ?? [];
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(20))),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-        child: Column(children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                  backgroundColor: primaryColor,
-                  radius: 15,
-                  child: SvgPicture.asset('assets/palette.svg')),
-              const SizedBox(
-                width: 5,
-              ),
-              Expanded(
-                  child: Text(
-                post.title,
-                style: const TextStyle(fontWeight: FontWeight.w700),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-              ))
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          IntrinsicHeight(
-              child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Image.network(
-                "https://source.unsplash.com/random/100x100",
-                width: 100,
-                height: 100,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    post.content,
-                    style: const TextStyle(color: Colors.black87, fontSize: 12),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 3,
-                  ),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.person,
-                        color: Color(0xffa2a2a2),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        post.owner.name,
-                        style: const TextStyle(
-                            color: Colors.black87,
-                            decoration: TextDecoration.underline,
-                            decorationThickness: 2),
-                      ),
-                      const Spacer(),
-                      const Icon(
-                        Icons.favorite,
-                        color: primaryColor,
-                        size: 16,
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      const Text(
-                        "27",
-                        style: TextStyle(color: Colors.black87, fontSize: 14),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                    ],
-                  )
-                ],
-              ))
-            ],
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      const Text(
+        "おすすめ作品",
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      const SizedBox(
+        height: 10,
+      ),
+      SizedBox(
+          height: 200,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            separatorBuilder: (context, index) => const SizedBox(
+              width: 10,
+            ),
+            itemBuilder: (context, index) => Work(work: works[index]!.node!),
+            itemCount: works.length,
           ))
-        ]));
+    ]);
+  }
+}
+
+class Praises extends HookWidget {
+  const Praises({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final result = useQuery$TopPraises(Options$Query$TopPraises(
+            fetchPolicy: FetchPolicy.networkOnly,
+            variables: Variables$Query$TopPraises(first: 100)))
+        .result;
+
+    if (result.hasException) {
+      return Text(result.exception.toString());
+    }
+    if (result.isLoading) {
+      return const Center(
+        child: CircularProgressIndicator(
+          color: primaryColor,
+        ),
+      );
+    }
+    final praises = result.parsedData?.posts.edges ?? [];
+
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      const Text(
+        "ほっこり",
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      ...praises.map((praise) => Praise(praise: praise!.node!)).toList()
+    ]);
+  }
+}
+
+class TopLetters extends HookWidget {
+  const TopLetters({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final result = useQuery$TopLetters(Options$Query$TopLetters(
+            fetchPolicy: FetchPolicy.networkOnly,
+            variables: Variables$Query$TopLetters(first: 3)))
+        .result;
+
+    if (result.hasException) {
+      return Text(result.exception.toString());
+    }
+    if (result.isLoading) {
+      return const Center(
+        child: CircularProgressIndicator(
+          color: primaryColor,
+        ),
+      );
+    }
+    final letters = result.parsedData?.posts.edges ?? [];
+
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      const Text(
+        "レター",
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
+      const SizedBox(
+        height: 30,
+      ),
+      Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+        OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+              backgroundColor: blueHomeColor,
+              side: const BorderSide(color: blueHomeColor, width: 2),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+            onPressed: () {},
+            child: Row(
+              children: const [
+                Text(
+                  "もっと見る",
+                  style: TextStyle(color: Colors.white),
+                ),
+                Icon(Icons.chevron_right, color: Colors.white)
+              ],
+            ))
+      ])
+    ]);
   }
 }

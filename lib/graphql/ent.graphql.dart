@@ -381,7 +381,7 @@ class _CopyWithStubImpl$Input$CreateUserInput<TRes>
 
 @JsonSerializable(explicitToJson: true)
 class Input$CreateWorkInput {
-  Input$CreateWorkInput({required this.title, this.postIDs});
+  Input$CreateWorkInput({required this.title, this.thumbnail, this.postIDs});
 
   @override
   factory Input$CreateWorkInput.fromJson(Map<String, dynamic> json) =>
@@ -389,14 +389,18 @@ class Input$CreateWorkInput {
 
   final String title;
 
+  final String? thumbnail;
+
   final List<String>? postIDs;
 
   Map<String, dynamic> toJson() => _$Input$CreateWorkInputToJson(this);
   int get hashCode {
     final l$title = title;
+    final l$thumbnail = thumbnail;
     final l$postIDs = postIDs;
     return Object.hashAll([
       l$title,
+      l$thumbnail,
       l$postIDs == null ? null : Object.hashAll(l$postIDs.map((v) => v))
     ]);
   }
@@ -409,6 +413,9 @@ class Input$CreateWorkInput {
     final l$title = title;
     final lOther$title = other.title;
     if (l$title != lOther$title) return false;
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (l$thumbnail != lOther$thumbnail) return false;
     final l$postIDs = postIDs;
     final lOther$postIDs = other.postIDs;
     if (l$postIDs != null && lOther$postIDs != null) {
@@ -437,7 +444,7 @@ abstract class CopyWith$Input$CreateWorkInput<TRes> {
   factory CopyWith$Input$CreateWorkInput.stub(TRes res) =
       _CopyWithStubImpl$Input$CreateWorkInput;
 
-  TRes call({String? title, List<String>? postIDs});
+  TRes call({String? title, String? thumbnail, List<String>? postIDs});
 }
 
 class _CopyWithImpl$Input$CreateWorkInput<TRes>
@@ -450,11 +457,17 @@ class _CopyWithImpl$Input$CreateWorkInput<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? title = _undefined, Object? postIDs = _undefined}) =>
+  TRes call(
+          {Object? title = _undefined,
+          Object? thumbnail = _undefined,
+          Object? postIDs = _undefined}) =>
       _then(Input$CreateWorkInput(
           title: title == _undefined || title == null
               ? _instance.title
               : (title as String),
+          thumbnail: thumbnail == _undefined
+              ? _instance.thumbnail
+              : (thumbnail as String?),
           postIDs: postIDs == _undefined
               ? _instance.postIDs
               : (postIDs as List<String>?)));
@@ -466,7 +479,7 @@ class _CopyWithStubImpl$Input$CreateWorkInput<TRes>
 
   TRes _res;
 
-  call({String? title, List<String>? postIDs}) => _res;
+  call({String? title, String? thumbnail, List<String>? postIDs}) => _res;
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -2704,13 +2717,22 @@ class _CopyWithStubImpl$Input$UpdateUserInput<TRes>
 
 @JsonSerializable(explicitToJson: true)
 class Input$UpdateWorkInput {
-  Input$UpdateWorkInput({this.title, this.addPostIDs, this.removePostIDs});
+  Input$UpdateWorkInput(
+      {this.title,
+      this.clearThumbnail,
+      this.thumbnail,
+      this.addPostIDs,
+      this.removePostIDs});
 
   @override
   factory Input$UpdateWorkInput.fromJson(Map<String, dynamic> json) =>
       _$Input$UpdateWorkInputFromJson(json);
 
   final String? title;
+
+  final bool? clearThumbnail;
+
+  final String? thumbnail;
 
   final List<String>? addPostIDs;
 
@@ -2719,10 +2741,14 @@ class Input$UpdateWorkInput {
   Map<String, dynamic> toJson() => _$Input$UpdateWorkInputToJson(this);
   int get hashCode {
     final l$title = title;
+    final l$clearThumbnail = clearThumbnail;
+    final l$thumbnail = thumbnail;
     final l$addPostIDs = addPostIDs;
     final l$removePostIDs = removePostIDs;
     return Object.hashAll([
       l$title,
+      l$clearThumbnail,
+      l$thumbnail,
       l$addPostIDs == null ? null : Object.hashAll(l$addPostIDs.map((v) => v)),
       l$removePostIDs == null
           ? null
@@ -2738,6 +2764,12 @@ class Input$UpdateWorkInput {
     final l$title = title;
     final lOther$title = other.title;
     if (l$title != lOther$title) return false;
+    final l$clearThumbnail = clearThumbnail;
+    final lOther$clearThumbnail = other.clearThumbnail;
+    if (l$clearThumbnail != lOther$clearThumbnail) return false;
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (l$thumbnail != lOther$thumbnail) return false;
     final l$addPostIDs = addPostIDs;
     final lOther$addPostIDs = other.addPostIDs;
     if (l$addPostIDs != null && lOther$addPostIDs != null) {
@@ -2780,7 +2812,11 @@ abstract class CopyWith$Input$UpdateWorkInput<TRes> {
       _CopyWithStubImpl$Input$UpdateWorkInput;
 
   TRes call(
-      {String? title, List<String>? addPostIDs, List<String>? removePostIDs});
+      {String? title,
+      bool? clearThumbnail,
+      String? thumbnail,
+      List<String>? addPostIDs,
+      List<String>? removePostIDs});
 }
 
 class _CopyWithImpl$Input$UpdateWorkInput<TRes>
@@ -2795,10 +2831,18 @@ class _CopyWithImpl$Input$UpdateWorkInput<TRes>
 
   TRes call(
           {Object? title = _undefined,
+          Object? clearThumbnail = _undefined,
+          Object? thumbnail = _undefined,
           Object? addPostIDs = _undefined,
           Object? removePostIDs = _undefined}) =>
       _then(Input$UpdateWorkInput(
           title: title == _undefined ? _instance.title : (title as String?),
+          clearThumbnail: clearThumbnail == _undefined
+              ? _instance.clearThumbnail
+              : (clearThumbnail as bool?),
+          thumbnail: thumbnail == _undefined
+              ? _instance.thumbnail
+              : (thumbnail as String?),
           addPostIDs: addPostIDs == _undefined
               ? _instance.addPostIDs
               : (addPostIDs as List<String>?),
@@ -2815,6 +2859,8 @@ class _CopyWithStubImpl$Input$UpdateWorkInput<TRes>
 
   call(
           {String? title,
+          bool? clearThumbnail,
+          String? thumbnail,
           List<String>? addPostIDs,
           List<String>? removePostIDs}) =>
       _res;
@@ -3372,6 +3418,21 @@ class Input$WorkWhereInput {
       this.titleHasSuffix,
       this.titleEqualFold,
       this.titleContainsFold,
+      this.thumbnail,
+      this.thumbnailNEQ,
+      this.thumbnailIn,
+      this.thumbnailNotIn,
+      this.thumbnailGT,
+      this.thumbnailGTE,
+      this.thumbnailLT,
+      this.thumbnailLTE,
+      this.thumbnailContains,
+      this.thumbnailHasPrefix,
+      this.thumbnailHasSuffix,
+      this.thumbnailIsNil,
+      this.thumbnailNotNil,
+      this.thumbnailEqualFold,
+      this.thumbnailContainsFold,
       this.hasPosts,
       this.hasPostsWith});
 
@@ -3427,6 +3488,36 @@ class Input$WorkWhereInput {
 
   final String? titleContainsFold;
 
+  final String? thumbnail;
+
+  final String? thumbnailNEQ;
+
+  final List<String>? thumbnailIn;
+
+  final List<String>? thumbnailNotIn;
+
+  final String? thumbnailGT;
+
+  final String? thumbnailGTE;
+
+  final String? thumbnailLT;
+
+  final String? thumbnailLTE;
+
+  final String? thumbnailContains;
+
+  final String? thumbnailHasPrefix;
+
+  final String? thumbnailHasSuffix;
+
+  final bool? thumbnailIsNil;
+
+  final bool? thumbnailNotNil;
+
+  final String? thumbnailEqualFold;
+
+  final String? thumbnailContainsFold;
+
   final bool? hasPosts;
 
   final List<Input$PostWhereInput>? hasPostsWith;
@@ -3457,6 +3548,21 @@ class Input$WorkWhereInput {
     final l$titleHasSuffix = titleHasSuffix;
     final l$titleEqualFold = titleEqualFold;
     final l$titleContainsFold = titleContainsFold;
+    final l$thumbnail = thumbnail;
+    final l$thumbnailNEQ = thumbnailNEQ;
+    final l$thumbnailIn = thumbnailIn;
+    final l$thumbnailNotIn = thumbnailNotIn;
+    final l$thumbnailGT = thumbnailGT;
+    final l$thumbnailGTE = thumbnailGTE;
+    final l$thumbnailLT = thumbnailLT;
+    final l$thumbnailLTE = thumbnailLTE;
+    final l$thumbnailContains = thumbnailContains;
+    final l$thumbnailHasPrefix = thumbnailHasPrefix;
+    final l$thumbnailHasSuffix = thumbnailHasSuffix;
+    final l$thumbnailIsNil = thumbnailIsNil;
+    final l$thumbnailNotNil = thumbnailNotNil;
+    final l$thumbnailEqualFold = thumbnailEqualFold;
+    final l$thumbnailContainsFold = thumbnailContainsFold;
     final l$hasPosts = hasPosts;
     final l$hasPostsWith = hasPostsWith;
     return Object.hashAll([
@@ -3484,6 +3590,25 @@ class Input$WorkWhereInput {
       l$titleHasSuffix,
       l$titleEqualFold,
       l$titleContainsFold,
+      l$thumbnail,
+      l$thumbnailNEQ,
+      l$thumbnailIn == null
+          ? null
+          : Object.hashAll(l$thumbnailIn.map((v) => v)),
+      l$thumbnailNotIn == null
+          ? null
+          : Object.hashAll(l$thumbnailNotIn.map((v) => v)),
+      l$thumbnailGT,
+      l$thumbnailGTE,
+      l$thumbnailLT,
+      l$thumbnailLTE,
+      l$thumbnailContains,
+      l$thumbnailHasPrefix,
+      l$thumbnailHasSuffix,
+      l$thumbnailIsNil,
+      l$thumbnailNotNil,
+      l$thumbnailEqualFold,
+      l$thumbnailContainsFold,
       l$hasPosts,
       l$hasPostsWith == null
           ? null
@@ -3628,6 +3753,71 @@ class Input$WorkWhereInput {
     final l$titleContainsFold = titleContainsFold;
     final lOther$titleContainsFold = other.titleContainsFold;
     if (l$titleContainsFold != lOther$titleContainsFold) return false;
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (l$thumbnail != lOther$thumbnail) return false;
+    final l$thumbnailNEQ = thumbnailNEQ;
+    final lOther$thumbnailNEQ = other.thumbnailNEQ;
+    if (l$thumbnailNEQ != lOther$thumbnailNEQ) return false;
+    final l$thumbnailIn = thumbnailIn;
+    final lOther$thumbnailIn = other.thumbnailIn;
+    if (l$thumbnailIn != null && lOther$thumbnailIn != null) {
+      if (l$thumbnailIn.length != lOther$thumbnailIn.length) return false;
+      for (int i = 0; i < l$thumbnailIn.length; i++) {
+        final l$thumbnailIn$entry = l$thumbnailIn[i];
+        final lOther$thumbnailIn$entry = lOther$thumbnailIn[i];
+        if (l$thumbnailIn$entry != lOther$thumbnailIn$entry) return false;
+      }
+    } else if (l$thumbnailIn != lOther$thumbnailIn) {
+      return false;
+    }
+
+    final l$thumbnailNotIn = thumbnailNotIn;
+    final lOther$thumbnailNotIn = other.thumbnailNotIn;
+    if (l$thumbnailNotIn != null && lOther$thumbnailNotIn != null) {
+      if (l$thumbnailNotIn.length != lOther$thumbnailNotIn.length) return false;
+      for (int i = 0; i < l$thumbnailNotIn.length; i++) {
+        final l$thumbnailNotIn$entry = l$thumbnailNotIn[i];
+        final lOther$thumbnailNotIn$entry = lOther$thumbnailNotIn[i];
+        if (l$thumbnailNotIn$entry != lOther$thumbnailNotIn$entry) return false;
+      }
+    } else if (l$thumbnailNotIn != lOther$thumbnailNotIn) {
+      return false;
+    }
+
+    final l$thumbnailGT = thumbnailGT;
+    final lOther$thumbnailGT = other.thumbnailGT;
+    if (l$thumbnailGT != lOther$thumbnailGT) return false;
+    final l$thumbnailGTE = thumbnailGTE;
+    final lOther$thumbnailGTE = other.thumbnailGTE;
+    if (l$thumbnailGTE != lOther$thumbnailGTE) return false;
+    final l$thumbnailLT = thumbnailLT;
+    final lOther$thumbnailLT = other.thumbnailLT;
+    if (l$thumbnailLT != lOther$thumbnailLT) return false;
+    final l$thumbnailLTE = thumbnailLTE;
+    final lOther$thumbnailLTE = other.thumbnailLTE;
+    if (l$thumbnailLTE != lOther$thumbnailLTE) return false;
+    final l$thumbnailContains = thumbnailContains;
+    final lOther$thumbnailContains = other.thumbnailContains;
+    if (l$thumbnailContains != lOther$thumbnailContains) return false;
+    final l$thumbnailHasPrefix = thumbnailHasPrefix;
+    final lOther$thumbnailHasPrefix = other.thumbnailHasPrefix;
+    if (l$thumbnailHasPrefix != lOther$thumbnailHasPrefix) return false;
+    final l$thumbnailHasSuffix = thumbnailHasSuffix;
+    final lOther$thumbnailHasSuffix = other.thumbnailHasSuffix;
+    if (l$thumbnailHasSuffix != lOther$thumbnailHasSuffix) return false;
+    final l$thumbnailIsNil = thumbnailIsNil;
+    final lOther$thumbnailIsNil = other.thumbnailIsNil;
+    if (l$thumbnailIsNil != lOther$thumbnailIsNil) return false;
+    final l$thumbnailNotNil = thumbnailNotNil;
+    final lOther$thumbnailNotNil = other.thumbnailNotNil;
+    if (l$thumbnailNotNil != lOther$thumbnailNotNil) return false;
+    final l$thumbnailEqualFold = thumbnailEqualFold;
+    final lOther$thumbnailEqualFold = other.thumbnailEqualFold;
+    if (l$thumbnailEqualFold != lOther$thumbnailEqualFold) return false;
+    final l$thumbnailContainsFold = thumbnailContainsFold;
+    final lOther$thumbnailContainsFold = other.thumbnailContainsFold;
+    if (l$thumbnailContainsFold != lOther$thumbnailContainsFold) return false;
     final l$hasPosts = hasPosts;
     final lOther$hasPosts = other.hasPosts;
     if (l$hasPosts != lOther$hasPosts) return false;
@@ -3684,6 +3874,21 @@ abstract class CopyWith$Input$WorkWhereInput<TRes> {
       String? titleHasSuffix,
       String? titleEqualFold,
       String? titleContainsFold,
+      String? thumbnail,
+      String? thumbnailNEQ,
+      List<String>? thumbnailIn,
+      List<String>? thumbnailNotIn,
+      String? thumbnailGT,
+      String? thumbnailGTE,
+      String? thumbnailLT,
+      String? thumbnailLTE,
+      String? thumbnailContains,
+      String? thumbnailHasPrefix,
+      String? thumbnailHasSuffix,
+      bool? thumbnailIsNil,
+      bool? thumbnailNotNil,
+      String? thumbnailEqualFold,
+      String? thumbnailContainsFold,
       bool? hasPosts,
       List<Input$PostWhereInput>? hasPostsWith});
   CopyWith$Input$WorkWhereInput<TRes> get not;
@@ -3736,6 +3941,21 @@ class _CopyWithImpl$Input$WorkWhereInput<TRes>
           Object? titleHasSuffix = _undefined,
           Object? titleEqualFold = _undefined,
           Object? titleContainsFold = _undefined,
+          Object? thumbnail = _undefined,
+          Object? thumbnailNEQ = _undefined,
+          Object? thumbnailIn = _undefined,
+          Object? thumbnailNotIn = _undefined,
+          Object? thumbnailGT = _undefined,
+          Object? thumbnailGTE = _undefined,
+          Object? thumbnailLT = _undefined,
+          Object? thumbnailLTE = _undefined,
+          Object? thumbnailContains = _undefined,
+          Object? thumbnailHasPrefix = _undefined,
+          Object? thumbnailHasSuffix = _undefined,
+          Object? thumbnailIsNil = _undefined,
+          Object? thumbnailNotNil = _undefined,
+          Object? thumbnailEqualFold = _undefined,
+          Object? thumbnailContainsFold = _undefined,
           Object? hasPosts = _undefined,
           Object? hasPostsWith = _undefined}) =>
       _then(Input$WorkWhereInput(
@@ -3793,11 +4013,26 @@ class _CopyWithImpl$Input$WorkWhereInput<TRes>
           titleContainsFold: titleContainsFold == _undefined
               ? _instance.titleContainsFold
               : (titleContainsFold as String?),
-          hasPosts:
-              hasPosts == _undefined ? _instance.hasPosts : (hasPosts as bool?),
-          hasPostsWith: hasPostsWith == _undefined
-              ? _instance.hasPostsWith
-              : (hasPostsWith as List<Input$PostWhereInput>?)));
+          thumbnail: thumbnail == _undefined
+              ? _instance.thumbnail
+              : (thumbnail as String?),
+          thumbnailNEQ:
+              thumbnailNEQ == _undefined ? _instance.thumbnailNEQ : (thumbnailNEQ as String?),
+          thumbnailIn: thumbnailIn == _undefined ? _instance.thumbnailIn : (thumbnailIn as List<String>?),
+          thumbnailNotIn: thumbnailNotIn == _undefined ? _instance.thumbnailNotIn : (thumbnailNotIn as List<String>?),
+          thumbnailGT: thumbnailGT == _undefined ? _instance.thumbnailGT : (thumbnailGT as String?),
+          thumbnailGTE: thumbnailGTE == _undefined ? _instance.thumbnailGTE : (thumbnailGTE as String?),
+          thumbnailLT: thumbnailLT == _undefined ? _instance.thumbnailLT : (thumbnailLT as String?),
+          thumbnailLTE: thumbnailLTE == _undefined ? _instance.thumbnailLTE : (thumbnailLTE as String?),
+          thumbnailContains: thumbnailContains == _undefined ? _instance.thumbnailContains : (thumbnailContains as String?),
+          thumbnailHasPrefix: thumbnailHasPrefix == _undefined ? _instance.thumbnailHasPrefix : (thumbnailHasPrefix as String?),
+          thumbnailHasSuffix: thumbnailHasSuffix == _undefined ? _instance.thumbnailHasSuffix : (thumbnailHasSuffix as String?),
+          thumbnailIsNil: thumbnailIsNil == _undefined ? _instance.thumbnailIsNil : (thumbnailIsNil as bool?),
+          thumbnailNotNil: thumbnailNotNil == _undefined ? _instance.thumbnailNotNil : (thumbnailNotNil as bool?),
+          thumbnailEqualFold: thumbnailEqualFold == _undefined ? _instance.thumbnailEqualFold : (thumbnailEqualFold as String?),
+          thumbnailContainsFold: thumbnailContainsFold == _undefined ? _instance.thumbnailContainsFold : (thumbnailContainsFold as String?),
+          hasPosts: hasPosts == _undefined ? _instance.hasPosts : (hasPosts as bool?),
+          hasPostsWith: hasPostsWith == _undefined ? _instance.hasPostsWith : (hasPostsWith as List<Input$PostWhereInput>?)));
   CopyWith$Input$WorkWhereInput<TRes> get not {
     final local$not = _instance.not;
     return local$not == null
@@ -3865,6 +4100,21 @@ class _CopyWithStubImpl$Input$WorkWhereInput<TRes>
           String? titleHasSuffix,
           String? titleEqualFold,
           String? titleContainsFold,
+          String? thumbnail,
+          String? thumbnailNEQ,
+          List<String>? thumbnailIn,
+          List<String>? thumbnailNotIn,
+          String? thumbnailGT,
+          String? thumbnailGTE,
+          String? thumbnailLT,
+          String? thumbnailLTE,
+          String? thumbnailContains,
+          String? thumbnailHasPrefix,
+          String? thumbnailHasSuffix,
+          bool? thumbnailIsNil,
+          bool? thumbnailNotNil,
+          String? thumbnailEqualFold,
+          String? thumbnailContainsFold,
           bool? hasPosts,
           List<Input$PostWhereInput>? hasPostsWith}) =>
       _res;
