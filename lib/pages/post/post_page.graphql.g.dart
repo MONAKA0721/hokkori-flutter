@@ -72,6 +72,7 @@ Query$SearchWorks$works$edges$node _$Query$SearchWorks$works$edges$nodeFromJson(
     Query$SearchWorks$works$edges$node(
       id: json['id'] as String,
       title: json['title'] as String,
+      thumbnail: json['thumbnail'] as String?,
       $__typename: json['__typename'] as String,
     );
 
@@ -80,6 +81,7 @@ Map<String, dynamic> _$Query$SearchWorks$works$edges$nodeToJson(
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
+      'thumbnail': instance.thumbnail,
       '__typename': instance.$__typename,
     };
 

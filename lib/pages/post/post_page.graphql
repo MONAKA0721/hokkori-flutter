@@ -4,6 +4,7 @@ query SearchWorks($searchText: String) {
       node {
         id
         title
+        thumbnail
       }
     }
   }

@@ -4,8 +4,13 @@ class WorkModel {
   final String id;
   final String title;
   final String? avatar;
+  final String thumbnail;
 
-  WorkModel({required this.id, required this.title, this.avatar});
+  WorkModel(
+      {required this.id,
+      required this.title,
+      this.avatar,
+      required this.thumbnail});
 
   ///custom comparing function to check if two users are equal
   bool isEqual(WorkModel model) {
@@ -14,7 +19,10 @@ class WorkModel {
 
   static List<WorkModel> fromList(List<Query$SearchWorks$works$edges?> list) {
     return list
-        .map((item) => WorkModel(id: item!.node!.id, title: item.node!.title))
+        .map((item) => WorkModel(
+            id: item!.node!.id,
+            title: item.node!.title,
+            thumbnail: item.node!.thumbnail!))
         .toList();
   }
 

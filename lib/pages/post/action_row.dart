@@ -74,7 +74,7 @@ class SubmitButton extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     bool validate() {
       ref.watch(workErrorProvider.notifier).state =
-          ref.watch(workProvider) == "";
+          ref.watch(workProvider) == null;
       ref.watch(categoryErrorProvider.notifier).state =
           ref.watch(categoryProvider) == null;
       ref.watch(praiseErrorProvider.notifier).state =
@@ -85,7 +85,7 @@ class SubmitButton extends HookConsumerWidget {
     }
 
     void resetForm() {
-      ref.watch(workProvider.notifier).state = "";
+      ref.watch(workProvider.notifier).state = null;
       ref.watch(categoryProvider.notifier).state = null;
       ref.watch(hashtagsProvider.notifier).state = List.empty();
       ref.watch(praiseSpoiledProvider.notifier).state = false;
@@ -133,7 +133,7 @@ class SubmitButton extends HookConsumerWidget {
                             content: praiseContentController.text,
                             type: Enum$PostPostType.praise,
                             ownerID: ref.watch(userProvider).id,
-                            workID: ref.watch(workProvider),
+                            workID: ref.watch(workProvider)!.id,
                             spoiled: ref.watch(praiseSpoiledProvider),
                             hashtagIDs: ref
                                 .watch(hashtagsProvider)
@@ -151,7 +151,7 @@ class SubmitButton extends HookConsumerWidget {
                             content: praiseContentController.text,
                             type: Enum$PostPostType.praise,
                             ownerID: ref.watch(userProvider).id,
-                            workID: ref.watch(workProvider),
+                            workID: ref.watch(workProvider)!.id,
                             spoiled: ref.watch(praiseSpoiledProvider),
                             hashtagIDs: ref
                                 .watch(hashtagsProvider)
@@ -163,7 +163,7 @@ class SubmitButton extends HookConsumerWidget {
                             content: letterContentController.text,
                             type: Enum$PostPostType.letter,
                             ownerID: ref.watch(userProvider).id,
-                            workID: ref.watch(workProvider),
+                            workID: ref.watch(workProvider)!.id,
                             spoiled: ref.watch(letterSpoiledProvider),
                             hashtagIDs: ref
                                 .watch(hashtagsProvider)

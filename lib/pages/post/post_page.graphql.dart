@@ -217,6 +217,12 @@ const documentNodeQuerySearchWorks = DocumentNode(definitions: [
                               directives: [],
                               selectionSet: null),
                           FieldNode(
+                              name: NameNode(value: 'thumbnail'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
                               name: NameNode(value: '__typename'),
                               alias: null,
                               arguments: [],
@@ -568,7 +574,10 @@ class _CopyWithStubImpl$Query$SearchWorks$works$edges<TRes>
 @JsonSerializable(explicitToJson: true)
 class Query$SearchWorks$works$edges$node {
   Query$SearchWorks$works$edges$node(
-      {required this.id, required this.title, required this.$__typename});
+      {required this.id,
+      required this.title,
+      this.thumbnail,
+      required this.$__typename});
 
   @override
   factory Query$SearchWorks$works$edges$node.fromJson(
@@ -579,6 +588,8 @@ class Query$SearchWorks$works$edges$node {
 
   final String title;
 
+  final String? thumbnail;
+
   @JsonKey(name: '__typename')
   final String $__typename;
 
@@ -587,8 +598,9 @@ class Query$SearchWorks$works$edges$node {
   int get hashCode {
     final l$id = id;
     final l$title = title;
+    final l$thumbnail = thumbnail;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$title, l$$__typename]);
+    return Object.hashAll([l$id, l$title, l$thumbnail, l$$__typename]);
   }
 
   @override
@@ -602,6 +614,9 @@ class Query$SearchWorks$works$edges$node {
     final l$title = title;
     final lOther$title = other.title;
     if (l$title != lOther$title) return false;
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (l$thumbnail != lOther$thumbnail) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -626,7 +641,8 @@ abstract class CopyWith$Query$SearchWorks$works$edges$node<TRes> {
   factory CopyWith$Query$SearchWorks$works$edges$node.stub(TRes res) =
       _CopyWithStubImpl$Query$SearchWorks$works$edges$node;
 
-  TRes call({String? id, String? title, String? $__typename});
+  TRes call(
+      {String? id, String? title, String? thumbnail, String? $__typename});
 }
 
 class _CopyWithImpl$Query$SearchWorks$works$edges$node<TRes>
@@ -642,12 +658,16 @@ class _CopyWithImpl$Query$SearchWorks$works$edges$node<TRes>
   TRes call(
           {Object? id = _undefined,
           Object? title = _undefined,
+          Object? thumbnail = _undefined,
           Object? $__typename = _undefined}) =>
       _then(Query$SearchWorks$works$edges$node(
           id: id == _undefined || id == null ? _instance.id : (id as String),
           title: title == _undefined || title == null
               ? _instance.title
               : (title as String),
+          thumbnail: thumbnail == _undefined
+              ? _instance.thumbnail
+              : (thumbnail as String?),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
@@ -659,7 +679,8 @@ class _CopyWithStubImpl$Query$SearchWorks$works$edges$node<TRes>
 
   TRes _res;
 
-  call({String? id, String? title, String? $__typename}) => _res;
+  call({String? id, String? title, String? thumbnail, String? $__typename}) =>
+      _res;
 }
 
 @JsonSerializable(explicitToJson: true)

@@ -216,6 +216,7 @@ class _Step1State extends ConsumerState<Step1> {
 
   @override
   Widget build(BuildContext context) {
+    final work = ref.watch(workProvider);
     return Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         decoration: BoxDecoration(
@@ -243,10 +244,15 @@ class _Step1State extends ConsumerState<Step1> {
             ),
             Row(
               children: [
-                Image.asset(
-                  "assets/noimage.png",
-                  width: 100,
-                ),
+                work == null || work.thumbnail == ""
+                    ? Image.asset(
+                        "assets/noimage.png",
+                        width: 100,
+                      )
+                    : Image.network(
+                        work.thumbnail,
+                        width: 100,
+                      ),
                 const SizedBox(
                   width: 20,
                 ),
@@ -271,7 +277,7 @@ class _Step1State extends ConsumerState<Step1> {
                                             ? redErrorColor
                                             : headingColor))),
                             onChanged: (value) => {
-                              ref.watch(workProvider.notifier).state = value!.id
+                              ref.watch(workProvider.notifier).state = value
                             },
                             asyncItems: (filter) => getWorkData(filter, client),
                             compareFn: (i, s) => i.isEqual(s),
