@@ -163,7 +163,7 @@ class _MyAppState extends ConsumerState<MyApp> {
       ref.watch(isLoggedInProvider.notifier).state = false;
 
       setState(() {
-        errorMessage = e.toString();
+        errorMessage = s.toString();
       });
     }
   }
