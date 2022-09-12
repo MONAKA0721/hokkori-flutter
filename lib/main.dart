@@ -15,8 +15,13 @@ import 'package:http/http.dart' as http;
 final FlutterAppAuth appAuth = FlutterAppAuth();
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
-const auth0Domain = 'hokkori-dev.jp.auth0.com';
-const auth0ClientID = 'P5erAWsGpNGkVo6BhaX2qumufxcO5bwt';
+const auth0Domain =
+    isProduction ? 'hokkori-stg.jp.auth0.com' : 'hokkori-dev.jp.auth0.com';
+const auth0ClientID = isProduction
+    ? 'mC95yrKdVubSfrJjNBUvnMcqHrpLvGIQ'
+    : 'P5erAWsGpNGkVo6BhaX2qumufxcO5bwt';
+const auth0Audience =
+    isProduction ? 'https://hokkori-stg/api' : 'https://hokkori-dev/api';
 
 const auth0RedirectURI = 'com.hokkori.hokkori://login-callback';
 const auth0Issuer = 'https://$auth0Domain';
@@ -90,7 +95,7 @@ class _MyAppState extends ConsumerState<MyApp> {
         auth0RedirectURI,
         issuer: auth0Issuer,
         refreshToken: storedRefreshToken,
-        additionalParameters: {'audience': "https://hokkori-dev/api"},
+        additionalParameters: {'audience': auth0Audience},
       ));
 
       secureStorage.write(key: 'refresh_token', value: response!.refreshToken);
@@ -133,7 +138,7 @@ class _MyAppState extends ConsumerState<MyApp> {
           issuer: 'https://$auth0Domain',
           scopes: ['openid', 'profile', 'offline_access'],
           promptValues: ['login'],
-          additionalParameters: {'audience': "https://hokkori-dev/api"},
+          additionalParameters: {'audience': auth0Audience},
         ),
       );
 
