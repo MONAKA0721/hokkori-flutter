@@ -1,6 +1,6 @@
 enum ContentType {
-  letter(displayName: "レター"),
-  hokkori(displayName: "ほっこり");
+  praise(displayName: "ほっこり"),
+  work(displayName: "作品");
 
   const ContentType({required this.displayName});
 

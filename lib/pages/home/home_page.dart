@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hokkori/pages/common/letter.dart';
 import 'package:hokkori/pages/home/home_page.graphql.dart';
-import 'package:hokkori/pages/home/letter.dart';
 import 'package:hokkori/pages/home/praise.dart';
 import 'package:hokkori/pages/home/work.dart';
 import 'package:hokkori/utils/colors.dart';

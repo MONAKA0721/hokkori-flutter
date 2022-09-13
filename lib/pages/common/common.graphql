@@ -1,0 +1,9 @@
+fragment LetterSummary on Post {
+  title
+  id
+  content
+  owner {
+    id
+    name
+  }
+}

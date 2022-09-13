@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hokkori/pages/home/home_page.graphql.dart';
+import 'package:hokkori/pages/common/common.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 
 class Letter extends StatelessWidget {
-  final Query$TopLetters$posts$edges$node letter;
+  final Fragment$LetterSummary letter;
   const Letter({super.key, required this.letter});
 
   @override
@@ -51,7 +51,7 @@ class Letter extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Image.network(
-                "https://source.unsplash.com/random/100x100",
+                "https://www.ojamakan.com/wp/wp-content/uploads/2022/04/4129Q0P1GML._AC_.jpg",
                 width: 100,
                 height: 100,
               ),

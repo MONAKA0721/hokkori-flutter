@@ -5,7 +5,7 @@ import 'package:hokkori/mail_page.dart';
 import 'package:hokkori/notification_page.dart';
 import 'package:hokkori/pages/home/home_page.dart';
 import 'package:hokkori/pages/post/post_page.dart';
-import 'package:hokkori/search_page.dart';
+import 'package:hokkori/pages/search/search_page.dart';
 import 'package:hokkori/utils/colors.dart';
 
 class Index extends ConsumerStatefulWidget {
@@ -44,7 +44,15 @@ class _IndexState extends ConsumerState<Index> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: _widgetOptions.elementAt(_selectedIndex),
+      body: GestureDetector(
+        onTap: () {
+          final FocusScopeNode currentScope = FocusScope.of(context);
+          if (!currentScope.hasPrimaryFocus && currentScope.hasFocus) {
+            FocusManager.instance.primaryFocus!.unfocus();
+          }
+        },
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: primaryColor,
         unselectedItemColor: primaryColor.withOpacity(0.3),

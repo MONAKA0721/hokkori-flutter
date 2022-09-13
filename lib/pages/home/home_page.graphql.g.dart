@@ -254,7 +254,7 @@ Query$TopLetters$posts$edges _$Query$TopLetters$posts$edgesFromJson(
     Query$TopLetters$posts$edges(
       node: json['node'] == null
           ? null
-          : Query$TopLetters$posts$edges$node.fromJson(
+          : Fragment$LetterSummary.fromJson(
               json['node'] as Map<String, dynamic>),
       $__typename: json['__typename'] as String,
     );
@@ -263,43 +263,5 @@ Map<String, dynamic> _$Query$TopLetters$posts$edgesToJson(
         Query$TopLetters$posts$edges instance) =>
     <String, dynamic>{
       'node': instance.node?.toJson(),
-      '__typename': instance.$__typename,
-    };
-
-Query$TopLetters$posts$edges$node _$Query$TopLetters$posts$edges$nodeFromJson(
-        Map<String, dynamic> json) =>
-    Query$TopLetters$posts$edges$node(
-      title: json['title'] as String,
-      id: json['id'] as String,
-      content: json['content'] as String,
-      owner: Query$TopLetters$posts$edges$node$owner.fromJson(
-          json['owner'] as Map<String, dynamic>),
-      $__typename: json['__typename'] as String,
-    );
-
-Map<String, dynamic> _$Query$TopLetters$posts$edges$nodeToJson(
-        Query$TopLetters$posts$edges$node instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'id': instance.id,
-      'content': instance.content,
-      'owner': instance.owner.toJson(),
-      '__typename': instance.$__typename,
-    };
-
-Query$TopLetters$posts$edges$node$owner
-    _$Query$TopLetters$posts$edges$node$ownerFromJson(
-            Map<String, dynamic> json) =>
-        Query$TopLetters$posts$edges$node$owner(
-          id: json['id'] as String,
-          name: json['name'] as String,
-          $__typename: json['__typename'] as String,
-        );
-
-Map<String, dynamic> _$Query$TopLetters$posts$edges$node$ownerToJson(
-        Query$TopLetters$posts$edges$node$owner instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
       '__typename': instance.$__typename,
     };

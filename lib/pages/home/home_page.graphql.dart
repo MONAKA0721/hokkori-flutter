@@ -1,3 +1,4 @@
+import '../common/common.graphql.dart';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
@@ -1869,49 +1870,9 @@ const documentNodeQueryTopLetters = DocumentNode(definitions: [
                         arguments: [],
                         directives: [],
                         selectionSet: SelectionSetNode(selections: [
-                          FieldNode(
-                              name: NameNode(value: 'title'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: 'id'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: 'content'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: 'owner'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: SelectionSetNode(selections: [
-                                FieldNode(
-                                    name: NameNode(value: 'id'),
-                                    alias: null,
-                                    arguments: [],
-                                    directives: [],
-                                    selectionSet: null),
-                                FieldNode(
-                                    name: NameNode(value: 'name'),
-                                    alias: null,
-                                    arguments: [],
-                                    directives: [],
-                                    selectionSet: null),
-                                FieldNode(
-                                    name: NameNode(value: '__typename'),
-                                    alias: null,
-                                    arguments: [],
-                                    directives: [],
-                                    selectionSet: null)
-                              ])),
+                          FragmentSpreadNode(
+                              name: NameNode(value: 'LetterSummary'),
+                              directives: []),
                           FieldNode(
                               name: NameNode(value: '__typename'),
                               alias: null,
@@ -1940,6 +1901,7 @@ const documentNodeQueryTopLetters = DocumentNode(definitions: [
             directives: [],
             selectionSet: null)
       ])),
+  fragmentDefinitionLetterSummary,
 ]);
 Query$TopLetters _parserFn$Query$TopLetters(Map<String, dynamic> data) =>
     Query$TopLetters.fromJson(data);
@@ -2173,7 +2135,7 @@ class Query$TopLetters$posts$edges {
   factory Query$TopLetters$posts$edges.fromJson(Map<String, dynamic> json) =>
       _$Query$TopLetters$posts$edgesFromJson(json);
 
-  final Query$TopLetters$posts$edges$node? node;
+  final Fragment$LetterSummary? node;
 
   @JsonKey(name: '__typename')
   final String $__typename;
@@ -2215,8 +2177,8 @@ abstract class CopyWith$Query$TopLetters$posts$edges<TRes> {
   factory CopyWith$Query$TopLetters$posts$edges.stub(TRes res) =
       _CopyWithStubImpl$Query$TopLetters$posts$edges;
 
-  TRes call({Query$TopLetters$posts$edges$node? node, String? $__typename});
-  CopyWith$Query$TopLetters$posts$edges$node<TRes> get node;
+  TRes call({Fragment$LetterSummary? node, String? $__typename});
+  CopyWith$Fragment$LetterSummary<TRes> get node;
 }
 
 class _CopyWithImpl$Query$TopLetters$posts$edges<TRes>
@@ -2233,16 +2195,15 @@ class _CopyWithImpl$Query$TopLetters$posts$edges<TRes>
       _then(Query$TopLetters$posts$edges(
           node: node == _undefined
               ? _instance.node
-              : (node as Query$TopLetters$posts$edges$node?),
+              : (node as Fragment$LetterSummary?),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
-  CopyWith$Query$TopLetters$posts$edges$node<TRes> get node {
+  CopyWith$Fragment$LetterSummary<TRes> get node {
     final local$node = _instance.node;
     return local$node == null
-        ? CopyWith$Query$TopLetters$posts$edges$node.stub(_then(_instance))
-        : CopyWith$Query$TopLetters$posts$edges$node(
-            local$node, (e) => call(node: e));
+        ? CopyWith$Fragment$LetterSummary.stub(_then(_instance))
+        : CopyWith$Fragment$LetterSummary(local$node, (e) => call(node: e));
   }
 }
 
@@ -2252,244 +2213,7 @@ class _CopyWithStubImpl$Query$TopLetters$posts$edges<TRes>
 
   TRes _res;
 
-  call({Query$TopLetters$posts$edges$node? node, String? $__typename}) => _res;
-  CopyWith$Query$TopLetters$posts$edges$node<TRes> get node =>
-      CopyWith$Query$TopLetters$posts$edges$node.stub(_res);
-}
-
-@JsonSerializable(explicitToJson: true)
-class Query$TopLetters$posts$edges$node {
-  Query$TopLetters$posts$edges$node(
-      {required this.title,
-      required this.id,
-      required this.content,
-      required this.owner,
-      required this.$__typename});
-
-  @override
-  factory Query$TopLetters$posts$edges$node.fromJson(
-          Map<String, dynamic> json) =>
-      _$Query$TopLetters$posts$edges$nodeFromJson(json);
-
-  final String title;
-
-  final String id;
-
-  final String content;
-
-  final Query$TopLetters$posts$edges$node$owner owner;
-
-  @JsonKey(name: '__typename')
-  final String $__typename;
-
-  Map<String, dynamic> toJson() =>
-      _$Query$TopLetters$posts$edges$nodeToJson(this);
-  int get hashCode {
-    final l$title = title;
-    final l$id = id;
-    final l$content = content;
-    final l$owner = owner;
-    final l$$__typename = $__typename;
-    return Object.hashAll([l$title, l$id, l$content, l$owner, l$$__typename]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$TopLetters$posts$edges$node) ||
-        runtimeType != other.runtimeType) return false;
-    final l$title = title;
-    final lOther$title = other.title;
-    if (l$title != lOther$title) return false;
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
-    final l$content = content;
-    final lOther$content = other.content;
-    if (l$content != lOther$content) return false;
-    final l$owner = owner;
-    final lOther$owner = other.owner;
-    if (l$owner != lOther$owner) return false;
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$TopLetters$posts$edges$node
-    on Query$TopLetters$posts$edges$node {
-  CopyWith$Query$TopLetters$posts$edges$node<Query$TopLetters$posts$edges$node>
-      get copyWith =>
-          CopyWith$Query$TopLetters$posts$edges$node(this, (i) => i);
-}
-
-abstract class CopyWith$Query$TopLetters$posts$edges$node<TRes> {
-  factory CopyWith$Query$TopLetters$posts$edges$node(
-          Query$TopLetters$posts$edges$node instance,
-          TRes Function(Query$TopLetters$posts$edges$node) then) =
-      _CopyWithImpl$Query$TopLetters$posts$edges$node;
-
-  factory CopyWith$Query$TopLetters$posts$edges$node.stub(TRes res) =
-      _CopyWithStubImpl$Query$TopLetters$posts$edges$node;
-
-  TRes call(
-      {String? title,
-      String? id,
-      String? content,
-      Query$TopLetters$posts$edges$node$owner? owner,
-      String? $__typename});
-  CopyWith$Query$TopLetters$posts$edges$node$owner<TRes> get owner;
-}
-
-class _CopyWithImpl$Query$TopLetters$posts$edges$node<TRes>
-    implements CopyWith$Query$TopLetters$posts$edges$node<TRes> {
-  _CopyWithImpl$Query$TopLetters$posts$edges$node(this._instance, this._then);
-
-  final Query$TopLetters$posts$edges$node _instance;
-
-  final TRes Function(Query$TopLetters$posts$edges$node) _then;
-
-  static const _undefined = {};
-
-  TRes call(
-          {Object? title = _undefined,
-          Object? id = _undefined,
-          Object? content = _undefined,
-          Object? owner = _undefined,
-          Object? $__typename = _undefined}) =>
-      _then(Query$TopLetters$posts$edges$node(
-          title: title == _undefined || title == null
-              ? _instance.title
-              : (title as String),
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          content: content == _undefined || content == null
-              ? _instance.content
-              : (content as String),
-          owner: owner == _undefined || owner == null
-              ? _instance.owner
-              : (owner as Query$TopLetters$posts$edges$node$owner),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
-  CopyWith$Query$TopLetters$posts$edges$node$owner<TRes> get owner {
-    final local$owner = _instance.owner;
-    return CopyWith$Query$TopLetters$posts$edges$node$owner(
-        local$owner, (e) => call(owner: e));
-  }
-}
-
-class _CopyWithStubImpl$Query$TopLetters$posts$edges$node<TRes>
-    implements CopyWith$Query$TopLetters$posts$edges$node<TRes> {
-  _CopyWithStubImpl$Query$TopLetters$posts$edges$node(this._res);
-
-  TRes _res;
-
-  call(
-          {String? title,
-          String? id,
-          String? content,
-          Query$TopLetters$posts$edges$node$owner? owner,
-          String? $__typename}) =>
-      _res;
-  CopyWith$Query$TopLetters$posts$edges$node$owner<TRes> get owner =>
-      CopyWith$Query$TopLetters$posts$edges$node$owner.stub(_res);
-}
-
-@JsonSerializable(explicitToJson: true)
-class Query$TopLetters$posts$edges$node$owner {
-  Query$TopLetters$posts$edges$node$owner(
-      {required this.id, required this.name, required this.$__typename});
-
-  @override
-  factory Query$TopLetters$posts$edges$node$owner.fromJson(
-          Map<String, dynamic> json) =>
-      _$Query$TopLetters$posts$edges$node$ownerFromJson(json);
-
-  final String id;
-
-  final String name;
-
-  @JsonKey(name: '__typename')
-  final String $__typename;
-
-  Map<String, dynamic> toJson() =>
-      _$Query$TopLetters$posts$edges$node$ownerToJson(this);
-  int get hashCode {
-    final l$id = id;
-    final l$name = name;
-    final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$name, l$$__typename]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$TopLetters$posts$edges$node$owner) ||
-        runtimeType != other.runtimeType) return false;
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
-    final l$name = name;
-    final lOther$name = other.name;
-    if (l$name != lOther$name) return false;
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$TopLetters$posts$edges$node$owner
-    on Query$TopLetters$posts$edges$node$owner {
-  CopyWith$Query$TopLetters$posts$edges$node$owner<
-          Query$TopLetters$posts$edges$node$owner>
-      get copyWith =>
-          CopyWith$Query$TopLetters$posts$edges$node$owner(this, (i) => i);
-}
-
-abstract class CopyWith$Query$TopLetters$posts$edges$node$owner<TRes> {
-  factory CopyWith$Query$TopLetters$posts$edges$node$owner(
-          Query$TopLetters$posts$edges$node$owner instance,
-          TRes Function(Query$TopLetters$posts$edges$node$owner) then) =
-      _CopyWithImpl$Query$TopLetters$posts$edges$node$owner;
-
-  factory CopyWith$Query$TopLetters$posts$edges$node$owner.stub(TRes res) =
-      _CopyWithStubImpl$Query$TopLetters$posts$edges$node$owner;
-
-  TRes call({String? id, String? name, String? $__typename});
-}
-
-class _CopyWithImpl$Query$TopLetters$posts$edges$node$owner<TRes>
-    implements CopyWith$Query$TopLetters$posts$edges$node$owner<TRes> {
-  _CopyWithImpl$Query$TopLetters$posts$edges$node$owner(
-      this._instance, this._then);
-
-  final Query$TopLetters$posts$edges$node$owner _instance;
-
-  final TRes Function(Query$TopLetters$posts$edges$node$owner) _then;
-
-  static const _undefined = {};
-
-  TRes call(
-          {Object? id = _undefined,
-          Object? name = _undefined,
-          Object? $__typename = _undefined}) =>
-      _then(Query$TopLetters$posts$edges$node$owner(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          name: name == _undefined || name == null
-              ? _instance.name
-              : (name as String),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
-}
-
-class _CopyWithStubImpl$Query$TopLetters$posts$edges$node$owner<TRes>
-    implements CopyWith$Query$TopLetters$posts$edges$node$owner<TRes> {
-  _CopyWithStubImpl$Query$TopLetters$posts$edges$node$owner(this._res);
-
-  TRes _res;
-
-  call({String? id, String? name, String? $__typename}) => _res;
+  call({Fragment$LetterSummary? node, String? $__typename}) => _res;
+  CopyWith$Fragment$LetterSummary<TRes> get node =>
+      CopyWith$Fragment$LetterSummary.stub(_res);
 }

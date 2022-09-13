@@ -42,13 +42,7 @@ query TopLetters($first: Int) {
   ) {
     edges {
       node {
-        title
-        id
-        content
-        owner {
-          id
-          name
-        }
+        ...LetterSummary
       }
     }
   }

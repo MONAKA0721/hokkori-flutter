@@ -50,7 +50,7 @@ void main() async {
 const bool isProduction = bool.fromEnvironment('dart.vm.product');
 const apiQueryURL = isProduction
     ? 'http://13.231.110.200:8080/query'
-    : 'https://d920-240f-7a-db47-1-50e7-551c-b3f4-ce8.ngrok.io/query';
+    : 'https://d79b-240f-7a-db47-1-8b8-bc5d-b401-23c.ngrok.io/query';
 final HttpLink httpLink = HttpLink(
   apiQueryURL,
 );
@@ -219,14 +219,13 @@ class _MyAppState extends ConsumerState<MyApp> {
                 // is not restarted.
                 primarySwatch: Colors.blue,
                 fontFamily: 'Zen Kaku Gothic New'),
-            home: SafeArea(
-                child: ref.watch(isBusyProvider)
-                    ? const Center(child: CircularProgressIndicator())
-                    : ref.watch(isLoggedInProvider)
-                        ? const Index(title: 'ほっこり')
-                        : Login(
-                            loginAction: loginAction,
-                            loginError: errorMessage,
-                          ))));
+            home: ref.watch(isBusyProvider)
+                ? const Center(child: CircularProgressIndicator())
+                : ref.watch(isLoggedInProvider)
+                    ? const Index(title: 'ほっこり')
+                    : Login(
+                        loginAction: loginAction,
+                        loginError: errorMessage,
+                      )));
   }
 }

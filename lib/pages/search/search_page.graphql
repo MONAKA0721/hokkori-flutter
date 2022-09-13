@@ -1,0 +1,13 @@
+query TopLetters($first: Int) {
+  posts(
+    first: $first
+    orderBy: { direction: DESC, field: CREATE_TIME }
+    where: { type: letter }
+  ) {
+    edges {
+      node {
+        ...LetterSummary
+      }
+    }
+  }
+}
