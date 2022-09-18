@@ -36,6 +36,9 @@ Input$CreatePostInput _$Input$CreatePostInputFromJson(
           ?.map((e) => e as String)
           .toList(),
       workID: json['workID'] as String,
+      likedUserIDs: (json['likedUserIDs'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$Input$CreatePostInputToJson(
@@ -50,6 +53,7 @@ Map<String, dynamic> _$Input$CreatePostInputToJson(
       'ownerID': instance.ownerID,
       'hashtagIDs': instance.hashtagIDs,
       'workID': instance.workID,
+      'likedUserIDs': instance.likedUserIDs,
     };
 
 const _$Enum$PostPostTypeEnumMap = {
@@ -64,6 +68,9 @@ Input$CreateUserInput _$Input$CreateUserInputFromJson(
       name: json['name'] as String,
       postIDs:
           (json['postIDs'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      likedPostIDs: (json['likedPostIDs'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$Input$CreateUserInputToJson(
@@ -71,6 +78,7 @@ Map<String, dynamic> _$Input$CreateUserInputToJson(
     <String, dynamic>{
       'name': instance.name,
       'postIDs': instance.postIDs,
+      'likedPostIDs': instance.likedPostIDs,
     };
 
 Input$CreateWorkInput _$Input$CreateWorkInputFromJson(
@@ -298,6 +306,10 @@ Input$PostWhereInput _$Input$PostWhereInputFromJson(
       hasWorkWith: (json['hasWorkWith'] as List<dynamic>?)
           ?.map((e) => Input$WorkWhereInput.fromJson(e as Map<String, dynamic>))
           .toList(),
+      hasLikedUsers: json['hasLikedUsers'] as bool?,
+      hasLikedUsersWith: (json['hasLikedUsersWith'] as List<dynamic>?)
+          ?.map((e) => Input$UserWhereInput.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$Input$PostWhereInputToJson(
@@ -372,6 +384,9 @@ Map<String, dynamic> _$Input$PostWhereInputToJson(
           instance.hasHashtagsWith?.map((e) => e.toJson()).toList(),
       'hasWork': instance.hasWork,
       'hasWorkWith': instance.hasWorkWith?.map((e) => e.toJson()).toList(),
+      'hasLikedUsers': instance.hasLikedUsers,
+      'hasLikedUsersWith':
+          instance.hasLikedUsersWith?.map((e) => e.toJson()).toList(),
     };
 
 Input$UpdateHashtagInput _$Input$UpdateHashtagInputFromJson(
@@ -413,6 +428,12 @@ Input$UpdatePostInput _$Input$UpdatePostInputFromJson(
           .toList(),
       clearWork: json['clearWork'] as bool?,
       workID: json['workID'] as String?,
+      addLikedUserIDs: (json['addLikedUserIDs'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      removeLikedUserIDs: (json['removeLikedUserIDs'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$Input$UpdatePostInputToJson(
@@ -429,6 +450,8 @@ Map<String, dynamic> _$Input$UpdatePostInputToJson(
       'removeHashtagIDs': instance.removeHashtagIDs,
       'clearWork': instance.clearWork,
       'workID': instance.workID,
+      'addLikedUserIDs': instance.addLikedUserIDs,
+      'removeLikedUserIDs': instance.removeLikedUserIDs,
     };
 
 Input$UpdateUserInput _$Input$UpdateUserInputFromJson(
@@ -441,6 +464,12 @@ Input$UpdateUserInput _$Input$UpdateUserInputFromJson(
       removePostIDs: (json['removePostIDs'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      addLikedPostIDs: (json['addLikedPostIDs'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      removeLikedPostIDs: (json['removeLikedPostIDs'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$Input$UpdateUserInputToJson(
@@ -449,6 +478,8 @@ Map<String, dynamic> _$Input$UpdateUserInputToJson(
       'name': instance.name,
       'addPostIDs': instance.addPostIDs,
       'removePostIDs': instance.removePostIDs,
+      'addLikedPostIDs': instance.addLikedPostIDs,
+      'removeLikedPostIDs': instance.removeLikedPostIDs,
     };
 
 Input$UpdateWorkInput _$Input$UpdateWorkInputFromJson(
@@ -516,6 +547,10 @@ Input$UserWhereInput _$Input$UserWhereInputFromJson(
       hasPostsWith: (json['hasPostsWith'] as List<dynamic>?)
           ?.map((e) => Input$PostWhereInput.fromJson(e as Map<String, dynamic>))
           .toList(),
+      hasLikedPosts: json['hasLikedPosts'] as bool?,
+      hasLikedPostsWith: (json['hasLikedPostsWith'] as List<dynamic>?)
+          ?.map((e) => Input$PostWhereInput.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$Input$UserWhereInputToJson(
@@ -547,6 +582,9 @@ Map<String, dynamic> _$Input$UserWhereInputToJson(
       'nameContainsFold': instance.nameContainsFold,
       'hasPosts': instance.hasPosts,
       'hasPostsWith': instance.hasPostsWith?.map((e) => e.toJson()).toList(),
+      'hasLikedPosts': instance.hasLikedPosts,
+      'hasLikedPostsWith':
+          instance.hasLikedPostsWith?.map((e) => e.toJson()).toList(),
     };
 
 Input$WorkWhereInput _$Input$WorkWhereInputFromJson(

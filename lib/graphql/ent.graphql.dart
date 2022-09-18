@@ -102,7 +102,8 @@ class Input$CreatePostInput {
       required this.spoiled,
       required this.ownerID,
       this.hashtagIDs,
-      required this.workID});
+      required this.workID,
+      this.likedUserIDs});
 
   @override
   factory Input$CreatePostInput.fromJson(Map<String, dynamic> json) =>
@@ -127,6 +128,8 @@ class Input$CreatePostInput {
 
   final String workID;
 
+  final List<String>? likedUserIDs;
+
   Map<String, dynamic> toJson() => _$Input$CreatePostInputToJson(this);
   int get hashCode {
     final l$createTime = createTime;
@@ -138,6 +141,7 @@ class Input$CreatePostInput {
     final l$ownerID = ownerID;
     final l$hashtagIDs = hashtagIDs;
     final l$workID = workID;
+    final l$likedUserIDs = likedUserIDs;
     return Object.hashAll([
       l$createTime,
       l$updateTime,
@@ -147,7 +151,10 @@ class Input$CreatePostInput {
       l$spoiled,
       l$ownerID,
       l$hashtagIDs == null ? null : Object.hashAll(l$hashtagIDs.map((v) => v)),
-      l$workID
+      l$workID,
+      l$likedUserIDs == null
+          ? null
+          : Object.hashAll(l$likedUserIDs.map((v) => v))
     ]);
   }
 
@@ -193,6 +200,19 @@ class Input$CreatePostInput {
     final l$workID = workID;
     final lOther$workID = other.workID;
     if (l$workID != lOther$workID) return false;
+    final l$likedUserIDs = likedUserIDs;
+    final lOther$likedUserIDs = other.likedUserIDs;
+    if (l$likedUserIDs != null && lOther$likedUserIDs != null) {
+      if (l$likedUserIDs.length != lOther$likedUserIDs.length) return false;
+      for (int i = 0; i < l$likedUserIDs.length; i++) {
+        final l$likedUserIDs$entry = l$likedUserIDs[i];
+        final lOther$likedUserIDs$entry = lOther$likedUserIDs[i];
+        if (l$likedUserIDs$entry != lOther$likedUserIDs$entry) return false;
+      }
+    } else if (l$likedUserIDs != lOther$likedUserIDs) {
+      return false;
+    }
+
     return true;
   }
 
@@ -217,7 +237,8 @@ abstract class CopyWith$Input$CreatePostInput<TRes> {
       bool? spoiled,
       String? ownerID,
       List<String>? hashtagIDs,
-      String? workID});
+      String? workID,
+      List<String>? likedUserIDs});
 }
 
 class _CopyWithImpl$Input$CreatePostInput<TRes>
@@ -239,7 +260,8 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           Object? spoiled = _undefined,
           Object? ownerID = _undefined,
           Object? hashtagIDs = _undefined,
-          Object? workID = _undefined}) =>
+          Object? workID = _undefined,
+          Object? likedUserIDs = _undefined}) =>
       _then(Input$CreatePostInput(
           createTime: createTime == _undefined
               ? _instance.createTime
@@ -267,7 +289,10 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
               : (hashtagIDs as List<String>?),
           workID: workID == _undefined || workID == null
               ? _instance.workID
-              : (workID as String)));
+              : (workID as String),
+          likedUserIDs: likedUserIDs == _undefined
+              ? _instance.likedUserIDs
+              : (likedUserIDs as List<String>?)));
 }
 
 class _CopyWithStubImpl$Input$CreatePostInput<TRes>
@@ -285,13 +310,14 @@ class _CopyWithStubImpl$Input$CreatePostInput<TRes>
           bool? spoiled,
           String? ownerID,
           List<String>? hashtagIDs,
-          String? workID}) =>
+          String? workID,
+          List<String>? likedUserIDs}) =>
       _res;
 }
 
 @JsonSerializable(explicitToJson: true)
 class Input$CreateUserInput {
-  Input$CreateUserInput({required this.name, this.postIDs});
+  Input$CreateUserInput({required this.name, this.postIDs, this.likedPostIDs});
 
   @override
   factory Input$CreateUserInput.fromJson(Map<String, dynamic> json) =>
@@ -301,13 +327,19 @@ class Input$CreateUserInput {
 
   final List<String>? postIDs;
 
+  final List<String>? likedPostIDs;
+
   Map<String, dynamic> toJson() => _$Input$CreateUserInputToJson(this);
   int get hashCode {
     final l$name = name;
     final l$postIDs = postIDs;
+    final l$likedPostIDs = likedPostIDs;
     return Object.hashAll([
       l$name,
-      l$postIDs == null ? null : Object.hashAll(l$postIDs.map((v) => v))
+      l$postIDs == null ? null : Object.hashAll(l$postIDs.map((v) => v)),
+      l$likedPostIDs == null
+          ? null
+          : Object.hashAll(l$likedPostIDs.map((v) => v))
     ]);
   }
 
@@ -332,6 +364,19 @@ class Input$CreateUserInput {
       return false;
     }
 
+    final l$likedPostIDs = likedPostIDs;
+    final lOther$likedPostIDs = other.likedPostIDs;
+    if (l$likedPostIDs != null && lOther$likedPostIDs != null) {
+      if (l$likedPostIDs.length != lOther$likedPostIDs.length) return false;
+      for (int i = 0; i < l$likedPostIDs.length; i++) {
+        final l$likedPostIDs$entry = l$likedPostIDs[i];
+        final lOther$likedPostIDs$entry = lOther$likedPostIDs[i];
+        if (l$likedPostIDs$entry != lOther$likedPostIDs$entry) return false;
+      }
+    } else if (l$likedPostIDs != lOther$likedPostIDs) {
+      return false;
+    }
+
     return true;
   }
 
@@ -347,7 +392,7 @@ abstract class CopyWith$Input$CreateUserInput<TRes> {
   factory CopyWith$Input$CreateUserInput.stub(TRes res) =
       _CopyWithStubImpl$Input$CreateUserInput;
 
-  TRes call({String? name, List<String>? postIDs});
+  TRes call({String? name, List<String>? postIDs, List<String>? likedPostIDs});
 }
 
 class _CopyWithImpl$Input$CreateUserInput<TRes>
@@ -360,14 +405,20 @@ class _CopyWithImpl$Input$CreateUserInput<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? name = _undefined, Object? postIDs = _undefined}) =>
+  TRes call(
+          {Object? name = _undefined,
+          Object? postIDs = _undefined,
+          Object? likedPostIDs = _undefined}) =>
       _then(Input$CreateUserInput(
           name: name == _undefined || name == null
               ? _instance.name
               : (name as String),
           postIDs: postIDs == _undefined
               ? _instance.postIDs
-              : (postIDs as List<String>?)));
+              : (postIDs as List<String>?),
+          likedPostIDs: likedPostIDs == _undefined
+              ? _instance.likedPostIDs
+              : (likedPostIDs as List<String>?)));
 }
 
 class _CopyWithStubImpl$Input$CreateUserInput<TRes>
@@ -376,7 +427,8 @@ class _CopyWithStubImpl$Input$CreateUserInput<TRes>
 
   TRes _res;
 
-  call({String? name, List<String>? postIDs}) => _res;
+  call({String? name, List<String>? postIDs, List<String>? likedPostIDs}) =>
+      _res;
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -1162,7 +1214,9 @@ class Input$PostWhereInput {
       this.hasHashtags,
       this.hasHashtagsWith,
       this.hasWork,
-      this.hasWorkWith});
+      this.hasWorkWith,
+      this.hasLikedUsers,
+      this.hasLikedUsersWith});
 
   @override
   factory Input$PostWhereInput.fromJson(Map<String, dynamic> json) =>
@@ -1302,6 +1356,10 @@ class Input$PostWhereInput {
 
   final List<Input$WorkWhereInput>? hasWorkWith;
 
+  final bool? hasLikedUsers;
+
+  final List<Input$UserWhereInput>? hasLikedUsersWith;
+
   Map<String, dynamic> toJson() => _$Input$PostWhereInputToJson(this);
   int get hashCode {
     final l$not = not;
@@ -1369,6 +1427,8 @@ class Input$PostWhereInput {
     final l$hasHashtagsWith = hasHashtagsWith;
     final l$hasWork = hasWork;
     final l$hasWorkWith = hasWorkWith;
+    final l$hasLikedUsers = hasLikedUsers;
+    final l$hasLikedUsersWith = hasLikedUsersWith;
     return Object.hashAll([
       l$not,
       l$and == null ? null : Object.hashAll(l$and.map((v) => v)),
@@ -1448,7 +1508,13 @@ class Input$PostWhereInput {
           ? null
           : Object.hashAll(l$hasHashtagsWith.map((v) => v)),
       l$hasWork,
-      l$hasWorkWith == null ? null : Object.hashAll(l$hasWorkWith.map((v) => v))
+      l$hasWorkWith == null
+          ? null
+          : Object.hashAll(l$hasWorkWith.map((v) => v)),
+      l$hasLikedUsers,
+      l$hasLikedUsersWith == null
+          ? null
+          : Object.hashAll(l$hasLikedUsersWith.map((v) => v))
     ]);
   }
 
@@ -1828,6 +1894,24 @@ class Input$PostWhereInput {
       return false;
     }
 
+    final l$hasLikedUsers = hasLikedUsers;
+    final lOther$hasLikedUsers = other.hasLikedUsers;
+    if (l$hasLikedUsers != lOther$hasLikedUsers) return false;
+    final l$hasLikedUsersWith = hasLikedUsersWith;
+    final lOther$hasLikedUsersWith = other.hasLikedUsersWith;
+    if (l$hasLikedUsersWith != null && lOther$hasLikedUsersWith != null) {
+      if (l$hasLikedUsersWith.length != lOther$hasLikedUsersWith.length)
+        return false;
+      for (int i = 0; i < l$hasLikedUsersWith.length; i++) {
+        final l$hasLikedUsersWith$entry = l$hasLikedUsersWith[i];
+        final lOther$hasLikedUsersWith$entry = lOther$hasLikedUsersWith[i];
+        if (l$hasLikedUsersWith$entry != lOther$hasLikedUsersWith$entry)
+          return false;
+      }
+    } else if (l$hasLikedUsersWith != lOther$hasLikedUsersWith) {
+      return false;
+    }
+
     return true;
   }
 
@@ -1908,7 +1992,9 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
       bool? hasHashtags,
       List<Input$HashtagWhereInput>? hasHashtagsWith,
       bool? hasWork,
-      List<Input$WorkWhereInput>? hasWorkWith});
+      List<Input$WorkWhereInput>? hasWorkWith,
+      bool? hasLikedUsers,
+      List<Input$UserWhereInput>? hasLikedUsersWith});
   CopyWith$Input$PostWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$PostWhereInput>? Function(
@@ -1930,6 +2016,10 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
   TRes hasWorkWith(
       Iterable<Input$WorkWhereInput>? Function(
               Iterable<CopyWith$Input$WorkWhereInput<Input$WorkWhereInput>>?)
+          _fn);
+  TRes hasLikedUsersWith(
+      Iterable<Input$UserWhereInput>? Function(
+              Iterable<CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
           _fn);
 }
 
@@ -2008,7 +2098,9 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           Object? hasHashtags = _undefined,
           Object? hasHashtagsWith = _undefined,
           Object? hasWork = _undefined,
-          Object? hasWorkWith = _undefined}) =>
+          Object? hasWorkWith = _undefined,
+          Object? hasLikedUsers = _undefined,
+          Object? hasLikedUsersWith = _undefined}) =>
       _then(Input$PostWhereInput(
           not: not == _undefined
               ? _instance.not
@@ -2108,7 +2200,9 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           hasHashtags: hasHashtags == _undefined ? _instance.hasHashtags : (hasHashtags as bool?),
           hasHashtagsWith: hasHashtagsWith == _undefined ? _instance.hasHashtagsWith : (hasHashtagsWith as List<Input$HashtagWhereInput>?),
           hasWork: hasWork == _undefined ? _instance.hasWork : (hasWork as bool?),
-          hasWorkWith: hasWorkWith == _undefined ? _instance.hasWorkWith : (hasWorkWith as List<Input$WorkWhereInput>?)));
+          hasWorkWith: hasWorkWith == _undefined ? _instance.hasWorkWith : (hasWorkWith as List<Input$WorkWhereInput>?),
+          hasLikedUsers: hasLikedUsers == _undefined ? _instance.hasLikedUsers : (hasLikedUsers as bool?),
+          hasLikedUsersWith: hasLikedUsersWith == _undefined ? _instance.hasLikedUsersWith : (hasLikedUsersWith as List<Input$UserWhereInput>?)));
   CopyWith$Input$PostWhereInput<TRes> get not {
     final local$not = _instance.not;
     return local$not == null
@@ -2161,6 +2255,15 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
       call(
           hasWorkWith: _fn(_instance.hasWorkWith
                   ?.map((e) => CopyWith$Input$WorkWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasLikedUsersWith(
+          Iterable<Input$UserWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
+              _fn) =>
+      call(
+          hasLikedUsersWith: _fn(_instance.hasLikedUsersWith
+                  ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
               ?.toList());
 }
 
@@ -2235,7 +2338,9 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
           bool? hasHashtags,
           List<Input$HashtagWhereInput>? hasHashtagsWith,
           bool? hasWork,
-          List<Input$WorkWhereInput>? hasWorkWith}) =>
+          List<Input$WorkWhereInput>? hasWorkWith,
+          bool? hasLikedUsers,
+          List<Input$UserWhereInput>? hasLikedUsersWith}) =>
       _res;
   CopyWith$Input$PostWhereInput<TRes> get not =>
       CopyWith$Input$PostWhereInput.stub(_res);
@@ -2244,6 +2349,7 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
   hasOwnerWith(_fn) => _res;
   hasHashtagsWith(_fn) => _res;
   hasWorkWith(_fn) => _res;
+  hasLikedUsersWith(_fn) => _res;
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -2377,7 +2483,9 @@ class Input$UpdatePostInput {
       this.addHashtagIDs,
       this.removeHashtagIDs,
       this.clearWork,
-      this.workID});
+      this.workID,
+      this.addLikedUserIDs,
+      this.removeLikedUserIDs});
 
   @override
   factory Input$UpdatePostInput.fromJson(Map<String, dynamic> json) =>
@@ -2406,6 +2514,10 @@ class Input$UpdatePostInput {
 
   final String? workID;
 
+  final List<String>? addLikedUserIDs;
+
+  final List<String>? removeLikedUserIDs;
+
   Map<String, dynamic> toJson() => _$Input$UpdatePostInputToJson(this);
   int get hashCode {
     final l$updateTime = updateTime;
@@ -2419,6 +2531,8 @@ class Input$UpdatePostInput {
     final l$removeHashtagIDs = removeHashtagIDs;
     final l$clearWork = clearWork;
     final l$workID = workID;
+    final l$addLikedUserIDs = addLikedUserIDs;
+    final l$removeLikedUserIDs = removeLikedUserIDs;
     return Object.hashAll([
       l$updateTime,
       l$title,
@@ -2434,7 +2548,13 @@ class Input$UpdatePostInput {
           ? null
           : Object.hashAll(l$removeHashtagIDs.map((v) => v)),
       l$clearWork,
-      l$workID
+      l$workID,
+      l$addLikedUserIDs == null
+          ? null
+          : Object.hashAll(l$addLikedUserIDs.map((v) => v)),
+      l$removeLikedUserIDs == null
+          ? null
+          : Object.hashAll(l$removeLikedUserIDs.map((v) => v))
     ]);
   }
 
@@ -2498,6 +2618,36 @@ class Input$UpdatePostInput {
     final l$workID = workID;
     final lOther$workID = other.workID;
     if (l$workID != lOther$workID) return false;
+    final l$addLikedUserIDs = addLikedUserIDs;
+    final lOther$addLikedUserIDs = other.addLikedUserIDs;
+    if (l$addLikedUserIDs != null && lOther$addLikedUserIDs != null) {
+      if (l$addLikedUserIDs.length != lOther$addLikedUserIDs.length)
+        return false;
+      for (int i = 0; i < l$addLikedUserIDs.length; i++) {
+        final l$addLikedUserIDs$entry = l$addLikedUserIDs[i];
+        final lOther$addLikedUserIDs$entry = lOther$addLikedUserIDs[i];
+        if (l$addLikedUserIDs$entry != lOther$addLikedUserIDs$entry)
+          return false;
+      }
+    } else if (l$addLikedUserIDs != lOther$addLikedUserIDs) {
+      return false;
+    }
+
+    final l$removeLikedUserIDs = removeLikedUserIDs;
+    final lOther$removeLikedUserIDs = other.removeLikedUserIDs;
+    if (l$removeLikedUserIDs != null && lOther$removeLikedUserIDs != null) {
+      if (l$removeLikedUserIDs.length != lOther$removeLikedUserIDs.length)
+        return false;
+      for (int i = 0; i < l$removeLikedUserIDs.length; i++) {
+        final l$removeLikedUserIDs$entry = l$removeLikedUserIDs[i];
+        final lOther$removeLikedUserIDs$entry = lOther$removeLikedUserIDs[i];
+        if (l$removeLikedUserIDs$entry != lOther$removeLikedUserIDs$entry)
+          return false;
+      }
+    } else if (l$removeLikedUserIDs != lOther$removeLikedUserIDs) {
+      return false;
+    }
+
     return true;
   }
 
@@ -2524,7 +2674,9 @@ abstract class CopyWith$Input$UpdatePostInput<TRes> {
       List<String>? addHashtagIDs,
       List<String>? removeHashtagIDs,
       bool? clearWork,
-      String? workID});
+      String? workID,
+      List<String>? addLikedUserIDs,
+      List<String>? removeLikedUserIDs});
 }
 
 class _CopyWithImpl$Input$UpdatePostInput<TRes>
@@ -2548,7 +2700,9 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           Object? addHashtagIDs = _undefined,
           Object? removeHashtagIDs = _undefined,
           Object? clearWork = _undefined,
-          Object? workID = _undefined}) =>
+          Object? workID = _undefined,
+          Object? addLikedUserIDs = _undefined,
+          Object? removeLikedUserIDs = _undefined}) =>
       _then(Input$UpdatePostInput(
           updateTime: updateTime == _undefined
               ? _instance.updateTime
@@ -2575,8 +2729,13 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           clearWork: clearWork == _undefined
               ? _instance.clearWork
               : (clearWork as bool?),
-          workID:
-              workID == _undefined ? _instance.workID : (workID as String?)));
+          workID: workID == _undefined ? _instance.workID : (workID as String?),
+          addLikedUserIDs: addLikedUserIDs == _undefined
+              ? _instance.addLikedUserIDs
+              : (addLikedUserIDs as List<String>?),
+          removeLikedUserIDs: removeLikedUserIDs == _undefined
+              ? _instance.removeLikedUserIDs
+              : (removeLikedUserIDs as List<String>?)));
 }
 
 class _CopyWithStubImpl$Input$UpdatePostInput<TRes>
@@ -2596,13 +2755,20 @@ class _CopyWithStubImpl$Input$UpdatePostInput<TRes>
           List<String>? addHashtagIDs,
           List<String>? removeHashtagIDs,
           bool? clearWork,
-          String? workID}) =>
+          String? workID,
+          List<String>? addLikedUserIDs,
+          List<String>? removeLikedUserIDs}) =>
       _res;
 }
 
 @JsonSerializable(explicitToJson: true)
 class Input$UpdateUserInput {
-  Input$UpdateUserInput({this.name, this.addPostIDs, this.removePostIDs});
+  Input$UpdateUserInput(
+      {this.name,
+      this.addPostIDs,
+      this.removePostIDs,
+      this.addLikedPostIDs,
+      this.removeLikedPostIDs});
 
   @override
   factory Input$UpdateUserInput.fromJson(Map<String, dynamic> json) =>
@@ -2614,17 +2780,29 @@ class Input$UpdateUserInput {
 
   final List<String>? removePostIDs;
 
+  final List<String>? addLikedPostIDs;
+
+  final List<String>? removeLikedPostIDs;
+
   Map<String, dynamic> toJson() => _$Input$UpdateUserInputToJson(this);
   int get hashCode {
     final l$name = name;
     final l$addPostIDs = addPostIDs;
     final l$removePostIDs = removePostIDs;
+    final l$addLikedPostIDs = addLikedPostIDs;
+    final l$removeLikedPostIDs = removeLikedPostIDs;
     return Object.hashAll([
       l$name,
       l$addPostIDs == null ? null : Object.hashAll(l$addPostIDs.map((v) => v)),
       l$removePostIDs == null
           ? null
-          : Object.hashAll(l$removePostIDs.map((v) => v))
+          : Object.hashAll(l$removePostIDs.map((v) => v)),
+      l$addLikedPostIDs == null
+          ? null
+          : Object.hashAll(l$addLikedPostIDs.map((v) => v)),
+      l$removeLikedPostIDs == null
+          ? null
+          : Object.hashAll(l$removeLikedPostIDs.map((v) => v))
     ]);
   }
 
@@ -2662,6 +2840,36 @@ class Input$UpdateUserInput {
       return false;
     }
 
+    final l$addLikedPostIDs = addLikedPostIDs;
+    final lOther$addLikedPostIDs = other.addLikedPostIDs;
+    if (l$addLikedPostIDs != null && lOther$addLikedPostIDs != null) {
+      if (l$addLikedPostIDs.length != lOther$addLikedPostIDs.length)
+        return false;
+      for (int i = 0; i < l$addLikedPostIDs.length; i++) {
+        final l$addLikedPostIDs$entry = l$addLikedPostIDs[i];
+        final lOther$addLikedPostIDs$entry = lOther$addLikedPostIDs[i];
+        if (l$addLikedPostIDs$entry != lOther$addLikedPostIDs$entry)
+          return false;
+      }
+    } else if (l$addLikedPostIDs != lOther$addLikedPostIDs) {
+      return false;
+    }
+
+    final l$removeLikedPostIDs = removeLikedPostIDs;
+    final lOther$removeLikedPostIDs = other.removeLikedPostIDs;
+    if (l$removeLikedPostIDs != null && lOther$removeLikedPostIDs != null) {
+      if (l$removeLikedPostIDs.length != lOther$removeLikedPostIDs.length)
+        return false;
+      for (int i = 0; i < l$removeLikedPostIDs.length; i++) {
+        final l$removeLikedPostIDs$entry = l$removeLikedPostIDs[i];
+        final lOther$removeLikedPostIDs$entry = lOther$removeLikedPostIDs[i];
+        if (l$removeLikedPostIDs$entry != lOther$removeLikedPostIDs$entry)
+          return false;
+      }
+    } else if (l$removeLikedPostIDs != lOther$removeLikedPostIDs) {
+      return false;
+    }
+
     return true;
   }
 
@@ -2678,7 +2886,11 @@ abstract class CopyWith$Input$UpdateUserInput<TRes> {
       _CopyWithStubImpl$Input$UpdateUserInput;
 
   TRes call(
-      {String? name, List<String>? addPostIDs, List<String>? removePostIDs});
+      {String? name,
+      List<String>? addPostIDs,
+      List<String>? removePostIDs,
+      List<String>? addLikedPostIDs,
+      List<String>? removeLikedPostIDs});
 }
 
 class _CopyWithImpl$Input$UpdateUserInput<TRes>
@@ -2694,7 +2906,9 @@ class _CopyWithImpl$Input$UpdateUserInput<TRes>
   TRes call(
           {Object? name = _undefined,
           Object? addPostIDs = _undefined,
-          Object? removePostIDs = _undefined}) =>
+          Object? removePostIDs = _undefined,
+          Object? addLikedPostIDs = _undefined,
+          Object? removeLikedPostIDs = _undefined}) =>
       _then(Input$UpdateUserInput(
           name: name == _undefined ? _instance.name : (name as String?),
           addPostIDs: addPostIDs == _undefined
@@ -2702,7 +2916,13 @@ class _CopyWithImpl$Input$UpdateUserInput<TRes>
               : (addPostIDs as List<String>?),
           removePostIDs: removePostIDs == _undefined
               ? _instance.removePostIDs
-              : (removePostIDs as List<String>?)));
+              : (removePostIDs as List<String>?),
+          addLikedPostIDs: addLikedPostIDs == _undefined
+              ? _instance.addLikedPostIDs
+              : (addLikedPostIDs as List<String>?),
+          removeLikedPostIDs: removeLikedPostIDs == _undefined
+              ? _instance.removeLikedPostIDs
+              : (removeLikedPostIDs as List<String>?)));
 }
 
 class _CopyWithStubImpl$Input$UpdateUserInput<TRes>
@@ -2711,7 +2931,12 @@ class _CopyWithStubImpl$Input$UpdateUserInput<TRes>
 
   TRes _res;
 
-  call({String? name, List<String>? addPostIDs, List<String>? removePostIDs}) =>
+  call(
+          {String? name,
+          List<String>? addPostIDs,
+          List<String>? removePostIDs,
+          List<String>? addLikedPostIDs,
+          List<String>? removeLikedPostIDs}) =>
       _res;
 }
 
@@ -2894,7 +3119,9 @@ class Input$UserWhereInput {
       this.nameEqualFold,
       this.nameContainsFold,
       this.hasPosts,
-      this.hasPostsWith});
+      this.hasPostsWith,
+      this.hasLikedPosts,
+      this.hasLikedPostsWith});
 
   @override
   factory Input$UserWhereInput.fromJson(Map<String, dynamic> json) =>
@@ -2952,6 +3179,10 @@ class Input$UserWhereInput {
 
   final List<Input$PostWhereInput>? hasPostsWith;
 
+  final bool? hasLikedPosts;
+
+  final List<Input$PostWhereInput>? hasLikedPostsWith;
+
   Map<String, dynamic> toJson() => _$Input$UserWhereInputToJson(this);
   int get hashCode {
     final l$not = not;
@@ -2980,6 +3211,8 @@ class Input$UserWhereInput {
     final l$nameContainsFold = nameContainsFold;
     final l$hasPosts = hasPosts;
     final l$hasPostsWith = hasPostsWith;
+    final l$hasLikedPosts = hasLikedPosts;
+    final l$hasLikedPostsWith = hasLikedPostsWith;
     return Object.hashAll([
       l$not,
       l$and == null ? null : Object.hashAll(l$and.map((v) => v)),
@@ -3008,7 +3241,11 @@ class Input$UserWhereInput {
       l$hasPosts,
       l$hasPostsWith == null
           ? null
-          : Object.hashAll(l$hasPostsWith.map((v) => v))
+          : Object.hashAll(l$hasPostsWith.map((v) => v)),
+      l$hasLikedPosts,
+      l$hasLikedPostsWith == null
+          ? null
+          : Object.hashAll(l$hasLikedPostsWith.map((v) => v))
     ]);
   }
 
@@ -3165,6 +3402,24 @@ class Input$UserWhereInput {
       return false;
     }
 
+    final l$hasLikedPosts = hasLikedPosts;
+    final lOther$hasLikedPosts = other.hasLikedPosts;
+    if (l$hasLikedPosts != lOther$hasLikedPosts) return false;
+    final l$hasLikedPostsWith = hasLikedPostsWith;
+    final lOther$hasLikedPostsWith = other.hasLikedPostsWith;
+    if (l$hasLikedPostsWith != null && lOther$hasLikedPostsWith != null) {
+      if (l$hasLikedPostsWith.length != lOther$hasLikedPostsWith.length)
+        return false;
+      for (int i = 0; i < l$hasLikedPostsWith.length; i++) {
+        final l$hasLikedPostsWith$entry = l$hasLikedPostsWith[i];
+        final lOther$hasLikedPostsWith$entry = lOther$hasLikedPostsWith[i];
+        if (l$hasLikedPostsWith$entry != lOther$hasLikedPostsWith$entry)
+          return false;
+      }
+    } else if (l$hasLikedPostsWith != lOther$hasLikedPostsWith) {
+      return false;
+    }
+
     return true;
   }
 
@@ -3206,7 +3461,9 @@ abstract class CopyWith$Input$UserWhereInput<TRes> {
       String? nameEqualFold,
       String? nameContainsFold,
       bool? hasPosts,
-      List<Input$PostWhereInput>? hasPostsWith});
+      List<Input$PostWhereInput>? hasPostsWith,
+      bool? hasLikedPosts,
+      List<Input$PostWhereInput>? hasLikedPostsWith});
   CopyWith$Input$UserWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$UserWhereInput>? Function(
@@ -3217,6 +3474,10 @@ abstract class CopyWith$Input$UserWhereInput<TRes> {
               Iterable<CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
           _fn);
   TRes hasPostsWith(
+      Iterable<Input$PostWhereInput>? Function(
+              Iterable<CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+          _fn);
+  TRes hasLikedPostsWith(
       Iterable<Input$PostWhereInput>? Function(
               Iterable<CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
           _fn);
@@ -3258,7 +3519,9 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
           Object? nameEqualFold = _undefined,
           Object? nameContainsFold = _undefined,
           Object? hasPosts = _undefined,
-          Object? hasPostsWith = _undefined}) =>
+          Object? hasPostsWith = _undefined,
+          Object? hasLikedPosts = _undefined,
+          Object? hasLikedPostsWith = _undefined}) =>
       _then(Input$UserWhereInput(
           not: not == _undefined
               ? _instance.not
@@ -3313,7 +3576,13 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
               hasPosts == _undefined ? _instance.hasPosts : (hasPosts as bool?),
           hasPostsWith: hasPostsWith == _undefined
               ? _instance.hasPostsWith
-              : (hasPostsWith as List<Input$PostWhereInput>?)));
+              : (hasPostsWith as List<Input$PostWhereInput>?),
+          hasLikedPosts: hasLikedPosts == _undefined
+              ? _instance.hasLikedPosts
+              : (hasLikedPosts as bool?),
+          hasLikedPostsWith: hasLikedPostsWith == _undefined
+              ? _instance.hasLikedPostsWith
+              : (hasLikedPostsWith as List<Input$PostWhereInput>?)));
   CopyWith$Input$UserWhereInput<TRes> get not {
     final local$not = _instance.not;
     return local$not == null
@@ -3346,6 +3615,15 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
               _fn) =>
       call(
           hasPostsWith: _fn(_instance.hasPostsWith
+                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasLikedPostsWith(
+          Iterable<Input$PostWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+              _fn) =>
+      call(
+          hasLikedPostsWith: _fn(_instance.hasLikedPostsWith
                   ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
               ?.toList());
 }
@@ -3382,13 +3660,16 @@ class _CopyWithStubImpl$Input$UserWhereInput<TRes>
           String? nameEqualFold,
           String? nameContainsFold,
           bool? hasPosts,
-          List<Input$PostWhereInput>? hasPostsWith}) =>
+          List<Input$PostWhereInput>? hasPostsWith,
+          bool? hasLikedPosts,
+          List<Input$PostWhereInput>? hasLikedPostsWith}) =>
       _res;
   CopyWith$Input$UserWhereInput<TRes> get not =>
       CopyWith$Input$UserWhereInput.stub(_res);
   and(_fn) => _res;
   or(_fn) => _res;
   hasPostsWith(_fn) => _res;
+  hasLikedPostsWith(_fn) => _res;
 }
 
 @JsonSerializable(explicitToJson: true)

@@ -1,3 +1,11 @@
+query TopPraises($first: Int!) {
+  topPraises(first: $first) {
+    id
+    title
+    count
+  }
+}
+
 query TopLetters($first: Int) {
   posts(
     first: $first

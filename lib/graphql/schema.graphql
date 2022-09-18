@@ -10,3 +10,9 @@ type Mutation {
   createHashtag(input: CreateHashtagInput!): Hashtag!
   createWork(input: CreateWorkInput!): Work!
 }
+
+type PostCount {
+  id: ID!
+  title: String!
+  count: Int!
+}

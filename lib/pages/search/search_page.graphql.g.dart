@@ -6,6 +6,52 @@ part of 'search_page.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+Variables$Query$TopPraises _$Variables$Query$TopPraisesFromJson(
+        Map<String, dynamic> json) =>
+    Variables$Query$TopPraises(
+      first: json['first'] as int,
+    );
+
+Map<String, dynamic> _$Variables$Query$TopPraisesToJson(
+        Variables$Query$TopPraises instance) =>
+    <String, dynamic>{
+      'first': instance.first,
+    };
+
+Query$TopPraises _$Query$TopPraisesFromJson(Map<String, dynamic> json) =>
+    Query$TopPraises(
+      topPraises: (json['topPraises'] as List<dynamic>)
+          .map((e) => e == null
+              ? null
+              : Query$TopPraises$topPraises.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$Query$TopPraisesToJson(Query$TopPraises instance) =>
+    <String, dynamic>{
+      'topPraises': instance.topPraises.map((e) => e?.toJson()).toList(),
+      '__typename': instance.$__typename,
+    };
+
+Query$TopPraises$topPraises _$Query$TopPraises$topPraisesFromJson(
+        Map<String, dynamic> json) =>
+    Query$TopPraises$topPraises(
+      id: json['id'] as String,
+      title: json['title'] as String,
+      count: json['count'] as int,
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$Query$TopPraises$topPraisesToJson(
+        Query$TopPraises$topPraises instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'count': instance.count,
+      '__typename': instance.$__typename,
+    };
+
 Variables$Query$TopLetters _$Variables$Query$TopLettersFromJson(
         Map<String, dynamic> json) =>
     Variables$Query$TopLetters(

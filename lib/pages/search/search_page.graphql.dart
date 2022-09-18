@@ -8,6 +8,454 @@ import 'package:json_annotation/json_annotation.dart';
 part 'search_page.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
+class Variables$Query$TopPraises {
+  Variables$Query$TopPraises({required this.first});
+
+  @override
+  factory Variables$Query$TopPraises.fromJson(Map<String, dynamic> json) =>
+      _$Variables$Query$TopPraisesFromJson(json);
+
+  final int first;
+
+  Map<String, dynamic> toJson() => _$Variables$Query$TopPraisesToJson(this);
+  int get hashCode {
+    final l$first = first;
+    return Object.hashAll([l$first]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Variables$Query$TopPraises) ||
+        runtimeType != other.runtimeType) return false;
+    final l$first = first;
+    final lOther$first = other.first;
+    if (l$first != lOther$first) return false;
+    return true;
+  }
+
+  CopyWith$Variables$Query$TopPraises<Variables$Query$TopPraises>
+      get copyWith => CopyWith$Variables$Query$TopPraises(this, (i) => i);
+}
+
+abstract class CopyWith$Variables$Query$TopPraises<TRes> {
+  factory CopyWith$Variables$Query$TopPraises(
+          Variables$Query$TopPraises instance,
+          TRes Function(Variables$Query$TopPraises) then) =
+      _CopyWithImpl$Variables$Query$TopPraises;
+
+  factory CopyWith$Variables$Query$TopPraises.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$TopPraises;
+
+  TRes call({int? first});
+}
+
+class _CopyWithImpl$Variables$Query$TopPraises<TRes>
+    implements CopyWith$Variables$Query$TopPraises<TRes> {
+  _CopyWithImpl$Variables$Query$TopPraises(this._instance, this._then);
+
+  final Variables$Query$TopPraises _instance;
+
+  final TRes Function(Variables$Query$TopPraises) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? first = _undefined}) => _then(Variables$Query$TopPraises(
+      first: first == _undefined || first == null
+          ? _instance.first
+          : (first as int)));
+}
+
+class _CopyWithStubImpl$Variables$Query$TopPraises<TRes>
+    implements CopyWith$Variables$Query$TopPraises<TRes> {
+  _CopyWithStubImpl$Variables$Query$TopPraises(this._res);
+
+  TRes _res;
+
+  call({int? first}) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$TopPraises {
+  Query$TopPraises({required this.topPraises, required this.$__typename});
+
+  @override
+  factory Query$TopPraises.fromJson(Map<String, dynamic> json) =>
+      _$Query$TopPraisesFromJson(json);
+
+  final List<Query$TopPraises$topPraises?> topPraises;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$Query$TopPraisesToJson(this);
+  int get hashCode {
+    final l$topPraises = topPraises;
+    final l$$__typename = $__typename;
+    return Object.hashAll(
+        [Object.hashAll(l$topPraises.map((v) => v)), l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$TopPraises) || runtimeType != other.runtimeType)
+      return false;
+    final l$topPraises = topPraises;
+    final lOther$topPraises = other.topPraises;
+    if (l$topPraises.length != lOther$topPraises.length) return false;
+    for (int i = 0; i < l$topPraises.length; i++) {
+      final l$topPraises$entry = l$topPraises[i];
+      final lOther$topPraises$entry = lOther$topPraises[i];
+      if (l$topPraises$entry != lOther$topPraises$entry) return false;
+    }
+
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$TopPraises on Query$TopPraises {
+  CopyWith$Query$TopPraises<Query$TopPraises> get copyWith =>
+      CopyWith$Query$TopPraises(this, (i) => i);
+}
+
+abstract class CopyWith$Query$TopPraises<TRes> {
+  factory CopyWith$Query$TopPraises(
+          Query$TopPraises instance, TRes Function(Query$TopPraises) then) =
+      _CopyWithImpl$Query$TopPraises;
+
+  factory CopyWith$Query$TopPraises.stub(TRes res) =
+      _CopyWithStubImpl$Query$TopPraises;
+
+  TRes call(
+      {List<Query$TopPraises$topPraises?>? topPraises, String? $__typename});
+  TRes topPraises(
+      Iterable<Query$TopPraises$topPraises?> Function(
+              Iterable<
+                  CopyWith$Query$TopPraises$topPraises<
+                      Query$TopPraises$topPraises>?>)
+          _fn);
+}
+
+class _CopyWithImpl$Query$TopPraises<TRes>
+    implements CopyWith$Query$TopPraises<TRes> {
+  _CopyWithImpl$Query$TopPraises(this._instance, this._then);
+
+  final Query$TopPraises _instance;
+
+  final TRes Function(Query$TopPraises) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? topPraises = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$TopPraises(
+          topPraises: topPraises == _undefined || topPraises == null
+              ? _instance.topPraises
+              : (topPraises as List<Query$TopPraises$topPraises?>),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  TRes topPraises(
+          Iterable<Query$TopPraises$topPraises?> Function(
+                  Iterable<
+                      CopyWith$Query$TopPraises$topPraises<
+                          Query$TopPraises$topPraises>?>)
+              _fn) =>
+      call(
+          topPraises: _fn(_instance.topPraises.map((e) => e == null
+              ? null
+              : CopyWith$Query$TopPraises$topPraises(e, (i) => i))).toList());
+}
+
+class _CopyWithStubImpl$Query$TopPraises<TRes>
+    implements CopyWith$Query$TopPraises<TRes> {
+  _CopyWithStubImpl$Query$TopPraises(this._res);
+
+  TRes _res;
+
+  call({List<Query$TopPraises$topPraises?>? topPraises, String? $__typename}) =>
+      _res;
+  topPraises(_fn) => _res;
+}
+
+const documentNodeQueryTopPraises = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.query,
+      name: NameNode(value: 'TopPraises'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'first')),
+            type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'topPraises'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'first'),
+                  value: VariableNode(name: NameNode(value: 'first')))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'id'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: 'title'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: 'count'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+]);
+Query$TopPraises _parserFn$Query$TopPraises(Map<String, dynamic> data) =>
+    Query$TopPraises.fromJson(data);
+
+class Options$Query$TopPraises extends graphql.QueryOptions<Query$TopPraises> {
+  Options$Query$TopPraises(
+      {String? operationName,
+      required Variables$Query$TopPraises variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      Duration? pollInterval,
+      graphql.Context? context})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            pollInterval: pollInterval,
+            context: context,
+            document: documentNodeQueryTopPraises,
+            parserFn: _parserFn$Query$TopPraises);
+}
+
+class WatchOptions$Query$TopPraises
+    extends graphql.WatchQueryOptions<Query$TopPraises> {
+  WatchOptions$Query$TopPraises(
+      {String? operationName,
+      required Variables$Query$TopPraises variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeQueryTopPraises,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Query$TopPraises);
+}
+
+class FetchMoreOptions$Query$TopPraises extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$TopPraises(
+      {required graphql.UpdateQuery updateQuery,
+      required Variables$Query$TopPraises variables})
+      : super(
+            updateQuery: updateQuery,
+            variables: variables.toJson(),
+            document: documentNodeQueryTopPraises);
+}
+
+extension ClientExtension$Query$TopPraises on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$TopPraises>> query$TopPraises(
+          Options$Query$TopPraises options) async =>
+      await this.query(options);
+  graphql.ObservableQuery<Query$TopPraises> watchQuery$TopPraises(
+          WatchOptions$Query$TopPraises options) =>
+      this.watchQuery(options);
+  void writeQuery$TopPraises(
+          {required Query$TopPraises data,
+          required Variables$Query$TopPraises variables,
+          bool broadcast = true}) =>
+      this.writeQuery(
+          graphql.Request(
+              operation:
+                  graphql.Operation(document: documentNodeQueryTopPraises),
+              variables: variables.toJson()),
+          data: data.toJson(),
+          broadcast: broadcast);
+  Query$TopPraises? readQuery$TopPraises(
+      {required Variables$Query$TopPraises variables, bool optimistic = true}) {
+    final result = this.readQuery(
+        graphql.Request(
+            operation: graphql.Operation(document: documentNodeQueryTopPraises),
+            variables: variables.toJson()),
+        optimistic: optimistic);
+    return result == null ? null : Query$TopPraises.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$TopPraises> useQuery$TopPraises(
+        Options$Query$TopPraises options) =>
+    graphql_flutter.useQuery(options);
+graphql.ObservableQuery<Query$TopPraises> useWatchQuery$TopPraises(
+        WatchOptions$Query$TopPraises options) =>
+    graphql_flutter.useWatchQuery(options);
+
+class Query$TopPraises$Widget extends graphql_flutter.Query<Query$TopPraises> {
+  Query$TopPraises$Widget(
+      {widgets.Key? key,
+      required Options$Query$TopPraises options,
+      required graphql_flutter.QueryBuilder<Query$TopPraises> builder})
+      : super(key: key, options: options, builder: builder);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$TopPraises$topPraises {
+  Query$TopPraises$topPraises(
+      {required this.id,
+      required this.title,
+      required this.count,
+      required this.$__typename});
+
+  @override
+  factory Query$TopPraises$topPraises.fromJson(Map<String, dynamic> json) =>
+      _$Query$TopPraises$topPraisesFromJson(json);
+
+  final String id;
+
+  final String title;
+
+  final int count;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$Query$TopPraises$topPraisesToJson(this);
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$count = count;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$title, l$count, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$TopPraises$topPraises) ||
+        runtimeType != other.runtimeType) return false;
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) return false;
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) return false;
+    final l$count = count;
+    final lOther$count = other.count;
+    if (l$count != lOther$count) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$TopPraises$topPraises
+    on Query$TopPraises$topPraises {
+  CopyWith$Query$TopPraises$topPraises<Query$TopPraises$topPraises>
+      get copyWith => CopyWith$Query$TopPraises$topPraises(this, (i) => i);
+}
+
+abstract class CopyWith$Query$TopPraises$topPraises<TRes> {
+  factory CopyWith$Query$TopPraises$topPraises(
+          Query$TopPraises$topPraises instance,
+          TRes Function(Query$TopPraises$topPraises) then) =
+      _CopyWithImpl$Query$TopPraises$topPraises;
+
+  factory CopyWith$Query$TopPraises$topPraises.stub(TRes res) =
+      _CopyWithStubImpl$Query$TopPraises$topPraises;
+
+  TRes call({String? id, String? title, int? count, String? $__typename});
+}
+
+class _CopyWithImpl$Query$TopPraises$topPraises<TRes>
+    implements CopyWith$Query$TopPraises$topPraises<TRes> {
+  _CopyWithImpl$Query$TopPraises$topPraises(this._instance, this._then);
+
+  final Query$TopPraises$topPraises _instance;
+
+  final TRes Function(Query$TopPraises$topPraises) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? id = _undefined,
+          Object? title = _undefined,
+          Object? count = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$TopPraises$topPraises(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          title: title == _undefined || title == null
+              ? _instance.title
+              : (title as String),
+          count: count == _undefined || count == null
+              ? _instance.count
+              : (count as int),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$TopPraises$topPraises<TRes>
+    implements CopyWith$Query$TopPraises$topPraises<TRes> {
+  _CopyWithStubImpl$Query$TopPraises$topPraises(this._res);
+
+  TRes _res;
+
+  call({String? id, String? title, int? count, String? $__typename}) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
 class Variables$Query$TopLetters {
   Variables$Query$TopLetters({this.first});
 

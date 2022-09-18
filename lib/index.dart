@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hokkori/mail_page.dart';
 import 'package:hokkori/notification_page.dart';
 import 'package:hokkori/pages/home/home_page.dart';
+import 'package:hokkori/pages/mail/mail_page.dart';
 import 'package:hokkori/pages/post/post_page.dart';
 import 'package:hokkori/pages/search/search_page.dart';
 import 'package:hokkori/utils/colors.dart';
