@@ -55,7 +55,7 @@ Query$TopPraises$posts$edges _$Query$TopPraises$posts$edgesFromJson(
     Query$TopPraises$posts$edges(
       node: json['node'] == null
           ? null
-          : Query$TopPraises$posts$edges$node.fromJson(
+          : Fragment$PraiseSummary.fromJson(
               json['node'] as Map<String, dynamic>),
       $__typename: json['__typename'] as String,
     );
@@ -64,66 +64,6 @@ Map<String, dynamic> _$Query$TopPraises$posts$edgesToJson(
         Query$TopPraises$posts$edges instance) =>
     <String, dynamic>{
       'node': instance.node?.toJson(),
-      '__typename': instance.$__typename,
-    };
-
-Query$TopPraises$posts$edges$node _$Query$TopPraises$posts$edges$nodeFromJson(
-        Map<String, dynamic> json) =>
-    Query$TopPraises$posts$edges$node(
-      title: json['title'] as String,
-      id: json['id'] as String,
-      content: json['content'] as String,
-      hashtags: (json['hashtags'] as List<dynamic>?)
-          ?.map((e) => Query$TopPraises$posts$edges$node$hashtags.fromJson(
-              e as Map<String, dynamic>))
-          .toList(),
-      owner: Query$TopPraises$posts$edges$node$owner.fromJson(
-          json['owner'] as Map<String, dynamic>),
-      $__typename: json['__typename'] as String,
-    );
-
-Map<String, dynamic> _$Query$TopPraises$posts$edges$nodeToJson(
-        Query$TopPraises$posts$edges$node instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'id': instance.id,
-      'content': instance.content,
-      'hashtags': instance.hashtags?.map((e) => e.toJson()).toList(),
-      'owner': instance.owner.toJson(),
-      '__typename': instance.$__typename,
-    };
-
-Query$TopPraises$posts$edges$node$hashtags
-    _$Query$TopPraises$posts$edges$node$hashtagsFromJson(
-            Map<String, dynamic> json) =>
-        Query$TopPraises$posts$edges$node$hashtags(
-          id: json['id'] as String,
-          title: json['title'] as String,
-          $__typename: json['__typename'] as String,
-        );
-
-Map<String, dynamic> _$Query$TopPraises$posts$edges$node$hashtagsToJson(
-        Query$TopPraises$posts$edges$node$hashtags instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      '__typename': instance.$__typename,
-    };
-
-Query$TopPraises$posts$edges$node$owner
-    _$Query$TopPraises$posts$edges$node$ownerFromJson(
-            Map<String, dynamic> json) =>
-        Query$TopPraises$posts$edges$node$owner(
-          id: json['id'] as String,
-          name: json['name'] as String,
-          $__typename: json['__typename'] as String,
-        );
-
-Map<String, dynamic> _$Query$TopPraises$posts$edges$node$ownerToJson(
-        Query$TopPraises$posts$edges$node$owner instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
       '__typename': instance.$__typename,
     };
 

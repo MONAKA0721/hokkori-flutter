@@ -7,3 +7,17 @@ fragment LetterSummary on Post {
     name
   }
 }
+
+fragment PraiseSummary on Post {
+  title
+  id
+  content
+  hashtags {
+    id
+    title
+  }
+  owner {
+    id
+    name
+  }
+}

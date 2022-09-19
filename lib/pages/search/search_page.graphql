@@ -31,6 +31,20 @@ query SearchCategories($searchText: String) {
   }
 }
 
+query CategoryPraises($categoryID: ID, $first: Int) {
+  posts(
+    where: { type: praise, hasCategoryWith: { id: $categoryID } }
+    orderBy: { direction: DESC, field: CREATE_TIME }
+    first: $first
+  ) {
+    edges {
+      node {
+        ...PraiseSummary
+      }
+    }
+  }
+}
+
 query CategoryLetters($categoryID: ID, $first: Int) {
   posts(
     where: { type: letter, hasCategoryWith: { id: $categoryID } }

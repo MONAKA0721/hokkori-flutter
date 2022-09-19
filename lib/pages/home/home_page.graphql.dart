@@ -212,74 +212,9 @@ const documentNodeQueryTopPraises = DocumentNode(definitions: [
                         arguments: [],
                         directives: [],
                         selectionSet: SelectionSetNode(selections: [
-                          FieldNode(
-                              name: NameNode(value: 'title'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: 'id'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: 'content'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: 'hashtags'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: SelectionSetNode(selections: [
-                                FieldNode(
-                                    name: NameNode(value: 'id'),
-                                    alias: null,
-                                    arguments: [],
-                                    directives: [],
-                                    selectionSet: null),
-                                FieldNode(
-                                    name: NameNode(value: 'title'),
-                                    alias: null,
-                                    arguments: [],
-                                    directives: [],
-                                    selectionSet: null),
-                                FieldNode(
-                                    name: NameNode(value: '__typename'),
-                                    alias: null,
-                                    arguments: [],
-                                    directives: [],
-                                    selectionSet: null)
-                              ])),
-                          FieldNode(
-                              name: NameNode(value: 'owner'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: SelectionSetNode(selections: [
-                                FieldNode(
-                                    name: NameNode(value: 'id'),
-                                    alias: null,
-                                    arguments: [],
-                                    directives: [],
-                                    selectionSet: null),
-                                FieldNode(
-                                    name: NameNode(value: 'name'),
-                                    alias: null,
-                                    arguments: [],
-                                    directives: [],
-                                    selectionSet: null),
-                                FieldNode(
-                                    name: NameNode(value: '__typename'),
-                                    alias: null,
-                                    arguments: [],
-                                    directives: [],
-                                    selectionSet: null)
-                              ])),
+                          FragmentSpreadNode(
+                              name: NameNode(value: 'PraiseSummary'),
+                              directives: []),
                           FieldNode(
                               name: NameNode(value: '__typename'),
                               alias: null,
@@ -308,6 +243,7 @@ const documentNodeQueryTopPraises = DocumentNode(definitions: [
             directives: [],
             selectionSet: null)
       ])),
+  fragmentDefinitionPraiseSummary,
 ]);
 Query$TopPraises _parserFn$Query$TopPraises(Map<String, dynamic> data) =>
     Query$TopPraises.fromJson(data);
@@ -541,7 +477,7 @@ class Query$TopPraises$posts$edges {
   factory Query$TopPraises$posts$edges.fromJson(Map<String, dynamic> json) =>
       _$Query$TopPraises$posts$edgesFromJson(json);
 
-  final Query$TopPraises$posts$edges$node? node;
+  final Fragment$PraiseSummary? node;
 
   @JsonKey(name: '__typename')
   final String $__typename;
@@ -583,8 +519,8 @@ abstract class CopyWith$Query$TopPraises$posts$edges<TRes> {
   factory CopyWith$Query$TopPraises$posts$edges.stub(TRes res) =
       _CopyWithStubImpl$Query$TopPraises$posts$edges;
 
-  TRes call({Query$TopPraises$posts$edges$node? node, String? $__typename});
-  CopyWith$Query$TopPraises$posts$edges$node<TRes> get node;
+  TRes call({Fragment$PraiseSummary? node, String? $__typename});
+  CopyWith$Fragment$PraiseSummary<TRes> get node;
 }
 
 class _CopyWithImpl$Query$TopPraises$posts$edges<TRes>
@@ -601,16 +537,15 @@ class _CopyWithImpl$Query$TopPraises$posts$edges<TRes>
       _then(Query$TopPraises$posts$edges(
           node: node == _undefined
               ? _instance.node
-              : (node as Query$TopPraises$posts$edges$node?),
+              : (node as Fragment$PraiseSummary?),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
-  CopyWith$Query$TopPraises$posts$edges$node<TRes> get node {
+  CopyWith$Fragment$PraiseSummary<TRes> get node {
     final local$node = _instance.node;
     return local$node == null
-        ? CopyWith$Query$TopPraises$posts$edges$node.stub(_then(_instance))
-        : CopyWith$Query$TopPraises$posts$edges$node(
-            local$node, (e) => call(node: e));
+        ? CopyWith$Fragment$PraiseSummary.stub(_then(_instance))
+        : CopyWith$Fragment$PraiseSummary(local$node, (e) => call(node: e));
   }
 }
 
@@ -620,391 +555,9 @@ class _CopyWithStubImpl$Query$TopPraises$posts$edges<TRes>
 
   TRes _res;
 
-  call({Query$TopPraises$posts$edges$node? node, String? $__typename}) => _res;
-  CopyWith$Query$TopPraises$posts$edges$node<TRes> get node =>
-      CopyWith$Query$TopPraises$posts$edges$node.stub(_res);
-}
-
-@JsonSerializable(explicitToJson: true)
-class Query$TopPraises$posts$edges$node {
-  Query$TopPraises$posts$edges$node(
-      {required this.title,
-      required this.id,
-      required this.content,
-      this.hashtags,
-      required this.owner,
-      required this.$__typename});
-
-  @override
-  factory Query$TopPraises$posts$edges$node.fromJson(
-          Map<String, dynamic> json) =>
-      _$Query$TopPraises$posts$edges$nodeFromJson(json);
-
-  final String title;
-
-  final String id;
-
-  final String content;
-
-  final List<Query$TopPraises$posts$edges$node$hashtags>? hashtags;
-
-  final Query$TopPraises$posts$edges$node$owner owner;
-
-  @JsonKey(name: '__typename')
-  final String $__typename;
-
-  Map<String, dynamic> toJson() =>
-      _$Query$TopPraises$posts$edges$nodeToJson(this);
-  int get hashCode {
-    final l$title = title;
-    final l$id = id;
-    final l$content = content;
-    final l$hashtags = hashtags;
-    final l$owner = owner;
-    final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$title,
-      l$id,
-      l$content,
-      l$hashtags == null ? null : Object.hashAll(l$hashtags.map((v) => v)),
-      l$owner,
-      l$$__typename
-    ]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$TopPraises$posts$edges$node) ||
-        runtimeType != other.runtimeType) return false;
-    final l$title = title;
-    final lOther$title = other.title;
-    if (l$title != lOther$title) return false;
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
-    final l$content = content;
-    final lOther$content = other.content;
-    if (l$content != lOther$content) return false;
-    final l$hashtags = hashtags;
-    final lOther$hashtags = other.hashtags;
-    if (l$hashtags != null && lOther$hashtags != null) {
-      if (l$hashtags.length != lOther$hashtags.length) return false;
-      for (int i = 0; i < l$hashtags.length; i++) {
-        final l$hashtags$entry = l$hashtags[i];
-        final lOther$hashtags$entry = lOther$hashtags[i];
-        if (l$hashtags$entry != lOther$hashtags$entry) return false;
-      }
-    } else if (l$hashtags != lOther$hashtags) {
-      return false;
-    }
-
-    final l$owner = owner;
-    final lOther$owner = other.owner;
-    if (l$owner != lOther$owner) return false;
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$TopPraises$posts$edges$node
-    on Query$TopPraises$posts$edges$node {
-  CopyWith$Query$TopPraises$posts$edges$node<Query$TopPraises$posts$edges$node>
-      get copyWith =>
-          CopyWith$Query$TopPraises$posts$edges$node(this, (i) => i);
-}
-
-abstract class CopyWith$Query$TopPraises$posts$edges$node<TRes> {
-  factory CopyWith$Query$TopPraises$posts$edges$node(
-          Query$TopPraises$posts$edges$node instance,
-          TRes Function(Query$TopPraises$posts$edges$node) then) =
-      _CopyWithImpl$Query$TopPraises$posts$edges$node;
-
-  factory CopyWith$Query$TopPraises$posts$edges$node.stub(TRes res) =
-      _CopyWithStubImpl$Query$TopPraises$posts$edges$node;
-
-  TRes call(
-      {String? title,
-      String? id,
-      String? content,
-      List<Query$TopPraises$posts$edges$node$hashtags>? hashtags,
-      Query$TopPraises$posts$edges$node$owner? owner,
-      String? $__typename});
-  TRes hashtags(
-      Iterable<Query$TopPraises$posts$edges$node$hashtags>? Function(
-              Iterable<
-                  CopyWith$Query$TopPraises$posts$edges$node$hashtags<
-                      Query$TopPraises$posts$edges$node$hashtags>>?)
-          _fn);
-  CopyWith$Query$TopPraises$posts$edges$node$owner<TRes> get owner;
-}
-
-class _CopyWithImpl$Query$TopPraises$posts$edges$node<TRes>
-    implements CopyWith$Query$TopPraises$posts$edges$node<TRes> {
-  _CopyWithImpl$Query$TopPraises$posts$edges$node(this._instance, this._then);
-
-  final Query$TopPraises$posts$edges$node _instance;
-
-  final TRes Function(Query$TopPraises$posts$edges$node) _then;
-
-  static const _undefined = {};
-
-  TRes call(
-          {Object? title = _undefined,
-          Object? id = _undefined,
-          Object? content = _undefined,
-          Object? hashtags = _undefined,
-          Object? owner = _undefined,
-          Object? $__typename = _undefined}) =>
-      _then(Query$TopPraises$posts$edges$node(
-          title: title == _undefined || title == null
-              ? _instance.title
-              : (title as String),
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          content: content == _undefined || content == null
-              ? _instance.content
-              : (content as String),
-          hashtags: hashtags == _undefined
-              ? _instance.hashtags
-              : (hashtags as List<Query$TopPraises$posts$edges$node$hashtags>?),
-          owner: owner == _undefined || owner == null
-              ? _instance.owner
-              : (owner as Query$TopPraises$posts$edges$node$owner),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
-  TRes hashtags(
-          Iterable<Query$TopPraises$posts$edges$node$hashtags>? Function(
-                  Iterable<
-                      CopyWith$Query$TopPraises$posts$edges$node$hashtags<
-                          Query$TopPraises$posts$edges$node$hashtags>>?)
-              _fn) =>
-      call(
-          hashtags: _fn(_instance.hashtags?.map((e) =>
-              CopyWith$Query$TopPraises$posts$edges$node$hashtags(
-                  e, (i) => i)))?.toList());
-  CopyWith$Query$TopPraises$posts$edges$node$owner<TRes> get owner {
-    final local$owner = _instance.owner;
-    return CopyWith$Query$TopPraises$posts$edges$node$owner(
-        local$owner, (e) => call(owner: e));
-  }
-}
-
-class _CopyWithStubImpl$Query$TopPraises$posts$edges$node<TRes>
-    implements CopyWith$Query$TopPraises$posts$edges$node<TRes> {
-  _CopyWithStubImpl$Query$TopPraises$posts$edges$node(this._res);
-
-  TRes _res;
-
-  call(
-          {String? title,
-          String? id,
-          String? content,
-          List<Query$TopPraises$posts$edges$node$hashtags>? hashtags,
-          Query$TopPraises$posts$edges$node$owner? owner,
-          String? $__typename}) =>
-      _res;
-  hashtags(_fn) => _res;
-  CopyWith$Query$TopPraises$posts$edges$node$owner<TRes> get owner =>
-      CopyWith$Query$TopPraises$posts$edges$node$owner.stub(_res);
-}
-
-@JsonSerializable(explicitToJson: true)
-class Query$TopPraises$posts$edges$node$hashtags {
-  Query$TopPraises$posts$edges$node$hashtags(
-      {required this.id, required this.title, required this.$__typename});
-
-  @override
-  factory Query$TopPraises$posts$edges$node$hashtags.fromJson(
-          Map<String, dynamic> json) =>
-      _$Query$TopPraises$posts$edges$node$hashtagsFromJson(json);
-
-  final String id;
-
-  final String title;
-
-  @JsonKey(name: '__typename')
-  final String $__typename;
-
-  Map<String, dynamic> toJson() =>
-      _$Query$TopPraises$posts$edges$node$hashtagsToJson(this);
-  int get hashCode {
-    final l$id = id;
-    final l$title = title;
-    final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$title, l$$__typename]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$TopPraises$posts$edges$node$hashtags) ||
-        runtimeType != other.runtimeType) return false;
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
-    final l$title = title;
-    final lOther$title = other.title;
-    if (l$title != lOther$title) return false;
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$TopPraises$posts$edges$node$hashtags
-    on Query$TopPraises$posts$edges$node$hashtags {
-  CopyWith$Query$TopPraises$posts$edges$node$hashtags<
-          Query$TopPraises$posts$edges$node$hashtags>
-      get copyWith =>
-          CopyWith$Query$TopPraises$posts$edges$node$hashtags(this, (i) => i);
-}
-
-abstract class CopyWith$Query$TopPraises$posts$edges$node$hashtags<TRes> {
-  factory CopyWith$Query$TopPraises$posts$edges$node$hashtags(
-          Query$TopPraises$posts$edges$node$hashtags instance,
-          TRes Function(Query$TopPraises$posts$edges$node$hashtags) then) =
-      _CopyWithImpl$Query$TopPraises$posts$edges$node$hashtags;
-
-  factory CopyWith$Query$TopPraises$posts$edges$node$hashtags.stub(TRes res) =
-      _CopyWithStubImpl$Query$TopPraises$posts$edges$node$hashtags;
-
-  TRes call({String? id, String? title, String? $__typename});
-}
-
-class _CopyWithImpl$Query$TopPraises$posts$edges$node$hashtags<TRes>
-    implements CopyWith$Query$TopPraises$posts$edges$node$hashtags<TRes> {
-  _CopyWithImpl$Query$TopPraises$posts$edges$node$hashtags(
-      this._instance, this._then);
-
-  final Query$TopPraises$posts$edges$node$hashtags _instance;
-
-  final TRes Function(Query$TopPraises$posts$edges$node$hashtags) _then;
-
-  static const _undefined = {};
-
-  TRes call(
-          {Object? id = _undefined,
-          Object? title = _undefined,
-          Object? $__typename = _undefined}) =>
-      _then(Query$TopPraises$posts$edges$node$hashtags(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          title: title == _undefined || title == null
-              ? _instance.title
-              : (title as String),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
-}
-
-class _CopyWithStubImpl$Query$TopPraises$posts$edges$node$hashtags<TRes>
-    implements CopyWith$Query$TopPraises$posts$edges$node$hashtags<TRes> {
-  _CopyWithStubImpl$Query$TopPraises$posts$edges$node$hashtags(this._res);
-
-  TRes _res;
-
-  call({String? id, String? title, String? $__typename}) => _res;
-}
-
-@JsonSerializable(explicitToJson: true)
-class Query$TopPraises$posts$edges$node$owner {
-  Query$TopPraises$posts$edges$node$owner(
-      {required this.id, required this.name, required this.$__typename});
-
-  @override
-  factory Query$TopPraises$posts$edges$node$owner.fromJson(
-          Map<String, dynamic> json) =>
-      _$Query$TopPraises$posts$edges$node$ownerFromJson(json);
-
-  final String id;
-
-  final String name;
-
-  @JsonKey(name: '__typename')
-  final String $__typename;
-
-  Map<String, dynamic> toJson() =>
-      _$Query$TopPraises$posts$edges$node$ownerToJson(this);
-  int get hashCode {
-    final l$id = id;
-    final l$name = name;
-    final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$name, l$$__typename]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$TopPraises$posts$edges$node$owner) ||
-        runtimeType != other.runtimeType) return false;
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
-    final l$name = name;
-    final lOther$name = other.name;
-    if (l$name != lOther$name) return false;
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$TopPraises$posts$edges$node$owner
-    on Query$TopPraises$posts$edges$node$owner {
-  CopyWith$Query$TopPraises$posts$edges$node$owner<
-          Query$TopPraises$posts$edges$node$owner>
-      get copyWith =>
-          CopyWith$Query$TopPraises$posts$edges$node$owner(this, (i) => i);
-}
-
-abstract class CopyWith$Query$TopPraises$posts$edges$node$owner<TRes> {
-  factory CopyWith$Query$TopPraises$posts$edges$node$owner(
-          Query$TopPraises$posts$edges$node$owner instance,
-          TRes Function(Query$TopPraises$posts$edges$node$owner) then) =
-      _CopyWithImpl$Query$TopPraises$posts$edges$node$owner;
-
-  factory CopyWith$Query$TopPraises$posts$edges$node$owner.stub(TRes res) =
-      _CopyWithStubImpl$Query$TopPraises$posts$edges$node$owner;
-
-  TRes call({String? id, String? name, String? $__typename});
-}
-
-class _CopyWithImpl$Query$TopPraises$posts$edges$node$owner<TRes>
-    implements CopyWith$Query$TopPraises$posts$edges$node$owner<TRes> {
-  _CopyWithImpl$Query$TopPraises$posts$edges$node$owner(
-      this._instance, this._then);
-
-  final Query$TopPraises$posts$edges$node$owner _instance;
-
-  final TRes Function(Query$TopPraises$posts$edges$node$owner) _then;
-
-  static const _undefined = {};
-
-  TRes call(
-          {Object? id = _undefined,
-          Object? name = _undefined,
-          Object? $__typename = _undefined}) =>
-      _then(Query$TopPraises$posts$edges$node$owner(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          name: name == _undefined || name == null
-              ? _instance.name
-              : (name as String),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
-}
-
-class _CopyWithStubImpl$Query$TopPraises$posts$edges$node$owner<TRes>
-    implements CopyWith$Query$TopPraises$posts$edges$node$owner<TRes> {
-  _CopyWithStubImpl$Query$TopPraises$posts$edges$node$owner(this._res);
-
-  TRes _res;
-
-  call({String? id, String? name, String? $__typename}) => _res;
+  call({Fragment$PraiseSummary? node, String? $__typename}) => _res;
+  CopyWith$Fragment$PraiseSummary<TRes> get node =>
+      CopyWith$Fragment$PraiseSummary.stub(_res);
 }
 
 @JsonSerializable(explicitToJson: true)

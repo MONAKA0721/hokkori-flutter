@@ -6,17 +6,7 @@ query TopPraises($first: Int) {
   ) {
     edges {
       node {
-        title
-        id
-        content
-        hashtags {
-          id
-          title
-        }
-        owner {
-          id
-          name
-        }
+        ...PraiseSummary
       }
     }
   }

@@ -194,6 +194,71 @@ Map<String, dynamic> _$Query$SearchCategories$categories$edges$nodeToJson(
       '__typename': instance.$__typename,
     };
 
+Variables$Query$CategoryPraises _$Variables$Query$CategoryPraisesFromJson(
+        Map<String, dynamic> json) =>
+    Variables$Query$CategoryPraises(
+      categoryID: json['categoryID'] as String?,
+      first: json['first'] as int?,
+    );
+
+Map<String, dynamic> _$Variables$Query$CategoryPraisesToJson(
+        Variables$Query$CategoryPraises instance) =>
+    <String, dynamic>{
+      'categoryID': instance.categoryID,
+      'first': instance.first,
+    };
+
+Query$CategoryPraises _$Query$CategoryPraisesFromJson(
+        Map<String, dynamic> json) =>
+    Query$CategoryPraises(
+      posts: Query$CategoryPraises$posts.fromJson(
+          json['posts'] as Map<String, dynamic>),
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$Query$CategoryPraisesToJson(
+        Query$CategoryPraises instance) =>
+    <String, dynamic>{
+      'posts': instance.posts.toJson(),
+      '__typename': instance.$__typename,
+    };
+
+Query$CategoryPraises$posts _$Query$CategoryPraises$postsFromJson(
+        Map<String, dynamic> json) =>
+    Query$CategoryPraises$posts(
+      edges: (json['edges'] as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : Query$CategoryPraises$posts$edges.fromJson(
+                  e as Map<String, dynamic>))
+          .toList(),
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$Query$CategoryPraises$postsToJson(
+        Query$CategoryPraises$posts instance) =>
+    <String, dynamic>{
+      'edges': instance.edges?.map((e) => e?.toJson()).toList(),
+      '__typename': instance.$__typename,
+    };
+
+Query$CategoryPraises$posts$edges _$Query$CategoryPraises$posts$edgesFromJson(
+        Map<String, dynamic> json) =>
+    Query$CategoryPraises$posts$edges(
+      node: json['node'] == null
+          ? null
+          : Fragment$PraiseSummary.fromJson(
+              json['node'] as Map<String, dynamic>),
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$Query$CategoryPraises$posts$edgesToJson(
+        Query$CategoryPraises$posts$edges instance) =>
+    <String, dynamic>{
+      'node': instance.node?.toJson(),
+      '__typename': instance.$__typename,
+    };
+
 Variables$Query$CategoryLetters _$Variables$Query$CategoryLettersFromJson(
         Map<String, dynamic> json) =>
     Variables$Query$CategoryLetters(

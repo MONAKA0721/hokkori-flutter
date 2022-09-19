@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/pages/common/letter.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
@@ -11,7 +10,6 @@ class TopLetters extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final result = useQuery$TopLetters(Options$Query$TopLetters(
-            fetchPolicy: FetchPolicy.networkOnly,
             variables: Variables$Query$TopLetters(first: 5)))
         .result;
 

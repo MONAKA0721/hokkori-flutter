@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hokkori/pages/common/common.graphql.dart';
 import 'package:hokkori/pages/home/hashtag.dart';
-import 'package:hokkori/pages/home/home_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 
 class Praise extends StatelessWidget {
-  final Query$TopPraises$posts$edges$node praise;
+  final Fragment$PraiseSummary praise;
   const Praise({super.key, required this.praise});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 20, right: 5, left: 5),
         decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
+                color: Colors.grey.withOpacity(0.4),
                 spreadRadius: 0.1,
-                blurRadius: 0.1,
-                offset: const Offset(0, 0.1), // changes position of shadow
+                blurRadius: 5,
               ),
             ],
             color: Colors.white,

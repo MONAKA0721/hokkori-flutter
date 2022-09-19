@@ -10,14 +10,13 @@ class Letter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 20, right: 5, left: 5),
         decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 0.1,
-                blurRadius: 0.1,
-                offset: const Offset(0, 0.1), // changes position of shadow
+                blurRadius: 5,
               ),
             ],
             color: Colors.white,

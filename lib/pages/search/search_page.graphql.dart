@@ -1696,6 +1696,599 @@ class _CopyWithStubImpl$Query$SearchCategories$categories$edges$node<TRes>
 }
 
 @JsonSerializable(explicitToJson: true)
+class Variables$Query$CategoryPraises {
+  Variables$Query$CategoryPraises({this.categoryID, this.first});
+
+  @override
+  factory Variables$Query$CategoryPraises.fromJson(Map<String, dynamic> json) =>
+      _$Variables$Query$CategoryPraisesFromJson(json);
+
+  final String? categoryID;
+
+  final int? first;
+
+  Map<String, dynamic> toJson() =>
+      _$Variables$Query$CategoryPraisesToJson(this);
+  int get hashCode {
+    final l$categoryID = categoryID;
+    final l$first = first;
+    return Object.hashAll([l$categoryID, l$first]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Variables$Query$CategoryPraises) ||
+        runtimeType != other.runtimeType) return false;
+    final l$categoryID = categoryID;
+    final lOther$categoryID = other.categoryID;
+    if (l$categoryID != lOther$categoryID) return false;
+    final l$first = first;
+    final lOther$first = other.first;
+    if (l$first != lOther$first) return false;
+    return true;
+  }
+
+  CopyWith$Variables$Query$CategoryPraises<Variables$Query$CategoryPraises>
+      get copyWith => CopyWith$Variables$Query$CategoryPraises(this, (i) => i);
+}
+
+abstract class CopyWith$Variables$Query$CategoryPraises<TRes> {
+  factory CopyWith$Variables$Query$CategoryPraises(
+          Variables$Query$CategoryPraises instance,
+          TRes Function(Variables$Query$CategoryPraises) then) =
+      _CopyWithImpl$Variables$Query$CategoryPraises;
+
+  factory CopyWith$Variables$Query$CategoryPraises.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$CategoryPraises;
+
+  TRes call({String? categoryID, int? first});
+}
+
+class _CopyWithImpl$Variables$Query$CategoryPraises<TRes>
+    implements CopyWith$Variables$Query$CategoryPraises<TRes> {
+  _CopyWithImpl$Variables$Query$CategoryPraises(this._instance, this._then);
+
+  final Variables$Query$CategoryPraises _instance;
+
+  final TRes Function(Variables$Query$CategoryPraises) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? categoryID = _undefined, Object? first = _undefined}) =>
+      _then(Variables$Query$CategoryPraises(
+          categoryID: categoryID == _undefined
+              ? _instance.categoryID
+              : (categoryID as String?),
+          first: first == _undefined ? _instance.first : (first as int?)));
+}
+
+class _CopyWithStubImpl$Variables$Query$CategoryPraises<TRes>
+    implements CopyWith$Variables$Query$CategoryPraises<TRes> {
+  _CopyWithStubImpl$Variables$Query$CategoryPraises(this._res);
+
+  TRes _res;
+
+  call({String? categoryID, int? first}) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$CategoryPraises {
+  Query$CategoryPraises({required this.posts, required this.$__typename});
+
+  @override
+  factory Query$CategoryPraises.fromJson(Map<String, dynamic> json) =>
+      _$Query$CategoryPraisesFromJson(json);
+
+  final Query$CategoryPraises$posts posts;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$Query$CategoryPraisesToJson(this);
+  int get hashCode {
+    final l$posts = posts;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$posts, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$CategoryPraises) || runtimeType != other.runtimeType)
+      return false;
+    final l$posts = posts;
+    final lOther$posts = other.posts;
+    if (l$posts != lOther$posts) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$CategoryPraises on Query$CategoryPraises {
+  CopyWith$Query$CategoryPraises<Query$CategoryPraises> get copyWith =>
+      CopyWith$Query$CategoryPraises(this, (i) => i);
+}
+
+abstract class CopyWith$Query$CategoryPraises<TRes> {
+  factory CopyWith$Query$CategoryPraises(Query$CategoryPraises instance,
+          TRes Function(Query$CategoryPraises) then) =
+      _CopyWithImpl$Query$CategoryPraises;
+
+  factory CopyWith$Query$CategoryPraises.stub(TRes res) =
+      _CopyWithStubImpl$Query$CategoryPraises;
+
+  TRes call({Query$CategoryPraises$posts? posts, String? $__typename});
+  CopyWith$Query$CategoryPraises$posts<TRes> get posts;
+}
+
+class _CopyWithImpl$Query$CategoryPraises<TRes>
+    implements CopyWith$Query$CategoryPraises<TRes> {
+  _CopyWithImpl$Query$CategoryPraises(this._instance, this._then);
+
+  final Query$CategoryPraises _instance;
+
+  final TRes Function(Query$CategoryPraises) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? posts = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$CategoryPraises(
+          posts: posts == _undefined || posts == null
+              ? _instance.posts
+              : (posts as Query$CategoryPraises$posts),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Query$CategoryPraises$posts<TRes> get posts {
+    final local$posts = _instance.posts;
+    return CopyWith$Query$CategoryPraises$posts(
+        local$posts, (e) => call(posts: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$CategoryPraises<TRes>
+    implements CopyWith$Query$CategoryPraises<TRes> {
+  _CopyWithStubImpl$Query$CategoryPraises(this._res);
+
+  TRes _res;
+
+  call({Query$CategoryPraises$posts? posts, String? $__typename}) => _res;
+  CopyWith$Query$CategoryPraises$posts<TRes> get posts =>
+      CopyWith$Query$CategoryPraises$posts.stub(_res);
+}
+
+const documentNodeQueryCategoryPraises = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.query,
+      name: NameNode(value: 'CategoryPraises'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'categoryID')),
+            type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'first')),
+            type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'posts'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'where'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'type'),
+                        value: EnumValueNode(name: NameNode(value: 'praise'))),
+                    ObjectFieldNode(
+                        name: NameNode(value: 'hasCategoryWith'),
+                        value: ObjectValueNode(fields: [
+                          ObjectFieldNode(
+                              name: NameNode(value: 'id'),
+                              value: VariableNode(
+                                  name: NameNode(value: 'categoryID')))
+                        ]))
+                  ])),
+              ArgumentNode(
+                  name: NameNode(value: 'orderBy'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'direction'),
+                        value: EnumValueNode(name: NameNode(value: 'DESC'))),
+                    ObjectFieldNode(
+                        name: NameNode(value: 'field'),
+                        value:
+                            EnumValueNode(name: NameNode(value: 'CREATE_TIME')))
+                  ])),
+              ArgumentNode(
+                  name: NameNode(value: 'first'),
+                  value: VariableNode(name: NameNode(value: 'first')))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'edges'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'node'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: SelectionSetNode(selections: [
+                          FragmentSpreadNode(
+                              name: NameNode(value: 'PraiseSummary'),
+                              directives: []),
+                          FieldNode(
+                              name: NameNode(value: '__typename'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null)
+                        ])),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+  fragmentDefinitionPraiseSummary,
+]);
+Query$CategoryPraises _parserFn$Query$CategoryPraises(
+        Map<String, dynamic> data) =>
+    Query$CategoryPraises.fromJson(data);
+
+class Options$Query$CategoryPraises
+    extends graphql.QueryOptions<Query$CategoryPraises> {
+  Options$Query$CategoryPraises(
+      {String? operationName,
+      Variables$Query$CategoryPraises? variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      Duration? pollInterval,
+      graphql.Context? context})
+      : super(
+            variables: variables?.toJson() ?? {},
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            pollInterval: pollInterval,
+            context: context,
+            document: documentNodeQueryCategoryPraises,
+            parserFn: _parserFn$Query$CategoryPraises);
+}
+
+class WatchOptions$Query$CategoryPraises
+    extends graphql.WatchQueryOptions<Query$CategoryPraises> {
+  WatchOptions$Query$CategoryPraises(
+      {String? operationName,
+      Variables$Query$CategoryPraises? variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables?.toJson() ?? {},
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeQueryCategoryPraises,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Query$CategoryPraises);
+}
+
+class FetchMoreOptions$Query$CategoryPraises extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$CategoryPraises(
+      {required graphql.UpdateQuery updateQuery,
+      Variables$Query$CategoryPraises? variables})
+      : super(
+            updateQuery: updateQuery,
+            variables: variables?.toJson() ?? {},
+            document: documentNodeQueryCategoryPraises);
+}
+
+extension ClientExtension$Query$CategoryPraises on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$CategoryPraises>> query$CategoryPraises(
+          [Options$Query$CategoryPraises? options]) async =>
+      await this.query(options ?? Options$Query$CategoryPraises());
+  graphql.ObservableQuery<Query$CategoryPraises> watchQuery$CategoryPraises(
+          [WatchOptions$Query$CategoryPraises? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$CategoryPraises());
+  void writeQuery$CategoryPraises(
+          {required Query$CategoryPraises data,
+          Variables$Query$CategoryPraises? variables,
+          bool broadcast = true}) =>
+      this.writeQuery(
+          graphql.Request(
+              operation:
+                  graphql.Operation(document: documentNodeQueryCategoryPraises),
+              variables: variables?.toJson() ?? const {}),
+          data: data.toJson(),
+          broadcast: broadcast);
+  Query$CategoryPraises? readQuery$CategoryPraises(
+      {Variables$Query$CategoryPraises? variables, bool optimistic = true}) {
+    final result = this.readQuery(
+        graphql.Request(
+            operation:
+                graphql.Operation(document: documentNodeQueryCategoryPraises),
+            variables: variables?.toJson() ?? const {}),
+        optimistic: optimistic);
+    return result == null ? null : Query$CategoryPraises.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$CategoryPraises> useQuery$CategoryPraises(
+        [Options$Query$CategoryPraises? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$CategoryPraises());
+graphql.ObservableQuery<Query$CategoryPraises> useWatchQuery$CategoryPraises(
+        [WatchOptions$Query$CategoryPraises? options]) =>
+    graphql_flutter
+        .useWatchQuery(options ?? WatchOptions$Query$CategoryPraises());
+
+class Query$CategoryPraises$Widget
+    extends graphql_flutter.Query<Query$CategoryPraises> {
+  Query$CategoryPraises$Widget(
+      {widgets.Key? key,
+      Options$Query$CategoryPraises? options,
+      required graphql_flutter.QueryBuilder<Query$CategoryPraises> builder})
+      : super(
+            key: key,
+            options: options ?? Options$Query$CategoryPraises(),
+            builder: builder);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$CategoryPraises$posts {
+  Query$CategoryPraises$posts({this.edges, required this.$__typename});
+
+  @override
+  factory Query$CategoryPraises$posts.fromJson(Map<String, dynamic> json) =>
+      _$Query$CategoryPraises$postsFromJson(json);
+
+  final List<Query$CategoryPraises$posts$edges?>? edges;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$Query$CategoryPraises$postsToJson(this);
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$CategoryPraises$posts) ||
+        runtimeType != other.runtimeType) return false;
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges != null && lOther$edges != null) {
+      if (l$edges.length != lOther$edges.length) return false;
+      for (int i = 0; i < l$edges.length; i++) {
+        final l$edges$entry = l$edges[i];
+        final lOther$edges$entry = lOther$edges[i];
+        if (l$edges$entry != lOther$edges$entry) return false;
+      }
+    } else if (l$edges != lOther$edges) {
+      return false;
+    }
+
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$CategoryPraises$posts
+    on Query$CategoryPraises$posts {
+  CopyWith$Query$CategoryPraises$posts<Query$CategoryPraises$posts>
+      get copyWith => CopyWith$Query$CategoryPraises$posts(this, (i) => i);
+}
+
+abstract class CopyWith$Query$CategoryPraises$posts<TRes> {
+  factory CopyWith$Query$CategoryPraises$posts(
+          Query$CategoryPraises$posts instance,
+          TRes Function(Query$CategoryPraises$posts) then) =
+      _CopyWithImpl$Query$CategoryPraises$posts;
+
+  factory CopyWith$Query$CategoryPraises$posts.stub(TRes res) =
+      _CopyWithStubImpl$Query$CategoryPraises$posts;
+
+  TRes call(
+      {List<Query$CategoryPraises$posts$edges?>? edges, String? $__typename});
+  TRes edges(
+      Iterable<Query$CategoryPraises$posts$edges?>? Function(
+              Iterable<
+                  CopyWith$Query$CategoryPraises$posts$edges<
+                      Query$CategoryPraises$posts$edges>?>?)
+          _fn);
+}
+
+class _CopyWithImpl$Query$CategoryPraises$posts<TRes>
+    implements CopyWith$Query$CategoryPraises$posts<TRes> {
+  _CopyWithImpl$Query$CategoryPraises$posts(this._instance, this._then);
+
+  final Query$CategoryPraises$posts _instance;
+
+  final TRes Function(Query$CategoryPraises$posts) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$CategoryPraises$posts(
+          edges: edges == _undefined
+              ? _instance.edges
+              : (edges as List<Query$CategoryPraises$posts$edges?>?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  TRes edges(
+          Iterable<Query$CategoryPraises$posts$edges?>? Function(
+                  Iterable<
+                      CopyWith$Query$CategoryPraises$posts$edges<
+                          Query$CategoryPraises$posts$edges>?>?)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges?.map((e) => e == null
+                  ? null
+                  : CopyWith$Query$CategoryPraises$posts$edges(e, (i) => i)))
+              ?.toList());
+}
+
+class _CopyWithStubImpl$Query$CategoryPraises$posts<TRes>
+    implements CopyWith$Query$CategoryPraises$posts<TRes> {
+  _CopyWithStubImpl$Query$CategoryPraises$posts(this._res);
+
+  TRes _res;
+
+  call(
+          {List<Query$CategoryPraises$posts$edges?>? edges,
+          String? $__typename}) =>
+      _res;
+  edges(_fn) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$CategoryPraises$posts$edges {
+  Query$CategoryPraises$posts$edges({this.node, required this.$__typename});
+
+  @override
+  factory Query$CategoryPraises$posts$edges.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$CategoryPraises$posts$edgesFromJson(json);
+
+  final Fragment$PraiseSummary? node;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$CategoryPraises$posts$edgesToJson(this);
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$node, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$CategoryPraises$posts$edges) ||
+        runtimeType != other.runtimeType) return false;
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$CategoryPraises$posts$edges
+    on Query$CategoryPraises$posts$edges {
+  CopyWith$Query$CategoryPraises$posts$edges<Query$CategoryPraises$posts$edges>
+      get copyWith =>
+          CopyWith$Query$CategoryPraises$posts$edges(this, (i) => i);
+}
+
+abstract class CopyWith$Query$CategoryPraises$posts$edges<TRes> {
+  factory CopyWith$Query$CategoryPraises$posts$edges(
+          Query$CategoryPraises$posts$edges instance,
+          TRes Function(Query$CategoryPraises$posts$edges) then) =
+      _CopyWithImpl$Query$CategoryPraises$posts$edges;
+
+  factory CopyWith$Query$CategoryPraises$posts$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$CategoryPraises$posts$edges;
+
+  TRes call({Fragment$PraiseSummary? node, String? $__typename});
+  CopyWith$Fragment$PraiseSummary<TRes> get node;
+}
+
+class _CopyWithImpl$Query$CategoryPraises$posts$edges<TRes>
+    implements CopyWith$Query$CategoryPraises$posts$edges<TRes> {
+  _CopyWithImpl$Query$CategoryPraises$posts$edges(this._instance, this._then);
+
+  final Query$CategoryPraises$posts$edges _instance;
+
+  final TRes Function(Query$CategoryPraises$posts$edges) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$CategoryPraises$posts$edges(
+          node: node == _undefined
+              ? _instance.node
+              : (node as Fragment$PraiseSummary?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Fragment$PraiseSummary<TRes> get node {
+    final local$node = _instance.node;
+    return local$node == null
+        ? CopyWith$Fragment$PraiseSummary.stub(_then(_instance))
+        : CopyWith$Fragment$PraiseSummary(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$CategoryPraises$posts$edges<TRes>
+    implements CopyWith$Query$CategoryPraises$posts$edges<TRes> {
+  _CopyWithStubImpl$Query$CategoryPraises$posts$edges(this._res);
+
+  TRes _res;
+
+  call({Fragment$PraiseSummary? node, String? $__typename}) => _res;
+  CopyWith$Fragment$PraiseSummary<TRes> get node =>
+      CopyWith$Fragment$PraiseSummary.stub(_res);
+}
+
+@JsonSerializable(explicitToJson: true)
 class Variables$Query$CategoryLetters {
   Variables$Query$CategoryLetters({this.categoryID, this.first});
 

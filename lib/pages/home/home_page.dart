@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/pages/common/letter.dart';
+import 'package:hokkori/pages/common/praise.dart';
 import 'package:hokkori/pages/home/home_page.graphql.dart';
-import 'package:hokkori/pages/home/praise.dart';
 import 'package:hokkori/pages/home/work.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/header.dart';
@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
       Expanded(
           child: Container(
               padding: const EdgeInsets.only(left: 16, right: 16, top: 12),
-              decoration: const BoxDecoration(color: backgroundColor),
+              decoration: const BoxDecoration(color: Colors.white),
               child: SingleChildScrollView(
                   child: Column(
                 children: const [
@@ -93,9 +93,22 @@ class TopPraises extends HookWidget {
     final praises = result.parsedData?.posts.edges ?? [];
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const Text(
-        "ほっこり",
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: const [
+          Icon(
+            Icons.favorite_border,
+            size: 30,
+            color: primaryColor,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Text(
+            "ほっこり",
+            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+          ),
+        ],
       ),
       ...praises.map((praise) => Praise(praise: praise!.node!)).toList()
     ]);
@@ -125,9 +138,22 @@ class TopWorks extends HookWidget {
     final works = result.parsedData?.works.edges ?? [];
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const Text(
-        "おすすめ作品",
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: const [
+          Icon(
+            Icons.favorite_border,
+            size: 30,
+            color: primaryColor,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Text(
+            "おすすめ作品",
+            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+          ),
+        ],
       ),
       const SizedBox(
         height: 10,
@@ -169,9 +195,22 @@ class Praises extends HookWidget {
     final praises = result.parsedData?.posts.edges ?? [];
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const Text(
-        "ほっこり",
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: const [
+          Icon(
+            Icons.favorite_border,
+            size: 30,
+            color: primaryColor,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Text(
+            "ほっこり",
+            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+          ),
+        ],
       ),
       ...praises.map((praise) => Praise(praise: praise!.node!)).toList()
     ]);
@@ -201,9 +240,22 @@ class TopLetters extends HookWidget {
     final letters = result.parsedData?.posts.edges ?? [];
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const Text(
-        "レター",
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: const [
+          Icon(
+            Icons.favorite_border,
+            size: 30,
+            color: primaryColor,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Text(
+            "レター",
+            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+          ),
+        ],
       ),
       ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
       const SizedBox(

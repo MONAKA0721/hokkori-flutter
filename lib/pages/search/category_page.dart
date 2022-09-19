@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hokkori/pages/common/letter.dart';
+import 'package:hokkori/pages/common/praise.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 
@@ -25,9 +26,14 @@ class CategoryPage extends StatelessWidget {
         Expanded(
           child: Container(
             padding: const EdgeInsets.only(left: 16, right: 16, top: 12),
+            decoration: const BoxDecoration(color: Colors.white),
             child: SingleChildScrollView(
                 child: Column(
               children: [
+                CategoryPraises(categoryID: args.id),
+                const SizedBox(
+                  height: 40,
+                ),
                 CategoryLetters(
                   categoryID: args.id,
                 )
@@ -47,6 +53,7 @@ class CategoryHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: const BoxDecoration(color: Colors.white),
       padding: const EdgeInsets.only(left: 20, right: 20, top: 40, bottom: 10),
       child: Row(children: [
         IconButton(
@@ -69,6 +76,52 @@ class CategoryHeader extends StatelessWidget {
         Text(name)
       ]),
     );
+  }
+}
+
+class CategoryPraises extends HookWidget {
+  final String categoryID;
+  const CategoryPraises({super.key, required this.categoryID});
+
+  @override
+  Widget build(BuildContext context) {
+    final result = useQuery$CategoryPraises(Options$Query$CategoryPraises(
+            variables: Variables$Query$CategoryPraises(
+                first: 3, categoryID: categoryID)))
+        .result;
+
+    if (result.hasException) {
+      return Text(result.exception.toString());
+    }
+    if (result.isLoading) {
+      return const Center(
+        child: CircularProgressIndicator(
+          color: primaryColor,
+        ),
+      );
+    }
+    final praises = result.parsedData?.posts.edges ?? [];
+
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: const [
+          Icon(
+            Icons.favorite_border,
+            size: 30,
+            color: primaryColor,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Text(
+            "ほっこり",
+            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+          ),
+        ],
+      ),
+      ...praises.map((praise) => Praise(praise: praise!.node!)).toList()
+    ]);
   }
 }
 
@@ -96,9 +149,22 @@ class CategoryLetters extends HookWidget {
     final letters = result.parsedData?.posts.edges ?? [];
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const Text(
-        "レター",
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: const [
+          Icon(
+            Icons.favorite_border,
+            size: 30,
+            color: primaryColor,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Text(
+            "レター",
+            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+          ),
+        ],
       ),
       ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
       const SizedBox(
