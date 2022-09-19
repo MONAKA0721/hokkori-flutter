@@ -199,6 +199,7 @@ Variables$Query$CategoryPraises _$Variables$Query$CategoryPraisesFromJson(
     Variables$Query$CategoryPraises(
       categoryID: json['categoryID'] as String?,
       first: json['first'] as int?,
+      after: json['after'] as String?,
     );
 
 Map<String, dynamic> _$Variables$Query$CategoryPraisesToJson(
@@ -206,6 +207,7 @@ Map<String, dynamic> _$Variables$Query$CategoryPraisesToJson(
     <String, dynamic>{
       'categoryID': instance.categoryID,
       'first': instance.first,
+      'after': instance.after,
     };
 
 Query$CategoryPraises _$Query$CategoryPraisesFromJson(
@@ -232,6 +234,8 @@ Query$CategoryPraises$posts _$Query$CategoryPraises$postsFromJson(
               : Query$CategoryPraises$posts$edges.fromJson(
                   e as Map<String, dynamic>))
           .toList(),
+      pageInfo: Query$CategoryPraises$posts$pageInfo.fromJson(
+          json['pageInfo'] as Map<String, dynamic>),
       $__typename: json['__typename'] as String,
     );
 
@@ -239,6 +243,7 @@ Map<String, dynamic> _$Query$CategoryPraises$postsToJson(
         Query$CategoryPraises$posts instance) =>
     <String, dynamic>{
       'edges': instance.edges?.map((e) => e?.toJson()).toList(),
+      'pageInfo': instance.pageInfo.toJson(),
       '__typename': instance.$__typename,
     };
 
@@ -259,11 +264,28 @@ Map<String, dynamic> _$Query$CategoryPraises$posts$edgesToJson(
       '__typename': instance.$__typename,
     };
 
+Query$CategoryPraises$posts$pageInfo
+    _$Query$CategoryPraises$posts$pageInfoFromJson(Map<String, dynamic> json) =>
+        Query$CategoryPraises$posts$pageInfo(
+          endCursor: json['endCursor'] as String?,
+          hasNextPage: json['hasNextPage'] as bool,
+          $__typename: json['__typename'] as String,
+        );
+
+Map<String, dynamic> _$Query$CategoryPraises$posts$pageInfoToJson(
+        Query$CategoryPraises$posts$pageInfo instance) =>
+    <String, dynamic>{
+      'endCursor': instance.endCursor,
+      'hasNextPage': instance.hasNextPage,
+      '__typename': instance.$__typename,
+    };
+
 Variables$Query$CategoryLetters _$Variables$Query$CategoryLettersFromJson(
         Map<String, dynamic> json) =>
     Variables$Query$CategoryLetters(
       categoryID: json['categoryID'] as String?,
       first: json['first'] as int?,
+      after: json['after'] as String?,
     );
 
 Map<String, dynamic> _$Variables$Query$CategoryLettersToJson(
@@ -271,6 +293,7 @@ Map<String, dynamic> _$Variables$Query$CategoryLettersToJson(
     <String, dynamic>{
       'categoryID': instance.categoryID,
       'first': instance.first,
+      'after': instance.after,
     };
 
 Query$CategoryLetters _$Query$CategoryLettersFromJson(
@@ -297,6 +320,8 @@ Query$CategoryLetters$posts _$Query$CategoryLetters$postsFromJson(
               : Query$CategoryLetters$posts$edges.fromJson(
                   e as Map<String, dynamic>))
           .toList(),
+      pageInfo: Query$CategoryLetters$posts$pageInfo.fromJson(
+          json['pageInfo'] as Map<String, dynamic>),
       $__typename: json['__typename'] as String,
     );
 
@@ -304,6 +329,7 @@ Map<String, dynamic> _$Query$CategoryLetters$postsToJson(
         Query$CategoryLetters$posts instance) =>
     <String, dynamic>{
       'edges': instance.edges?.map((e) => e?.toJson()).toList(),
+      'pageInfo': instance.pageInfo.toJson(),
       '__typename': instance.$__typename,
     };
 
@@ -321,5 +347,21 @@ Map<String, dynamic> _$Query$CategoryLetters$posts$edgesToJson(
         Query$CategoryLetters$posts$edges instance) =>
     <String, dynamic>{
       'node': instance.node?.toJson(),
+      '__typename': instance.$__typename,
+    };
+
+Query$CategoryLetters$posts$pageInfo
+    _$Query$CategoryLetters$posts$pageInfoFromJson(Map<String, dynamic> json) =>
+        Query$CategoryLetters$posts$pageInfo(
+          endCursor: json['endCursor'] as String?,
+          hasNextPage: json['hasNextPage'] as bool,
+          $__typename: json['__typename'] as String,
+        );
+
+Map<String, dynamic> _$Query$CategoryLetters$posts$pageInfoToJson(
+        Query$CategoryLetters$posts$pageInfo instance) =>
+    <String, dynamic>{
+      'endCursor': instance.endCursor,
+      'hasNextPage': instance.hasNextPage,
       '__typename': instance.$__typename,
     };

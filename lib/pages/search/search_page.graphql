@@ -31,30 +31,40 @@ query SearchCategories($searchText: String) {
   }
 }
 
-query CategoryPraises($categoryID: ID, $first: Int) {
+query CategoryPraises($categoryID: ID, $first: Int, $after: Cursor) {
   posts(
-    where: { type: praise, hasCategoryWith: { id: $categoryID } }
-    orderBy: { direction: DESC, field: CREATE_TIME }
+    after: $after
     first: $first
+    orderBy: { direction: DESC, field: CREATE_TIME }
+    where: { type: praise, hasCategoryWith: { id: $categoryID } }
   ) {
     edges {
       node {
         ...PraiseSummary
       }
     }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
   }
 }
 
-query CategoryLetters($categoryID: ID, $first: Int) {
+query CategoryLetters($categoryID: ID, $first: Int, $after: Cursor) {
   posts(
-    where: { type: letter, hasCategoryWith: { id: $categoryID } }
-    orderBy: { direction: DESC, field: CREATE_TIME }
+    after: $after
     first: $first
+    orderBy: { direction: DESC, field: CREATE_TIME }
+    where: { type: letter, hasCategoryWith: { id: $categoryID } }
   ) {
     edges {
       node {
         ...LetterSummary
       }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
     }
   }
 }

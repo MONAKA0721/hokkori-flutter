@@ -1696,7 +1696,7 @@ class _CopyWithStubImpl$Query$SearchCategories$categories$edges$node<TRes>
 
 @JsonSerializable(explicitToJson: true)
 class Variables$Query$CategoryPraises {
-  Variables$Query$CategoryPraises({this.categoryID, this.first});
+  Variables$Query$CategoryPraises({this.categoryID, this.first, this.after});
 
   @override
   factory Variables$Query$CategoryPraises.fromJson(Map<String, dynamic> json) =>
@@ -1706,12 +1706,15 @@ class Variables$Query$CategoryPraises {
 
   final int? first;
 
+  final String? after;
+
   Map<String, dynamic> toJson() =>
       _$Variables$Query$CategoryPraisesToJson(this);
   int get hashCode {
     final l$categoryID = categoryID;
     final l$first = first;
-    return Object.hashAll([l$categoryID, l$first]);
+    final l$after = after;
+    return Object.hashAll([l$categoryID, l$first, l$after]);
   }
 
   @override
@@ -1725,6 +1728,9 @@ class Variables$Query$CategoryPraises {
     final l$first = first;
     final lOther$first = other.first;
     if (l$first != lOther$first) return false;
+    final l$after = after;
+    final lOther$after = other.after;
+    if (l$after != lOther$after) return false;
     return true;
   }
 
@@ -1741,7 +1747,7 @@ abstract class CopyWith$Variables$Query$CategoryPraises<TRes> {
   factory CopyWith$Variables$Query$CategoryPraises.stub(TRes res) =
       _CopyWithStubImpl$Variables$Query$CategoryPraises;
 
-  TRes call({String? categoryID, int? first});
+  TRes call({String? categoryID, int? first, String? after});
 }
 
 class _CopyWithImpl$Variables$Query$CategoryPraises<TRes>
@@ -1754,12 +1760,16 @@ class _CopyWithImpl$Variables$Query$CategoryPraises<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? categoryID = _undefined, Object? first = _undefined}) =>
+  TRes call(
+          {Object? categoryID = _undefined,
+          Object? first = _undefined,
+          Object? after = _undefined}) =>
       _then(Variables$Query$CategoryPraises(
           categoryID: categoryID == _undefined
               ? _instance.categoryID
               : (categoryID as String?),
-          first: first == _undefined ? _instance.first : (first as int?)));
+          first: first == _undefined ? _instance.first : (first as int?),
+          after: after == _undefined ? _instance.after : (after as String?)));
 }
 
 class _CopyWithStubImpl$Variables$Query$CategoryPraises<TRes>
@@ -1768,7 +1778,7 @@ class _CopyWithStubImpl$Variables$Query$CategoryPraises<TRes>
 
   TRes _res;
 
-  call({String? categoryID, int? first}) => _res;
+  call({String? categoryID, int? first, String? after}) => _res;
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -1873,6 +1883,12 @@ const documentNodeQueryCategoryPraises = DocumentNode(definitions: [
             variable: VariableNode(name: NameNode(value: 'first')),
             type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: false),
             defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'after')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'Cursor'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
             directives: [])
       ],
       directives: [],
@@ -1881,6 +1897,23 @@ const documentNodeQueryCategoryPraises = DocumentNode(definitions: [
             name: NameNode(value: 'posts'),
             alias: null,
             arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'after'),
+                  value: VariableNode(name: NameNode(value: 'after'))),
+              ArgumentNode(
+                  name: NameNode(value: 'first'),
+                  value: VariableNode(name: NameNode(value: 'first'))),
+              ArgumentNode(
+                  name: NameNode(value: 'orderBy'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'direction'),
+                        value: EnumValueNode(name: NameNode(value: 'DESC'))),
+                    ObjectFieldNode(
+                        name: NameNode(value: 'field'),
+                        value:
+                            EnumValueNode(name: NameNode(value: 'CREATE_TIME')))
+                  ])),
               ArgumentNode(
                   name: NameNode(value: 'where'),
                   value: ObjectValueNode(fields: [
@@ -1895,21 +1928,7 @@ const documentNodeQueryCategoryPraises = DocumentNode(definitions: [
                               value: VariableNode(
                                   name: NameNode(value: 'categoryID')))
                         ]))
-                  ])),
-              ArgumentNode(
-                  name: NameNode(value: 'orderBy'),
-                  value: ObjectValueNode(fields: [
-                    ObjectFieldNode(
-                        name: NameNode(value: 'direction'),
-                        value: EnumValueNode(name: NameNode(value: 'DESC'))),
-                    ObjectFieldNode(
-                        name: NameNode(value: 'field'),
-                        value:
-                            EnumValueNode(name: NameNode(value: 'CREATE_TIME')))
-                  ])),
-              ArgumentNode(
-                  name: NameNode(value: 'first'),
-                  value: VariableNode(name: NameNode(value: 'first')))
+                  ]))
             ],
             directives: [],
             selectionSet: SelectionSetNode(selections: [
@@ -1935,6 +1954,31 @@ const documentNodeQueryCategoryPraises = DocumentNode(definitions: [
                               directives: [],
                               selectionSet: null)
                         ])),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: 'pageInfo'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'endCursor'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: 'hasNextPage'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
                     FieldNode(
                         name: NameNode(value: '__typename'),
                         alias: null,
@@ -2078,7 +2122,8 @@ class Query$CategoryPraises$Widget
 
 @JsonSerializable(explicitToJson: true)
 class Query$CategoryPraises$posts {
-  Query$CategoryPraises$posts({this.edges, required this.$__typename});
+  Query$CategoryPraises$posts(
+      {this.edges, required this.pageInfo, required this.$__typename});
 
   @override
   factory Query$CategoryPraises$posts.fromJson(Map<String, dynamic> json) =>
@@ -2086,15 +2131,19 @@ class Query$CategoryPraises$posts {
 
   final List<Query$CategoryPraises$posts$edges?>? edges;
 
+  final Query$CategoryPraises$posts$pageInfo pageInfo;
+
   @JsonKey(name: '__typename')
   final String $__typename;
 
   Map<String, dynamic> toJson() => _$Query$CategoryPraises$postsToJson(this);
   int get hashCode {
     final l$edges = edges;
+    final l$pageInfo = pageInfo;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
       l$$__typename
     ]);
   }
@@ -2117,6 +2166,9 @@ class Query$CategoryPraises$posts {
       return false;
     }
 
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -2140,13 +2192,16 @@ abstract class CopyWith$Query$CategoryPraises$posts<TRes> {
       _CopyWithStubImpl$Query$CategoryPraises$posts;
 
   TRes call(
-      {List<Query$CategoryPraises$posts$edges?>? edges, String? $__typename});
+      {List<Query$CategoryPraises$posts$edges?>? edges,
+      Query$CategoryPraises$posts$pageInfo? pageInfo,
+      String? $__typename});
   TRes edges(
       Iterable<Query$CategoryPraises$posts$edges?>? Function(
               Iterable<
                   CopyWith$Query$CategoryPraises$posts$edges<
                       Query$CategoryPraises$posts$edges>?>?)
           _fn);
+  CopyWith$Query$CategoryPraises$posts$pageInfo<TRes> get pageInfo;
 }
 
 class _CopyWithImpl$Query$CategoryPraises$posts<TRes>
@@ -2159,11 +2214,17 @@ class _CopyWithImpl$Query$CategoryPraises$posts<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
+  TRes call(
+          {Object? edges = _undefined,
+          Object? pageInfo = _undefined,
+          Object? $__typename = _undefined}) =>
       _then(Query$CategoryPraises$posts(
           edges: edges == _undefined
               ? _instance.edges
               : (edges as List<Query$CategoryPraises$posts$edges?>?),
+          pageInfo: pageInfo == _undefined || pageInfo == null
+              ? _instance.pageInfo
+              : (pageInfo as Query$CategoryPraises$posts$pageInfo),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
@@ -2178,6 +2239,11 @@ class _CopyWithImpl$Query$CategoryPraises$posts<TRes>
                   ? null
                   : CopyWith$Query$CategoryPraises$posts$edges(e, (i) => i)))
               ?.toList());
+  CopyWith$Query$CategoryPraises$posts$pageInfo<TRes> get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Query$CategoryPraises$posts$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
 }
 
 class _CopyWithStubImpl$Query$CategoryPraises$posts<TRes>
@@ -2188,9 +2254,12 @@ class _CopyWithStubImpl$Query$CategoryPraises$posts<TRes>
 
   call(
           {List<Query$CategoryPraises$posts$edges?>? edges,
+          Query$CategoryPraises$posts$pageInfo? pageInfo,
           String? $__typename}) =>
       _res;
   edges(_fn) => _res;
+  CopyWith$Query$CategoryPraises$posts$pageInfo<TRes> get pageInfo =>
+      CopyWith$Query$CategoryPraises$posts$pageInfo.stub(_res);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -2288,8 +2357,108 @@ class _CopyWithStubImpl$Query$CategoryPraises$posts$edges<TRes>
 }
 
 @JsonSerializable(explicitToJson: true)
+class Query$CategoryPraises$posts$pageInfo {
+  Query$CategoryPraises$posts$pageInfo(
+      {this.endCursor, required this.hasNextPage, required this.$__typename});
+
+  @override
+  factory Query$CategoryPraises$posts$pageInfo.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$CategoryPraises$posts$pageInfoFromJson(json);
+
+  final String? endCursor;
+
+  final bool hasNextPage;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$CategoryPraises$posts$pageInfoToJson(this);
+  int get hashCode {
+    final l$endCursor = endCursor;
+    final l$hasNextPage = hasNextPage;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$endCursor, l$hasNextPage, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$CategoryPraises$posts$pageInfo) ||
+        runtimeType != other.runtimeType) return false;
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) return false;
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$CategoryPraises$posts$pageInfo
+    on Query$CategoryPraises$posts$pageInfo {
+  CopyWith$Query$CategoryPraises$posts$pageInfo<
+          Query$CategoryPraises$posts$pageInfo>
+      get copyWith =>
+          CopyWith$Query$CategoryPraises$posts$pageInfo(this, (i) => i);
+}
+
+abstract class CopyWith$Query$CategoryPraises$posts$pageInfo<TRes> {
+  factory CopyWith$Query$CategoryPraises$posts$pageInfo(
+          Query$CategoryPraises$posts$pageInfo instance,
+          TRes Function(Query$CategoryPraises$posts$pageInfo) then) =
+      _CopyWithImpl$Query$CategoryPraises$posts$pageInfo;
+
+  factory CopyWith$Query$CategoryPraises$posts$pageInfo.stub(TRes res) =
+      _CopyWithStubImpl$Query$CategoryPraises$posts$pageInfo;
+
+  TRes call({String? endCursor, bool? hasNextPage, String? $__typename});
+}
+
+class _CopyWithImpl$Query$CategoryPraises$posts$pageInfo<TRes>
+    implements CopyWith$Query$CategoryPraises$posts$pageInfo<TRes> {
+  _CopyWithImpl$Query$CategoryPraises$posts$pageInfo(
+      this._instance, this._then);
+
+  final Query$CategoryPraises$posts$pageInfo _instance;
+
+  final TRes Function(Query$CategoryPraises$posts$pageInfo) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? endCursor = _undefined,
+          Object? hasNextPage = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$CategoryPraises$posts$pageInfo(
+          endCursor: endCursor == _undefined
+              ? _instance.endCursor
+              : (endCursor as String?),
+          hasNextPage: hasNextPage == _undefined || hasNextPage == null
+              ? _instance.hasNextPage
+              : (hasNextPage as bool),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$CategoryPraises$posts$pageInfo<TRes>
+    implements CopyWith$Query$CategoryPraises$posts$pageInfo<TRes> {
+  _CopyWithStubImpl$Query$CategoryPraises$posts$pageInfo(this._res);
+
+  TRes _res;
+
+  call({String? endCursor, bool? hasNextPage, String? $__typename}) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
 class Variables$Query$CategoryLetters {
-  Variables$Query$CategoryLetters({this.categoryID, this.first});
+  Variables$Query$CategoryLetters({this.categoryID, this.first, this.after});
 
   @override
   factory Variables$Query$CategoryLetters.fromJson(Map<String, dynamic> json) =>
@@ -2299,12 +2468,15 @@ class Variables$Query$CategoryLetters {
 
   final int? first;
 
+  final String? after;
+
   Map<String, dynamic> toJson() =>
       _$Variables$Query$CategoryLettersToJson(this);
   int get hashCode {
     final l$categoryID = categoryID;
     final l$first = first;
-    return Object.hashAll([l$categoryID, l$first]);
+    final l$after = after;
+    return Object.hashAll([l$categoryID, l$first, l$after]);
   }
 
   @override
@@ -2318,6 +2490,9 @@ class Variables$Query$CategoryLetters {
     final l$first = first;
     final lOther$first = other.first;
     if (l$first != lOther$first) return false;
+    final l$after = after;
+    final lOther$after = other.after;
+    if (l$after != lOther$after) return false;
     return true;
   }
 
@@ -2334,7 +2509,7 @@ abstract class CopyWith$Variables$Query$CategoryLetters<TRes> {
   factory CopyWith$Variables$Query$CategoryLetters.stub(TRes res) =
       _CopyWithStubImpl$Variables$Query$CategoryLetters;
 
-  TRes call({String? categoryID, int? first});
+  TRes call({String? categoryID, int? first, String? after});
 }
 
 class _CopyWithImpl$Variables$Query$CategoryLetters<TRes>
@@ -2347,12 +2522,16 @@ class _CopyWithImpl$Variables$Query$CategoryLetters<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? categoryID = _undefined, Object? first = _undefined}) =>
+  TRes call(
+          {Object? categoryID = _undefined,
+          Object? first = _undefined,
+          Object? after = _undefined}) =>
       _then(Variables$Query$CategoryLetters(
           categoryID: categoryID == _undefined
               ? _instance.categoryID
               : (categoryID as String?),
-          first: first == _undefined ? _instance.first : (first as int?)));
+          first: first == _undefined ? _instance.first : (first as int?),
+          after: after == _undefined ? _instance.after : (after as String?)));
 }
 
 class _CopyWithStubImpl$Variables$Query$CategoryLetters<TRes>
@@ -2361,7 +2540,7 @@ class _CopyWithStubImpl$Variables$Query$CategoryLetters<TRes>
 
   TRes _res;
 
-  call({String? categoryID, int? first}) => _res;
+  call({String? categoryID, int? first, String? after}) => _res;
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -2466,6 +2645,12 @@ const documentNodeQueryCategoryLetters = DocumentNode(definitions: [
             variable: VariableNode(name: NameNode(value: 'first')),
             type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: false),
             defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'after')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'Cursor'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
             directives: [])
       ],
       directives: [],
@@ -2474,6 +2659,23 @@ const documentNodeQueryCategoryLetters = DocumentNode(definitions: [
             name: NameNode(value: 'posts'),
             alias: null,
             arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'after'),
+                  value: VariableNode(name: NameNode(value: 'after'))),
+              ArgumentNode(
+                  name: NameNode(value: 'first'),
+                  value: VariableNode(name: NameNode(value: 'first'))),
+              ArgumentNode(
+                  name: NameNode(value: 'orderBy'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'direction'),
+                        value: EnumValueNode(name: NameNode(value: 'DESC'))),
+                    ObjectFieldNode(
+                        name: NameNode(value: 'field'),
+                        value:
+                            EnumValueNode(name: NameNode(value: 'CREATE_TIME')))
+                  ])),
               ArgumentNode(
                   name: NameNode(value: 'where'),
                   value: ObjectValueNode(fields: [
@@ -2488,21 +2690,7 @@ const documentNodeQueryCategoryLetters = DocumentNode(definitions: [
                               value: VariableNode(
                                   name: NameNode(value: 'categoryID')))
                         ]))
-                  ])),
-              ArgumentNode(
-                  name: NameNode(value: 'orderBy'),
-                  value: ObjectValueNode(fields: [
-                    ObjectFieldNode(
-                        name: NameNode(value: 'direction'),
-                        value: EnumValueNode(name: NameNode(value: 'DESC'))),
-                    ObjectFieldNode(
-                        name: NameNode(value: 'field'),
-                        value:
-                            EnumValueNode(name: NameNode(value: 'CREATE_TIME')))
-                  ])),
-              ArgumentNode(
-                  name: NameNode(value: 'first'),
-                  value: VariableNode(name: NameNode(value: 'first')))
+                  ]))
             ],
             directives: [],
             selectionSet: SelectionSetNode(selections: [
@@ -2528,6 +2716,31 @@ const documentNodeQueryCategoryLetters = DocumentNode(definitions: [
                               directives: [],
                               selectionSet: null)
                         ])),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: 'pageInfo'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'endCursor'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: 'hasNextPage'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
                     FieldNode(
                         name: NameNode(value: '__typename'),
                         alias: null,
@@ -2671,7 +2884,8 @@ class Query$CategoryLetters$Widget
 
 @JsonSerializable(explicitToJson: true)
 class Query$CategoryLetters$posts {
-  Query$CategoryLetters$posts({this.edges, required this.$__typename});
+  Query$CategoryLetters$posts(
+      {this.edges, required this.pageInfo, required this.$__typename});
 
   @override
   factory Query$CategoryLetters$posts.fromJson(Map<String, dynamic> json) =>
@@ -2679,15 +2893,19 @@ class Query$CategoryLetters$posts {
 
   final List<Query$CategoryLetters$posts$edges?>? edges;
 
+  final Query$CategoryLetters$posts$pageInfo pageInfo;
+
   @JsonKey(name: '__typename')
   final String $__typename;
 
   Map<String, dynamic> toJson() => _$Query$CategoryLetters$postsToJson(this);
   int get hashCode {
     final l$edges = edges;
+    final l$pageInfo = pageInfo;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
       l$$__typename
     ]);
   }
@@ -2710,6 +2928,9 @@ class Query$CategoryLetters$posts {
       return false;
     }
 
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -2733,13 +2954,16 @@ abstract class CopyWith$Query$CategoryLetters$posts<TRes> {
       _CopyWithStubImpl$Query$CategoryLetters$posts;
 
   TRes call(
-      {List<Query$CategoryLetters$posts$edges?>? edges, String? $__typename});
+      {List<Query$CategoryLetters$posts$edges?>? edges,
+      Query$CategoryLetters$posts$pageInfo? pageInfo,
+      String? $__typename});
   TRes edges(
       Iterable<Query$CategoryLetters$posts$edges?>? Function(
               Iterable<
                   CopyWith$Query$CategoryLetters$posts$edges<
                       Query$CategoryLetters$posts$edges>?>?)
           _fn);
+  CopyWith$Query$CategoryLetters$posts$pageInfo<TRes> get pageInfo;
 }
 
 class _CopyWithImpl$Query$CategoryLetters$posts<TRes>
@@ -2752,11 +2976,17 @@ class _CopyWithImpl$Query$CategoryLetters$posts<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
+  TRes call(
+          {Object? edges = _undefined,
+          Object? pageInfo = _undefined,
+          Object? $__typename = _undefined}) =>
       _then(Query$CategoryLetters$posts(
           edges: edges == _undefined
               ? _instance.edges
               : (edges as List<Query$CategoryLetters$posts$edges?>?),
+          pageInfo: pageInfo == _undefined || pageInfo == null
+              ? _instance.pageInfo
+              : (pageInfo as Query$CategoryLetters$posts$pageInfo),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
@@ -2771,6 +3001,11 @@ class _CopyWithImpl$Query$CategoryLetters$posts<TRes>
                   ? null
                   : CopyWith$Query$CategoryLetters$posts$edges(e, (i) => i)))
               ?.toList());
+  CopyWith$Query$CategoryLetters$posts$pageInfo<TRes> get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Query$CategoryLetters$posts$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
 }
 
 class _CopyWithStubImpl$Query$CategoryLetters$posts<TRes>
@@ -2781,9 +3016,12 @@ class _CopyWithStubImpl$Query$CategoryLetters$posts<TRes>
 
   call(
           {List<Query$CategoryLetters$posts$edges?>? edges,
+          Query$CategoryLetters$posts$pageInfo? pageInfo,
           String? $__typename}) =>
       _res;
   edges(_fn) => _res;
+  CopyWith$Query$CategoryLetters$posts$pageInfo<TRes> get pageInfo =>
+      CopyWith$Query$CategoryLetters$posts$pageInfo.stub(_res);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -2878,4 +3116,104 @@ class _CopyWithStubImpl$Query$CategoryLetters$posts$edges<TRes>
   call({Fragment$LetterSummary? node, String? $__typename}) => _res;
   CopyWith$Fragment$LetterSummary<TRes> get node =>
       CopyWith$Fragment$LetterSummary.stub(_res);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$CategoryLetters$posts$pageInfo {
+  Query$CategoryLetters$posts$pageInfo(
+      {this.endCursor, required this.hasNextPage, required this.$__typename});
+
+  @override
+  factory Query$CategoryLetters$posts$pageInfo.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$CategoryLetters$posts$pageInfoFromJson(json);
+
+  final String? endCursor;
+
+  final bool hasNextPage;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$CategoryLetters$posts$pageInfoToJson(this);
+  int get hashCode {
+    final l$endCursor = endCursor;
+    final l$hasNextPage = hasNextPage;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$endCursor, l$hasNextPage, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$CategoryLetters$posts$pageInfo) ||
+        runtimeType != other.runtimeType) return false;
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) return false;
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$CategoryLetters$posts$pageInfo
+    on Query$CategoryLetters$posts$pageInfo {
+  CopyWith$Query$CategoryLetters$posts$pageInfo<
+          Query$CategoryLetters$posts$pageInfo>
+      get copyWith =>
+          CopyWith$Query$CategoryLetters$posts$pageInfo(this, (i) => i);
+}
+
+abstract class CopyWith$Query$CategoryLetters$posts$pageInfo<TRes> {
+  factory CopyWith$Query$CategoryLetters$posts$pageInfo(
+          Query$CategoryLetters$posts$pageInfo instance,
+          TRes Function(Query$CategoryLetters$posts$pageInfo) then) =
+      _CopyWithImpl$Query$CategoryLetters$posts$pageInfo;
+
+  factory CopyWith$Query$CategoryLetters$posts$pageInfo.stub(TRes res) =
+      _CopyWithStubImpl$Query$CategoryLetters$posts$pageInfo;
+
+  TRes call({String? endCursor, bool? hasNextPage, String? $__typename});
+}
+
+class _CopyWithImpl$Query$CategoryLetters$posts$pageInfo<TRes>
+    implements CopyWith$Query$CategoryLetters$posts$pageInfo<TRes> {
+  _CopyWithImpl$Query$CategoryLetters$posts$pageInfo(
+      this._instance, this._then);
+
+  final Query$CategoryLetters$posts$pageInfo _instance;
+
+  final TRes Function(Query$CategoryLetters$posts$pageInfo) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? endCursor = _undefined,
+          Object? hasNextPage = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$CategoryLetters$posts$pageInfo(
+          endCursor: endCursor == _undefined
+              ? _instance.endCursor
+              : (endCursor as String?),
+          hasNextPage: hasNextPage == _undefined || hasNextPage == null
+              ? _instance.hasNextPage
+              : (hasNextPage as bool),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$CategoryLetters$posts$pageInfo<TRes>
+    implements CopyWith$Query$CategoryLetters$posts$pageInfo<TRes> {
+  _CopyWithStubImpl$Query$CategoryLetters$posts$pageInfo(this._res);
+
+  TRes _res;
+
+  call({String? endCursor, bool? hasNextPage, String? $__typename}) => _res;
 }
