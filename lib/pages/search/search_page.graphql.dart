@@ -1694,3 +1694,596 @@ class _CopyWithStubImpl$Query$SearchCategories$categories$edges$node<TRes>
 
   call({String? id, String? name, String? $__typename}) => _res;
 }
+
+@JsonSerializable(explicitToJson: true)
+class Variables$Query$CategoryLetters {
+  Variables$Query$CategoryLetters({this.categoryID, this.first});
+
+  @override
+  factory Variables$Query$CategoryLetters.fromJson(Map<String, dynamic> json) =>
+      _$Variables$Query$CategoryLettersFromJson(json);
+
+  final String? categoryID;
+
+  final int? first;
+
+  Map<String, dynamic> toJson() =>
+      _$Variables$Query$CategoryLettersToJson(this);
+  int get hashCode {
+    final l$categoryID = categoryID;
+    final l$first = first;
+    return Object.hashAll([l$categoryID, l$first]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Variables$Query$CategoryLetters) ||
+        runtimeType != other.runtimeType) return false;
+    final l$categoryID = categoryID;
+    final lOther$categoryID = other.categoryID;
+    if (l$categoryID != lOther$categoryID) return false;
+    final l$first = first;
+    final lOther$first = other.first;
+    if (l$first != lOther$first) return false;
+    return true;
+  }
+
+  CopyWith$Variables$Query$CategoryLetters<Variables$Query$CategoryLetters>
+      get copyWith => CopyWith$Variables$Query$CategoryLetters(this, (i) => i);
+}
+
+abstract class CopyWith$Variables$Query$CategoryLetters<TRes> {
+  factory CopyWith$Variables$Query$CategoryLetters(
+          Variables$Query$CategoryLetters instance,
+          TRes Function(Variables$Query$CategoryLetters) then) =
+      _CopyWithImpl$Variables$Query$CategoryLetters;
+
+  factory CopyWith$Variables$Query$CategoryLetters.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$CategoryLetters;
+
+  TRes call({String? categoryID, int? first});
+}
+
+class _CopyWithImpl$Variables$Query$CategoryLetters<TRes>
+    implements CopyWith$Variables$Query$CategoryLetters<TRes> {
+  _CopyWithImpl$Variables$Query$CategoryLetters(this._instance, this._then);
+
+  final Variables$Query$CategoryLetters _instance;
+
+  final TRes Function(Variables$Query$CategoryLetters) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? categoryID = _undefined, Object? first = _undefined}) =>
+      _then(Variables$Query$CategoryLetters(
+          categoryID: categoryID == _undefined
+              ? _instance.categoryID
+              : (categoryID as String?),
+          first: first == _undefined ? _instance.first : (first as int?)));
+}
+
+class _CopyWithStubImpl$Variables$Query$CategoryLetters<TRes>
+    implements CopyWith$Variables$Query$CategoryLetters<TRes> {
+  _CopyWithStubImpl$Variables$Query$CategoryLetters(this._res);
+
+  TRes _res;
+
+  call({String? categoryID, int? first}) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$CategoryLetters {
+  Query$CategoryLetters({required this.posts, required this.$__typename});
+
+  @override
+  factory Query$CategoryLetters.fromJson(Map<String, dynamic> json) =>
+      _$Query$CategoryLettersFromJson(json);
+
+  final Query$CategoryLetters$posts posts;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$Query$CategoryLettersToJson(this);
+  int get hashCode {
+    final l$posts = posts;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$posts, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$CategoryLetters) || runtimeType != other.runtimeType)
+      return false;
+    final l$posts = posts;
+    final lOther$posts = other.posts;
+    if (l$posts != lOther$posts) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$CategoryLetters on Query$CategoryLetters {
+  CopyWith$Query$CategoryLetters<Query$CategoryLetters> get copyWith =>
+      CopyWith$Query$CategoryLetters(this, (i) => i);
+}
+
+abstract class CopyWith$Query$CategoryLetters<TRes> {
+  factory CopyWith$Query$CategoryLetters(Query$CategoryLetters instance,
+          TRes Function(Query$CategoryLetters) then) =
+      _CopyWithImpl$Query$CategoryLetters;
+
+  factory CopyWith$Query$CategoryLetters.stub(TRes res) =
+      _CopyWithStubImpl$Query$CategoryLetters;
+
+  TRes call({Query$CategoryLetters$posts? posts, String? $__typename});
+  CopyWith$Query$CategoryLetters$posts<TRes> get posts;
+}
+
+class _CopyWithImpl$Query$CategoryLetters<TRes>
+    implements CopyWith$Query$CategoryLetters<TRes> {
+  _CopyWithImpl$Query$CategoryLetters(this._instance, this._then);
+
+  final Query$CategoryLetters _instance;
+
+  final TRes Function(Query$CategoryLetters) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? posts = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$CategoryLetters(
+          posts: posts == _undefined || posts == null
+              ? _instance.posts
+              : (posts as Query$CategoryLetters$posts),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Query$CategoryLetters$posts<TRes> get posts {
+    final local$posts = _instance.posts;
+    return CopyWith$Query$CategoryLetters$posts(
+        local$posts, (e) => call(posts: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$CategoryLetters<TRes>
+    implements CopyWith$Query$CategoryLetters<TRes> {
+  _CopyWithStubImpl$Query$CategoryLetters(this._res);
+
+  TRes _res;
+
+  call({Query$CategoryLetters$posts? posts, String? $__typename}) => _res;
+  CopyWith$Query$CategoryLetters$posts<TRes> get posts =>
+      CopyWith$Query$CategoryLetters$posts.stub(_res);
+}
+
+const documentNodeQueryCategoryLetters = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.query,
+      name: NameNode(value: 'CategoryLetters'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'categoryID')),
+            type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'first')),
+            type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'posts'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'where'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'type'),
+                        value: EnumValueNode(name: NameNode(value: 'letter'))),
+                    ObjectFieldNode(
+                        name: NameNode(value: 'hasCategoryWith'),
+                        value: ObjectValueNode(fields: [
+                          ObjectFieldNode(
+                              name: NameNode(value: 'id'),
+                              value: VariableNode(
+                                  name: NameNode(value: 'categoryID')))
+                        ]))
+                  ])),
+              ArgumentNode(
+                  name: NameNode(value: 'orderBy'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'direction'),
+                        value: EnumValueNode(name: NameNode(value: 'DESC'))),
+                    ObjectFieldNode(
+                        name: NameNode(value: 'field'),
+                        value:
+                            EnumValueNode(name: NameNode(value: 'CREATE_TIME')))
+                  ])),
+              ArgumentNode(
+                  name: NameNode(value: 'first'),
+                  value: VariableNode(name: NameNode(value: 'first')))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'edges'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'node'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: SelectionSetNode(selections: [
+                          FragmentSpreadNode(
+                              name: NameNode(value: 'LetterSummary'),
+                              directives: []),
+                          FieldNode(
+                              name: NameNode(value: '__typename'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null)
+                        ])),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+  fragmentDefinitionLetterSummary,
+]);
+Query$CategoryLetters _parserFn$Query$CategoryLetters(
+        Map<String, dynamic> data) =>
+    Query$CategoryLetters.fromJson(data);
+
+class Options$Query$CategoryLetters
+    extends graphql.QueryOptions<Query$CategoryLetters> {
+  Options$Query$CategoryLetters(
+      {String? operationName,
+      Variables$Query$CategoryLetters? variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      Duration? pollInterval,
+      graphql.Context? context})
+      : super(
+            variables: variables?.toJson() ?? {},
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            pollInterval: pollInterval,
+            context: context,
+            document: documentNodeQueryCategoryLetters,
+            parserFn: _parserFn$Query$CategoryLetters);
+}
+
+class WatchOptions$Query$CategoryLetters
+    extends graphql.WatchQueryOptions<Query$CategoryLetters> {
+  WatchOptions$Query$CategoryLetters(
+      {String? operationName,
+      Variables$Query$CategoryLetters? variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables?.toJson() ?? {},
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeQueryCategoryLetters,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Query$CategoryLetters);
+}
+
+class FetchMoreOptions$Query$CategoryLetters extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$CategoryLetters(
+      {required graphql.UpdateQuery updateQuery,
+      Variables$Query$CategoryLetters? variables})
+      : super(
+            updateQuery: updateQuery,
+            variables: variables?.toJson() ?? {},
+            document: documentNodeQueryCategoryLetters);
+}
+
+extension ClientExtension$Query$CategoryLetters on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$CategoryLetters>> query$CategoryLetters(
+          [Options$Query$CategoryLetters? options]) async =>
+      await this.query(options ?? Options$Query$CategoryLetters());
+  graphql.ObservableQuery<Query$CategoryLetters> watchQuery$CategoryLetters(
+          [WatchOptions$Query$CategoryLetters? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$CategoryLetters());
+  void writeQuery$CategoryLetters(
+          {required Query$CategoryLetters data,
+          Variables$Query$CategoryLetters? variables,
+          bool broadcast = true}) =>
+      this.writeQuery(
+          graphql.Request(
+              operation:
+                  graphql.Operation(document: documentNodeQueryCategoryLetters),
+              variables: variables?.toJson() ?? const {}),
+          data: data.toJson(),
+          broadcast: broadcast);
+  Query$CategoryLetters? readQuery$CategoryLetters(
+      {Variables$Query$CategoryLetters? variables, bool optimistic = true}) {
+    final result = this.readQuery(
+        graphql.Request(
+            operation:
+                graphql.Operation(document: documentNodeQueryCategoryLetters),
+            variables: variables?.toJson() ?? const {}),
+        optimistic: optimistic);
+    return result == null ? null : Query$CategoryLetters.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$CategoryLetters> useQuery$CategoryLetters(
+        [Options$Query$CategoryLetters? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$CategoryLetters());
+graphql.ObservableQuery<Query$CategoryLetters> useWatchQuery$CategoryLetters(
+        [WatchOptions$Query$CategoryLetters? options]) =>
+    graphql_flutter
+        .useWatchQuery(options ?? WatchOptions$Query$CategoryLetters());
+
+class Query$CategoryLetters$Widget
+    extends graphql_flutter.Query<Query$CategoryLetters> {
+  Query$CategoryLetters$Widget(
+      {widgets.Key? key,
+      Options$Query$CategoryLetters? options,
+      required graphql_flutter.QueryBuilder<Query$CategoryLetters> builder})
+      : super(
+            key: key,
+            options: options ?? Options$Query$CategoryLetters(),
+            builder: builder);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$CategoryLetters$posts {
+  Query$CategoryLetters$posts({this.edges, required this.$__typename});
+
+  @override
+  factory Query$CategoryLetters$posts.fromJson(Map<String, dynamic> json) =>
+      _$Query$CategoryLetters$postsFromJson(json);
+
+  final List<Query$CategoryLetters$posts$edges?>? edges;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$Query$CategoryLetters$postsToJson(this);
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$CategoryLetters$posts) ||
+        runtimeType != other.runtimeType) return false;
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges != null && lOther$edges != null) {
+      if (l$edges.length != lOther$edges.length) return false;
+      for (int i = 0; i < l$edges.length; i++) {
+        final l$edges$entry = l$edges[i];
+        final lOther$edges$entry = lOther$edges[i];
+        if (l$edges$entry != lOther$edges$entry) return false;
+      }
+    } else if (l$edges != lOther$edges) {
+      return false;
+    }
+
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$CategoryLetters$posts
+    on Query$CategoryLetters$posts {
+  CopyWith$Query$CategoryLetters$posts<Query$CategoryLetters$posts>
+      get copyWith => CopyWith$Query$CategoryLetters$posts(this, (i) => i);
+}
+
+abstract class CopyWith$Query$CategoryLetters$posts<TRes> {
+  factory CopyWith$Query$CategoryLetters$posts(
+          Query$CategoryLetters$posts instance,
+          TRes Function(Query$CategoryLetters$posts) then) =
+      _CopyWithImpl$Query$CategoryLetters$posts;
+
+  factory CopyWith$Query$CategoryLetters$posts.stub(TRes res) =
+      _CopyWithStubImpl$Query$CategoryLetters$posts;
+
+  TRes call(
+      {List<Query$CategoryLetters$posts$edges?>? edges, String? $__typename});
+  TRes edges(
+      Iterable<Query$CategoryLetters$posts$edges?>? Function(
+              Iterable<
+                  CopyWith$Query$CategoryLetters$posts$edges<
+                      Query$CategoryLetters$posts$edges>?>?)
+          _fn);
+}
+
+class _CopyWithImpl$Query$CategoryLetters$posts<TRes>
+    implements CopyWith$Query$CategoryLetters$posts<TRes> {
+  _CopyWithImpl$Query$CategoryLetters$posts(this._instance, this._then);
+
+  final Query$CategoryLetters$posts _instance;
+
+  final TRes Function(Query$CategoryLetters$posts) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$CategoryLetters$posts(
+          edges: edges == _undefined
+              ? _instance.edges
+              : (edges as List<Query$CategoryLetters$posts$edges?>?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  TRes edges(
+          Iterable<Query$CategoryLetters$posts$edges?>? Function(
+                  Iterable<
+                      CopyWith$Query$CategoryLetters$posts$edges<
+                          Query$CategoryLetters$posts$edges>?>?)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges?.map((e) => e == null
+                  ? null
+                  : CopyWith$Query$CategoryLetters$posts$edges(e, (i) => i)))
+              ?.toList());
+}
+
+class _CopyWithStubImpl$Query$CategoryLetters$posts<TRes>
+    implements CopyWith$Query$CategoryLetters$posts<TRes> {
+  _CopyWithStubImpl$Query$CategoryLetters$posts(this._res);
+
+  TRes _res;
+
+  call(
+          {List<Query$CategoryLetters$posts$edges?>? edges,
+          String? $__typename}) =>
+      _res;
+  edges(_fn) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$CategoryLetters$posts$edges {
+  Query$CategoryLetters$posts$edges({this.node, required this.$__typename});
+
+  @override
+  factory Query$CategoryLetters$posts$edges.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$CategoryLetters$posts$edgesFromJson(json);
+
+  final Fragment$LetterSummary? node;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$CategoryLetters$posts$edgesToJson(this);
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$node, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$CategoryLetters$posts$edges) ||
+        runtimeType != other.runtimeType) return false;
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$CategoryLetters$posts$edges
+    on Query$CategoryLetters$posts$edges {
+  CopyWith$Query$CategoryLetters$posts$edges<Query$CategoryLetters$posts$edges>
+      get copyWith =>
+          CopyWith$Query$CategoryLetters$posts$edges(this, (i) => i);
+}
+
+abstract class CopyWith$Query$CategoryLetters$posts$edges<TRes> {
+  factory CopyWith$Query$CategoryLetters$posts$edges(
+          Query$CategoryLetters$posts$edges instance,
+          TRes Function(Query$CategoryLetters$posts$edges) then) =
+      _CopyWithImpl$Query$CategoryLetters$posts$edges;
+
+  factory CopyWith$Query$CategoryLetters$posts$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$CategoryLetters$posts$edges;
+
+  TRes call({Fragment$LetterSummary? node, String? $__typename});
+  CopyWith$Fragment$LetterSummary<TRes> get node;
+}
+
+class _CopyWithImpl$Query$CategoryLetters$posts$edges<TRes>
+    implements CopyWith$Query$CategoryLetters$posts$edges<TRes> {
+  _CopyWithImpl$Query$CategoryLetters$posts$edges(this._instance, this._then);
+
+  final Query$CategoryLetters$posts$edges _instance;
+
+  final TRes Function(Query$CategoryLetters$posts$edges) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$CategoryLetters$posts$edges(
+          node: node == _undefined
+              ? _instance.node
+              : (node as Fragment$LetterSummary?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Fragment$LetterSummary<TRes> get node {
+    final local$node = _instance.node;
+    return local$node == null
+        ? CopyWith$Fragment$LetterSummary.stub(_then(_instance))
+        : CopyWith$Fragment$LetterSummary(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$CategoryLetters$posts$edges<TRes>
+    implements CopyWith$Query$CategoryLetters$posts$edges<TRes> {
+  _CopyWithStubImpl$Query$CategoryLetters$posts$edges(this._res);
+
+  TRes _res;
+
+  call({Fragment$LetterSummary? node, String? $__typename}) => _res;
+  CopyWith$Fragment$LetterSummary<TRes> get node =>
+      CopyWith$Fragment$LetterSummary.stub(_res);
+}

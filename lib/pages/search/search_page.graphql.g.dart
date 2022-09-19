@@ -193,3 +193,68 @@ Map<String, dynamic> _$Query$SearchCategories$categories$edges$nodeToJson(
       'name': instance.name,
       '__typename': instance.$__typename,
     };
+
+Variables$Query$CategoryLetters _$Variables$Query$CategoryLettersFromJson(
+        Map<String, dynamic> json) =>
+    Variables$Query$CategoryLetters(
+      categoryID: json['categoryID'] as String?,
+      first: json['first'] as int?,
+    );
+
+Map<String, dynamic> _$Variables$Query$CategoryLettersToJson(
+        Variables$Query$CategoryLetters instance) =>
+    <String, dynamic>{
+      'categoryID': instance.categoryID,
+      'first': instance.first,
+    };
+
+Query$CategoryLetters _$Query$CategoryLettersFromJson(
+        Map<String, dynamic> json) =>
+    Query$CategoryLetters(
+      posts: Query$CategoryLetters$posts.fromJson(
+          json['posts'] as Map<String, dynamic>),
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$Query$CategoryLettersToJson(
+        Query$CategoryLetters instance) =>
+    <String, dynamic>{
+      'posts': instance.posts.toJson(),
+      '__typename': instance.$__typename,
+    };
+
+Query$CategoryLetters$posts _$Query$CategoryLetters$postsFromJson(
+        Map<String, dynamic> json) =>
+    Query$CategoryLetters$posts(
+      edges: (json['edges'] as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : Query$CategoryLetters$posts$edges.fromJson(
+                  e as Map<String, dynamic>))
+          .toList(),
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$Query$CategoryLetters$postsToJson(
+        Query$CategoryLetters$posts instance) =>
+    <String, dynamic>{
+      'edges': instance.edges?.map((e) => e?.toJson()).toList(),
+      '__typename': instance.$__typename,
+    };
+
+Query$CategoryLetters$posts$edges _$Query$CategoryLetters$posts$edgesFromJson(
+        Map<String, dynamic> json) =>
+    Query$CategoryLetters$posts$edges(
+      node: json['node'] == null
+          ? null
+          : Fragment$LetterSummary.fromJson(
+              json['node'] as Map<String, dynamic>),
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$Query$CategoryLetters$posts$edgesToJson(
+        Query$CategoryLetters$posts$edges instance) =>
+    <String, dynamic>{
+      'node': instance.node?.toJson(),
+      '__typename': instance.$__typename,
+    };

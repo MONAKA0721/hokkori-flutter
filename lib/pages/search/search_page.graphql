@@ -30,3 +30,17 @@ query SearchCategories($searchText: String) {
     }
   }
 }
+
+query CategoryLetters($categoryID: ID, $first: Int) {
+  posts(
+    where: { type: letter, hasCategoryWith: { id: $categoryID } }
+    orderBy: { direction: DESC, field: CREATE_TIME }
+    first: $first
+  ) {
+    edges {
+      node {
+        ...LetterSummary
+      }
+    }
+  }
+}

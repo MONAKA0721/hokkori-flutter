@@ -105,7 +105,8 @@ class Candidates extends HookConsumerWidget {
             .map((category) => ListTile(
                   onTap: () {
                     Navigator.of(context).pushNamed('/category',
-                        arguments: CategoryPageArguments(category!.node!.id));
+                        arguments: CategoryPageArguments(
+                            category!.node!.id, category.node!.name));
                   },
                   title: Text(category!.node!.name),
                 ))
