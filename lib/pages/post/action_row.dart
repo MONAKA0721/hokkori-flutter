@@ -135,6 +135,7 @@ class SubmitButton extends HookConsumerWidget {
                             ownerID: ref.watch(userProvider).id,
                             workID: ref.watch(workProvider)!.id,
                             spoiled: ref.watch(praiseSpoiledProvider),
+                            categoryID: ref.watch(categoryProvider).toString(),
                             hashtagIDs: ref
                                 .watch(hashtagsProvider)
                                 .map((m) => m.id)
@@ -153,6 +154,7 @@ class SubmitButton extends HookConsumerWidget {
                             ownerID: ref.watch(userProvider).id,
                             workID: ref.watch(workProvider)!.id,
                             spoiled: ref.watch(praiseSpoiledProvider),
+                            categoryID: ref.watch(categoryProvider).toString(),
                             hashtagIDs: ref
                                 .watch(hashtagsProvider)
                                 .map((m) => m.id)
@@ -165,6 +167,7 @@ class SubmitButton extends HookConsumerWidget {
                             ownerID: ref.watch(userProvider).id,
                             workID: ref.watch(workProvider)!.id,
                             spoiled: ref.watch(letterSpoiledProvider),
+                            categoryID: ref.watch(categoryProvider).toString(),
                             hashtagIDs: ref
                                 .watch(hashtagsProvider)
                                 .map((m) => m.id)

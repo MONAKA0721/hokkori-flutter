@@ -1008,3 +1008,689 @@ class _CopyWithStubImpl$Query$TopLetters$posts$edges<TRes>
   CopyWith$Fragment$LetterSummary<TRes> get node =>
       CopyWith$Fragment$LetterSummary.stub(_res);
 }
+
+@JsonSerializable(explicitToJson: true)
+class Variables$Query$SearchCategories {
+  Variables$Query$SearchCategories({this.searchText});
+
+  @override
+  factory Variables$Query$SearchCategories.fromJson(
+          Map<String, dynamic> json) =>
+      _$Variables$Query$SearchCategoriesFromJson(json);
+
+  final String? searchText;
+
+  Map<String, dynamic> toJson() =>
+      _$Variables$Query$SearchCategoriesToJson(this);
+  int get hashCode {
+    final l$searchText = searchText;
+    return Object.hashAll([l$searchText]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Variables$Query$SearchCategories) ||
+        runtimeType != other.runtimeType) return false;
+    final l$searchText = searchText;
+    final lOther$searchText = other.searchText;
+    if (l$searchText != lOther$searchText) return false;
+    return true;
+  }
+
+  CopyWith$Variables$Query$SearchCategories<Variables$Query$SearchCategories>
+      get copyWith => CopyWith$Variables$Query$SearchCategories(this, (i) => i);
+}
+
+abstract class CopyWith$Variables$Query$SearchCategories<TRes> {
+  factory CopyWith$Variables$Query$SearchCategories(
+          Variables$Query$SearchCategories instance,
+          TRes Function(Variables$Query$SearchCategories) then) =
+      _CopyWithImpl$Variables$Query$SearchCategories;
+
+  factory CopyWith$Variables$Query$SearchCategories.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$SearchCategories;
+
+  TRes call({String? searchText});
+}
+
+class _CopyWithImpl$Variables$Query$SearchCategories<TRes>
+    implements CopyWith$Variables$Query$SearchCategories<TRes> {
+  _CopyWithImpl$Variables$Query$SearchCategories(this._instance, this._then);
+
+  final Variables$Query$SearchCategories _instance;
+
+  final TRes Function(Variables$Query$SearchCategories) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? searchText = _undefined}) =>
+      _then(Variables$Query$SearchCategories(
+          searchText: searchText == _undefined
+              ? _instance.searchText
+              : (searchText as String?)));
+}
+
+class _CopyWithStubImpl$Variables$Query$SearchCategories<TRes>
+    implements CopyWith$Variables$Query$SearchCategories<TRes> {
+  _CopyWithStubImpl$Variables$Query$SearchCategories(this._res);
+
+  TRes _res;
+
+  call({String? searchText}) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$SearchCategories {
+  Query$SearchCategories({required this.categories, required this.$__typename});
+
+  @override
+  factory Query$SearchCategories.fromJson(Map<String, dynamic> json) =>
+      _$Query$SearchCategoriesFromJson(json);
+
+  final Query$SearchCategories$categories categories;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$Query$SearchCategoriesToJson(this);
+  int get hashCode {
+    final l$categories = categories;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$categories, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$SearchCategories) || runtimeType != other.runtimeType)
+      return false;
+    final l$categories = categories;
+    final lOther$categories = other.categories;
+    if (l$categories != lOther$categories) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$SearchCategories on Query$SearchCategories {
+  CopyWith$Query$SearchCategories<Query$SearchCategories> get copyWith =>
+      CopyWith$Query$SearchCategories(this, (i) => i);
+}
+
+abstract class CopyWith$Query$SearchCategories<TRes> {
+  factory CopyWith$Query$SearchCategories(Query$SearchCategories instance,
+          TRes Function(Query$SearchCategories) then) =
+      _CopyWithImpl$Query$SearchCategories;
+
+  factory CopyWith$Query$SearchCategories.stub(TRes res) =
+      _CopyWithStubImpl$Query$SearchCategories;
+
+  TRes call(
+      {Query$SearchCategories$categories? categories, String? $__typename});
+  CopyWith$Query$SearchCategories$categories<TRes> get categories;
+}
+
+class _CopyWithImpl$Query$SearchCategories<TRes>
+    implements CopyWith$Query$SearchCategories<TRes> {
+  _CopyWithImpl$Query$SearchCategories(this._instance, this._then);
+
+  final Query$SearchCategories _instance;
+
+  final TRes Function(Query$SearchCategories) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? categories = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$SearchCategories(
+          categories: categories == _undefined || categories == null
+              ? _instance.categories
+              : (categories as Query$SearchCategories$categories),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Query$SearchCategories$categories<TRes> get categories {
+    final local$categories = _instance.categories;
+    return CopyWith$Query$SearchCategories$categories(
+        local$categories, (e) => call(categories: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$SearchCategories<TRes>
+    implements CopyWith$Query$SearchCategories<TRes> {
+  _CopyWithStubImpl$Query$SearchCategories(this._res);
+
+  TRes _res;
+
+  call({Query$SearchCategories$categories? categories, String? $__typename}) =>
+      _res;
+  CopyWith$Query$SearchCategories$categories<TRes> get categories =>
+      CopyWith$Query$SearchCategories$categories.stub(_res);
+}
+
+const documentNodeQuerySearchCategories = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.query,
+      name: NameNode(value: 'SearchCategories'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'searchText')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'String'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'categories'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'where'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'nameContainsFold'),
+                        value:
+                            VariableNode(name: NameNode(value: 'searchText')))
+                  ]))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'edges'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'node'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: SelectionSetNode(selections: [
+                          FieldNode(
+                              name: NameNode(value: 'id'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
+                              name: NameNode(value: 'name'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
+                              name: NameNode(value: '__typename'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null)
+                        ])),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+]);
+Query$SearchCategories _parserFn$Query$SearchCategories(
+        Map<String, dynamic> data) =>
+    Query$SearchCategories.fromJson(data);
+
+class Options$Query$SearchCategories
+    extends graphql.QueryOptions<Query$SearchCategories> {
+  Options$Query$SearchCategories(
+      {String? operationName,
+      Variables$Query$SearchCategories? variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      Duration? pollInterval,
+      graphql.Context? context})
+      : super(
+            variables: variables?.toJson() ?? {},
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            pollInterval: pollInterval,
+            context: context,
+            document: documentNodeQuerySearchCategories,
+            parserFn: _parserFn$Query$SearchCategories);
+}
+
+class WatchOptions$Query$SearchCategories
+    extends graphql.WatchQueryOptions<Query$SearchCategories> {
+  WatchOptions$Query$SearchCategories(
+      {String? operationName,
+      Variables$Query$SearchCategories? variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables?.toJson() ?? {},
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeQuerySearchCategories,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Query$SearchCategories);
+}
+
+class FetchMoreOptions$Query$SearchCategories extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$SearchCategories(
+      {required graphql.UpdateQuery updateQuery,
+      Variables$Query$SearchCategories? variables})
+      : super(
+            updateQuery: updateQuery,
+            variables: variables?.toJson() ?? {},
+            document: documentNodeQuerySearchCategories);
+}
+
+extension ClientExtension$Query$SearchCategories on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$SearchCategories>> query$SearchCategories(
+          [Options$Query$SearchCategories? options]) async =>
+      await this.query(options ?? Options$Query$SearchCategories());
+  graphql.ObservableQuery<Query$SearchCategories> watchQuery$SearchCategories(
+          [WatchOptions$Query$SearchCategories? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$SearchCategories());
+  void writeQuery$SearchCategories(
+          {required Query$SearchCategories data,
+          Variables$Query$SearchCategories? variables,
+          bool broadcast = true}) =>
+      this.writeQuery(
+          graphql.Request(
+              operation: graphql.Operation(
+                  document: documentNodeQuerySearchCategories),
+              variables: variables?.toJson() ?? const {}),
+          data: data.toJson(),
+          broadcast: broadcast);
+  Query$SearchCategories? readQuery$SearchCategories(
+      {Variables$Query$SearchCategories? variables, bool optimistic = true}) {
+    final result = this.readQuery(
+        graphql.Request(
+            operation:
+                graphql.Operation(document: documentNodeQuerySearchCategories),
+            variables: variables?.toJson() ?? const {}),
+        optimistic: optimistic);
+    return result == null ? null : Query$SearchCategories.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$SearchCategories>
+    useQuery$SearchCategories([Options$Query$SearchCategories? options]) =>
+        graphql_flutter.useQuery(options ?? Options$Query$SearchCategories());
+graphql.ObservableQuery<Query$SearchCategories> useWatchQuery$SearchCategories(
+        [WatchOptions$Query$SearchCategories? options]) =>
+    graphql_flutter
+        .useWatchQuery(options ?? WatchOptions$Query$SearchCategories());
+
+class Query$SearchCategories$Widget
+    extends graphql_flutter.Query<Query$SearchCategories> {
+  Query$SearchCategories$Widget(
+      {widgets.Key? key,
+      Options$Query$SearchCategories? options,
+      required graphql_flutter.QueryBuilder<Query$SearchCategories> builder})
+      : super(
+            key: key,
+            options: options ?? Options$Query$SearchCategories(),
+            builder: builder);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$SearchCategories$categories {
+  Query$SearchCategories$categories({this.edges, required this.$__typename});
+
+  @override
+  factory Query$SearchCategories$categories.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$SearchCategories$categoriesFromJson(json);
+
+  final List<Query$SearchCategories$categories$edges?>? edges;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$SearchCategories$categoriesToJson(this);
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$SearchCategories$categories) ||
+        runtimeType != other.runtimeType) return false;
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges != null && lOther$edges != null) {
+      if (l$edges.length != lOther$edges.length) return false;
+      for (int i = 0; i < l$edges.length; i++) {
+        final l$edges$entry = l$edges[i];
+        final lOther$edges$entry = lOther$edges[i];
+        if (l$edges$entry != lOther$edges$entry) return false;
+      }
+    } else if (l$edges != lOther$edges) {
+      return false;
+    }
+
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$SearchCategories$categories
+    on Query$SearchCategories$categories {
+  CopyWith$Query$SearchCategories$categories<Query$SearchCategories$categories>
+      get copyWith =>
+          CopyWith$Query$SearchCategories$categories(this, (i) => i);
+}
+
+abstract class CopyWith$Query$SearchCategories$categories<TRes> {
+  factory CopyWith$Query$SearchCategories$categories(
+          Query$SearchCategories$categories instance,
+          TRes Function(Query$SearchCategories$categories) then) =
+      _CopyWithImpl$Query$SearchCategories$categories;
+
+  factory CopyWith$Query$SearchCategories$categories.stub(TRes res) =
+      _CopyWithStubImpl$Query$SearchCategories$categories;
+
+  TRes call(
+      {List<Query$SearchCategories$categories$edges?>? edges,
+      String? $__typename});
+  TRes edges(
+      Iterable<Query$SearchCategories$categories$edges?>? Function(
+              Iterable<
+                  CopyWith$Query$SearchCategories$categories$edges<
+                      Query$SearchCategories$categories$edges>?>?)
+          _fn);
+}
+
+class _CopyWithImpl$Query$SearchCategories$categories<TRes>
+    implements CopyWith$Query$SearchCategories$categories<TRes> {
+  _CopyWithImpl$Query$SearchCategories$categories(this._instance, this._then);
+
+  final Query$SearchCategories$categories _instance;
+
+  final TRes Function(Query$SearchCategories$categories) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$SearchCategories$categories(
+          edges: edges == _undefined
+              ? _instance.edges
+              : (edges as List<Query$SearchCategories$categories$edges?>?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  TRes edges(
+          Iterable<Query$SearchCategories$categories$edges?>? Function(
+                  Iterable<
+                      CopyWith$Query$SearchCategories$categories$edges<
+                          Query$SearchCategories$categories$edges>?>?)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges?.map((e) => e == null
+              ? null
+              : CopyWith$Query$SearchCategories$categories$edges(
+                  e, (i) => i)))?.toList());
+}
+
+class _CopyWithStubImpl$Query$SearchCategories$categories<TRes>
+    implements CopyWith$Query$SearchCategories$categories<TRes> {
+  _CopyWithStubImpl$Query$SearchCategories$categories(this._res);
+
+  TRes _res;
+
+  call(
+          {List<Query$SearchCategories$categories$edges?>? edges,
+          String? $__typename}) =>
+      _res;
+  edges(_fn) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$SearchCategories$categories$edges {
+  Query$SearchCategories$categories$edges(
+      {this.node, required this.$__typename});
+
+  @override
+  factory Query$SearchCategories$categories$edges.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$SearchCategories$categories$edgesFromJson(json);
+
+  final Query$SearchCategories$categories$edges$node? node;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$SearchCategories$categories$edgesToJson(this);
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$node, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$SearchCategories$categories$edges) ||
+        runtimeType != other.runtimeType) return false;
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$SearchCategories$categories$edges
+    on Query$SearchCategories$categories$edges {
+  CopyWith$Query$SearchCategories$categories$edges<
+          Query$SearchCategories$categories$edges>
+      get copyWith =>
+          CopyWith$Query$SearchCategories$categories$edges(this, (i) => i);
+}
+
+abstract class CopyWith$Query$SearchCategories$categories$edges<TRes> {
+  factory CopyWith$Query$SearchCategories$categories$edges(
+          Query$SearchCategories$categories$edges instance,
+          TRes Function(Query$SearchCategories$categories$edges) then) =
+      _CopyWithImpl$Query$SearchCategories$categories$edges;
+
+  factory CopyWith$Query$SearchCategories$categories$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$SearchCategories$categories$edges;
+
+  TRes call(
+      {Query$SearchCategories$categories$edges$node? node,
+      String? $__typename});
+  CopyWith$Query$SearchCategories$categories$edges$node<TRes> get node;
+}
+
+class _CopyWithImpl$Query$SearchCategories$categories$edges<TRes>
+    implements CopyWith$Query$SearchCategories$categories$edges<TRes> {
+  _CopyWithImpl$Query$SearchCategories$categories$edges(
+      this._instance, this._then);
+
+  final Query$SearchCategories$categories$edges _instance;
+
+  final TRes Function(Query$SearchCategories$categories$edges) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$SearchCategories$categories$edges(
+          node: node == _undefined
+              ? _instance.node
+              : (node as Query$SearchCategories$categories$edges$node?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Query$SearchCategories$categories$edges$node<TRes> get node {
+    final local$node = _instance.node;
+    return local$node == null
+        ? CopyWith$Query$SearchCategories$categories$edges$node.stub(
+            _then(_instance))
+        : CopyWith$Query$SearchCategories$categories$edges$node(
+            local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$SearchCategories$categories$edges<TRes>
+    implements CopyWith$Query$SearchCategories$categories$edges<TRes> {
+  _CopyWithStubImpl$Query$SearchCategories$categories$edges(this._res);
+
+  TRes _res;
+
+  call(
+          {Query$SearchCategories$categories$edges$node? node,
+          String? $__typename}) =>
+      _res;
+  CopyWith$Query$SearchCategories$categories$edges$node<TRes> get node =>
+      CopyWith$Query$SearchCategories$categories$edges$node.stub(_res);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$SearchCategories$categories$edges$node {
+  Query$SearchCategories$categories$edges$node(
+      {required this.id, required this.name, required this.$__typename});
+
+  @override
+  factory Query$SearchCategories$categories$edges$node.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$SearchCategories$categories$edges$nodeFromJson(json);
+
+  final String id;
+
+  final String name;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$SearchCategories$categories$edges$nodeToJson(this);
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$name, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$SearchCategories$categories$edges$node) ||
+        runtimeType != other.runtimeType) return false;
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) return false;
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$SearchCategories$categories$edges$node
+    on Query$SearchCategories$categories$edges$node {
+  CopyWith$Query$SearchCategories$categories$edges$node<
+          Query$SearchCategories$categories$edges$node>
+      get copyWith =>
+          CopyWith$Query$SearchCategories$categories$edges$node(this, (i) => i);
+}
+
+abstract class CopyWith$Query$SearchCategories$categories$edges$node<TRes> {
+  factory CopyWith$Query$SearchCategories$categories$edges$node(
+          Query$SearchCategories$categories$edges$node instance,
+          TRes Function(Query$SearchCategories$categories$edges$node) then) =
+      _CopyWithImpl$Query$SearchCategories$categories$edges$node;
+
+  factory CopyWith$Query$SearchCategories$categories$edges$node.stub(TRes res) =
+      _CopyWithStubImpl$Query$SearchCategories$categories$edges$node;
+
+  TRes call({String? id, String? name, String? $__typename});
+}
+
+class _CopyWithImpl$Query$SearchCategories$categories$edges$node<TRes>
+    implements CopyWith$Query$SearchCategories$categories$edges$node<TRes> {
+  _CopyWithImpl$Query$SearchCategories$categories$edges$node(
+      this._instance, this._then);
+
+  final Query$SearchCategories$categories$edges$node _instance;
+
+  final TRes Function(Query$SearchCategories$categories$edges$node) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? id = _undefined,
+          Object? name = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$SearchCategories$categories$edges$node(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          name: name == _undefined || name == null
+              ? _instance.name
+              : (name as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$SearchCategories$categories$edges$node<TRes>
+    implements CopyWith$Query$SearchCategories$categories$edges$node<TRes> {
+  _CopyWithStubImpl$Query$SearchCategories$categories$edges$node(this._res);
+
+  TRes _res;
+
+  call({String? id, String? name, String? $__typename}) => _res;
+}

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hokkori/pages/search/category_page.dart';
 import 'package:hokkori/pages/search/search_input.dart';
+import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/pages/search/top_letters.dart';
 import 'package:hokkori/pages/search/topic_contents.dart';
+import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/content_type.dart';
 import 'package:hokkori/utils/header.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -20,6 +23,9 @@ class SearchPageNavigator extends StatelessWidget {
         switch (settings.name) {
           case '/':
             builder = (BuildContext context) => const SearchPage();
+            break;
+          case '/category':
+            builder = (BuildContext context) => const CategoryPage();
             break;
           default:
             throw Exception('Invalid route: ${settings.name}');
@@ -42,7 +48,7 @@ class SearchPage extends ConsumerWidget {
         Expanded(
             child: SingleChildScrollView(
                 child: ref.watch(searchTextProvider) != ""
-                    ? Text(ref.watch(searchTextProvider))
+                    ? const Candidates()
                     : Column(
                         children: [
                           Container(
@@ -73,20 +79,35 @@ class SearchPage extends ConsumerWidget {
   }
 }
 
-class Candidates extends StatelessWidget {
-  const Candidates({Key? key}) : super(key: key);
+class Candidates extends HookConsumerWidget {
+  const Candidates({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final items = [
-      "test",
-      "test",
-      "test",
-    ];
+  Widget build(BuildContext context, WidgetRef ref) {
+    final result = useQuery$SearchCategories(Options$Query$SearchCategories(
+            variables: Variables$Query$SearchCategories(
+                searchText: ref.watch(searchTextProvider))))
+        .result;
+    if (result.hasException) {
+      return Text(result.exception.toString());
+    }
+    if (result.isLoading) {
+      return const Center(
+        child: CircularProgressIndicator(
+          color: primaryColor,
+        ),
+      );
+    }
+    final categories = result.parsedData?.categories.edges ?? [];
+
     return Column(
-        children: items
-            .map((item) => ListTile(
-                  title: Text(item),
+        children: categories
+            .map((category) => ListTile(
+                  onTap: () {
+                    Navigator.of(context).pushNamed('/category',
+                        arguments: CategoryPageArguments(category!.node!.id));
+                  },
+                  title: Text(category!.node!.name),
                 ))
             .toList());
   }

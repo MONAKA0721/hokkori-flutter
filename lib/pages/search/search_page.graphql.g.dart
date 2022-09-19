@@ -112,3 +112,84 @@ Map<String, dynamic> _$Query$TopLetters$posts$edgesToJson(
       'node': instance.node?.toJson(),
       '__typename': instance.$__typename,
     };
+
+Variables$Query$SearchCategories _$Variables$Query$SearchCategoriesFromJson(
+        Map<String, dynamic> json) =>
+    Variables$Query$SearchCategories(
+      searchText: json['searchText'] as String?,
+    );
+
+Map<String, dynamic> _$Variables$Query$SearchCategoriesToJson(
+        Variables$Query$SearchCategories instance) =>
+    <String, dynamic>{
+      'searchText': instance.searchText,
+    };
+
+Query$SearchCategories _$Query$SearchCategoriesFromJson(
+        Map<String, dynamic> json) =>
+    Query$SearchCategories(
+      categories: Query$SearchCategories$categories.fromJson(
+          json['categories'] as Map<String, dynamic>),
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$Query$SearchCategoriesToJson(
+        Query$SearchCategories instance) =>
+    <String, dynamic>{
+      'categories': instance.categories.toJson(),
+      '__typename': instance.$__typename,
+    };
+
+Query$SearchCategories$categories _$Query$SearchCategories$categoriesFromJson(
+        Map<String, dynamic> json) =>
+    Query$SearchCategories$categories(
+      edges: (json['edges'] as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : Query$SearchCategories$categories$edges.fromJson(
+                  e as Map<String, dynamic>))
+          .toList(),
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$Query$SearchCategories$categoriesToJson(
+        Query$SearchCategories$categories instance) =>
+    <String, dynamic>{
+      'edges': instance.edges?.map((e) => e?.toJson()).toList(),
+      '__typename': instance.$__typename,
+    };
+
+Query$SearchCategories$categories$edges
+    _$Query$SearchCategories$categories$edgesFromJson(
+            Map<String, dynamic> json) =>
+        Query$SearchCategories$categories$edges(
+          node: json['node'] == null
+              ? null
+              : Query$SearchCategories$categories$edges$node.fromJson(
+                  json['node'] as Map<String, dynamic>),
+          $__typename: json['__typename'] as String,
+        );
+
+Map<String, dynamic> _$Query$SearchCategories$categories$edgesToJson(
+        Query$SearchCategories$categories$edges instance) =>
+    <String, dynamic>{
+      'node': instance.node?.toJson(),
+      '__typename': instance.$__typename,
+    };
+
+Query$SearchCategories$categories$edges$node
+    _$Query$SearchCategories$categories$edges$nodeFromJson(
+            Map<String, dynamic> json) =>
+        Query$SearchCategories$categories$edges$node(
+          id: json['id'] as String,
+          name: json['name'] as String,
+          $__typename: json['__typename'] as String,
+        );
+
+Map<String, dynamic> _$Query$SearchCategories$categories$edges$nodeToJson(
+        Query$SearchCategories$categories$edges$node instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      '__typename': instance.$__typename,
+    };

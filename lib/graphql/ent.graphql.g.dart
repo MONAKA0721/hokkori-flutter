@@ -6,6 +6,83 @@ part of 'ent.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+Input$CategoryWhereInput _$Input$CategoryWhereInputFromJson(
+        Map<String, dynamic> json) =>
+    Input$CategoryWhereInput(
+      not: json['not'] == null
+          ? null
+          : Input$CategoryWhereInput.fromJson(
+              json['not'] as Map<String, dynamic>),
+      and: (json['and'] as List<dynamic>?)
+          ?.map((e) =>
+              Input$CategoryWhereInput.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      or: (json['or'] as List<dynamic>?)
+          ?.map((e) =>
+              Input$CategoryWhereInput.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      id: json['id'] as String?,
+      idNEQ: json['idNEQ'] as String?,
+      idIn: (json['idIn'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      idNotIn:
+          (json['idNotIn'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      idGT: json['idGT'] as String?,
+      idGTE: json['idGTE'] as String?,
+      idLT: json['idLT'] as String?,
+      idLTE: json['idLTE'] as String?,
+      name: json['name'] as String?,
+      nameNEQ: json['nameNEQ'] as String?,
+      nameIn:
+          (json['nameIn'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      nameNotIn: (json['nameNotIn'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      nameGT: json['nameGT'] as String?,
+      nameGTE: json['nameGTE'] as String?,
+      nameLT: json['nameLT'] as String?,
+      nameLTE: json['nameLTE'] as String?,
+      nameContains: json['nameContains'] as String?,
+      nameHasPrefix: json['nameHasPrefix'] as String?,
+      nameHasSuffix: json['nameHasSuffix'] as String?,
+      nameEqualFold: json['nameEqualFold'] as String?,
+      nameContainsFold: json['nameContainsFold'] as String?,
+      hasPost: json['hasPost'] as bool?,
+      hasPostWith: (json['hasPostWith'] as List<dynamic>?)
+          ?.map((e) => Input$PostWhereInput.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$Input$CategoryWhereInputToJson(
+        Input$CategoryWhereInput instance) =>
+    <String, dynamic>{
+      'not': instance.not?.toJson(),
+      'and': instance.and?.map((e) => e.toJson()).toList(),
+      'or': instance.or?.map((e) => e.toJson()).toList(),
+      'id': instance.id,
+      'idNEQ': instance.idNEQ,
+      'idIn': instance.idIn,
+      'idNotIn': instance.idNotIn,
+      'idGT': instance.idGT,
+      'idGTE': instance.idGTE,
+      'idLT': instance.idLT,
+      'idLTE': instance.idLTE,
+      'name': instance.name,
+      'nameNEQ': instance.nameNEQ,
+      'nameIn': instance.nameIn,
+      'nameNotIn': instance.nameNotIn,
+      'nameGT': instance.nameGT,
+      'nameGTE': instance.nameGTE,
+      'nameLT': instance.nameLT,
+      'nameLTE': instance.nameLTE,
+      'nameContains': instance.nameContains,
+      'nameHasPrefix': instance.nameHasPrefix,
+      'nameHasSuffix': instance.nameHasSuffix,
+      'nameEqualFold': instance.nameEqualFold,
+      'nameContainsFold': instance.nameContainsFold,
+      'hasPost': instance.hasPost,
+      'hasPostWith': instance.hasPostWith?.map((e) => e.toJson()).toList(),
+    };
+
 Input$CreateHashtagInput _$Input$CreateHashtagInputFromJson(
         Map<String, dynamic> json) =>
     Input$CreateHashtagInput(
@@ -36,6 +113,7 @@ Input$CreatePostInput _$Input$CreatePostInputFromJson(
           ?.map((e) => e as String)
           .toList(),
       workID: json['workID'] as String,
+      categoryID: json['categoryID'] as String,
       likedUserIDs: (json['likedUserIDs'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -53,6 +131,7 @@ Map<String, dynamic> _$Input$CreatePostInputToJson(
       'ownerID': instance.ownerID,
       'hashtagIDs': instance.hashtagIDs,
       'workID': instance.workID,
+      'categoryID': instance.categoryID,
       'likedUserIDs': instance.likedUserIDs,
     };
 
@@ -306,6 +385,11 @@ Input$PostWhereInput _$Input$PostWhereInputFromJson(
       hasWorkWith: (json['hasWorkWith'] as List<dynamic>?)
           ?.map((e) => Input$WorkWhereInput.fromJson(e as Map<String, dynamic>))
           .toList(),
+      hasCategory: json['hasCategory'] as bool?,
+      hasCategoryWith: (json['hasCategoryWith'] as List<dynamic>?)
+          ?.map((e) =>
+              Input$CategoryWhereInput.fromJson(e as Map<String, dynamic>))
+          .toList(),
       hasLikedUsers: json['hasLikedUsers'] as bool?,
       hasLikedUsersWith: (json['hasLikedUsersWith'] as List<dynamic>?)
           ?.map((e) => Input$UserWhereInput.fromJson(e as Map<String, dynamic>))
@@ -384,6 +468,9 @@ Map<String, dynamic> _$Input$PostWhereInputToJson(
           instance.hasHashtagsWith?.map((e) => e.toJson()).toList(),
       'hasWork': instance.hasWork,
       'hasWorkWith': instance.hasWorkWith?.map((e) => e.toJson()).toList(),
+      'hasCategory': instance.hasCategory,
+      'hasCategoryWith':
+          instance.hasCategoryWith?.map((e) => e.toJson()).toList(),
       'hasLikedUsers': instance.hasLikedUsers,
       'hasLikedUsersWith':
           instance.hasLikedUsersWith?.map((e) => e.toJson()).toList(),
@@ -428,6 +515,8 @@ Input$UpdatePostInput _$Input$UpdatePostInputFromJson(
           .toList(),
       clearWork: json['clearWork'] as bool?,
       workID: json['workID'] as String?,
+      clearCategory: json['clearCategory'] as bool?,
+      categoryID: json['categoryID'] as String?,
       addLikedUserIDs: (json['addLikedUserIDs'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -450,6 +539,8 @@ Map<String, dynamic> _$Input$UpdatePostInputToJson(
       'removeHashtagIDs': instance.removeHashtagIDs,
       'clearWork': instance.clearWork,
       'workID': instance.workID,
+      'clearCategory': instance.clearCategory,
+      'categoryID': instance.categoryID,
       'addLikedUserIDs': instance.addLikedUserIDs,
       'removeLikedUserIDs': instance.removeLikedUserIDs,
     };

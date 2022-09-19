@@ -2,6 +2,533 @@ import 'package:json_annotation/json_annotation.dart';
 part 'ent.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
+class Input$CategoryWhereInput {
+  Input$CategoryWhereInput(
+      {this.not,
+      this.and,
+      this.or,
+      this.id,
+      this.idNEQ,
+      this.idIn,
+      this.idNotIn,
+      this.idGT,
+      this.idGTE,
+      this.idLT,
+      this.idLTE,
+      this.name,
+      this.nameNEQ,
+      this.nameIn,
+      this.nameNotIn,
+      this.nameGT,
+      this.nameGTE,
+      this.nameLT,
+      this.nameLTE,
+      this.nameContains,
+      this.nameHasPrefix,
+      this.nameHasSuffix,
+      this.nameEqualFold,
+      this.nameContainsFold,
+      this.hasPost,
+      this.hasPostWith});
+
+  @override
+  factory Input$CategoryWhereInput.fromJson(Map<String, dynamic> json) =>
+      _$Input$CategoryWhereInputFromJson(json);
+
+  final Input$CategoryWhereInput? not;
+
+  final List<Input$CategoryWhereInput>? and;
+
+  final List<Input$CategoryWhereInput>? or;
+
+  final String? id;
+
+  final String? idNEQ;
+
+  final List<String>? idIn;
+
+  final List<String>? idNotIn;
+
+  final String? idGT;
+
+  final String? idGTE;
+
+  final String? idLT;
+
+  final String? idLTE;
+
+  final String? name;
+
+  final String? nameNEQ;
+
+  final List<String>? nameIn;
+
+  final List<String>? nameNotIn;
+
+  final String? nameGT;
+
+  final String? nameGTE;
+
+  final String? nameLT;
+
+  final String? nameLTE;
+
+  final String? nameContains;
+
+  final String? nameHasPrefix;
+
+  final String? nameHasSuffix;
+
+  final String? nameEqualFold;
+
+  final String? nameContainsFold;
+
+  final bool? hasPost;
+
+  final List<Input$PostWhereInput>? hasPostWith;
+
+  Map<String, dynamic> toJson() => _$Input$CategoryWhereInputToJson(this);
+  int get hashCode {
+    final l$not = not;
+    final l$and = and;
+    final l$or = or;
+    final l$id = id;
+    final l$idNEQ = idNEQ;
+    final l$idIn = idIn;
+    final l$idNotIn = idNotIn;
+    final l$idGT = idGT;
+    final l$idGTE = idGTE;
+    final l$idLT = idLT;
+    final l$idLTE = idLTE;
+    final l$name = name;
+    final l$nameNEQ = nameNEQ;
+    final l$nameIn = nameIn;
+    final l$nameNotIn = nameNotIn;
+    final l$nameGT = nameGT;
+    final l$nameGTE = nameGTE;
+    final l$nameLT = nameLT;
+    final l$nameLTE = nameLTE;
+    final l$nameContains = nameContains;
+    final l$nameHasPrefix = nameHasPrefix;
+    final l$nameHasSuffix = nameHasSuffix;
+    final l$nameEqualFold = nameEqualFold;
+    final l$nameContainsFold = nameContainsFold;
+    final l$hasPost = hasPost;
+    final l$hasPostWith = hasPostWith;
+    return Object.hashAll([
+      l$not,
+      l$and == null ? null : Object.hashAll(l$and.map((v) => v)),
+      l$or == null ? null : Object.hashAll(l$or.map((v) => v)),
+      l$id,
+      l$idNEQ,
+      l$idIn == null ? null : Object.hashAll(l$idIn.map((v) => v)),
+      l$idNotIn == null ? null : Object.hashAll(l$idNotIn.map((v) => v)),
+      l$idGT,
+      l$idGTE,
+      l$idLT,
+      l$idLTE,
+      l$name,
+      l$nameNEQ,
+      l$nameIn == null ? null : Object.hashAll(l$nameIn.map((v) => v)),
+      l$nameNotIn == null ? null : Object.hashAll(l$nameNotIn.map((v) => v)),
+      l$nameGT,
+      l$nameGTE,
+      l$nameLT,
+      l$nameLTE,
+      l$nameContains,
+      l$nameHasPrefix,
+      l$nameHasSuffix,
+      l$nameEqualFold,
+      l$nameContainsFold,
+      l$hasPost,
+      l$hasPostWith == null ? null : Object.hashAll(l$hasPostWith.map((v) => v))
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Input$CategoryWhereInput) ||
+        runtimeType != other.runtimeType) return false;
+    final l$not = not;
+    final lOther$not = other.not;
+    if (l$not != lOther$not) return false;
+    final l$and = and;
+    final lOther$and = other.and;
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) return false;
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) return false;
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+
+    final l$or = or;
+    final lOther$or = other.or;
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) return false;
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) return false;
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) return false;
+    final l$idNEQ = idNEQ;
+    final lOther$idNEQ = other.idNEQ;
+    if (l$idNEQ != lOther$idNEQ) return false;
+    final l$idIn = idIn;
+    final lOther$idIn = other.idIn;
+    if (l$idIn != null && lOther$idIn != null) {
+      if (l$idIn.length != lOther$idIn.length) return false;
+      for (int i = 0; i < l$idIn.length; i++) {
+        final l$idIn$entry = l$idIn[i];
+        final lOther$idIn$entry = lOther$idIn[i];
+        if (l$idIn$entry != lOther$idIn$entry) return false;
+      }
+    } else if (l$idIn != lOther$idIn) {
+      return false;
+    }
+
+    final l$idNotIn = idNotIn;
+    final lOther$idNotIn = other.idNotIn;
+    if (l$idNotIn != null && lOther$idNotIn != null) {
+      if (l$idNotIn.length != lOther$idNotIn.length) return false;
+      for (int i = 0; i < l$idNotIn.length; i++) {
+        final l$idNotIn$entry = l$idNotIn[i];
+        final lOther$idNotIn$entry = lOther$idNotIn[i];
+        if (l$idNotIn$entry != lOther$idNotIn$entry) return false;
+      }
+    } else if (l$idNotIn != lOther$idNotIn) {
+      return false;
+    }
+
+    final l$idGT = idGT;
+    final lOther$idGT = other.idGT;
+    if (l$idGT != lOther$idGT) return false;
+    final l$idGTE = idGTE;
+    final lOther$idGTE = other.idGTE;
+    if (l$idGTE != lOther$idGTE) return false;
+    final l$idLT = idLT;
+    final lOther$idLT = other.idLT;
+    if (l$idLT != lOther$idLT) return false;
+    final l$idLTE = idLTE;
+    final lOther$idLTE = other.idLTE;
+    if (l$idLTE != lOther$idLTE) return false;
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) return false;
+    final l$nameNEQ = nameNEQ;
+    final lOther$nameNEQ = other.nameNEQ;
+    if (l$nameNEQ != lOther$nameNEQ) return false;
+    final l$nameIn = nameIn;
+    final lOther$nameIn = other.nameIn;
+    if (l$nameIn != null && lOther$nameIn != null) {
+      if (l$nameIn.length != lOther$nameIn.length) return false;
+      for (int i = 0; i < l$nameIn.length; i++) {
+        final l$nameIn$entry = l$nameIn[i];
+        final lOther$nameIn$entry = lOther$nameIn[i];
+        if (l$nameIn$entry != lOther$nameIn$entry) return false;
+      }
+    } else if (l$nameIn != lOther$nameIn) {
+      return false;
+    }
+
+    final l$nameNotIn = nameNotIn;
+    final lOther$nameNotIn = other.nameNotIn;
+    if (l$nameNotIn != null && lOther$nameNotIn != null) {
+      if (l$nameNotIn.length != lOther$nameNotIn.length) return false;
+      for (int i = 0; i < l$nameNotIn.length; i++) {
+        final l$nameNotIn$entry = l$nameNotIn[i];
+        final lOther$nameNotIn$entry = lOther$nameNotIn[i];
+        if (l$nameNotIn$entry != lOther$nameNotIn$entry) return false;
+      }
+    } else if (l$nameNotIn != lOther$nameNotIn) {
+      return false;
+    }
+
+    final l$nameGT = nameGT;
+    final lOther$nameGT = other.nameGT;
+    if (l$nameGT != lOther$nameGT) return false;
+    final l$nameGTE = nameGTE;
+    final lOther$nameGTE = other.nameGTE;
+    if (l$nameGTE != lOther$nameGTE) return false;
+    final l$nameLT = nameLT;
+    final lOther$nameLT = other.nameLT;
+    if (l$nameLT != lOther$nameLT) return false;
+    final l$nameLTE = nameLTE;
+    final lOther$nameLTE = other.nameLTE;
+    if (l$nameLTE != lOther$nameLTE) return false;
+    final l$nameContains = nameContains;
+    final lOther$nameContains = other.nameContains;
+    if (l$nameContains != lOther$nameContains) return false;
+    final l$nameHasPrefix = nameHasPrefix;
+    final lOther$nameHasPrefix = other.nameHasPrefix;
+    if (l$nameHasPrefix != lOther$nameHasPrefix) return false;
+    final l$nameHasSuffix = nameHasSuffix;
+    final lOther$nameHasSuffix = other.nameHasSuffix;
+    if (l$nameHasSuffix != lOther$nameHasSuffix) return false;
+    final l$nameEqualFold = nameEqualFold;
+    final lOther$nameEqualFold = other.nameEqualFold;
+    if (l$nameEqualFold != lOther$nameEqualFold) return false;
+    final l$nameContainsFold = nameContainsFold;
+    final lOther$nameContainsFold = other.nameContainsFold;
+    if (l$nameContainsFold != lOther$nameContainsFold) return false;
+    final l$hasPost = hasPost;
+    final lOther$hasPost = other.hasPost;
+    if (l$hasPost != lOther$hasPost) return false;
+    final l$hasPostWith = hasPostWith;
+    final lOther$hasPostWith = other.hasPostWith;
+    if (l$hasPostWith != null && lOther$hasPostWith != null) {
+      if (l$hasPostWith.length != lOther$hasPostWith.length) return false;
+      for (int i = 0; i < l$hasPostWith.length; i++) {
+        final l$hasPostWith$entry = l$hasPostWith[i];
+        final lOther$hasPostWith$entry = lOther$hasPostWith[i];
+        if (l$hasPostWith$entry != lOther$hasPostWith$entry) return false;
+      }
+    } else if (l$hasPostWith != lOther$hasPostWith) {
+      return false;
+    }
+
+    return true;
+  }
+
+  CopyWith$Input$CategoryWhereInput<Input$CategoryWhereInput> get copyWith =>
+      CopyWith$Input$CategoryWhereInput(this, (i) => i);
+}
+
+abstract class CopyWith$Input$CategoryWhereInput<TRes> {
+  factory CopyWith$Input$CategoryWhereInput(Input$CategoryWhereInput instance,
+          TRes Function(Input$CategoryWhereInput) then) =
+      _CopyWithImpl$Input$CategoryWhereInput;
+
+  factory CopyWith$Input$CategoryWhereInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$CategoryWhereInput;
+
+  TRes call(
+      {Input$CategoryWhereInput? not,
+      List<Input$CategoryWhereInput>? and,
+      List<Input$CategoryWhereInput>? or,
+      String? id,
+      String? idNEQ,
+      List<String>? idIn,
+      List<String>? idNotIn,
+      String? idGT,
+      String? idGTE,
+      String? idLT,
+      String? idLTE,
+      String? name,
+      String? nameNEQ,
+      List<String>? nameIn,
+      List<String>? nameNotIn,
+      String? nameGT,
+      String? nameGTE,
+      String? nameLT,
+      String? nameLTE,
+      String? nameContains,
+      String? nameHasPrefix,
+      String? nameHasSuffix,
+      String? nameEqualFold,
+      String? nameContainsFold,
+      bool? hasPost,
+      List<Input$PostWhereInput>? hasPostWith});
+  CopyWith$Input$CategoryWhereInput<TRes> get not;
+  TRes and(
+      Iterable<Input$CategoryWhereInput>? Function(
+              Iterable<
+                  CopyWith$Input$CategoryWhereInput<Input$CategoryWhereInput>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$CategoryWhereInput>? Function(
+              Iterable<
+                  CopyWith$Input$CategoryWhereInput<Input$CategoryWhereInput>>?)
+          _fn);
+  TRes hasPostWith(
+      Iterable<Input$PostWhereInput>? Function(
+              Iterable<CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+          _fn);
+}
+
+class _CopyWithImpl$Input$CategoryWhereInput<TRes>
+    implements CopyWith$Input$CategoryWhereInput<TRes> {
+  _CopyWithImpl$Input$CategoryWhereInput(this._instance, this._then);
+
+  final Input$CategoryWhereInput _instance;
+
+  final TRes Function(Input$CategoryWhereInput) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? not = _undefined,
+          Object? and = _undefined,
+          Object? or = _undefined,
+          Object? id = _undefined,
+          Object? idNEQ = _undefined,
+          Object? idIn = _undefined,
+          Object? idNotIn = _undefined,
+          Object? idGT = _undefined,
+          Object? idGTE = _undefined,
+          Object? idLT = _undefined,
+          Object? idLTE = _undefined,
+          Object? name = _undefined,
+          Object? nameNEQ = _undefined,
+          Object? nameIn = _undefined,
+          Object? nameNotIn = _undefined,
+          Object? nameGT = _undefined,
+          Object? nameGTE = _undefined,
+          Object? nameLT = _undefined,
+          Object? nameLTE = _undefined,
+          Object? nameContains = _undefined,
+          Object? nameHasPrefix = _undefined,
+          Object? nameHasSuffix = _undefined,
+          Object? nameEqualFold = _undefined,
+          Object? nameContainsFold = _undefined,
+          Object? hasPost = _undefined,
+          Object? hasPostWith = _undefined}) =>
+      _then(Input$CategoryWhereInput(
+          not: not == _undefined
+              ? _instance.not
+              : (not as Input$CategoryWhereInput?),
+          and: and == _undefined
+              ? _instance.and
+              : (and as List<Input$CategoryWhereInput>?),
+          or: or == _undefined
+              ? _instance.or
+              : (or as List<Input$CategoryWhereInput>?),
+          id: id == _undefined ? _instance.id : (id as String?),
+          idNEQ: idNEQ == _undefined ? _instance.idNEQ : (idNEQ as String?),
+          idIn: idIn == _undefined ? _instance.idIn : (idIn as List<String>?),
+          idNotIn: idNotIn == _undefined
+              ? _instance.idNotIn
+              : (idNotIn as List<String>?),
+          idGT: idGT == _undefined ? _instance.idGT : (idGT as String?),
+          idGTE: idGTE == _undefined ? _instance.idGTE : (idGTE as String?),
+          idLT: idLT == _undefined ? _instance.idLT : (idLT as String?),
+          idLTE: idLTE == _undefined ? _instance.idLTE : (idLTE as String?),
+          name: name == _undefined ? _instance.name : (name as String?),
+          nameNEQ:
+              nameNEQ == _undefined ? _instance.nameNEQ : (nameNEQ as String?),
+          nameIn: nameIn == _undefined
+              ? _instance.nameIn
+              : (nameIn as List<String>?),
+          nameNotIn: nameNotIn == _undefined
+              ? _instance.nameNotIn
+              : (nameNotIn as List<String>?),
+          nameGT: nameGT == _undefined ? _instance.nameGT : (nameGT as String?),
+          nameGTE:
+              nameGTE == _undefined ? _instance.nameGTE : (nameGTE as String?),
+          nameLT: nameLT == _undefined ? _instance.nameLT : (nameLT as String?),
+          nameLTE:
+              nameLTE == _undefined ? _instance.nameLTE : (nameLTE as String?),
+          nameContains: nameContains == _undefined
+              ? _instance.nameContains
+              : (nameContains as String?),
+          nameHasPrefix: nameHasPrefix == _undefined
+              ? _instance.nameHasPrefix
+              : (nameHasPrefix as String?),
+          nameHasSuffix: nameHasSuffix == _undefined
+              ? _instance.nameHasSuffix
+              : (nameHasSuffix as String?),
+          nameEqualFold: nameEqualFold == _undefined
+              ? _instance.nameEqualFold
+              : (nameEqualFold as String?),
+          nameContainsFold: nameContainsFold == _undefined
+              ? _instance.nameContainsFold
+              : (nameContainsFold as String?),
+          hasPost:
+              hasPost == _undefined ? _instance.hasPost : (hasPost as bool?),
+          hasPostWith: hasPostWith == _undefined
+              ? _instance.hasPostWith
+              : (hasPostWith as List<Input$PostWhereInput>?)));
+  CopyWith$Input$CategoryWhereInput<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$CategoryWhereInput.stub(_then(_instance))
+        : CopyWith$Input$CategoryWhereInput(local$not, (e) => call(not: e));
+  }
+
+  TRes and(
+          Iterable<Input$CategoryWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$CategoryWhereInput<
+                          Input$CategoryWhereInput>>?)
+              _fn) =>
+      call(
+          and: _fn(_instance.and
+                  ?.map((e) => CopyWith$Input$CategoryWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes or(
+          Iterable<Input$CategoryWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$CategoryWhereInput<
+                          Input$CategoryWhereInput>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or
+                  ?.map((e) => CopyWith$Input$CategoryWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasPostWith(
+          Iterable<Input$PostWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+              _fn) =>
+      call(
+          hasPostWith: _fn(_instance.hasPostWith
+                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
+              ?.toList());
+}
+
+class _CopyWithStubImpl$Input$CategoryWhereInput<TRes>
+    implements CopyWith$Input$CategoryWhereInput<TRes> {
+  _CopyWithStubImpl$Input$CategoryWhereInput(this._res);
+
+  TRes _res;
+
+  call(
+          {Input$CategoryWhereInput? not,
+          List<Input$CategoryWhereInput>? and,
+          List<Input$CategoryWhereInput>? or,
+          String? id,
+          String? idNEQ,
+          List<String>? idIn,
+          List<String>? idNotIn,
+          String? idGT,
+          String? idGTE,
+          String? idLT,
+          String? idLTE,
+          String? name,
+          String? nameNEQ,
+          List<String>? nameIn,
+          List<String>? nameNotIn,
+          String? nameGT,
+          String? nameGTE,
+          String? nameLT,
+          String? nameLTE,
+          String? nameContains,
+          String? nameHasPrefix,
+          String? nameHasSuffix,
+          String? nameEqualFold,
+          String? nameContainsFold,
+          bool? hasPost,
+          List<Input$PostWhereInput>? hasPostWith}) =>
+      _res;
+  CopyWith$Input$CategoryWhereInput<TRes> get not =>
+      CopyWith$Input$CategoryWhereInput.stub(_res);
+  and(_fn) => _res;
+  or(_fn) => _res;
+  hasPostWith(_fn) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
 class Input$CreateHashtagInput {
   Input$CreateHashtagInput({required this.title, this.postIDs});
 
@@ -103,6 +630,7 @@ class Input$CreatePostInput {
       required this.ownerID,
       this.hashtagIDs,
       required this.workID,
+      required this.categoryID,
       this.likedUserIDs});
 
   @override
@@ -128,6 +656,8 @@ class Input$CreatePostInput {
 
   final String workID;
 
+  final String categoryID;
+
   final List<String>? likedUserIDs;
 
   Map<String, dynamic> toJson() => _$Input$CreatePostInputToJson(this);
@@ -141,6 +671,7 @@ class Input$CreatePostInput {
     final l$ownerID = ownerID;
     final l$hashtagIDs = hashtagIDs;
     final l$workID = workID;
+    final l$categoryID = categoryID;
     final l$likedUserIDs = likedUserIDs;
     return Object.hashAll([
       l$createTime,
@@ -152,6 +683,7 @@ class Input$CreatePostInput {
       l$ownerID,
       l$hashtagIDs == null ? null : Object.hashAll(l$hashtagIDs.map((v) => v)),
       l$workID,
+      l$categoryID,
       l$likedUserIDs == null
           ? null
           : Object.hashAll(l$likedUserIDs.map((v) => v))
@@ -200,6 +732,9 @@ class Input$CreatePostInput {
     final l$workID = workID;
     final lOther$workID = other.workID;
     if (l$workID != lOther$workID) return false;
+    final l$categoryID = categoryID;
+    final lOther$categoryID = other.categoryID;
+    if (l$categoryID != lOther$categoryID) return false;
     final l$likedUserIDs = likedUserIDs;
     final lOther$likedUserIDs = other.likedUserIDs;
     if (l$likedUserIDs != null && lOther$likedUserIDs != null) {
@@ -238,6 +773,7 @@ abstract class CopyWith$Input$CreatePostInput<TRes> {
       String? ownerID,
       List<String>? hashtagIDs,
       String? workID,
+      String? categoryID,
       List<String>? likedUserIDs});
 }
 
@@ -261,6 +797,7 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           Object? ownerID = _undefined,
           Object? hashtagIDs = _undefined,
           Object? workID = _undefined,
+          Object? categoryID = _undefined,
           Object? likedUserIDs = _undefined}) =>
       _then(Input$CreatePostInput(
           createTime: createTime == _undefined
@@ -290,6 +827,9 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           workID: workID == _undefined || workID == null
               ? _instance.workID
               : (workID as String),
+          categoryID: categoryID == _undefined || categoryID == null
+              ? _instance.categoryID
+              : (categoryID as String),
           likedUserIDs: likedUserIDs == _undefined
               ? _instance.likedUserIDs
               : (likedUserIDs as List<String>?)));
@@ -311,6 +851,7 @@ class _CopyWithStubImpl$Input$CreatePostInput<TRes>
           String? ownerID,
           List<String>? hashtagIDs,
           String? workID,
+          String? categoryID,
           List<String>? likedUserIDs}) =>
       _res;
 }
@@ -1215,6 +1756,8 @@ class Input$PostWhereInput {
       this.hasHashtagsWith,
       this.hasWork,
       this.hasWorkWith,
+      this.hasCategory,
+      this.hasCategoryWith,
       this.hasLikedUsers,
       this.hasLikedUsersWith});
 
@@ -1356,6 +1899,10 @@ class Input$PostWhereInput {
 
   final List<Input$WorkWhereInput>? hasWorkWith;
 
+  final bool? hasCategory;
+
+  final List<Input$CategoryWhereInput>? hasCategoryWith;
+
   final bool? hasLikedUsers;
 
   final List<Input$UserWhereInput>? hasLikedUsersWith;
@@ -1427,6 +1974,8 @@ class Input$PostWhereInput {
     final l$hasHashtagsWith = hasHashtagsWith;
     final l$hasWork = hasWork;
     final l$hasWorkWith = hasWorkWith;
+    final l$hasCategory = hasCategory;
+    final l$hasCategoryWith = hasCategoryWith;
     final l$hasLikedUsers = hasLikedUsers;
     final l$hasLikedUsersWith = hasLikedUsersWith;
     return Object.hashAll([
@@ -1511,6 +2060,10 @@ class Input$PostWhereInput {
       l$hasWorkWith == null
           ? null
           : Object.hashAll(l$hasWorkWith.map((v) => v)),
+      l$hasCategory,
+      l$hasCategoryWith == null
+          ? null
+          : Object.hashAll(l$hasCategoryWith.map((v) => v)),
       l$hasLikedUsers,
       l$hasLikedUsersWith == null
           ? null
@@ -1894,6 +2447,24 @@ class Input$PostWhereInput {
       return false;
     }
 
+    final l$hasCategory = hasCategory;
+    final lOther$hasCategory = other.hasCategory;
+    if (l$hasCategory != lOther$hasCategory) return false;
+    final l$hasCategoryWith = hasCategoryWith;
+    final lOther$hasCategoryWith = other.hasCategoryWith;
+    if (l$hasCategoryWith != null && lOther$hasCategoryWith != null) {
+      if (l$hasCategoryWith.length != lOther$hasCategoryWith.length)
+        return false;
+      for (int i = 0; i < l$hasCategoryWith.length; i++) {
+        final l$hasCategoryWith$entry = l$hasCategoryWith[i];
+        final lOther$hasCategoryWith$entry = lOther$hasCategoryWith[i];
+        if (l$hasCategoryWith$entry != lOther$hasCategoryWith$entry)
+          return false;
+      }
+    } else if (l$hasCategoryWith != lOther$hasCategoryWith) {
+      return false;
+    }
+
     final l$hasLikedUsers = hasLikedUsers;
     final lOther$hasLikedUsers = other.hasLikedUsers;
     if (l$hasLikedUsers != lOther$hasLikedUsers) return false;
@@ -1993,6 +2564,8 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
       List<Input$HashtagWhereInput>? hasHashtagsWith,
       bool? hasWork,
       List<Input$WorkWhereInput>? hasWorkWith,
+      bool? hasCategory,
+      List<Input$CategoryWhereInput>? hasCategoryWith,
       bool? hasLikedUsers,
       List<Input$UserWhereInput>? hasLikedUsersWith});
   CopyWith$Input$PostWhereInput<TRes> get not;
@@ -2016,6 +2589,11 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
   TRes hasWorkWith(
       Iterable<Input$WorkWhereInput>? Function(
               Iterable<CopyWith$Input$WorkWhereInput<Input$WorkWhereInput>>?)
+          _fn);
+  TRes hasCategoryWith(
+      Iterable<Input$CategoryWhereInput>? Function(
+              Iterable<
+                  CopyWith$Input$CategoryWhereInput<Input$CategoryWhereInput>>?)
           _fn);
   TRes hasLikedUsersWith(
       Iterable<Input$UserWhereInput>? Function(
@@ -2099,6 +2677,8 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           Object? hasHashtagsWith = _undefined,
           Object? hasWork = _undefined,
           Object? hasWorkWith = _undefined,
+          Object? hasCategory = _undefined,
+          Object? hasCategoryWith = _undefined,
           Object? hasLikedUsers = _undefined,
           Object? hasLikedUsersWith = _undefined}) =>
       _then(Input$PostWhereInput(
@@ -2201,6 +2781,8 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           hasHashtagsWith: hasHashtagsWith == _undefined ? _instance.hasHashtagsWith : (hasHashtagsWith as List<Input$HashtagWhereInput>?),
           hasWork: hasWork == _undefined ? _instance.hasWork : (hasWork as bool?),
           hasWorkWith: hasWorkWith == _undefined ? _instance.hasWorkWith : (hasWorkWith as List<Input$WorkWhereInput>?),
+          hasCategory: hasCategory == _undefined ? _instance.hasCategory : (hasCategory as bool?),
+          hasCategoryWith: hasCategoryWith == _undefined ? _instance.hasCategoryWith : (hasCategoryWith as List<Input$CategoryWhereInput>?),
           hasLikedUsers: hasLikedUsers == _undefined ? _instance.hasLikedUsers : (hasLikedUsers as bool?),
           hasLikedUsersWith: hasLikedUsersWith == _undefined ? _instance.hasLikedUsersWith : (hasLikedUsersWith as List<Input$UserWhereInput>?)));
   CopyWith$Input$PostWhereInput<TRes> get not {
@@ -2255,6 +2837,16 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
       call(
           hasWorkWith: _fn(_instance.hasWorkWith
                   ?.map((e) => CopyWith$Input$WorkWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasCategoryWith(
+          Iterable<Input$CategoryWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$CategoryWhereInput<
+                          Input$CategoryWhereInput>>?)
+              _fn) =>
+      call(
+          hasCategoryWith: _fn(_instance.hasCategoryWith
+                  ?.map((e) => CopyWith$Input$CategoryWhereInput(e, (i) => i)))
               ?.toList());
   TRes hasLikedUsersWith(
           Iterable<Input$UserWhereInput>? Function(
@@ -2339,6 +2931,8 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
           List<Input$HashtagWhereInput>? hasHashtagsWith,
           bool? hasWork,
           List<Input$WorkWhereInput>? hasWorkWith,
+          bool? hasCategory,
+          List<Input$CategoryWhereInput>? hasCategoryWith,
           bool? hasLikedUsers,
           List<Input$UserWhereInput>? hasLikedUsersWith}) =>
       _res;
@@ -2349,6 +2943,7 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
   hasOwnerWith(_fn) => _res;
   hasHashtagsWith(_fn) => _res;
   hasWorkWith(_fn) => _res;
+  hasCategoryWith(_fn) => _res;
   hasLikedUsersWith(_fn) => _res;
 }
 
@@ -2484,6 +3079,8 @@ class Input$UpdatePostInput {
       this.removeHashtagIDs,
       this.clearWork,
       this.workID,
+      this.clearCategory,
+      this.categoryID,
       this.addLikedUserIDs,
       this.removeLikedUserIDs});
 
@@ -2514,6 +3111,10 @@ class Input$UpdatePostInput {
 
   final String? workID;
 
+  final bool? clearCategory;
+
+  final String? categoryID;
+
   final List<String>? addLikedUserIDs;
 
   final List<String>? removeLikedUserIDs;
@@ -2531,6 +3132,8 @@ class Input$UpdatePostInput {
     final l$removeHashtagIDs = removeHashtagIDs;
     final l$clearWork = clearWork;
     final l$workID = workID;
+    final l$clearCategory = clearCategory;
+    final l$categoryID = categoryID;
     final l$addLikedUserIDs = addLikedUserIDs;
     final l$removeLikedUserIDs = removeLikedUserIDs;
     return Object.hashAll([
@@ -2549,6 +3152,8 @@ class Input$UpdatePostInput {
           : Object.hashAll(l$removeHashtagIDs.map((v) => v)),
       l$clearWork,
       l$workID,
+      l$clearCategory,
+      l$categoryID,
       l$addLikedUserIDs == null
           ? null
           : Object.hashAll(l$addLikedUserIDs.map((v) => v)),
@@ -2618,6 +3223,12 @@ class Input$UpdatePostInput {
     final l$workID = workID;
     final lOther$workID = other.workID;
     if (l$workID != lOther$workID) return false;
+    final l$clearCategory = clearCategory;
+    final lOther$clearCategory = other.clearCategory;
+    if (l$clearCategory != lOther$clearCategory) return false;
+    final l$categoryID = categoryID;
+    final lOther$categoryID = other.categoryID;
+    if (l$categoryID != lOther$categoryID) return false;
     final l$addLikedUserIDs = addLikedUserIDs;
     final lOther$addLikedUserIDs = other.addLikedUserIDs;
     if (l$addLikedUserIDs != null && lOther$addLikedUserIDs != null) {
@@ -2675,6 +3286,8 @@ abstract class CopyWith$Input$UpdatePostInput<TRes> {
       List<String>? removeHashtagIDs,
       bool? clearWork,
       String? workID,
+      bool? clearCategory,
+      String? categoryID,
       List<String>? addLikedUserIDs,
       List<String>? removeLikedUserIDs});
 }
@@ -2701,6 +3314,8 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           Object? removeHashtagIDs = _undefined,
           Object? clearWork = _undefined,
           Object? workID = _undefined,
+          Object? clearCategory = _undefined,
+          Object? categoryID = _undefined,
           Object? addLikedUserIDs = _undefined,
           Object? removeLikedUserIDs = _undefined}) =>
       _then(Input$UpdatePostInput(
@@ -2730,6 +3345,12 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
               ? _instance.clearWork
               : (clearWork as bool?),
           workID: workID == _undefined ? _instance.workID : (workID as String?),
+          clearCategory: clearCategory == _undefined
+              ? _instance.clearCategory
+              : (clearCategory as bool?),
+          categoryID: categoryID == _undefined
+              ? _instance.categoryID
+              : (categoryID as String?),
           addLikedUserIDs: addLikedUserIDs == _undefined
               ? _instance.addLikedUserIDs
               : (addLikedUserIDs as List<String>?),
@@ -2756,6 +3377,8 @@ class _CopyWithStubImpl$Input$UpdatePostInput<TRes>
           List<String>? removeHashtagIDs,
           bool? clearWork,
           String? workID,
+          bool? clearCategory,
+          String? categoryID,
           List<String>? addLikedUserIDs,
           List<String>? removeLikedUserIDs}) =>
       _res;
@@ -4431,5 +5054,5 @@ enum Enum$PostPostType {
 }
 
 const possibleTypesMap = {
-  'Node': {'Hashtag', 'Post', 'User', 'Work'}
+  'Node': {'Category', 'Hashtag', 'Post', 'User', 'Work'}
 };

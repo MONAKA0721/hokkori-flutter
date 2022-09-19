@@ -19,3 +19,14 @@ query TopLetters($first: Int) {
     }
   }
 }
+
+query SearchCategories($searchText: String) {
+  categories(where: { nameContainsFold: $searchText }) {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+  }
+}
