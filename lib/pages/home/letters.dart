@@ -5,14 +5,14 @@ import 'package:hokkori/pages/common/letter.dart';
 import 'package:hokkori/pages/home/home_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 
-class TopLetters extends HookWidget {
-  const TopLetters({super.key});
+class HomeLetters extends HookWidget {
+  const HomeLetters({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final result = useQuery$TopLetters(Options$Query$TopLetters(
+    final result = useQuery$HomeLetters(Options$Query$HomeLetters(
             fetchPolicy: FetchPolicy.networkOnly,
-            variables: Variables$Query$TopLetters(first: 3)))
+            variables: Variables$Query$HomeLetters(first: 3)))
         .result;
 
     if (result.hasException) {
@@ -59,8 +59,8 @@ class FetchMoreButton extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final pushed = useState(false);
-    final result = useQuery$TopLetters(Options$Query$TopLetters(
-            variables: Variables$Query$TopLetters(first: 3, after: cursor)))
+    final result = useQuery$HomeLetters(Options$Query$HomeLetters(
+            variables: Variables$Query$HomeLetters(first: 3, after: cursor)))
         .result;
 
     if (result.hasException) {

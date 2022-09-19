@@ -7,85 +7,93 @@ import 'package:json_annotation/json_annotation.dart';
 part 'home_page.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Variables$Query$TopPraises {
-  Variables$Query$TopPraises({this.first});
+class Variables$Query$HomePraises {
+  Variables$Query$HomePraises({this.first, this.after});
 
   @override
-  factory Variables$Query$TopPraises.fromJson(Map<String, dynamic> json) =>
-      _$Variables$Query$TopPraisesFromJson(json);
+  factory Variables$Query$HomePraises.fromJson(Map<String, dynamic> json) =>
+      _$Variables$Query$HomePraisesFromJson(json);
 
   final int? first;
 
-  Map<String, dynamic> toJson() => _$Variables$Query$TopPraisesToJson(this);
+  final String? after;
+
+  Map<String, dynamic> toJson() => _$Variables$Query$HomePraisesToJson(this);
   int get hashCode {
     final l$first = first;
-    return Object.hashAll([l$first]);
+    final l$after = after;
+    return Object.hashAll([l$first, l$after]);
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Variables$Query$TopPraises) ||
+    if (!(other is Variables$Query$HomePraises) ||
         runtimeType != other.runtimeType) return false;
     final l$first = first;
     final lOther$first = other.first;
     if (l$first != lOther$first) return false;
+    final l$after = after;
+    final lOther$after = other.after;
+    if (l$after != lOther$after) return false;
     return true;
   }
 
-  CopyWith$Variables$Query$TopPraises<Variables$Query$TopPraises>
-      get copyWith => CopyWith$Variables$Query$TopPraises(this, (i) => i);
+  CopyWith$Variables$Query$HomePraises<Variables$Query$HomePraises>
+      get copyWith => CopyWith$Variables$Query$HomePraises(this, (i) => i);
 }
 
-abstract class CopyWith$Variables$Query$TopPraises<TRes> {
-  factory CopyWith$Variables$Query$TopPraises(
-          Variables$Query$TopPraises instance,
-          TRes Function(Variables$Query$TopPraises) then) =
-      _CopyWithImpl$Variables$Query$TopPraises;
+abstract class CopyWith$Variables$Query$HomePraises<TRes> {
+  factory CopyWith$Variables$Query$HomePraises(
+          Variables$Query$HomePraises instance,
+          TRes Function(Variables$Query$HomePraises) then) =
+      _CopyWithImpl$Variables$Query$HomePraises;
 
-  factory CopyWith$Variables$Query$TopPraises.stub(TRes res) =
-      _CopyWithStubImpl$Variables$Query$TopPraises;
+  factory CopyWith$Variables$Query$HomePraises.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$HomePraises;
 
-  TRes call({int? first});
+  TRes call({int? first, String? after});
 }
 
-class _CopyWithImpl$Variables$Query$TopPraises<TRes>
-    implements CopyWith$Variables$Query$TopPraises<TRes> {
-  _CopyWithImpl$Variables$Query$TopPraises(this._instance, this._then);
+class _CopyWithImpl$Variables$Query$HomePraises<TRes>
+    implements CopyWith$Variables$Query$HomePraises<TRes> {
+  _CopyWithImpl$Variables$Query$HomePraises(this._instance, this._then);
 
-  final Variables$Query$TopPraises _instance;
+  final Variables$Query$HomePraises _instance;
 
-  final TRes Function(Variables$Query$TopPraises) _then;
+  final TRes Function(Variables$Query$HomePraises) _then;
 
   static const _undefined = {};
 
-  TRes call({Object? first = _undefined}) => _then(Variables$Query$TopPraises(
-      first: first == _undefined ? _instance.first : (first as int?)));
+  TRes call({Object? first = _undefined, Object? after = _undefined}) =>
+      _then(Variables$Query$HomePraises(
+          first: first == _undefined ? _instance.first : (first as int?),
+          after: after == _undefined ? _instance.after : (after as String?)));
 }
 
-class _CopyWithStubImpl$Variables$Query$TopPraises<TRes>
-    implements CopyWith$Variables$Query$TopPraises<TRes> {
-  _CopyWithStubImpl$Variables$Query$TopPraises(this._res);
+class _CopyWithStubImpl$Variables$Query$HomePraises<TRes>
+    implements CopyWith$Variables$Query$HomePraises<TRes> {
+  _CopyWithStubImpl$Variables$Query$HomePraises(this._res);
 
   TRes _res;
 
-  call({int? first}) => _res;
+  call({int? first, String? after}) => _res;
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$TopPraises {
-  Query$TopPraises({required this.posts, required this.$__typename});
+class Query$HomePraises {
+  Query$HomePraises({required this.posts, required this.$__typename});
 
   @override
-  factory Query$TopPraises.fromJson(Map<String, dynamic> json) =>
-      _$Query$TopPraisesFromJson(json);
+  factory Query$HomePraises.fromJson(Map<String, dynamic> json) =>
+      _$Query$HomePraisesFromJson(json);
 
-  final Query$TopPraises$posts posts;
+  final Query$HomePraises$posts posts;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$TopPraisesToJson(this);
+  Map<String, dynamic> toJson() => _$Query$HomePraisesToJson(this);
   int get hashCode {
     final l$posts = posts;
     final l$$__typename = $__typename;
@@ -95,7 +103,7 @@ class Query$TopPraises {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$TopPraises) || runtimeType != other.runtimeType)
+    if (!(other is Query$HomePraises) || runtimeType != other.runtimeType)
       return false;
     final l$posts = posts;
     final lOther$posts = other.posts;
@@ -107,66 +115,72 @@ class Query$TopPraises {
   }
 }
 
-extension UtilityExtension$Query$TopPraises on Query$TopPraises {
-  CopyWith$Query$TopPraises<Query$TopPraises> get copyWith =>
-      CopyWith$Query$TopPraises(this, (i) => i);
+extension UtilityExtension$Query$HomePraises on Query$HomePraises {
+  CopyWith$Query$HomePraises<Query$HomePraises> get copyWith =>
+      CopyWith$Query$HomePraises(this, (i) => i);
 }
 
-abstract class CopyWith$Query$TopPraises<TRes> {
-  factory CopyWith$Query$TopPraises(
-          Query$TopPraises instance, TRes Function(Query$TopPraises) then) =
-      _CopyWithImpl$Query$TopPraises;
+abstract class CopyWith$Query$HomePraises<TRes> {
+  factory CopyWith$Query$HomePraises(
+          Query$HomePraises instance, TRes Function(Query$HomePraises) then) =
+      _CopyWithImpl$Query$HomePraises;
 
-  factory CopyWith$Query$TopPraises.stub(TRes res) =
-      _CopyWithStubImpl$Query$TopPraises;
+  factory CopyWith$Query$HomePraises.stub(TRes res) =
+      _CopyWithStubImpl$Query$HomePraises;
 
-  TRes call({Query$TopPraises$posts? posts, String? $__typename});
-  CopyWith$Query$TopPraises$posts<TRes> get posts;
+  TRes call({Query$HomePraises$posts? posts, String? $__typename});
+  CopyWith$Query$HomePraises$posts<TRes> get posts;
 }
 
-class _CopyWithImpl$Query$TopPraises<TRes>
-    implements CopyWith$Query$TopPraises<TRes> {
-  _CopyWithImpl$Query$TopPraises(this._instance, this._then);
+class _CopyWithImpl$Query$HomePraises<TRes>
+    implements CopyWith$Query$HomePraises<TRes> {
+  _CopyWithImpl$Query$HomePraises(this._instance, this._then);
 
-  final Query$TopPraises _instance;
+  final Query$HomePraises _instance;
 
-  final TRes Function(Query$TopPraises) _then;
+  final TRes Function(Query$HomePraises) _then;
 
   static const _undefined = {};
 
   TRes call({Object? posts = _undefined, Object? $__typename = _undefined}) =>
-      _then(Query$TopPraises(
+      _then(Query$HomePraises(
           posts: posts == _undefined || posts == null
               ? _instance.posts
-              : (posts as Query$TopPraises$posts),
+              : (posts as Query$HomePraises$posts),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
-  CopyWith$Query$TopPraises$posts<TRes> get posts {
+  CopyWith$Query$HomePraises$posts<TRes> get posts {
     final local$posts = _instance.posts;
-    return CopyWith$Query$TopPraises$posts(local$posts, (e) => call(posts: e));
+    return CopyWith$Query$HomePraises$posts(local$posts, (e) => call(posts: e));
   }
 }
 
-class _CopyWithStubImpl$Query$TopPraises<TRes>
-    implements CopyWith$Query$TopPraises<TRes> {
-  _CopyWithStubImpl$Query$TopPraises(this._res);
+class _CopyWithStubImpl$Query$HomePraises<TRes>
+    implements CopyWith$Query$HomePraises<TRes> {
+  _CopyWithStubImpl$Query$HomePraises(this._res);
 
   TRes _res;
 
-  call({Query$TopPraises$posts? posts, String? $__typename}) => _res;
-  CopyWith$Query$TopPraises$posts<TRes> get posts =>
-      CopyWith$Query$TopPraises$posts.stub(_res);
+  call({Query$HomePraises$posts? posts, String? $__typename}) => _res;
+  CopyWith$Query$HomePraises$posts<TRes> get posts =>
+      CopyWith$Query$HomePraises$posts.stub(_res);
 }
 
-const documentNodeQueryTopPraises = DocumentNode(definitions: [
+const documentNodeQueryHomePraises = DocumentNode(definitions: [
   OperationDefinitionNode(
       type: OperationType.query,
-      name: NameNode(value: 'TopPraises'),
+      name: NameNode(value: 'HomePraises'),
       variableDefinitions: [
         VariableDefinitionNode(
             variable: VariableNode(name: NameNode(value: 'first')),
             type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'after')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'Cursor'), isNonNull: false),
             defaultValue: DefaultValueNode(value: null),
             directives: [])
       ],
@@ -176,6 +190,9 @@ const documentNodeQueryTopPraises = DocumentNode(definitions: [
             name: NameNode(value: 'posts'),
             alias: null,
             arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'after'),
+                  value: VariableNode(name: NameNode(value: 'after'))),
               ArgumentNode(
                   name: NameNode(value: 'first'),
                   value: VariableNode(name: NameNode(value: 'first'))),
@@ -230,6 +247,31 @@ const documentNodeQueryTopPraises = DocumentNode(definitions: [
                         selectionSet: null)
                   ])),
               FieldNode(
+                  name: NameNode(value: 'pageInfo'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'endCursor'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: 'hasNextPage'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
                   name: NameNode(value: '__typename'),
                   alias: null,
                   arguments: [],
@@ -245,13 +287,14 @@ const documentNodeQueryTopPraises = DocumentNode(definitions: [
       ])),
   fragmentDefinitionPraiseSummary,
 ]);
-Query$TopPraises _parserFn$Query$TopPraises(Map<String, dynamic> data) =>
-    Query$TopPraises.fromJson(data);
+Query$HomePraises _parserFn$Query$HomePraises(Map<String, dynamic> data) =>
+    Query$HomePraises.fromJson(data);
 
-class Options$Query$TopPraises extends graphql.QueryOptions<Query$TopPraises> {
-  Options$Query$TopPraises(
+class Options$Query$HomePraises
+    extends graphql.QueryOptions<Query$HomePraises> {
+  Options$Query$HomePraises(
       {String? operationName,
-      Variables$Query$TopPraises? variables,
+      Variables$Query$HomePraises? variables,
       graphql.FetchPolicy? fetchPolicy,
       graphql.ErrorPolicy? errorPolicy,
       graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -267,15 +310,15 @@ class Options$Query$TopPraises extends graphql.QueryOptions<Query$TopPraises> {
             optimisticResult: optimisticResult,
             pollInterval: pollInterval,
             context: context,
-            document: documentNodeQueryTopPraises,
-            parserFn: _parserFn$Query$TopPraises);
+            document: documentNodeQueryHomePraises,
+            parserFn: _parserFn$Query$HomePraises);
 }
 
-class WatchOptions$Query$TopPraises
-    extends graphql.WatchQueryOptions<Query$TopPraises> {
-  WatchOptions$Query$TopPraises(
+class WatchOptions$Query$HomePraises
+    extends graphql.WatchQueryOptions<Query$HomePraises> {
+  WatchOptions$Query$HomePraises(
       {String? operationName,
-      Variables$Query$TopPraises? variables,
+      Variables$Query$HomePraises? variables,
       graphql.FetchPolicy? fetchPolicy,
       graphql.ErrorPolicy? errorPolicy,
       graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -293,90 +336,97 @@ class WatchOptions$Query$TopPraises
             cacheRereadPolicy: cacheRereadPolicy,
             optimisticResult: optimisticResult,
             context: context,
-            document: documentNodeQueryTopPraises,
+            document: documentNodeQueryHomePraises,
             pollInterval: pollInterval,
             eagerlyFetchResults: eagerlyFetchResults,
             carryForwardDataOnException: carryForwardDataOnException,
             fetchResults: fetchResults,
-            parserFn: _parserFn$Query$TopPraises);
+            parserFn: _parserFn$Query$HomePraises);
 }
 
-class FetchMoreOptions$Query$TopPraises extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$TopPraises(
+class FetchMoreOptions$Query$HomePraises extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$HomePraises(
       {required graphql.UpdateQuery updateQuery,
-      Variables$Query$TopPraises? variables})
+      Variables$Query$HomePraises? variables})
       : super(
             updateQuery: updateQuery,
             variables: variables?.toJson() ?? {},
-            document: documentNodeQueryTopPraises);
+            document: documentNodeQueryHomePraises);
 }
 
-extension ClientExtension$Query$TopPraises on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Query$TopPraises>> query$TopPraises(
-          [Options$Query$TopPraises? options]) async =>
-      await this.query(options ?? Options$Query$TopPraises());
-  graphql.ObservableQuery<Query$TopPraises> watchQuery$TopPraises(
-          [WatchOptions$Query$TopPraises? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$TopPraises());
-  void writeQuery$TopPraises(
-          {required Query$TopPraises data,
-          Variables$Query$TopPraises? variables,
+extension ClientExtension$Query$HomePraises on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$HomePraises>> query$HomePraises(
+          [Options$Query$HomePraises? options]) async =>
+      await this.query(options ?? Options$Query$HomePraises());
+  graphql.ObservableQuery<Query$HomePraises> watchQuery$HomePraises(
+          [WatchOptions$Query$HomePraises? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$HomePraises());
+  void writeQuery$HomePraises(
+          {required Query$HomePraises data,
+          Variables$Query$HomePraises? variables,
           bool broadcast = true}) =>
       this.writeQuery(
           graphql.Request(
               operation:
-                  graphql.Operation(document: documentNodeQueryTopPraises),
+                  graphql.Operation(document: documentNodeQueryHomePraises),
               variables: variables?.toJson() ?? const {}),
           data: data.toJson(),
           broadcast: broadcast);
-  Query$TopPraises? readQuery$TopPraises(
-      {Variables$Query$TopPraises? variables, bool optimistic = true}) {
+  Query$HomePraises? readQuery$HomePraises(
+      {Variables$Query$HomePraises? variables, bool optimistic = true}) {
     final result = this.readQuery(
         graphql.Request(
-            operation: graphql.Operation(document: documentNodeQueryTopPraises),
+            operation:
+                graphql.Operation(document: documentNodeQueryHomePraises),
             variables: variables?.toJson() ?? const {}),
         optimistic: optimistic);
-    return result == null ? null : Query$TopPraises.fromJson(result);
+    return result == null ? null : Query$HomePraises.fromJson(result);
   }
 }
 
-graphql_flutter.QueryHookResult<Query$TopPraises> useQuery$TopPraises(
-        [Options$Query$TopPraises? options]) =>
-    graphql_flutter.useQuery(options ?? Options$Query$TopPraises());
-graphql.ObservableQuery<Query$TopPraises> useWatchQuery$TopPraises(
-        [WatchOptions$Query$TopPraises? options]) =>
-    graphql_flutter.useWatchQuery(options ?? WatchOptions$Query$TopPraises());
+graphql_flutter.QueryHookResult<Query$HomePraises> useQuery$HomePraises(
+        [Options$Query$HomePraises? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$HomePraises());
+graphql.ObservableQuery<Query$HomePraises> useWatchQuery$HomePraises(
+        [WatchOptions$Query$HomePraises? options]) =>
+    graphql_flutter.useWatchQuery(options ?? WatchOptions$Query$HomePraises());
 
-class Query$TopPraises$Widget extends graphql_flutter.Query<Query$TopPraises> {
-  Query$TopPraises$Widget(
+class Query$HomePraises$Widget
+    extends graphql_flutter.Query<Query$HomePraises> {
+  Query$HomePraises$Widget(
       {widgets.Key? key,
-      Options$Query$TopPraises? options,
-      required graphql_flutter.QueryBuilder<Query$TopPraises> builder})
+      Options$Query$HomePraises? options,
+      required graphql_flutter.QueryBuilder<Query$HomePraises> builder})
       : super(
             key: key,
-            options: options ?? Options$Query$TopPraises(),
+            options: options ?? Options$Query$HomePraises(),
             builder: builder);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$TopPraises$posts {
-  Query$TopPraises$posts({this.edges, required this.$__typename});
+class Query$HomePraises$posts {
+  Query$HomePraises$posts(
+      {this.edges, required this.pageInfo, required this.$__typename});
 
   @override
-  factory Query$TopPraises$posts.fromJson(Map<String, dynamic> json) =>
-      _$Query$TopPraises$postsFromJson(json);
+  factory Query$HomePraises$posts.fromJson(Map<String, dynamic> json) =>
+      _$Query$HomePraises$postsFromJson(json);
 
-  final List<Query$TopPraises$posts$edges?>? edges;
+  final List<Query$HomePraises$posts$edges?>? edges;
+
+  final Query$HomePraises$posts$pageInfo pageInfo;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$TopPraises$postsToJson(this);
+  Map<String, dynamic> toJson() => _$Query$HomePraises$postsToJson(this);
   int get hashCode {
     final l$edges = edges;
+    final l$pageInfo = pageInfo;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
       l$$__typename
     ]);
   }
@@ -384,7 +434,7 @@ class Query$TopPraises$posts {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$TopPraises$posts) || runtimeType != other.runtimeType)
+    if (!(other is Query$HomePraises$posts) || runtimeType != other.runtimeType)
       return false;
     final l$edges = edges;
     final lOther$edges = other.edges;
@@ -399,6 +449,9 @@ class Query$TopPraises$posts {
       return false;
     }
 
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -406,83 +459,104 @@ class Query$TopPraises$posts {
   }
 }
 
-extension UtilityExtension$Query$TopPraises$posts on Query$TopPraises$posts {
-  CopyWith$Query$TopPraises$posts<Query$TopPraises$posts> get copyWith =>
-      CopyWith$Query$TopPraises$posts(this, (i) => i);
+extension UtilityExtension$Query$HomePraises$posts on Query$HomePraises$posts {
+  CopyWith$Query$HomePraises$posts<Query$HomePraises$posts> get copyWith =>
+      CopyWith$Query$HomePraises$posts(this, (i) => i);
 }
 
-abstract class CopyWith$Query$TopPraises$posts<TRes> {
-  factory CopyWith$Query$TopPraises$posts(Query$TopPraises$posts instance,
-          TRes Function(Query$TopPraises$posts) then) =
-      _CopyWithImpl$Query$TopPraises$posts;
+abstract class CopyWith$Query$HomePraises$posts<TRes> {
+  factory CopyWith$Query$HomePraises$posts(Query$HomePraises$posts instance,
+          TRes Function(Query$HomePraises$posts) then) =
+      _CopyWithImpl$Query$HomePraises$posts;
 
-  factory CopyWith$Query$TopPraises$posts.stub(TRes res) =
-      _CopyWithStubImpl$Query$TopPraises$posts;
+  factory CopyWith$Query$HomePraises$posts.stub(TRes res) =
+      _CopyWithStubImpl$Query$HomePraises$posts;
 
-  TRes call({List<Query$TopPraises$posts$edges?>? edges, String? $__typename});
+  TRes call(
+      {List<Query$HomePraises$posts$edges?>? edges,
+      Query$HomePraises$posts$pageInfo? pageInfo,
+      String? $__typename});
   TRes edges(
-      Iterable<Query$TopPraises$posts$edges?>? Function(
+      Iterable<Query$HomePraises$posts$edges?>? Function(
               Iterable<
-                  CopyWith$Query$TopPraises$posts$edges<
-                      Query$TopPraises$posts$edges>?>?)
+                  CopyWith$Query$HomePraises$posts$edges<
+                      Query$HomePraises$posts$edges>?>?)
           _fn);
+  CopyWith$Query$HomePraises$posts$pageInfo<TRes> get pageInfo;
 }
 
-class _CopyWithImpl$Query$TopPraises$posts<TRes>
-    implements CopyWith$Query$TopPraises$posts<TRes> {
-  _CopyWithImpl$Query$TopPraises$posts(this._instance, this._then);
+class _CopyWithImpl$Query$HomePraises$posts<TRes>
+    implements CopyWith$Query$HomePraises$posts<TRes> {
+  _CopyWithImpl$Query$HomePraises$posts(this._instance, this._then);
 
-  final Query$TopPraises$posts _instance;
+  final Query$HomePraises$posts _instance;
 
-  final TRes Function(Query$TopPraises$posts) _then;
+  final TRes Function(Query$HomePraises$posts) _then;
 
   static const _undefined = {};
 
-  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
-      _then(Query$TopPraises$posts(
+  TRes call(
+          {Object? edges = _undefined,
+          Object? pageInfo = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$HomePraises$posts(
           edges: edges == _undefined
               ? _instance.edges
-              : (edges as List<Query$TopPraises$posts$edges?>?),
+              : (edges as List<Query$HomePraises$posts$edges?>?),
+          pageInfo: pageInfo == _undefined || pageInfo == null
+              ? _instance.pageInfo
+              : (pageInfo as Query$HomePraises$posts$pageInfo),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
   TRes edges(
-          Iterable<Query$TopPraises$posts$edges?>? Function(
+          Iterable<Query$HomePraises$posts$edges?>? Function(
                   Iterable<
-                      CopyWith$Query$TopPraises$posts$edges<
-                          Query$TopPraises$posts$edges>?>?)
+                      CopyWith$Query$HomePraises$posts$edges<
+                          Query$HomePraises$posts$edges>?>?)
               _fn) =>
       call(
           edges: _fn(_instance.edges?.map((e) => e == null
-              ? null
-              : CopyWith$Query$TopPraises$posts$edges(e, (i) => i)))?.toList());
+                  ? null
+                  : CopyWith$Query$HomePraises$posts$edges(e, (i) => i)))
+              ?.toList());
+  CopyWith$Query$HomePraises$posts$pageInfo<TRes> get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Query$HomePraises$posts$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
 }
 
-class _CopyWithStubImpl$Query$TopPraises$posts<TRes>
-    implements CopyWith$Query$TopPraises$posts<TRes> {
-  _CopyWithStubImpl$Query$TopPraises$posts(this._res);
+class _CopyWithStubImpl$Query$HomePraises$posts<TRes>
+    implements CopyWith$Query$HomePraises$posts<TRes> {
+  _CopyWithStubImpl$Query$HomePraises$posts(this._res);
 
   TRes _res;
 
-  call({List<Query$TopPraises$posts$edges?>? edges, String? $__typename}) =>
+  call(
+          {List<Query$HomePraises$posts$edges?>? edges,
+          Query$HomePraises$posts$pageInfo? pageInfo,
+          String? $__typename}) =>
       _res;
   edges(_fn) => _res;
+  CopyWith$Query$HomePraises$posts$pageInfo<TRes> get pageInfo =>
+      CopyWith$Query$HomePraises$posts$pageInfo.stub(_res);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$TopPraises$posts$edges {
-  Query$TopPraises$posts$edges({this.node, required this.$__typename});
+class Query$HomePraises$posts$edges {
+  Query$HomePraises$posts$edges({this.node, required this.$__typename});
 
   @override
-  factory Query$TopPraises$posts$edges.fromJson(Map<String, dynamic> json) =>
-      _$Query$TopPraises$posts$edgesFromJson(json);
+  factory Query$HomePraises$posts$edges.fromJson(Map<String, dynamic> json) =>
+      _$Query$HomePraises$posts$edgesFromJson(json);
 
   final Fragment$PraiseSummary? node;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$TopPraises$posts$edgesToJson(this);
+  Map<String, dynamic> toJson() => _$Query$HomePraises$posts$edgesToJson(this);
   int get hashCode {
     final l$node = node;
     final l$$__typename = $__typename;
@@ -492,7 +566,7 @@ class Query$TopPraises$posts$edges {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$TopPraises$posts$edges) ||
+    if (!(other is Query$HomePraises$posts$edges) ||
         runtimeType != other.runtimeType) return false;
     final l$node = node;
     final lOther$node = other.node;
@@ -504,37 +578,37 @@ class Query$TopPraises$posts$edges {
   }
 }
 
-extension UtilityExtension$Query$TopPraises$posts$edges
-    on Query$TopPraises$posts$edges {
-  CopyWith$Query$TopPraises$posts$edges<Query$TopPraises$posts$edges>
-      get copyWith => CopyWith$Query$TopPraises$posts$edges(this, (i) => i);
+extension UtilityExtension$Query$HomePraises$posts$edges
+    on Query$HomePraises$posts$edges {
+  CopyWith$Query$HomePraises$posts$edges<Query$HomePraises$posts$edges>
+      get copyWith => CopyWith$Query$HomePraises$posts$edges(this, (i) => i);
 }
 
-abstract class CopyWith$Query$TopPraises$posts$edges<TRes> {
-  factory CopyWith$Query$TopPraises$posts$edges(
-          Query$TopPraises$posts$edges instance,
-          TRes Function(Query$TopPraises$posts$edges) then) =
-      _CopyWithImpl$Query$TopPraises$posts$edges;
+abstract class CopyWith$Query$HomePraises$posts$edges<TRes> {
+  factory CopyWith$Query$HomePraises$posts$edges(
+          Query$HomePraises$posts$edges instance,
+          TRes Function(Query$HomePraises$posts$edges) then) =
+      _CopyWithImpl$Query$HomePraises$posts$edges;
 
-  factory CopyWith$Query$TopPraises$posts$edges.stub(TRes res) =
-      _CopyWithStubImpl$Query$TopPraises$posts$edges;
+  factory CopyWith$Query$HomePraises$posts$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$HomePraises$posts$edges;
 
   TRes call({Fragment$PraiseSummary? node, String? $__typename});
   CopyWith$Fragment$PraiseSummary<TRes> get node;
 }
 
-class _CopyWithImpl$Query$TopPraises$posts$edges<TRes>
-    implements CopyWith$Query$TopPraises$posts$edges<TRes> {
-  _CopyWithImpl$Query$TopPraises$posts$edges(this._instance, this._then);
+class _CopyWithImpl$Query$HomePraises$posts$edges<TRes>
+    implements CopyWith$Query$HomePraises$posts$edges<TRes> {
+  _CopyWithImpl$Query$HomePraises$posts$edges(this._instance, this._then);
 
-  final Query$TopPraises$posts$edges _instance;
+  final Query$HomePraises$posts$edges _instance;
 
-  final TRes Function(Query$TopPraises$posts$edges) _then;
+  final TRes Function(Query$HomePraises$posts$edges) _then;
 
   static const _undefined = {};
 
   TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
-      _then(Query$TopPraises$posts$edges(
+      _then(Query$HomePraises$posts$edges(
           node: node == _undefined
               ? _instance.node
               : (node as Fragment$PraiseSummary?),
@@ -549,15 +623,112 @@ class _CopyWithImpl$Query$TopPraises$posts$edges<TRes>
   }
 }
 
-class _CopyWithStubImpl$Query$TopPraises$posts$edges<TRes>
-    implements CopyWith$Query$TopPraises$posts$edges<TRes> {
-  _CopyWithStubImpl$Query$TopPraises$posts$edges(this._res);
+class _CopyWithStubImpl$Query$HomePraises$posts$edges<TRes>
+    implements CopyWith$Query$HomePraises$posts$edges<TRes> {
+  _CopyWithStubImpl$Query$HomePraises$posts$edges(this._res);
 
   TRes _res;
 
   call({Fragment$PraiseSummary? node, String? $__typename}) => _res;
   CopyWith$Fragment$PraiseSummary<TRes> get node =>
       CopyWith$Fragment$PraiseSummary.stub(_res);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$HomePraises$posts$pageInfo {
+  Query$HomePraises$posts$pageInfo(
+      {this.endCursor, required this.hasNextPage, required this.$__typename});
+
+  @override
+  factory Query$HomePraises$posts$pageInfo.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$HomePraises$posts$pageInfoFromJson(json);
+
+  final String? endCursor;
+
+  final bool hasNextPage;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$HomePraises$posts$pageInfoToJson(this);
+  int get hashCode {
+    final l$endCursor = endCursor;
+    final l$hasNextPage = hasNextPage;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$endCursor, l$hasNextPage, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$HomePraises$posts$pageInfo) ||
+        runtimeType != other.runtimeType) return false;
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) return false;
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$HomePraises$posts$pageInfo
+    on Query$HomePraises$posts$pageInfo {
+  CopyWith$Query$HomePraises$posts$pageInfo<Query$HomePraises$posts$pageInfo>
+      get copyWith => CopyWith$Query$HomePraises$posts$pageInfo(this, (i) => i);
+}
+
+abstract class CopyWith$Query$HomePraises$posts$pageInfo<TRes> {
+  factory CopyWith$Query$HomePraises$posts$pageInfo(
+          Query$HomePraises$posts$pageInfo instance,
+          TRes Function(Query$HomePraises$posts$pageInfo) then) =
+      _CopyWithImpl$Query$HomePraises$posts$pageInfo;
+
+  factory CopyWith$Query$HomePraises$posts$pageInfo.stub(TRes res) =
+      _CopyWithStubImpl$Query$HomePraises$posts$pageInfo;
+
+  TRes call({String? endCursor, bool? hasNextPage, String? $__typename});
+}
+
+class _CopyWithImpl$Query$HomePraises$posts$pageInfo<TRes>
+    implements CopyWith$Query$HomePraises$posts$pageInfo<TRes> {
+  _CopyWithImpl$Query$HomePraises$posts$pageInfo(this._instance, this._then);
+
+  final Query$HomePraises$posts$pageInfo _instance;
+
+  final TRes Function(Query$HomePraises$posts$pageInfo) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? endCursor = _undefined,
+          Object? hasNextPage = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$HomePraises$posts$pageInfo(
+          endCursor: endCursor == _undefined
+              ? _instance.endCursor
+              : (endCursor as String?),
+          hasNextPage: hasNextPage == _undefined || hasNextPage == null
+              ? _instance.hasNextPage
+              : (hasNextPage as bool),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$HomePraises$posts$pageInfo<TRes>
+    implements CopyWith$Query$HomePraises$posts$pageInfo<TRes> {
+  _CopyWithStubImpl$Query$HomePraises$posts$pageInfo(this._res);
+
+  TRes _res;
+
+  call({String? endCursor, bool? hasNextPage, String? $__typename}) => _res;
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -1218,18 +1389,18 @@ class _CopyWithStubImpl$Query$TopWorks$works$edges$node<TRes>
 }
 
 @JsonSerializable(explicitToJson: true)
-class Variables$Query$TopLetters {
-  Variables$Query$TopLetters({this.first, this.after});
+class Variables$Query$HomeLetters {
+  Variables$Query$HomeLetters({this.first, this.after});
 
   @override
-  factory Variables$Query$TopLetters.fromJson(Map<String, dynamic> json) =>
-      _$Variables$Query$TopLettersFromJson(json);
+  factory Variables$Query$HomeLetters.fromJson(Map<String, dynamic> json) =>
+      _$Variables$Query$HomeLettersFromJson(json);
 
   final int? first;
 
   final String? after;
 
-  Map<String, dynamic> toJson() => _$Variables$Query$TopLettersToJson(this);
+  Map<String, dynamic> toJson() => _$Variables$Query$HomeLettersToJson(this);
   int get hashCode {
     final l$first = first;
     final l$after = after;
@@ -1239,7 +1410,7 @@ class Variables$Query$TopLetters {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Variables$Query$TopLetters) ||
+    if (!(other is Variables$Query$HomeLetters) ||
         runtimeType != other.runtimeType) return false;
     final l$first = first;
     final lOther$first = other.first;
@@ -1250,41 +1421,41 @@ class Variables$Query$TopLetters {
     return true;
   }
 
-  CopyWith$Variables$Query$TopLetters<Variables$Query$TopLetters>
-      get copyWith => CopyWith$Variables$Query$TopLetters(this, (i) => i);
+  CopyWith$Variables$Query$HomeLetters<Variables$Query$HomeLetters>
+      get copyWith => CopyWith$Variables$Query$HomeLetters(this, (i) => i);
 }
 
-abstract class CopyWith$Variables$Query$TopLetters<TRes> {
-  factory CopyWith$Variables$Query$TopLetters(
-          Variables$Query$TopLetters instance,
-          TRes Function(Variables$Query$TopLetters) then) =
-      _CopyWithImpl$Variables$Query$TopLetters;
+abstract class CopyWith$Variables$Query$HomeLetters<TRes> {
+  factory CopyWith$Variables$Query$HomeLetters(
+          Variables$Query$HomeLetters instance,
+          TRes Function(Variables$Query$HomeLetters) then) =
+      _CopyWithImpl$Variables$Query$HomeLetters;
 
-  factory CopyWith$Variables$Query$TopLetters.stub(TRes res) =
-      _CopyWithStubImpl$Variables$Query$TopLetters;
+  factory CopyWith$Variables$Query$HomeLetters.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$HomeLetters;
 
   TRes call({int? first, String? after});
 }
 
-class _CopyWithImpl$Variables$Query$TopLetters<TRes>
-    implements CopyWith$Variables$Query$TopLetters<TRes> {
-  _CopyWithImpl$Variables$Query$TopLetters(this._instance, this._then);
+class _CopyWithImpl$Variables$Query$HomeLetters<TRes>
+    implements CopyWith$Variables$Query$HomeLetters<TRes> {
+  _CopyWithImpl$Variables$Query$HomeLetters(this._instance, this._then);
 
-  final Variables$Query$TopLetters _instance;
+  final Variables$Query$HomeLetters _instance;
 
-  final TRes Function(Variables$Query$TopLetters) _then;
+  final TRes Function(Variables$Query$HomeLetters) _then;
 
   static const _undefined = {};
 
   TRes call({Object? first = _undefined, Object? after = _undefined}) =>
-      _then(Variables$Query$TopLetters(
+      _then(Variables$Query$HomeLetters(
           first: first == _undefined ? _instance.first : (first as int?),
           after: after == _undefined ? _instance.after : (after as String?)));
 }
 
-class _CopyWithStubImpl$Variables$Query$TopLetters<TRes>
-    implements CopyWith$Variables$Query$TopLetters<TRes> {
-  _CopyWithStubImpl$Variables$Query$TopLetters(this._res);
+class _CopyWithStubImpl$Variables$Query$HomeLetters<TRes>
+    implements CopyWith$Variables$Query$HomeLetters<TRes> {
+  _CopyWithStubImpl$Variables$Query$HomeLetters(this._res);
 
   TRes _res;
 
@@ -1292,19 +1463,19 @@ class _CopyWithStubImpl$Variables$Query$TopLetters<TRes>
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$TopLetters {
-  Query$TopLetters({required this.posts, required this.$__typename});
+class Query$HomeLetters {
+  Query$HomeLetters({required this.posts, required this.$__typename});
 
   @override
-  factory Query$TopLetters.fromJson(Map<String, dynamic> json) =>
-      _$Query$TopLettersFromJson(json);
+  factory Query$HomeLetters.fromJson(Map<String, dynamic> json) =>
+      _$Query$HomeLettersFromJson(json);
 
-  final Query$TopLetters$posts posts;
+  final Query$HomeLetters$posts posts;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$TopLettersToJson(this);
+  Map<String, dynamic> toJson() => _$Query$HomeLettersToJson(this);
   int get hashCode {
     final l$posts = posts;
     final l$$__typename = $__typename;
@@ -1314,7 +1485,7 @@ class Query$TopLetters {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$TopLetters) || runtimeType != other.runtimeType)
+    if (!(other is Query$HomeLetters) || runtimeType != other.runtimeType)
       return false;
     final l$posts = posts;
     final lOther$posts = other.posts;
@@ -1326,62 +1497,62 @@ class Query$TopLetters {
   }
 }
 
-extension UtilityExtension$Query$TopLetters on Query$TopLetters {
-  CopyWith$Query$TopLetters<Query$TopLetters> get copyWith =>
-      CopyWith$Query$TopLetters(this, (i) => i);
+extension UtilityExtension$Query$HomeLetters on Query$HomeLetters {
+  CopyWith$Query$HomeLetters<Query$HomeLetters> get copyWith =>
+      CopyWith$Query$HomeLetters(this, (i) => i);
 }
 
-abstract class CopyWith$Query$TopLetters<TRes> {
-  factory CopyWith$Query$TopLetters(
-          Query$TopLetters instance, TRes Function(Query$TopLetters) then) =
-      _CopyWithImpl$Query$TopLetters;
+abstract class CopyWith$Query$HomeLetters<TRes> {
+  factory CopyWith$Query$HomeLetters(
+          Query$HomeLetters instance, TRes Function(Query$HomeLetters) then) =
+      _CopyWithImpl$Query$HomeLetters;
 
-  factory CopyWith$Query$TopLetters.stub(TRes res) =
-      _CopyWithStubImpl$Query$TopLetters;
+  factory CopyWith$Query$HomeLetters.stub(TRes res) =
+      _CopyWithStubImpl$Query$HomeLetters;
 
-  TRes call({Query$TopLetters$posts? posts, String? $__typename});
-  CopyWith$Query$TopLetters$posts<TRes> get posts;
+  TRes call({Query$HomeLetters$posts? posts, String? $__typename});
+  CopyWith$Query$HomeLetters$posts<TRes> get posts;
 }
 
-class _CopyWithImpl$Query$TopLetters<TRes>
-    implements CopyWith$Query$TopLetters<TRes> {
-  _CopyWithImpl$Query$TopLetters(this._instance, this._then);
+class _CopyWithImpl$Query$HomeLetters<TRes>
+    implements CopyWith$Query$HomeLetters<TRes> {
+  _CopyWithImpl$Query$HomeLetters(this._instance, this._then);
 
-  final Query$TopLetters _instance;
+  final Query$HomeLetters _instance;
 
-  final TRes Function(Query$TopLetters) _then;
+  final TRes Function(Query$HomeLetters) _then;
 
   static const _undefined = {};
 
   TRes call({Object? posts = _undefined, Object? $__typename = _undefined}) =>
-      _then(Query$TopLetters(
+      _then(Query$HomeLetters(
           posts: posts == _undefined || posts == null
               ? _instance.posts
-              : (posts as Query$TopLetters$posts),
+              : (posts as Query$HomeLetters$posts),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
-  CopyWith$Query$TopLetters$posts<TRes> get posts {
+  CopyWith$Query$HomeLetters$posts<TRes> get posts {
     final local$posts = _instance.posts;
-    return CopyWith$Query$TopLetters$posts(local$posts, (e) => call(posts: e));
+    return CopyWith$Query$HomeLetters$posts(local$posts, (e) => call(posts: e));
   }
 }
 
-class _CopyWithStubImpl$Query$TopLetters<TRes>
-    implements CopyWith$Query$TopLetters<TRes> {
-  _CopyWithStubImpl$Query$TopLetters(this._res);
+class _CopyWithStubImpl$Query$HomeLetters<TRes>
+    implements CopyWith$Query$HomeLetters<TRes> {
+  _CopyWithStubImpl$Query$HomeLetters(this._res);
 
   TRes _res;
 
-  call({Query$TopLetters$posts? posts, String? $__typename}) => _res;
-  CopyWith$Query$TopLetters$posts<TRes> get posts =>
-      CopyWith$Query$TopLetters$posts.stub(_res);
+  call({Query$HomeLetters$posts? posts, String? $__typename}) => _res;
+  CopyWith$Query$HomeLetters$posts<TRes> get posts =>
+      CopyWith$Query$HomeLetters$posts.stub(_res);
 }
 
-const documentNodeQueryTopLetters = DocumentNode(definitions: [
+const documentNodeQueryHomeLetters = DocumentNode(definitions: [
   OperationDefinitionNode(
       type: OperationType.query,
-      name: NameNode(value: 'TopLetters'),
+      name: NameNode(value: 'HomeLetters'),
       variableDefinitions: [
         VariableDefinitionNode(
             variable: VariableNode(name: NameNode(value: 'first')),
@@ -1498,13 +1669,14 @@ const documentNodeQueryTopLetters = DocumentNode(definitions: [
       ])),
   fragmentDefinitionLetterSummary,
 ]);
-Query$TopLetters _parserFn$Query$TopLetters(Map<String, dynamic> data) =>
-    Query$TopLetters.fromJson(data);
+Query$HomeLetters _parserFn$Query$HomeLetters(Map<String, dynamic> data) =>
+    Query$HomeLetters.fromJson(data);
 
-class Options$Query$TopLetters extends graphql.QueryOptions<Query$TopLetters> {
-  Options$Query$TopLetters(
+class Options$Query$HomeLetters
+    extends graphql.QueryOptions<Query$HomeLetters> {
+  Options$Query$HomeLetters(
       {String? operationName,
-      Variables$Query$TopLetters? variables,
+      Variables$Query$HomeLetters? variables,
       graphql.FetchPolicy? fetchPolicy,
       graphql.ErrorPolicy? errorPolicy,
       graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -1520,15 +1692,15 @@ class Options$Query$TopLetters extends graphql.QueryOptions<Query$TopLetters> {
             optimisticResult: optimisticResult,
             pollInterval: pollInterval,
             context: context,
-            document: documentNodeQueryTopLetters,
-            parserFn: _parserFn$Query$TopLetters);
+            document: documentNodeQueryHomeLetters,
+            parserFn: _parserFn$Query$HomeLetters);
 }
 
-class WatchOptions$Query$TopLetters
-    extends graphql.WatchQueryOptions<Query$TopLetters> {
-  WatchOptions$Query$TopLetters(
+class WatchOptions$Query$HomeLetters
+    extends graphql.WatchQueryOptions<Query$HomeLetters> {
+  WatchOptions$Query$HomeLetters(
       {String? operationName,
-      Variables$Query$TopLetters? variables,
+      Variables$Query$HomeLetters? variables,
       graphql.FetchPolicy? fetchPolicy,
       graphql.ErrorPolicy? errorPolicy,
       graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -1546,88 +1718,90 @@ class WatchOptions$Query$TopLetters
             cacheRereadPolicy: cacheRereadPolicy,
             optimisticResult: optimisticResult,
             context: context,
-            document: documentNodeQueryTopLetters,
+            document: documentNodeQueryHomeLetters,
             pollInterval: pollInterval,
             eagerlyFetchResults: eagerlyFetchResults,
             carryForwardDataOnException: carryForwardDataOnException,
             fetchResults: fetchResults,
-            parserFn: _parserFn$Query$TopLetters);
+            parserFn: _parserFn$Query$HomeLetters);
 }
 
-class FetchMoreOptions$Query$TopLetters extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$TopLetters(
+class FetchMoreOptions$Query$HomeLetters extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$HomeLetters(
       {required graphql.UpdateQuery updateQuery,
-      Variables$Query$TopLetters? variables})
+      Variables$Query$HomeLetters? variables})
       : super(
             updateQuery: updateQuery,
             variables: variables?.toJson() ?? {},
-            document: documentNodeQueryTopLetters);
+            document: documentNodeQueryHomeLetters);
 }
 
-extension ClientExtension$Query$TopLetters on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Query$TopLetters>> query$TopLetters(
-          [Options$Query$TopLetters? options]) async =>
-      await this.query(options ?? Options$Query$TopLetters());
-  graphql.ObservableQuery<Query$TopLetters> watchQuery$TopLetters(
-          [WatchOptions$Query$TopLetters? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$TopLetters());
-  void writeQuery$TopLetters(
-          {required Query$TopLetters data,
-          Variables$Query$TopLetters? variables,
+extension ClientExtension$Query$HomeLetters on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$HomeLetters>> query$HomeLetters(
+          [Options$Query$HomeLetters? options]) async =>
+      await this.query(options ?? Options$Query$HomeLetters());
+  graphql.ObservableQuery<Query$HomeLetters> watchQuery$HomeLetters(
+          [WatchOptions$Query$HomeLetters? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$HomeLetters());
+  void writeQuery$HomeLetters(
+          {required Query$HomeLetters data,
+          Variables$Query$HomeLetters? variables,
           bool broadcast = true}) =>
       this.writeQuery(
           graphql.Request(
               operation:
-                  graphql.Operation(document: documentNodeQueryTopLetters),
+                  graphql.Operation(document: documentNodeQueryHomeLetters),
               variables: variables?.toJson() ?? const {}),
           data: data.toJson(),
           broadcast: broadcast);
-  Query$TopLetters? readQuery$TopLetters(
-      {Variables$Query$TopLetters? variables, bool optimistic = true}) {
+  Query$HomeLetters? readQuery$HomeLetters(
+      {Variables$Query$HomeLetters? variables, bool optimistic = true}) {
     final result = this.readQuery(
         graphql.Request(
-            operation: graphql.Operation(document: documentNodeQueryTopLetters),
+            operation:
+                graphql.Operation(document: documentNodeQueryHomeLetters),
             variables: variables?.toJson() ?? const {}),
         optimistic: optimistic);
-    return result == null ? null : Query$TopLetters.fromJson(result);
+    return result == null ? null : Query$HomeLetters.fromJson(result);
   }
 }
 
-graphql_flutter.QueryHookResult<Query$TopLetters> useQuery$TopLetters(
-        [Options$Query$TopLetters? options]) =>
-    graphql_flutter.useQuery(options ?? Options$Query$TopLetters());
-graphql.ObservableQuery<Query$TopLetters> useWatchQuery$TopLetters(
-        [WatchOptions$Query$TopLetters? options]) =>
-    graphql_flutter.useWatchQuery(options ?? WatchOptions$Query$TopLetters());
+graphql_flutter.QueryHookResult<Query$HomeLetters> useQuery$HomeLetters(
+        [Options$Query$HomeLetters? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$HomeLetters());
+graphql.ObservableQuery<Query$HomeLetters> useWatchQuery$HomeLetters(
+        [WatchOptions$Query$HomeLetters? options]) =>
+    graphql_flutter.useWatchQuery(options ?? WatchOptions$Query$HomeLetters());
 
-class Query$TopLetters$Widget extends graphql_flutter.Query<Query$TopLetters> {
-  Query$TopLetters$Widget(
+class Query$HomeLetters$Widget
+    extends graphql_flutter.Query<Query$HomeLetters> {
+  Query$HomeLetters$Widget(
       {widgets.Key? key,
-      Options$Query$TopLetters? options,
-      required graphql_flutter.QueryBuilder<Query$TopLetters> builder})
+      Options$Query$HomeLetters? options,
+      required graphql_flutter.QueryBuilder<Query$HomeLetters> builder})
       : super(
             key: key,
-            options: options ?? Options$Query$TopLetters(),
+            options: options ?? Options$Query$HomeLetters(),
             builder: builder);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$TopLetters$posts {
-  Query$TopLetters$posts(
+class Query$HomeLetters$posts {
+  Query$HomeLetters$posts(
       {this.edges, required this.pageInfo, required this.$__typename});
 
   @override
-  factory Query$TopLetters$posts.fromJson(Map<String, dynamic> json) =>
-      _$Query$TopLetters$postsFromJson(json);
+  factory Query$HomeLetters$posts.fromJson(Map<String, dynamic> json) =>
+      _$Query$HomeLetters$postsFromJson(json);
 
-  final List<Query$TopLetters$posts$edges?>? edges;
+  final List<Query$HomeLetters$posts$edges?>? edges;
 
-  final Query$TopLetters$posts$pageInfo pageInfo;
+  final Query$HomeLetters$posts$pageInfo pageInfo;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$TopLetters$postsToJson(this);
+  Map<String, dynamic> toJson() => _$Query$HomeLetters$postsToJson(this);
   int get hashCode {
     final l$edges = edges;
     final l$pageInfo = pageInfo;
@@ -1642,7 +1816,7 @@ class Query$TopLetters$posts {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$TopLetters$posts) || runtimeType != other.runtimeType)
+    if (!(other is Query$HomeLetters$posts) || runtimeType != other.runtimeType)
       return false;
     final l$edges = edges;
     final lOther$edges = other.edges;
@@ -1667,39 +1841,39 @@ class Query$TopLetters$posts {
   }
 }
 
-extension UtilityExtension$Query$TopLetters$posts on Query$TopLetters$posts {
-  CopyWith$Query$TopLetters$posts<Query$TopLetters$posts> get copyWith =>
-      CopyWith$Query$TopLetters$posts(this, (i) => i);
+extension UtilityExtension$Query$HomeLetters$posts on Query$HomeLetters$posts {
+  CopyWith$Query$HomeLetters$posts<Query$HomeLetters$posts> get copyWith =>
+      CopyWith$Query$HomeLetters$posts(this, (i) => i);
 }
 
-abstract class CopyWith$Query$TopLetters$posts<TRes> {
-  factory CopyWith$Query$TopLetters$posts(Query$TopLetters$posts instance,
-          TRes Function(Query$TopLetters$posts) then) =
-      _CopyWithImpl$Query$TopLetters$posts;
+abstract class CopyWith$Query$HomeLetters$posts<TRes> {
+  factory CopyWith$Query$HomeLetters$posts(Query$HomeLetters$posts instance,
+          TRes Function(Query$HomeLetters$posts) then) =
+      _CopyWithImpl$Query$HomeLetters$posts;
 
-  factory CopyWith$Query$TopLetters$posts.stub(TRes res) =
-      _CopyWithStubImpl$Query$TopLetters$posts;
+  factory CopyWith$Query$HomeLetters$posts.stub(TRes res) =
+      _CopyWithStubImpl$Query$HomeLetters$posts;
 
   TRes call(
-      {List<Query$TopLetters$posts$edges?>? edges,
-      Query$TopLetters$posts$pageInfo? pageInfo,
+      {List<Query$HomeLetters$posts$edges?>? edges,
+      Query$HomeLetters$posts$pageInfo? pageInfo,
       String? $__typename});
   TRes edges(
-      Iterable<Query$TopLetters$posts$edges?>? Function(
+      Iterable<Query$HomeLetters$posts$edges?>? Function(
               Iterable<
-                  CopyWith$Query$TopLetters$posts$edges<
-                      Query$TopLetters$posts$edges>?>?)
+                  CopyWith$Query$HomeLetters$posts$edges<
+                      Query$HomeLetters$posts$edges>?>?)
           _fn);
-  CopyWith$Query$TopLetters$posts$pageInfo<TRes> get pageInfo;
+  CopyWith$Query$HomeLetters$posts$pageInfo<TRes> get pageInfo;
 }
 
-class _CopyWithImpl$Query$TopLetters$posts<TRes>
-    implements CopyWith$Query$TopLetters$posts<TRes> {
-  _CopyWithImpl$Query$TopLetters$posts(this._instance, this._then);
+class _CopyWithImpl$Query$HomeLetters$posts<TRes>
+    implements CopyWith$Query$HomeLetters$posts<TRes> {
+  _CopyWithImpl$Query$HomeLetters$posts(this._instance, this._then);
 
-  final Query$TopLetters$posts _instance;
+  final Query$HomeLetters$posts _instance;
 
-  final TRes Function(Query$TopLetters$posts) _then;
+  final TRes Function(Query$HomeLetters$posts) _then;
 
   static const _undefined = {};
 
@@ -1707,63 +1881,64 @@ class _CopyWithImpl$Query$TopLetters$posts<TRes>
           {Object? edges = _undefined,
           Object? pageInfo = _undefined,
           Object? $__typename = _undefined}) =>
-      _then(Query$TopLetters$posts(
+      _then(Query$HomeLetters$posts(
           edges: edges == _undefined
               ? _instance.edges
-              : (edges as List<Query$TopLetters$posts$edges?>?),
+              : (edges as List<Query$HomeLetters$posts$edges?>?),
           pageInfo: pageInfo == _undefined || pageInfo == null
               ? _instance.pageInfo
-              : (pageInfo as Query$TopLetters$posts$pageInfo),
+              : (pageInfo as Query$HomeLetters$posts$pageInfo),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
   TRes edges(
-          Iterable<Query$TopLetters$posts$edges?>? Function(
+          Iterable<Query$HomeLetters$posts$edges?>? Function(
                   Iterable<
-                      CopyWith$Query$TopLetters$posts$edges<
-                          Query$TopLetters$posts$edges>?>?)
+                      CopyWith$Query$HomeLetters$posts$edges<
+                          Query$HomeLetters$posts$edges>?>?)
               _fn) =>
       call(
           edges: _fn(_instance.edges?.map((e) => e == null
-              ? null
-              : CopyWith$Query$TopLetters$posts$edges(e, (i) => i)))?.toList());
-  CopyWith$Query$TopLetters$posts$pageInfo<TRes> get pageInfo {
+                  ? null
+                  : CopyWith$Query$HomeLetters$posts$edges(e, (i) => i)))
+              ?.toList());
+  CopyWith$Query$HomeLetters$posts$pageInfo<TRes> get pageInfo {
     final local$pageInfo = _instance.pageInfo;
-    return CopyWith$Query$TopLetters$posts$pageInfo(
+    return CopyWith$Query$HomeLetters$posts$pageInfo(
         local$pageInfo, (e) => call(pageInfo: e));
   }
 }
 
-class _CopyWithStubImpl$Query$TopLetters$posts<TRes>
-    implements CopyWith$Query$TopLetters$posts<TRes> {
-  _CopyWithStubImpl$Query$TopLetters$posts(this._res);
+class _CopyWithStubImpl$Query$HomeLetters$posts<TRes>
+    implements CopyWith$Query$HomeLetters$posts<TRes> {
+  _CopyWithStubImpl$Query$HomeLetters$posts(this._res);
 
   TRes _res;
 
   call(
-          {List<Query$TopLetters$posts$edges?>? edges,
-          Query$TopLetters$posts$pageInfo? pageInfo,
+          {List<Query$HomeLetters$posts$edges?>? edges,
+          Query$HomeLetters$posts$pageInfo? pageInfo,
           String? $__typename}) =>
       _res;
   edges(_fn) => _res;
-  CopyWith$Query$TopLetters$posts$pageInfo<TRes> get pageInfo =>
-      CopyWith$Query$TopLetters$posts$pageInfo.stub(_res);
+  CopyWith$Query$HomeLetters$posts$pageInfo<TRes> get pageInfo =>
+      CopyWith$Query$HomeLetters$posts$pageInfo.stub(_res);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$TopLetters$posts$edges {
-  Query$TopLetters$posts$edges({this.node, required this.$__typename});
+class Query$HomeLetters$posts$edges {
+  Query$HomeLetters$posts$edges({this.node, required this.$__typename});
 
   @override
-  factory Query$TopLetters$posts$edges.fromJson(Map<String, dynamic> json) =>
-      _$Query$TopLetters$posts$edgesFromJson(json);
+  factory Query$HomeLetters$posts$edges.fromJson(Map<String, dynamic> json) =>
+      _$Query$HomeLetters$posts$edgesFromJson(json);
 
   final Fragment$LetterSummary? node;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$TopLetters$posts$edgesToJson(this);
+  Map<String, dynamic> toJson() => _$Query$HomeLetters$posts$edgesToJson(this);
   int get hashCode {
     final l$node = node;
     final l$$__typename = $__typename;
@@ -1773,7 +1948,7 @@ class Query$TopLetters$posts$edges {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$TopLetters$posts$edges) ||
+    if (!(other is Query$HomeLetters$posts$edges) ||
         runtimeType != other.runtimeType) return false;
     final l$node = node;
     final lOther$node = other.node;
@@ -1785,37 +1960,37 @@ class Query$TopLetters$posts$edges {
   }
 }
 
-extension UtilityExtension$Query$TopLetters$posts$edges
-    on Query$TopLetters$posts$edges {
-  CopyWith$Query$TopLetters$posts$edges<Query$TopLetters$posts$edges>
-      get copyWith => CopyWith$Query$TopLetters$posts$edges(this, (i) => i);
+extension UtilityExtension$Query$HomeLetters$posts$edges
+    on Query$HomeLetters$posts$edges {
+  CopyWith$Query$HomeLetters$posts$edges<Query$HomeLetters$posts$edges>
+      get copyWith => CopyWith$Query$HomeLetters$posts$edges(this, (i) => i);
 }
 
-abstract class CopyWith$Query$TopLetters$posts$edges<TRes> {
-  factory CopyWith$Query$TopLetters$posts$edges(
-          Query$TopLetters$posts$edges instance,
-          TRes Function(Query$TopLetters$posts$edges) then) =
-      _CopyWithImpl$Query$TopLetters$posts$edges;
+abstract class CopyWith$Query$HomeLetters$posts$edges<TRes> {
+  factory CopyWith$Query$HomeLetters$posts$edges(
+          Query$HomeLetters$posts$edges instance,
+          TRes Function(Query$HomeLetters$posts$edges) then) =
+      _CopyWithImpl$Query$HomeLetters$posts$edges;
 
-  factory CopyWith$Query$TopLetters$posts$edges.stub(TRes res) =
-      _CopyWithStubImpl$Query$TopLetters$posts$edges;
+  factory CopyWith$Query$HomeLetters$posts$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$HomeLetters$posts$edges;
 
   TRes call({Fragment$LetterSummary? node, String? $__typename});
   CopyWith$Fragment$LetterSummary<TRes> get node;
 }
 
-class _CopyWithImpl$Query$TopLetters$posts$edges<TRes>
-    implements CopyWith$Query$TopLetters$posts$edges<TRes> {
-  _CopyWithImpl$Query$TopLetters$posts$edges(this._instance, this._then);
+class _CopyWithImpl$Query$HomeLetters$posts$edges<TRes>
+    implements CopyWith$Query$HomeLetters$posts$edges<TRes> {
+  _CopyWithImpl$Query$HomeLetters$posts$edges(this._instance, this._then);
 
-  final Query$TopLetters$posts$edges _instance;
+  final Query$HomeLetters$posts$edges _instance;
 
-  final TRes Function(Query$TopLetters$posts$edges) _then;
+  final TRes Function(Query$HomeLetters$posts$edges) _then;
 
   static const _undefined = {};
 
   TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
-      _then(Query$TopLetters$posts$edges(
+      _then(Query$HomeLetters$posts$edges(
           node: node == _undefined
               ? _instance.node
               : (node as Fragment$LetterSummary?),
@@ -1830,9 +2005,9 @@ class _CopyWithImpl$Query$TopLetters$posts$edges<TRes>
   }
 }
 
-class _CopyWithStubImpl$Query$TopLetters$posts$edges<TRes>
-    implements CopyWith$Query$TopLetters$posts$edges<TRes> {
-  _CopyWithStubImpl$Query$TopLetters$posts$edges(this._res);
+class _CopyWithStubImpl$Query$HomeLetters$posts$edges<TRes>
+    implements CopyWith$Query$HomeLetters$posts$edges<TRes> {
+  _CopyWithStubImpl$Query$HomeLetters$posts$edges(this._res);
 
   TRes _res;
 
@@ -1842,13 +2017,14 @@ class _CopyWithStubImpl$Query$TopLetters$posts$edges<TRes>
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$TopLetters$posts$pageInfo {
-  Query$TopLetters$posts$pageInfo(
+class Query$HomeLetters$posts$pageInfo {
+  Query$HomeLetters$posts$pageInfo(
       {this.endCursor, required this.hasNextPage, required this.$__typename});
 
   @override
-  factory Query$TopLetters$posts$pageInfo.fromJson(Map<String, dynamic> json) =>
-      _$Query$TopLetters$posts$pageInfoFromJson(json);
+  factory Query$HomeLetters$posts$pageInfo.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$HomeLetters$posts$pageInfoFromJson(json);
 
   final String? endCursor;
 
@@ -1858,7 +2034,7 @@ class Query$TopLetters$posts$pageInfo {
   final String $__typename;
 
   Map<String, dynamic> toJson() =>
-      _$Query$TopLetters$posts$pageInfoToJson(this);
+      _$Query$HomeLetters$posts$pageInfoToJson(this);
   int get hashCode {
     final l$endCursor = endCursor;
     final l$hasNextPage = hasNextPage;
@@ -1869,7 +2045,7 @@ class Query$TopLetters$posts$pageInfo {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$TopLetters$posts$pageInfo) ||
+    if (!(other is Query$HomeLetters$posts$pageInfo) ||
         runtimeType != other.runtimeType) return false;
     final l$endCursor = endCursor;
     final lOther$endCursor = other.endCursor;
@@ -1884,31 +2060,31 @@ class Query$TopLetters$posts$pageInfo {
   }
 }
 
-extension UtilityExtension$Query$TopLetters$posts$pageInfo
-    on Query$TopLetters$posts$pageInfo {
-  CopyWith$Query$TopLetters$posts$pageInfo<Query$TopLetters$posts$pageInfo>
-      get copyWith => CopyWith$Query$TopLetters$posts$pageInfo(this, (i) => i);
+extension UtilityExtension$Query$HomeLetters$posts$pageInfo
+    on Query$HomeLetters$posts$pageInfo {
+  CopyWith$Query$HomeLetters$posts$pageInfo<Query$HomeLetters$posts$pageInfo>
+      get copyWith => CopyWith$Query$HomeLetters$posts$pageInfo(this, (i) => i);
 }
 
-abstract class CopyWith$Query$TopLetters$posts$pageInfo<TRes> {
-  factory CopyWith$Query$TopLetters$posts$pageInfo(
-          Query$TopLetters$posts$pageInfo instance,
-          TRes Function(Query$TopLetters$posts$pageInfo) then) =
-      _CopyWithImpl$Query$TopLetters$posts$pageInfo;
+abstract class CopyWith$Query$HomeLetters$posts$pageInfo<TRes> {
+  factory CopyWith$Query$HomeLetters$posts$pageInfo(
+          Query$HomeLetters$posts$pageInfo instance,
+          TRes Function(Query$HomeLetters$posts$pageInfo) then) =
+      _CopyWithImpl$Query$HomeLetters$posts$pageInfo;
 
-  factory CopyWith$Query$TopLetters$posts$pageInfo.stub(TRes res) =
-      _CopyWithStubImpl$Query$TopLetters$posts$pageInfo;
+  factory CopyWith$Query$HomeLetters$posts$pageInfo.stub(TRes res) =
+      _CopyWithStubImpl$Query$HomeLetters$posts$pageInfo;
 
   TRes call({String? endCursor, bool? hasNextPage, String? $__typename});
 }
 
-class _CopyWithImpl$Query$TopLetters$posts$pageInfo<TRes>
-    implements CopyWith$Query$TopLetters$posts$pageInfo<TRes> {
-  _CopyWithImpl$Query$TopLetters$posts$pageInfo(this._instance, this._then);
+class _CopyWithImpl$Query$HomeLetters$posts$pageInfo<TRes>
+    implements CopyWith$Query$HomeLetters$posts$pageInfo<TRes> {
+  _CopyWithImpl$Query$HomeLetters$posts$pageInfo(this._instance, this._then);
 
-  final Query$TopLetters$posts$pageInfo _instance;
+  final Query$HomeLetters$posts$pageInfo _instance;
 
-  final TRes Function(Query$TopLetters$posts$pageInfo) _then;
+  final TRes Function(Query$HomeLetters$posts$pageInfo) _then;
 
   static const _undefined = {};
 
@@ -1916,7 +2092,7 @@ class _CopyWithImpl$Query$TopLetters$posts$pageInfo<TRes>
           {Object? endCursor = _undefined,
           Object? hasNextPage = _undefined,
           Object? $__typename = _undefined}) =>
-      _then(Query$TopLetters$posts$pageInfo(
+      _then(Query$HomeLetters$posts$pageInfo(
           endCursor: endCursor == _undefined
               ? _instance.endCursor
               : (endCursor as String?),
@@ -1928,9 +2104,9 @@ class _CopyWithImpl$Query$TopLetters$posts$pageInfo<TRes>
               : ($__typename as String)));
 }
 
-class _CopyWithStubImpl$Query$TopLetters$posts$pageInfo<TRes>
-    implements CopyWith$Query$TopLetters$posts$pageInfo<TRes> {
-  _CopyWithStubImpl$Query$TopLetters$posts$pageInfo(this._res);
+class _CopyWithStubImpl$Query$HomeLetters$posts$pageInfo<TRes>
+    implements CopyWith$Query$HomeLetters$posts$pageInfo<TRes> {
+  _CopyWithStubImpl$Query$HomeLetters$posts$pageInfo(this._res);
 
   TRes _res;
 
