@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hokkori/pages/common/common.graphql.dart';
 import 'package:hokkori/pages/home/hashtag.dart';
 import 'package:hokkori/utils/colors.dart';
@@ -24,31 +24,18 @@ class Praise extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(20))),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                  backgroundColor: primaryColor,
-                  radius: 15,
-                  child: SvgPicture.asset('assets/palette.svg')),
-              const SizedBox(
-                width: 5,
-              ),
-              Expanded(
-                  child: Text(
-                praise.title,
-                style: const TextStyle(fontWeight: FontWeight.w700),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-              ))
-            ],
+          Text(
+            praise.title,
+            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
           ),
           const SizedBox(
             height: 10,
           ),
           Text(
             praise.content,
-            style: const TextStyle(color: Colors.black87, fontSize: 12),
+            style: const TextStyle(color: Colors.black87, fontSize: 14),
             overflow: TextOverflow.ellipsis,
             maxLines: 3,
           ),
@@ -89,8 +76,20 @@ class Praise extends StatelessWidget {
                 "27",
                 style: TextStyle(color: Colors.black87, fontSize: 14),
               ),
+              const Spacer(),
+              CircleAvatar(
+                  backgroundColor: primaryColor,
+                  radius: 10,
+                  child: SvgPicture.asset(
+                    'assets/palette.svg',
+                    width: 14,
+                  )),
               const SizedBox(
-                width: 50,
+                width: 5,
+              ),
+              Text(praise.category.name),
+              const SizedBox(
+                width: 10,
               ),
             ],
           )

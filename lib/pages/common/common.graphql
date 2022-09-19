@@ -2,7 +2,12 @@ fragment LetterSummary on Post {
   title
   id
   content
+  createTime
   owner {
+    id
+    name
+  }
+  category {
     id
     name
   }
@@ -17,6 +22,10 @@ fragment PraiseSummary on Post {
     title
   }
   owner {
+    id
+    name
+  }
+  category {
     id
     name
   }

@@ -12,8 +12,11 @@ Fragment$LetterSummary _$Fragment$LetterSummaryFromJson(
       title: json['title'] as String,
       id: json['id'] as String,
       content: json['content'] as String,
+      createTime: json['createTime'] as String,
       owner: Fragment$LetterSummary$owner.fromJson(
           json['owner'] as Map<String, dynamic>),
+      category: Fragment$LetterSummary$category.fromJson(
+          json['category'] as Map<String, dynamic>),
       $__typename: json['__typename'] as String,
     );
 
@@ -23,7 +26,9 @@ Map<String, dynamic> _$Fragment$LetterSummaryToJson(
       'title': instance.title,
       'id': instance.id,
       'content': instance.content,
+      'createTime': instance.createTime,
       'owner': instance.owner.toJson(),
+      'category': instance.category.toJson(),
       '__typename': instance.$__typename,
     };
 
@@ -43,6 +48,22 @@ Map<String, dynamic> _$Fragment$LetterSummary$ownerToJson(
       '__typename': instance.$__typename,
     };
 
+Fragment$LetterSummary$category _$Fragment$LetterSummary$categoryFromJson(
+        Map<String, dynamic> json) =>
+    Fragment$LetterSummary$category(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$Fragment$LetterSummary$categoryToJson(
+        Fragment$LetterSummary$category instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      '__typename': instance.$__typename,
+    };
+
 Fragment$PraiseSummary _$Fragment$PraiseSummaryFromJson(
         Map<String, dynamic> json) =>
     Fragment$PraiseSummary(
@@ -55,6 +76,8 @@ Fragment$PraiseSummary _$Fragment$PraiseSummaryFromJson(
           .toList(),
       owner: Fragment$PraiseSummary$owner.fromJson(
           json['owner'] as Map<String, dynamic>),
+      category: Fragment$PraiseSummary$category.fromJson(
+          json['category'] as Map<String, dynamic>),
       $__typename: json['__typename'] as String,
     );
 
@@ -66,6 +89,7 @@ Map<String, dynamic> _$Fragment$PraiseSummaryToJson(
       'content': instance.content,
       'hashtags': instance.hashtags?.map((e) => e.toJson()).toList(),
       'owner': instance.owner.toJson(),
+      'category': instance.category.toJson(),
       '__typename': instance.$__typename,
     };
 
@@ -95,6 +119,22 @@ Fragment$PraiseSummary$owner _$Fragment$PraiseSummary$ownerFromJson(
 
 Map<String, dynamic> _$Fragment$PraiseSummary$ownerToJson(
         Fragment$PraiseSummary$owner instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      '__typename': instance.$__typename,
+    };
+
+Fragment$PraiseSummary$category _$Fragment$PraiseSummary$categoryFromJson(
+        Map<String, dynamic> json) =>
+    Fragment$PraiseSummary$category(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$Fragment$PraiseSummary$categoryToJson(
+        Fragment$PraiseSummary$category instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
