@@ -26,38 +26,42 @@ class HomeWorks extends HookWidget {
     }
     final works = result.parsedData?.works.edges ?? [];
 
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: const [
-          Icon(
-            Icons.favorite_border,
-            size: 30,
-            color: primaryColor,
+    return Container(
+        decoration: const BoxDecoration(color: Color(0xffF8F7F7)),
+        padding: const EdgeInsets.only(left: 16, top: 40),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: const [
+              Icon(
+                Icons.favorite_border,
+                size: 30,
+                color: primaryColor,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                "おすすめ作品",
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
           ),
           SizedBox(
-            width: 10,
-          ),
-          Text(
-            "おすすめ作品",
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
-          ),
-        ],
-      ),
-      const SizedBox(
-        height: 10,
-      ),
-      SizedBox(
-          height: 200,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            separatorBuilder: (context, index) => const SizedBox(
-              width: 10,
-            ),
-            itemBuilder: (context, index) => Work(work: works[index]!.node!),
-            itemCount: works.length,
-          ))
-    ]);
+              height: 200,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                separatorBuilder: (context, index) => const SizedBox(
+                  width: 10,
+                ),
+                itemBuilder: (context, index) =>
+                    Work(work: works[index]!.node!),
+                itemCount: works.length,
+              ))
+        ]));
   }
 }
 

@@ -28,27 +28,29 @@ class HomeLetters extends HookWidget {
     final letters = result.parsedData?.posts.edges ?? [];
     final String? fetchMoreCursor = result.parsedData?.posts.pageInfo.endCursor;
 
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: const [
-          Icon(
-            Icons.favorite_border,
-            size: 30,
-            color: primaryColor,
+    return Padding(
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 40),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: const [
+              Icon(
+                Icons.favorite_border,
+                size: 30,
+                color: primaryColor,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                "レター",
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+              ),
+            ],
           ),
-          SizedBox(
-            width: 10,
-          ),
-          Text(
-            "レター",
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
-          ),
-        ],
-      ),
-      ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
-      FetchMoreButton(cursor: fetchMoreCursor),
-    ]);
+          ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
+          FetchMoreButton(cursor: fetchMoreCursor),
+        ]));
   }
 }
 

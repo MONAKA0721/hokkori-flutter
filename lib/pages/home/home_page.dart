@@ -42,7 +42,6 @@ class HomePage extends StatelessWidget {
       const Header(),
       Expanded(
           child: Container(
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 12),
               decoration: const BoxDecoration(color: Colors.white),
               child: SingleChildScrollView(
                   child: Column(
