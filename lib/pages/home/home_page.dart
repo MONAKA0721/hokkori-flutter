@@ -222,10 +222,11 @@ class TopLetters extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final result = useQuery$TopLetters(Options$Query$TopLetters(
-            fetchPolicy: FetchPolicy.networkOnly,
-            variables: Variables$Query$TopLetters(first: 3)))
-        .result;
+    final queryResult = useQuery$TopLetters(Options$Query$TopLetters(
+        fetchPolicy: FetchPolicy.networkOnly,
+        variables: Variables$Query$TopLetters(first: 3)));
+    final result = queryResult.result;
+    final fetchMore = queryResult.fetchMore;
 
     if (result.hasException) {
       return Text(result.exception.toString());
@@ -238,6 +239,26 @@ class TopLetters extends HookWidget {
       );
     }
     final letters = result.parsedData?.posts.edges ?? [];
+    final String? fetchMoreCursor = result.parsedData?.posts.pageInfo.endCursor;
+    final opts = FetchMoreOptions$Query$TopLetters(
+      variables: Variables$Query$TopLetters(after: fetchMoreCursor, first: 3),
+      updateQuery: (previousResultData, fetchMoreResultData) {
+        // this is where you combine your previous data and response
+        // in this case, we want to display previous repos plus next repos
+        // so, we combine data in both into a single list of repos
+        final letters = [
+          ...previousResultData!['posts']['edges'] as List<dynamic>,
+          ...fetchMoreResultData!['posts']['edges'] as List<dynamic>
+        ];
+
+        // to avoid alot of work, lets just update the list of repos in returned
+        // data with new data, this also ensure we have the endCursor already set
+        // correctlty
+        fetchMoreResultData['posts']['edges'] = letters;
+
+        return fetchMoreResultData;
+      },
+    );
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Row(
@@ -271,7 +292,9 @@ class TopLetters extends HookWidget {
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              fetchMore(opts);
+            },
             child: Row(
               children: const [
                 Text(
@@ -285,3 +308,38 @@ class TopLetters extends HookWidget {
     ]);
   }
 }
+
+class FetchMoreButton extends StatefulWidget {
+  const FetchMoreButton({Key? key}) : super(key: key);
+
+  @override
+  State<FetchMoreButton> createState() => _FetchMoreButtonState();
+}
+
+class _FetchMoreButtonState extends State<FetchMoreButton> {
+  final 
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+          backgroundColor: blueHomeColor,
+          side: const BorderSide(color: blueHomeColor, width: 2),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
+        ),
+        onPressed: () {
+          fetchMore(opts);
+        },
+        child: Row(
+          children: const [
+            Text(
+              "もっと見る",
+              style: TextStyle(color: Colors.white),
+            ),
+            Icon(Icons.chevron_right, color: Colors.white)
+          ],
+        ));
+}
+

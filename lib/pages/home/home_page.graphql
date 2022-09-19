@@ -24,8 +24,9 @@ query TopWorks($first: Int) {
   }
 }
 
-query TopLetters($first: Int) {
+query TopLetters($first: Int, $after: Cursor) {
   posts(
+    after: $after
     first: $first
     orderBy: { direction: DESC, field: CREATE_TIME }
     where: { type: letter }
@@ -34,6 +35,10 @@ query TopLetters($first: Int) {
       node {
         ...LetterSummary
       }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
     }
   }
 }

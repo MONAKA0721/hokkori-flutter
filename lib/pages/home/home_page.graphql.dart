@@ -1219,7 +1219,7 @@ class _CopyWithStubImpl$Query$TopWorks$works$edges$node<TRes>
 
 @JsonSerializable(explicitToJson: true)
 class Variables$Query$TopLetters {
-  Variables$Query$TopLetters({this.first});
+  Variables$Query$TopLetters({this.first, this.after});
 
   @override
   factory Variables$Query$TopLetters.fromJson(Map<String, dynamic> json) =>
@@ -1227,10 +1227,13 @@ class Variables$Query$TopLetters {
 
   final int? first;
 
+  final String? after;
+
   Map<String, dynamic> toJson() => _$Variables$Query$TopLettersToJson(this);
   int get hashCode {
     final l$first = first;
-    return Object.hashAll([l$first]);
+    final l$after = after;
+    return Object.hashAll([l$first, l$after]);
   }
 
   @override
@@ -1241,6 +1244,9 @@ class Variables$Query$TopLetters {
     final l$first = first;
     final lOther$first = other.first;
     if (l$first != lOther$first) return false;
+    final l$after = after;
+    final lOther$after = other.after;
+    if (l$after != lOther$after) return false;
     return true;
   }
 
@@ -1257,7 +1263,7 @@ abstract class CopyWith$Variables$Query$TopLetters<TRes> {
   factory CopyWith$Variables$Query$TopLetters.stub(TRes res) =
       _CopyWithStubImpl$Variables$Query$TopLetters;
 
-  TRes call({int? first});
+  TRes call({int? first, String? after});
 }
 
 class _CopyWithImpl$Variables$Query$TopLetters<TRes>
@@ -1270,8 +1276,10 @@ class _CopyWithImpl$Variables$Query$TopLetters<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? first = _undefined}) => _then(Variables$Query$TopLetters(
-      first: first == _undefined ? _instance.first : (first as int?)));
+  TRes call({Object? first = _undefined, Object? after = _undefined}) =>
+      _then(Variables$Query$TopLetters(
+          first: first == _undefined ? _instance.first : (first as int?),
+          after: after == _undefined ? _instance.after : (after as String?)));
 }
 
 class _CopyWithStubImpl$Variables$Query$TopLetters<TRes>
@@ -1280,7 +1288,7 @@ class _CopyWithStubImpl$Variables$Query$TopLetters<TRes>
 
   TRes _res;
 
-  call({int? first}) => _res;
+  call({int? first, String? after}) => _res;
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -1379,6 +1387,12 @@ const documentNodeQueryTopLetters = DocumentNode(definitions: [
             variable: VariableNode(name: NameNode(value: 'first')),
             type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: false),
             defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'after')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'Cursor'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
             directives: [])
       ],
       directives: [],
@@ -1387,6 +1401,9 @@ const documentNodeQueryTopLetters = DocumentNode(definitions: [
             name: NameNode(value: 'posts'),
             alias: null,
             arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'after'),
+                  value: VariableNode(name: NameNode(value: 'after'))),
               ArgumentNode(
                   name: NameNode(value: 'first'),
                   value: VariableNode(name: NameNode(value: 'first'))),
@@ -1433,6 +1450,31 @@ const documentNodeQueryTopLetters = DocumentNode(definitions: [
                               directives: [],
                               selectionSet: null)
                         ])),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: 'pageInfo'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'endCursor'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: 'hasNextPage'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
                     FieldNode(
                         name: NameNode(value: '__typename'),
                         alias: null,
@@ -1571,7 +1613,8 @@ class Query$TopLetters$Widget extends graphql_flutter.Query<Query$TopLetters> {
 
 @JsonSerializable(explicitToJson: true)
 class Query$TopLetters$posts {
-  Query$TopLetters$posts({this.edges, required this.$__typename});
+  Query$TopLetters$posts(
+      {this.edges, required this.pageInfo, required this.$__typename});
 
   @override
   factory Query$TopLetters$posts.fromJson(Map<String, dynamic> json) =>
@@ -1579,15 +1622,19 @@ class Query$TopLetters$posts {
 
   final List<Query$TopLetters$posts$edges?>? edges;
 
+  final Query$TopLetters$posts$pageInfo pageInfo;
+
   @JsonKey(name: '__typename')
   final String $__typename;
 
   Map<String, dynamic> toJson() => _$Query$TopLetters$postsToJson(this);
   int get hashCode {
     final l$edges = edges;
+    final l$pageInfo = pageInfo;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
       l$$__typename
     ]);
   }
@@ -1610,6 +1657,9 @@ class Query$TopLetters$posts {
       return false;
     }
 
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -1630,13 +1680,17 @@ abstract class CopyWith$Query$TopLetters$posts<TRes> {
   factory CopyWith$Query$TopLetters$posts.stub(TRes res) =
       _CopyWithStubImpl$Query$TopLetters$posts;
 
-  TRes call({List<Query$TopLetters$posts$edges?>? edges, String? $__typename});
+  TRes call(
+      {List<Query$TopLetters$posts$edges?>? edges,
+      Query$TopLetters$posts$pageInfo? pageInfo,
+      String? $__typename});
   TRes edges(
       Iterable<Query$TopLetters$posts$edges?>? Function(
               Iterable<
                   CopyWith$Query$TopLetters$posts$edges<
                       Query$TopLetters$posts$edges>?>?)
           _fn);
+  CopyWith$Query$TopLetters$posts$pageInfo<TRes> get pageInfo;
 }
 
 class _CopyWithImpl$Query$TopLetters$posts<TRes>
@@ -1649,11 +1703,17 @@ class _CopyWithImpl$Query$TopLetters$posts<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
+  TRes call(
+          {Object? edges = _undefined,
+          Object? pageInfo = _undefined,
+          Object? $__typename = _undefined}) =>
       _then(Query$TopLetters$posts(
           edges: edges == _undefined
               ? _instance.edges
               : (edges as List<Query$TopLetters$posts$edges?>?),
+          pageInfo: pageInfo == _undefined || pageInfo == null
+              ? _instance.pageInfo
+              : (pageInfo as Query$TopLetters$posts$pageInfo),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
@@ -1667,6 +1727,11 @@ class _CopyWithImpl$Query$TopLetters$posts<TRes>
           edges: _fn(_instance.edges?.map((e) => e == null
               ? null
               : CopyWith$Query$TopLetters$posts$edges(e, (i) => i)))?.toList());
+  CopyWith$Query$TopLetters$posts$pageInfo<TRes> get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Query$TopLetters$posts$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
 }
 
 class _CopyWithStubImpl$Query$TopLetters$posts<TRes>
@@ -1675,9 +1740,14 @@ class _CopyWithStubImpl$Query$TopLetters$posts<TRes>
 
   TRes _res;
 
-  call({List<Query$TopLetters$posts$edges?>? edges, String? $__typename}) =>
+  call(
+          {List<Query$TopLetters$posts$edges?>? edges,
+          Query$TopLetters$posts$pageInfo? pageInfo,
+          String? $__typename}) =>
       _res;
   edges(_fn) => _res;
+  CopyWith$Query$TopLetters$posts$pageInfo<TRes> get pageInfo =>
+      CopyWith$Query$TopLetters$posts$pageInfo.stub(_res);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -1769,4 +1839,100 @@ class _CopyWithStubImpl$Query$TopLetters$posts$edges<TRes>
   call({Fragment$LetterSummary? node, String? $__typename}) => _res;
   CopyWith$Fragment$LetterSummary<TRes> get node =>
       CopyWith$Fragment$LetterSummary.stub(_res);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$TopLetters$posts$pageInfo {
+  Query$TopLetters$posts$pageInfo(
+      {this.endCursor, required this.hasNextPage, required this.$__typename});
+
+  @override
+  factory Query$TopLetters$posts$pageInfo.fromJson(Map<String, dynamic> json) =>
+      _$Query$TopLetters$posts$pageInfoFromJson(json);
+
+  final String? endCursor;
+
+  final bool hasNextPage;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$TopLetters$posts$pageInfoToJson(this);
+  int get hashCode {
+    final l$endCursor = endCursor;
+    final l$hasNextPage = hasNextPage;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$endCursor, l$hasNextPage, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$TopLetters$posts$pageInfo) ||
+        runtimeType != other.runtimeType) return false;
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) return false;
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$TopLetters$posts$pageInfo
+    on Query$TopLetters$posts$pageInfo {
+  CopyWith$Query$TopLetters$posts$pageInfo<Query$TopLetters$posts$pageInfo>
+      get copyWith => CopyWith$Query$TopLetters$posts$pageInfo(this, (i) => i);
+}
+
+abstract class CopyWith$Query$TopLetters$posts$pageInfo<TRes> {
+  factory CopyWith$Query$TopLetters$posts$pageInfo(
+          Query$TopLetters$posts$pageInfo instance,
+          TRes Function(Query$TopLetters$posts$pageInfo) then) =
+      _CopyWithImpl$Query$TopLetters$posts$pageInfo;
+
+  factory CopyWith$Query$TopLetters$posts$pageInfo.stub(TRes res) =
+      _CopyWithStubImpl$Query$TopLetters$posts$pageInfo;
+
+  TRes call({String? endCursor, bool? hasNextPage, String? $__typename});
+}
+
+class _CopyWithImpl$Query$TopLetters$posts$pageInfo<TRes>
+    implements CopyWith$Query$TopLetters$posts$pageInfo<TRes> {
+  _CopyWithImpl$Query$TopLetters$posts$pageInfo(this._instance, this._then);
+
+  final Query$TopLetters$posts$pageInfo _instance;
+
+  final TRes Function(Query$TopLetters$posts$pageInfo) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? endCursor = _undefined,
+          Object? hasNextPage = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$TopLetters$posts$pageInfo(
+          endCursor: endCursor == _undefined
+              ? _instance.endCursor
+              : (endCursor as String?),
+          hasNextPage: hasNextPage == _undefined || hasNextPage == null
+              ? _instance.hasNextPage
+              : (hasNextPage as bool),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$TopLetters$posts$pageInfo<TRes>
+    implements CopyWith$Query$TopLetters$posts$pageInfo<TRes> {
+  _CopyWithStubImpl$Query$TopLetters$posts$pageInfo(this._res);
+
+  TRes _res;
+
+  call({String? endCursor, bool? hasNextPage, String? $__typename}) => _res;
 }

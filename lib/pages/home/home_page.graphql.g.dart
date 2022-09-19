@@ -149,12 +149,14 @@ Variables$Query$TopLetters _$Variables$Query$TopLettersFromJson(
         Map<String, dynamic> json) =>
     Variables$Query$TopLetters(
       first: json['first'] as int?,
+      after: json['after'] as String?,
     );
 
 Map<String, dynamic> _$Variables$Query$TopLettersToJson(
         Variables$Query$TopLetters instance) =>
     <String, dynamic>{
       'first': instance.first,
+      'after': instance.after,
     };
 
 Query$TopLetters _$Query$TopLettersFromJson(Map<String, dynamic> json) =>
@@ -179,6 +181,8 @@ Query$TopLetters$posts _$Query$TopLetters$postsFromJson(
               : Query$TopLetters$posts$edges.fromJson(
                   e as Map<String, dynamic>))
           .toList(),
+      pageInfo: Query$TopLetters$posts$pageInfo.fromJson(
+          json['pageInfo'] as Map<String, dynamic>),
       $__typename: json['__typename'] as String,
     );
 
@@ -186,6 +190,7 @@ Map<String, dynamic> _$Query$TopLetters$postsToJson(
         Query$TopLetters$posts instance) =>
     <String, dynamic>{
       'edges': instance.edges?.map((e) => e?.toJson()).toList(),
+      'pageInfo': instance.pageInfo.toJson(),
       '__typename': instance.$__typename,
     };
 
@@ -203,5 +208,21 @@ Map<String, dynamic> _$Query$TopLetters$posts$edgesToJson(
         Query$TopLetters$posts$edges instance) =>
     <String, dynamic>{
       'node': instance.node?.toJson(),
+      '__typename': instance.$__typename,
+    };
+
+Query$TopLetters$posts$pageInfo _$Query$TopLetters$posts$pageInfoFromJson(
+        Map<String, dynamic> json) =>
+    Query$TopLetters$posts$pageInfo(
+      endCursor: json['endCursor'] as String?,
+      hasNextPage: json['hasNextPage'] as bool,
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$Query$TopLetters$posts$pageInfoToJson(
+        Query$TopLetters$posts$pageInfo instance) =>
+    <String, dynamic>{
+      'endCursor': instance.endCursor,
+      'hasNextPage': instance.hasNextPage,
       '__typename': instance.$__typename,
     };
