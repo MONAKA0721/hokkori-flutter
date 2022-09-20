@@ -6,110 +6,76 @@ part of 'search_page.graphql.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Variables$Query$TopPraises _$Variables$Query$TopPraisesFromJson(
+Variables$Query$LikedPraises _$Variables$Query$LikedPraisesFromJson(
         Map<String, dynamic> json) =>
-    Variables$Query$TopPraises(
+    Variables$Query$LikedPraises(
       first: json['first'] as int,
     );
 
-Map<String, dynamic> _$Variables$Query$TopPraisesToJson(
-        Variables$Query$TopPraises instance) =>
+Map<String, dynamic> _$Variables$Query$LikedPraisesToJson(
+        Variables$Query$LikedPraises instance) =>
     <String, dynamic>{
       'first': instance.first,
     };
 
-Query$TopPraises _$Query$TopPraisesFromJson(Map<String, dynamic> json) =>
-    Query$TopPraises(
-      topPraises: (json['topPraises'] as List<dynamic>)
+Query$LikedPraises _$Query$LikedPraisesFromJson(Map<String, dynamic> json) =>
+    Query$LikedPraises(
+      likedPosts: (json['likedPosts'] as List<dynamic>)
           .map((e) => e == null
               ? null
-              : Query$TopPraises$topPraises.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      $__typename: json['__typename'] as String,
-    );
-
-Map<String, dynamic> _$Query$TopPraisesToJson(Query$TopPraises instance) =>
-    <String, dynamic>{
-      'topPraises': instance.topPraises.map((e) => e?.toJson()).toList(),
-      '__typename': instance.$__typename,
-    };
-
-Query$TopPraises$topPraises _$Query$TopPraises$topPraisesFromJson(
-        Map<String, dynamic> json) =>
-    Query$TopPraises$topPraises(
-      id: json['id'] as String,
-      title: json['title'] as String,
-      count: json['count'] as int,
-      $__typename: json['__typename'] as String,
-    );
-
-Map<String, dynamic> _$Query$TopPraises$topPraisesToJson(
-        Query$TopPraises$topPraises instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'count': instance.count,
-      '__typename': instance.$__typename,
-    };
-
-Variables$Query$TopLetters _$Variables$Query$TopLettersFromJson(
-        Map<String, dynamic> json) =>
-    Variables$Query$TopLetters(
-      first: json['first'] as int?,
-    );
-
-Map<String, dynamic> _$Variables$Query$TopLettersToJson(
-        Variables$Query$TopLetters instance) =>
-    <String, dynamic>{
-      'first': instance.first,
-    };
-
-Query$TopLetters _$Query$TopLettersFromJson(Map<String, dynamic> json) =>
-    Query$TopLetters(
-      posts: Query$TopLetters$posts.fromJson(
-          json['posts'] as Map<String, dynamic>),
-      $__typename: json['__typename'] as String,
-    );
-
-Map<String, dynamic> _$Query$TopLettersToJson(Query$TopLetters instance) =>
-    <String, dynamic>{
-      'posts': instance.posts.toJson(),
-      '__typename': instance.$__typename,
-    };
-
-Query$TopLetters$posts _$Query$TopLetters$postsFromJson(
-        Map<String, dynamic> json) =>
-    Query$TopLetters$posts(
-      edges: (json['edges'] as List<dynamic>?)
-          ?.map((e) => e == null
-              ? null
-              : Query$TopLetters$posts$edges.fromJson(
+              : Query$LikedPraises$likedPosts.fromJson(
                   e as Map<String, dynamic>))
           .toList(),
       $__typename: json['__typename'] as String,
     );
 
-Map<String, dynamic> _$Query$TopLetters$postsToJson(
-        Query$TopLetters$posts instance) =>
+Map<String, dynamic> _$Query$LikedPraisesToJson(Query$LikedPraises instance) =>
     <String, dynamic>{
-      'edges': instance.edges?.map((e) => e?.toJson()).toList(),
+      'likedPosts': instance.likedPosts.map((e) => e?.toJson()).toList(),
       '__typename': instance.$__typename,
     };
 
-Query$TopLetters$posts$edges _$Query$TopLetters$posts$edgesFromJson(
+Query$LikedPraises$likedPosts _$Query$LikedPraises$likedPostsFromJson(
         Map<String, dynamic> json) =>
-    Query$TopLetters$posts$edges(
-      node: json['node'] == null
-          ? null
-          : Fragment$LetterSummary.fromJson(
-              json['node'] as Map<String, dynamic>),
+    Query$LikedPraises$likedPosts(
+      id: json['id'] as String,
+      title: json['title'] as String,
       $__typename: json['__typename'] as String,
     );
 
-Map<String, dynamic> _$Query$TopLetters$posts$edgesToJson(
-        Query$TopLetters$posts$edges instance) =>
+Map<String, dynamic> _$Query$LikedPraises$likedPostsToJson(
+        Query$LikedPraises$likedPosts instance) =>
     <String, dynamic>{
-      'node': instance.node?.toJson(),
+      'id': instance.id,
+      'title': instance.title,
+      '__typename': instance.$__typename,
+    };
+
+Variables$Query$LikedLetters _$Variables$Query$LikedLettersFromJson(
+        Map<String, dynamic> json) =>
+    Variables$Query$LikedLetters(
+      first: json['first'] as int,
+    );
+
+Map<String, dynamic> _$Variables$Query$LikedLettersToJson(
+        Variables$Query$LikedLetters instance) =>
+    <String, dynamic>{
+      'first': instance.first,
+    };
+
+Query$LikedLetters _$Query$LikedLettersFromJson(Map<String, dynamic> json) =>
+    Query$LikedLetters(
+      likedPosts: (json['likedPosts'] as List<dynamic>)
+          .map((e) => e == null
+              ? null
+              : Fragment$LetterSummary.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      $__typename: json['__typename'] as String,
+    );
+
+Map<String, dynamic> _$Query$LikedLettersToJson(Query$LikedLetters instance) =>
+    <String, dynamic>{
+      'likedPosts': instance.likedPosts.map((e) => e?.toJson()).toList(),
       '__typename': instance.$__typename,
     };
 

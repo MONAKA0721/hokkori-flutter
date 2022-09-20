@@ -1,22 +1,13 @@
-query TopPraises($first: Int!) {
-  topPraises(first: $first) {
+query LikedPraises($first: Int!) {
+  likedPosts(first: $first, type: praise) {
     id
     title
-    count
   }
 }
 
-query TopLetters($first: Int) {
-  posts(
-    first: $first
-    orderBy: { direction: DESC, field: CREATE_TIME }
-    where: { type: letter }
-  ) {
-    edges {
-      node {
-        ...LetterSummary
-      }
-    }
+query LikedLetters($first: Int!) {
+  likedPosts(first: $first, type: letter) {
+    ...LetterSummary
   }
 }
 

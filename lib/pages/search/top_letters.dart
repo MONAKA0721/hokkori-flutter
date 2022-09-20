@@ -9,8 +9,8 @@ class TopLetters extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final result = useQuery$TopLetters(Options$Query$TopLetters(
-            variables: Variables$Query$TopLetters(first: 5)))
+    final result = useQuery$LikedLetters(Options$Query$LikedLetters(
+            variables: Variables$Query$LikedLetters(first: 5)))
         .result;
 
     if (result.hasException) {
@@ -23,7 +23,7 @@ class TopLetters extends HookWidget {
         ),
       );
     }
-    final letters = result.parsedData?.posts.edges ?? [];
+    final letters = result.parsedData?.likedPosts ?? [];
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Row(
@@ -39,14 +39,14 @@ class TopLetters extends HookWidget {
           ),
           Text(
             "注目のレター",
-            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
           ),
         ],
       ),
       const SizedBox(
         height: 10,
       ),
-      ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
+      ...letters.map((letter) => Letter(letter: letter!)).toList(),
     ]);
   }
 }

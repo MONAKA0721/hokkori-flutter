@@ -8,8 +8,8 @@ class TopPraises extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final result = useQuery$TopPraises(Options$Query$TopPraises(
-            variables: Variables$Query$TopPraises(first: 10)))
+    final result = useQuery$LikedPraises(Options$Query$LikedPraises(
+            variables: Variables$Query$LikedPraises(first: 10)))
         .result;
 
     if (result.hasException) {
@@ -23,7 +23,7 @@ class TopPraises extends HookWidget {
         ),
       );
     }
-    final praises = result.parsedData?.topPraises ?? [];
+    final praises = result.parsedData?.likedPosts ?? [];
     final chunkedPraises = [];
     const chunkSize = 2;
     var count = 0;
@@ -50,7 +50,7 @@ class TopPraises extends HookWidget {
 }
 
 class ColumnPraises extends StatelessWidget {
-  final List<Query$TopPraises$topPraises?> praises;
+  final List<Query$LikedPraises$likedPosts?> praises;
   final int index;
   const ColumnPraises({super.key, required this.praises, required this.index});
 
@@ -70,7 +70,7 @@ class ColumnPraises extends StatelessWidget {
 }
 
 class TopPraise extends StatelessWidget {
-  final Query$TopPraises$topPraises? praise;
+  final Query$LikedPraises$likedPosts? praise;
   final int rank;
   const TopPraise({super.key, required this.praise, required this.rank});
 

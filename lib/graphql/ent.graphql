@@ -562,7 +562,7 @@ type Query {
     """
     where: WorkWhereInput
   ): WorkConnection!
-  topPraises(first: Int!): [PostCount]!
+  likedPosts(first: Int!, type: PostPostType!): [Post]!
 }
 """
 UpdateHashtagInput is used for update Hashtag object.
