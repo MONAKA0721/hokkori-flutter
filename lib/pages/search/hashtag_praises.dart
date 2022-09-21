@@ -4,15 +4,17 @@ import 'package:hokkori/pages/common/praise.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 
-class CategoryPraises extends HookWidget {
-  final String categoryID;
-  const CategoryPraises({super.key, required this.categoryID});
+class HashtagPraises extends HookWidget {
+  final String hashtagID;
+  final String hashtagTitle;
+  const HashtagPraises(
+      {super.key, required this.hashtagID, required this.hashtagTitle});
 
   @override
   Widget build(BuildContext context) {
-    final result = useQuery$CategoryPraises(Options$Query$CategoryPraises(
-            variables: Variables$Query$CategoryPraises(
-                first: 3, categoryID: categoryID)))
+    final result = useQuery$HashtagPraises(Options$Query$HashtagPraises(
+            variables: Variables$Query$HashtagPraises(
+                first: 3, hashtagID: hashtagID, searchText: hashtagTitle)))
         .result;
 
     if (result.hasException) {
@@ -50,8 +52,9 @@ class CategoryPraises extends HookWidget {
       ...praises.map((praise) => Praise(praise: praise!.node!)).toList(),
       hasNextPage!
           ? FetchMoreButton(
-              categoryID: categoryID,
+              hashtagID: hashtagID,
               cursor: fetchMoreCursor,
+              hashtagTitle: hashtagTitle,
             )
           : Container()
     ]);
@@ -60,16 +63,24 @@ class CategoryPraises extends HookWidget {
 
 class FetchMoreButton extends HookWidget {
   final String? cursor;
-  final String categoryID;
+  final String hashtagID;
+  final String hashtagTitle;
+
   const FetchMoreButton(
-      {super.key, required this.cursor, required this.categoryID});
+      {super.key,
+      required this.cursor,
+      required this.hashtagID,
+      required this.hashtagTitle});
 
   @override
   Widget build(BuildContext context) {
     final pushed = useState(false);
-    final result = useQuery$CategoryPraises(Options$Query$CategoryPraises(
-            variables: Variables$Query$CategoryPraises(
-                first: 3, after: cursor, categoryID: categoryID)))
+    final result = useQuery$HashtagPraises(Options$Query$HashtagPraises(
+            variables: Variables$Query$HashtagPraises(
+                first: 3,
+                after: cursor,
+                hashtagID: hashtagID,
+                searchText: hashtagTitle)))
         .result;
 
     if (result.hasException) {
@@ -92,8 +103,8 @@ class FetchMoreButton extends HookWidget {
             hasNextPage!
                 ? FetchMoreButton(
                     cursor: fetchMoreCursor,
-                    categoryID: categoryID,
-                  )
+                    hashtagID: hashtagID,
+                    hashtagTitle: hashtagTitle)
                 : Container()
           ])
         : Column(children: [

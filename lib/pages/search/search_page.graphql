@@ -11,12 +11,20 @@ query LikedLetters($first: Int!) {
   }
 }
 
-query SearchCategories($searchText: String) {
+query SearchCandidates($searchText: String) {
   categories(where: { nameContainsFold: $searchText }) {
     edges {
       node {
         id
         name
+      }
+    }
+  }
+  hashtags(where: { titleContainsFold: $searchText }) {
+    edges {
+      node {
+        id
+        title
       }
     }
   }
@@ -41,12 +49,74 @@ query CategoryPraises($categoryID: ID, $first: Int, $after: Cursor) {
   }
 }
 
+query HashtagPraises(
+  $hashtagID: ID
+  $first: Int
+  $after: Cursor
+  $searchText: String
+) {
+  posts(
+    after: $after
+    first: $first
+    orderBy: { direction: DESC, field: CREATE_TIME }
+    where: {
+      type: praise
+      or: [
+        { hasHashtagsWith: { id: $hashtagID } }
+        { titleContainsFold: $searchText }
+        { contentContainsFold: $searchText }
+      ]
+    }
+  ) {
+    edges {
+      node {
+        ...PraiseSummary
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
 query CategoryLetters($categoryID: ID, $first: Int, $after: Cursor) {
   posts(
     after: $after
     first: $first
     orderBy: { direction: DESC, field: CREATE_TIME }
     where: { type: letter, hasCategoryWith: { id: $categoryID } }
+  ) {
+    edges {
+      node {
+        ...LetterSummary
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+query HashtagLetters(
+  $hashtagID: ID
+  $first: Int
+  $after: Cursor
+  $searchText: String
+) {
+  posts(
+    after: $after
+    first: $first
+    orderBy: { direction: DESC, field: CREATE_TIME }
+    where: {
+      type: letter
+      or: [
+        { hasHashtagsWith: { id: $hashtagID } }
+        { titleContainsFold: $searchText }
+        { contentContainsFold: $searchText }
+      ]
+    }
   ) {
     edges {
       node {

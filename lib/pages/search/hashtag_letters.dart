@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hokkori/pages/common/praise.dart';
+import 'package:hokkori/pages/common/letter.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 
-class CategoryPraises extends HookWidget {
-  final String categoryID;
-  const CategoryPraises({super.key, required this.categoryID});
+class HashtagLetters extends HookWidget {
+  final String hashtagID;
+  final String hashtagTitle;
+  const HashtagLetters(
+      {super.key, required this.hashtagID, required this.hashtagTitle});
 
   @override
   Widget build(BuildContext context) {
-    final result = useQuery$CategoryPraises(Options$Query$CategoryPraises(
-            variables: Variables$Query$CategoryPraises(
-                first: 3, categoryID: categoryID)))
+    final result = useQuery$HashtagLetters(Options$Query$HashtagLetters(
+            variables: Variables$Query$HashtagLetters(
+                hashtagID: hashtagID, first: 3, searchText: hashtagTitle)))
         .result;
 
     if (result.hasException) {
@@ -25,7 +27,7 @@ class CategoryPraises extends HookWidget {
         ),
       );
     }
-    final praises = result.parsedData?.posts.edges ?? [];
+    final letters = result.parsedData?.posts.edges ?? [];
     final String? fetchMoreCursor = result.parsedData?.posts.pageInfo.endCursor;
     final hasNextPage = result.parsedData?.posts.pageInfo.hasNextPage;
 
@@ -42,34 +44,42 @@ class CategoryPraises extends HookWidget {
             width: 10,
           ),
           Text(
-            "ほっこり",
+            "レター",
             style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
           ),
         ],
       ),
-      ...praises.map((praise) => Praise(praise: praise!.node!)).toList(),
+      ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
       hasNextPage!
           ? FetchMoreButton(
-              categoryID: categoryID,
               cursor: fetchMoreCursor,
+              hashtagID: hashtagID,
+              hashtagTitle: hashtagTitle,
             )
-          : Container()
+          : Container(),
     ]);
   }
 }
 
 class FetchMoreButton extends HookWidget {
   final String? cursor;
-  final String categoryID;
+  final String hashtagID;
+  final String hashtagTitle;
   const FetchMoreButton(
-      {super.key, required this.cursor, required this.categoryID});
+      {super.key,
+      required this.cursor,
+      required this.hashtagID,
+      required this.hashtagTitle});
 
   @override
   Widget build(BuildContext context) {
     final pushed = useState(false);
-    final result = useQuery$CategoryPraises(Options$Query$CategoryPraises(
-            variables: Variables$Query$CategoryPraises(
-                first: 3, after: cursor, categoryID: categoryID)))
+    final result = useQuery$HashtagLetters(Options$Query$HashtagLetters(
+            variables: Variables$Query$HashtagLetters(
+                first: 3,
+                after: cursor,
+                hashtagID: hashtagID,
+                searchText: hashtagTitle)))
         .result;
 
     if (result.hasException) {
@@ -82,17 +92,18 @@ class FetchMoreButton extends HookWidget {
         ),
       );
     }
-    final praises = result.parsedData?.posts.edges ?? [];
+    final letters = result.parsedData?.posts.edges ?? [];
     final fetchMoreCursor = result.parsedData?.posts.pageInfo.endCursor;
     final hasNextPage = result.parsedData?.posts.pageInfo.hasNextPage;
 
     return pushed.value
         ? Column(children: [
-            ...praises.map((praise) => Praise(praise: praise!.node!)).toList(),
+            ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
             hasNextPage!
                 ? FetchMoreButton(
                     cursor: fetchMoreCursor,
-                    categoryID: categoryID,
+                    hashtagID: hashtagID,
+                    hashtagTitle: hashtagTitle,
                   )
                 : Container()
           ])

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hokkori/pages/search/category_page.dart';
+import 'package:hokkori/pages/search/hashtag_page.dart';
 import 'package:hokkori/pages/search/search_input.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/pages/search/top_letters.dart';
@@ -26,6 +28,9 @@ class SearchPageNavigator extends StatelessWidget {
             break;
           case '/category':
             builder = (BuildContext context) => const CategoryPage();
+            break;
+          case '/hashtag':
+            builder = (BuildContext context) => const HashtagPage();
             break;
           default:
             throw Exception('Invalid route: ${settings.name}');
@@ -84,8 +89,8 @@ class Candidates extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final result = useQuery$SearchCategories(Options$Query$SearchCategories(
-            variables: Variables$Query$SearchCategories(
+    final result = useQuery$SearchCandidates(Options$Query$SearchCandidates(
+            variables: Variables$Query$SearchCandidates(
                 searchText: ref.watch(searchTextProvider))))
         .result;
     if (result.hasException) {
@@ -99,17 +104,39 @@ class Candidates extends HookConsumerWidget {
       );
     }
     final categories = result.parsedData?.categories.edges ?? [];
+    final hashtags = result.parsedData?.hashtags.edges ?? [];
 
     return Column(
         children: categories
-            .map((category) => ListTile(
-                  onTap: () {
-                    Navigator.of(context).pushNamed('/category',
-                        arguments: CategoryPageArguments(
-                            category!.node!.id, category.node!.name));
-                  },
-                  title: Text(category!.node!.name),
-                ))
-            .toList());
+                .map((category) => ListTile(
+                      leading: CircleAvatar(
+                          backgroundColor: primaryColor,
+                          radius: 16,
+                          child: SvgPicture.asset(
+                            'assets/palette.svg',
+                            width: 18,
+                          )),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/category',
+                            arguments: CategoryPageArguments(
+                                category!.node!.id, category.node!.name));
+                      },
+                      title: Text(category!.node!.name),
+                    ))
+                .toList() +
+            hashtags
+                .map((hashtag) => ListTile(
+                      leading: const Icon(
+                        Icons.tag,
+                        size: 30,
+                      ),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/hashtag',
+                            arguments: HashtagPageArguments(
+                                hashtag!.node!.id, hashtag.node!.title));
+                      },
+                      title: Text(hashtag!.node!.title),
+                    ))
+                .toList());
   }
 }

@@ -776,18 +776,18 @@ class Query$LikedLetters$Widget
 }
 
 @JsonSerializable(explicitToJson: true)
-class Variables$Query$SearchCategories {
-  Variables$Query$SearchCategories({this.searchText});
+class Variables$Query$SearchCandidates {
+  Variables$Query$SearchCandidates({this.searchText});
 
   @override
-  factory Variables$Query$SearchCategories.fromJson(
+  factory Variables$Query$SearchCandidates.fromJson(
           Map<String, dynamic> json) =>
-      _$Variables$Query$SearchCategoriesFromJson(json);
+      _$Variables$Query$SearchCandidatesFromJson(json);
 
   final String? searchText;
 
   Map<String, dynamic> toJson() =>
-      _$Variables$Query$SearchCategoriesToJson(this);
+      _$Variables$Query$SearchCandidatesToJson(this);
   int get hashCode {
     final l$searchText = searchText;
     return Object.hashAll([l$searchText]);
@@ -796,7 +796,7 @@ class Variables$Query$SearchCategories {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Variables$Query$SearchCategories) ||
+    if (!(other is Variables$Query$SearchCandidates) ||
         runtimeType != other.runtimeType) return false;
     final l$searchText = searchText;
     final lOther$searchText = other.searchText;
@@ -804,42 +804,42 @@ class Variables$Query$SearchCategories {
     return true;
   }
 
-  CopyWith$Variables$Query$SearchCategories<Variables$Query$SearchCategories>
-      get copyWith => CopyWith$Variables$Query$SearchCategories(this, (i) => i);
+  CopyWith$Variables$Query$SearchCandidates<Variables$Query$SearchCandidates>
+      get copyWith => CopyWith$Variables$Query$SearchCandidates(this, (i) => i);
 }
 
-abstract class CopyWith$Variables$Query$SearchCategories<TRes> {
-  factory CopyWith$Variables$Query$SearchCategories(
-          Variables$Query$SearchCategories instance,
-          TRes Function(Variables$Query$SearchCategories) then) =
-      _CopyWithImpl$Variables$Query$SearchCategories;
+abstract class CopyWith$Variables$Query$SearchCandidates<TRes> {
+  factory CopyWith$Variables$Query$SearchCandidates(
+          Variables$Query$SearchCandidates instance,
+          TRes Function(Variables$Query$SearchCandidates) then) =
+      _CopyWithImpl$Variables$Query$SearchCandidates;
 
-  factory CopyWith$Variables$Query$SearchCategories.stub(TRes res) =
-      _CopyWithStubImpl$Variables$Query$SearchCategories;
+  factory CopyWith$Variables$Query$SearchCandidates.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$SearchCandidates;
 
   TRes call({String? searchText});
 }
 
-class _CopyWithImpl$Variables$Query$SearchCategories<TRes>
-    implements CopyWith$Variables$Query$SearchCategories<TRes> {
-  _CopyWithImpl$Variables$Query$SearchCategories(this._instance, this._then);
+class _CopyWithImpl$Variables$Query$SearchCandidates<TRes>
+    implements CopyWith$Variables$Query$SearchCandidates<TRes> {
+  _CopyWithImpl$Variables$Query$SearchCandidates(this._instance, this._then);
 
-  final Variables$Query$SearchCategories _instance;
+  final Variables$Query$SearchCandidates _instance;
 
-  final TRes Function(Variables$Query$SearchCategories) _then;
+  final TRes Function(Variables$Query$SearchCandidates) _then;
 
   static const _undefined = {};
 
   TRes call({Object? searchText = _undefined}) =>
-      _then(Variables$Query$SearchCategories(
+      _then(Variables$Query$SearchCandidates(
           searchText: searchText == _undefined
               ? _instance.searchText
               : (searchText as String?)));
 }
 
-class _CopyWithStubImpl$Variables$Query$SearchCategories<TRes>
-    implements CopyWith$Variables$Query$SearchCategories<TRes> {
-  _CopyWithStubImpl$Variables$Query$SearchCategories(this._res);
+class _CopyWithStubImpl$Variables$Query$SearchCandidates<TRes>
+    implements CopyWith$Variables$Query$SearchCandidates<TRes> {
+  _CopyWithStubImpl$Variables$Query$SearchCandidates(this._res);
 
   TRes _res;
 
@@ -847,33 +847,42 @@ class _CopyWithStubImpl$Variables$Query$SearchCategories<TRes>
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$SearchCategories {
-  Query$SearchCategories({required this.categories, required this.$__typename});
+class Query$SearchCandidates {
+  Query$SearchCandidates(
+      {required this.categories,
+      required this.hashtags,
+      required this.$__typename});
 
   @override
-  factory Query$SearchCategories.fromJson(Map<String, dynamic> json) =>
-      _$Query$SearchCategoriesFromJson(json);
+  factory Query$SearchCandidates.fromJson(Map<String, dynamic> json) =>
+      _$Query$SearchCandidatesFromJson(json);
 
-  final Query$SearchCategories$categories categories;
+  final Query$SearchCandidates$categories categories;
+
+  final Query$SearchCandidates$hashtags hashtags;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$SearchCategoriesToJson(this);
+  Map<String, dynamic> toJson() => _$Query$SearchCandidatesToJson(this);
   int get hashCode {
     final l$categories = categories;
+    final l$hashtags = hashtags;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$categories, l$$__typename]);
+    return Object.hashAll([l$categories, l$hashtags, l$$__typename]);
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$SearchCategories) || runtimeType != other.runtimeType)
+    if (!(other is Query$SearchCandidates) || runtimeType != other.runtimeType)
       return false;
     final l$categories = categories;
     final lOther$categories = other.categories;
     if (l$categories != lOther$categories) return false;
+    final l$hashtags = hashtags;
+    final lOther$hashtags = other.hashtags;
+    if (l$hashtags != lOther$hashtags) return false;
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) return false;
@@ -881,67 +890,85 @@ class Query$SearchCategories {
   }
 }
 
-extension UtilityExtension$Query$SearchCategories on Query$SearchCategories {
-  CopyWith$Query$SearchCategories<Query$SearchCategories> get copyWith =>
-      CopyWith$Query$SearchCategories(this, (i) => i);
+extension UtilityExtension$Query$SearchCandidates on Query$SearchCandidates {
+  CopyWith$Query$SearchCandidates<Query$SearchCandidates> get copyWith =>
+      CopyWith$Query$SearchCandidates(this, (i) => i);
 }
 
-abstract class CopyWith$Query$SearchCategories<TRes> {
-  factory CopyWith$Query$SearchCategories(Query$SearchCategories instance,
-          TRes Function(Query$SearchCategories) then) =
-      _CopyWithImpl$Query$SearchCategories;
+abstract class CopyWith$Query$SearchCandidates<TRes> {
+  factory CopyWith$Query$SearchCandidates(Query$SearchCandidates instance,
+          TRes Function(Query$SearchCandidates) then) =
+      _CopyWithImpl$Query$SearchCandidates;
 
-  factory CopyWith$Query$SearchCategories.stub(TRes res) =
-      _CopyWithStubImpl$Query$SearchCategories;
+  factory CopyWith$Query$SearchCandidates.stub(TRes res) =
+      _CopyWithStubImpl$Query$SearchCandidates;
 
   TRes call(
-      {Query$SearchCategories$categories? categories, String? $__typename});
-  CopyWith$Query$SearchCategories$categories<TRes> get categories;
+      {Query$SearchCandidates$categories? categories,
+      Query$SearchCandidates$hashtags? hashtags,
+      String? $__typename});
+  CopyWith$Query$SearchCandidates$categories<TRes> get categories;
+  CopyWith$Query$SearchCandidates$hashtags<TRes> get hashtags;
 }
 
-class _CopyWithImpl$Query$SearchCategories<TRes>
-    implements CopyWith$Query$SearchCategories<TRes> {
-  _CopyWithImpl$Query$SearchCategories(this._instance, this._then);
+class _CopyWithImpl$Query$SearchCandidates<TRes>
+    implements CopyWith$Query$SearchCandidates<TRes> {
+  _CopyWithImpl$Query$SearchCandidates(this._instance, this._then);
 
-  final Query$SearchCategories _instance;
+  final Query$SearchCandidates _instance;
 
-  final TRes Function(Query$SearchCategories) _then;
+  final TRes Function(Query$SearchCandidates) _then;
 
   static const _undefined = {};
 
   TRes call(
           {Object? categories = _undefined,
+          Object? hashtags = _undefined,
           Object? $__typename = _undefined}) =>
-      _then(Query$SearchCategories(
+      _then(Query$SearchCandidates(
           categories: categories == _undefined || categories == null
               ? _instance.categories
-              : (categories as Query$SearchCategories$categories),
+              : (categories as Query$SearchCandidates$categories),
+          hashtags: hashtags == _undefined || hashtags == null
+              ? _instance.hashtags
+              : (hashtags as Query$SearchCandidates$hashtags),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
-  CopyWith$Query$SearchCategories$categories<TRes> get categories {
+  CopyWith$Query$SearchCandidates$categories<TRes> get categories {
     final local$categories = _instance.categories;
-    return CopyWith$Query$SearchCategories$categories(
+    return CopyWith$Query$SearchCandidates$categories(
         local$categories, (e) => call(categories: e));
+  }
+
+  CopyWith$Query$SearchCandidates$hashtags<TRes> get hashtags {
+    final local$hashtags = _instance.hashtags;
+    return CopyWith$Query$SearchCandidates$hashtags(
+        local$hashtags, (e) => call(hashtags: e));
   }
 }
 
-class _CopyWithStubImpl$Query$SearchCategories<TRes>
-    implements CopyWith$Query$SearchCategories<TRes> {
-  _CopyWithStubImpl$Query$SearchCategories(this._res);
+class _CopyWithStubImpl$Query$SearchCandidates<TRes>
+    implements CopyWith$Query$SearchCandidates<TRes> {
+  _CopyWithStubImpl$Query$SearchCandidates(this._res);
 
   TRes _res;
 
-  call({Query$SearchCategories$categories? categories, String? $__typename}) =>
+  call(
+          {Query$SearchCandidates$categories? categories,
+          Query$SearchCandidates$hashtags? hashtags,
+          String? $__typename}) =>
       _res;
-  CopyWith$Query$SearchCategories$categories<TRes> get categories =>
-      CopyWith$Query$SearchCategories$categories.stub(_res);
+  CopyWith$Query$SearchCandidates$categories<TRes> get categories =>
+      CopyWith$Query$SearchCandidates$categories.stub(_res);
+  CopyWith$Query$SearchCandidates$hashtags<TRes> get hashtags =>
+      CopyWith$Query$SearchCandidates$hashtags.stub(_res);
 }
 
-const documentNodeQuerySearchCategories = DocumentNode(definitions: [
+const documentNodeQuerySearchCandidates = DocumentNode(definitions: [
   OperationDefinitionNode(
       type: OperationType.query,
-      name: NameNode(value: 'SearchCategories'),
+      name: NameNode(value: 'SearchCandidates'),
       variableDefinitions: [
         VariableDefinitionNode(
             variable: VariableNode(name: NameNode(value: 'searchText')),
@@ -1013,6 +1040,66 @@ const documentNodeQuerySearchCategories = DocumentNode(definitions: [
                   selectionSet: null)
             ])),
         FieldNode(
+            name: NameNode(value: 'hashtags'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'where'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'titleContainsFold'),
+                        value:
+                            VariableNode(name: NameNode(value: 'searchText')))
+                  ]))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'edges'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'node'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: SelectionSetNode(selections: [
+                          FieldNode(
+                              name: NameNode(value: 'id'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
+                              name: NameNode(value: 'title'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
+                              name: NameNode(value: '__typename'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null)
+                        ])),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
@@ -1020,15 +1107,15 @@ const documentNodeQuerySearchCategories = DocumentNode(definitions: [
             selectionSet: null)
       ])),
 ]);
-Query$SearchCategories _parserFn$Query$SearchCategories(
+Query$SearchCandidates _parserFn$Query$SearchCandidates(
         Map<String, dynamic> data) =>
-    Query$SearchCategories.fromJson(data);
+    Query$SearchCandidates.fromJson(data);
 
-class Options$Query$SearchCategories
-    extends graphql.QueryOptions<Query$SearchCategories> {
-  Options$Query$SearchCategories(
+class Options$Query$SearchCandidates
+    extends graphql.QueryOptions<Query$SearchCandidates> {
+  Options$Query$SearchCandidates(
       {String? operationName,
-      Variables$Query$SearchCategories? variables,
+      Variables$Query$SearchCandidates? variables,
       graphql.FetchPolicy? fetchPolicy,
       graphql.ErrorPolicy? errorPolicy,
       graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -1044,15 +1131,15 @@ class Options$Query$SearchCategories
             optimisticResult: optimisticResult,
             pollInterval: pollInterval,
             context: context,
-            document: documentNodeQuerySearchCategories,
-            parserFn: _parserFn$Query$SearchCategories);
+            document: documentNodeQuerySearchCandidates,
+            parserFn: _parserFn$Query$SearchCandidates);
 }
 
-class WatchOptions$Query$SearchCategories
-    extends graphql.WatchQueryOptions<Query$SearchCategories> {
-  WatchOptions$Query$SearchCategories(
+class WatchOptions$Query$SearchCandidates
+    extends graphql.WatchQueryOptions<Query$SearchCandidates> {
+  WatchOptions$Query$SearchCandidates(
       {String? operationName,
-      Variables$Query$SearchCategories? variables,
+      Variables$Query$SearchCandidates? variables,
       graphql.FetchPolicy? fetchPolicy,
       graphql.ErrorPolicy? errorPolicy,
       graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -1070,90 +1157,90 @@ class WatchOptions$Query$SearchCategories
             cacheRereadPolicy: cacheRereadPolicy,
             optimisticResult: optimisticResult,
             context: context,
-            document: documentNodeQuerySearchCategories,
+            document: documentNodeQuerySearchCandidates,
             pollInterval: pollInterval,
             eagerlyFetchResults: eagerlyFetchResults,
             carryForwardDataOnException: carryForwardDataOnException,
             fetchResults: fetchResults,
-            parserFn: _parserFn$Query$SearchCategories);
+            parserFn: _parserFn$Query$SearchCandidates);
 }
 
-class FetchMoreOptions$Query$SearchCategories extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$SearchCategories(
+class FetchMoreOptions$Query$SearchCandidates extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$SearchCandidates(
       {required graphql.UpdateQuery updateQuery,
-      Variables$Query$SearchCategories? variables})
+      Variables$Query$SearchCandidates? variables})
       : super(
             updateQuery: updateQuery,
             variables: variables?.toJson() ?? {},
-            document: documentNodeQuerySearchCategories);
+            document: documentNodeQuerySearchCandidates);
 }
 
-extension ClientExtension$Query$SearchCategories on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Query$SearchCategories>> query$SearchCategories(
-          [Options$Query$SearchCategories? options]) async =>
-      await this.query(options ?? Options$Query$SearchCategories());
-  graphql.ObservableQuery<Query$SearchCategories> watchQuery$SearchCategories(
-          [WatchOptions$Query$SearchCategories? options]) =>
-      this.watchQuery(options ?? WatchOptions$Query$SearchCategories());
-  void writeQuery$SearchCategories(
-          {required Query$SearchCategories data,
-          Variables$Query$SearchCategories? variables,
+extension ClientExtension$Query$SearchCandidates on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$SearchCandidates>> query$SearchCandidates(
+          [Options$Query$SearchCandidates? options]) async =>
+      await this.query(options ?? Options$Query$SearchCandidates());
+  graphql.ObservableQuery<Query$SearchCandidates> watchQuery$SearchCandidates(
+          [WatchOptions$Query$SearchCandidates? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$SearchCandidates());
+  void writeQuery$SearchCandidates(
+          {required Query$SearchCandidates data,
+          Variables$Query$SearchCandidates? variables,
           bool broadcast = true}) =>
       this.writeQuery(
           graphql.Request(
               operation: graphql.Operation(
-                  document: documentNodeQuerySearchCategories),
+                  document: documentNodeQuerySearchCandidates),
               variables: variables?.toJson() ?? const {}),
           data: data.toJson(),
           broadcast: broadcast);
-  Query$SearchCategories? readQuery$SearchCategories(
-      {Variables$Query$SearchCategories? variables, bool optimistic = true}) {
+  Query$SearchCandidates? readQuery$SearchCandidates(
+      {Variables$Query$SearchCandidates? variables, bool optimistic = true}) {
     final result = this.readQuery(
         graphql.Request(
             operation:
-                graphql.Operation(document: documentNodeQuerySearchCategories),
+                graphql.Operation(document: documentNodeQuerySearchCandidates),
             variables: variables?.toJson() ?? const {}),
         optimistic: optimistic);
-    return result == null ? null : Query$SearchCategories.fromJson(result);
+    return result == null ? null : Query$SearchCandidates.fromJson(result);
   }
 }
 
-graphql_flutter.QueryHookResult<Query$SearchCategories>
-    useQuery$SearchCategories([Options$Query$SearchCategories? options]) =>
-        graphql_flutter.useQuery(options ?? Options$Query$SearchCategories());
-graphql.ObservableQuery<Query$SearchCategories> useWatchQuery$SearchCategories(
-        [WatchOptions$Query$SearchCategories? options]) =>
+graphql_flutter.QueryHookResult<Query$SearchCandidates>
+    useQuery$SearchCandidates([Options$Query$SearchCandidates? options]) =>
+        graphql_flutter.useQuery(options ?? Options$Query$SearchCandidates());
+graphql.ObservableQuery<Query$SearchCandidates> useWatchQuery$SearchCandidates(
+        [WatchOptions$Query$SearchCandidates? options]) =>
     graphql_flutter
-        .useWatchQuery(options ?? WatchOptions$Query$SearchCategories());
+        .useWatchQuery(options ?? WatchOptions$Query$SearchCandidates());
 
-class Query$SearchCategories$Widget
-    extends graphql_flutter.Query<Query$SearchCategories> {
-  Query$SearchCategories$Widget(
+class Query$SearchCandidates$Widget
+    extends graphql_flutter.Query<Query$SearchCandidates> {
+  Query$SearchCandidates$Widget(
       {widgets.Key? key,
-      Options$Query$SearchCategories? options,
-      required graphql_flutter.QueryBuilder<Query$SearchCategories> builder})
+      Options$Query$SearchCandidates? options,
+      required graphql_flutter.QueryBuilder<Query$SearchCandidates> builder})
       : super(
             key: key,
-            options: options ?? Options$Query$SearchCategories(),
+            options: options ?? Options$Query$SearchCandidates(),
             builder: builder);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$SearchCategories$categories {
-  Query$SearchCategories$categories({this.edges, required this.$__typename});
+class Query$SearchCandidates$categories {
+  Query$SearchCandidates$categories({this.edges, required this.$__typename});
 
   @override
-  factory Query$SearchCategories$categories.fromJson(
+  factory Query$SearchCandidates$categories.fromJson(
           Map<String, dynamic> json) =>
-      _$Query$SearchCategories$categoriesFromJson(json);
+      _$Query$SearchCandidates$categoriesFromJson(json);
 
-  final List<Query$SearchCategories$categories$edges?>? edges;
+  final List<Query$SearchCandidates$categories$edges?>? edges;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
   Map<String, dynamic> toJson() =>
-      _$Query$SearchCategories$categoriesToJson(this);
+      _$Query$SearchCandidates$categoriesToJson(this);
   int get hashCode {
     final l$edges = edges;
     final l$$__typename = $__typename;
@@ -1166,7 +1253,7 @@ class Query$SearchCategories$categories {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$SearchCategories$categories) ||
+    if (!(other is Query$SearchCandidates$categories) ||
         runtimeType != other.runtimeType) return false;
     final l$edges = edges;
     final lOther$edges = other.edges;
@@ -1188,94 +1275,94 @@ class Query$SearchCategories$categories {
   }
 }
 
-extension UtilityExtension$Query$SearchCategories$categories
-    on Query$SearchCategories$categories {
-  CopyWith$Query$SearchCategories$categories<Query$SearchCategories$categories>
+extension UtilityExtension$Query$SearchCandidates$categories
+    on Query$SearchCandidates$categories {
+  CopyWith$Query$SearchCandidates$categories<Query$SearchCandidates$categories>
       get copyWith =>
-          CopyWith$Query$SearchCategories$categories(this, (i) => i);
+          CopyWith$Query$SearchCandidates$categories(this, (i) => i);
 }
 
-abstract class CopyWith$Query$SearchCategories$categories<TRes> {
-  factory CopyWith$Query$SearchCategories$categories(
-          Query$SearchCategories$categories instance,
-          TRes Function(Query$SearchCategories$categories) then) =
-      _CopyWithImpl$Query$SearchCategories$categories;
+abstract class CopyWith$Query$SearchCandidates$categories<TRes> {
+  factory CopyWith$Query$SearchCandidates$categories(
+          Query$SearchCandidates$categories instance,
+          TRes Function(Query$SearchCandidates$categories) then) =
+      _CopyWithImpl$Query$SearchCandidates$categories;
 
-  factory CopyWith$Query$SearchCategories$categories.stub(TRes res) =
-      _CopyWithStubImpl$Query$SearchCategories$categories;
+  factory CopyWith$Query$SearchCandidates$categories.stub(TRes res) =
+      _CopyWithStubImpl$Query$SearchCandidates$categories;
 
   TRes call(
-      {List<Query$SearchCategories$categories$edges?>? edges,
+      {List<Query$SearchCandidates$categories$edges?>? edges,
       String? $__typename});
   TRes edges(
-      Iterable<Query$SearchCategories$categories$edges?>? Function(
+      Iterable<Query$SearchCandidates$categories$edges?>? Function(
               Iterable<
-                  CopyWith$Query$SearchCategories$categories$edges<
-                      Query$SearchCategories$categories$edges>?>?)
+                  CopyWith$Query$SearchCandidates$categories$edges<
+                      Query$SearchCandidates$categories$edges>?>?)
           _fn);
 }
 
-class _CopyWithImpl$Query$SearchCategories$categories<TRes>
-    implements CopyWith$Query$SearchCategories$categories<TRes> {
-  _CopyWithImpl$Query$SearchCategories$categories(this._instance, this._then);
+class _CopyWithImpl$Query$SearchCandidates$categories<TRes>
+    implements CopyWith$Query$SearchCandidates$categories<TRes> {
+  _CopyWithImpl$Query$SearchCandidates$categories(this._instance, this._then);
 
-  final Query$SearchCategories$categories _instance;
+  final Query$SearchCandidates$categories _instance;
 
-  final TRes Function(Query$SearchCategories$categories) _then;
+  final TRes Function(Query$SearchCandidates$categories) _then;
 
   static const _undefined = {};
 
   TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
-      _then(Query$SearchCategories$categories(
+      _then(Query$SearchCandidates$categories(
           edges: edges == _undefined
               ? _instance.edges
-              : (edges as List<Query$SearchCategories$categories$edges?>?),
+              : (edges as List<Query$SearchCandidates$categories$edges?>?),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
   TRes edges(
-          Iterable<Query$SearchCategories$categories$edges?>? Function(
+          Iterable<Query$SearchCandidates$categories$edges?>? Function(
                   Iterable<
-                      CopyWith$Query$SearchCategories$categories$edges<
-                          Query$SearchCategories$categories$edges>?>?)
+                      CopyWith$Query$SearchCandidates$categories$edges<
+                          Query$SearchCandidates$categories$edges>?>?)
               _fn) =>
       call(
           edges: _fn(_instance.edges?.map((e) => e == null
               ? null
-              : CopyWith$Query$SearchCategories$categories$edges(
+              : CopyWith$Query$SearchCandidates$categories$edges(
                   e, (i) => i)))?.toList());
 }
 
-class _CopyWithStubImpl$Query$SearchCategories$categories<TRes>
-    implements CopyWith$Query$SearchCategories$categories<TRes> {
-  _CopyWithStubImpl$Query$SearchCategories$categories(this._res);
+class _CopyWithStubImpl$Query$SearchCandidates$categories<TRes>
+    implements CopyWith$Query$SearchCandidates$categories<TRes> {
+  _CopyWithStubImpl$Query$SearchCandidates$categories(this._res);
 
   TRes _res;
 
   call(
-          {List<Query$SearchCategories$categories$edges?>? edges,
+          {List<Query$SearchCandidates$categories$edges?>? edges,
           String? $__typename}) =>
       _res;
   edges(_fn) => _res;
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$SearchCategories$categories$edges {
-  Query$SearchCategories$categories$edges(
+class Query$SearchCandidates$categories$edges {
+  Query$SearchCandidates$categories$edges(
       {this.node, required this.$__typename});
 
   @override
-  factory Query$SearchCategories$categories$edges.fromJson(
+  factory Query$SearchCandidates$categories$edges.fromJson(
           Map<String, dynamic> json) =>
-      _$Query$SearchCategories$categories$edgesFromJson(json);
+      _$Query$SearchCandidates$categories$edgesFromJson(json);
 
-  final Query$SearchCategories$categories$edges$node? node;
+  final Query$SearchCandidates$categories$edges$node? node;
 
   @JsonKey(name: '__typename')
   final String $__typename;
 
   Map<String, dynamic> toJson() =>
-      _$Query$SearchCategories$categories$edgesToJson(this);
+      _$Query$SearchCandidates$categories$edgesToJson(this);
   int get hashCode {
     final l$node = node;
     final l$$__typename = $__typename;
@@ -1285,7 +1372,7 @@ class Query$SearchCategories$categories$edges {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$SearchCategories$categories$edges) ||
+    if (!(other is Query$SearchCandidates$categories$edges) ||
         runtimeType != other.runtimeType) return false;
     final l$node = node;
     final lOther$node = other.node;
@@ -1297,81 +1384,81 @@ class Query$SearchCategories$categories$edges {
   }
 }
 
-extension UtilityExtension$Query$SearchCategories$categories$edges
-    on Query$SearchCategories$categories$edges {
-  CopyWith$Query$SearchCategories$categories$edges<
-          Query$SearchCategories$categories$edges>
+extension UtilityExtension$Query$SearchCandidates$categories$edges
+    on Query$SearchCandidates$categories$edges {
+  CopyWith$Query$SearchCandidates$categories$edges<
+          Query$SearchCandidates$categories$edges>
       get copyWith =>
-          CopyWith$Query$SearchCategories$categories$edges(this, (i) => i);
+          CopyWith$Query$SearchCandidates$categories$edges(this, (i) => i);
 }
 
-abstract class CopyWith$Query$SearchCategories$categories$edges<TRes> {
-  factory CopyWith$Query$SearchCategories$categories$edges(
-          Query$SearchCategories$categories$edges instance,
-          TRes Function(Query$SearchCategories$categories$edges) then) =
-      _CopyWithImpl$Query$SearchCategories$categories$edges;
+abstract class CopyWith$Query$SearchCandidates$categories$edges<TRes> {
+  factory CopyWith$Query$SearchCandidates$categories$edges(
+          Query$SearchCandidates$categories$edges instance,
+          TRes Function(Query$SearchCandidates$categories$edges) then) =
+      _CopyWithImpl$Query$SearchCandidates$categories$edges;
 
-  factory CopyWith$Query$SearchCategories$categories$edges.stub(TRes res) =
-      _CopyWithStubImpl$Query$SearchCategories$categories$edges;
+  factory CopyWith$Query$SearchCandidates$categories$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$SearchCandidates$categories$edges;
 
   TRes call(
-      {Query$SearchCategories$categories$edges$node? node,
+      {Query$SearchCandidates$categories$edges$node? node,
       String? $__typename});
-  CopyWith$Query$SearchCategories$categories$edges$node<TRes> get node;
+  CopyWith$Query$SearchCandidates$categories$edges$node<TRes> get node;
 }
 
-class _CopyWithImpl$Query$SearchCategories$categories$edges<TRes>
-    implements CopyWith$Query$SearchCategories$categories$edges<TRes> {
-  _CopyWithImpl$Query$SearchCategories$categories$edges(
+class _CopyWithImpl$Query$SearchCandidates$categories$edges<TRes>
+    implements CopyWith$Query$SearchCandidates$categories$edges<TRes> {
+  _CopyWithImpl$Query$SearchCandidates$categories$edges(
       this._instance, this._then);
 
-  final Query$SearchCategories$categories$edges _instance;
+  final Query$SearchCandidates$categories$edges _instance;
 
-  final TRes Function(Query$SearchCategories$categories$edges) _then;
+  final TRes Function(Query$SearchCandidates$categories$edges) _then;
 
   static const _undefined = {};
 
   TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
-      _then(Query$SearchCategories$categories$edges(
+      _then(Query$SearchCandidates$categories$edges(
           node: node == _undefined
               ? _instance.node
-              : (node as Query$SearchCategories$categories$edges$node?),
+              : (node as Query$SearchCandidates$categories$edges$node?),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
-  CopyWith$Query$SearchCategories$categories$edges$node<TRes> get node {
+  CopyWith$Query$SearchCandidates$categories$edges$node<TRes> get node {
     final local$node = _instance.node;
     return local$node == null
-        ? CopyWith$Query$SearchCategories$categories$edges$node.stub(
+        ? CopyWith$Query$SearchCandidates$categories$edges$node.stub(
             _then(_instance))
-        : CopyWith$Query$SearchCategories$categories$edges$node(
+        : CopyWith$Query$SearchCandidates$categories$edges$node(
             local$node, (e) => call(node: e));
   }
 }
 
-class _CopyWithStubImpl$Query$SearchCategories$categories$edges<TRes>
-    implements CopyWith$Query$SearchCategories$categories$edges<TRes> {
-  _CopyWithStubImpl$Query$SearchCategories$categories$edges(this._res);
+class _CopyWithStubImpl$Query$SearchCandidates$categories$edges<TRes>
+    implements CopyWith$Query$SearchCandidates$categories$edges<TRes> {
+  _CopyWithStubImpl$Query$SearchCandidates$categories$edges(this._res);
 
   TRes _res;
 
   call(
-          {Query$SearchCategories$categories$edges$node? node,
+          {Query$SearchCandidates$categories$edges$node? node,
           String? $__typename}) =>
       _res;
-  CopyWith$Query$SearchCategories$categories$edges$node<TRes> get node =>
-      CopyWith$Query$SearchCategories$categories$edges$node.stub(_res);
+  CopyWith$Query$SearchCandidates$categories$edges$node<TRes> get node =>
+      CopyWith$Query$SearchCandidates$categories$edges$node.stub(_res);
 }
 
 @JsonSerializable(explicitToJson: true)
-class Query$SearchCategories$categories$edges$node {
-  Query$SearchCategories$categories$edges$node(
+class Query$SearchCandidates$categories$edges$node {
+  Query$SearchCandidates$categories$edges$node(
       {required this.id, required this.name, required this.$__typename});
 
   @override
-  factory Query$SearchCategories$categories$edges$node.fromJson(
+  factory Query$SearchCandidates$categories$edges$node.fromJson(
           Map<String, dynamic> json) =>
-      _$Query$SearchCategories$categories$edges$nodeFromJson(json);
+      _$Query$SearchCandidates$categories$edges$nodeFromJson(json);
 
   final String id;
 
@@ -1381,7 +1468,7 @@ class Query$SearchCategories$categories$edges$node {
   final String $__typename;
 
   Map<String, dynamic> toJson() =>
-      _$Query$SearchCategories$categories$edges$nodeToJson(this);
+      _$Query$SearchCandidates$categories$edges$nodeToJson(this);
   int get hashCode {
     final l$id = id;
     final l$name = name;
@@ -1392,7 +1479,7 @@ class Query$SearchCategories$categories$edges$node {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (!(other is Query$SearchCategories$categories$edges$node) ||
+    if (!(other is Query$SearchCandidates$categories$edges$node) ||
         runtimeType != other.runtimeType) return false;
     final l$id = id;
     final lOther$id = other.id;
@@ -1407,34 +1494,34 @@ class Query$SearchCategories$categories$edges$node {
   }
 }
 
-extension UtilityExtension$Query$SearchCategories$categories$edges$node
-    on Query$SearchCategories$categories$edges$node {
-  CopyWith$Query$SearchCategories$categories$edges$node<
-          Query$SearchCategories$categories$edges$node>
+extension UtilityExtension$Query$SearchCandidates$categories$edges$node
+    on Query$SearchCandidates$categories$edges$node {
+  CopyWith$Query$SearchCandidates$categories$edges$node<
+          Query$SearchCandidates$categories$edges$node>
       get copyWith =>
-          CopyWith$Query$SearchCategories$categories$edges$node(this, (i) => i);
+          CopyWith$Query$SearchCandidates$categories$edges$node(this, (i) => i);
 }
 
-abstract class CopyWith$Query$SearchCategories$categories$edges$node<TRes> {
-  factory CopyWith$Query$SearchCategories$categories$edges$node(
-          Query$SearchCategories$categories$edges$node instance,
-          TRes Function(Query$SearchCategories$categories$edges$node) then) =
-      _CopyWithImpl$Query$SearchCategories$categories$edges$node;
+abstract class CopyWith$Query$SearchCandidates$categories$edges$node<TRes> {
+  factory CopyWith$Query$SearchCandidates$categories$edges$node(
+          Query$SearchCandidates$categories$edges$node instance,
+          TRes Function(Query$SearchCandidates$categories$edges$node) then) =
+      _CopyWithImpl$Query$SearchCandidates$categories$edges$node;
 
-  factory CopyWith$Query$SearchCategories$categories$edges$node.stub(TRes res) =
-      _CopyWithStubImpl$Query$SearchCategories$categories$edges$node;
+  factory CopyWith$Query$SearchCandidates$categories$edges$node.stub(TRes res) =
+      _CopyWithStubImpl$Query$SearchCandidates$categories$edges$node;
 
   TRes call({String? id, String? name, String? $__typename});
 }
 
-class _CopyWithImpl$Query$SearchCategories$categories$edges$node<TRes>
-    implements CopyWith$Query$SearchCategories$categories$edges$node<TRes> {
-  _CopyWithImpl$Query$SearchCategories$categories$edges$node(
+class _CopyWithImpl$Query$SearchCandidates$categories$edges$node<TRes>
+    implements CopyWith$Query$SearchCandidates$categories$edges$node<TRes> {
+  _CopyWithImpl$Query$SearchCandidates$categories$edges$node(
       this._instance, this._then);
 
-  final Query$SearchCategories$categories$edges$node _instance;
+  final Query$SearchCandidates$categories$edges$node _instance;
 
-  final TRes Function(Query$SearchCategories$categories$edges$node) _then;
+  final TRes Function(Query$SearchCandidates$categories$edges$node) _then;
 
   static const _undefined = {};
 
@@ -1442,7 +1529,7 @@ class _CopyWithImpl$Query$SearchCategories$categories$edges$node<TRes>
           {Object? id = _undefined,
           Object? name = _undefined,
           Object? $__typename = _undefined}) =>
-      _then(Query$SearchCategories$categories$edges$node(
+      _then(Query$SearchCandidates$categories$edges$node(
           id: id == _undefined || id == null ? _instance.id : (id as String),
           name: name == _undefined || name == null
               ? _instance.name
@@ -1452,13 +1539,332 @@ class _CopyWithImpl$Query$SearchCategories$categories$edges$node<TRes>
               : ($__typename as String)));
 }
 
-class _CopyWithStubImpl$Query$SearchCategories$categories$edges$node<TRes>
-    implements CopyWith$Query$SearchCategories$categories$edges$node<TRes> {
-  _CopyWithStubImpl$Query$SearchCategories$categories$edges$node(this._res);
+class _CopyWithStubImpl$Query$SearchCandidates$categories$edges$node<TRes>
+    implements CopyWith$Query$SearchCandidates$categories$edges$node<TRes> {
+  _CopyWithStubImpl$Query$SearchCandidates$categories$edges$node(this._res);
 
   TRes _res;
 
   call({String? id, String? name, String? $__typename}) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$SearchCandidates$hashtags {
+  Query$SearchCandidates$hashtags({this.edges, required this.$__typename});
+
+  @override
+  factory Query$SearchCandidates$hashtags.fromJson(Map<String, dynamic> json) =>
+      _$Query$SearchCandidates$hashtagsFromJson(json);
+
+  final List<Query$SearchCandidates$hashtags$edges?>? edges;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$SearchCandidates$hashtagsToJson(this);
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$SearchCandidates$hashtags) ||
+        runtimeType != other.runtimeType) return false;
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges != null && lOther$edges != null) {
+      if (l$edges.length != lOther$edges.length) return false;
+      for (int i = 0; i < l$edges.length; i++) {
+        final l$edges$entry = l$edges[i];
+        final lOther$edges$entry = lOther$edges[i];
+        if (l$edges$entry != lOther$edges$entry) return false;
+      }
+    } else if (l$edges != lOther$edges) {
+      return false;
+    }
+
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$SearchCandidates$hashtags
+    on Query$SearchCandidates$hashtags {
+  CopyWith$Query$SearchCandidates$hashtags<Query$SearchCandidates$hashtags>
+      get copyWith => CopyWith$Query$SearchCandidates$hashtags(this, (i) => i);
+}
+
+abstract class CopyWith$Query$SearchCandidates$hashtags<TRes> {
+  factory CopyWith$Query$SearchCandidates$hashtags(
+          Query$SearchCandidates$hashtags instance,
+          TRes Function(Query$SearchCandidates$hashtags) then) =
+      _CopyWithImpl$Query$SearchCandidates$hashtags;
+
+  factory CopyWith$Query$SearchCandidates$hashtags.stub(TRes res) =
+      _CopyWithStubImpl$Query$SearchCandidates$hashtags;
+
+  TRes call(
+      {List<Query$SearchCandidates$hashtags$edges?>? edges,
+      String? $__typename});
+  TRes edges(
+      Iterable<Query$SearchCandidates$hashtags$edges?>? Function(
+              Iterable<
+                  CopyWith$Query$SearchCandidates$hashtags$edges<
+                      Query$SearchCandidates$hashtags$edges>?>?)
+          _fn);
+}
+
+class _CopyWithImpl$Query$SearchCandidates$hashtags<TRes>
+    implements CopyWith$Query$SearchCandidates$hashtags<TRes> {
+  _CopyWithImpl$Query$SearchCandidates$hashtags(this._instance, this._then);
+
+  final Query$SearchCandidates$hashtags _instance;
+
+  final TRes Function(Query$SearchCandidates$hashtags) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$SearchCandidates$hashtags(
+          edges: edges == _undefined
+              ? _instance.edges
+              : (edges as List<Query$SearchCandidates$hashtags$edges?>?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  TRes edges(
+          Iterable<Query$SearchCandidates$hashtags$edges?>? Function(
+                  Iterable<
+                      CopyWith$Query$SearchCandidates$hashtags$edges<
+                          Query$SearchCandidates$hashtags$edges>?>?)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges?.map((e) => e == null
+              ? null
+              : CopyWith$Query$SearchCandidates$hashtags$edges(
+                  e, (i) => i)))?.toList());
+}
+
+class _CopyWithStubImpl$Query$SearchCandidates$hashtags<TRes>
+    implements CopyWith$Query$SearchCandidates$hashtags<TRes> {
+  _CopyWithStubImpl$Query$SearchCandidates$hashtags(this._res);
+
+  TRes _res;
+
+  call(
+          {List<Query$SearchCandidates$hashtags$edges?>? edges,
+          String? $__typename}) =>
+      _res;
+  edges(_fn) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$SearchCandidates$hashtags$edges {
+  Query$SearchCandidates$hashtags$edges({this.node, required this.$__typename});
+
+  @override
+  factory Query$SearchCandidates$hashtags$edges.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$SearchCandidates$hashtags$edgesFromJson(json);
+
+  final Query$SearchCandidates$hashtags$edges$node? node;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$SearchCandidates$hashtags$edgesToJson(this);
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$node, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$SearchCandidates$hashtags$edges) ||
+        runtimeType != other.runtimeType) return false;
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$SearchCandidates$hashtags$edges
+    on Query$SearchCandidates$hashtags$edges {
+  CopyWith$Query$SearchCandidates$hashtags$edges<
+          Query$SearchCandidates$hashtags$edges>
+      get copyWith =>
+          CopyWith$Query$SearchCandidates$hashtags$edges(this, (i) => i);
+}
+
+abstract class CopyWith$Query$SearchCandidates$hashtags$edges<TRes> {
+  factory CopyWith$Query$SearchCandidates$hashtags$edges(
+          Query$SearchCandidates$hashtags$edges instance,
+          TRes Function(Query$SearchCandidates$hashtags$edges) then) =
+      _CopyWithImpl$Query$SearchCandidates$hashtags$edges;
+
+  factory CopyWith$Query$SearchCandidates$hashtags$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$SearchCandidates$hashtags$edges;
+
+  TRes call(
+      {Query$SearchCandidates$hashtags$edges$node? node, String? $__typename});
+  CopyWith$Query$SearchCandidates$hashtags$edges$node<TRes> get node;
+}
+
+class _CopyWithImpl$Query$SearchCandidates$hashtags$edges<TRes>
+    implements CopyWith$Query$SearchCandidates$hashtags$edges<TRes> {
+  _CopyWithImpl$Query$SearchCandidates$hashtags$edges(
+      this._instance, this._then);
+
+  final Query$SearchCandidates$hashtags$edges _instance;
+
+  final TRes Function(Query$SearchCandidates$hashtags$edges) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$SearchCandidates$hashtags$edges(
+          node: node == _undefined
+              ? _instance.node
+              : (node as Query$SearchCandidates$hashtags$edges$node?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Query$SearchCandidates$hashtags$edges$node<TRes> get node {
+    final local$node = _instance.node;
+    return local$node == null
+        ? CopyWith$Query$SearchCandidates$hashtags$edges$node.stub(
+            _then(_instance))
+        : CopyWith$Query$SearchCandidates$hashtags$edges$node(
+            local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$SearchCandidates$hashtags$edges<TRes>
+    implements CopyWith$Query$SearchCandidates$hashtags$edges<TRes> {
+  _CopyWithStubImpl$Query$SearchCandidates$hashtags$edges(this._res);
+
+  TRes _res;
+
+  call(
+          {Query$SearchCandidates$hashtags$edges$node? node,
+          String? $__typename}) =>
+      _res;
+  CopyWith$Query$SearchCandidates$hashtags$edges$node<TRes> get node =>
+      CopyWith$Query$SearchCandidates$hashtags$edges$node.stub(_res);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$SearchCandidates$hashtags$edges$node {
+  Query$SearchCandidates$hashtags$edges$node(
+      {required this.id, required this.title, required this.$__typename});
+
+  @override
+  factory Query$SearchCandidates$hashtags$edges$node.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$SearchCandidates$hashtags$edges$nodeFromJson(json);
+
+  final String id;
+
+  final String title;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$SearchCandidates$hashtags$edges$nodeToJson(this);
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$title, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$SearchCandidates$hashtags$edges$node) ||
+        runtimeType != other.runtimeType) return false;
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) return false;
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$SearchCandidates$hashtags$edges$node
+    on Query$SearchCandidates$hashtags$edges$node {
+  CopyWith$Query$SearchCandidates$hashtags$edges$node<
+          Query$SearchCandidates$hashtags$edges$node>
+      get copyWith =>
+          CopyWith$Query$SearchCandidates$hashtags$edges$node(this, (i) => i);
+}
+
+abstract class CopyWith$Query$SearchCandidates$hashtags$edges$node<TRes> {
+  factory CopyWith$Query$SearchCandidates$hashtags$edges$node(
+          Query$SearchCandidates$hashtags$edges$node instance,
+          TRes Function(Query$SearchCandidates$hashtags$edges$node) then) =
+      _CopyWithImpl$Query$SearchCandidates$hashtags$edges$node;
+
+  factory CopyWith$Query$SearchCandidates$hashtags$edges$node.stub(TRes res) =
+      _CopyWithStubImpl$Query$SearchCandidates$hashtags$edges$node;
+
+  TRes call({String? id, String? title, String? $__typename});
+}
+
+class _CopyWithImpl$Query$SearchCandidates$hashtags$edges$node<TRes>
+    implements CopyWith$Query$SearchCandidates$hashtags$edges$node<TRes> {
+  _CopyWithImpl$Query$SearchCandidates$hashtags$edges$node(
+      this._instance, this._then);
+
+  final Query$SearchCandidates$hashtags$edges$node _instance;
+
+  final TRes Function(Query$SearchCandidates$hashtags$edges$node) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? id = _undefined,
+          Object? title = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$SearchCandidates$hashtags$edges$node(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          title: title == _undefined || title == null
+              ? _instance.title
+              : (title as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$SearchCandidates$hashtags$edges$node<TRes>
+    implements CopyWith$Query$SearchCandidates$hashtags$edges$node<TRes> {
+  _CopyWithStubImpl$Query$SearchCandidates$hashtags$edges$node(this._res);
+
+  TRes _res;
+
+  call({String? id, String? title, String? $__typename}) => _res;
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -2224,6 +2630,801 @@ class _CopyWithStubImpl$Query$CategoryPraises$posts$pageInfo<TRes>
 }
 
 @JsonSerializable(explicitToJson: true)
+class Variables$Query$HashtagPraises {
+  Variables$Query$HashtagPraises(
+      {this.hashtagID, this.first, this.after, this.searchText});
+
+  @override
+  factory Variables$Query$HashtagPraises.fromJson(Map<String, dynamic> json) =>
+      _$Variables$Query$HashtagPraisesFromJson(json);
+
+  final String? hashtagID;
+
+  final int? first;
+
+  final String? after;
+
+  final String? searchText;
+
+  Map<String, dynamic> toJson() => _$Variables$Query$HashtagPraisesToJson(this);
+  int get hashCode {
+    final l$hashtagID = hashtagID;
+    final l$first = first;
+    final l$after = after;
+    final l$searchText = searchText;
+    return Object.hashAll([l$hashtagID, l$first, l$after, l$searchText]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Variables$Query$HashtagPraises) ||
+        runtimeType != other.runtimeType) return false;
+    final l$hashtagID = hashtagID;
+    final lOther$hashtagID = other.hashtagID;
+    if (l$hashtagID != lOther$hashtagID) return false;
+    final l$first = first;
+    final lOther$first = other.first;
+    if (l$first != lOther$first) return false;
+    final l$after = after;
+    final lOther$after = other.after;
+    if (l$after != lOther$after) return false;
+    final l$searchText = searchText;
+    final lOther$searchText = other.searchText;
+    if (l$searchText != lOther$searchText) return false;
+    return true;
+  }
+
+  CopyWith$Variables$Query$HashtagPraises<Variables$Query$HashtagPraises>
+      get copyWith => CopyWith$Variables$Query$HashtagPraises(this, (i) => i);
+}
+
+abstract class CopyWith$Variables$Query$HashtagPraises<TRes> {
+  factory CopyWith$Variables$Query$HashtagPraises(
+          Variables$Query$HashtagPraises instance,
+          TRes Function(Variables$Query$HashtagPraises) then) =
+      _CopyWithImpl$Variables$Query$HashtagPraises;
+
+  factory CopyWith$Variables$Query$HashtagPraises.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$HashtagPraises;
+
+  TRes call({String? hashtagID, int? first, String? after, String? searchText});
+}
+
+class _CopyWithImpl$Variables$Query$HashtagPraises<TRes>
+    implements CopyWith$Variables$Query$HashtagPraises<TRes> {
+  _CopyWithImpl$Variables$Query$HashtagPraises(this._instance, this._then);
+
+  final Variables$Query$HashtagPraises _instance;
+
+  final TRes Function(Variables$Query$HashtagPraises) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? hashtagID = _undefined,
+          Object? first = _undefined,
+          Object? after = _undefined,
+          Object? searchText = _undefined}) =>
+      _then(Variables$Query$HashtagPraises(
+          hashtagID: hashtagID == _undefined
+              ? _instance.hashtagID
+              : (hashtagID as String?),
+          first: first == _undefined ? _instance.first : (first as int?),
+          after: after == _undefined ? _instance.after : (after as String?),
+          searchText: searchText == _undefined
+              ? _instance.searchText
+              : (searchText as String?)));
+}
+
+class _CopyWithStubImpl$Variables$Query$HashtagPraises<TRes>
+    implements CopyWith$Variables$Query$HashtagPraises<TRes> {
+  _CopyWithStubImpl$Variables$Query$HashtagPraises(this._res);
+
+  TRes _res;
+
+  call({String? hashtagID, int? first, String? after, String? searchText}) =>
+      _res;
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$HashtagPraises {
+  Query$HashtagPraises({required this.posts, required this.$__typename});
+
+  @override
+  factory Query$HashtagPraises.fromJson(Map<String, dynamic> json) =>
+      _$Query$HashtagPraisesFromJson(json);
+
+  final Query$HashtagPraises$posts posts;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$Query$HashtagPraisesToJson(this);
+  int get hashCode {
+    final l$posts = posts;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$posts, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$HashtagPraises) || runtimeType != other.runtimeType)
+      return false;
+    final l$posts = posts;
+    final lOther$posts = other.posts;
+    if (l$posts != lOther$posts) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$HashtagPraises on Query$HashtagPraises {
+  CopyWith$Query$HashtagPraises<Query$HashtagPraises> get copyWith =>
+      CopyWith$Query$HashtagPraises(this, (i) => i);
+}
+
+abstract class CopyWith$Query$HashtagPraises<TRes> {
+  factory CopyWith$Query$HashtagPraises(Query$HashtagPraises instance,
+          TRes Function(Query$HashtagPraises) then) =
+      _CopyWithImpl$Query$HashtagPraises;
+
+  factory CopyWith$Query$HashtagPraises.stub(TRes res) =
+      _CopyWithStubImpl$Query$HashtagPraises;
+
+  TRes call({Query$HashtagPraises$posts? posts, String? $__typename});
+  CopyWith$Query$HashtagPraises$posts<TRes> get posts;
+}
+
+class _CopyWithImpl$Query$HashtagPraises<TRes>
+    implements CopyWith$Query$HashtagPraises<TRes> {
+  _CopyWithImpl$Query$HashtagPraises(this._instance, this._then);
+
+  final Query$HashtagPraises _instance;
+
+  final TRes Function(Query$HashtagPraises) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? posts = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$HashtagPraises(
+          posts: posts == _undefined || posts == null
+              ? _instance.posts
+              : (posts as Query$HashtagPraises$posts),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Query$HashtagPraises$posts<TRes> get posts {
+    final local$posts = _instance.posts;
+    return CopyWith$Query$HashtagPraises$posts(
+        local$posts, (e) => call(posts: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$HashtagPraises<TRes>
+    implements CopyWith$Query$HashtagPraises<TRes> {
+  _CopyWithStubImpl$Query$HashtagPraises(this._res);
+
+  TRes _res;
+
+  call({Query$HashtagPraises$posts? posts, String? $__typename}) => _res;
+  CopyWith$Query$HashtagPraises$posts<TRes> get posts =>
+      CopyWith$Query$HashtagPraises$posts.stub(_res);
+}
+
+const documentNodeQueryHashtagPraises = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.query,
+      name: NameNode(value: 'HashtagPraises'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'hashtagID')),
+            type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'first')),
+            type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'after')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'Cursor'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'searchText')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'String'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'posts'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'after'),
+                  value: VariableNode(name: NameNode(value: 'after'))),
+              ArgumentNode(
+                  name: NameNode(value: 'first'),
+                  value: VariableNode(name: NameNode(value: 'first'))),
+              ArgumentNode(
+                  name: NameNode(value: 'orderBy'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'direction'),
+                        value: EnumValueNode(name: NameNode(value: 'DESC'))),
+                    ObjectFieldNode(
+                        name: NameNode(value: 'field'),
+                        value:
+                            EnumValueNode(name: NameNode(value: 'CREATE_TIME')))
+                  ])),
+              ArgumentNode(
+                  name: NameNode(value: 'where'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'type'),
+                        value: EnumValueNode(name: NameNode(value: 'praise'))),
+                    ObjectFieldNode(
+                        name: NameNode(value: 'or'),
+                        value: ListValueNode(values: [
+                          ObjectValueNode(fields: [
+                            ObjectFieldNode(
+                                name: NameNode(value: 'hasHashtagsWith'),
+                                value: ObjectValueNode(fields: [
+                                  ObjectFieldNode(
+                                      name: NameNode(value: 'id'),
+                                      value: VariableNode(
+                                          name: NameNode(value: 'hashtagID')))
+                                ]))
+                          ]),
+                          ObjectValueNode(fields: [
+                            ObjectFieldNode(
+                                name: NameNode(value: 'titleContainsFold'),
+                                value: VariableNode(
+                                    name: NameNode(value: 'searchText')))
+                          ]),
+                          ObjectValueNode(fields: [
+                            ObjectFieldNode(
+                                name: NameNode(value: 'contentContainsFold'),
+                                value: VariableNode(
+                                    name: NameNode(value: 'searchText')))
+                          ])
+                        ]))
+                  ]))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'edges'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'node'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: SelectionSetNode(selections: [
+                          FragmentSpreadNode(
+                              name: NameNode(value: 'PraiseSummary'),
+                              directives: []),
+                          FieldNode(
+                              name: NameNode(value: '__typename'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null)
+                        ])),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: 'pageInfo'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'endCursor'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: 'hasNextPage'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+  fragmentDefinitionPraiseSummary,
+]);
+Query$HashtagPraises _parserFn$Query$HashtagPraises(
+        Map<String, dynamic> data) =>
+    Query$HashtagPraises.fromJson(data);
+
+class Options$Query$HashtagPraises
+    extends graphql.QueryOptions<Query$HashtagPraises> {
+  Options$Query$HashtagPraises(
+      {String? operationName,
+      Variables$Query$HashtagPraises? variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      Duration? pollInterval,
+      graphql.Context? context})
+      : super(
+            variables: variables?.toJson() ?? {},
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            pollInterval: pollInterval,
+            context: context,
+            document: documentNodeQueryHashtagPraises,
+            parserFn: _parserFn$Query$HashtagPraises);
+}
+
+class WatchOptions$Query$HashtagPraises
+    extends graphql.WatchQueryOptions<Query$HashtagPraises> {
+  WatchOptions$Query$HashtagPraises(
+      {String? operationName,
+      Variables$Query$HashtagPraises? variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables?.toJson() ?? {},
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeQueryHashtagPraises,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Query$HashtagPraises);
+}
+
+class FetchMoreOptions$Query$HashtagPraises extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$HashtagPraises(
+      {required graphql.UpdateQuery updateQuery,
+      Variables$Query$HashtagPraises? variables})
+      : super(
+            updateQuery: updateQuery,
+            variables: variables?.toJson() ?? {},
+            document: documentNodeQueryHashtagPraises);
+}
+
+extension ClientExtension$Query$HashtagPraises on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$HashtagPraises>> query$HashtagPraises(
+          [Options$Query$HashtagPraises? options]) async =>
+      await this.query(options ?? Options$Query$HashtagPraises());
+  graphql.ObservableQuery<Query$HashtagPraises> watchQuery$HashtagPraises(
+          [WatchOptions$Query$HashtagPraises? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$HashtagPraises());
+  void writeQuery$HashtagPraises(
+          {required Query$HashtagPraises data,
+          Variables$Query$HashtagPraises? variables,
+          bool broadcast = true}) =>
+      this.writeQuery(
+          graphql.Request(
+              operation:
+                  graphql.Operation(document: documentNodeQueryHashtagPraises),
+              variables: variables?.toJson() ?? const {}),
+          data: data.toJson(),
+          broadcast: broadcast);
+  Query$HashtagPraises? readQuery$HashtagPraises(
+      {Variables$Query$HashtagPraises? variables, bool optimistic = true}) {
+    final result = this.readQuery(
+        graphql.Request(
+            operation:
+                graphql.Operation(document: documentNodeQueryHashtagPraises),
+            variables: variables?.toJson() ?? const {}),
+        optimistic: optimistic);
+    return result == null ? null : Query$HashtagPraises.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$HashtagPraises> useQuery$HashtagPraises(
+        [Options$Query$HashtagPraises? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$HashtagPraises());
+graphql.ObservableQuery<Query$HashtagPraises> useWatchQuery$HashtagPraises(
+        [WatchOptions$Query$HashtagPraises? options]) =>
+    graphql_flutter
+        .useWatchQuery(options ?? WatchOptions$Query$HashtagPraises());
+
+class Query$HashtagPraises$Widget
+    extends graphql_flutter.Query<Query$HashtagPraises> {
+  Query$HashtagPraises$Widget(
+      {widgets.Key? key,
+      Options$Query$HashtagPraises? options,
+      required graphql_flutter.QueryBuilder<Query$HashtagPraises> builder})
+      : super(
+            key: key,
+            options: options ?? Options$Query$HashtagPraises(),
+            builder: builder);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$HashtagPraises$posts {
+  Query$HashtagPraises$posts(
+      {this.edges, required this.pageInfo, required this.$__typename});
+
+  @override
+  factory Query$HashtagPraises$posts.fromJson(Map<String, dynamic> json) =>
+      _$Query$HashtagPraises$postsFromJson(json);
+
+  final List<Query$HashtagPraises$posts$edges?>? edges;
+
+  final Query$HashtagPraises$posts$pageInfo pageInfo;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$Query$HashtagPraises$postsToJson(this);
+  int get hashCode {
+    final l$edges = edges;
+    final l$pageInfo = pageInfo;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
+      l$$__typename
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$HashtagPraises$posts) ||
+        runtimeType != other.runtimeType) return false;
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges != null && lOther$edges != null) {
+      if (l$edges.length != lOther$edges.length) return false;
+      for (int i = 0; i < l$edges.length; i++) {
+        final l$edges$entry = l$edges[i];
+        final lOther$edges$entry = lOther$edges[i];
+        if (l$edges$entry != lOther$edges$entry) return false;
+      }
+    } else if (l$edges != lOther$edges) {
+      return false;
+    }
+
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$HashtagPraises$posts
+    on Query$HashtagPraises$posts {
+  CopyWith$Query$HashtagPraises$posts<Query$HashtagPraises$posts>
+      get copyWith => CopyWith$Query$HashtagPraises$posts(this, (i) => i);
+}
+
+abstract class CopyWith$Query$HashtagPraises$posts<TRes> {
+  factory CopyWith$Query$HashtagPraises$posts(
+          Query$HashtagPraises$posts instance,
+          TRes Function(Query$HashtagPraises$posts) then) =
+      _CopyWithImpl$Query$HashtagPraises$posts;
+
+  factory CopyWith$Query$HashtagPraises$posts.stub(TRes res) =
+      _CopyWithStubImpl$Query$HashtagPraises$posts;
+
+  TRes call(
+      {List<Query$HashtagPraises$posts$edges?>? edges,
+      Query$HashtagPraises$posts$pageInfo? pageInfo,
+      String? $__typename});
+  TRes edges(
+      Iterable<Query$HashtagPraises$posts$edges?>? Function(
+              Iterable<
+                  CopyWith$Query$HashtagPraises$posts$edges<
+                      Query$HashtagPraises$posts$edges>?>?)
+          _fn);
+  CopyWith$Query$HashtagPraises$posts$pageInfo<TRes> get pageInfo;
+}
+
+class _CopyWithImpl$Query$HashtagPraises$posts<TRes>
+    implements CopyWith$Query$HashtagPraises$posts<TRes> {
+  _CopyWithImpl$Query$HashtagPraises$posts(this._instance, this._then);
+
+  final Query$HashtagPraises$posts _instance;
+
+  final TRes Function(Query$HashtagPraises$posts) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? edges = _undefined,
+          Object? pageInfo = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$HashtagPraises$posts(
+          edges: edges == _undefined
+              ? _instance.edges
+              : (edges as List<Query$HashtagPraises$posts$edges?>?),
+          pageInfo: pageInfo == _undefined || pageInfo == null
+              ? _instance.pageInfo
+              : (pageInfo as Query$HashtagPraises$posts$pageInfo),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  TRes edges(
+          Iterable<Query$HashtagPraises$posts$edges?>? Function(
+                  Iterable<
+                      CopyWith$Query$HashtagPraises$posts$edges<
+                          Query$HashtagPraises$posts$edges>?>?)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges?.map((e) => e == null
+                  ? null
+                  : CopyWith$Query$HashtagPraises$posts$edges(e, (i) => i)))
+              ?.toList());
+  CopyWith$Query$HashtagPraises$posts$pageInfo<TRes> get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Query$HashtagPraises$posts$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$HashtagPraises$posts<TRes>
+    implements CopyWith$Query$HashtagPraises$posts<TRes> {
+  _CopyWithStubImpl$Query$HashtagPraises$posts(this._res);
+
+  TRes _res;
+
+  call(
+          {List<Query$HashtagPraises$posts$edges?>? edges,
+          Query$HashtagPraises$posts$pageInfo? pageInfo,
+          String? $__typename}) =>
+      _res;
+  edges(_fn) => _res;
+  CopyWith$Query$HashtagPraises$posts$pageInfo<TRes> get pageInfo =>
+      CopyWith$Query$HashtagPraises$posts$pageInfo.stub(_res);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$HashtagPraises$posts$edges {
+  Query$HashtagPraises$posts$edges({this.node, required this.$__typename});
+
+  @override
+  factory Query$HashtagPraises$posts$edges.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$HashtagPraises$posts$edgesFromJson(json);
+
+  final Fragment$PraiseSummary? node;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$HashtagPraises$posts$edgesToJson(this);
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$node, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$HashtagPraises$posts$edges) ||
+        runtimeType != other.runtimeType) return false;
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$HashtagPraises$posts$edges
+    on Query$HashtagPraises$posts$edges {
+  CopyWith$Query$HashtagPraises$posts$edges<Query$HashtagPraises$posts$edges>
+      get copyWith => CopyWith$Query$HashtagPraises$posts$edges(this, (i) => i);
+}
+
+abstract class CopyWith$Query$HashtagPraises$posts$edges<TRes> {
+  factory CopyWith$Query$HashtagPraises$posts$edges(
+          Query$HashtagPraises$posts$edges instance,
+          TRes Function(Query$HashtagPraises$posts$edges) then) =
+      _CopyWithImpl$Query$HashtagPraises$posts$edges;
+
+  factory CopyWith$Query$HashtagPraises$posts$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$HashtagPraises$posts$edges;
+
+  TRes call({Fragment$PraiseSummary? node, String? $__typename});
+  CopyWith$Fragment$PraiseSummary<TRes> get node;
+}
+
+class _CopyWithImpl$Query$HashtagPraises$posts$edges<TRes>
+    implements CopyWith$Query$HashtagPraises$posts$edges<TRes> {
+  _CopyWithImpl$Query$HashtagPraises$posts$edges(this._instance, this._then);
+
+  final Query$HashtagPraises$posts$edges _instance;
+
+  final TRes Function(Query$HashtagPraises$posts$edges) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$HashtagPraises$posts$edges(
+          node: node == _undefined
+              ? _instance.node
+              : (node as Fragment$PraiseSummary?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Fragment$PraiseSummary<TRes> get node {
+    final local$node = _instance.node;
+    return local$node == null
+        ? CopyWith$Fragment$PraiseSummary.stub(_then(_instance))
+        : CopyWith$Fragment$PraiseSummary(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$HashtagPraises$posts$edges<TRes>
+    implements CopyWith$Query$HashtagPraises$posts$edges<TRes> {
+  _CopyWithStubImpl$Query$HashtagPraises$posts$edges(this._res);
+
+  TRes _res;
+
+  call({Fragment$PraiseSummary? node, String? $__typename}) => _res;
+  CopyWith$Fragment$PraiseSummary<TRes> get node =>
+      CopyWith$Fragment$PraiseSummary.stub(_res);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$HashtagPraises$posts$pageInfo {
+  Query$HashtagPraises$posts$pageInfo(
+      {this.endCursor, required this.hasNextPage, required this.$__typename});
+
+  @override
+  factory Query$HashtagPraises$posts$pageInfo.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$HashtagPraises$posts$pageInfoFromJson(json);
+
+  final String? endCursor;
+
+  final bool hasNextPage;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$HashtagPraises$posts$pageInfoToJson(this);
+  int get hashCode {
+    final l$endCursor = endCursor;
+    final l$hasNextPage = hasNextPage;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$endCursor, l$hasNextPage, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$HashtagPraises$posts$pageInfo) ||
+        runtimeType != other.runtimeType) return false;
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) return false;
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$HashtagPraises$posts$pageInfo
+    on Query$HashtagPraises$posts$pageInfo {
+  CopyWith$Query$HashtagPraises$posts$pageInfo<
+          Query$HashtagPraises$posts$pageInfo>
+      get copyWith =>
+          CopyWith$Query$HashtagPraises$posts$pageInfo(this, (i) => i);
+}
+
+abstract class CopyWith$Query$HashtagPraises$posts$pageInfo<TRes> {
+  factory CopyWith$Query$HashtagPraises$posts$pageInfo(
+          Query$HashtagPraises$posts$pageInfo instance,
+          TRes Function(Query$HashtagPraises$posts$pageInfo) then) =
+      _CopyWithImpl$Query$HashtagPraises$posts$pageInfo;
+
+  factory CopyWith$Query$HashtagPraises$posts$pageInfo.stub(TRes res) =
+      _CopyWithStubImpl$Query$HashtagPraises$posts$pageInfo;
+
+  TRes call({String? endCursor, bool? hasNextPage, String? $__typename});
+}
+
+class _CopyWithImpl$Query$HashtagPraises$posts$pageInfo<TRes>
+    implements CopyWith$Query$HashtagPraises$posts$pageInfo<TRes> {
+  _CopyWithImpl$Query$HashtagPraises$posts$pageInfo(this._instance, this._then);
+
+  final Query$HashtagPraises$posts$pageInfo _instance;
+
+  final TRes Function(Query$HashtagPraises$posts$pageInfo) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? endCursor = _undefined,
+          Object? hasNextPage = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$HashtagPraises$posts$pageInfo(
+          endCursor: endCursor == _undefined
+              ? _instance.endCursor
+              : (endCursor as String?),
+          hasNextPage: hasNextPage == _undefined || hasNextPage == null
+              ? _instance.hasNextPage
+              : (hasNextPage as bool),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$HashtagPraises$posts$pageInfo<TRes>
+    implements CopyWith$Query$HashtagPraises$posts$pageInfo<TRes> {
+  _CopyWithStubImpl$Query$HashtagPraises$posts$pageInfo(this._res);
+
+  TRes _res;
+
+  call({String? endCursor, bool? hasNextPage, String? $__typename}) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
 class Variables$Query$CategoryLetters {
   Variables$Query$CategoryLetters({this.categoryID, this.first, this.after});
 
@@ -2979,6 +4180,801 @@ class _CopyWithImpl$Query$CategoryLetters$posts$pageInfo<TRes>
 class _CopyWithStubImpl$Query$CategoryLetters$posts$pageInfo<TRes>
     implements CopyWith$Query$CategoryLetters$posts$pageInfo<TRes> {
   _CopyWithStubImpl$Query$CategoryLetters$posts$pageInfo(this._res);
+
+  TRes _res;
+
+  call({String? endCursor, bool? hasNextPage, String? $__typename}) => _res;
+}
+
+@JsonSerializable(explicitToJson: true)
+class Variables$Query$HashtagLetters {
+  Variables$Query$HashtagLetters(
+      {this.hashtagID, this.first, this.after, this.searchText});
+
+  @override
+  factory Variables$Query$HashtagLetters.fromJson(Map<String, dynamic> json) =>
+      _$Variables$Query$HashtagLettersFromJson(json);
+
+  final String? hashtagID;
+
+  final int? first;
+
+  final String? after;
+
+  final String? searchText;
+
+  Map<String, dynamic> toJson() => _$Variables$Query$HashtagLettersToJson(this);
+  int get hashCode {
+    final l$hashtagID = hashtagID;
+    final l$first = first;
+    final l$after = after;
+    final l$searchText = searchText;
+    return Object.hashAll([l$hashtagID, l$first, l$after, l$searchText]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Variables$Query$HashtagLetters) ||
+        runtimeType != other.runtimeType) return false;
+    final l$hashtagID = hashtagID;
+    final lOther$hashtagID = other.hashtagID;
+    if (l$hashtagID != lOther$hashtagID) return false;
+    final l$first = first;
+    final lOther$first = other.first;
+    if (l$first != lOther$first) return false;
+    final l$after = after;
+    final lOther$after = other.after;
+    if (l$after != lOther$after) return false;
+    final l$searchText = searchText;
+    final lOther$searchText = other.searchText;
+    if (l$searchText != lOther$searchText) return false;
+    return true;
+  }
+
+  CopyWith$Variables$Query$HashtagLetters<Variables$Query$HashtagLetters>
+      get copyWith => CopyWith$Variables$Query$HashtagLetters(this, (i) => i);
+}
+
+abstract class CopyWith$Variables$Query$HashtagLetters<TRes> {
+  factory CopyWith$Variables$Query$HashtagLetters(
+          Variables$Query$HashtagLetters instance,
+          TRes Function(Variables$Query$HashtagLetters) then) =
+      _CopyWithImpl$Variables$Query$HashtagLetters;
+
+  factory CopyWith$Variables$Query$HashtagLetters.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$HashtagLetters;
+
+  TRes call({String? hashtagID, int? first, String? after, String? searchText});
+}
+
+class _CopyWithImpl$Variables$Query$HashtagLetters<TRes>
+    implements CopyWith$Variables$Query$HashtagLetters<TRes> {
+  _CopyWithImpl$Variables$Query$HashtagLetters(this._instance, this._then);
+
+  final Variables$Query$HashtagLetters _instance;
+
+  final TRes Function(Variables$Query$HashtagLetters) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? hashtagID = _undefined,
+          Object? first = _undefined,
+          Object? after = _undefined,
+          Object? searchText = _undefined}) =>
+      _then(Variables$Query$HashtagLetters(
+          hashtagID: hashtagID == _undefined
+              ? _instance.hashtagID
+              : (hashtagID as String?),
+          first: first == _undefined ? _instance.first : (first as int?),
+          after: after == _undefined ? _instance.after : (after as String?),
+          searchText: searchText == _undefined
+              ? _instance.searchText
+              : (searchText as String?)));
+}
+
+class _CopyWithStubImpl$Variables$Query$HashtagLetters<TRes>
+    implements CopyWith$Variables$Query$HashtagLetters<TRes> {
+  _CopyWithStubImpl$Variables$Query$HashtagLetters(this._res);
+
+  TRes _res;
+
+  call({String? hashtagID, int? first, String? after, String? searchText}) =>
+      _res;
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$HashtagLetters {
+  Query$HashtagLetters({required this.posts, required this.$__typename});
+
+  @override
+  factory Query$HashtagLetters.fromJson(Map<String, dynamic> json) =>
+      _$Query$HashtagLettersFromJson(json);
+
+  final Query$HashtagLetters$posts posts;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$Query$HashtagLettersToJson(this);
+  int get hashCode {
+    final l$posts = posts;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$posts, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$HashtagLetters) || runtimeType != other.runtimeType)
+      return false;
+    final l$posts = posts;
+    final lOther$posts = other.posts;
+    if (l$posts != lOther$posts) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$HashtagLetters on Query$HashtagLetters {
+  CopyWith$Query$HashtagLetters<Query$HashtagLetters> get copyWith =>
+      CopyWith$Query$HashtagLetters(this, (i) => i);
+}
+
+abstract class CopyWith$Query$HashtagLetters<TRes> {
+  factory CopyWith$Query$HashtagLetters(Query$HashtagLetters instance,
+          TRes Function(Query$HashtagLetters) then) =
+      _CopyWithImpl$Query$HashtagLetters;
+
+  factory CopyWith$Query$HashtagLetters.stub(TRes res) =
+      _CopyWithStubImpl$Query$HashtagLetters;
+
+  TRes call({Query$HashtagLetters$posts? posts, String? $__typename});
+  CopyWith$Query$HashtagLetters$posts<TRes> get posts;
+}
+
+class _CopyWithImpl$Query$HashtagLetters<TRes>
+    implements CopyWith$Query$HashtagLetters<TRes> {
+  _CopyWithImpl$Query$HashtagLetters(this._instance, this._then);
+
+  final Query$HashtagLetters _instance;
+
+  final TRes Function(Query$HashtagLetters) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? posts = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$HashtagLetters(
+          posts: posts == _undefined || posts == null
+              ? _instance.posts
+              : (posts as Query$HashtagLetters$posts),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Query$HashtagLetters$posts<TRes> get posts {
+    final local$posts = _instance.posts;
+    return CopyWith$Query$HashtagLetters$posts(
+        local$posts, (e) => call(posts: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$HashtagLetters<TRes>
+    implements CopyWith$Query$HashtagLetters<TRes> {
+  _CopyWithStubImpl$Query$HashtagLetters(this._res);
+
+  TRes _res;
+
+  call({Query$HashtagLetters$posts? posts, String? $__typename}) => _res;
+  CopyWith$Query$HashtagLetters$posts<TRes> get posts =>
+      CopyWith$Query$HashtagLetters$posts.stub(_res);
+}
+
+const documentNodeQueryHashtagLetters = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.query,
+      name: NameNode(value: 'HashtagLetters'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'hashtagID')),
+            type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'first')),
+            type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'after')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'Cursor'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'searchText')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'String'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'posts'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'after'),
+                  value: VariableNode(name: NameNode(value: 'after'))),
+              ArgumentNode(
+                  name: NameNode(value: 'first'),
+                  value: VariableNode(name: NameNode(value: 'first'))),
+              ArgumentNode(
+                  name: NameNode(value: 'orderBy'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'direction'),
+                        value: EnumValueNode(name: NameNode(value: 'DESC'))),
+                    ObjectFieldNode(
+                        name: NameNode(value: 'field'),
+                        value:
+                            EnumValueNode(name: NameNode(value: 'CREATE_TIME')))
+                  ])),
+              ArgumentNode(
+                  name: NameNode(value: 'where'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'type'),
+                        value: EnumValueNode(name: NameNode(value: 'letter'))),
+                    ObjectFieldNode(
+                        name: NameNode(value: 'or'),
+                        value: ListValueNode(values: [
+                          ObjectValueNode(fields: [
+                            ObjectFieldNode(
+                                name: NameNode(value: 'hasHashtagsWith'),
+                                value: ObjectValueNode(fields: [
+                                  ObjectFieldNode(
+                                      name: NameNode(value: 'id'),
+                                      value: VariableNode(
+                                          name: NameNode(value: 'hashtagID')))
+                                ]))
+                          ]),
+                          ObjectValueNode(fields: [
+                            ObjectFieldNode(
+                                name: NameNode(value: 'titleContainsFold'),
+                                value: VariableNode(
+                                    name: NameNode(value: 'searchText')))
+                          ]),
+                          ObjectValueNode(fields: [
+                            ObjectFieldNode(
+                                name: NameNode(value: 'contentContainsFold'),
+                                value: VariableNode(
+                                    name: NameNode(value: 'searchText')))
+                          ])
+                        ]))
+                  ]))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'edges'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'node'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: SelectionSetNode(selections: [
+                          FragmentSpreadNode(
+                              name: NameNode(value: 'LetterSummary'),
+                              directives: []),
+                          FieldNode(
+                              name: NameNode(value: '__typename'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null)
+                        ])),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: 'pageInfo'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'endCursor'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: 'hasNextPage'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+  fragmentDefinitionLetterSummary,
+]);
+Query$HashtagLetters _parserFn$Query$HashtagLetters(
+        Map<String, dynamic> data) =>
+    Query$HashtagLetters.fromJson(data);
+
+class Options$Query$HashtagLetters
+    extends graphql.QueryOptions<Query$HashtagLetters> {
+  Options$Query$HashtagLetters(
+      {String? operationName,
+      Variables$Query$HashtagLetters? variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      Duration? pollInterval,
+      graphql.Context? context})
+      : super(
+            variables: variables?.toJson() ?? {},
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            pollInterval: pollInterval,
+            context: context,
+            document: documentNodeQueryHashtagLetters,
+            parserFn: _parserFn$Query$HashtagLetters);
+}
+
+class WatchOptions$Query$HashtagLetters
+    extends graphql.WatchQueryOptions<Query$HashtagLetters> {
+  WatchOptions$Query$HashtagLetters(
+      {String? operationName,
+      Variables$Query$HashtagLetters? variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables?.toJson() ?? {},
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeQueryHashtagLetters,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Query$HashtagLetters);
+}
+
+class FetchMoreOptions$Query$HashtagLetters extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$HashtagLetters(
+      {required graphql.UpdateQuery updateQuery,
+      Variables$Query$HashtagLetters? variables})
+      : super(
+            updateQuery: updateQuery,
+            variables: variables?.toJson() ?? {},
+            document: documentNodeQueryHashtagLetters);
+}
+
+extension ClientExtension$Query$HashtagLetters on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$HashtagLetters>> query$HashtagLetters(
+          [Options$Query$HashtagLetters? options]) async =>
+      await this.query(options ?? Options$Query$HashtagLetters());
+  graphql.ObservableQuery<Query$HashtagLetters> watchQuery$HashtagLetters(
+          [WatchOptions$Query$HashtagLetters? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$HashtagLetters());
+  void writeQuery$HashtagLetters(
+          {required Query$HashtagLetters data,
+          Variables$Query$HashtagLetters? variables,
+          bool broadcast = true}) =>
+      this.writeQuery(
+          graphql.Request(
+              operation:
+                  graphql.Operation(document: documentNodeQueryHashtagLetters),
+              variables: variables?.toJson() ?? const {}),
+          data: data.toJson(),
+          broadcast: broadcast);
+  Query$HashtagLetters? readQuery$HashtagLetters(
+      {Variables$Query$HashtagLetters? variables, bool optimistic = true}) {
+    final result = this.readQuery(
+        graphql.Request(
+            operation:
+                graphql.Operation(document: documentNodeQueryHashtagLetters),
+            variables: variables?.toJson() ?? const {}),
+        optimistic: optimistic);
+    return result == null ? null : Query$HashtagLetters.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$HashtagLetters> useQuery$HashtagLetters(
+        [Options$Query$HashtagLetters? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$HashtagLetters());
+graphql.ObservableQuery<Query$HashtagLetters> useWatchQuery$HashtagLetters(
+        [WatchOptions$Query$HashtagLetters? options]) =>
+    graphql_flutter
+        .useWatchQuery(options ?? WatchOptions$Query$HashtagLetters());
+
+class Query$HashtagLetters$Widget
+    extends graphql_flutter.Query<Query$HashtagLetters> {
+  Query$HashtagLetters$Widget(
+      {widgets.Key? key,
+      Options$Query$HashtagLetters? options,
+      required graphql_flutter.QueryBuilder<Query$HashtagLetters> builder})
+      : super(
+            key: key,
+            options: options ?? Options$Query$HashtagLetters(),
+            builder: builder);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$HashtagLetters$posts {
+  Query$HashtagLetters$posts(
+      {this.edges, required this.pageInfo, required this.$__typename});
+
+  @override
+  factory Query$HashtagLetters$posts.fromJson(Map<String, dynamic> json) =>
+      _$Query$HashtagLetters$postsFromJson(json);
+
+  final List<Query$HashtagLetters$posts$edges?>? edges;
+
+  final Query$HashtagLetters$posts$pageInfo pageInfo;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() => _$Query$HashtagLetters$postsToJson(this);
+  int get hashCode {
+    final l$edges = edges;
+    final l$pageInfo = pageInfo;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
+      l$$__typename
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$HashtagLetters$posts) ||
+        runtimeType != other.runtimeType) return false;
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges != null && lOther$edges != null) {
+      if (l$edges.length != lOther$edges.length) return false;
+      for (int i = 0; i < l$edges.length; i++) {
+        final l$edges$entry = l$edges[i];
+        final lOther$edges$entry = lOther$edges[i];
+        if (l$edges$entry != lOther$edges$entry) return false;
+      }
+    } else if (l$edges != lOther$edges) {
+      return false;
+    }
+
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$HashtagLetters$posts
+    on Query$HashtagLetters$posts {
+  CopyWith$Query$HashtagLetters$posts<Query$HashtagLetters$posts>
+      get copyWith => CopyWith$Query$HashtagLetters$posts(this, (i) => i);
+}
+
+abstract class CopyWith$Query$HashtagLetters$posts<TRes> {
+  factory CopyWith$Query$HashtagLetters$posts(
+          Query$HashtagLetters$posts instance,
+          TRes Function(Query$HashtagLetters$posts) then) =
+      _CopyWithImpl$Query$HashtagLetters$posts;
+
+  factory CopyWith$Query$HashtagLetters$posts.stub(TRes res) =
+      _CopyWithStubImpl$Query$HashtagLetters$posts;
+
+  TRes call(
+      {List<Query$HashtagLetters$posts$edges?>? edges,
+      Query$HashtagLetters$posts$pageInfo? pageInfo,
+      String? $__typename});
+  TRes edges(
+      Iterable<Query$HashtagLetters$posts$edges?>? Function(
+              Iterable<
+                  CopyWith$Query$HashtagLetters$posts$edges<
+                      Query$HashtagLetters$posts$edges>?>?)
+          _fn);
+  CopyWith$Query$HashtagLetters$posts$pageInfo<TRes> get pageInfo;
+}
+
+class _CopyWithImpl$Query$HashtagLetters$posts<TRes>
+    implements CopyWith$Query$HashtagLetters$posts<TRes> {
+  _CopyWithImpl$Query$HashtagLetters$posts(this._instance, this._then);
+
+  final Query$HashtagLetters$posts _instance;
+
+  final TRes Function(Query$HashtagLetters$posts) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? edges = _undefined,
+          Object? pageInfo = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$HashtagLetters$posts(
+          edges: edges == _undefined
+              ? _instance.edges
+              : (edges as List<Query$HashtagLetters$posts$edges?>?),
+          pageInfo: pageInfo == _undefined || pageInfo == null
+              ? _instance.pageInfo
+              : (pageInfo as Query$HashtagLetters$posts$pageInfo),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  TRes edges(
+          Iterable<Query$HashtagLetters$posts$edges?>? Function(
+                  Iterable<
+                      CopyWith$Query$HashtagLetters$posts$edges<
+                          Query$HashtagLetters$posts$edges>?>?)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges?.map((e) => e == null
+                  ? null
+                  : CopyWith$Query$HashtagLetters$posts$edges(e, (i) => i)))
+              ?.toList());
+  CopyWith$Query$HashtagLetters$posts$pageInfo<TRes> get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Query$HashtagLetters$posts$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$HashtagLetters$posts<TRes>
+    implements CopyWith$Query$HashtagLetters$posts<TRes> {
+  _CopyWithStubImpl$Query$HashtagLetters$posts(this._res);
+
+  TRes _res;
+
+  call(
+          {List<Query$HashtagLetters$posts$edges?>? edges,
+          Query$HashtagLetters$posts$pageInfo? pageInfo,
+          String? $__typename}) =>
+      _res;
+  edges(_fn) => _res;
+  CopyWith$Query$HashtagLetters$posts$pageInfo<TRes> get pageInfo =>
+      CopyWith$Query$HashtagLetters$posts$pageInfo.stub(_res);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$HashtagLetters$posts$edges {
+  Query$HashtagLetters$posts$edges({this.node, required this.$__typename});
+
+  @override
+  factory Query$HashtagLetters$posts$edges.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$HashtagLetters$posts$edgesFromJson(json);
+
+  final Fragment$LetterSummary? node;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$HashtagLetters$posts$edgesToJson(this);
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$node, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$HashtagLetters$posts$edges) ||
+        runtimeType != other.runtimeType) return false;
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$HashtagLetters$posts$edges
+    on Query$HashtagLetters$posts$edges {
+  CopyWith$Query$HashtagLetters$posts$edges<Query$HashtagLetters$posts$edges>
+      get copyWith => CopyWith$Query$HashtagLetters$posts$edges(this, (i) => i);
+}
+
+abstract class CopyWith$Query$HashtagLetters$posts$edges<TRes> {
+  factory CopyWith$Query$HashtagLetters$posts$edges(
+          Query$HashtagLetters$posts$edges instance,
+          TRes Function(Query$HashtagLetters$posts$edges) then) =
+      _CopyWithImpl$Query$HashtagLetters$posts$edges;
+
+  factory CopyWith$Query$HashtagLetters$posts$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$HashtagLetters$posts$edges;
+
+  TRes call({Fragment$LetterSummary? node, String? $__typename});
+  CopyWith$Fragment$LetterSummary<TRes> get node;
+}
+
+class _CopyWithImpl$Query$HashtagLetters$posts$edges<TRes>
+    implements CopyWith$Query$HashtagLetters$posts$edges<TRes> {
+  _CopyWithImpl$Query$HashtagLetters$posts$edges(this._instance, this._then);
+
+  final Query$HashtagLetters$posts$edges _instance;
+
+  final TRes Function(Query$HashtagLetters$posts$edges) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$HashtagLetters$posts$edges(
+          node: node == _undefined
+              ? _instance.node
+              : (node as Fragment$LetterSummary?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Fragment$LetterSummary<TRes> get node {
+    final local$node = _instance.node;
+    return local$node == null
+        ? CopyWith$Fragment$LetterSummary.stub(_then(_instance))
+        : CopyWith$Fragment$LetterSummary(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$HashtagLetters$posts$edges<TRes>
+    implements CopyWith$Query$HashtagLetters$posts$edges<TRes> {
+  _CopyWithStubImpl$Query$HashtagLetters$posts$edges(this._res);
+
+  TRes _res;
+
+  call({Fragment$LetterSummary? node, String? $__typename}) => _res;
+  CopyWith$Fragment$LetterSummary<TRes> get node =>
+      CopyWith$Fragment$LetterSummary.stub(_res);
+}
+
+@JsonSerializable(explicitToJson: true)
+class Query$HashtagLetters$posts$pageInfo {
+  Query$HashtagLetters$posts$pageInfo(
+      {this.endCursor, required this.hasNextPage, required this.$__typename});
+
+  @override
+  factory Query$HashtagLetters$posts$pageInfo.fromJson(
+          Map<String, dynamic> json) =>
+      _$Query$HashtagLetters$posts$pageInfoFromJson(json);
+
+  final String? endCursor;
+
+  final bool hasNextPage;
+
+  @JsonKey(name: '__typename')
+  final String $__typename;
+
+  Map<String, dynamic> toJson() =>
+      _$Query$HashtagLetters$posts$pageInfoToJson(this);
+  int get hashCode {
+    final l$endCursor = endCursor;
+    final l$hasNextPage = hasNextPage;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$endCursor, l$hasNextPage, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (!(other is Query$HashtagLetters$posts$pageInfo) ||
+        runtimeType != other.runtimeType) return false;
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) return false;
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) return false;
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) return false;
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$HashtagLetters$posts$pageInfo
+    on Query$HashtagLetters$posts$pageInfo {
+  CopyWith$Query$HashtagLetters$posts$pageInfo<
+          Query$HashtagLetters$posts$pageInfo>
+      get copyWith =>
+          CopyWith$Query$HashtagLetters$posts$pageInfo(this, (i) => i);
+}
+
+abstract class CopyWith$Query$HashtagLetters$posts$pageInfo<TRes> {
+  factory CopyWith$Query$HashtagLetters$posts$pageInfo(
+          Query$HashtagLetters$posts$pageInfo instance,
+          TRes Function(Query$HashtagLetters$posts$pageInfo) then) =
+      _CopyWithImpl$Query$HashtagLetters$posts$pageInfo;
+
+  factory CopyWith$Query$HashtagLetters$posts$pageInfo.stub(TRes res) =
+      _CopyWithStubImpl$Query$HashtagLetters$posts$pageInfo;
+
+  TRes call({String? endCursor, bool? hasNextPage, String? $__typename});
+}
+
+class _CopyWithImpl$Query$HashtagLetters$posts$pageInfo<TRes>
+    implements CopyWith$Query$HashtagLetters$posts$pageInfo<TRes> {
+  _CopyWithImpl$Query$HashtagLetters$posts$pageInfo(this._instance, this._then);
+
+  final Query$HashtagLetters$posts$pageInfo _instance;
+
+  final TRes Function(Query$HashtagLetters$posts$pageInfo) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? endCursor = _undefined,
+          Object? hasNextPage = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$HashtagLetters$posts$pageInfo(
+          endCursor: endCursor == _undefined
+              ? _instance.endCursor
+              : (endCursor as String?),
+          hasNextPage: hasNextPage == _undefined || hasNextPage == null
+              ? _instance.hasNextPage
+              : (hasNextPage as bool),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$HashtagLetters$posts$pageInfo<TRes>
+    implements CopyWith$Query$HashtagLetters$posts$pageInfo<TRes> {
+  _CopyWithStubImpl$Query$HashtagLetters$posts$pageInfo(this._res);
 
   TRes _res;
 

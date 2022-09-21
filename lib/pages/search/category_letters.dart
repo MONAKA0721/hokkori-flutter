@@ -27,6 +27,7 @@ class CategoryLetters extends HookWidget {
     }
     final letters = result.parsedData?.posts.edges ?? [];
     final String? fetchMoreCursor = result.parsedData?.posts.pageInfo.endCursor;
+    final hasNextPage = result.parsedData?.posts.pageInfo.hasNextPage;
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Row(
@@ -47,10 +48,12 @@ class CategoryLetters extends HookWidget {
         ],
       ),
       ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
-      FetchMoreButton(
-        cursor: fetchMoreCursor,
-        categoryID: categoryID,
-      ),
+      hasNextPage!
+          ? FetchMoreButton(
+              cursor: fetchMoreCursor,
+              categoryID: categoryID,
+            )
+          : Container(),
     ]);
   }
 }
