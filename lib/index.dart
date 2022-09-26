@@ -94,15 +94,15 @@ class _IndexState extends ConsumerState<Index> {
                 ),
                 label: 'つたえる',
               ),
-              BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  'assets/mail.svg',
-                  color: _selectedIndex == 3
-                      ? Colors.white
-                      : Colors.white.withOpacity(0.5),
-                ),
-                label: 'メール',
-              ),
+              // BottomNavigationBarItem(
+              //   icon: SvgPicture.asset(
+              //     'assets/mail.svg',
+              //     color: _selectedIndex == 3
+              //         ? Colors.white
+              //         : Colors.white.withOpacity(0.5),
+              //   ),
+              //   label: 'メール',
+              // ),
             ],
           )),
     );
