@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hokkori/graphql/ent.graphql.dart';
+import 'package:hokkori/pages/common/letters.dart';
 import 'package:hokkori/pages/search/hashtag_header.dart';
-import 'package:hokkori/pages/search/hashtag_letters.dart';
 import 'package:hokkori/pages/search/hashtag_praises.dart';
 
 class HashtagPageArguments {
@@ -34,9 +35,15 @@ class HashtagPage extends StatelessWidget {
                 const SizedBox(
                   height: 40,
                 ),
-                HashtagLetters(
-                  hashtagID: args.id,
-                  hashtagTitle: args.title,
+                Letters(
+                  first: 3,
+                  or: [
+                    Input$PostWhereInput(hasHashtagsWith: [
+                      Input$HashtagWhereInput(id: args.id)
+                    ]),
+                    Input$PostWhereInput(titleContainsFold: args.title),
+                    Input$PostWhereInput(contentContainsFold: args.title)
+                  ],
                 ),
                 const SizedBox(
                   height: 20,

@@ -28,22 +28,3 @@ query TopWorks($first: Int) {
     }
   }
 }
-
-query HomeLetters($first: Int, $after: Cursor) {
-  posts(
-    after: $after
-    first: $first
-    orderBy: { direction: DESC, field: CREATE_TIME }
-    where: { type: letter }
-  ) {
-    edges {
-      node {
-        ...LetterSummary
-      }
-    }
-    pageInfo {
-      endCursor
-      hasNextPage
-    }
-  }
-}

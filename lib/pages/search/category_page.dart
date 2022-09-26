@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hokkori/graphql/ent.graphql.dart';
+import 'package:hokkori/pages/common/letters.dart';
 import 'package:hokkori/pages/search/category_header.dart';
-import 'package:hokkori/pages/search/category_letters.dart';
 import 'package:hokkori/pages/search/category_praises.dart';
 
 class CategoryPageArguments {
@@ -31,8 +32,9 @@ class CategoryPage extends StatelessWidget {
                 const SizedBox(
                   height: 40,
                 ),
-                CategoryLetters(
-                  categoryID: args.id,
+                Letters(
+                  first: 3,
+                  hasCategoryWith: [Input$CategoryWhereInput(id: args.id)],
                 ),
                 const SizedBox(
                   height: 20,

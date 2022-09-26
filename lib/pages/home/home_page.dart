@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hokkori/pages/home/letters.dart';
+import 'package:hokkori/pages/common/letters.dart';
 import 'package:hokkori/pages/home/praises.dart';
 import 'package:hokkori/pages/home/works.dart';
 import 'package:hokkori/utils/colors.dart';
@@ -52,7 +52,9 @@ class HomePage extends StatelessWidget {
                     height: 40,
                   ),
                   HomeWorks(),
-                  HomeLetters(),
+                  Padding(
+                      padding: EdgeInsets.only(left: 16, right: 16, top: 40),
+                      child: Letters(first: 3)),
                   SizedBox(
                     height: 20,
                   )

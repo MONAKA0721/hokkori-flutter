@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hokkori/graphql/ent.graphql.dart';
+import 'package:hokkori/pages/common/common.graphql.dart';
 import 'package:hokkori/pages/common/letter.dart';
-import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 
-class HashtagLetters extends HookWidget {
-  final String hashtagID;
-  final String hashtagTitle;
-  const HashtagLetters(
-      {super.key, required this.hashtagID, required this.hashtagTitle});
+class Letters extends HookWidget {
+  final int? first;
+  final List<Input$PostWhereInput>? or;
+  final List<Input$CategoryWhereInput>? hasCategoryWith;
+  const Letters({super.key, this.first, this.or, this.hasCategoryWith});
 
   @override
   Widget build(BuildContext context) {
-    final result = useQuery$HashtagLetters(Options$Query$HashtagLetters(
-            variables: Variables$Query$HashtagLetters(
-                hashtagID: hashtagID, first: 3, searchText: hashtagTitle)))
+    final result = useQuery$Letters(Options$Query$Letters(
+            fetchPolicy: FetchPolicy.networkOnly,
+            variables: Variables$Query$Letters(
+                first: first, or: or, hasCategoryWith: hasCategoryWith)))
         .result;
 
     if (result.hasException) {
@@ -52,34 +55,38 @@ class HashtagLetters extends HookWidget {
       ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
       hasNextPage!
           ? FetchMoreButton(
-              cursor: fetchMoreCursor,
-              hashtagID: hashtagID,
-              hashtagTitle: hashtagTitle,
-            )
+              first: first,
+              or: or,
+              hasCategoryWith: hasCategoryWith,
+              after: fetchMoreCursor)
           : Container(),
     ]);
   }
 }
 
 class FetchMoreButton extends HookWidget {
-  final String? cursor;
-  final String hashtagID;
-  final String hashtagTitle;
+  final int? first;
+  final List<Input$PostWhereInput>? or;
+  final List<Input$CategoryWhereInput>? hasCategoryWith;
+  final String? after;
+
   const FetchMoreButton(
       {super.key,
-      required this.cursor,
-      required this.hashtagID,
-      required this.hashtagTitle});
+      required this.first,
+      required this.or,
+      required this.hasCategoryWith,
+      required this.after});
 
   @override
   Widget build(BuildContext context) {
     final pushed = useState(false);
-    final result = useQuery$HashtagLetters(Options$Query$HashtagLetters(
-            variables: Variables$Query$HashtagLetters(
-                first: 3,
-                after: cursor,
-                hashtagID: hashtagID,
-                searchText: hashtagTitle)))
+    final result = useQuery$Letters(Options$Query$Letters(
+            fetchPolicy: FetchPolicy.networkOnly,
+            variables: Variables$Query$Letters(
+                first: first,
+                or: or,
+                hasCategoryWith: hasCategoryWith,
+                after: after)))
         .result;
 
     if (result.hasException) {
@@ -101,10 +108,10 @@ class FetchMoreButton extends HookWidget {
             ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
             hasNextPage!
                 ? FetchMoreButton(
-                    cursor: fetchMoreCursor,
-                    hashtagID: hashtagID,
-                    hashtagTitle: hashtagTitle,
-                  )
+                    first: first,
+                    or: or,
+                    hasCategoryWith: hasCategoryWith,
+                    after: fetchMoreCursor)
                 : Container()
           ])
         : Column(children: [
