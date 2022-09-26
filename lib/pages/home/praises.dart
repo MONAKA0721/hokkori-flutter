@@ -101,8 +101,9 @@ class FetchMoreButton extends HookWidget {
                       style: OutlinedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(
                             vertical: 16, horizontal: 20),
-                        backgroundColor: blueHomeColor,
-                        side: const BorderSide(color: blueHomeColor, width: 2),
+                        backgroundColor: blueButtonColor,
+                        side:
+                            const BorderSide(color: blueButtonColor, width: 2),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         ),

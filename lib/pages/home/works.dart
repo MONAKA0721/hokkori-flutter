@@ -26,8 +26,7 @@ class HomeWorks extends HookWidget {
     }
     final works = result.parsedData?.works.edges ?? [];
 
-    return Container(
-        decoration: const BoxDecoration(color: Color(0xffF8F7F7)),
+    return Padding(
         padding: const EdgeInsets.only(left: 16, top: 40),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(
@@ -91,11 +90,11 @@ class Work extends StatelessWidget {
               children: [
                 Text(
                   '★${work.title}',
-                  style: const TextStyle(fontSize: 12, color: blueHomeColor),
+                  style: const TextStyle(fontSize: 12, color: blueButtonColor),
                 ),
                 const Icon(
                   Icons.chevron_right,
-                  color: blueHomeColor,
+                  color: blueButtonColor,
                   size: 12,
                 )
               ])),

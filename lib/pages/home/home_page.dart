@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hokkori/pages/home/letters.dart';
 import 'package:hokkori/pages/home/praises.dart';
 import 'package:hokkori/pages/home/works.dart';
+import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/header.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -42,7 +43,7 @@ class HomePage extends StatelessWidget {
       const Header(),
       Expanded(
           child: Container(
-              decoration: const BoxDecoration(color: Colors.white),
+              decoration: const BoxDecoration(color: backgroundColor),
               child: SingleChildScrollView(
                   child: Column(
                 children: const [

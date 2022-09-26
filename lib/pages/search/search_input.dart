@@ -10,13 +10,21 @@ class SearchInput extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-      decoration: const BoxDecoration(color: greyColor),
+      decoration: const BoxDecoration(color: backgroundColor),
       child: SizedBox(
         child: TextField(
             onChanged: (value) {
               ref.watch(searchTextProvider.notifier).state = value;
             },
             decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(50),
+                borderSide: BorderSide(color: Colors.black.withOpacity(0.2)),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(50),
+                borderSide: BorderSide(color: Colors.black.withOpacity(0.2)),
+              ),
               hintText: "ほっこりをさがす",
               hintStyle: const TextStyle(color: headingColor),
               prefixIcon: const Icon(
@@ -29,10 +37,6 @@ class SearchInput extends ConsumerWidget {
               filled: true,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(50),
-                borderSide: const BorderSide(
-                  width: 0,
-                  style: BorderStyle.none,
-                ),
               ),
             )),
         height: 40,

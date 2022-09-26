@@ -60,7 +60,7 @@ class SearchPage extends ConsumerWidget {
                             padding: const EdgeInsets.only(
                                 top: 30, left: 20, bottom: 50),
                             decoration:
-                                const BoxDecoration(color: Color(0xffF8F7F7)),
+                                const BoxDecoration(color: backgroundColor),
                             child: Column(
                               children: const [
                                 TopicContents(type: ContentType.praise),
@@ -75,7 +75,7 @@ class SearchPage extends ConsumerWidget {
                               padding: const EdgeInsets.only(
                                   top: 30, left: 20, right: 20, bottom: 50),
                               decoration:
-                                  const BoxDecoration(color: Colors.white),
+                                  const BoxDecoration(color: backgroundColor),
                               child: const TopLetters())
                         ],
                       )))
