@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hokkori/pages/profile/posted_letters.dart';
-import 'package:hokkori/pages/profile/posted_praises.dart';
+import 'package:hokkori/graphql/ent.graphql.dart';
+import 'package:hokkori/pages/common/letters.dart';
+import 'package:hokkori/pages/common/praises.dart';
 import 'package:hokkori/pages/profile/posted_works.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -61,9 +62,11 @@ class ProfileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      color: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
+      child: SingleChildScrollView(
+          child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
@@ -74,13 +77,29 @@ class ProfileBody extends StatelessWidget {
                   backgroundImage: NetworkImage(
                       "https://i1.wp.com/hanenews.com/wp-content/uploads/2018/12/b34ea738486a9ced02c5bc7152595187.jpg?fit=265%2C335&ssl=1")),
               Column(
-                children: [const Text("10"), const Text("投稿")],
+                children: [
+                  const Text(
+                    "10",
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  ),
+                  const Text("投稿")
+                ],
               ),
               Column(
-                children: [const Text("75"), const Text("フォロー")],
+                children: [
+                  const Text("75",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                  const Text("フォロー")
+                ],
               ),
               Column(
-                children: [const Text("30"), const Text("フォロワー")],
+                children: [
+                  const Text("30",
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                  const Text("フォロワー")
+                ],
               )
             ],
           ),
@@ -100,25 +119,33 @@ class ProfileBody extends StatelessWidget {
           ),
           OutlinedButton(
             style: OutlinedButton.styleFrom(
+                side: const BorderSide(color: Color(0xffF3F2F2)),
+                backgroundColor: const Color(0xffF3F2F2),
                 fixedSize: const Size.fromWidth(double.maxFinite)),
             onPressed: () {},
-            child: Text("プロフィールを編集"),
+            child: const Text(
+              "プロフィールを編集",
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
           ),
           const PostedItems()
         ],
-      ),
+      )),
     );
   }
 }
 
-class PostedItems extends StatefulWidget {
+class PostedItems extends ConsumerStatefulWidget {
   const PostedItems({Key? key}) : super(key: key);
 
   @override
-  State<PostedItems> createState() => _PostedItemsState();
+  ConsumerState<PostedItems> createState() => _PostedItemsState();
 }
 
-class _PostedItemsState extends State<PostedItems> {
+class _PostedItemsState extends ConsumerState<PostedItems> {
   int _selectedItemsIndex = 1;
 
   Widget _itemsTab(int index, String name) {
@@ -154,10 +181,28 @@ class _PostedItemsState extends State<PostedItems> {
         items = const PostedWorks();
         break;
       case 1:
-        items = const PostedLetters();
+        items = Letters(
+          hasHeading: false,
+          or: [
+            Input$PostWhereInput(hasOwnerWith: [
+              Input$UserWhereInput(
+                id: ref.watch(userProvider).id,
+              )
+            ])
+          ],
+        );
         break;
       case 2:
-        items = const PostedPraises();
+        items = Praises(
+          hasHeading: false,
+          or: [
+            Input$PostWhereInput(hasOwnerWith: [
+              Input$UserWhereInput(
+                id: ref.watch(userProvider).id,
+              )
+            ])
+          ],
+        );
         break;
       default:
         items = Container();

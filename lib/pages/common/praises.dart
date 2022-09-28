@@ -10,7 +10,13 @@ class Praises extends HookWidget {
   final int? first;
   final List<Input$PostWhereInput>? or;
   final List<Input$CategoryWhereInput>? hasCategoryWith;
-  const Praises({super.key, this.first, this.or, this.hasCategoryWith});
+  final bool hasHeading;
+  const Praises(
+      {super.key,
+      this.first,
+      this.or,
+      this.hasCategoryWith,
+      this.hasHeading = true});
 
   @override
   Widget build(BuildContext context) {
@@ -35,23 +41,25 @@ class Praises extends HookWidget {
     final hasNextPage = result.parsedData?.posts.pageInfo.hasNextPage;
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: const [
-          Icon(
-            Icons.favorite_border,
-            size: 30,
-            color: primaryColor,
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Text(
-            "ほっこり",
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
-          ),
-        ],
-      ),
+      hasHeading
+          ? Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: const [
+                Icon(
+                  Icons.favorite_border,
+                  size: 30,
+                  color: primaryColor,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "ほっこり",
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+                ),
+              ],
+            )
+          : Container(),
       ...praises.map((praise) => Praise(praise: praise!.node!)).toList(),
       hasNextPage!
           ? FetchMoreButton(
