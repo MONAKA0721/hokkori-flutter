@@ -9,9 +9,9 @@ class HomeWorks extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final result = useQuery$TopWorks(Options$Query$TopWorks(
+    final result = useQuery$HomeWorks(Options$Query$HomeWorks(
             fetchPolicy: FetchPolicy.networkOnly,
-            variables: Variables$Query$TopWorks(first: 6)))
+            variables: Variables$Query$HomeWorks(first: 6)))
         .result;
 
     if (result.hasException) {
@@ -66,7 +66,7 @@ class HomeWorks extends HookWidget {
 
 class Work extends StatelessWidget {
   const Work({super.key, required this.work});
-  final Query$TopWorks$works$edges$node work;
+  final Query$HomeWorks$works$edges$node work;
 
   @override
   Widget build(BuildContext context) {

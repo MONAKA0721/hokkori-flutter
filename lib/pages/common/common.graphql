@@ -31,6 +31,30 @@ fragment PraiseSummary on Post {
   }
 }
 
+query Praises(
+  $first: Int
+  $after: Cursor
+  $or: [PostWhereInput!]
+  $hasCategoryWith: [CategoryWhereInput!]
+) {
+  posts(
+    after: $after
+    first: $first
+    orderBy: { direction: DESC, field: CREATE_TIME }
+    where: { type: praise, hasCategoryWith: $hasCategoryWith, or: $or }
+  ) {
+    edges {
+      node {
+        ...PraiseSummary
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
 query Letters(
   $first: Int
   $after: Cursor

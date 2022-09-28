@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hokkori/graphql/ent.graphql.dart';
 import 'package:hokkori/pages/common/letters.dart';
+import 'package:hokkori/pages/common/praises.dart';
 import 'package:hokkori/pages/search/category_header.dart';
-import 'package:hokkori/pages/search/category_praises.dart';
 
 class CategoryPageArguments {
   final String id;
@@ -28,7 +28,10 @@ class CategoryPage extends StatelessWidget {
             child: SingleChildScrollView(
                 child: Column(
               children: [
-                CategoryPraises(categoryID: args.id),
+                Praises(
+                  first: 3,
+                  hasCategoryWith: [Input$CategoryWhereInput(id: args.id)],
+                ),
                 const SizedBox(
                   height: 40,
                 ),

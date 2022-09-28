@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hokkori/graphql/ent.graphql.dart';
 import 'package:hokkori/pages/common/letters.dart';
+import 'package:hokkori/pages/common/praises.dart';
 import 'package:hokkori/pages/search/hashtag_header.dart';
-import 'package:hokkori/pages/search/hashtag_praises.dart';
 
 class HashtagPageArguments {
   final String id;
@@ -28,9 +28,15 @@ class HashtagPage extends StatelessWidget {
             child: SingleChildScrollView(
                 child: Column(
               children: [
-                HashtagPraises(
-                  hashtagID: args.id,
-                  hashtagTitle: args.title,
+                Praises(
+                  first: 3,
+                  or: [
+                    Input$PostWhereInput(hasHashtagsWith: [
+                      Input$HashtagWhereInput(id: args.id)
+                    ]),
+                    Input$PostWhereInput(titleContainsFold: args.title),
+                    Input$PostWhereInput(contentContainsFold: args.title)
+                  ],
                 ),
                 const SizedBox(
                   height: 40,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hokkori/pages/common/letters.dart';
-import 'package:hokkori/pages/home/praises.dart';
+import 'package:hokkori/pages/common/praises.dart';
 import 'package:hokkori/pages/home/works.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/header.dart';
@@ -47,7 +47,11 @@ class HomePage extends StatelessWidget {
               child: SingleChildScrollView(
                   child: Column(
                 children: const [
-                  HomePraises(),
+                  Padding(
+                      padding: EdgeInsets.only(left: 16, right: 16, top: 12),
+                      child: Praises(
+                        first: 3,
+                      )),
                   SizedBox(
                     height: 40,
                   ),

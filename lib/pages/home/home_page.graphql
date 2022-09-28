@@ -1,23 +1,4 @@
-query HomePraises($first: Int, $after: Cursor) {
-  posts(
-    after: $after
-    first: $first
-    orderBy: { direction: DESC, field: CREATE_TIME }
-    where: { type: praise }
-  ) {
-    edges {
-      node {
-        ...PraiseSummary
-      }
-    }
-    pageInfo {
-      endCursor
-      hasNextPage
-    }
-  }
-}
-
-query TopWorks($first: Int) {
+query HomeWorks($first: Int) {
   works(first: $first) {
     edges {
       node {

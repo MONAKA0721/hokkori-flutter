@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hokkori/graphql/ent.graphql.dart';
+import 'package:hokkori/pages/common/common.graphql.dart';
 import 'package:hokkori/pages/common/praise.dart';
-import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 
-class CategoryPraises extends HookWidget {
-  final String categoryID;
-  const CategoryPraises({super.key, required this.categoryID});
+class Praises extends HookWidget {
+  final int? first;
+  final List<Input$PostWhereInput>? or;
+  final List<Input$CategoryWhereInput>? hasCategoryWith;
+  const Praises({super.key, this.first, this.or, this.hasCategoryWith});
 
   @override
   Widget build(BuildContext context) {
-    final result = useQuery$CategoryPraises(Options$Query$CategoryPraises(
-            variables: Variables$Query$CategoryPraises(
-                first: 3, categoryID: categoryID)))
+    final result = useQuery$Praises(Options$Query$Praises(
+            fetchPolicy: FetchPolicy.networkOnly,
+            variables: Variables$Query$Praises(
+                first: first, or: or, hasCategoryWith: hasCategoryWith)))
         .result;
 
     if (result.hasException) {
@@ -50,26 +55,36 @@ class CategoryPraises extends HookWidget {
       ...praises.map((praise) => Praise(praise: praise!.node!)).toList(),
       hasNextPage!
           ? FetchMoreButton(
-              categoryID: categoryID,
-              cursor: fetchMoreCursor,
-            )
+              first: first,
+              or: or,
+              hasCategoryWith: hasCategoryWith,
+              after: fetchMoreCursor)
           : Container()
     ]);
   }
 }
 
 class FetchMoreButton extends HookWidget {
-  final String? cursor;
-  final String categoryID;
+  final int? first;
+  final List<Input$PostWhereInput>? or;
+  final List<Input$CategoryWhereInput>? hasCategoryWith;
+  final String? after;
   const FetchMoreButton(
-      {super.key, required this.cursor, required this.categoryID});
+      {super.key,
+      required this.first,
+      required this.or,
+      required this.hasCategoryWith,
+      required this.after});
 
   @override
   Widget build(BuildContext context) {
     final pushed = useState(false);
-    final result = useQuery$CategoryPraises(Options$Query$CategoryPraises(
-            variables: Variables$Query$CategoryPraises(
-                first: 3, after: cursor, categoryID: categoryID)))
+    final result = useQuery$Praises(Options$Query$Praises(
+            variables: Variables$Query$Praises(
+                first: first,
+                or: or,
+                hasCategoryWith: hasCategoryWith,
+                after: after)))
         .result;
 
     if (result.hasException) {
@@ -91,9 +106,10 @@ class FetchMoreButton extends HookWidget {
             ...praises.map((praise) => Praise(praise: praise!.node!)).toList(),
             hasNextPage!
                 ? FetchMoreButton(
-                    cursor: fetchMoreCursor,
-                    categoryID: categoryID,
-                  )
+                    first: first,
+                    or: or,
+                    hasCategoryWith: hasCategoryWith,
+                    after: fetchMoreCursor)
                 : Container()
           ])
         : Column(children: [
