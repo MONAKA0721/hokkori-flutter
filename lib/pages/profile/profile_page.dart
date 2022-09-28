@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/graphql/ent.graphql.dart';
 import 'package:hokkori/pages/common/letters.dart';
 import 'package:hokkori/pages/common/praises.dart';
 import 'package:hokkori/pages/profile/posted_works.dart';
+import 'package:hokkori/pages/profile/profile_page.graphql.dart';
+import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -57,11 +60,28 @@ class ProfilePage extends ConsumerWidget {
   }
 }
 
-class ProfileBody extends StatelessWidget {
+class ProfileBody extends HookConsumerWidget {
   const ProfileBody({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final result = useQuery$MyInfo(Options$Query$MyInfo(
+        fetchPolicy: FetchPolicy.networkOnly,
+        variables: Variables$Query$MyInfo(
+          userID: ref.watch(userProvider).id,
+        ))).result;
+    if (result.hasException) {
+      return Text(result.exception.toString());
+    }
+    if (result.isLoading) {
+      return const Center(
+        child: CircularProgressIndicator(
+          color: primaryColor,
+        ),
+      );
+    }
+    final postCount = result.parsedData?.posts.totalCount;
+
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -78,27 +98,28 @@ class ProfileBody extends StatelessWidget {
                       "https://i1.wp.com/hanenews.com/wp-content/uploads/2018/12/b34ea738486a9ced02c5bc7152595187.jpg?fit=265%2C335&ssl=1")),
               Column(
                 children: [
-                  const Text(
-                    "10",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                  Text(
+                    postCount.toString(),
+                    style: const TextStyle(
+                        fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   const Text("投稿")
                 ],
               ),
               Column(
-                children: [
-                  const Text("75",
+                children: const [
+                  Text("75",
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                  const Text("フォロー")
+                  Text("フォロー")
                 ],
               ),
               Column(
-                children: [
-                  const Text("30",
+                children: const [
+                  Text("30",
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                  const Text("フォロワー")
+                  Text("フォロワー")
                 ],
               )
             ],
@@ -211,7 +232,11 @@ class _PostedItemsState extends ConsumerState<PostedItems> {
     return Column(
       children: [
         Row(
-          children: [_itemsTab(0, "a"), _itemsTab(1, "b"), _itemsTab(2, "c")],
+          children: [
+            _itemsTab(0, "作品"),
+            _itemsTab(1, "レター"),
+            _itemsTab(2, "ほっこり")
+          ],
         ),
         items
       ],

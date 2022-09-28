@@ -1,0 +1,5 @@
+query MyInfo($userID: ID) {
+  posts(where: { hasOwnerWith: { id: $userID } }) {
+    totalCount
+  }
+}
