@@ -124,6 +124,8 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
             ),
             Flexible(
                 child: TextField(
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
               controller: _profileController,
               decoration: const InputDecoration(border: InputBorder.none),
             )),

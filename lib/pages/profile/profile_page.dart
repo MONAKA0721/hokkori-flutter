@@ -56,7 +56,7 @@ class ProfilePage extends ConsumerWidget {
             },
           ),
           title: Text(
-            ref.watch(userProvider).name,
+            ref.watch(userProvider).username,
             style: const TextStyle(color: Colors.black),
           ),
         ),
@@ -133,14 +133,14 @@ class ProfileBody extends HookConsumerWidget {
           const SizedBox(
             height: 10,
           ),
-          const Text(
-            "ハンドルネームはいりますああああ",
-            style: TextStyle(fontWeight: FontWeight.bold),
+          Text(
+            ref.watch(userProvider).name,
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           const SizedBox(
             height: 10,
           ),
-          const Text("グラフィックデザイン/東京\nコラージュ作品よくつくります。あああああ"),
+          Text(ref.watch(userProvider).profile),
           const SizedBox(
             height: 10,
           ),
