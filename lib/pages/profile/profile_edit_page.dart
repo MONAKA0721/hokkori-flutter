@@ -3,6 +3,7 @@ import 'package:hokkori/graphql/ent.graphql.dart';
 import 'package:hokkori/pages/profile/profile_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
+import 'package:hokkori/utils/user.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ProfileEditPage extends StatefulHookConsumerWidget {
@@ -24,9 +25,7 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
     _profileController.text = ref.watch(userProvider).profile;
 
     final avatarURL = ref.watch(userProvider).avatarURL;
-    final updateUserMutation =
-        useMutation$UpdateUser(WidgetOptions$Mutation$UpdateUser());
-    final updateUserResult = updateUserMutation.result;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -45,26 +44,11 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
             },
           ),
           actions: [
-            updateUserResult.isLoading
-                ? const CircularProgressIndicator()
-                : TextButton(
-                    onPressed: () async {
-                      final result = updateUserMutation
-                          .runMutation(Variables$Mutation$UpdateUser(
-                              userID: ref.watch(userProvider).id,
-                              input: Input$UpdateUserInput(
-                                name: _nameController.text,
-                                username: _usernameController.text,
-                                profile: _profileController.text,
-                              )));
-                      if ((await result.networkResult)!.hasException) {
-                        return;
-                      }
-                    },
-                    child: const Text(
-                      "決定",
-                      style: TextStyle(color: blueButtonColor),
-                    ))
+            SubmitButton(
+              nameController: _nameController,
+              usernameController: _usernameController,
+              profileController: _profileController,
+            )
           ],
           title:
               const Text("プロフィールを編集", style: TextStyle(color: Colors.black))),
@@ -153,5 +137,58 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
         ),
       ]),
     );
+  }
+}
+
+class SubmitButton extends HookConsumerWidget {
+  final TextEditingController nameController;
+  final TextEditingController usernameController;
+  final TextEditingController profileController;
+  const SubmitButton(
+      {Key? key,
+      required this.nameController,
+      required this.usernameController,
+      required this.profileController})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final updateUserMutation =
+        useMutation$UpdateUser(WidgetOptions$Mutation$UpdateUser());
+    final updateUserResult = updateUserMutation.result;
+    return updateUserResult.isLoading
+        ? const SizedBox(
+            width: 70,
+            height: 70,
+            child: Center(child: CircularProgressIndicator()))
+        : TextButton(
+            onPressed: () async {
+              final result =
+                  updateUserMutation.runMutation(Variables$Mutation$UpdateUser(
+                      userID: ref.watch(userProvider).id,
+                      input: Input$UpdateUserInput(
+                        name: nameController.text,
+                        username: usernameController.text,
+                        profile: profileController.text,
+                      )));
+              final networkResult = await result.networkResult;
+              if (networkResult!.hasException) {
+                return;
+              }
+              final updatedUser = networkResult.parsedData?.updateUser;
+              ref.watch(userProvider.notifier).state = User(
+                  updatedUser!.id,
+                  updatedUser.name,
+                  updatedUser.username!,
+                  updatedUser.profile!,
+                  updatedUser.avatarURL!);
+              Navigator.of(
+                context,
+              ).pop();
+            },
+            child: const Text(
+              "決定",
+              style: TextStyle(color: blueButtonColor),
+            ));
   }
 }

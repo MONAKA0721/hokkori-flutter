@@ -3,10 +3,7 @@ import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
-import 'package:json_annotation/json_annotation.dart';
-part 'common.graphql.g.dart';
 
-@JsonSerializable(explicitToJson: true)
 class Fragment$LetterSummary {
   Fragment$LetterSummary(
       {required this.title,
@@ -17,9 +14,25 @@ class Fragment$LetterSummary {
       required this.category,
       required this.$__typename});
 
-  @override
-  factory Fragment$LetterSummary.fromJson(Map<String, dynamic> json) =>
-      _$Fragment$LetterSummaryFromJson(json);
+  factory Fragment$LetterSummary.fromJson(Map<String, dynamic> json) {
+    final l$title = json['title'];
+    final l$id = json['id'];
+    final l$content = json['content'];
+    final l$createTime = json['createTime'];
+    final l$owner = json['owner'];
+    final l$category = json['category'];
+    final l$$__typename = json['__typename'];
+    return Fragment$LetterSummary(
+        title: (l$title as String),
+        id: (l$id as String),
+        content: (l$content as String),
+        createTime: (l$createTime as String),
+        owner: Fragment$LetterSummary$owner.fromJson(
+            (l$owner as Map<String, dynamic>)),
+        category: Fragment$LetterSummary$category.fromJson(
+            (l$category as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final String title;
 
@@ -33,10 +46,28 @@ class Fragment$LetterSummary {
 
   final Fragment$LetterSummary$category category;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Fragment$LetterSummaryToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$content = content;
+    _resultData['content'] = l$content;
+    final l$createTime = createTime;
+    _resultData['createTime'] = l$createTime;
+    final l$owner = owner;
+    _resultData['owner'] = l$owner.toJson();
+    final l$category = category;
+    _resultData['category'] = l$category.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$title = title;
     final l$id = id;
@@ -58,30 +89,48 @@ class Fragment$LetterSummary {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Fragment$LetterSummary) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$LetterSummary) ||
+        runtimeType != other.runtimeType) {
       return false;
+    }
     final l$title = title;
     final lOther$title = other.title;
-    if (l$title != lOther$title) return false;
+    if (l$title != lOther$title) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$content = content;
     final lOther$content = other.content;
-    if (l$content != lOther$content) return false;
+    if (l$content != lOther$content) {
+      return false;
+    }
     final l$createTime = createTime;
     final lOther$createTime = other.createTime;
-    if (l$createTime != lOther$createTime) return false;
+    if (l$createTime != lOther$createTime) {
+      return false;
+    }
     final l$owner = owner;
     final lOther$owner = other.owner;
-    if (l$owner != lOther$owner) return false;
+    if (l$owner != lOther$owner) {
+      return false;
+    }
     final l$category = category;
     final lOther$category = other.category;
-    if (l$category != lOther$category) return false;
+    if (l$category != lOther$category) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -300,23 +349,38 @@ extension ClientExtension$Fragment$LetterSummary on graphql.GraphQLClient {
   }
 }
 
-@JsonSerializable(explicitToJson: true)
 class Fragment$LetterSummary$owner {
   Fragment$LetterSummary$owner(
       {required this.id, required this.name, required this.$__typename});
 
-  @override
-  factory Fragment$LetterSummary$owner.fromJson(Map<String, dynamic> json) =>
-      _$Fragment$LetterSummary$ownerFromJson(json);
+  factory Fragment$LetterSummary$owner.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$name = json['name'];
+    final l$$__typename = json['__typename'];
+    return Fragment$LetterSummary$owner(
+        id: (l$id as String),
+        name: (l$name as String),
+        $__typename: (l$$__typename as String));
+  }
 
   final String id;
 
   final String name;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Fragment$LetterSummary$ownerToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$id = id;
     final l$name = name;
@@ -326,18 +390,28 @@ class Fragment$LetterSummary$owner {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Fragment$LetterSummary$owner) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$name = name;
     final lOther$name = other.name;
-    if (l$name != lOther$name) return false;
+    if (l$name != lOther$name) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -393,24 +467,38 @@ class _CopyWithStubImpl$Fragment$LetterSummary$owner<TRes>
   call({String? id, String? name, String? $__typename}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Fragment$LetterSummary$category {
   Fragment$LetterSummary$category(
       {required this.id, required this.name, required this.$__typename});
 
-  @override
-  factory Fragment$LetterSummary$category.fromJson(Map<String, dynamic> json) =>
-      _$Fragment$LetterSummary$categoryFromJson(json);
+  factory Fragment$LetterSummary$category.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$name = json['name'];
+    final l$$__typename = json['__typename'];
+    return Fragment$LetterSummary$category(
+        id: (l$id as String),
+        name: (l$name as String),
+        $__typename: (l$$__typename as String));
+  }
 
   final String id;
 
   final String name;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() =>
-      _$Fragment$LetterSummary$categoryToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$id = id;
     final l$name = name;
@@ -420,18 +508,28 @@ class Fragment$LetterSummary$category {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Fragment$LetterSummary$category) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$name = name;
     final lOther$name = other.name;
-    if (l$name != lOther$name) return false;
+    if (l$name != lOther$name) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -487,7 +585,6 @@ class _CopyWithStubImpl$Fragment$LetterSummary$category<TRes>
   call({String? id, String? name, String? $__typename}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Fragment$PraiseSummary {
   Fragment$PraiseSummary(
       {required this.title,
@@ -498,9 +595,28 @@ class Fragment$PraiseSummary {
       required this.category,
       required this.$__typename});
 
-  @override
-  factory Fragment$PraiseSummary.fromJson(Map<String, dynamic> json) =>
-      _$Fragment$PraiseSummaryFromJson(json);
+  factory Fragment$PraiseSummary.fromJson(Map<String, dynamic> json) {
+    final l$title = json['title'];
+    final l$id = json['id'];
+    final l$content = json['content'];
+    final l$hashtags = json['hashtags'];
+    final l$owner = json['owner'];
+    final l$category = json['category'];
+    final l$$__typename = json['__typename'];
+    return Fragment$PraiseSummary(
+        title: (l$title as String),
+        id: (l$id as String),
+        content: (l$content as String),
+        hashtags: (l$hashtags as List<dynamic>?)
+            ?.map((e) => Fragment$PraiseSummary$hashtags.fromJson(
+                (e as Map<String, dynamic>)))
+            .toList(),
+        owner: Fragment$PraiseSummary$owner.fromJson(
+            (l$owner as Map<String, dynamic>)),
+        category: Fragment$PraiseSummary$category.fromJson(
+            (l$category as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final String title;
 
@@ -514,10 +630,28 @@ class Fragment$PraiseSummary {
 
   final Fragment$PraiseSummary$category category;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Fragment$PraiseSummaryToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$content = content;
+    _resultData['content'] = l$content;
+    final l$hashtags = hashtags;
+    _resultData['hashtags'] = l$hashtags?.map((e) => e.toJson()).toList();
+    final l$owner = owner;
+    _resultData['owner'] = l$owner.toJson();
+    final l$category = category;
+    _resultData['category'] = l$category.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$title = title;
     final l$id = id;
@@ -539,40 +673,59 @@ class Fragment$PraiseSummary {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Fragment$PraiseSummary) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$PraiseSummary) ||
+        runtimeType != other.runtimeType) {
       return false;
+    }
     final l$title = title;
     final lOther$title = other.title;
-    if (l$title != lOther$title) return false;
+    if (l$title != lOther$title) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$content = content;
     final lOther$content = other.content;
-    if (l$content != lOther$content) return false;
+    if (l$content != lOther$content) {
+      return false;
+    }
     final l$hashtags = hashtags;
     final lOther$hashtags = other.hashtags;
     if (l$hashtags != null && lOther$hashtags != null) {
-      if (l$hashtags.length != lOther$hashtags.length) return false;
+      if (l$hashtags.length != lOther$hashtags.length) {
+        return false;
+      }
       for (int i = 0; i < l$hashtags.length; i++) {
         final l$hashtags$entry = l$hashtags[i];
         final lOther$hashtags$entry = lOther$hashtags[i];
-        if (l$hashtags$entry != lOther$hashtags$entry) return false;
+        if (l$hashtags$entry != lOther$hashtags$entry) {
+          return false;
+        }
       }
     } else if (l$hashtags != lOther$hashtags) {
       return false;
     }
-
     final l$owner = owner;
     final lOther$owner = other.owner;
-    if (l$owner != lOther$owner) return false;
+    if (l$owner != lOther$owner) {
+      return false;
+    }
     final l$category = category;
     final lOther$category = other.category;
-    if (l$category != lOther$category) return false;
+    if (l$category != lOther$category) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -827,24 +980,38 @@ extension ClientExtension$Fragment$PraiseSummary on graphql.GraphQLClient {
   }
 }
 
-@JsonSerializable(explicitToJson: true)
 class Fragment$PraiseSummary$hashtags {
   Fragment$PraiseSummary$hashtags(
       {required this.id, required this.title, required this.$__typename});
 
-  @override
-  factory Fragment$PraiseSummary$hashtags.fromJson(Map<String, dynamic> json) =>
-      _$Fragment$PraiseSummary$hashtagsFromJson(json);
+  factory Fragment$PraiseSummary$hashtags.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$title = json['title'];
+    final l$$__typename = json['__typename'];
+    return Fragment$PraiseSummary$hashtags(
+        id: (l$id as String),
+        title: (l$title as String),
+        $__typename: (l$$__typename as String));
+  }
 
   final String id;
 
   final String title;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() =>
-      _$Fragment$PraiseSummary$hashtagsToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$id = id;
     final l$title = title;
@@ -854,18 +1021,28 @@ class Fragment$PraiseSummary$hashtags {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Fragment$PraiseSummary$hashtags) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$title = title;
     final lOther$title = other.title;
-    if (l$title != lOther$title) return false;
+    if (l$title != lOther$title) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -921,23 +1098,38 @@ class _CopyWithStubImpl$Fragment$PraiseSummary$hashtags<TRes>
   call({String? id, String? title, String? $__typename}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Fragment$PraiseSummary$owner {
   Fragment$PraiseSummary$owner(
       {required this.id, required this.name, required this.$__typename});
 
-  @override
-  factory Fragment$PraiseSummary$owner.fromJson(Map<String, dynamic> json) =>
-      _$Fragment$PraiseSummary$ownerFromJson(json);
+  factory Fragment$PraiseSummary$owner.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$name = json['name'];
+    final l$$__typename = json['__typename'];
+    return Fragment$PraiseSummary$owner(
+        id: (l$id as String),
+        name: (l$name as String),
+        $__typename: (l$$__typename as String));
+  }
 
   final String id;
 
   final String name;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Fragment$PraiseSummary$ownerToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$id = id;
     final l$name = name;
@@ -947,18 +1139,28 @@ class Fragment$PraiseSummary$owner {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Fragment$PraiseSummary$owner) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$name = name;
     final lOther$name = other.name;
-    if (l$name != lOther$name) return false;
+    if (l$name != lOther$name) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -1014,24 +1216,38 @@ class _CopyWithStubImpl$Fragment$PraiseSummary$owner<TRes>
   call({String? id, String? name, String? $__typename}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Fragment$PraiseSummary$category {
   Fragment$PraiseSummary$category(
       {required this.id, required this.name, required this.$__typename});
 
-  @override
-  factory Fragment$PraiseSummary$category.fromJson(Map<String, dynamic> json) =>
-      _$Fragment$PraiseSummary$categoryFromJson(json);
+  factory Fragment$PraiseSummary$category.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$name = json['name'];
+    final l$$__typename = json['__typename'];
+    return Fragment$PraiseSummary$category(
+        id: (l$id as String),
+        name: (l$name as String),
+        $__typename: (l$$__typename as String));
+  }
 
   final String id;
 
   final String name;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() =>
-      _$Fragment$PraiseSummary$categoryToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$id = id;
     final l$name = name;
@@ -1041,18 +1257,28 @@ class Fragment$PraiseSummary$category {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Fragment$PraiseSummary$category) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$name = name;
     final lOther$name = other.name;
-    if (l$name != lOther$name) return false;
+    if (l$name != lOther$name) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -1108,83 +1334,168 @@ class _CopyWithStubImpl$Fragment$PraiseSummary$category<TRes>
   call({String? id, String? name, String? $__typename}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Variables$Query$Praises {
-  Variables$Query$Praises(
-      {this.first, this.after, this.or, this.hasCategoryWith});
+  factory Variables$Query$Praises(
+          {int? first,
+          String? after,
+          List<Input$PostWhereInput>? or,
+          List<Input$CategoryWhereInput>? hasCategoryWith}) =>
+      Variables$Query$Praises._({
+        if (first != null) r'first': first,
+        if (after != null) r'after': after,
+        if (or != null) r'or': or,
+        if (hasCategoryWith != null) r'hasCategoryWith': hasCategoryWith,
+      });
+
+  Variables$Query$Praises._(this._$data);
+
+  factory Variables$Query$Praises.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('first')) {
+      final l$first = data['first'];
+      result$data['first'] = (l$first as int?);
+    }
+    if (data.containsKey('after')) {
+      final l$after = data['after'];
+      result$data['after'] = (l$after as String?);
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map(
+              (e) => Input$PostWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('hasCategoryWith')) {
+      final l$hasCategoryWith = data['hasCategoryWith'];
+      result$data['hasCategoryWith'] = (l$hasCategoryWith as List<dynamic>?)
+          ?.map((e) =>
+              Input$CategoryWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    return Variables$Query$Praises._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  int? get first => (_$data['first'] as int?);
+  String? get after => (_$data['after'] as String?);
+  List<Input$PostWhereInput>? get or =>
+      (_$data['or'] as List<Input$PostWhereInput>?);
+  List<Input$CategoryWhereInput>? get hasCategoryWith =>
+      (_$data['hasCategoryWith'] as List<Input$CategoryWhereInput>?);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('first')) {
+      final l$first = first;
+      result$data['first'] = l$first;
+    }
+    if (_$data.containsKey('after')) {
+      final l$after = after;
+      result$data['after'] = l$after;
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasCategoryWith')) {
+      final l$hasCategoryWith = hasCategoryWith;
+      result$data['hasCategoryWith'] =
+          l$hasCategoryWith?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$Praises<Variables$Query$Praises> get copyWith =>
+      CopyWith$Variables$Query$Praises(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Query$Praises) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$first = first;
+    final lOther$first = other.first;
+    if (_$data.containsKey('first') != other._$data.containsKey('first')) {
+      return false;
+    }
+    if (l$first != lOther$first) {
+      return false;
+    }
+    final l$after = after;
+    final lOther$after = other.after;
+    if (_$data.containsKey('after') != other._$data.containsKey('after')) {
+      return false;
+    }
+    if (l$after != lOther$after) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$hasCategoryWith = hasCategoryWith;
+    final lOther$hasCategoryWith = other.hasCategoryWith;
+    if (_$data.containsKey('hasCategoryWith') !=
+        other._$data.containsKey('hasCategoryWith')) {
+      return false;
+    }
+    if (l$hasCategoryWith != null && lOther$hasCategoryWith != null) {
+      if (l$hasCategoryWith.length != lOther$hasCategoryWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasCategoryWith.length; i++) {
+        final l$hasCategoryWith$entry = l$hasCategoryWith[i];
+        final lOther$hasCategoryWith$entry = lOther$hasCategoryWith[i];
+        if (l$hasCategoryWith$entry != lOther$hasCategoryWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasCategoryWith != lOther$hasCategoryWith) {
+      return false;
+    }
+    return true;
+  }
 
   @override
-  factory Variables$Query$Praises.fromJson(Map<String, dynamic> json) =>
-      _$Variables$Query$PraisesFromJson(json);
-
-  final int? first;
-
-  final String? after;
-
-  final List<Input$PostWhereInput>? or;
-
-  final List<Input$CategoryWhereInput>? hasCategoryWith;
-
-  Map<String, dynamic> toJson() => _$Variables$Query$PraisesToJson(this);
   int get hashCode {
     final l$first = first;
     final l$after = after;
     final l$or = or;
     final l$hasCategoryWith = hasCategoryWith;
     return Object.hashAll([
-      l$first,
-      l$after,
-      l$or == null ? null : Object.hashAll(l$or.map((v) => v)),
-      l$hasCategoryWith == null
-          ? null
-          : Object.hashAll(l$hasCategoryWith.map((v) => v))
+      _$data.containsKey('first') ? l$first : const {},
+      _$data.containsKey('after') ? l$after : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('hasCategoryWith')
+          ? l$hasCategoryWith == null
+              ? null
+              : Object.hashAll(l$hasCategoryWith.map((v) => v))
+          : const {}
     ]);
   }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Variables$Query$Praises) || runtimeType != other.runtimeType)
-      return false;
-    final l$first = first;
-    final lOther$first = other.first;
-    if (l$first != lOther$first) return false;
-    final l$after = after;
-    final lOther$after = other.after;
-    if (l$after != lOther$after) return false;
-    final l$or = or;
-    final lOther$or = other.or;
-    if (l$or != null && lOther$or != null) {
-      if (l$or.length != lOther$or.length) return false;
-      for (int i = 0; i < l$or.length; i++) {
-        final l$or$entry = l$or[i];
-        final lOther$or$entry = lOther$or[i];
-        if (l$or$entry != lOther$or$entry) return false;
-      }
-    } else if (l$or != lOther$or) {
-      return false;
-    }
-
-    final l$hasCategoryWith = hasCategoryWith;
-    final lOther$hasCategoryWith = other.hasCategoryWith;
-    if (l$hasCategoryWith != null && lOther$hasCategoryWith != null) {
-      if (l$hasCategoryWith.length != lOther$hasCategoryWith.length)
-        return false;
-      for (int i = 0; i < l$hasCategoryWith.length; i++) {
-        final l$hasCategoryWith$entry = l$hasCategoryWith[i];
-        final lOther$hasCategoryWith$entry = lOther$hasCategoryWith[i];
-        if (l$hasCategoryWith$entry != lOther$hasCategoryWith$entry)
-          return false;
-      }
-    } else if (l$hasCategoryWith != lOther$hasCategoryWith) {
-      return false;
-    }
-
-    return true;
-  }
-
-  CopyWith$Variables$Query$Praises<Variables$Query$Praises> get copyWith =>
-      CopyWith$Variables$Query$Praises(this, (i) => i);
 }
 
 abstract class CopyWith$Variables$Query$Praises<TRes> {
@@ -1217,15 +1528,15 @@ class _CopyWithImpl$Variables$Query$Praises<TRes>
           Object? after = _undefined,
           Object? or = _undefined,
           Object? hasCategoryWith = _undefined}) =>
-      _then(Variables$Query$Praises(
-          first: first == _undefined ? _instance.first : (first as int?),
-          after: after == _undefined ? _instance.after : (after as String?),
-          or: or == _undefined
-              ? _instance.or
-              : (or as List<Input$PostWhereInput>?),
-          hasCategoryWith: hasCategoryWith == _undefined
-              ? _instance.hasCategoryWith
-              : (hasCategoryWith as List<Input$CategoryWhereInput>?)));
+      _then(Variables$Query$Praises._({
+        ..._instance._$data,
+        if (first != _undefined) 'first': (first as int?),
+        if (after != _undefined) 'after': (after as String?),
+        if (or != _undefined) 'or': (or as List<Input$PostWhereInput>?),
+        if (hasCategoryWith != _undefined)
+          'hasCategoryWith':
+              (hasCategoryWith as List<Input$CategoryWhereInput>?),
+      }));
 }
 
 class _CopyWithStubImpl$Variables$Query$Praises<TRes>
@@ -1242,20 +1553,31 @@ class _CopyWithStubImpl$Variables$Query$Praises<TRes>
       _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$Praises {
   Query$Praises({required this.posts, required this.$__typename});
 
-  @override
-  factory Query$Praises.fromJson(Map<String, dynamic> json) =>
-      _$Query$PraisesFromJson(json);
+  factory Query$Praises.fromJson(Map<String, dynamic> json) {
+    final l$posts = json['posts'];
+    final l$$__typename = json['__typename'];
+    return Query$Praises(
+        posts: Query$Praises$posts.fromJson((l$posts as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final Query$Praises$posts posts;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$PraisesToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$posts = posts;
+    _resultData['posts'] = l$posts.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$posts = posts;
     final l$$__typename = $__typename;
@@ -1264,15 +1586,22 @@ class Query$Praises {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$Praises) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$Praises) || runtimeType != other.runtimeType) {
       return false;
+    }
     final l$posts = posts;
     final lOther$posts = other.posts;
-    if (l$posts != lOther$posts) return false;
+    if (l$posts != lOther$posts) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -1585,23 +1914,44 @@ class Query$Praises$Widget extends graphql_flutter.Query<Query$Praises> {
             builder: builder);
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$Praises$posts {
   Query$Praises$posts(
       {this.edges, required this.pageInfo, required this.$__typename});
 
-  @override
-  factory Query$Praises$posts.fromJson(Map<String, dynamic> json) =>
-      _$Query$Praises$postsFromJson(json);
+  factory Query$Praises$posts.fromJson(Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$pageInfo = json['pageInfo'];
+    final l$$__typename = json['__typename'];
+    return Query$Praises$posts(
+        edges: (l$edges as List<dynamic>?)
+            ?.map((e) => e == null
+                ? null
+                : Query$Praises$posts$edges.fromJson(
+                    (e as Map<String, dynamic>)))
+            .toList(),
+        pageInfo: Query$Praises$posts$pageInfo.fromJson(
+            (l$pageInfo as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final List<Query$Praises$posts$edges?>? edges;
 
   final Query$Praises$posts$pageInfo pageInfo;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$Praises$postsToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges?.map((e) => e?.toJson()).toList();
+    final l$pageInfo = pageInfo;
+    _resultData['pageInfo'] = l$pageInfo.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$edges = edges;
     final l$pageInfo = pageInfo;
@@ -1615,28 +1965,38 @@ class Query$Praises$posts {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$Praises$posts) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$Praises$posts) || runtimeType != other.runtimeType) {
       return false;
+    }
     final l$edges = edges;
     final lOther$edges = other.edges;
     if (l$edges != null && lOther$edges != null) {
-      if (l$edges.length != lOther$edges.length) return false;
+      if (l$edges.length != lOther$edges.length) {
+        return false;
+      }
       for (int i = 0; i < l$edges.length; i++) {
         final l$edges$entry = l$edges[i];
         final lOther$edges$entry = lOther$edges[i];
-        if (l$edges$entry != lOther$edges$entry) return false;
+        if (l$edges$entry != lOther$edges$entry) {
+          return false;
+        }
       }
     } else if (l$edges != lOther$edges) {
       return false;
     }
-
     final l$pageInfo = pageInfo;
     final lOther$pageInfo = other.pageInfo;
-    if (l$pageInfo != lOther$pageInfo) return false;
+    if (l$pageInfo != lOther$pageInfo) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -1724,20 +2084,33 @@ class _CopyWithStubImpl$Query$Praises$posts<TRes>
       CopyWith$Query$Praises$posts$pageInfo.stub(_res);
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$Praises$posts$edges {
   Query$Praises$posts$edges({this.node, required this.$__typename});
 
-  @override
-  factory Query$Praises$posts$edges.fromJson(Map<String, dynamic> json) =>
-      _$Query$Praises$posts$edgesFromJson(json);
+  factory Query$Praises$posts$edges.fromJson(Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$Praises$posts$edges(
+        node: l$node == null
+            ? null
+            : Fragment$PraiseSummary.fromJson((l$node as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final Fragment$PraiseSummary? node;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$Praises$posts$edgesToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$node = node;
     final l$$__typename = $__typename;
@@ -1746,15 +2119,23 @@ class Query$Praises$posts$edges {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Query$Praises$posts$edges) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$node = node;
     final lOther$node = other.node;
-    if (l$node != lOther$node) return false;
+    if (l$node != lOther$node) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -1814,23 +2195,38 @@ class _CopyWithStubImpl$Query$Praises$posts$edges<TRes>
       CopyWith$Fragment$PraiseSummary.stub(_res);
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$Praises$posts$pageInfo {
   Query$Praises$posts$pageInfo(
       {this.endCursor, required this.hasNextPage, required this.$__typename});
 
-  @override
-  factory Query$Praises$posts$pageInfo.fromJson(Map<String, dynamic> json) =>
-      _$Query$Praises$posts$pageInfoFromJson(json);
+  factory Query$Praises$posts$pageInfo.fromJson(Map<String, dynamic> json) {
+    final l$endCursor = json['endCursor'];
+    final l$hasNextPage = json['hasNextPage'];
+    final l$$__typename = json['__typename'];
+    return Query$Praises$posts$pageInfo(
+        endCursor: (l$endCursor as String?),
+        hasNextPage: (l$hasNextPage as bool),
+        $__typename: (l$$__typename as String));
+  }
 
   final String? endCursor;
 
   final bool hasNextPage;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$Praises$posts$pageInfoToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$endCursor = endCursor;
+    _resultData['endCursor'] = l$endCursor;
+    final l$hasNextPage = hasNextPage;
+    _resultData['hasNextPage'] = l$hasNextPage;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$endCursor = endCursor;
     final l$hasNextPage = hasNextPage;
@@ -1840,18 +2236,28 @@ class Query$Praises$posts$pageInfo {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Query$Praises$posts$pageInfo) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$endCursor = endCursor;
     final lOther$endCursor = other.endCursor;
-    if (l$endCursor != lOther$endCursor) return false;
+    if (l$endCursor != lOther$endCursor) {
+      return false;
+    }
     final l$hasNextPage = hasNextPage;
     final lOther$hasNextPage = other.hasNextPage;
-    if (l$hasNextPage != lOther$hasNextPage) return false;
+    if (l$hasNextPage != lOther$hasNextPage) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -1909,83 +2315,168 @@ class _CopyWithStubImpl$Query$Praises$posts$pageInfo<TRes>
   call({String? endCursor, bool? hasNextPage, String? $__typename}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Variables$Query$Letters {
-  Variables$Query$Letters(
-      {this.first, this.after, this.or, this.hasCategoryWith});
+  factory Variables$Query$Letters(
+          {int? first,
+          String? after,
+          List<Input$PostWhereInput>? or,
+          List<Input$CategoryWhereInput>? hasCategoryWith}) =>
+      Variables$Query$Letters._({
+        if (first != null) r'first': first,
+        if (after != null) r'after': after,
+        if (or != null) r'or': or,
+        if (hasCategoryWith != null) r'hasCategoryWith': hasCategoryWith,
+      });
+
+  Variables$Query$Letters._(this._$data);
+
+  factory Variables$Query$Letters.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('first')) {
+      final l$first = data['first'];
+      result$data['first'] = (l$first as int?);
+    }
+    if (data.containsKey('after')) {
+      final l$after = data['after'];
+      result$data['after'] = (l$after as String?);
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map(
+              (e) => Input$PostWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('hasCategoryWith')) {
+      final l$hasCategoryWith = data['hasCategoryWith'];
+      result$data['hasCategoryWith'] = (l$hasCategoryWith as List<dynamic>?)
+          ?.map((e) =>
+              Input$CategoryWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    return Variables$Query$Letters._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  int? get first => (_$data['first'] as int?);
+  String? get after => (_$data['after'] as String?);
+  List<Input$PostWhereInput>? get or =>
+      (_$data['or'] as List<Input$PostWhereInput>?);
+  List<Input$CategoryWhereInput>? get hasCategoryWith =>
+      (_$data['hasCategoryWith'] as List<Input$CategoryWhereInput>?);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('first')) {
+      final l$first = first;
+      result$data['first'] = l$first;
+    }
+    if (_$data.containsKey('after')) {
+      final l$after = after;
+      result$data['after'] = l$after;
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasCategoryWith')) {
+      final l$hasCategoryWith = hasCategoryWith;
+      result$data['hasCategoryWith'] =
+          l$hasCategoryWith?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$Letters<Variables$Query$Letters> get copyWith =>
+      CopyWith$Variables$Query$Letters(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Query$Letters) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$first = first;
+    final lOther$first = other.first;
+    if (_$data.containsKey('first') != other._$data.containsKey('first')) {
+      return false;
+    }
+    if (l$first != lOther$first) {
+      return false;
+    }
+    final l$after = after;
+    final lOther$after = other.after;
+    if (_$data.containsKey('after') != other._$data.containsKey('after')) {
+      return false;
+    }
+    if (l$after != lOther$after) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$hasCategoryWith = hasCategoryWith;
+    final lOther$hasCategoryWith = other.hasCategoryWith;
+    if (_$data.containsKey('hasCategoryWith') !=
+        other._$data.containsKey('hasCategoryWith')) {
+      return false;
+    }
+    if (l$hasCategoryWith != null && lOther$hasCategoryWith != null) {
+      if (l$hasCategoryWith.length != lOther$hasCategoryWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasCategoryWith.length; i++) {
+        final l$hasCategoryWith$entry = l$hasCategoryWith[i];
+        final lOther$hasCategoryWith$entry = lOther$hasCategoryWith[i];
+        if (l$hasCategoryWith$entry != lOther$hasCategoryWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasCategoryWith != lOther$hasCategoryWith) {
+      return false;
+    }
+    return true;
+  }
 
   @override
-  factory Variables$Query$Letters.fromJson(Map<String, dynamic> json) =>
-      _$Variables$Query$LettersFromJson(json);
-
-  final int? first;
-
-  final String? after;
-
-  final List<Input$PostWhereInput>? or;
-
-  final List<Input$CategoryWhereInput>? hasCategoryWith;
-
-  Map<String, dynamic> toJson() => _$Variables$Query$LettersToJson(this);
   int get hashCode {
     final l$first = first;
     final l$after = after;
     final l$or = or;
     final l$hasCategoryWith = hasCategoryWith;
     return Object.hashAll([
-      l$first,
-      l$after,
-      l$or == null ? null : Object.hashAll(l$or.map((v) => v)),
-      l$hasCategoryWith == null
-          ? null
-          : Object.hashAll(l$hasCategoryWith.map((v) => v))
+      _$data.containsKey('first') ? l$first : const {},
+      _$data.containsKey('after') ? l$after : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('hasCategoryWith')
+          ? l$hasCategoryWith == null
+              ? null
+              : Object.hashAll(l$hasCategoryWith.map((v) => v))
+          : const {}
     ]);
   }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Variables$Query$Letters) || runtimeType != other.runtimeType)
-      return false;
-    final l$first = first;
-    final lOther$first = other.first;
-    if (l$first != lOther$first) return false;
-    final l$after = after;
-    final lOther$after = other.after;
-    if (l$after != lOther$after) return false;
-    final l$or = or;
-    final lOther$or = other.or;
-    if (l$or != null && lOther$or != null) {
-      if (l$or.length != lOther$or.length) return false;
-      for (int i = 0; i < l$or.length; i++) {
-        final l$or$entry = l$or[i];
-        final lOther$or$entry = lOther$or[i];
-        if (l$or$entry != lOther$or$entry) return false;
-      }
-    } else if (l$or != lOther$or) {
-      return false;
-    }
-
-    final l$hasCategoryWith = hasCategoryWith;
-    final lOther$hasCategoryWith = other.hasCategoryWith;
-    if (l$hasCategoryWith != null && lOther$hasCategoryWith != null) {
-      if (l$hasCategoryWith.length != lOther$hasCategoryWith.length)
-        return false;
-      for (int i = 0; i < l$hasCategoryWith.length; i++) {
-        final l$hasCategoryWith$entry = l$hasCategoryWith[i];
-        final lOther$hasCategoryWith$entry = lOther$hasCategoryWith[i];
-        if (l$hasCategoryWith$entry != lOther$hasCategoryWith$entry)
-          return false;
-      }
-    } else if (l$hasCategoryWith != lOther$hasCategoryWith) {
-      return false;
-    }
-
-    return true;
-  }
-
-  CopyWith$Variables$Query$Letters<Variables$Query$Letters> get copyWith =>
-      CopyWith$Variables$Query$Letters(this, (i) => i);
 }
 
 abstract class CopyWith$Variables$Query$Letters<TRes> {
@@ -2018,15 +2509,15 @@ class _CopyWithImpl$Variables$Query$Letters<TRes>
           Object? after = _undefined,
           Object? or = _undefined,
           Object? hasCategoryWith = _undefined}) =>
-      _then(Variables$Query$Letters(
-          first: first == _undefined ? _instance.first : (first as int?),
-          after: after == _undefined ? _instance.after : (after as String?),
-          or: or == _undefined
-              ? _instance.or
-              : (or as List<Input$PostWhereInput>?),
-          hasCategoryWith: hasCategoryWith == _undefined
-              ? _instance.hasCategoryWith
-              : (hasCategoryWith as List<Input$CategoryWhereInput>?)));
+      _then(Variables$Query$Letters._({
+        ..._instance._$data,
+        if (first != _undefined) 'first': (first as int?),
+        if (after != _undefined) 'after': (after as String?),
+        if (or != _undefined) 'or': (or as List<Input$PostWhereInput>?),
+        if (hasCategoryWith != _undefined)
+          'hasCategoryWith':
+              (hasCategoryWith as List<Input$CategoryWhereInput>?),
+      }));
 }
 
 class _CopyWithStubImpl$Variables$Query$Letters<TRes>
@@ -2043,20 +2534,31 @@ class _CopyWithStubImpl$Variables$Query$Letters<TRes>
       _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$Letters {
   Query$Letters({required this.posts, required this.$__typename});
 
-  @override
-  factory Query$Letters.fromJson(Map<String, dynamic> json) =>
-      _$Query$LettersFromJson(json);
+  factory Query$Letters.fromJson(Map<String, dynamic> json) {
+    final l$posts = json['posts'];
+    final l$$__typename = json['__typename'];
+    return Query$Letters(
+        posts: Query$Letters$posts.fromJson((l$posts as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final Query$Letters$posts posts;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$LettersToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$posts = posts;
+    _resultData['posts'] = l$posts.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$posts = posts;
     final l$$__typename = $__typename;
@@ -2065,15 +2567,22 @@ class Query$Letters {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$Letters) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$Letters) || runtimeType != other.runtimeType) {
       return false;
+    }
     final l$posts = posts;
     final lOther$posts = other.posts;
-    if (l$posts != lOther$posts) return false;
+    if (l$posts != lOther$posts) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -2386,23 +2895,44 @@ class Query$Letters$Widget extends graphql_flutter.Query<Query$Letters> {
             builder: builder);
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$Letters$posts {
   Query$Letters$posts(
       {this.edges, required this.pageInfo, required this.$__typename});
 
-  @override
-  factory Query$Letters$posts.fromJson(Map<String, dynamic> json) =>
-      _$Query$Letters$postsFromJson(json);
+  factory Query$Letters$posts.fromJson(Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$pageInfo = json['pageInfo'];
+    final l$$__typename = json['__typename'];
+    return Query$Letters$posts(
+        edges: (l$edges as List<dynamic>?)
+            ?.map((e) => e == null
+                ? null
+                : Query$Letters$posts$edges.fromJson(
+                    (e as Map<String, dynamic>)))
+            .toList(),
+        pageInfo: Query$Letters$posts$pageInfo.fromJson(
+            (l$pageInfo as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final List<Query$Letters$posts$edges?>? edges;
 
   final Query$Letters$posts$pageInfo pageInfo;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$Letters$postsToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges?.map((e) => e?.toJson()).toList();
+    final l$pageInfo = pageInfo;
+    _resultData['pageInfo'] = l$pageInfo.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$edges = edges;
     final l$pageInfo = pageInfo;
@@ -2416,28 +2946,38 @@ class Query$Letters$posts {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$Letters$posts) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$Letters$posts) || runtimeType != other.runtimeType) {
       return false;
+    }
     final l$edges = edges;
     final lOther$edges = other.edges;
     if (l$edges != null && lOther$edges != null) {
-      if (l$edges.length != lOther$edges.length) return false;
+      if (l$edges.length != lOther$edges.length) {
+        return false;
+      }
       for (int i = 0; i < l$edges.length; i++) {
         final l$edges$entry = l$edges[i];
         final lOther$edges$entry = lOther$edges[i];
-        if (l$edges$entry != lOther$edges$entry) return false;
+        if (l$edges$entry != lOther$edges$entry) {
+          return false;
+        }
       }
     } else if (l$edges != lOther$edges) {
       return false;
     }
-
     final l$pageInfo = pageInfo;
     final lOther$pageInfo = other.pageInfo;
-    if (l$pageInfo != lOther$pageInfo) return false;
+    if (l$pageInfo != lOther$pageInfo) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -2525,20 +3065,33 @@ class _CopyWithStubImpl$Query$Letters$posts<TRes>
       CopyWith$Query$Letters$posts$pageInfo.stub(_res);
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$Letters$posts$edges {
   Query$Letters$posts$edges({this.node, required this.$__typename});
 
-  @override
-  factory Query$Letters$posts$edges.fromJson(Map<String, dynamic> json) =>
-      _$Query$Letters$posts$edgesFromJson(json);
+  factory Query$Letters$posts$edges.fromJson(Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$Letters$posts$edges(
+        node: l$node == null
+            ? null
+            : Fragment$LetterSummary.fromJson((l$node as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final Fragment$LetterSummary? node;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$Letters$posts$edgesToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$node = node;
     final l$$__typename = $__typename;
@@ -2547,15 +3100,23 @@ class Query$Letters$posts$edges {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Query$Letters$posts$edges) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$node = node;
     final lOther$node = other.node;
-    if (l$node != lOther$node) return false;
+    if (l$node != lOther$node) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -2615,23 +3176,38 @@ class _CopyWithStubImpl$Query$Letters$posts$edges<TRes>
       CopyWith$Fragment$LetterSummary.stub(_res);
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$Letters$posts$pageInfo {
   Query$Letters$posts$pageInfo(
       {this.endCursor, required this.hasNextPage, required this.$__typename});
 
-  @override
-  factory Query$Letters$posts$pageInfo.fromJson(Map<String, dynamic> json) =>
-      _$Query$Letters$posts$pageInfoFromJson(json);
+  factory Query$Letters$posts$pageInfo.fromJson(Map<String, dynamic> json) {
+    final l$endCursor = json['endCursor'];
+    final l$hasNextPage = json['hasNextPage'];
+    final l$$__typename = json['__typename'];
+    return Query$Letters$posts$pageInfo(
+        endCursor: (l$endCursor as String?),
+        hasNextPage: (l$hasNextPage as bool),
+        $__typename: (l$$__typename as String));
+  }
 
   final String? endCursor;
 
   final bool hasNextPage;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$Letters$posts$pageInfoToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$endCursor = endCursor;
+    _resultData['endCursor'] = l$endCursor;
+    final l$hasNextPage = hasNextPage;
+    _resultData['hasNextPage'] = l$hasNextPage;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$endCursor = endCursor;
     final l$hasNextPage = hasNextPage;
@@ -2641,18 +3217,28 @@ class Query$Letters$posts$pageInfo {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Query$Letters$posts$pageInfo) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$endCursor = endCursor;
     final lOther$endCursor = other.endCursor;
-    if (l$endCursor != lOther$endCursor) return false;
+    if (l$endCursor != lOther$endCursor) {
+      return false;
+    }
     final l$hasNextPage = hasNextPage;
     final lOther$hasNextPage = other.hasNextPage;
-    if (l$hasNextPage != lOther$hasNextPage) return false;
+    if (l$hasNextPage != lOther$hasNextPage) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }

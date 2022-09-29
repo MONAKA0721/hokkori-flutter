@@ -4,38 +4,62 @@ import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
-import 'package:json_annotation/json_annotation.dart';
-part 'profile_page.graphql.g.dart';
 
-@JsonSerializable(explicitToJson: true)
 class Variables$Query$MyInfo {
-  Variables$Query$MyInfo({this.userID});
+  factory Variables$Query$MyInfo({String? userID}) => Variables$Query$MyInfo._({
+        if (userID != null) r'userID': userID,
+      });
 
-  @override
-  factory Variables$Query$MyInfo.fromJson(Map<String, dynamic> json) =>
-      _$Variables$Query$MyInfoFromJson(json);
+  Variables$Query$MyInfo._(this._$data);
 
-  final String? userID;
-
-  Map<String, dynamic> toJson() => _$Variables$Query$MyInfoToJson(this);
-  int get hashCode {
-    final l$userID = userID;
-    return Object.hashAll([l$userID]);
+  factory Variables$Query$MyInfo.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('userID')) {
+      final l$userID = data['userID'];
+      result$data['userID'] = (l$userID as String?);
+    }
+    return Variables$Query$MyInfo._(result$data);
   }
 
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Variables$Query$MyInfo) || runtimeType != other.runtimeType)
-      return false;
-    final l$userID = userID;
-    final lOther$userID = other.userID;
-    if (l$userID != lOther$userID) return false;
-    return true;
+  Map<String, dynamic> _$data;
+
+  String? get userID => (_$data['userID'] as String?);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('userID')) {
+      final l$userID = userID;
+      result$data['userID'] = l$userID;
+    }
+    return result$data;
   }
 
   CopyWith$Variables$Query$MyInfo<Variables$Query$MyInfo> get copyWith =>
       CopyWith$Variables$Query$MyInfo(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Query$MyInfo) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$userID = userID;
+    final lOther$userID = other.userID;
+    if (_$data.containsKey('userID') != other._$data.containsKey('userID')) {
+      return false;
+    }
+    if (l$userID != lOther$userID) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$userID = userID;
+    return Object.hashAll([_$data.containsKey('userID') ? l$userID : const {}]);
+  }
 }
 
 abstract class CopyWith$Variables$Query$MyInfo<TRes> {
@@ -59,8 +83,10 @@ class _CopyWithImpl$Variables$Query$MyInfo<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? userID = _undefined}) => _then(Variables$Query$MyInfo(
-      userID: userID == _undefined ? _instance.userID : (userID as String?)));
+  TRes call({Object? userID = _undefined}) => _then(Variables$Query$MyInfo._({
+        ..._instance._$data,
+        if (userID != _undefined) 'userID': (userID as String?),
+      }));
 }
 
 class _CopyWithStubImpl$Variables$Query$MyInfo<TRes>
@@ -72,20 +98,31 @@ class _CopyWithStubImpl$Variables$Query$MyInfo<TRes>
   call({String? userID}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$MyInfo {
   Query$MyInfo({required this.posts, required this.$__typename});
 
-  @override
-  factory Query$MyInfo.fromJson(Map<String, dynamic> json) =>
-      _$Query$MyInfoFromJson(json);
+  factory Query$MyInfo.fromJson(Map<String, dynamic> json) {
+    final l$posts = json['posts'];
+    final l$$__typename = json['__typename'];
+    return Query$MyInfo(
+        posts: Query$MyInfo$posts.fromJson((l$posts as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final Query$MyInfo$posts posts;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$MyInfoToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$posts = posts;
+    _resultData['posts'] = l$posts.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$posts = posts;
     final l$$__typename = $__typename;
@@ -94,15 +131,22 @@ class Query$MyInfo {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$MyInfo) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$MyInfo) || runtimeType != other.runtimeType) {
       return false;
+    }
     final l$posts = posts;
     final lOther$posts = other.posts;
-    if (l$posts != lOther$posts) return false;
+    if (l$posts != lOther$posts) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -322,20 +366,31 @@ class Query$MyInfo$Widget extends graphql_flutter.Query<Query$MyInfo> {
             builder: builder);
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$MyInfo$posts {
   Query$MyInfo$posts({required this.totalCount, required this.$__typename});
 
-  @override
-  factory Query$MyInfo$posts.fromJson(Map<String, dynamic> json) =>
-      _$Query$MyInfo$postsFromJson(json);
+  factory Query$MyInfo$posts.fromJson(Map<String, dynamic> json) {
+    final l$totalCount = json['totalCount'];
+    final l$$__typename = json['__typename'];
+    return Query$MyInfo$posts(
+        totalCount: (l$totalCount as int),
+        $__typename: (l$$__typename as String));
+  }
 
   final int totalCount;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$MyInfo$postsToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$totalCount = totalCount;
+    _resultData['totalCount'] = l$totalCount;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$totalCount = totalCount;
     final l$$__typename = $__typename;
@@ -344,15 +399,22 @@ class Query$MyInfo$posts {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$MyInfo$posts) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$MyInfo$posts) || runtimeType != other.runtimeType) {
       return false;
+    }
     final l$totalCount = totalCount;
     final lOther$totalCount = other.totalCount;
-    if (l$totalCount != lOther$totalCount) return false;
+    if (l$totalCount != lOther$totalCount) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -404,41 +466,69 @@ class _CopyWithStubImpl$Query$MyInfo$posts<TRes>
   call({int? totalCount, String? $__typename}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Variables$Mutation$UpdateUser {
-  Variables$Mutation$UpdateUser({required this.userID, required this.input});
+  factory Variables$Mutation$UpdateUser(
+          {required String userID, required Input$UpdateUserInput input}) =>
+      Variables$Mutation$UpdateUser._({
+        r'userID': userID,
+        r'input': input,
+      });
+
+  Variables$Mutation$UpdateUser._(this._$data);
+
+  factory Variables$Mutation$UpdateUser.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$userID = data['userID'];
+    result$data['userID'] = (l$userID as String);
+    final l$input = data['input'];
+    result$data['input'] =
+        Input$UpdateUserInput.fromJson((l$input as Map<String, dynamic>));
+    return Variables$Mutation$UpdateUser._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get userID => (_$data['userID'] as String);
+  Input$UpdateUserInput get input => (_$data['input'] as Input$UpdateUserInput);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$userID = userID;
+    result$data['userID'] = l$userID;
+    final l$input = input;
+    result$data['input'] = l$input.toJson();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$UpdateUser<Variables$Mutation$UpdateUser>
+      get copyWith => CopyWith$Variables$Mutation$UpdateUser(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$UpdateUser) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$userID = userID;
+    final lOther$userID = other.userID;
+    if (l$userID != lOther$userID) {
+      return false;
+    }
+    final l$input = input;
+    final lOther$input = other.input;
+    if (l$input != lOther$input) {
+      return false;
+    }
+    return true;
+  }
 
   @override
-  factory Variables$Mutation$UpdateUser.fromJson(Map<String, dynamic> json) =>
-      _$Variables$Mutation$UpdateUserFromJson(json);
-
-  final String userID;
-
-  final Input$UpdateUserInput input;
-
-  Map<String, dynamic> toJson() => _$Variables$Mutation$UpdateUserToJson(this);
   int get hashCode {
     final l$userID = userID;
     final l$input = input;
     return Object.hashAll([l$userID, l$input]);
   }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Variables$Mutation$UpdateUser) ||
-        runtimeType != other.runtimeType) return false;
-    final l$userID = userID;
-    final lOther$userID = other.userID;
-    if (l$userID != lOther$userID) return false;
-    final l$input = input;
-    final lOther$input = other.input;
-    if (l$input != lOther$input) return false;
-    return true;
-  }
-
-  CopyWith$Variables$Mutation$UpdateUser<Variables$Mutation$UpdateUser>
-      get copyWith => CopyWith$Variables$Mutation$UpdateUser(this, (i) => i);
 }
 
 abstract class CopyWith$Variables$Mutation$UpdateUser<TRes> {
@@ -464,13 +554,13 @@ class _CopyWithImpl$Variables$Mutation$UpdateUser<TRes>
   static const _undefined = {};
 
   TRes call({Object? userID = _undefined, Object? input = _undefined}) =>
-      _then(Variables$Mutation$UpdateUser(
-          userID: userID == _undefined || userID == null
-              ? _instance.userID
-              : (userID as String),
-          input: input == _undefined || input == null
-              ? _instance.input
-              : (input as Input$UpdateUserInput)));
+      _then(Variables$Mutation$UpdateUser._({
+        ..._instance._$data,
+        if (userID != _undefined && userID != null)
+          'userID': (userID as String),
+        if (input != _undefined && input != null)
+          'input': (input as Input$UpdateUserInput),
+      }));
 }
 
 class _CopyWithStubImpl$Variables$Mutation$UpdateUser<TRes>
@@ -482,20 +572,32 @@ class _CopyWithStubImpl$Variables$Mutation$UpdateUser<TRes>
   call({String? userID, Input$UpdateUserInput? input}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Mutation$UpdateUser {
   Mutation$UpdateUser({required this.updateUser, required this.$__typename});
 
-  @override
-  factory Mutation$UpdateUser.fromJson(Map<String, dynamic> json) =>
-      _$Mutation$UpdateUserFromJson(json);
+  factory Mutation$UpdateUser.fromJson(Map<String, dynamic> json) {
+    final l$updateUser = json['updateUser'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UpdateUser(
+        updateUser: Mutation$UpdateUser$updateUser.fromJson(
+            (l$updateUser as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final Mutation$UpdateUser$updateUser updateUser;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Mutation$UpdateUserToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$updateUser = updateUser;
+    _resultData['updateUser'] = l$updateUser.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$updateUser = updateUser;
     final l$$__typename = $__typename;
@@ -504,15 +606,22 @@ class Mutation$UpdateUser {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Mutation$UpdateUser) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UpdateUser) || runtimeType != other.runtimeType) {
       return false;
+    }
     final l$updateUser = updateUser;
     final lOther$updateUser = other.updateUser;
-    if (l$updateUser != lOther$updateUser) return false;
+    if (l$updateUser != lOther$updateUser) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -822,7 +931,6 @@ class Mutation$UpdateUser$Widget
                 result));
 }
 
-@JsonSerializable(explicitToJson: true)
 class Mutation$UpdateUser$updateUser {
   Mutation$UpdateUser$updateUser(
       {required this.id,
@@ -832,9 +940,21 @@ class Mutation$UpdateUser$updateUser {
       this.avatarURL,
       required this.$__typename});
 
-  @override
-  factory Mutation$UpdateUser$updateUser.fromJson(Map<String, dynamic> json) =>
-      _$Mutation$UpdateUser$updateUserFromJson(json);
+  factory Mutation$UpdateUser$updateUser.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$name = json['name'];
+    final l$username = json['username'];
+    final l$profile = json['profile'];
+    final l$avatarURL = json['avatarURL'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UpdateUser$updateUser(
+        id: (l$id as String),
+        name: (l$name as String),
+        username: (l$username as String?),
+        profile: (l$profile as String?),
+        avatarURL: (l$avatarURL as String?),
+        $__typename: (l$$__typename as String));
+  }
 
   final String id;
 
@@ -846,10 +966,26 @@ class Mutation$UpdateUser$updateUser {
 
   final String? avatarURL;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Mutation$UpdateUser$updateUserToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$username = username;
+    _resultData['username'] = l$username;
+    final l$profile = profile;
+    _resultData['profile'] = l$profile;
+    final l$avatarURL = avatarURL;
+    _resultData['avatarURL'] = l$avatarURL;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$id = id;
     final l$name = name;
@@ -863,27 +999,43 @@ class Mutation$UpdateUser$updateUser {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Mutation$UpdateUser$updateUser) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$name = name;
     final lOther$name = other.name;
-    if (l$name != lOther$name) return false;
+    if (l$name != lOther$name) {
+      return false;
+    }
     final l$username = username;
     final lOther$username = other.username;
-    if (l$username != lOther$username) return false;
+    if (l$username != lOther$username) {
+      return false;
+    }
     final l$profile = profile;
     final lOther$profile = other.profile;
-    if (l$profile != lOther$profile) return false;
+    if (l$profile != lOther$profile) {
+      return false;
+    }
     final l$avatarURL = avatarURL;
     final lOther$avatarURL = other.avatarURL;
-    if (l$avatarURL != lOther$avatarURL) return false;
+    if (l$avatarURL != lOther$avatarURL) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }

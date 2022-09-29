@@ -4,38 +4,65 @@ import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
-import 'package:json_annotation/json_annotation.dart';
-part 'post_page.graphql.g.dart';
 
-@JsonSerializable(explicitToJson: true)
 class Variables$Query$SearchWorks {
-  Variables$Query$SearchWorks({this.searchText});
+  factory Variables$Query$SearchWorks({String? searchText}) =>
+      Variables$Query$SearchWorks._({
+        if (searchText != null) r'searchText': searchText,
+      });
 
-  @override
-  factory Variables$Query$SearchWorks.fromJson(Map<String, dynamic> json) =>
-      _$Variables$Query$SearchWorksFromJson(json);
+  Variables$Query$SearchWorks._(this._$data);
 
-  final String? searchText;
-
-  Map<String, dynamic> toJson() => _$Variables$Query$SearchWorksToJson(this);
-  int get hashCode {
-    final l$searchText = searchText;
-    return Object.hashAll([l$searchText]);
+  factory Variables$Query$SearchWorks.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('searchText')) {
+      final l$searchText = data['searchText'];
+      result$data['searchText'] = (l$searchText as String?);
+    }
+    return Variables$Query$SearchWorks._(result$data);
   }
 
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Variables$Query$SearchWorks) ||
-        runtimeType != other.runtimeType) return false;
-    final l$searchText = searchText;
-    final lOther$searchText = other.searchText;
-    if (l$searchText != lOther$searchText) return false;
-    return true;
+  Map<String, dynamic> _$data;
+
+  String? get searchText => (_$data['searchText'] as String?);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('searchText')) {
+      final l$searchText = searchText;
+      result$data['searchText'] = l$searchText;
+    }
+    return result$data;
   }
 
   CopyWith$Variables$Query$SearchWorks<Variables$Query$SearchWorks>
       get copyWith => CopyWith$Variables$Query$SearchWorks(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Query$SearchWorks) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$searchText = searchText;
+    final lOther$searchText = other.searchText;
+    if (_$data.containsKey('searchText') !=
+        other._$data.containsKey('searchText')) {
+      return false;
+    }
+    if (l$searchText != lOther$searchText) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$searchText = searchText;
+    return Object.hashAll(
+        [_$data.containsKey('searchText') ? l$searchText : const {}]);
+  }
 }
 
 abstract class CopyWith$Variables$Query$SearchWorks<TRes> {
@@ -60,11 +87,11 @@ class _CopyWithImpl$Variables$Query$SearchWorks<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? searchText = _undefined}) => _then(
-      Variables$Query$SearchWorks(
-          searchText: searchText == _undefined
-              ? _instance.searchText
-              : (searchText as String?)));
+  TRes call({Object? searchText = _undefined}) =>
+      _then(Variables$Query$SearchWorks._({
+        ..._instance._$data,
+        if (searchText != _undefined) 'searchText': (searchText as String?),
+      }));
 }
 
 class _CopyWithStubImpl$Variables$Query$SearchWorks<TRes>
@@ -76,20 +103,32 @@ class _CopyWithStubImpl$Variables$Query$SearchWorks<TRes>
   call({String? searchText}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$SearchWorks {
   Query$SearchWorks({required this.works, required this.$__typename});
 
-  @override
-  factory Query$SearchWorks.fromJson(Map<String, dynamic> json) =>
-      _$Query$SearchWorksFromJson(json);
+  factory Query$SearchWorks.fromJson(Map<String, dynamic> json) {
+    final l$works = json['works'];
+    final l$$__typename = json['__typename'];
+    return Query$SearchWorks(
+        works:
+            Query$SearchWorks$works.fromJson((l$works as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final Query$SearchWorks$works works;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$SearchWorksToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$works = works;
+    _resultData['works'] = l$works.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$works = works;
     final l$$__typename = $__typename;
@@ -98,15 +137,22 @@ class Query$SearchWorks {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$SearchWorks) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$SearchWorks) || runtimeType != other.runtimeType) {
       return false;
+    }
     final l$works = works;
     final lOther$works = other.works;
-    if (l$works != lOther$works) return false;
+    if (l$works != lOther$works) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -367,20 +413,36 @@ class Query$SearchWorks$Widget
             builder: builder);
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$SearchWorks$works {
   Query$SearchWorks$works({this.edges, required this.$__typename});
 
-  @override
-  factory Query$SearchWorks$works.fromJson(Map<String, dynamic> json) =>
-      _$Query$SearchWorks$worksFromJson(json);
+  factory Query$SearchWorks$works.fromJson(Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Query$SearchWorks$works(
+        edges: (l$edges as List<dynamic>?)
+            ?.map((e) => e == null
+                ? null
+                : Query$SearchWorks$works$edges.fromJson(
+                    (e as Map<String, dynamic>)))
+            .toList(),
+        $__typename: (l$$__typename as String));
+  }
 
   final List<Query$SearchWorks$works$edges?>? edges;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$SearchWorks$worksToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges?.map((e) => e?.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$edges = edges;
     final l$$__typename = $__typename;
@@ -392,25 +454,34 @@ class Query$SearchWorks$works {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$SearchWorks$works) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$SearchWorks$works) ||
+        runtimeType != other.runtimeType) {
       return false;
+    }
     final l$edges = edges;
     final lOther$edges = other.edges;
     if (l$edges != null && lOther$edges != null) {
-      if (l$edges.length != lOther$edges.length) return false;
+      if (l$edges.length != lOther$edges.length) {
+        return false;
+      }
       for (int i = 0; i < l$edges.length; i++) {
         final l$edges$entry = l$edges[i];
         final lOther$edges$entry = lOther$edges[i];
-        if (l$edges$entry != lOther$edges$entry) return false;
+        if (l$edges$entry != lOther$edges$entry) {
+          return false;
+        }
       }
     } else if (l$edges != lOther$edges) {
       return false;
     }
-
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -479,20 +550,34 @@ class _CopyWithStubImpl$Query$SearchWorks$works<TRes>
   edges(_fn) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$SearchWorks$works$edges {
   Query$SearchWorks$works$edges({this.node, required this.$__typename});
 
-  @override
-  factory Query$SearchWorks$works$edges.fromJson(Map<String, dynamic> json) =>
-      _$Query$SearchWorks$works$edgesFromJson(json);
+  factory Query$SearchWorks$works$edges.fromJson(Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$SearchWorks$works$edges(
+        node: l$node == null
+            ? null
+            : Query$SearchWorks$works$edges$node.fromJson(
+                (l$node as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final Query$SearchWorks$works$edges$node? node;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$SearchWorks$works$edgesToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$node = node;
     final l$$__typename = $__typename;
@@ -501,15 +586,23 @@ class Query$SearchWorks$works$edges {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Query$SearchWorks$works$edges) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$node = node;
     final lOther$node = other.node;
-    if (l$node != lOther$node) return false;
+    if (l$node != lOther$node) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -571,7 +664,6 @@ class _CopyWithStubImpl$Query$SearchWorks$works$edges<TRes>
       CopyWith$Query$SearchWorks$works$edges$node.stub(_res);
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$SearchWorks$works$edges$node {
   Query$SearchWorks$works$edges$node(
       {required this.id,
@@ -579,10 +671,18 @@ class Query$SearchWorks$works$edges$node {
       this.thumbnail,
       required this.$__typename});
 
-  @override
   factory Query$SearchWorks$works$edges$node.fromJson(
-          Map<String, dynamic> json) =>
-      _$Query$SearchWorks$works$edges$nodeFromJson(json);
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$title = json['title'];
+    final l$thumbnail = json['thumbnail'];
+    final l$$__typename = json['__typename'];
+    return Query$SearchWorks$works$edges$node(
+        id: (l$id as String),
+        title: (l$title as String),
+        thumbnail: (l$thumbnail as String?),
+        $__typename: (l$$__typename as String));
+  }
 
   final String id;
 
@@ -590,11 +690,22 @@ class Query$SearchWorks$works$edges$node {
 
   final String? thumbnail;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() =>
-      _$Query$SearchWorks$works$edges$nodeToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$thumbnail = thumbnail;
+    _resultData['thumbnail'] = l$thumbnail;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$id = id;
     final l$title = title;
@@ -605,21 +716,33 @@ class Query$SearchWorks$works$edges$node {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Query$SearchWorks$works$edges$node) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$title = title;
     final lOther$title = other.title;
-    if (l$title != lOther$title) return false;
+    if (l$title != lOther$title) {
+      return false;
+    }
     final l$thumbnail = thumbnail;
     final lOther$thumbnail = other.thumbnail;
-    if (l$thumbnail != lOther$thumbnail) return false;
+    if (l$thumbnail != lOther$thumbnail) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -683,35 +806,64 @@ class _CopyWithStubImpl$Query$SearchWorks$works$edges$node<TRes>
       _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Variables$Query$SearchHashtags {
-  Variables$Query$SearchHashtags({this.searchText});
+  factory Variables$Query$SearchHashtags({String? searchText}) =>
+      Variables$Query$SearchHashtags._({
+        if (searchText != null) r'searchText': searchText,
+      });
 
-  @override
-  factory Variables$Query$SearchHashtags.fromJson(Map<String, dynamic> json) =>
-      _$Variables$Query$SearchHashtagsFromJson(json);
+  Variables$Query$SearchHashtags._(this._$data);
 
-  final String? searchText;
-
-  Map<String, dynamic> toJson() => _$Variables$Query$SearchHashtagsToJson(this);
-  int get hashCode {
-    final l$searchText = searchText;
-    return Object.hashAll([l$searchText]);
+  factory Variables$Query$SearchHashtags.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('searchText')) {
+      final l$searchText = data['searchText'];
+      result$data['searchText'] = (l$searchText as String?);
+    }
+    return Variables$Query$SearchHashtags._(result$data);
   }
 
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Variables$Query$SearchHashtags) ||
-        runtimeType != other.runtimeType) return false;
-    final l$searchText = searchText;
-    final lOther$searchText = other.searchText;
-    if (l$searchText != lOther$searchText) return false;
-    return true;
+  Map<String, dynamic> _$data;
+
+  String? get searchText => (_$data['searchText'] as String?);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('searchText')) {
+      final l$searchText = searchText;
+      result$data['searchText'] = l$searchText;
+    }
+    return result$data;
   }
 
   CopyWith$Variables$Query$SearchHashtags<Variables$Query$SearchHashtags>
       get copyWith => CopyWith$Variables$Query$SearchHashtags(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Query$SearchHashtags) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$searchText = searchText;
+    final lOther$searchText = other.searchText;
+    if (_$data.containsKey('searchText') !=
+        other._$data.containsKey('searchText')) {
+      return false;
+    }
+    if (l$searchText != lOther$searchText) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$searchText = searchText;
+    return Object.hashAll(
+        [_$data.containsKey('searchText') ? l$searchText : const {}]);
+  }
 }
 
 abstract class CopyWith$Variables$Query$SearchHashtags<TRes> {
@@ -737,10 +889,10 @@ class _CopyWithImpl$Variables$Query$SearchHashtags<TRes>
   static const _undefined = {};
 
   TRes call({Object? searchText = _undefined}) =>
-      _then(Variables$Query$SearchHashtags(
-          searchText: searchText == _undefined
-              ? _instance.searchText
-              : (searchText as String?)));
+      _then(Variables$Query$SearchHashtags._({
+        ..._instance._$data,
+        if (searchText != _undefined) 'searchText': (searchText as String?),
+      }));
 }
 
 class _CopyWithStubImpl$Variables$Query$SearchHashtags<TRes>
@@ -752,20 +904,32 @@ class _CopyWithStubImpl$Variables$Query$SearchHashtags<TRes>
   call({String? searchText}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$SearchHashtags {
   Query$SearchHashtags({required this.hashtags, required this.$__typename});
 
-  @override
-  factory Query$SearchHashtags.fromJson(Map<String, dynamic> json) =>
-      _$Query$SearchHashtagsFromJson(json);
+  factory Query$SearchHashtags.fromJson(Map<String, dynamic> json) {
+    final l$hashtags = json['hashtags'];
+    final l$$__typename = json['__typename'];
+    return Query$SearchHashtags(
+        hashtags: Query$SearchHashtags$hashtags.fromJson(
+            (l$hashtags as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final Query$SearchHashtags$hashtags hashtags;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$SearchHashtagsToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$hashtags = hashtags;
+    _resultData['hashtags'] = l$hashtags.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$hashtags = hashtags;
     final l$$__typename = $__typename;
@@ -774,15 +938,22 @@ class Query$SearchHashtags {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$SearchHashtags) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$SearchHashtags) || runtimeType != other.runtimeType) {
       return false;
+    }
     final l$hashtags = hashtags;
     final lOther$hashtags = other.hashtags;
-    if (l$hashtags != lOther$hashtags) return false;
+    if (l$hashtags != lOther$hashtags) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -1041,20 +1212,36 @@ class Query$SearchHashtags$Widget
             builder: builder);
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$SearchHashtags$hashtags {
   Query$SearchHashtags$hashtags({this.edges, required this.$__typename});
 
-  @override
-  factory Query$SearchHashtags$hashtags.fromJson(Map<String, dynamic> json) =>
-      _$Query$SearchHashtags$hashtagsFromJson(json);
+  factory Query$SearchHashtags$hashtags.fromJson(Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Query$SearchHashtags$hashtags(
+        edges: (l$edges as List<dynamic>?)
+            ?.map((e) => e == null
+                ? null
+                : Query$SearchHashtags$hashtags$edges.fromJson(
+                    (e as Map<String, dynamic>)))
+            .toList(),
+        $__typename: (l$$__typename as String));
+  }
 
   final List<Query$SearchHashtags$hashtags$edges?>? edges;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$SearchHashtags$hashtagsToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges?.map((e) => e?.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$edges = edges;
     final l$$__typename = $__typename;
@@ -1066,25 +1253,34 @@ class Query$SearchHashtags$hashtags {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Query$SearchHashtags$hashtags) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$edges = edges;
     final lOther$edges = other.edges;
     if (l$edges != null && lOther$edges != null) {
-      if (l$edges.length != lOther$edges.length) return false;
+      if (l$edges.length != lOther$edges.length) {
+        return false;
+      }
       for (int i = 0; i < l$edges.length; i++) {
         final l$edges$entry = l$edges[i];
         final lOther$edges$entry = lOther$edges[i];
-        if (l$edges$entry != lOther$edges$entry) return false;
+        if (l$edges$entry != lOther$edges$entry) {
+          return false;
+        }
       }
     } else if (l$edges != lOther$edges) {
       return false;
     }
-
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -1158,22 +1354,35 @@ class _CopyWithStubImpl$Query$SearchHashtags$hashtags<TRes>
   edges(_fn) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$SearchHashtags$hashtags$edges {
   Query$SearchHashtags$hashtags$edges({this.node, required this.$__typename});
 
-  @override
   factory Query$SearchHashtags$hashtags$edges.fromJson(
-          Map<String, dynamic> json) =>
-      _$Query$SearchHashtags$hashtags$edgesFromJson(json);
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$SearchHashtags$hashtags$edges(
+        node: l$node == null
+            ? null
+            : Query$SearchHashtags$hashtags$edges$node.fromJson(
+                (l$node as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final Query$SearchHashtags$hashtags$edges$node? node;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() =>
-      _$Query$SearchHashtags$hashtags$edgesToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$node = node;
     final l$$__typename = $__typename;
@@ -1182,15 +1391,23 @@ class Query$SearchHashtags$hashtags$edges {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Query$SearchHashtags$hashtags$edges) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$node = node;
     final lOther$node = other.node;
-    if (l$node != lOther$node) return false;
+    if (l$node != lOther$node) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -1257,25 +1474,39 @@ class _CopyWithStubImpl$Query$SearchHashtags$hashtags$edges<TRes>
       CopyWith$Query$SearchHashtags$hashtags$edges$node.stub(_res);
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$SearchHashtags$hashtags$edges$node {
   Query$SearchHashtags$hashtags$edges$node(
       {required this.id, required this.title, required this.$__typename});
 
-  @override
   factory Query$SearchHashtags$hashtags$edges$node.fromJson(
-          Map<String, dynamic> json) =>
-      _$Query$SearchHashtags$hashtags$edges$nodeFromJson(json);
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$title = json['title'];
+    final l$$__typename = json['__typename'];
+    return Query$SearchHashtags$hashtags$edges$node(
+        id: (l$id as String),
+        title: (l$title as String),
+        $__typename: (l$$__typename as String));
+  }
 
   final String id;
 
   final String title;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() =>
-      _$Query$SearchHashtags$hashtags$edges$nodeToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$id = id;
     final l$title = title;
@@ -1285,18 +1516,28 @@ class Query$SearchHashtags$hashtags$edges$node {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Query$SearchHashtags$hashtags$edges$node) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$title = title;
     final lOther$title = other.title;
-    if (l$title != lOther$title) return false;
+    if (l$title != lOther$title) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -1355,35 +1596,58 @@ class _CopyWithStubImpl$Query$SearchHashtags$hashtags$edges$node<TRes>
   call({String? id, String? title, String? $__typename}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Variables$Mutation$CreatePost {
-  Variables$Mutation$CreatePost({required this.createPostInput});
+  factory Variables$Mutation$CreatePost(
+          {required Input$CreatePostInput createPostInput}) =>
+      Variables$Mutation$CreatePost._({
+        r'createPostInput': createPostInput,
+      });
 
-  @override
-  factory Variables$Mutation$CreatePost.fromJson(Map<String, dynamic> json) =>
-      _$Variables$Mutation$CreatePostFromJson(json);
+  Variables$Mutation$CreatePost._(this._$data);
 
-  final Input$CreatePostInput createPostInput;
-
-  Map<String, dynamic> toJson() => _$Variables$Mutation$CreatePostToJson(this);
-  int get hashCode {
-    final l$createPostInput = createPostInput;
-    return Object.hashAll([l$createPostInput]);
+  factory Variables$Mutation$CreatePost.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$createPostInput = data['createPostInput'];
+    result$data['createPostInput'] = Input$CreatePostInput.fromJson(
+        (l$createPostInput as Map<String, dynamic>));
+    return Variables$Mutation$CreatePost._(result$data);
   }
 
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Variables$Mutation$CreatePost) ||
-        runtimeType != other.runtimeType) return false;
+  Map<String, dynamic> _$data;
+
+  Input$CreatePostInput get createPostInput =>
+      (_$data['createPostInput'] as Input$CreatePostInput);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
     final l$createPostInput = createPostInput;
-    final lOther$createPostInput = other.createPostInput;
-    if (l$createPostInput != lOther$createPostInput) return false;
-    return true;
+    result$data['createPostInput'] = l$createPostInput.toJson();
+    return result$data;
   }
 
   CopyWith$Variables$Mutation$CreatePost<Variables$Mutation$CreatePost>
       get copyWith => CopyWith$Variables$Mutation$CreatePost(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$CreatePost) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$createPostInput = createPostInput;
+    final lOther$createPostInput = other.createPostInput;
+    if (l$createPostInput != lOther$createPostInput) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$createPostInput = createPostInput;
+    return Object.hashAll([l$createPostInput]);
+  }
 }
 
 abstract class CopyWith$Variables$Mutation$CreatePost<TRes> {
@@ -1409,11 +1673,11 @@ class _CopyWithImpl$Variables$Mutation$CreatePost<TRes>
   static const _undefined = {};
 
   TRes call({Object? createPostInput = _undefined}) =>
-      _then(Variables$Mutation$CreatePost(
-          createPostInput:
-              createPostInput == _undefined || createPostInput == null
-                  ? _instance.createPostInput
-                  : (createPostInput as Input$CreatePostInput)));
+      _then(Variables$Mutation$CreatePost._({
+        ..._instance._$data,
+        if (createPostInput != _undefined && createPostInput != null)
+          'createPostInput': (createPostInput as Input$CreatePostInput),
+      }));
 }
 
 class _CopyWithStubImpl$Variables$Mutation$CreatePost<TRes>
@@ -1425,20 +1689,32 @@ class _CopyWithStubImpl$Variables$Mutation$CreatePost<TRes>
   call({Input$CreatePostInput? createPostInput}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Mutation$CreatePost {
   Mutation$CreatePost({required this.createPost, required this.$__typename});
 
-  @override
-  factory Mutation$CreatePost.fromJson(Map<String, dynamic> json) =>
-      _$Mutation$CreatePostFromJson(json);
+  factory Mutation$CreatePost.fromJson(Map<String, dynamic> json) {
+    final l$createPost = json['createPost'];
+    final l$$__typename = json['__typename'];
+    return Mutation$CreatePost(
+        createPost: Mutation$CreatePost$createPost.fromJson(
+            (l$createPost as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final Mutation$CreatePost$createPost createPost;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Mutation$CreatePostToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$createPost = createPost;
+    _resultData['createPost'] = l$createPost.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$createPost = createPost;
     final l$$__typename = $__typename;
@@ -1447,15 +1723,22 @@ class Mutation$CreatePost {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Mutation$CreatePost) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$CreatePost) || runtimeType != other.runtimeType) {
       return false;
+    }
     final l$createPost = createPost;
     final lOther$createPost = other.createPost;
-    if (l$createPost != lOther$createPost) return false;
+    if (l$createPost != lOther$createPost) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -1733,20 +2016,30 @@ class Mutation$CreatePost$Widget
                 result));
 }
 
-@JsonSerializable(explicitToJson: true)
 class Mutation$CreatePost$createPost {
   Mutation$CreatePost$createPost({required this.id, required this.$__typename});
 
-  @override
-  factory Mutation$CreatePost$createPost.fromJson(Map<String, dynamic> json) =>
-      _$Mutation$CreatePost$createPostFromJson(json);
+  factory Mutation$CreatePost$createPost.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Mutation$CreatePost$createPost(
+        id: (l$id as String), $__typename: (l$$__typename as String));
+  }
 
   final String id;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Mutation$CreatePost$createPostToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$id = id;
     final l$$__typename = $__typename;
@@ -1755,15 +2048,23 @@ class Mutation$CreatePost$createPost {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Mutation$CreatePost$createPost) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -1813,42 +2114,73 @@ class _CopyWithStubImpl$Mutation$CreatePost$createPost<TRes>
   call({String? id, String? $__typename}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Variables$Mutation$CreatePosts {
-  Variables$Mutation$CreatePosts(
-      {required this.createPostInput, required this.createPostInput2});
+  factory Variables$Mutation$CreatePosts(
+          {required Input$CreatePostInput createPostInput,
+          required Input$CreatePostInput createPostInput2}) =>
+      Variables$Mutation$CreatePosts._({
+        r'createPostInput': createPostInput,
+        r'createPostInput2': createPostInput2,
+      });
+
+  Variables$Mutation$CreatePosts._(this._$data);
+
+  factory Variables$Mutation$CreatePosts.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$createPostInput = data['createPostInput'];
+    result$data['createPostInput'] = Input$CreatePostInput.fromJson(
+        (l$createPostInput as Map<String, dynamic>));
+    final l$createPostInput2 = data['createPostInput2'];
+    result$data['createPostInput2'] = Input$CreatePostInput.fromJson(
+        (l$createPostInput2 as Map<String, dynamic>));
+    return Variables$Mutation$CreatePosts._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$CreatePostInput get createPostInput =>
+      (_$data['createPostInput'] as Input$CreatePostInput);
+  Input$CreatePostInput get createPostInput2 =>
+      (_$data['createPostInput2'] as Input$CreatePostInput);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$createPostInput = createPostInput;
+    result$data['createPostInput'] = l$createPostInput.toJson();
+    final l$createPostInput2 = createPostInput2;
+    result$data['createPostInput2'] = l$createPostInput2.toJson();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$CreatePosts<Variables$Mutation$CreatePosts>
+      get copyWith => CopyWith$Variables$Mutation$CreatePosts(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$CreatePosts) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$createPostInput = createPostInput;
+    final lOther$createPostInput = other.createPostInput;
+    if (l$createPostInput != lOther$createPostInput) {
+      return false;
+    }
+    final l$createPostInput2 = createPostInput2;
+    final lOther$createPostInput2 = other.createPostInput2;
+    if (l$createPostInput2 != lOther$createPostInput2) {
+      return false;
+    }
+    return true;
+  }
 
   @override
-  factory Variables$Mutation$CreatePosts.fromJson(Map<String, dynamic> json) =>
-      _$Variables$Mutation$CreatePostsFromJson(json);
-
-  final Input$CreatePostInput createPostInput;
-
-  final Input$CreatePostInput createPostInput2;
-
-  Map<String, dynamic> toJson() => _$Variables$Mutation$CreatePostsToJson(this);
   int get hashCode {
     final l$createPostInput = createPostInput;
     final l$createPostInput2 = createPostInput2;
     return Object.hashAll([l$createPostInput, l$createPostInput2]);
   }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Variables$Mutation$CreatePosts) ||
-        runtimeType != other.runtimeType) return false;
-    final l$createPostInput = createPostInput;
-    final lOther$createPostInput = other.createPostInput;
-    if (l$createPostInput != lOther$createPostInput) return false;
-    final l$createPostInput2 = createPostInput2;
-    final lOther$createPostInput2 = other.createPostInput2;
-    if (l$createPostInput2 != lOther$createPostInput2) return false;
-    return true;
-  }
-
-  CopyWith$Variables$Mutation$CreatePosts<Variables$Mutation$CreatePosts>
-      get copyWith => CopyWith$Variables$Mutation$CreatePosts(this, (i) => i);
 }
 
 abstract class CopyWith$Variables$Mutation$CreatePosts<TRes> {
@@ -1878,15 +2210,13 @@ class _CopyWithImpl$Variables$Mutation$CreatePosts<TRes>
   TRes call(
           {Object? createPostInput = _undefined,
           Object? createPostInput2 = _undefined}) =>
-      _then(Variables$Mutation$CreatePosts(
-          createPostInput:
-              createPostInput == _undefined || createPostInput == null
-                  ? _instance.createPostInput
-                  : (createPostInput as Input$CreatePostInput),
-          createPostInput2:
-              createPostInput2 == _undefined || createPostInput2 == null
-                  ? _instance.createPostInput2
-                  : (createPostInput2 as Input$CreatePostInput)));
+      _then(Variables$Mutation$CreatePosts._({
+        ..._instance._$data,
+        if (createPostInput != _undefined && createPostInput != null)
+          'createPostInput': (createPostInput as Input$CreatePostInput),
+        if (createPostInput2 != _undefined && createPostInput2 != null)
+          'createPostInput2': (createPostInput2 as Input$CreatePostInput),
+      }));
 }
 
 class _CopyWithStubImpl$Variables$Mutation$CreatePosts<TRes>
@@ -1901,20 +2231,32 @@ class _CopyWithStubImpl$Variables$Mutation$CreatePosts<TRes>
       _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Mutation$CreatePosts {
   Mutation$CreatePosts({required this.createPosts, required this.$__typename});
 
-  @override
-  factory Mutation$CreatePosts.fromJson(Map<String, dynamic> json) =>
-      _$Mutation$CreatePostsFromJson(json);
+  factory Mutation$CreatePosts.fromJson(Map<String, dynamic> json) {
+    final l$createPosts = json['createPosts'];
+    final l$$__typename = json['__typename'];
+    return Mutation$CreatePosts(
+        createPosts: Mutation$CreatePosts$createPosts.fromJson(
+            (l$createPosts as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final Mutation$CreatePosts$createPosts createPosts;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Mutation$CreatePostsToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$createPosts = createPosts;
+    _resultData['createPosts'] = l$createPosts.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$createPosts = createPosts;
     final l$$__typename = $__typename;
@@ -1923,15 +2265,22 @@ class Mutation$CreatePosts {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Mutation$CreatePosts) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$CreatePosts) || runtimeType != other.runtimeType) {
       return false;
+    }
     final l$createPosts = createPosts;
     final lOther$createPosts = other.createPosts;
-    if (l$createPosts != lOther$createPosts) return false;
+    if (l$createPosts != lOther$createPosts) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -2223,23 +2572,31 @@ class Mutation$CreatePosts$Widget
                 result));
 }
 
-@JsonSerializable(explicitToJson: true)
 class Mutation$CreatePosts$createPosts {
   Mutation$CreatePosts$createPosts(
       {required this.id, required this.$__typename});
 
-  @override
-  factory Mutation$CreatePosts$createPosts.fromJson(
-          Map<String, dynamic> json) =>
-      _$Mutation$CreatePosts$createPostsFromJson(json);
+  factory Mutation$CreatePosts$createPosts.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Mutation$CreatePosts$createPosts(
+        id: (l$id as String), $__typename: (l$$__typename as String));
+  }
 
   final String id;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() =>
-      _$Mutation$CreatePosts$createPostsToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$id = id;
     final l$$__typename = $__typename;
@@ -2248,15 +2605,23 @@ class Mutation$CreatePosts$createPosts {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Mutation$CreatePosts$createPosts) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }

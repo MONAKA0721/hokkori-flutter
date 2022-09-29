@@ -2,38 +2,63 @@ import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
-import 'package:json_annotation/json_annotation.dart';
-part 'home_page.graphql.g.dart';
 
-@JsonSerializable(explicitToJson: true)
 class Variables$Query$HomeWorks {
-  Variables$Query$HomeWorks({this.first});
+  factory Variables$Query$HomeWorks({int? first}) =>
+      Variables$Query$HomeWorks._({
+        if (first != null) r'first': first,
+      });
 
-  @override
-  factory Variables$Query$HomeWorks.fromJson(Map<String, dynamic> json) =>
-      _$Variables$Query$HomeWorksFromJson(json);
+  Variables$Query$HomeWorks._(this._$data);
 
-  final int? first;
-
-  Map<String, dynamic> toJson() => _$Variables$Query$HomeWorksToJson(this);
-  int get hashCode {
-    final l$first = first;
-    return Object.hashAll([l$first]);
+  factory Variables$Query$HomeWorks.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('first')) {
+      final l$first = data['first'];
+      result$data['first'] = (l$first as int?);
+    }
+    return Variables$Query$HomeWorks._(result$data);
   }
 
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Variables$Query$HomeWorks) ||
-        runtimeType != other.runtimeType) return false;
-    final l$first = first;
-    final lOther$first = other.first;
-    if (l$first != lOther$first) return false;
-    return true;
+  Map<String, dynamic> _$data;
+
+  int? get first => (_$data['first'] as int?);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('first')) {
+      final l$first = first;
+      result$data['first'] = l$first;
+    }
+    return result$data;
   }
 
   CopyWith$Variables$Query$HomeWorks<Variables$Query$HomeWorks> get copyWith =>
       CopyWith$Variables$Query$HomeWorks(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Query$HomeWorks) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$first = first;
+    final lOther$first = other.first;
+    if (_$data.containsKey('first') != other._$data.containsKey('first')) {
+      return false;
+    }
+    if (l$first != lOther$first) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$first = first;
+    return Object.hashAll([_$data.containsKey('first') ? l$first : const {}]);
+  }
 }
 
 abstract class CopyWith$Variables$Query$HomeWorks<TRes> {
@@ -57,8 +82,10 @@ class _CopyWithImpl$Variables$Query$HomeWorks<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? first = _undefined}) => _then(Variables$Query$HomeWorks(
-      first: first == _undefined ? _instance.first : (first as int?)));
+  TRes call({Object? first = _undefined}) => _then(Variables$Query$HomeWorks._({
+        ..._instance._$data,
+        if (first != _undefined) 'first': (first as int?),
+      }));
 }
 
 class _CopyWithStubImpl$Variables$Query$HomeWorks<TRes>
@@ -70,20 +97,32 @@ class _CopyWithStubImpl$Variables$Query$HomeWorks<TRes>
   call({int? first}) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$HomeWorks {
   Query$HomeWorks({required this.works, required this.$__typename});
 
-  @override
-  factory Query$HomeWorks.fromJson(Map<String, dynamic> json) =>
-      _$Query$HomeWorksFromJson(json);
+  factory Query$HomeWorks.fromJson(Map<String, dynamic> json) {
+    final l$works = json['works'];
+    final l$$__typename = json['__typename'];
+    return Query$HomeWorks(
+        works:
+            Query$HomeWorks$works.fromJson((l$works as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final Query$HomeWorks$works works;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$HomeWorksToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$works = works;
+    _resultData['works'] = l$works.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$works = works;
     final l$$__typename = $__typename;
@@ -92,15 +131,22 @@ class Query$HomeWorks {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$HomeWorks) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$HomeWorks) || runtimeType != other.runtimeType) {
       return false;
+    }
     final l$works = works;
     final lOther$works = other.works;
-    if (l$works != lOther$works) return false;
+    if (l$works != lOther$works) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -352,20 +398,36 @@ class Query$HomeWorks$Widget extends graphql_flutter.Query<Query$HomeWorks> {
             builder: builder);
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$HomeWorks$works {
   Query$HomeWorks$works({this.edges, required this.$__typename});
 
-  @override
-  factory Query$HomeWorks$works.fromJson(Map<String, dynamic> json) =>
-      _$Query$HomeWorks$worksFromJson(json);
+  factory Query$HomeWorks$works.fromJson(Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Query$HomeWorks$works(
+        edges: (l$edges as List<dynamic>?)
+            ?.map((e) => e == null
+                ? null
+                : Query$HomeWorks$works$edges.fromJson(
+                    (e as Map<String, dynamic>)))
+            .toList(),
+        $__typename: (l$$__typename as String));
+  }
 
   final List<Query$HomeWorks$works$edges?>? edges;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$HomeWorks$worksToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges?.map((e) => e?.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$edges = edges;
     final l$$__typename = $__typename;
@@ -377,25 +439,33 @@ class Query$HomeWorks$works {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (!(other is Query$HomeWorks$works) || runtimeType != other.runtimeType)
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$HomeWorks$works) || runtimeType != other.runtimeType) {
       return false;
+    }
     final l$edges = edges;
     final lOther$edges = other.edges;
     if (l$edges != null && lOther$edges != null) {
-      if (l$edges.length != lOther$edges.length) return false;
+      if (l$edges.length != lOther$edges.length) {
+        return false;
+      }
       for (int i = 0; i < l$edges.length; i++) {
         final l$edges$entry = l$edges[i];
         final lOther$edges$entry = lOther$edges[i];
-        if (l$edges$entry != lOther$edges$entry) return false;
+        if (l$edges$entry != lOther$edges$entry) {
+          return false;
+        }
       }
     } else if (l$edges != lOther$edges) {
       return false;
     }
-
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -463,20 +533,34 @@ class _CopyWithStubImpl$Query$HomeWorks$works<TRes>
   edges(_fn) => _res;
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$HomeWorks$works$edges {
   Query$HomeWorks$works$edges({this.node, required this.$__typename});
 
-  @override
-  factory Query$HomeWorks$works$edges.fromJson(Map<String, dynamic> json) =>
-      _$Query$HomeWorks$works$edgesFromJson(json);
+  factory Query$HomeWorks$works$edges.fromJson(Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$HomeWorks$works$edges(
+        node: l$node == null
+            ? null
+            : Query$HomeWorks$works$edges$node.fromJson(
+                (l$node as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
 
   final Query$HomeWorks$works$edges$node? node;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() => _$Query$HomeWorks$works$edgesToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$node = node;
     final l$$__typename = $__typename;
@@ -485,15 +569,23 @@ class Query$HomeWorks$works$edges {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Query$HomeWorks$works$edges) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$node = node;
     final lOther$node = other.node;
-    if (l$node != lOther$node) return false;
+    if (l$node != lOther$node) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
@@ -555,7 +647,6 @@ class _CopyWithStubImpl$Query$HomeWorks$works$edges<TRes>
       CopyWith$Query$HomeWorks$works$edges$node.stub(_res);
 }
 
-@JsonSerializable(explicitToJson: true)
 class Query$HomeWorks$works$edges$node {
   Query$HomeWorks$works$edges$node(
       {required this.id,
@@ -563,10 +654,17 @@ class Query$HomeWorks$works$edges$node {
       this.thumbnail,
       required this.$__typename});
 
-  @override
-  factory Query$HomeWorks$works$edges$node.fromJson(
-          Map<String, dynamic> json) =>
-      _$Query$HomeWorks$works$edges$nodeFromJson(json);
+  factory Query$HomeWorks$works$edges$node.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$title = json['title'];
+    final l$thumbnail = json['thumbnail'];
+    final l$$__typename = json['__typename'];
+    return Query$HomeWorks$works$edges$node(
+        id: (l$id as String),
+        title: (l$title as String),
+        thumbnail: (l$thumbnail as String?),
+        $__typename: (l$$__typename as String));
+  }
 
   final String id;
 
@@ -574,11 +672,22 @@ class Query$HomeWorks$works$edges$node {
 
   final String? thumbnail;
 
-  @JsonKey(name: '__typename')
   final String $__typename;
 
-  Map<String, dynamic> toJson() =>
-      _$Query$HomeWorks$works$edges$nodeToJson(this);
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$thumbnail = thumbnail;
+    _resultData['thumbnail'] = l$thumbnail;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
   int get hashCode {
     final l$id = id;
     final l$title = title;
@@ -589,21 +698,33 @@ class Query$HomeWorks$works$edges$node {
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
     if (!(other is Query$HomeWorks$works$edges$node) ||
-        runtimeType != other.runtimeType) return false;
+        runtimeType != other.runtimeType) {
+      return false;
+    }
     final l$id = id;
     final lOther$id = other.id;
-    if (l$id != lOther$id) return false;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$title = title;
     final lOther$title = other.title;
-    if (l$title != lOther$title) return false;
+    if (l$title != lOther$title) {
+      return false;
+    }
     final l$thumbnail = thumbnail;
     final lOther$thumbnail = other.thumbnail;
-    if (l$thumbnail != lOther$thumbnail) return false;
+    if (l$thumbnail != lOther$thumbnail) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) return false;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
     return true;
   }
 }
