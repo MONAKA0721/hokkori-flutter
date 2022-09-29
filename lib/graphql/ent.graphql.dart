@@ -858,13 +858,25 @@ class _CopyWithStubImpl$Input$CreatePostInput<TRes>
 
 @JsonSerializable(explicitToJson: true)
 class Input$CreateUserInput {
-  Input$CreateUserInput({required this.name, this.postIDs, this.likedPostIDs});
+  Input$CreateUserInput(
+      {required this.name,
+      this.username,
+      this.profile,
+      this.avatarURL,
+      this.postIDs,
+      this.likedPostIDs});
 
   @override
   factory Input$CreateUserInput.fromJson(Map<String, dynamic> json) =>
       _$Input$CreateUserInputFromJson(json);
 
   final String name;
+
+  final String? username;
+
+  final String? profile;
+
+  final String? avatarURL;
 
   final List<String>? postIDs;
 
@@ -873,10 +885,16 @@ class Input$CreateUserInput {
   Map<String, dynamic> toJson() => _$Input$CreateUserInputToJson(this);
   int get hashCode {
     final l$name = name;
+    final l$username = username;
+    final l$profile = profile;
+    final l$avatarURL = avatarURL;
     final l$postIDs = postIDs;
     final l$likedPostIDs = likedPostIDs;
     return Object.hashAll([
       l$name,
+      l$username,
+      l$profile,
+      l$avatarURL,
       l$postIDs == null ? null : Object.hashAll(l$postIDs.map((v) => v)),
       l$likedPostIDs == null
           ? null
@@ -892,6 +910,15 @@ class Input$CreateUserInput {
     final l$name = name;
     final lOther$name = other.name;
     if (l$name != lOther$name) return false;
+    final l$username = username;
+    final lOther$username = other.username;
+    if (l$username != lOther$username) return false;
+    final l$profile = profile;
+    final lOther$profile = other.profile;
+    if (l$profile != lOther$profile) return false;
+    final l$avatarURL = avatarURL;
+    final lOther$avatarURL = other.avatarURL;
+    if (l$avatarURL != lOther$avatarURL) return false;
     final l$postIDs = postIDs;
     final lOther$postIDs = other.postIDs;
     if (l$postIDs != null && lOther$postIDs != null) {
@@ -933,7 +960,13 @@ abstract class CopyWith$Input$CreateUserInput<TRes> {
   factory CopyWith$Input$CreateUserInput.stub(TRes res) =
       _CopyWithStubImpl$Input$CreateUserInput;
 
-  TRes call({String? name, List<String>? postIDs, List<String>? likedPostIDs});
+  TRes call(
+      {String? name,
+      String? username,
+      String? profile,
+      String? avatarURL,
+      List<String>? postIDs,
+      List<String>? likedPostIDs});
 }
 
 class _CopyWithImpl$Input$CreateUserInput<TRes>
@@ -948,12 +981,23 @@ class _CopyWithImpl$Input$CreateUserInput<TRes>
 
   TRes call(
           {Object? name = _undefined,
+          Object? username = _undefined,
+          Object? profile = _undefined,
+          Object? avatarURL = _undefined,
           Object? postIDs = _undefined,
           Object? likedPostIDs = _undefined}) =>
       _then(Input$CreateUserInput(
           name: name == _undefined || name == null
               ? _instance.name
               : (name as String),
+          username: username == _undefined
+              ? _instance.username
+              : (username as String?),
+          profile:
+              profile == _undefined ? _instance.profile : (profile as String?),
+          avatarURL: avatarURL == _undefined
+              ? _instance.avatarURL
+              : (avatarURL as String?),
           postIDs: postIDs == _undefined
               ? _instance.postIDs
               : (postIDs as List<String>?),
@@ -968,7 +1012,13 @@ class _CopyWithStubImpl$Input$CreateUserInput<TRes>
 
   TRes _res;
 
-  call({String? name, List<String>? postIDs, List<String>? likedPostIDs}) =>
+  call(
+          {String? name,
+          String? username,
+          String? profile,
+          String? avatarURL,
+          List<String>? postIDs,
+          List<String>? likedPostIDs}) =>
       _res;
 }
 
@@ -3388,6 +3438,12 @@ class _CopyWithStubImpl$Input$UpdatePostInput<TRes>
 class Input$UpdateUserInput {
   Input$UpdateUserInput(
       {this.name,
+      this.clearUsername,
+      this.username,
+      this.clearProfile,
+      this.profile,
+      this.clearAvatarURL,
+      this.avatarURL,
       this.addPostIDs,
       this.removePostIDs,
       this.addLikedPostIDs,
@@ -3398,6 +3454,18 @@ class Input$UpdateUserInput {
       _$Input$UpdateUserInputFromJson(json);
 
   final String? name;
+
+  final bool? clearUsername;
+
+  final String? username;
+
+  final bool? clearProfile;
+
+  final String? profile;
+
+  final bool? clearAvatarURL;
+
+  final String? avatarURL;
 
   final List<String>? addPostIDs;
 
@@ -3410,12 +3478,24 @@ class Input$UpdateUserInput {
   Map<String, dynamic> toJson() => _$Input$UpdateUserInputToJson(this);
   int get hashCode {
     final l$name = name;
+    final l$clearUsername = clearUsername;
+    final l$username = username;
+    final l$clearProfile = clearProfile;
+    final l$profile = profile;
+    final l$clearAvatarURL = clearAvatarURL;
+    final l$avatarURL = avatarURL;
     final l$addPostIDs = addPostIDs;
     final l$removePostIDs = removePostIDs;
     final l$addLikedPostIDs = addLikedPostIDs;
     final l$removeLikedPostIDs = removeLikedPostIDs;
     return Object.hashAll([
       l$name,
+      l$clearUsername,
+      l$username,
+      l$clearProfile,
+      l$profile,
+      l$clearAvatarURL,
+      l$avatarURL,
       l$addPostIDs == null ? null : Object.hashAll(l$addPostIDs.map((v) => v)),
       l$removePostIDs == null
           ? null
@@ -3437,6 +3517,24 @@ class Input$UpdateUserInput {
     final l$name = name;
     final lOther$name = other.name;
     if (l$name != lOther$name) return false;
+    final l$clearUsername = clearUsername;
+    final lOther$clearUsername = other.clearUsername;
+    if (l$clearUsername != lOther$clearUsername) return false;
+    final l$username = username;
+    final lOther$username = other.username;
+    if (l$username != lOther$username) return false;
+    final l$clearProfile = clearProfile;
+    final lOther$clearProfile = other.clearProfile;
+    if (l$clearProfile != lOther$clearProfile) return false;
+    final l$profile = profile;
+    final lOther$profile = other.profile;
+    if (l$profile != lOther$profile) return false;
+    final l$clearAvatarURL = clearAvatarURL;
+    final lOther$clearAvatarURL = other.clearAvatarURL;
+    if (l$clearAvatarURL != lOther$clearAvatarURL) return false;
+    final l$avatarURL = avatarURL;
+    final lOther$avatarURL = other.avatarURL;
+    if (l$avatarURL != lOther$avatarURL) return false;
     final l$addPostIDs = addPostIDs;
     final lOther$addPostIDs = other.addPostIDs;
     if (l$addPostIDs != null && lOther$addPostIDs != null) {
@@ -3510,6 +3608,12 @@ abstract class CopyWith$Input$UpdateUserInput<TRes> {
 
   TRes call(
       {String? name,
+      bool? clearUsername,
+      String? username,
+      bool? clearProfile,
+      String? profile,
+      bool? clearAvatarURL,
+      String? avatarURL,
       List<String>? addPostIDs,
       List<String>? removePostIDs,
       List<String>? addLikedPostIDs,
@@ -3528,12 +3632,35 @@ class _CopyWithImpl$Input$UpdateUserInput<TRes>
 
   TRes call(
           {Object? name = _undefined,
+          Object? clearUsername = _undefined,
+          Object? username = _undefined,
+          Object? clearProfile = _undefined,
+          Object? profile = _undefined,
+          Object? clearAvatarURL = _undefined,
+          Object? avatarURL = _undefined,
           Object? addPostIDs = _undefined,
           Object? removePostIDs = _undefined,
           Object? addLikedPostIDs = _undefined,
           Object? removeLikedPostIDs = _undefined}) =>
       _then(Input$UpdateUserInput(
           name: name == _undefined ? _instance.name : (name as String?),
+          clearUsername: clearUsername == _undefined
+              ? _instance.clearUsername
+              : (clearUsername as bool?),
+          username: username == _undefined
+              ? _instance.username
+              : (username as String?),
+          clearProfile: clearProfile == _undefined
+              ? _instance.clearProfile
+              : (clearProfile as bool?),
+          profile:
+              profile == _undefined ? _instance.profile : (profile as String?),
+          clearAvatarURL: clearAvatarURL == _undefined
+              ? _instance.clearAvatarURL
+              : (clearAvatarURL as bool?),
+          avatarURL: avatarURL == _undefined
+              ? _instance.avatarURL
+              : (avatarURL as String?),
           addPostIDs: addPostIDs == _undefined
               ? _instance.addPostIDs
               : (addPostIDs as List<String>?),
@@ -3556,6 +3683,12 @@ class _CopyWithStubImpl$Input$UpdateUserInput<TRes>
 
   call(
           {String? name,
+          bool? clearUsername,
+          String? username,
+          bool? clearProfile,
+          String? profile,
+          bool? clearAvatarURL,
+          String? avatarURL,
           List<String>? addPostIDs,
           List<String>? removePostIDs,
           List<String>? addLikedPostIDs,
@@ -3741,6 +3874,51 @@ class Input$UserWhereInput {
       this.nameHasSuffix,
       this.nameEqualFold,
       this.nameContainsFold,
+      this.username,
+      this.usernameNEQ,
+      this.usernameIn,
+      this.usernameNotIn,
+      this.usernameGT,
+      this.usernameGTE,
+      this.usernameLT,
+      this.usernameLTE,
+      this.usernameContains,
+      this.usernameHasPrefix,
+      this.usernameHasSuffix,
+      this.usernameIsNil,
+      this.usernameNotNil,
+      this.usernameEqualFold,
+      this.usernameContainsFold,
+      this.profile,
+      this.profileNEQ,
+      this.profileIn,
+      this.profileNotIn,
+      this.profileGT,
+      this.profileGTE,
+      this.profileLT,
+      this.profileLTE,
+      this.profileContains,
+      this.profileHasPrefix,
+      this.profileHasSuffix,
+      this.profileIsNil,
+      this.profileNotNil,
+      this.profileEqualFold,
+      this.profileContainsFold,
+      this.avatarURL,
+      this.avatarURLNEQ,
+      this.avatarURLIn,
+      this.avatarURLNotIn,
+      this.avatarURLGT,
+      this.avatarURLGTE,
+      this.avatarURLLT,
+      this.avatarURLLTE,
+      this.avatarURLContains,
+      this.avatarURLHasPrefix,
+      this.avatarURLHasSuffix,
+      this.avatarURLIsNil,
+      this.avatarURLNotNil,
+      this.avatarURLEqualFold,
+      this.avatarURLContainsFold,
       this.hasPosts,
       this.hasPostsWith,
       this.hasLikedPosts,
@@ -3798,6 +3976,96 @@ class Input$UserWhereInput {
 
   final String? nameContainsFold;
 
+  final String? username;
+
+  final String? usernameNEQ;
+
+  final List<String>? usernameIn;
+
+  final List<String>? usernameNotIn;
+
+  final String? usernameGT;
+
+  final String? usernameGTE;
+
+  final String? usernameLT;
+
+  final String? usernameLTE;
+
+  final String? usernameContains;
+
+  final String? usernameHasPrefix;
+
+  final String? usernameHasSuffix;
+
+  final bool? usernameIsNil;
+
+  final bool? usernameNotNil;
+
+  final String? usernameEqualFold;
+
+  final String? usernameContainsFold;
+
+  final String? profile;
+
+  final String? profileNEQ;
+
+  final List<String>? profileIn;
+
+  final List<String>? profileNotIn;
+
+  final String? profileGT;
+
+  final String? profileGTE;
+
+  final String? profileLT;
+
+  final String? profileLTE;
+
+  final String? profileContains;
+
+  final String? profileHasPrefix;
+
+  final String? profileHasSuffix;
+
+  final bool? profileIsNil;
+
+  final bool? profileNotNil;
+
+  final String? profileEqualFold;
+
+  final String? profileContainsFold;
+
+  final String? avatarURL;
+
+  final String? avatarURLNEQ;
+
+  final List<String>? avatarURLIn;
+
+  final List<String>? avatarURLNotIn;
+
+  final String? avatarURLGT;
+
+  final String? avatarURLGTE;
+
+  final String? avatarURLLT;
+
+  final String? avatarURLLTE;
+
+  final String? avatarURLContains;
+
+  final String? avatarURLHasPrefix;
+
+  final String? avatarURLHasSuffix;
+
+  final bool? avatarURLIsNil;
+
+  final bool? avatarURLNotNil;
+
+  final String? avatarURLEqualFold;
+
+  final String? avatarURLContainsFold;
+
   final bool? hasPosts;
 
   final List<Input$PostWhereInput>? hasPostsWith;
@@ -3832,6 +4100,51 @@ class Input$UserWhereInput {
     final l$nameHasSuffix = nameHasSuffix;
     final l$nameEqualFold = nameEqualFold;
     final l$nameContainsFold = nameContainsFold;
+    final l$username = username;
+    final l$usernameNEQ = usernameNEQ;
+    final l$usernameIn = usernameIn;
+    final l$usernameNotIn = usernameNotIn;
+    final l$usernameGT = usernameGT;
+    final l$usernameGTE = usernameGTE;
+    final l$usernameLT = usernameLT;
+    final l$usernameLTE = usernameLTE;
+    final l$usernameContains = usernameContains;
+    final l$usernameHasPrefix = usernameHasPrefix;
+    final l$usernameHasSuffix = usernameHasSuffix;
+    final l$usernameIsNil = usernameIsNil;
+    final l$usernameNotNil = usernameNotNil;
+    final l$usernameEqualFold = usernameEqualFold;
+    final l$usernameContainsFold = usernameContainsFold;
+    final l$profile = profile;
+    final l$profileNEQ = profileNEQ;
+    final l$profileIn = profileIn;
+    final l$profileNotIn = profileNotIn;
+    final l$profileGT = profileGT;
+    final l$profileGTE = profileGTE;
+    final l$profileLT = profileLT;
+    final l$profileLTE = profileLTE;
+    final l$profileContains = profileContains;
+    final l$profileHasPrefix = profileHasPrefix;
+    final l$profileHasSuffix = profileHasSuffix;
+    final l$profileIsNil = profileIsNil;
+    final l$profileNotNil = profileNotNil;
+    final l$profileEqualFold = profileEqualFold;
+    final l$profileContainsFold = profileContainsFold;
+    final l$avatarURL = avatarURL;
+    final l$avatarURLNEQ = avatarURLNEQ;
+    final l$avatarURLIn = avatarURLIn;
+    final l$avatarURLNotIn = avatarURLNotIn;
+    final l$avatarURLGT = avatarURLGT;
+    final l$avatarURLGTE = avatarURLGTE;
+    final l$avatarURLLT = avatarURLLT;
+    final l$avatarURLLTE = avatarURLLTE;
+    final l$avatarURLContains = avatarURLContains;
+    final l$avatarURLHasPrefix = avatarURLHasPrefix;
+    final l$avatarURLHasSuffix = avatarURLHasSuffix;
+    final l$avatarURLIsNil = avatarURLIsNil;
+    final l$avatarURLNotNil = avatarURLNotNil;
+    final l$avatarURLEqualFold = avatarURLEqualFold;
+    final l$avatarURLContainsFold = avatarURLContainsFold;
     final l$hasPosts = hasPosts;
     final l$hasPostsWith = hasPostsWith;
     final l$hasLikedPosts = hasLikedPosts;
@@ -3861,6 +4174,59 @@ class Input$UserWhereInput {
       l$nameHasSuffix,
       l$nameEqualFold,
       l$nameContainsFold,
+      l$username,
+      l$usernameNEQ,
+      l$usernameIn == null ? null : Object.hashAll(l$usernameIn.map((v) => v)),
+      l$usernameNotIn == null
+          ? null
+          : Object.hashAll(l$usernameNotIn.map((v) => v)),
+      l$usernameGT,
+      l$usernameGTE,
+      l$usernameLT,
+      l$usernameLTE,
+      l$usernameContains,
+      l$usernameHasPrefix,
+      l$usernameHasSuffix,
+      l$usernameIsNil,
+      l$usernameNotNil,
+      l$usernameEqualFold,
+      l$usernameContainsFold,
+      l$profile,
+      l$profileNEQ,
+      l$profileIn == null ? null : Object.hashAll(l$profileIn.map((v) => v)),
+      l$profileNotIn == null
+          ? null
+          : Object.hashAll(l$profileNotIn.map((v) => v)),
+      l$profileGT,
+      l$profileGTE,
+      l$profileLT,
+      l$profileLTE,
+      l$profileContains,
+      l$profileHasPrefix,
+      l$profileHasSuffix,
+      l$profileIsNil,
+      l$profileNotNil,
+      l$profileEqualFold,
+      l$profileContainsFold,
+      l$avatarURL,
+      l$avatarURLNEQ,
+      l$avatarURLIn == null
+          ? null
+          : Object.hashAll(l$avatarURLIn.map((v) => v)),
+      l$avatarURLNotIn == null
+          ? null
+          : Object.hashAll(l$avatarURLNotIn.map((v) => v)),
+      l$avatarURLGT,
+      l$avatarURLGTE,
+      l$avatarURLLT,
+      l$avatarURLLTE,
+      l$avatarURLContains,
+      l$avatarURLHasPrefix,
+      l$avatarURLHasSuffix,
+      l$avatarURLIsNil,
+      l$avatarURLNotNil,
+      l$avatarURLEqualFold,
+      l$avatarURLContainsFold,
       l$hasPosts,
       l$hasPostsWith == null
           ? null
@@ -4009,6 +4375,201 @@ class Input$UserWhereInput {
     final l$nameContainsFold = nameContainsFold;
     final lOther$nameContainsFold = other.nameContainsFold;
     if (l$nameContainsFold != lOther$nameContainsFold) return false;
+    final l$username = username;
+    final lOther$username = other.username;
+    if (l$username != lOther$username) return false;
+    final l$usernameNEQ = usernameNEQ;
+    final lOther$usernameNEQ = other.usernameNEQ;
+    if (l$usernameNEQ != lOther$usernameNEQ) return false;
+    final l$usernameIn = usernameIn;
+    final lOther$usernameIn = other.usernameIn;
+    if (l$usernameIn != null && lOther$usernameIn != null) {
+      if (l$usernameIn.length != lOther$usernameIn.length) return false;
+      for (int i = 0; i < l$usernameIn.length; i++) {
+        final l$usernameIn$entry = l$usernameIn[i];
+        final lOther$usernameIn$entry = lOther$usernameIn[i];
+        if (l$usernameIn$entry != lOther$usernameIn$entry) return false;
+      }
+    } else if (l$usernameIn != lOther$usernameIn) {
+      return false;
+    }
+
+    final l$usernameNotIn = usernameNotIn;
+    final lOther$usernameNotIn = other.usernameNotIn;
+    if (l$usernameNotIn != null && lOther$usernameNotIn != null) {
+      if (l$usernameNotIn.length != lOther$usernameNotIn.length) return false;
+      for (int i = 0; i < l$usernameNotIn.length; i++) {
+        final l$usernameNotIn$entry = l$usernameNotIn[i];
+        final lOther$usernameNotIn$entry = lOther$usernameNotIn[i];
+        if (l$usernameNotIn$entry != lOther$usernameNotIn$entry) return false;
+      }
+    } else if (l$usernameNotIn != lOther$usernameNotIn) {
+      return false;
+    }
+
+    final l$usernameGT = usernameGT;
+    final lOther$usernameGT = other.usernameGT;
+    if (l$usernameGT != lOther$usernameGT) return false;
+    final l$usernameGTE = usernameGTE;
+    final lOther$usernameGTE = other.usernameGTE;
+    if (l$usernameGTE != lOther$usernameGTE) return false;
+    final l$usernameLT = usernameLT;
+    final lOther$usernameLT = other.usernameLT;
+    if (l$usernameLT != lOther$usernameLT) return false;
+    final l$usernameLTE = usernameLTE;
+    final lOther$usernameLTE = other.usernameLTE;
+    if (l$usernameLTE != lOther$usernameLTE) return false;
+    final l$usernameContains = usernameContains;
+    final lOther$usernameContains = other.usernameContains;
+    if (l$usernameContains != lOther$usernameContains) return false;
+    final l$usernameHasPrefix = usernameHasPrefix;
+    final lOther$usernameHasPrefix = other.usernameHasPrefix;
+    if (l$usernameHasPrefix != lOther$usernameHasPrefix) return false;
+    final l$usernameHasSuffix = usernameHasSuffix;
+    final lOther$usernameHasSuffix = other.usernameHasSuffix;
+    if (l$usernameHasSuffix != lOther$usernameHasSuffix) return false;
+    final l$usernameIsNil = usernameIsNil;
+    final lOther$usernameIsNil = other.usernameIsNil;
+    if (l$usernameIsNil != lOther$usernameIsNil) return false;
+    final l$usernameNotNil = usernameNotNil;
+    final lOther$usernameNotNil = other.usernameNotNil;
+    if (l$usernameNotNil != lOther$usernameNotNil) return false;
+    final l$usernameEqualFold = usernameEqualFold;
+    final lOther$usernameEqualFold = other.usernameEqualFold;
+    if (l$usernameEqualFold != lOther$usernameEqualFold) return false;
+    final l$usernameContainsFold = usernameContainsFold;
+    final lOther$usernameContainsFold = other.usernameContainsFold;
+    if (l$usernameContainsFold != lOther$usernameContainsFold) return false;
+    final l$profile = profile;
+    final lOther$profile = other.profile;
+    if (l$profile != lOther$profile) return false;
+    final l$profileNEQ = profileNEQ;
+    final lOther$profileNEQ = other.profileNEQ;
+    if (l$profileNEQ != lOther$profileNEQ) return false;
+    final l$profileIn = profileIn;
+    final lOther$profileIn = other.profileIn;
+    if (l$profileIn != null && lOther$profileIn != null) {
+      if (l$profileIn.length != lOther$profileIn.length) return false;
+      for (int i = 0; i < l$profileIn.length; i++) {
+        final l$profileIn$entry = l$profileIn[i];
+        final lOther$profileIn$entry = lOther$profileIn[i];
+        if (l$profileIn$entry != lOther$profileIn$entry) return false;
+      }
+    } else if (l$profileIn != lOther$profileIn) {
+      return false;
+    }
+
+    final l$profileNotIn = profileNotIn;
+    final lOther$profileNotIn = other.profileNotIn;
+    if (l$profileNotIn != null && lOther$profileNotIn != null) {
+      if (l$profileNotIn.length != lOther$profileNotIn.length) return false;
+      for (int i = 0; i < l$profileNotIn.length; i++) {
+        final l$profileNotIn$entry = l$profileNotIn[i];
+        final lOther$profileNotIn$entry = lOther$profileNotIn[i];
+        if (l$profileNotIn$entry != lOther$profileNotIn$entry) return false;
+      }
+    } else if (l$profileNotIn != lOther$profileNotIn) {
+      return false;
+    }
+
+    final l$profileGT = profileGT;
+    final lOther$profileGT = other.profileGT;
+    if (l$profileGT != lOther$profileGT) return false;
+    final l$profileGTE = profileGTE;
+    final lOther$profileGTE = other.profileGTE;
+    if (l$profileGTE != lOther$profileGTE) return false;
+    final l$profileLT = profileLT;
+    final lOther$profileLT = other.profileLT;
+    if (l$profileLT != lOther$profileLT) return false;
+    final l$profileLTE = profileLTE;
+    final lOther$profileLTE = other.profileLTE;
+    if (l$profileLTE != lOther$profileLTE) return false;
+    final l$profileContains = profileContains;
+    final lOther$profileContains = other.profileContains;
+    if (l$profileContains != lOther$profileContains) return false;
+    final l$profileHasPrefix = profileHasPrefix;
+    final lOther$profileHasPrefix = other.profileHasPrefix;
+    if (l$profileHasPrefix != lOther$profileHasPrefix) return false;
+    final l$profileHasSuffix = profileHasSuffix;
+    final lOther$profileHasSuffix = other.profileHasSuffix;
+    if (l$profileHasSuffix != lOther$profileHasSuffix) return false;
+    final l$profileIsNil = profileIsNil;
+    final lOther$profileIsNil = other.profileIsNil;
+    if (l$profileIsNil != lOther$profileIsNil) return false;
+    final l$profileNotNil = profileNotNil;
+    final lOther$profileNotNil = other.profileNotNil;
+    if (l$profileNotNil != lOther$profileNotNil) return false;
+    final l$profileEqualFold = profileEqualFold;
+    final lOther$profileEqualFold = other.profileEqualFold;
+    if (l$profileEqualFold != lOther$profileEqualFold) return false;
+    final l$profileContainsFold = profileContainsFold;
+    final lOther$profileContainsFold = other.profileContainsFold;
+    if (l$profileContainsFold != lOther$profileContainsFold) return false;
+    final l$avatarURL = avatarURL;
+    final lOther$avatarURL = other.avatarURL;
+    if (l$avatarURL != lOther$avatarURL) return false;
+    final l$avatarURLNEQ = avatarURLNEQ;
+    final lOther$avatarURLNEQ = other.avatarURLNEQ;
+    if (l$avatarURLNEQ != lOther$avatarURLNEQ) return false;
+    final l$avatarURLIn = avatarURLIn;
+    final lOther$avatarURLIn = other.avatarURLIn;
+    if (l$avatarURLIn != null && lOther$avatarURLIn != null) {
+      if (l$avatarURLIn.length != lOther$avatarURLIn.length) return false;
+      for (int i = 0; i < l$avatarURLIn.length; i++) {
+        final l$avatarURLIn$entry = l$avatarURLIn[i];
+        final lOther$avatarURLIn$entry = lOther$avatarURLIn[i];
+        if (l$avatarURLIn$entry != lOther$avatarURLIn$entry) return false;
+      }
+    } else if (l$avatarURLIn != lOther$avatarURLIn) {
+      return false;
+    }
+
+    final l$avatarURLNotIn = avatarURLNotIn;
+    final lOther$avatarURLNotIn = other.avatarURLNotIn;
+    if (l$avatarURLNotIn != null && lOther$avatarURLNotIn != null) {
+      if (l$avatarURLNotIn.length != lOther$avatarURLNotIn.length) return false;
+      for (int i = 0; i < l$avatarURLNotIn.length; i++) {
+        final l$avatarURLNotIn$entry = l$avatarURLNotIn[i];
+        final lOther$avatarURLNotIn$entry = lOther$avatarURLNotIn[i];
+        if (l$avatarURLNotIn$entry != lOther$avatarURLNotIn$entry) return false;
+      }
+    } else if (l$avatarURLNotIn != lOther$avatarURLNotIn) {
+      return false;
+    }
+
+    final l$avatarURLGT = avatarURLGT;
+    final lOther$avatarURLGT = other.avatarURLGT;
+    if (l$avatarURLGT != lOther$avatarURLGT) return false;
+    final l$avatarURLGTE = avatarURLGTE;
+    final lOther$avatarURLGTE = other.avatarURLGTE;
+    if (l$avatarURLGTE != lOther$avatarURLGTE) return false;
+    final l$avatarURLLT = avatarURLLT;
+    final lOther$avatarURLLT = other.avatarURLLT;
+    if (l$avatarURLLT != lOther$avatarURLLT) return false;
+    final l$avatarURLLTE = avatarURLLTE;
+    final lOther$avatarURLLTE = other.avatarURLLTE;
+    if (l$avatarURLLTE != lOther$avatarURLLTE) return false;
+    final l$avatarURLContains = avatarURLContains;
+    final lOther$avatarURLContains = other.avatarURLContains;
+    if (l$avatarURLContains != lOther$avatarURLContains) return false;
+    final l$avatarURLHasPrefix = avatarURLHasPrefix;
+    final lOther$avatarURLHasPrefix = other.avatarURLHasPrefix;
+    if (l$avatarURLHasPrefix != lOther$avatarURLHasPrefix) return false;
+    final l$avatarURLHasSuffix = avatarURLHasSuffix;
+    final lOther$avatarURLHasSuffix = other.avatarURLHasSuffix;
+    if (l$avatarURLHasSuffix != lOther$avatarURLHasSuffix) return false;
+    final l$avatarURLIsNil = avatarURLIsNil;
+    final lOther$avatarURLIsNil = other.avatarURLIsNil;
+    if (l$avatarURLIsNil != lOther$avatarURLIsNil) return false;
+    final l$avatarURLNotNil = avatarURLNotNil;
+    final lOther$avatarURLNotNil = other.avatarURLNotNil;
+    if (l$avatarURLNotNil != lOther$avatarURLNotNil) return false;
+    final l$avatarURLEqualFold = avatarURLEqualFold;
+    final lOther$avatarURLEqualFold = other.avatarURLEqualFold;
+    if (l$avatarURLEqualFold != lOther$avatarURLEqualFold) return false;
+    final l$avatarURLContainsFold = avatarURLContainsFold;
+    final lOther$avatarURLContainsFold = other.avatarURLContainsFold;
+    if (l$avatarURLContainsFold != lOther$avatarURLContainsFold) return false;
     final l$hasPosts = hasPosts;
     final lOther$hasPosts = other.hasPosts;
     if (l$hasPosts != lOther$hasPosts) return false;
@@ -4083,6 +4644,51 @@ abstract class CopyWith$Input$UserWhereInput<TRes> {
       String? nameHasSuffix,
       String? nameEqualFold,
       String? nameContainsFold,
+      String? username,
+      String? usernameNEQ,
+      List<String>? usernameIn,
+      List<String>? usernameNotIn,
+      String? usernameGT,
+      String? usernameGTE,
+      String? usernameLT,
+      String? usernameLTE,
+      String? usernameContains,
+      String? usernameHasPrefix,
+      String? usernameHasSuffix,
+      bool? usernameIsNil,
+      bool? usernameNotNil,
+      String? usernameEqualFold,
+      String? usernameContainsFold,
+      String? profile,
+      String? profileNEQ,
+      List<String>? profileIn,
+      List<String>? profileNotIn,
+      String? profileGT,
+      String? profileGTE,
+      String? profileLT,
+      String? profileLTE,
+      String? profileContains,
+      String? profileHasPrefix,
+      String? profileHasSuffix,
+      bool? profileIsNil,
+      bool? profileNotNil,
+      String? profileEqualFold,
+      String? profileContainsFold,
+      String? avatarURL,
+      String? avatarURLNEQ,
+      List<String>? avatarURLIn,
+      List<String>? avatarURLNotIn,
+      String? avatarURLGT,
+      String? avatarURLGTE,
+      String? avatarURLLT,
+      String? avatarURLLTE,
+      String? avatarURLContains,
+      String? avatarURLHasPrefix,
+      String? avatarURLHasSuffix,
+      bool? avatarURLIsNil,
+      bool? avatarURLNotNil,
+      String? avatarURLEqualFold,
+      String? avatarURLContainsFold,
       bool? hasPosts,
       List<Input$PostWhereInput>? hasPostsWith,
       bool? hasLikedPosts,
@@ -4141,6 +4747,51 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
           Object? nameHasSuffix = _undefined,
           Object? nameEqualFold = _undefined,
           Object? nameContainsFold = _undefined,
+          Object? username = _undefined,
+          Object? usernameNEQ = _undefined,
+          Object? usernameIn = _undefined,
+          Object? usernameNotIn = _undefined,
+          Object? usernameGT = _undefined,
+          Object? usernameGTE = _undefined,
+          Object? usernameLT = _undefined,
+          Object? usernameLTE = _undefined,
+          Object? usernameContains = _undefined,
+          Object? usernameHasPrefix = _undefined,
+          Object? usernameHasSuffix = _undefined,
+          Object? usernameIsNil = _undefined,
+          Object? usernameNotNil = _undefined,
+          Object? usernameEqualFold = _undefined,
+          Object? usernameContainsFold = _undefined,
+          Object? profile = _undefined,
+          Object? profileNEQ = _undefined,
+          Object? profileIn = _undefined,
+          Object? profileNotIn = _undefined,
+          Object? profileGT = _undefined,
+          Object? profileGTE = _undefined,
+          Object? profileLT = _undefined,
+          Object? profileLTE = _undefined,
+          Object? profileContains = _undefined,
+          Object? profileHasPrefix = _undefined,
+          Object? profileHasSuffix = _undefined,
+          Object? profileIsNil = _undefined,
+          Object? profileNotNil = _undefined,
+          Object? profileEqualFold = _undefined,
+          Object? profileContainsFold = _undefined,
+          Object? avatarURL = _undefined,
+          Object? avatarURLNEQ = _undefined,
+          Object? avatarURLIn = _undefined,
+          Object? avatarURLNotIn = _undefined,
+          Object? avatarURLGT = _undefined,
+          Object? avatarURLGTE = _undefined,
+          Object? avatarURLLT = _undefined,
+          Object? avatarURLLTE = _undefined,
+          Object? avatarURLContains = _undefined,
+          Object? avatarURLHasPrefix = _undefined,
+          Object? avatarURLHasSuffix = _undefined,
+          Object? avatarURLIsNil = _undefined,
+          Object? avatarURLNotNil = _undefined,
+          Object? avatarURLEqualFold = _undefined,
+          Object? avatarURLContainsFold = _undefined,
           Object? hasPosts = _undefined,
           Object? hasPostsWith = _undefined,
           Object? hasLikedPosts = _undefined,
@@ -4195,17 +4846,62 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
           nameContainsFold: nameContainsFold == _undefined
               ? _instance.nameContainsFold
               : (nameContainsFold as String?),
-          hasPosts:
-              hasPosts == _undefined ? _instance.hasPosts : (hasPosts as bool?),
-          hasPostsWith: hasPostsWith == _undefined
-              ? _instance.hasPostsWith
-              : (hasPostsWith as List<Input$PostWhereInput>?),
-          hasLikedPosts: hasLikedPosts == _undefined
-              ? _instance.hasLikedPosts
-              : (hasLikedPosts as bool?),
-          hasLikedPostsWith: hasLikedPostsWith == _undefined
-              ? _instance.hasLikedPostsWith
-              : (hasLikedPostsWith as List<Input$PostWhereInput>?)));
+          username: username == _undefined
+              ? _instance.username
+              : (username as String?),
+          usernameNEQ: usernameNEQ == _undefined
+              ? _instance.usernameNEQ
+              : (usernameNEQ as String?),
+          usernameIn: usernameIn == _undefined
+              ? _instance.usernameIn
+              : (usernameIn as List<String>?),
+          usernameNotIn:
+              usernameNotIn == _undefined ? _instance.usernameNotIn : (usernameNotIn as List<String>?),
+          usernameGT: usernameGT == _undefined ? _instance.usernameGT : (usernameGT as String?),
+          usernameGTE: usernameGTE == _undefined ? _instance.usernameGTE : (usernameGTE as String?),
+          usernameLT: usernameLT == _undefined ? _instance.usernameLT : (usernameLT as String?),
+          usernameLTE: usernameLTE == _undefined ? _instance.usernameLTE : (usernameLTE as String?),
+          usernameContains: usernameContains == _undefined ? _instance.usernameContains : (usernameContains as String?),
+          usernameHasPrefix: usernameHasPrefix == _undefined ? _instance.usernameHasPrefix : (usernameHasPrefix as String?),
+          usernameHasSuffix: usernameHasSuffix == _undefined ? _instance.usernameHasSuffix : (usernameHasSuffix as String?),
+          usernameIsNil: usernameIsNil == _undefined ? _instance.usernameIsNil : (usernameIsNil as bool?),
+          usernameNotNil: usernameNotNil == _undefined ? _instance.usernameNotNil : (usernameNotNil as bool?),
+          usernameEqualFold: usernameEqualFold == _undefined ? _instance.usernameEqualFold : (usernameEqualFold as String?),
+          usernameContainsFold: usernameContainsFold == _undefined ? _instance.usernameContainsFold : (usernameContainsFold as String?),
+          profile: profile == _undefined ? _instance.profile : (profile as String?),
+          profileNEQ: profileNEQ == _undefined ? _instance.profileNEQ : (profileNEQ as String?),
+          profileIn: profileIn == _undefined ? _instance.profileIn : (profileIn as List<String>?),
+          profileNotIn: profileNotIn == _undefined ? _instance.profileNotIn : (profileNotIn as List<String>?),
+          profileGT: profileGT == _undefined ? _instance.profileGT : (profileGT as String?),
+          profileGTE: profileGTE == _undefined ? _instance.profileGTE : (profileGTE as String?),
+          profileLT: profileLT == _undefined ? _instance.profileLT : (profileLT as String?),
+          profileLTE: profileLTE == _undefined ? _instance.profileLTE : (profileLTE as String?),
+          profileContains: profileContains == _undefined ? _instance.profileContains : (profileContains as String?),
+          profileHasPrefix: profileHasPrefix == _undefined ? _instance.profileHasPrefix : (profileHasPrefix as String?),
+          profileHasSuffix: profileHasSuffix == _undefined ? _instance.profileHasSuffix : (profileHasSuffix as String?),
+          profileIsNil: profileIsNil == _undefined ? _instance.profileIsNil : (profileIsNil as bool?),
+          profileNotNil: profileNotNil == _undefined ? _instance.profileNotNil : (profileNotNil as bool?),
+          profileEqualFold: profileEqualFold == _undefined ? _instance.profileEqualFold : (profileEqualFold as String?),
+          profileContainsFold: profileContainsFold == _undefined ? _instance.profileContainsFold : (profileContainsFold as String?),
+          avatarURL: avatarURL == _undefined ? _instance.avatarURL : (avatarURL as String?),
+          avatarURLNEQ: avatarURLNEQ == _undefined ? _instance.avatarURLNEQ : (avatarURLNEQ as String?),
+          avatarURLIn: avatarURLIn == _undefined ? _instance.avatarURLIn : (avatarURLIn as List<String>?),
+          avatarURLNotIn: avatarURLNotIn == _undefined ? _instance.avatarURLNotIn : (avatarURLNotIn as List<String>?),
+          avatarURLGT: avatarURLGT == _undefined ? _instance.avatarURLGT : (avatarURLGT as String?),
+          avatarURLGTE: avatarURLGTE == _undefined ? _instance.avatarURLGTE : (avatarURLGTE as String?),
+          avatarURLLT: avatarURLLT == _undefined ? _instance.avatarURLLT : (avatarURLLT as String?),
+          avatarURLLTE: avatarURLLTE == _undefined ? _instance.avatarURLLTE : (avatarURLLTE as String?),
+          avatarURLContains: avatarURLContains == _undefined ? _instance.avatarURLContains : (avatarURLContains as String?),
+          avatarURLHasPrefix: avatarURLHasPrefix == _undefined ? _instance.avatarURLHasPrefix : (avatarURLHasPrefix as String?),
+          avatarURLHasSuffix: avatarURLHasSuffix == _undefined ? _instance.avatarURLHasSuffix : (avatarURLHasSuffix as String?),
+          avatarURLIsNil: avatarURLIsNil == _undefined ? _instance.avatarURLIsNil : (avatarURLIsNil as bool?),
+          avatarURLNotNil: avatarURLNotNil == _undefined ? _instance.avatarURLNotNil : (avatarURLNotNil as bool?),
+          avatarURLEqualFold: avatarURLEqualFold == _undefined ? _instance.avatarURLEqualFold : (avatarURLEqualFold as String?),
+          avatarURLContainsFold: avatarURLContainsFold == _undefined ? _instance.avatarURLContainsFold : (avatarURLContainsFold as String?),
+          hasPosts: hasPosts == _undefined ? _instance.hasPosts : (hasPosts as bool?),
+          hasPostsWith: hasPostsWith == _undefined ? _instance.hasPostsWith : (hasPostsWith as List<Input$PostWhereInput>?),
+          hasLikedPosts: hasLikedPosts == _undefined ? _instance.hasLikedPosts : (hasLikedPosts as bool?),
+          hasLikedPostsWith: hasLikedPostsWith == _undefined ? _instance.hasLikedPostsWith : (hasLikedPostsWith as List<Input$PostWhereInput>?)));
   CopyWith$Input$UserWhereInput<TRes> get not {
     final local$not = _instance.not;
     return local$not == null
@@ -4282,6 +4978,51 @@ class _CopyWithStubImpl$Input$UserWhereInput<TRes>
           String? nameHasSuffix,
           String? nameEqualFold,
           String? nameContainsFold,
+          String? username,
+          String? usernameNEQ,
+          List<String>? usernameIn,
+          List<String>? usernameNotIn,
+          String? usernameGT,
+          String? usernameGTE,
+          String? usernameLT,
+          String? usernameLTE,
+          String? usernameContains,
+          String? usernameHasPrefix,
+          String? usernameHasSuffix,
+          bool? usernameIsNil,
+          bool? usernameNotNil,
+          String? usernameEqualFold,
+          String? usernameContainsFold,
+          String? profile,
+          String? profileNEQ,
+          List<String>? profileIn,
+          List<String>? profileNotIn,
+          String? profileGT,
+          String? profileGTE,
+          String? profileLT,
+          String? profileLTE,
+          String? profileContains,
+          String? profileHasPrefix,
+          String? profileHasSuffix,
+          bool? profileIsNil,
+          bool? profileNotNil,
+          String? profileEqualFold,
+          String? profileContainsFold,
+          String? avatarURL,
+          String? avatarURLNEQ,
+          List<String>? avatarURLIn,
+          List<String>? avatarURLNotIn,
+          String? avatarURLGT,
+          String? avatarURLGTE,
+          String? avatarURLLT,
+          String? avatarURLLTE,
+          String? avatarURLContains,
+          String? avatarURLHasPrefix,
+          String? avatarURLHasSuffix,
+          bool? avatarURLIsNil,
+          bool? avatarURLNotNil,
+          String? avatarURLEqualFold,
+          String? avatarURLContainsFold,
           bool? hasPosts,
           List<Input$PostWhereInput>? hasPostsWith,
           bool? hasLikedPosts,

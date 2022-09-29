@@ -5,14 +5,13 @@ scalar Time
 
 type Mutation {
   createUser(input: CreateUserInput!): User!
+  updateUser(id: ID!, input: UpdateUserInput!): User!
   createPosts(input: CreatePostInput!, input2: CreatePostInput!): Post!
   createPost(input: CreatePostInput!): Post!
   createHashtag(input: CreateHashtagInput!): Hashtag!
   createWork(input: CreateWorkInput!): Work!
 }
 
-type PostCount {
-  id: ID!
-  title: String!
-  count: Int!
+extend type Query {
+  likedPosts(first: Int!, type: PostPostType!): [Post]!
 }

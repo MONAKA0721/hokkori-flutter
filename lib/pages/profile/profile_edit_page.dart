@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hokkori/graphql/ent.graphql.dart';
+import 'package:hokkori/pages/profile/profile_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ProfileEditPage extends ConsumerStatefulWidget {
+class ProfileEditPage extends StatefulHookConsumerWidget {
   const ProfileEditPage({Key? key}) : super(key: key);
 
   @override
@@ -22,6 +24,9 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
     _profileController.text = ref.watch(userProvider).profile;
 
     final avatarURL = ref.watch(userProvider).avatarURL;
+    final updateUserMutation =
+        useMutation$UpdateUser(WidgetOptions$Mutation$UpdateUser());
+    final updateUserResult = updateUserMutation.result;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -40,12 +45,26 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
             },
           ),
           actions: [
-            TextButton(
-                onPressed: () {},
-                child: const Text(
-                  "決定",
-                  style: TextStyle(color: blueButtonColor),
-                ))
+            updateUserResult.isLoading
+                ? const CircularProgressIndicator()
+                : TextButton(
+                    onPressed: () async {
+                      final result = updateUserMutation
+                          .runMutation(Variables$Mutation$UpdateUser(
+                              userID: ref.watch(userProvider).id,
+                              input: Input$UpdateUserInput(
+                                name: _nameController.text,
+                                username: _usernameController.text,
+                                profile: _profileController.text,
+                              )));
+                      if ((await result.networkResult)!.hasException) {
+                        return;
+                      }
+                    },
+                    child: const Text(
+                      "決定",
+                      style: TextStyle(color: blueButtonColor),
+                    ))
           ],
           title:
               const Text("プロフィールを編集", style: TextStyle(color: Colors.black))),

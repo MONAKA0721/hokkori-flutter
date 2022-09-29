@@ -145,6 +145,9 @@ Input$CreateUserInput _$Input$CreateUserInputFromJson(
         Map<String, dynamic> json) =>
     Input$CreateUserInput(
       name: json['name'] as String,
+      username: json['username'] as String?,
+      profile: json['profile'] as String?,
+      avatarURL: json['avatarURL'] as String?,
       postIDs:
           (json['postIDs'] as List<dynamic>?)?.map((e) => e as String).toList(),
       likedPostIDs: (json['likedPostIDs'] as List<dynamic>?)
@@ -156,6 +159,9 @@ Map<String, dynamic> _$Input$CreateUserInputToJson(
         Input$CreateUserInput instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'username': instance.username,
+      'profile': instance.profile,
+      'avatarURL': instance.avatarURL,
       'postIDs': instance.postIDs,
       'likedPostIDs': instance.likedPostIDs,
     };
@@ -549,6 +555,12 @@ Input$UpdateUserInput _$Input$UpdateUserInputFromJson(
         Map<String, dynamic> json) =>
     Input$UpdateUserInput(
       name: json['name'] as String?,
+      clearUsername: json['clearUsername'] as bool?,
+      username: json['username'] as String?,
+      clearProfile: json['clearProfile'] as bool?,
+      profile: json['profile'] as String?,
+      clearAvatarURL: json['clearAvatarURL'] as bool?,
+      avatarURL: json['avatarURL'] as String?,
       addPostIDs: (json['addPostIDs'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -567,6 +579,12 @@ Map<String, dynamic> _$Input$UpdateUserInputToJson(
         Input$UpdateUserInput instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'clearUsername': instance.clearUsername,
+      'username': instance.username,
+      'clearProfile': instance.clearProfile,
+      'profile': instance.profile,
+      'clearAvatarURL': instance.clearAvatarURL,
+      'avatarURL': instance.avatarURL,
       'addPostIDs': instance.addPostIDs,
       'removePostIDs': instance.removePostIDs,
       'addLikedPostIDs': instance.addLikedPostIDs,
@@ -634,6 +652,63 @@ Input$UserWhereInput _$Input$UserWhereInputFromJson(
       nameHasSuffix: json['nameHasSuffix'] as String?,
       nameEqualFold: json['nameEqualFold'] as String?,
       nameContainsFold: json['nameContainsFold'] as String?,
+      username: json['username'] as String?,
+      usernameNEQ: json['usernameNEQ'] as String?,
+      usernameIn: (json['usernameIn'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      usernameNotIn: (json['usernameNotIn'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      usernameGT: json['usernameGT'] as String?,
+      usernameGTE: json['usernameGTE'] as String?,
+      usernameLT: json['usernameLT'] as String?,
+      usernameLTE: json['usernameLTE'] as String?,
+      usernameContains: json['usernameContains'] as String?,
+      usernameHasPrefix: json['usernameHasPrefix'] as String?,
+      usernameHasSuffix: json['usernameHasSuffix'] as String?,
+      usernameIsNil: json['usernameIsNil'] as bool?,
+      usernameNotNil: json['usernameNotNil'] as bool?,
+      usernameEqualFold: json['usernameEqualFold'] as String?,
+      usernameContainsFold: json['usernameContainsFold'] as String?,
+      profile: json['profile'] as String?,
+      profileNEQ: json['profileNEQ'] as String?,
+      profileIn: (json['profileIn'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      profileNotIn: (json['profileNotIn'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      profileGT: json['profileGT'] as String?,
+      profileGTE: json['profileGTE'] as String?,
+      profileLT: json['profileLT'] as String?,
+      profileLTE: json['profileLTE'] as String?,
+      profileContains: json['profileContains'] as String?,
+      profileHasPrefix: json['profileHasPrefix'] as String?,
+      profileHasSuffix: json['profileHasSuffix'] as String?,
+      profileIsNil: json['profileIsNil'] as bool?,
+      profileNotNil: json['profileNotNil'] as bool?,
+      profileEqualFold: json['profileEqualFold'] as String?,
+      profileContainsFold: json['profileContainsFold'] as String?,
+      avatarURL: json['avatarURL'] as String?,
+      avatarURLNEQ: json['avatarURLNEQ'] as String?,
+      avatarURLIn: (json['avatarURLIn'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      avatarURLNotIn: (json['avatarURLNotIn'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      avatarURLGT: json['avatarURLGT'] as String?,
+      avatarURLGTE: json['avatarURLGTE'] as String?,
+      avatarURLLT: json['avatarURLLT'] as String?,
+      avatarURLLTE: json['avatarURLLTE'] as String?,
+      avatarURLContains: json['avatarURLContains'] as String?,
+      avatarURLHasPrefix: json['avatarURLHasPrefix'] as String?,
+      avatarURLHasSuffix: json['avatarURLHasSuffix'] as String?,
+      avatarURLIsNil: json['avatarURLIsNil'] as bool?,
+      avatarURLNotNil: json['avatarURLNotNil'] as bool?,
+      avatarURLEqualFold: json['avatarURLEqualFold'] as String?,
+      avatarURLContainsFold: json['avatarURLContainsFold'] as String?,
       hasPosts: json['hasPosts'] as bool?,
       hasPostsWith: (json['hasPostsWith'] as List<dynamic>?)
           ?.map((e) => Input$PostWhereInput.fromJson(e as Map<String, dynamic>))
@@ -671,6 +746,51 @@ Map<String, dynamic> _$Input$UserWhereInputToJson(
       'nameHasSuffix': instance.nameHasSuffix,
       'nameEqualFold': instance.nameEqualFold,
       'nameContainsFold': instance.nameContainsFold,
+      'username': instance.username,
+      'usernameNEQ': instance.usernameNEQ,
+      'usernameIn': instance.usernameIn,
+      'usernameNotIn': instance.usernameNotIn,
+      'usernameGT': instance.usernameGT,
+      'usernameGTE': instance.usernameGTE,
+      'usernameLT': instance.usernameLT,
+      'usernameLTE': instance.usernameLTE,
+      'usernameContains': instance.usernameContains,
+      'usernameHasPrefix': instance.usernameHasPrefix,
+      'usernameHasSuffix': instance.usernameHasSuffix,
+      'usernameIsNil': instance.usernameIsNil,
+      'usernameNotNil': instance.usernameNotNil,
+      'usernameEqualFold': instance.usernameEqualFold,
+      'usernameContainsFold': instance.usernameContainsFold,
+      'profile': instance.profile,
+      'profileNEQ': instance.profileNEQ,
+      'profileIn': instance.profileIn,
+      'profileNotIn': instance.profileNotIn,
+      'profileGT': instance.profileGT,
+      'profileGTE': instance.profileGTE,
+      'profileLT': instance.profileLT,
+      'profileLTE': instance.profileLTE,
+      'profileContains': instance.profileContains,
+      'profileHasPrefix': instance.profileHasPrefix,
+      'profileHasSuffix': instance.profileHasSuffix,
+      'profileIsNil': instance.profileIsNil,
+      'profileNotNil': instance.profileNotNil,
+      'profileEqualFold': instance.profileEqualFold,
+      'profileContainsFold': instance.profileContainsFold,
+      'avatarURL': instance.avatarURL,
+      'avatarURLNEQ': instance.avatarURLNEQ,
+      'avatarURLIn': instance.avatarURLIn,
+      'avatarURLNotIn': instance.avatarURLNotIn,
+      'avatarURLGT': instance.avatarURLGT,
+      'avatarURLGTE': instance.avatarURLGTE,
+      'avatarURLLT': instance.avatarURLLT,
+      'avatarURLLTE': instance.avatarURLLTE,
+      'avatarURLContains': instance.avatarURLContains,
+      'avatarURLHasPrefix': instance.avatarURLHasPrefix,
+      'avatarURLHasSuffix': instance.avatarURLHasSuffix,
+      'avatarURLIsNil': instance.avatarURLIsNil,
+      'avatarURLNotNil': instance.avatarURLNotNil,
+      'avatarURLEqualFold': instance.avatarURLEqualFold,
+      'avatarURLContainsFold': instance.avatarURLContainsFold,
       'hasPosts': instance.hasPosts,
       'hasPostsWith': instance.hasPostsWith?.map((e) => e.toJson()).toList(),
       'hasLikedPosts': instance.hasLikedPosts,
