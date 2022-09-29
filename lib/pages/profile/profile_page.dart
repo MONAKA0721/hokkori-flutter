@@ -4,6 +4,7 @@ import 'package:hokkori/graphql/ent.graphql.dart';
 import 'package:hokkori/pages/common/letters.dart';
 import 'package:hokkori/pages/common/praises.dart';
 import 'package:hokkori/pages/profile/posted_works.dart';
+import 'package:hokkori/pages/profile/profile_edit_page.dart';
 import 'package:hokkori/pages/profile/profile_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
@@ -22,7 +23,9 @@ class ProfilePageNavigator extends StatelessWidget {
             case '/':
               builder = (BuildContext context) => const ProfilePage();
               break;
-
+            case '/edit':
+              builder = (BuildContext context) => const ProfileEditPage();
+              break;
             default:
               throw Exception('Invalid route: ${settings.name}');
           }
@@ -38,6 +41,7 @@ class ProfilePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           centerTitle: false,
           elevation: 0,
@@ -81,9 +85,9 @@ class ProfileBody extends HookConsumerWidget {
       );
     }
     final postCount = result.parsedData?.posts.totalCount;
+    final avatarURL = ref.watch(userProvider).avatarURL;
 
-    return Container(
-      color: Colors.white,
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: SingleChildScrollView(
           child: Column(
@@ -92,10 +96,12 @@ class ProfileBody extends HookConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const CircleAvatar(
-                  maxRadius: 40,
-                  backgroundImage: NetworkImage(
-                      "https://i1.wp.com/hanenews.com/wp-content/uploads/2018/12/b34ea738486a9ced02c5bc7152595187.jpg?fit=265%2C335&ssl=1")),
+              avatarURL != ""
+                  ? CircleAvatar(
+                      maxRadius: 40, backgroundImage: NetworkImage(avatarURL))
+                  : const CircleAvatar(
+                      maxRadius: 40,
+                      backgroundImage: AssetImage("assets/noimage.png")),
               Column(
                 children: [
                   Text(
@@ -143,7 +149,9 @@ class ProfileBody extends HookConsumerWidget {
                 side: const BorderSide(color: Color(0xffF3F2F2)),
                 backgroundColor: const Color(0xffF3F2F2),
                 fixedSize: const Size.fromWidth(double.maxFinite)),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed('/edit');
+            },
             child: const Text(
               "プロフィールを編集",
               style: TextStyle(color: Colors.black),

@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hokkori/pages/profile/profile_page.dart';
 import 'package:hokkori/utils/colors.dart';
+import 'package:hokkori/utils/providers.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class Header extends StatelessWidget {
+class Header extends ConsumerWidget {
   const Header({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final avatarURL = ref.watch(userProvider).avatarURL;
+
     return Container(
         decoration: const BoxDecoration(
           color: backgroundColor,
@@ -19,17 +23,20 @@ class Header extends StatelessWidget {
             SizedBox(
                 width: 50,
                 child: IconButton(
-                  onPressed: () {
-                    Navigator.of(context, rootNavigator: true).push(
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const ProfilePageNavigator()));
-                  },
-                  icon: const CircleAvatar(
-                      maxRadius: 20,
-                      backgroundImage: NetworkImage(
-                          "https://i1.wp.com/hanenews.com/wp-content/uploads/2018/12/b34ea738486a9ced02c5bc7152595187.jpg?fit=265%2C335&ssl=1")),
-                )),
+                    onPressed: () {
+                      Navigator.of(context, rootNavigator: true).push(
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const ProfilePageNavigator()));
+                    },
+                    icon: avatarURL != ""
+                        ? CircleAvatar(
+                            maxRadius: 20,
+                            backgroundImage: NetworkImage(avatarURL))
+                        : const CircleAvatar(
+                            maxRadius: 20,
+                            backgroundImage:
+                                AssetImage("assets/noimage.png")))),
             const Spacer(),
             SvgPicture.asset(
               'assets/logo.svg',

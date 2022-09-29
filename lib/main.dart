@@ -34,6 +34,9 @@ query User(
     ... on User {
       id
       name
+      username
+      profile
+      avatarURL
     }
   }
 }
@@ -107,14 +110,20 @@ class _MyAppState extends ConsumerState<MyApp> {
       final idToken = parseIdToken(response.idToken!);
 
       final QueryResult queryResult = await client.value.query(
-        QueryOptions(document: gql(getUser), variables: {
-          'userID': idToken["https://hokkori.com/app_metadata"]["hokkoriID"]
-        }),
+        QueryOptions(
+            fetchPolicy: FetchPolicy.networkOnly,
+            document: gql(getUser),
+            variables: {
+              'userID': idToken["https://hokkori.com/app_metadata"]["hokkoriID"]
+            }),
       );
 
       ref.watch(userProvider.notifier).state = User(
         queryResult.data?['node']['id'],
         queryResult.data?['node']['name'],
+        queryResult.data?['node']['username'],
+        queryResult.data?['node']['profile'],
+        queryResult.data?['node']['avatarURL'],
       );
     } catch (e, s) {
       log('error on refresh token: $e - stack: $s');
@@ -152,14 +161,20 @@ class _MyAppState extends ConsumerState<MyApp> {
       final idToken = parseIdToken(result.idToken!);
 
       final QueryResult queryResult = await client.value.query(
-        QueryOptions(document: gql(getUser), variables: {
-          'userID': idToken["https://hokkori.com/app_metadata"]["hokkoriID"]
-        }),
+        QueryOptions(
+            fetchPolicy: FetchPolicy.networkOnly,
+            document: gql(getUser),
+            variables: {
+              'userID': idToken["https://hokkori.com/app_metadata"]["hokkoriID"]
+            }),
       );
 
       ref.watch(userProvider.notifier).state = User(
         queryResult.data?['node']['id'],
         queryResult.data?['node']['name'],
+        queryResult.data?['node']['username'],
+        queryResult.data?['node']['profile'],
+        queryResult.data?['node']['avatarURL'],
       );
     } catch (e, s) {
       log('login error: $e - stack: $s');
