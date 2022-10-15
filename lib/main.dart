@@ -8,6 +8,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/index.dart';
 import 'package:hokkori/login.dart';
+import 'package:hokkori/pages/tutorial/tutorial_navigator.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hokkori/utils/user.dart';
 import 'package:http/http.dart' as http;
@@ -53,7 +54,7 @@ void main() async {
 const bool isProduction = bool.fromEnvironment('dart.vm.product');
 const apiQueryURL = isProduction
     ? 'http://13.231.110.200:8080/query'
-    : 'https://7af2-240f-7a-db47-1-58af-e8d6-f336-352.ngrok.io/query';
+    : 'https://3cb5-240f-7a-db47-1-3c10-9c44-52c0-7564.ngrok.io/query';
 final HttpLink httpLink = HttpLink(
   apiQueryURL,
 );
@@ -238,9 +239,11 @@ class _MyAppState extends ConsumerState<MyApp> {
                 ? const Center(child: CircularProgressIndicator())
                 : ref.watch(isLoggedInProvider)
                     ? const Index(title: 'ほっこり')
-                    : Login(
-                        loginAction: loginAction,
-                        loginError: errorMessage,
-                      )));
+                    : false
+                        ? Login(
+                            loginAction: loginAction,
+                            loginError: errorMessage,
+                          )
+                        : TutorialNavigator()));
   }
 }
