@@ -6,7 +6,8 @@ import 'package:hokkori/pages/tutorial/second.dart';
 import 'package:hokkori/pages/tutorial/third.dart';
 
 class TutorialNavigator extends StatelessWidget {
-  const TutorialNavigator({super.key});
+  final Function loginAction;
+  const TutorialNavigator({super.key, required this.loginAction});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,8 @@ class TutorialNavigator extends StatelessWidget {
             builder = (BuildContext context) => const Tutorial4();
             break;
           case '/5':
-            builder = (BuildContext context) => const Tutorial5();
+            builder =
+                (BuildContext context) => Tutorial5(loginAction: loginAction);
             break;
           default:
             throw Exception('Invalid route: ${settings.name}');

@@ -4,7 +4,8 @@ import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/interests.dart';
 
 class Tutorial5 extends StatefulWidget {
-  const Tutorial5({Key? key}) : super(key: key);
+  final Function loginAction;
+  const Tutorial5({Key? key, required this.loginAction}) : super(key: key);
 
   @override
   State<Tutorial5> createState() => _Tutorial5State();
@@ -90,8 +91,8 @@ class _Tutorial5State extends State<Tutorial5> {
                             borderRadius: BorderRadius.circular(30),
                           ),
                         ),
-                        onPressed: () {
-                          Navigator.of(context).pushNamed('/3');
+                        onPressed: () async {
+                          await widget.loginAction();
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
