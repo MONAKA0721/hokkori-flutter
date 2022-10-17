@@ -8,9 +8,11 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/index.dart';
 import 'package:hokkori/login.dart';
+import 'package:hokkori/pages/tutorial/tutorial_navigator.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hokkori/utils/user.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 final FlutterAppAuth appAuth = FlutterAppAuth();
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
@@ -42,6 +44,21 @@ query User(
 }
 ''';
 
+const String updateUser = r'''
+mutation updateUser(
+  $userID: ID!
+  $input: UpdateUserInput!
+) {
+  updateUser(id: $userID, input: $input) {
+    id
+    name
+    username
+    profile
+    avatarURL  
+  }
+}
+''';
+
 void main() async {
   // We're using HiveStore for persistence,
   // so we need to initialize Hive.
@@ -53,7 +70,7 @@ void main() async {
 const bool isProduction = bool.fromEnvironment('dart.vm.product');
 const apiQueryURL = isProduction
     ? 'http://13.231.110.200:8080/query'
-    : 'https://7af2-240f-7a-db47-1-58af-e8d6-f336-352.ngrok.io/query';
+    : 'https://fa6d-240f-7a-db47-1-d469-5e2e-180b-5789.ngrok.io/query';
 final HttpLink httpLink = HttpLink(
   apiQueryURL,
 );
@@ -67,6 +84,7 @@ class MyApp extends ConsumerStatefulWidget {
 
 class _MyAppState extends ConsumerState<MyApp> {
   String errorMessage = "";
+  bool doneTutorial = false;
   late ValueNotifier<GraphQLClient> client;
 
   @override
@@ -78,7 +96,6 @@ class _MyAppState extends ConsumerState<MyApp> {
   void initAction() async {
     final authLink =
         AuthLink(getToken: () => "Bearer " + ref.watch(accessTokenProvider));
-
     client = ValueNotifier(
       GraphQLClient(
         link: authLink.concat(httpLink),
@@ -86,6 +103,10 @@ class _MyAppState extends ConsumerState<MyApp> {
         cache: GraphQLCache(store: HiveStore()),
       ),
     );
+
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool('doneTutorial') != true) return;
+    doneTutorial = true;
 
     final storedRefreshToken = await secureStorage.read(key: 'refresh_token');
     if (storedRefreshToken == null) return;
@@ -159,6 +180,28 @@ class _MyAppState extends ConsumerState<MyApp> {
       ref.watch(accessTokenProvider.notifier).state = result.accessToken!;
 
       final idToken = parseIdToken(result.idToken!);
+
+      if (!doneTutorial) {
+        final QueryResult mutationResult = await client.value
+            .mutate(MutationOptions(document: gql(updateUser), variables: {
+          'userID': idToken["https://hokkori.com/app_metadata"]["hokkoriID"],
+          'input': {
+            'name': ref.watch(tutorialNameProvider),
+            'username': ref.watch(tutorialUsernameProvider),
+          }
+        }));
+
+        ref.watch(userProvider.notifier).state = User(
+          mutationResult.data?['updateUser']['id'],
+          mutationResult.data?['updateUser']['name'],
+          mutationResult.data?['updateUser']['username'],
+          mutationResult.data?['updateUser']['profile'],
+          mutationResult.data?['updateUser']['avatarURL'],
+        );
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setBool('doneTutorial', true);
+        return;
+      }
 
       final QueryResult queryResult = await client.value.query(
         QueryOptions(
@@ -238,9 +281,11 @@ class _MyAppState extends ConsumerState<MyApp> {
                 ? const Center(child: CircularProgressIndicator())
                 : ref.watch(isLoggedInProvider)
                     ? const Index(title: 'ほっこり')
-                    : Login(
-                        loginAction: loginAction,
-                        loginError: errorMessage,
-                      )));
+                    : doneTutorial
+                        ? Login(
+                            loginAction: loginAction,
+                            loginError: errorMessage,
+                          )
+                        : TutorialNavigator(loginAction: loginAction)));
   }
 }
