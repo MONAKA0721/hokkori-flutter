@@ -22,8 +22,26 @@ class Praise extends StatelessWidget {
             ],
             color: Colors.white,
             borderRadius: const BorderRadius.all(Radius.circular(20))),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 15),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(
+            children: [
+              CircleAvatar(
+                  backgroundColor: primaryColor,
+                  radius: 14,
+                  child: SvgPicture.asset(
+                    'assets/palette.svg',
+                    width: 18,
+                  )),
+              const SizedBox(
+                width: 10,
+              ),
+              Text(praise.category.name),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
           Text(
             praise.title,
             style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
@@ -49,10 +67,13 @@ class Praise extends StatelessWidget {
           ),
           Row(
             children: [
-              const Icon(
-                Icons.person,
-                color: Color(0xffa2a2a2),
-              ),
+              praise.owner.avatarURL != ""
+                  ? CircleAvatar(
+                      maxRadius: 12,
+                      backgroundImage: NetworkImage(praise.owner.avatarURL!))
+                  : const CircleAvatar(
+                      maxRadius: 12,
+                      backgroundImage: AssetImage("assets/noimage.png")),
               const SizedBox(
                 width: 5,
               ),
@@ -66,8 +87,8 @@ class Praise extends StatelessWidget {
               const Spacer(),
               const Icon(
                 Icons.favorite,
-                color: primaryColor,
-                size: 16,
+                color: redErrorColor,
+                size: 20,
               ),
               const SizedBox(
                 width: 5,
@@ -76,20 +97,23 @@ class Praise extends StatelessWidget {
                 "27",
                 style: TextStyle(color: Colors.black87, fontSize: 14),
               ),
-              const Spacer(),
-              CircleAvatar(
-                  backgroundColor: primaryColor,
-                  radius: 10,
-                  child: SvgPicture.asset(
-                    'assets/palette.svg',
-                    width: 14,
-                  )),
+              const SizedBox(
+                width: 30,
+              ),
+              const Icon(
+                Icons.bookmark,
+                color: greenAccentColor,
+                size: 20,
+              ),
               const SizedBox(
                 width: 5,
               ),
-              Text(praise.category.name),
+              const Text(
+                "27",
+                style: TextStyle(color: Colors.black87, fontSize: 14),
+              ),
               const SizedBox(
-                width: 10,
+                width: 40,
               ),
             ],
           )

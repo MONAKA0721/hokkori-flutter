@@ -281,6 +281,12 @@ const fragmentDefinitionLetterSummary = FragmentDefinitionNode(
                 directives: [],
                 selectionSet: null),
             FieldNode(
+                name: NameNode(value: 'avatarURL'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            FieldNode(
                 name: NameNode(value: '__typename'),
                 alias: null,
                 arguments: [],
@@ -351,21 +357,28 @@ extension ClientExtension$Fragment$LetterSummary on graphql.GraphQLClient {
 
 class Fragment$LetterSummary$owner {
   Fragment$LetterSummary$owner(
-      {required this.id, required this.name, required this.$__typename});
+      {required this.id,
+      required this.name,
+      this.avatarURL,
+      required this.$__typename});
 
   factory Fragment$LetterSummary$owner.fromJson(Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$name = json['name'];
+    final l$avatarURL = json['avatarURL'];
     final l$$__typename = json['__typename'];
     return Fragment$LetterSummary$owner(
         id: (l$id as String),
         name: (l$name as String),
+        avatarURL: (l$avatarURL as String?),
         $__typename: (l$$__typename as String));
   }
 
   final String id;
 
   final String name;
+
+  final String? avatarURL;
 
   final String $__typename;
 
@@ -375,6 +388,8 @@ class Fragment$LetterSummary$owner {
     _resultData['id'] = l$id;
     final l$name = name;
     _resultData['name'] = l$name;
+    final l$avatarURL = avatarURL;
+    _resultData['avatarURL'] = l$avatarURL;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -384,8 +399,9 @@ class Fragment$LetterSummary$owner {
   int get hashCode {
     final l$id = id;
     final l$name = name;
+    final l$avatarURL = avatarURL;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$name, l$$__typename]);
+    return Object.hashAll([l$id, l$name, l$avatarURL, l$$__typename]);
   }
 
   @override
@@ -405,6 +421,11 @@ class Fragment$LetterSummary$owner {
     final l$name = name;
     final lOther$name = other.name;
     if (l$name != lOther$name) {
+      return false;
+    }
+    final l$avatarURL = avatarURL;
+    final lOther$avatarURL = other.avatarURL;
+    if (l$avatarURL != lOther$avatarURL) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -431,7 +452,7 @@ abstract class CopyWith$Fragment$LetterSummary$owner<TRes> {
   factory CopyWith$Fragment$LetterSummary$owner.stub(TRes res) =
       _CopyWithStubImpl$Fragment$LetterSummary$owner;
 
-  TRes call({String? id, String? name, String? $__typename});
+  TRes call({String? id, String? name, String? avatarURL, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$LetterSummary$owner<TRes>
@@ -447,12 +468,16 @@ class _CopyWithImpl$Fragment$LetterSummary$owner<TRes>
   TRes call(
           {Object? id = _undefined,
           Object? name = _undefined,
+          Object? avatarURL = _undefined,
           Object? $__typename = _undefined}) =>
       _then(Fragment$LetterSummary$owner(
           id: id == _undefined || id == null ? _instance.id : (id as String),
           name: name == _undefined || name == null
               ? _instance.name
               : (name as String),
+          avatarURL: avatarURL == _undefined
+              ? _instance.avatarURL
+              : (avatarURL as String?),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
@@ -464,7 +489,8 @@ class _CopyWithStubImpl$Fragment$LetterSummary$owner<TRes>
 
   TRes _res;
 
-  call({String? id, String? name, String? $__typename}) => _res;
+  call({String? id, String? name, String? avatarURL, String? $__typename}) =>
+      _res;
 }
 
 class Fragment$LetterSummary$category {
@@ -912,6 +938,12 @@ const fragmentDefinitionPraiseSummary = FragmentDefinitionNode(
                 directives: [],
                 selectionSet: null),
             FieldNode(
+                name: NameNode(value: 'avatarURL'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            FieldNode(
                 name: NameNode(value: '__typename'),
                 alias: null,
                 arguments: [],
@@ -1100,21 +1132,28 @@ class _CopyWithStubImpl$Fragment$PraiseSummary$hashtags<TRes>
 
 class Fragment$PraiseSummary$owner {
   Fragment$PraiseSummary$owner(
-      {required this.id, required this.name, required this.$__typename});
+      {required this.id,
+      required this.name,
+      this.avatarURL,
+      required this.$__typename});
 
   factory Fragment$PraiseSummary$owner.fromJson(Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$name = json['name'];
+    final l$avatarURL = json['avatarURL'];
     final l$$__typename = json['__typename'];
     return Fragment$PraiseSummary$owner(
         id: (l$id as String),
         name: (l$name as String),
+        avatarURL: (l$avatarURL as String?),
         $__typename: (l$$__typename as String));
   }
 
   final String id;
 
   final String name;
+
+  final String? avatarURL;
 
   final String $__typename;
 
@@ -1124,6 +1163,8 @@ class Fragment$PraiseSummary$owner {
     _resultData['id'] = l$id;
     final l$name = name;
     _resultData['name'] = l$name;
+    final l$avatarURL = avatarURL;
+    _resultData['avatarURL'] = l$avatarURL;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -1133,8 +1174,9 @@ class Fragment$PraiseSummary$owner {
   int get hashCode {
     final l$id = id;
     final l$name = name;
+    final l$avatarURL = avatarURL;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$name, l$$__typename]);
+    return Object.hashAll([l$id, l$name, l$avatarURL, l$$__typename]);
   }
 
   @override
@@ -1154,6 +1196,11 @@ class Fragment$PraiseSummary$owner {
     final l$name = name;
     final lOther$name = other.name;
     if (l$name != lOther$name) {
+      return false;
+    }
+    final l$avatarURL = avatarURL;
+    final lOther$avatarURL = other.avatarURL;
+    if (l$avatarURL != lOther$avatarURL) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -1180,7 +1227,7 @@ abstract class CopyWith$Fragment$PraiseSummary$owner<TRes> {
   factory CopyWith$Fragment$PraiseSummary$owner.stub(TRes res) =
       _CopyWithStubImpl$Fragment$PraiseSummary$owner;
 
-  TRes call({String? id, String? name, String? $__typename});
+  TRes call({String? id, String? name, String? avatarURL, String? $__typename});
 }
 
 class _CopyWithImpl$Fragment$PraiseSummary$owner<TRes>
@@ -1196,12 +1243,16 @@ class _CopyWithImpl$Fragment$PraiseSummary$owner<TRes>
   TRes call(
           {Object? id = _undefined,
           Object? name = _undefined,
+          Object? avatarURL = _undefined,
           Object? $__typename = _undefined}) =>
       _then(Fragment$PraiseSummary$owner(
           id: id == _undefined || id == null ? _instance.id : (id as String),
           name: name == _undefined || name == null
               ? _instance.name
               : (name as String),
+          avatarURL: avatarURL == _undefined
+              ? _instance.avatarURL
+              : (avatarURL as String?),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
@@ -1213,7 +1264,8 @@ class _CopyWithStubImpl$Fragment$PraiseSummary$owner<TRes>
 
   TRes _res;
 
-  call({String? id, String? name, String? $__typename}) => _res;
+  call({String? id, String? name, String? avatarURL, String? $__typename}) =>
+      _res;
 }
 
 class Fragment$PraiseSummary$category {

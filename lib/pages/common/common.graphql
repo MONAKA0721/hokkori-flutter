@@ -6,6 +6,7 @@ fragment LetterSummary on Post {
   owner {
     id
     name
+    avatarURL
   }
   category {
     id
@@ -24,6 +25,7 @@ fragment PraiseSummary on Post {
   owner {
     id
     name
+    avatarURL
   }
   category {
     id
