@@ -65,7 +65,11 @@ class Praises extends HookWidget {
               ],
             )
           : Container(),
-      ...praises.map((praise) => Praise(praise: praise!.node!)).toList(),
+      ...praises
+          .map((praise) => Praise(
+              praise: praise!.node!,
+              optimistic: result.source == QueryResultSource.optimisticResult))
+          .toList(),
       hasNextPage!
           ? FetchMoreButton(
               first: first,
@@ -116,7 +120,12 @@ class FetchMoreButton extends HookWidget {
 
     return pushed.value
         ? Column(children: [
-            ...praises.map((praise) => Praise(praise: praise!.node!)).toList(),
+            ...praises
+                .map((praise) => Praise(
+                    praise: praise!.node!,
+                    optimistic:
+                        result.source == QueryResultSource.optimisticResult))
+                .toList(),
             hasNextPage!
                 ? FetchMoreButton(
                     first: first,

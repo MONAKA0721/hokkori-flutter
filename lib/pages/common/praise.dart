@@ -1,15 +1,108 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hokkori/graphql/schema.graphql.dart';
 import 'package:hokkori/pages/common/common.graphql.dart';
 import 'package:hokkori/pages/home/hashtag.dart';
 import 'package:hokkori/utils/colors.dart';
+import 'package:hokkori/utils/providers.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class Praise extends StatelessWidget {
+class Praise extends HookConsumerWidget {
   final Fragment$PraiseSummary praise;
-  const Praise({super.key, required this.praise});
+  final bool optimistic;
+  const Praise({super.key, required this.praise, required this.optimistic});
+
+  Map<String, dynamic>? extractPostData(Map<String, Object?> data) {
+    final action = data['action'] as Map<String, dynamic>?;
+    if (action == null) {
+      return null;
+    }
+    return action['post'] as Map<String, dynamic>?;
+  }
+
+  FutureOr<void> Function(GraphQLDataProxy, QueryResult?)? get update =>
+      (cache, result) {
+        if (result!.hasException) {
+          return;
+        } else {
+          final updated = {
+            ...praise.toJson(),
+            ...extractPostData(result.data!)!,
+          };
+          cache.writeFragment(
+            Fragment(
+              document: gql(
+                '''
+                  fragment fields on Post {
+                    id
+                    likedUsers
+                  }
+                ''',
+              ),
+            ).asRequest(idFields: {
+              '__typename': updated['__typename'],
+              'id': updated['id'],
+            }),
+            data: updated,
+          );
+        }
+      };
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    Map<String, dynamic> expectedResult(bool liked) {
+      final likedUsers = praise.likedUsers;
+      if (liked) {
+        likedUsers!
+            .removeWhere((user) => user.id == ref.watch(userProvider).id);
+      } else {
+        likedUsers!.add(Fragment$PraiseSummary$likedUsers(
+            $__typename: "Post", id: ref.watch(userProvider).id));
+      }
+
+      return <String, dynamic>{
+        'action': {
+          'post': {
+            '__typename': 'Post',
+            'id': praise.id,
+            'likedUsers': likedUsers,
+          }
+        }
+      };
+    }
+
+    final liked = praise.likedUsers!
+        .map((user) => user.id)
+        .contains(ref.watch(userProvider).id);
+
+    final likePostMutation =
+        useMutation$LikePost(WidgetOptions$Mutation$LikePost(update: update));
+    final unlikePostMutation = useMutation$UnlikePost(
+        WidgetOptions$Mutation$UnlikePost(update: update));
+
+    like() {
+      likePostMutation.runMutation(
+          Variables$Mutation$LikePost(
+              likePostInput: Input$LikePostInput(
+                  userID: ref.watch(userProvider).id, postID: praise.id)),
+          optimisticResult: expectedResult(false));
+    }
+
+    unlike() {
+      unlikePostMutation.runMutation(
+          Variables$Mutation$UnlikePost(
+              unlikePostInput: Input$UnlikePostInput(
+                  userID: ref.watch(userProvider).id, postID: praise.id)),
+          optimisticResult: expectedResult(true));
+    }
+
+    final anyLoading = likePostMutation.result.isLoading ||
+        unlikePostMutation.result.isLoading ||
+        optimistic;
+
     return Container(
         margin: const EdgeInsets.only(top: 20, right: 5, left: 5),
         decoration: BoxDecoration(
@@ -22,7 +115,7 @@ class Praise extends StatelessWidget {
             ],
             color: Colors.white,
             borderRadius: const BorderRadius.all(Radius.circular(20))),
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 15),
+        padding: const EdgeInsets.only(left: 14, right: 14, top: 15, bottom: 6),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(
             children: [
@@ -85,17 +178,33 @@ class Praise extends StatelessWidget {
                     decorationThickness: 2),
               ),
               const Spacer(),
-              const Icon(
-                Icons.favorite,
-                color: redErrorColor,
-                size: 20,
+              SizedBox(
+                width: 36,
+                child: IconButton(
+                    padding: const EdgeInsets.all(0),
+                    onPressed: anyLoading
+                        ? null
+                        : liked
+                            ? unlike
+                            : like,
+                    icon: liked
+                        ? const Icon(
+                            Icons.favorite,
+                            color: redErrorColor,
+                            size: 20,
+                          )
+                        : const Icon(
+                            Icons.favorite_border,
+                            color: Colors.grey,
+                            size: 20,
+                          )),
               ),
-              const SizedBox(
-                width: 5,
-              ),
-              const Text(
-                "27",
-                style: TextStyle(color: Colors.black87, fontSize: 14),
+              SizedBox(
+                width: 10,
+                child: Text(
+                  praise.likedUsers!.length.toString(),
+                  style: const TextStyle(color: Colors.black87, fontSize: 14),
+                ),
               ),
               const SizedBox(
                 width: 30,

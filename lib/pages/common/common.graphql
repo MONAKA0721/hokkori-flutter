@@ -31,6 +31,9 @@ fragment PraiseSummary on Post {
     id
     name
   }
+  likedUsers {
+    id
+  }
 }
 
 query Praises(
@@ -77,6 +80,24 @@ query Letters(
     pageInfo {
       endCursor
       hasNextPage
+    }
+  }
+}
+
+mutation LikePost($likePostInput: LikePostInput!) {
+  action: likePost(input: $likePostInput) {
+    clientMutationId
+    post {
+      id
+    }
+  }
+}
+
+mutation UnlikePost($unlikePostInput: UnlikePostInput!) {
+  action: unlikePost(input: $unlikePostInput) {
+    clientMutationId
+    post {
+      id
     }
   }
 }

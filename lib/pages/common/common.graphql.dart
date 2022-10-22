@@ -1,4 +1,6 @@
 import '../../graphql/ent.graphql.dart';
+import '../../graphql/schema.graphql.dart';
+import 'dart:async';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
@@ -619,6 +621,7 @@ class Fragment$PraiseSummary {
       this.hashtags,
       required this.owner,
       required this.category,
+      this.likedUsers,
       required this.$__typename});
 
   factory Fragment$PraiseSummary.fromJson(Map<String, dynamic> json) {
@@ -628,6 +631,7 @@ class Fragment$PraiseSummary {
     final l$hashtags = json['hashtags'];
     final l$owner = json['owner'];
     final l$category = json['category'];
+    final l$likedUsers = json['likedUsers'];
     final l$$__typename = json['__typename'];
     return Fragment$PraiseSummary(
         title: (l$title as String),
@@ -641,6 +645,10 @@ class Fragment$PraiseSummary {
             (l$owner as Map<String, dynamic>)),
         category: Fragment$PraiseSummary$category.fromJson(
             (l$category as Map<String, dynamic>)),
+        likedUsers: (l$likedUsers as List<dynamic>?)
+            ?.map((e) => Fragment$PraiseSummary$likedUsers.fromJson(
+                (e as Map<String, dynamic>)))
+            .toList(),
         $__typename: (l$$__typename as String));
   }
 
@@ -655,6 +663,8 @@ class Fragment$PraiseSummary {
   final Fragment$PraiseSummary$owner owner;
 
   final Fragment$PraiseSummary$category category;
+
+  final List<Fragment$PraiseSummary$likedUsers>? likedUsers;
 
   final String $__typename;
 
@@ -672,6 +682,8 @@ class Fragment$PraiseSummary {
     _resultData['owner'] = l$owner.toJson();
     final l$category = category;
     _resultData['category'] = l$category.toJson();
+    final l$likedUsers = likedUsers;
+    _resultData['likedUsers'] = l$likedUsers?.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -685,6 +697,7 @@ class Fragment$PraiseSummary {
     final l$hashtags = hashtags;
     final l$owner = owner;
     final l$category = category;
+    final l$likedUsers = likedUsers;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$title,
@@ -693,6 +706,7 @@ class Fragment$PraiseSummary {
       l$hashtags == null ? null : Object.hashAll(l$hashtags.map((v) => v)),
       l$owner,
       l$category,
+      l$likedUsers == null ? null : Object.hashAll(l$likedUsers.map((v) => v)),
       l$$__typename
     ]);
   }
@@ -747,6 +761,22 @@ class Fragment$PraiseSummary {
     if (l$category != lOther$category) {
       return false;
     }
+    final l$likedUsers = likedUsers;
+    final lOther$likedUsers = other.likedUsers;
+    if (l$likedUsers != null && lOther$likedUsers != null) {
+      if (l$likedUsers.length != lOther$likedUsers.length) {
+        return false;
+      }
+      for (int i = 0; i < l$likedUsers.length; i++) {
+        final l$likedUsers$entry = l$likedUsers[i];
+        final lOther$likedUsers$entry = lOther$likedUsers[i];
+        if (l$likedUsers$entry != lOther$likedUsers$entry) {
+          return false;
+        }
+      }
+    } else if (l$likedUsers != lOther$likedUsers) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -776,6 +806,7 @@ abstract class CopyWith$Fragment$PraiseSummary<TRes> {
       List<Fragment$PraiseSummary$hashtags>? hashtags,
       Fragment$PraiseSummary$owner? owner,
       Fragment$PraiseSummary$category? category,
+      List<Fragment$PraiseSummary$likedUsers>? likedUsers,
       String? $__typename});
   TRes hashtags(
       Iterable<Fragment$PraiseSummary$hashtags>? Function(
@@ -785,6 +816,12 @@ abstract class CopyWith$Fragment$PraiseSummary<TRes> {
           _fn);
   CopyWith$Fragment$PraiseSummary$owner<TRes> get owner;
   CopyWith$Fragment$PraiseSummary$category<TRes> get category;
+  TRes likedUsers(
+      Iterable<Fragment$PraiseSummary$likedUsers>? Function(
+              Iterable<
+                  CopyWith$Fragment$PraiseSummary$likedUsers<
+                      Fragment$PraiseSummary$likedUsers>>?)
+          _fn);
 }
 
 class _CopyWithImpl$Fragment$PraiseSummary<TRes>
@@ -804,6 +841,7 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
           Object? hashtags = _undefined,
           Object? owner = _undefined,
           Object? category = _undefined,
+          Object? likedUsers = _undefined,
           Object? $__typename = _undefined}) =>
       _then(Fragment$PraiseSummary(
           title: title == _undefined || title == null
@@ -822,6 +860,9 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
           category: category == _undefined || category == null
               ? _instance.category
               : (category as Fragment$PraiseSummary$category),
+          likedUsers: likedUsers == _undefined
+              ? _instance.likedUsers
+              : (likedUsers as List<Fragment$PraiseSummary$likedUsers>?),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
@@ -846,6 +887,17 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
     return CopyWith$Fragment$PraiseSummary$category(
         local$category, (e) => call(category: e));
   }
+
+  TRes likedUsers(
+          Iterable<Fragment$PraiseSummary$likedUsers>? Function(
+                  Iterable<
+                      CopyWith$Fragment$PraiseSummary$likedUsers<
+                          Fragment$PraiseSummary$likedUsers>>?)
+              _fn) =>
+      call(
+          likedUsers: _fn(_instance.likedUsers?.map((e) =>
+                  CopyWith$Fragment$PraiseSummary$likedUsers(e, (i) => i)))
+              ?.toList());
 }
 
 class _CopyWithStubImpl$Fragment$PraiseSummary<TRes>
@@ -861,6 +913,7 @@ class _CopyWithStubImpl$Fragment$PraiseSummary<TRes>
           List<Fragment$PraiseSummary$hashtags>? hashtags,
           Fragment$PraiseSummary$owner? owner,
           Fragment$PraiseSummary$category? category,
+          List<Fragment$PraiseSummary$likedUsers>? likedUsers,
           String? $__typename}) =>
       _res;
   hashtags(_fn) => _res;
@@ -868,6 +921,7 @@ class _CopyWithStubImpl$Fragment$PraiseSummary<TRes>
       CopyWith$Fragment$PraiseSummary$owner.stub(_res);
   CopyWith$Fragment$PraiseSummary$category<TRes> get category =>
       CopyWith$Fragment$PraiseSummary$category.stub(_res);
+  likedUsers(_fn) => _res;
 }
 
 const fragmentDefinitionPraiseSummary = FragmentDefinitionNode(
@@ -964,6 +1018,25 @@ const fragmentDefinitionPraiseSummary = FragmentDefinitionNode(
                 selectionSet: null),
             FieldNode(
                 name: NameNode(value: 'name'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null)
+          ])),
+      FieldNode(
+          name: NameNode(value: 'likedUsers'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+                name: NameNode(value: 'id'),
                 alias: null,
                 arguments: [],
                 directives: [],
@@ -1384,6 +1457,107 @@ class _CopyWithStubImpl$Fragment$PraiseSummary$category<TRes>
   TRes _res;
 
   call({String? id, String? name, String? $__typename}) => _res;
+}
+
+class Fragment$PraiseSummary$likedUsers {
+  Fragment$PraiseSummary$likedUsers(
+      {required this.id, required this.$__typename});
+
+  factory Fragment$PraiseSummary$likedUsers.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Fragment$PraiseSummary$likedUsers(
+        id: (l$id as String), $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$PraiseSummary$likedUsers) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$PraiseSummary$likedUsers
+    on Fragment$PraiseSummary$likedUsers {
+  CopyWith$Fragment$PraiseSummary$likedUsers<Fragment$PraiseSummary$likedUsers>
+      get copyWith =>
+          CopyWith$Fragment$PraiseSummary$likedUsers(this, (i) => i);
+}
+
+abstract class CopyWith$Fragment$PraiseSummary$likedUsers<TRes> {
+  factory CopyWith$Fragment$PraiseSummary$likedUsers(
+          Fragment$PraiseSummary$likedUsers instance,
+          TRes Function(Fragment$PraiseSummary$likedUsers) then) =
+      _CopyWithImpl$Fragment$PraiseSummary$likedUsers;
+
+  factory CopyWith$Fragment$PraiseSummary$likedUsers.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$PraiseSummary$likedUsers;
+
+  TRes call({String? id, String? $__typename});
+}
+
+class _CopyWithImpl$Fragment$PraiseSummary$likedUsers<TRes>
+    implements CopyWith$Fragment$PraiseSummary$likedUsers<TRes> {
+  _CopyWithImpl$Fragment$PraiseSummary$likedUsers(this._instance, this._then);
+
+  final Fragment$PraiseSummary$likedUsers _instance;
+
+  final TRes Function(Fragment$PraiseSummary$likedUsers) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+      _then(Fragment$PraiseSummary$likedUsers(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Fragment$PraiseSummary$likedUsers<TRes>
+    implements CopyWith$Fragment$PraiseSummary$likedUsers<TRes> {
+  _CopyWithStubImpl$Fragment$PraiseSummary$likedUsers(this._res);
+
+  TRes _res;
+
+  call({String? id, String? $__typename}) => _res;
 }
 
 class Variables$Query$Praises {
@@ -3346,4 +3520,1352 @@ class _CopyWithStubImpl$Query$Letters$posts$pageInfo<TRes>
   TRes _res;
 
   call({String? endCursor, bool? hasNextPage, String? $__typename}) => _res;
+}
+
+class Variables$Mutation$LikePost {
+  factory Variables$Mutation$LikePost(
+          {required Input$LikePostInput likePostInput}) =>
+      Variables$Mutation$LikePost._({
+        r'likePostInput': likePostInput,
+      });
+
+  Variables$Mutation$LikePost._(this._$data);
+
+  factory Variables$Mutation$LikePost.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$likePostInput = data['likePostInput'];
+    result$data['likePostInput'] =
+        Input$LikePostInput.fromJson((l$likePostInput as Map<String, dynamic>));
+    return Variables$Mutation$LikePost._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$LikePostInput get likePostInput =>
+      (_$data['likePostInput'] as Input$LikePostInput);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$likePostInput = likePostInput;
+    result$data['likePostInput'] = l$likePostInput.toJson();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$LikePost<Variables$Mutation$LikePost>
+      get copyWith => CopyWith$Variables$Mutation$LikePost(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$LikePost) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$likePostInput = likePostInput;
+    final lOther$likePostInput = other.likePostInput;
+    if (l$likePostInput != lOther$likePostInput) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$likePostInput = likePostInput;
+    return Object.hashAll([l$likePostInput]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$LikePost<TRes> {
+  factory CopyWith$Variables$Mutation$LikePost(
+          Variables$Mutation$LikePost instance,
+          TRes Function(Variables$Mutation$LikePost) then) =
+      _CopyWithImpl$Variables$Mutation$LikePost;
+
+  factory CopyWith$Variables$Mutation$LikePost.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$LikePost;
+
+  TRes call({Input$LikePostInput? likePostInput});
+}
+
+class _CopyWithImpl$Variables$Mutation$LikePost<TRes>
+    implements CopyWith$Variables$Mutation$LikePost<TRes> {
+  _CopyWithImpl$Variables$Mutation$LikePost(this._instance, this._then);
+
+  final Variables$Mutation$LikePost _instance;
+
+  final TRes Function(Variables$Mutation$LikePost) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? likePostInput = _undefined}) =>
+      _then(Variables$Mutation$LikePost._({
+        ..._instance._$data,
+        if (likePostInput != _undefined && likePostInput != null)
+          'likePostInput': (likePostInput as Input$LikePostInput),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$LikePost<TRes>
+    implements CopyWith$Variables$Mutation$LikePost<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$LikePost(this._res);
+
+  TRes _res;
+
+  call({Input$LikePostInput? likePostInput}) => _res;
+}
+
+class Mutation$LikePost {
+  Mutation$LikePost({required this.action, required this.$__typename});
+
+  factory Mutation$LikePost.fromJson(Map<String, dynamic> json) {
+    final l$action = json['action'];
+    final l$$__typename = json['__typename'];
+    return Mutation$LikePost(
+        action: Mutation$LikePost$action.fromJson(
+            (l$action as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final Mutation$LikePost$action action;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$action = action;
+    _resultData['action'] = l$action.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$action = action;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$action, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$LikePost) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$action = action;
+    final lOther$action = other.action;
+    if (l$action != lOther$action) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$LikePost on Mutation$LikePost {
+  CopyWith$Mutation$LikePost<Mutation$LikePost> get copyWith =>
+      CopyWith$Mutation$LikePost(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$LikePost<TRes> {
+  factory CopyWith$Mutation$LikePost(
+          Mutation$LikePost instance, TRes Function(Mutation$LikePost) then) =
+      _CopyWithImpl$Mutation$LikePost;
+
+  factory CopyWith$Mutation$LikePost.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$LikePost;
+
+  TRes call({Mutation$LikePost$action? action, String? $__typename});
+  CopyWith$Mutation$LikePost$action<TRes> get action;
+}
+
+class _CopyWithImpl$Mutation$LikePost<TRes>
+    implements CopyWith$Mutation$LikePost<TRes> {
+  _CopyWithImpl$Mutation$LikePost(this._instance, this._then);
+
+  final Mutation$LikePost _instance;
+
+  final TRes Function(Mutation$LikePost) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? action = _undefined, Object? $__typename = _undefined}) =>
+      _then(Mutation$LikePost(
+          action: action == _undefined || action == null
+              ? _instance.action
+              : (action as Mutation$LikePost$action),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Mutation$LikePost$action<TRes> get action {
+    final local$action = _instance.action;
+    return CopyWith$Mutation$LikePost$action(
+        local$action, (e) => call(action: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$LikePost<TRes>
+    implements CopyWith$Mutation$LikePost<TRes> {
+  _CopyWithStubImpl$Mutation$LikePost(this._res);
+
+  TRes _res;
+
+  call({Mutation$LikePost$action? action, String? $__typename}) => _res;
+  CopyWith$Mutation$LikePost$action<TRes> get action =>
+      CopyWith$Mutation$LikePost$action.stub(_res);
+}
+
+const documentNodeMutationLikePost = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.mutation,
+      name: NameNode(value: 'LikePost'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'likePostInput')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'LikePostInput'), isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'likePost'),
+            alias: NameNode(value: 'action'),
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'input'),
+                  value: VariableNode(name: NameNode(value: 'likePostInput')))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'clientMutationId'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: 'post'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'id'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+]);
+Mutation$LikePost _parserFn$Mutation$LikePost(Map<String, dynamic> data) =>
+    Mutation$LikePost.fromJson(data);
+typedef OnMutationCompleted$Mutation$LikePost = FutureOr<void> Function(
+    dynamic, Mutation$LikePost?);
+
+class Options$Mutation$LikePost
+    extends graphql.MutationOptions<Mutation$LikePost> {
+  Options$Mutation$LikePost(
+      {String? operationName,
+      required Variables$Mutation$LikePost variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$LikePost? onCompleted,
+      graphql.OnMutationUpdate<Mutation$LikePost>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(data,
+                    data == null ? null : _parserFn$Mutation$LikePost(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationLikePost,
+            parserFn: _parserFn$Mutation$LikePost);
+
+  final OnMutationCompleted$Mutation$LikePost? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+class WatchOptions$Mutation$LikePost
+    extends graphql.WatchQueryOptions<Mutation$LikePost> {
+  WatchOptions$Mutation$LikePost(
+      {String? operationName,
+      required Variables$Mutation$LikePost variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeMutationLikePost,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Mutation$LikePost);
+}
+
+extension ClientExtension$Mutation$LikePost on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$LikePost>> mutate$LikePost(
+          Options$Mutation$LikePost options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$LikePost> watchMutation$LikePost(
+          WatchOptions$Mutation$LikePost options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$LikePost$HookResult {
+  Mutation$LikePost$HookResult(this.runMutation, this.result);
+
+  final RunMutation$Mutation$LikePost runMutation;
+
+  final graphql.QueryResult<Mutation$LikePost> result;
+}
+
+Mutation$LikePost$HookResult useMutation$LikePost(
+    [WidgetOptions$Mutation$LikePost? options]) {
+  final result =
+      graphql_flutter.useMutation(options ?? WidgetOptions$Mutation$LikePost());
+  return Mutation$LikePost$HookResult(
+    (variables, {optimisticResult}) => result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult,
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$LikePost> useWatchMutation$LikePost(
+        WatchOptions$Mutation$LikePost options) =>
+    graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$LikePost
+    extends graphql.MutationOptions<Mutation$LikePost> {
+  WidgetOptions$Mutation$LikePost(
+      {String? operationName,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$LikePost? onCompleted,
+      graphql.OnMutationUpdate<Mutation$LikePost>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(data,
+                    data == null ? null : _parserFn$Mutation$LikePost(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationLikePost,
+            parserFn: _parserFn$Mutation$LikePost);
+
+  final OnMutationCompleted$Mutation$LikePost? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+typedef RunMutation$Mutation$LikePost
+    = graphql.MultiSourceResult<Mutation$LikePost>
+        Function(Variables$Mutation$LikePost, {Object? optimisticResult});
+typedef Builder$Mutation$LikePost = widgets.Widget Function(
+    RunMutation$Mutation$LikePost, graphql.QueryResult<Mutation$LikePost>?);
+
+class Mutation$LikePost$Widget
+    extends graphql_flutter.Mutation<Mutation$LikePost> {
+  Mutation$LikePost$Widget(
+      {widgets.Key? key,
+      WidgetOptions$Mutation$LikePost? options,
+      required Builder$Mutation$LikePost builder})
+      : super(
+            key: key,
+            options: options ?? WidgetOptions$Mutation$LikePost(),
+            builder: (run, result) => builder(
+                (variables, {optimisticResult}) =>
+                    run(variables.toJson(), optimisticResult: optimisticResult),
+                result));
+}
+
+class Mutation$LikePost$action {
+  Mutation$LikePost$action(
+      {this.clientMutationId, this.post, required this.$__typename});
+
+  factory Mutation$LikePost$action.fromJson(Map<String, dynamic> json) {
+    final l$clientMutationId = json['clientMutationId'];
+    final l$post = json['post'];
+    final l$$__typename = json['__typename'];
+    return Mutation$LikePost$action(
+        clientMutationId: (l$clientMutationId as String?),
+        post: l$post == null
+            ? null
+            : Mutation$LikePost$action$post.fromJson(
+                (l$post as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String? clientMutationId;
+
+  final Mutation$LikePost$action$post? post;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$clientMutationId = clientMutationId;
+    _resultData['clientMutationId'] = l$clientMutationId;
+    final l$post = post;
+    _resultData['post'] = l$post?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$clientMutationId = clientMutationId;
+    final l$post = post;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$clientMutationId, l$post, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$LikePost$action) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$clientMutationId = clientMutationId;
+    final lOther$clientMutationId = other.clientMutationId;
+    if (l$clientMutationId != lOther$clientMutationId) {
+      return false;
+    }
+    final l$post = post;
+    final lOther$post = other.post;
+    if (l$post != lOther$post) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$LikePost$action
+    on Mutation$LikePost$action {
+  CopyWith$Mutation$LikePost$action<Mutation$LikePost$action> get copyWith =>
+      CopyWith$Mutation$LikePost$action(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$LikePost$action<TRes> {
+  factory CopyWith$Mutation$LikePost$action(Mutation$LikePost$action instance,
+          TRes Function(Mutation$LikePost$action) then) =
+      _CopyWithImpl$Mutation$LikePost$action;
+
+  factory CopyWith$Mutation$LikePost$action.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$LikePost$action;
+
+  TRes call(
+      {String? clientMutationId,
+      Mutation$LikePost$action$post? post,
+      String? $__typename});
+  CopyWith$Mutation$LikePost$action$post<TRes> get post;
+}
+
+class _CopyWithImpl$Mutation$LikePost$action<TRes>
+    implements CopyWith$Mutation$LikePost$action<TRes> {
+  _CopyWithImpl$Mutation$LikePost$action(this._instance, this._then);
+
+  final Mutation$LikePost$action _instance;
+
+  final TRes Function(Mutation$LikePost$action) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? clientMutationId = _undefined,
+          Object? post = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Mutation$LikePost$action(
+          clientMutationId: clientMutationId == _undefined
+              ? _instance.clientMutationId
+              : (clientMutationId as String?),
+          post: post == _undefined
+              ? _instance.post
+              : (post as Mutation$LikePost$action$post?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Mutation$LikePost$action$post<TRes> get post {
+    final local$post = _instance.post;
+    return local$post == null
+        ? CopyWith$Mutation$LikePost$action$post.stub(_then(_instance))
+        : CopyWith$Mutation$LikePost$action$post(
+            local$post, (e) => call(post: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$LikePost$action<TRes>
+    implements CopyWith$Mutation$LikePost$action<TRes> {
+  _CopyWithStubImpl$Mutation$LikePost$action(this._res);
+
+  TRes _res;
+
+  call(
+          {String? clientMutationId,
+          Mutation$LikePost$action$post? post,
+          String? $__typename}) =>
+      _res;
+  CopyWith$Mutation$LikePost$action$post<TRes> get post =>
+      CopyWith$Mutation$LikePost$action$post.stub(_res);
+}
+
+class Mutation$LikePost$action$post {
+  Mutation$LikePost$action$post({required this.id, required this.$__typename});
+
+  factory Mutation$LikePost$action$post.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Mutation$LikePost$action$post(
+        id: (l$id as String), $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$LikePost$action$post) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$LikePost$action$post
+    on Mutation$LikePost$action$post {
+  CopyWith$Mutation$LikePost$action$post<Mutation$LikePost$action$post>
+      get copyWith => CopyWith$Mutation$LikePost$action$post(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$LikePost$action$post<TRes> {
+  factory CopyWith$Mutation$LikePost$action$post(
+          Mutation$LikePost$action$post instance,
+          TRes Function(Mutation$LikePost$action$post) then) =
+      _CopyWithImpl$Mutation$LikePost$action$post;
+
+  factory CopyWith$Mutation$LikePost$action$post.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$LikePost$action$post;
+
+  TRes call({String? id, String? $__typename});
+}
+
+class _CopyWithImpl$Mutation$LikePost$action$post<TRes>
+    implements CopyWith$Mutation$LikePost$action$post<TRes> {
+  _CopyWithImpl$Mutation$LikePost$action$post(this._instance, this._then);
+
+  final Mutation$LikePost$action$post _instance;
+
+  final TRes Function(Mutation$LikePost$action$post) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+      _then(Mutation$LikePost$action$post(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Mutation$LikePost$action$post<TRes>
+    implements CopyWith$Mutation$LikePost$action$post<TRes> {
+  _CopyWithStubImpl$Mutation$LikePost$action$post(this._res);
+
+  TRes _res;
+
+  call({String? id, String? $__typename}) => _res;
+}
+
+class Variables$Mutation$UnlikePost {
+  factory Variables$Mutation$UnlikePost(
+          {required Input$UnlikePostInput unlikePostInput}) =>
+      Variables$Mutation$UnlikePost._({
+        r'unlikePostInput': unlikePostInput,
+      });
+
+  Variables$Mutation$UnlikePost._(this._$data);
+
+  factory Variables$Mutation$UnlikePost.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$unlikePostInput = data['unlikePostInput'];
+    result$data['unlikePostInput'] = Input$UnlikePostInput.fromJson(
+        (l$unlikePostInput as Map<String, dynamic>));
+    return Variables$Mutation$UnlikePost._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UnlikePostInput get unlikePostInput =>
+      (_$data['unlikePostInput'] as Input$UnlikePostInput);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$unlikePostInput = unlikePostInput;
+    result$data['unlikePostInput'] = l$unlikePostInput.toJson();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$UnlikePost<Variables$Mutation$UnlikePost>
+      get copyWith => CopyWith$Variables$Mutation$UnlikePost(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$UnlikePost) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$unlikePostInput = unlikePostInput;
+    final lOther$unlikePostInput = other.unlikePostInput;
+    if (l$unlikePostInput != lOther$unlikePostInput) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$unlikePostInput = unlikePostInput;
+    return Object.hashAll([l$unlikePostInput]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$UnlikePost<TRes> {
+  factory CopyWith$Variables$Mutation$UnlikePost(
+          Variables$Mutation$UnlikePost instance,
+          TRes Function(Variables$Mutation$UnlikePost) then) =
+      _CopyWithImpl$Variables$Mutation$UnlikePost;
+
+  factory CopyWith$Variables$Mutation$UnlikePost.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$UnlikePost;
+
+  TRes call({Input$UnlikePostInput? unlikePostInput});
+}
+
+class _CopyWithImpl$Variables$Mutation$UnlikePost<TRes>
+    implements CopyWith$Variables$Mutation$UnlikePost<TRes> {
+  _CopyWithImpl$Variables$Mutation$UnlikePost(this._instance, this._then);
+
+  final Variables$Mutation$UnlikePost _instance;
+
+  final TRes Function(Variables$Mutation$UnlikePost) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? unlikePostInput = _undefined}) =>
+      _then(Variables$Mutation$UnlikePost._({
+        ..._instance._$data,
+        if (unlikePostInput != _undefined && unlikePostInput != null)
+          'unlikePostInput': (unlikePostInput as Input$UnlikePostInput),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$UnlikePost<TRes>
+    implements CopyWith$Variables$Mutation$UnlikePost<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$UnlikePost(this._res);
+
+  TRes _res;
+
+  call({Input$UnlikePostInput? unlikePostInput}) => _res;
+}
+
+class Mutation$UnlikePost {
+  Mutation$UnlikePost({required this.action, required this.$__typename});
+
+  factory Mutation$UnlikePost.fromJson(Map<String, dynamic> json) {
+    final l$action = json['action'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UnlikePost(
+        action: Mutation$UnlikePost$action.fromJson(
+            (l$action as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final Mutation$UnlikePost$action action;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$action = action;
+    _resultData['action'] = l$action.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$action = action;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$action, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UnlikePost) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$action = action;
+    final lOther$action = other.action;
+    if (l$action != lOther$action) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$UnlikePost on Mutation$UnlikePost {
+  CopyWith$Mutation$UnlikePost<Mutation$UnlikePost> get copyWith =>
+      CopyWith$Mutation$UnlikePost(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$UnlikePost<TRes> {
+  factory CopyWith$Mutation$UnlikePost(Mutation$UnlikePost instance,
+          TRes Function(Mutation$UnlikePost) then) =
+      _CopyWithImpl$Mutation$UnlikePost;
+
+  factory CopyWith$Mutation$UnlikePost.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$UnlikePost;
+
+  TRes call({Mutation$UnlikePost$action? action, String? $__typename});
+  CopyWith$Mutation$UnlikePost$action<TRes> get action;
+}
+
+class _CopyWithImpl$Mutation$UnlikePost<TRes>
+    implements CopyWith$Mutation$UnlikePost<TRes> {
+  _CopyWithImpl$Mutation$UnlikePost(this._instance, this._then);
+
+  final Mutation$UnlikePost _instance;
+
+  final TRes Function(Mutation$UnlikePost) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? action = _undefined, Object? $__typename = _undefined}) =>
+      _then(Mutation$UnlikePost(
+          action: action == _undefined || action == null
+              ? _instance.action
+              : (action as Mutation$UnlikePost$action),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Mutation$UnlikePost$action<TRes> get action {
+    final local$action = _instance.action;
+    return CopyWith$Mutation$UnlikePost$action(
+        local$action, (e) => call(action: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$UnlikePost<TRes>
+    implements CopyWith$Mutation$UnlikePost<TRes> {
+  _CopyWithStubImpl$Mutation$UnlikePost(this._res);
+
+  TRes _res;
+
+  call({Mutation$UnlikePost$action? action, String? $__typename}) => _res;
+  CopyWith$Mutation$UnlikePost$action<TRes> get action =>
+      CopyWith$Mutation$UnlikePost$action.stub(_res);
+}
+
+const documentNodeMutationUnlikePost = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.mutation,
+      name: NameNode(value: 'UnlikePost'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'unlikePostInput')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'UnlikePostInput'), isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'unlikePost'),
+            alias: NameNode(value: 'action'),
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'input'),
+                  value: VariableNode(name: NameNode(value: 'unlikePostInput')))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'clientMutationId'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: 'post'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'id'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+]);
+Mutation$UnlikePost _parserFn$Mutation$UnlikePost(Map<String, dynamic> data) =>
+    Mutation$UnlikePost.fromJson(data);
+typedef OnMutationCompleted$Mutation$UnlikePost = FutureOr<void> Function(
+    dynamic, Mutation$UnlikePost?);
+
+class Options$Mutation$UnlikePost
+    extends graphql.MutationOptions<Mutation$UnlikePost> {
+  Options$Mutation$UnlikePost(
+      {String? operationName,
+      required Variables$Mutation$UnlikePost variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$UnlikePost? onCompleted,
+      graphql.OnMutationUpdate<Mutation$UnlikePost>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(data,
+                    data == null ? null : _parserFn$Mutation$UnlikePost(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationUnlikePost,
+            parserFn: _parserFn$Mutation$UnlikePost);
+
+  final OnMutationCompleted$Mutation$UnlikePost? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+class WatchOptions$Mutation$UnlikePost
+    extends graphql.WatchQueryOptions<Mutation$UnlikePost> {
+  WatchOptions$Mutation$UnlikePost(
+      {String? operationName,
+      required Variables$Mutation$UnlikePost variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeMutationUnlikePost,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Mutation$UnlikePost);
+}
+
+extension ClientExtension$Mutation$UnlikePost on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$UnlikePost>> mutate$UnlikePost(
+          Options$Mutation$UnlikePost options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$UnlikePost> watchMutation$UnlikePost(
+          WatchOptions$Mutation$UnlikePost options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$UnlikePost$HookResult {
+  Mutation$UnlikePost$HookResult(this.runMutation, this.result);
+
+  final RunMutation$Mutation$UnlikePost runMutation;
+
+  final graphql.QueryResult<Mutation$UnlikePost> result;
+}
+
+Mutation$UnlikePost$HookResult useMutation$UnlikePost(
+    [WidgetOptions$Mutation$UnlikePost? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$UnlikePost());
+  return Mutation$UnlikePost$HookResult(
+    (variables, {optimisticResult}) => result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult,
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$UnlikePost> useWatchMutation$UnlikePost(
+        WatchOptions$Mutation$UnlikePost options) =>
+    graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$UnlikePost
+    extends graphql.MutationOptions<Mutation$UnlikePost> {
+  WidgetOptions$Mutation$UnlikePost(
+      {String? operationName,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$UnlikePost? onCompleted,
+      graphql.OnMutationUpdate<Mutation$UnlikePost>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(data,
+                    data == null ? null : _parserFn$Mutation$UnlikePost(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationUnlikePost,
+            parserFn: _parserFn$Mutation$UnlikePost);
+
+  final OnMutationCompleted$Mutation$UnlikePost? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+typedef RunMutation$Mutation$UnlikePost
+    = graphql.MultiSourceResult<Mutation$UnlikePost>
+        Function(Variables$Mutation$UnlikePost, {Object? optimisticResult});
+typedef Builder$Mutation$UnlikePost = widgets.Widget Function(
+    RunMutation$Mutation$UnlikePost, graphql.QueryResult<Mutation$UnlikePost>?);
+
+class Mutation$UnlikePost$Widget
+    extends graphql_flutter.Mutation<Mutation$UnlikePost> {
+  Mutation$UnlikePost$Widget(
+      {widgets.Key? key,
+      WidgetOptions$Mutation$UnlikePost? options,
+      required Builder$Mutation$UnlikePost builder})
+      : super(
+            key: key,
+            options: options ?? WidgetOptions$Mutation$UnlikePost(),
+            builder: (run, result) => builder(
+                (variables, {optimisticResult}) =>
+                    run(variables.toJson(), optimisticResult: optimisticResult),
+                result));
+}
+
+class Mutation$UnlikePost$action {
+  Mutation$UnlikePost$action(
+      {this.clientMutationId, this.post, required this.$__typename});
+
+  factory Mutation$UnlikePost$action.fromJson(Map<String, dynamic> json) {
+    final l$clientMutationId = json['clientMutationId'];
+    final l$post = json['post'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UnlikePost$action(
+        clientMutationId: (l$clientMutationId as String?),
+        post: l$post == null
+            ? null
+            : Mutation$UnlikePost$action$post.fromJson(
+                (l$post as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String? clientMutationId;
+
+  final Mutation$UnlikePost$action$post? post;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$clientMutationId = clientMutationId;
+    _resultData['clientMutationId'] = l$clientMutationId;
+    final l$post = post;
+    _resultData['post'] = l$post?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$clientMutationId = clientMutationId;
+    final l$post = post;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$clientMutationId, l$post, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UnlikePost$action) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$clientMutationId = clientMutationId;
+    final lOther$clientMutationId = other.clientMutationId;
+    if (l$clientMutationId != lOther$clientMutationId) {
+      return false;
+    }
+    final l$post = post;
+    final lOther$post = other.post;
+    if (l$post != lOther$post) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$UnlikePost$action
+    on Mutation$UnlikePost$action {
+  CopyWith$Mutation$UnlikePost$action<Mutation$UnlikePost$action>
+      get copyWith => CopyWith$Mutation$UnlikePost$action(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$UnlikePost$action<TRes> {
+  factory CopyWith$Mutation$UnlikePost$action(
+          Mutation$UnlikePost$action instance,
+          TRes Function(Mutation$UnlikePost$action) then) =
+      _CopyWithImpl$Mutation$UnlikePost$action;
+
+  factory CopyWith$Mutation$UnlikePost$action.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$UnlikePost$action;
+
+  TRes call(
+      {String? clientMutationId,
+      Mutation$UnlikePost$action$post? post,
+      String? $__typename});
+  CopyWith$Mutation$UnlikePost$action$post<TRes> get post;
+}
+
+class _CopyWithImpl$Mutation$UnlikePost$action<TRes>
+    implements CopyWith$Mutation$UnlikePost$action<TRes> {
+  _CopyWithImpl$Mutation$UnlikePost$action(this._instance, this._then);
+
+  final Mutation$UnlikePost$action _instance;
+
+  final TRes Function(Mutation$UnlikePost$action) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? clientMutationId = _undefined,
+          Object? post = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Mutation$UnlikePost$action(
+          clientMutationId: clientMutationId == _undefined
+              ? _instance.clientMutationId
+              : (clientMutationId as String?),
+          post: post == _undefined
+              ? _instance.post
+              : (post as Mutation$UnlikePost$action$post?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Mutation$UnlikePost$action$post<TRes> get post {
+    final local$post = _instance.post;
+    return local$post == null
+        ? CopyWith$Mutation$UnlikePost$action$post.stub(_then(_instance))
+        : CopyWith$Mutation$UnlikePost$action$post(
+            local$post, (e) => call(post: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$UnlikePost$action<TRes>
+    implements CopyWith$Mutation$UnlikePost$action<TRes> {
+  _CopyWithStubImpl$Mutation$UnlikePost$action(this._res);
+
+  TRes _res;
+
+  call(
+          {String? clientMutationId,
+          Mutation$UnlikePost$action$post? post,
+          String? $__typename}) =>
+      _res;
+  CopyWith$Mutation$UnlikePost$action$post<TRes> get post =>
+      CopyWith$Mutation$UnlikePost$action$post.stub(_res);
+}
+
+class Mutation$UnlikePost$action$post {
+  Mutation$UnlikePost$action$post(
+      {required this.id, required this.$__typename});
+
+  factory Mutation$UnlikePost$action$post.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UnlikePost$action$post(
+        id: (l$id as String), $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UnlikePost$action$post) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$UnlikePost$action$post
+    on Mutation$UnlikePost$action$post {
+  CopyWith$Mutation$UnlikePost$action$post<Mutation$UnlikePost$action$post>
+      get copyWith => CopyWith$Mutation$UnlikePost$action$post(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$UnlikePost$action$post<TRes> {
+  factory CopyWith$Mutation$UnlikePost$action$post(
+          Mutation$UnlikePost$action$post instance,
+          TRes Function(Mutation$UnlikePost$action$post) then) =
+      _CopyWithImpl$Mutation$UnlikePost$action$post;
+
+  factory CopyWith$Mutation$UnlikePost$action$post.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$UnlikePost$action$post;
+
+  TRes call({String? id, String? $__typename});
+}
+
+class _CopyWithImpl$Mutation$UnlikePost$action$post<TRes>
+    implements CopyWith$Mutation$UnlikePost$action$post<TRes> {
+  _CopyWithImpl$Mutation$UnlikePost$action$post(this._instance, this._then);
+
+  final Mutation$UnlikePost$action$post _instance;
+
+  final TRes Function(Mutation$UnlikePost$action$post) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+      _then(Mutation$UnlikePost$action$post(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Mutation$UnlikePost$action$post<TRes>
+    implements CopyWith$Mutation$UnlikePost$action$post<TRes> {
+  _CopyWithStubImpl$Mutation$UnlikePost$action$post(this._res);
+
+  TRes _res;
+
+  call({String? id, String? $__typename}) => _res;
 }

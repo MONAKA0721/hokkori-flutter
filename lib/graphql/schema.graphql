@@ -10,8 +10,32 @@ type Mutation {
   createPost(input: CreatePostInput!): Post!
   createHashtag(input: CreateHashtagInput!): Hashtag!
   createWork(input: CreateWorkInput!): Work!
+  likePost(input: LikePostInput!): LikePostPayload!
+  unlikePost(input: UnlikePostInput!): UnlikePostPayload!
 }
 
 extend type Query {
   likedPosts(first: Int!, type: PostPostType!): [Post]!
+}
+
+input LikePostInput {
+  clientMutationId: String
+  userID: ID!
+  postID: ID!
+}
+
+type LikePostPayload {
+  clientMutationId: String
+  post: Post
+}
+
+input UnlikePostInput {
+  clientMutationId: String
+  userID: ID!
+  postID: ID!
+}
+
+type UnlikePostPayload {
+  clientMutationId: String
+  post: Post
 }

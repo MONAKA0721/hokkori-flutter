@@ -75,6 +75,7 @@ class HomePage extends HookWidget {
                           const EdgeInsets.only(left: 16, right: 16, top: 12),
                       child: TopPraises(
                         praises: praises,
+                        result: result,
                       )),
                   const SizedBox(
                     height: 40,
@@ -101,7 +102,9 @@ class HomePage extends HookWidget {
 
 class TopPraises extends StatelessWidget {
   final List<Query$Praises$posts$edges?> praises;
-  const TopPraises({Key? key, required this.praises}) : super(key: key);
+  final QueryResult<Query$Praises> result;
+  const TopPraises({Key? key, required this.praises, required this.result})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +128,12 @@ class TopPraises extends StatelessWidget {
             ),
           ],
         ),
-        ...praises.map((praise) => Praise(praise: praise!.node!)).toList(),
+        ...praises
+            .map((praise) => Praise(
+                praise: praise!.node!,
+                optimistic:
+                    result.source == QueryResultSource.optimisticResult))
+            .toList(),
       ],
     );
   }
