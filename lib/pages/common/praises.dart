@@ -10,12 +10,14 @@ class Praises extends HookWidget {
   final int? first;
   final List<Input$PostWhereInput>? or;
   final List<Input$CategoryWhereInput>? hasCategoryWith;
+  final String? after;
   final bool hasHeading;
   const Praises(
       {super.key,
       this.first,
       this.or,
       this.hasCategoryWith,
+      this.after,
       this.hasHeading = true});
 
   @override
@@ -23,7 +25,10 @@ class Praises extends HookWidget {
     final result = useQuery$Praises(Options$Query$Praises(
             fetchPolicy: FetchPolicy.networkOnly,
             variables: Variables$Query$Praises(
-                first: first, or: or, hasCategoryWith: hasCategoryWith)))
+                after: after,
+                first: first,
+                or: or,
+                hasCategoryWith: hasCategoryWith)))
         .result;
 
     if (result.hasException) {
