@@ -6,13 +6,13 @@ import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hive/hive.dart';
 import 'package:hokkori/index.dart';
 import 'package:hokkori/login.dart';
 import 'package:hokkori/pages/tutorial/tutorial_navigator.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hokkori/utils/user.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 
 final FlutterAppAuth appAuth = FlutterAppAuth();
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
@@ -86,6 +86,7 @@ class _MyAppState extends ConsumerState<MyApp> {
   String errorMessage = "";
   bool doneTutorial = false;
   late ValueNotifier<GraphQLClient> client;
+  late Box box;
 
   @override
   void initState() {
@@ -104,14 +105,14 @@ class _MyAppState extends ConsumerState<MyApp> {
       ),
     );
 
-    final prefs = await SharedPreferences.getInstance();
-    if (prefs.getBool('doneTutorial') != true) return;
-    doneTutorial = true;
-
     final storedRefreshToken = await secureStorage.read(key: 'refresh_token');
     if (storedRefreshToken == null) return;
 
-    ref.watch(isBusyProvider.notifier).state = true;
+    box = await Hive.openBox('tutorialBox');
+    if (box.get('doneTutorial') != true) return;
+    setState(() {
+      doneTutorial = true;
+    });
 
     try {
       final response = await appAuth.token(TokenRequest(
@@ -122,11 +123,9 @@ class _MyAppState extends ConsumerState<MyApp> {
         additionalParameters: {'audience': auth0Audience},
       ));
 
-      secureStorage.write(key: 'refresh_token', value: response!.refreshToken);
-
       ref.watch(isBusyProvider.notifier).state = false;
       ref.watch(isLoggedInProvider.notifier).state = true;
-      ref.watch(accessTokenProvider.notifier).state = response.accessToken!;
+      ref.watch(accessTokenProvider.notifier).state = response!.accessToken!;
 
       final idToken = parseIdToken(response.idToken!);
 
@@ -153,8 +152,6 @@ class _MyAppState extends ConsumerState<MyApp> {
   }
 
   Future<void> loginAction() async {
-    ref.watch(isBusyProvider.notifier).state = true;
-
     setState(() {
       errorMessage = '';
     });
@@ -198,8 +195,7 @@ class _MyAppState extends ConsumerState<MyApp> {
           mutationResult.data?['updateUser']['profile'],
           mutationResult.data?['updateUser']['avatarURL'],
         );
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.setBool('doneTutorial', true);
+        box.put('doneTutorial', true);
         return;
       }
 
