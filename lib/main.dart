@@ -105,16 +105,14 @@ class _MyAppState extends ConsumerState<MyApp> {
       ),
     );
 
+    final storedRefreshToken = await secureStorage.read(key: 'refresh_token');
+    if (storedRefreshToken == null) return;
+
     box = await Hive.openBox('tutorialBox');
     if (box.get('doneTutorial') != true) return;
     setState(() {
       doneTutorial = true;
     });
-
-    final storedRefreshToken = await secureStorage.read(key: 'refresh_token');
-    if (storedRefreshToken == null) return;
-
-    ref.watch(isBusyProvider.notifier).state = true;
 
     try {
       final response = await appAuth.token(TokenRequest(
@@ -125,11 +123,9 @@ class _MyAppState extends ConsumerState<MyApp> {
         additionalParameters: {'audience': auth0Audience},
       ));
 
-      secureStorage.write(key: 'refresh_token', value: response!.refreshToken);
-
       ref.watch(isBusyProvider.notifier).state = false;
       ref.watch(isLoggedInProvider.notifier).state = true;
-      ref.watch(accessTokenProvider.notifier).state = response.accessToken!;
+      ref.watch(accessTokenProvider.notifier).state = response!.accessToken!;
 
       final idToken = parseIdToken(response.idToken!);
 
@@ -156,8 +152,6 @@ class _MyAppState extends ConsumerState<MyApp> {
   }
 
   Future<void> loginAction() async {
-    ref.watch(isBusyProvider.notifier).state = true;
-
     setState(() {
       errorMessage = '';
     });
