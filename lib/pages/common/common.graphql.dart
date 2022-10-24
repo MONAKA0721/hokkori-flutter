@@ -14,6 +14,7 @@ class Fragment$LetterSummary {
       required this.createTime,
       required this.owner,
       required this.category,
+      this.likedUsers,
       required this.$__typename});
 
   factory Fragment$LetterSummary.fromJson(Map<String, dynamic> json) {
@@ -23,6 +24,7 @@ class Fragment$LetterSummary {
     final l$createTime = json['createTime'];
     final l$owner = json['owner'];
     final l$category = json['category'];
+    final l$likedUsers = json['likedUsers'];
     final l$$__typename = json['__typename'];
     return Fragment$LetterSummary(
         title: (l$title as String),
@@ -33,6 +35,10 @@ class Fragment$LetterSummary {
             (l$owner as Map<String, dynamic>)),
         category: Fragment$LetterSummary$category.fromJson(
             (l$category as Map<String, dynamic>)),
+        likedUsers: (l$likedUsers as List<dynamic>?)
+            ?.map((e) => Fragment$LetterSummary$likedUsers.fromJson(
+                (e as Map<String, dynamic>)))
+            .toList(),
         $__typename: (l$$__typename as String));
   }
 
@@ -47,6 +53,8 @@ class Fragment$LetterSummary {
   final Fragment$LetterSummary$owner owner;
 
   final Fragment$LetterSummary$category category;
+
+  final List<Fragment$LetterSummary$likedUsers>? likedUsers;
 
   final String $__typename;
 
@@ -64,6 +72,8 @@ class Fragment$LetterSummary {
     _resultData['owner'] = l$owner.toJson();
     final l$category = category;
     _resultData['category'] = l$category.toJson();
+    final l$likedUsers = likedUsers;
+    _resultData['likedUsers'] = l$likedUsers?.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -77,6 +87,7 @@ class Fragment$LetterSummary {
     final l$createTime = createTime;
     final l$owner = owner;
     final l$category = category;
+    final l$likedUsers = likedUsers;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$title,
@@ -85,6 +96,7 @@ class Fragment$LetterSummary {
       l$createTime,
       l$owner,
       l$category,
+      l$likedUsers == null ? null : Object.hashAll(l$likedUsers.map((v) => v)),
       l$$__typename
     ]);
   }
@@ -128,6 +140,22 @@ class Fragment$LetterSummary {
     if (l$category != lOther$category) {
       return false;
     }
+    final l$likedUsers = likedUsers;
+    final lOther$likedUsers = other.likedUsers;
+    if (l$likedUsers != null && lOther$likedUsers != null) {
+      if (l$likedUsers.length != lOther$likedUsers.length) {
+        return false;
+      }
+      for (int i = 0; i < l$likedUsers.length; i++) {
+        final l$likedUsers$entry = l$likedUsers[i];
+        final lOther$likedUsers$entry = lOther$likedUsers[i];
+        if (l$likedUsers$entry != lOther$likedUsers$entry) {
+          return false;
+        }
+      }
+    } else if (l$likedUsers != lOther$likedUsers) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -157,9 +185,16 @@ abstract class CopyWith$Fragment$LetterSummary<TRes> {
       String? createTime,
       Fragment$LetterSummary$owner? owner,
       Fragment$LetterSummary$category? category,
+      List<Fragment$LetterSummary$likedUsers>? likedUsers,
       String? $__typename});
   CopyWith$Fragment$LetterSummary$owner<TRes> get owner;
   CopyWith$Fragment$LetterSummary$category<TRes> get category;
+  TRes likedUsers(
+      Iterable<Fragment$LetterSummary$likedUsers>? Function(
+              Iterable<
+                  CopyWith$Fragment$LetterSummary$likedUsers<
+                      Fragment$LetterSummary$likedUsers>>?)
+          _fn);
 }
 
 class _CopyWithImpl$Fragment$LetterSummary<TRes>
@@ -179,6 +214,7 @@ class _CopyWithImpl$Fragment$LetterSummary<TRes>
           Object? createTime = _undefined,
           Object? owner = _undefined,
           Object? category = _undefined,
+          Object? likedUsers = _undefined,
           Object? $__typename = _undefined}) =>
       _then(Fragment$LetterSummary(
           title: title == _undefined || title == null
@@ -197,6 +233,9 @@ class _CopyWithImpl$Fragment$LetterSummary<TRes>
           category: category == _undefined || category == null
               ? _instance.category
               : (category as Fragment$LetterSummary$category),
+          likedUsers: likedUsers == _undefined
+              ? _instance.likedUsers
+              : (likedUsers as List<Fragment$LetterSummary$likedUsers>?),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
@@ -211,6 +250,17 @@ class _CopyWithImpl$Fragment$LetterSummary<TRes>
     return CopyWith$Fragment$LetterSummary$category(
         local$category, (e) => call(category: e));
   }
+
+  TRes likedUsers(
+          Iterable<Fragment$LetterSummary$likedUsers>? Function(
+                  Iterable<
+                      CopyWith$Fragment$LetterSummary$likedUsers<
+                          Fragment$LetterSummary$likedUsers>>?)
+              _fn) =>
+      call(
+          likedUsers: _fn(_instance.likedUsers?.map((e) =>
+                  CopyWith$Fragment$LetterSummary$likedUsers(e, (i) => i)))
+              ?.toList());
 }
 
 class _CopyWithStubImpl$Fragment$LetterSummary<TRes>
@@ -226,12 +276,14 @@ class _CopyWithStubImpl$Fragment$LetterSummary<TRes>
           String? createTime,
           Fragment$LetterSummary$owner? owner,
           Fragment$LetterSummary$category? category,
+          List<Fragment$LetterSummary$likedUsers>? likedUsers,
           String? $__typename}) =>
       _res;
   CopyWith$Fragment$LetterSummary$owner<TRes> get owner =>
       CopyWith$Fragment$LetterSummary$owner.stub(_res);
   CopyWith$Fragment$LetterSummary$category<TRes> get category =>
       CopyWith$Fragment$LetterSummary$category.stub(_res);
+  likedUsers(_fn) => _res;
 }
 
 const fragmentDefinitionLetterSummary = FragmentDefinitionNode(
@@ -309,6 +361,25 @@ const fragmentDefinitionLetterSummary = FragmentDefinitionNode(
                 selectionSet: null),
             FieldNode(
                 name: NameNode(value: 'name'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null)
+          ])),
+      FieldNode(
+          name: NameNode(value: 'likedUsers'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+                name: NameNode(value: 'id'),
                 alias: null,
                 arguments: [],
                 directives: [],
@@ -611,6 +682,107 @@ class _CopyWithStubImpl$Fragment$LetterSummary$category<TRes>
   TRes _res;
 
   call({String? id, String? name, String? $__typename}) => _res;
+}
+
+class Fragment$LetterSummary$likedUsers {
+  Fragment$LetterSummary$likedUsers(
+      {required this.id, required this.$__typename});
+
+  factory Fragment$LetterSummary$likedUsers.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Fragment$LetterSummary$likedUsers(
+        id: (l$id as String), $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$LetterSummary$likedUsers) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$LetterSummary$likedUsers
+    on Fragment$LetterSummary$likedUsers {
+  CopyWith$Fragment$LetterSummary$likedUsers<Fragment$LetterSummary$likedUsers>
+      get copyWith =>
+          CopyWith$Fragment$LetterSummary$likedUsers(this, (i) => i);
+}
+
+abstract class CopyWith$Fragment$LetterSummary$likedUsers<TRes> {
+  factory CopyWith$Fragment$LetterSummary$likedUsers(
+          Fragment$LetterSummary$likedUsers instance,
+          TRes Function(Fragment$LetterSummary$likedUsers) then) =
+      _CopyWithImpl$Fragment$LetterSummary$likedUsers;
+
+  factory CopyWith$Fragment$LetterSummary$likedUsers.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$LetterSummary$likedUsers;
+
+  TRes call({String? id, String? $__typename});
+}
+
+class _CopyWithImpl$Fragment$LetterSummary$likedUsers<TRes>
+    implements CopyWith$Fragment$LetterSummary$likedUsers<TRes> {
+  _CopyWithImpl$Fragment$LetterSummary$likedUsers(this._instance, this._then);
+
+  final Fragment$LetterSummary$likedUsers _instance;
+
+  final TRes Function(Fragment$LetterSummary$likedUsers) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+      _then(Fragment$LetterSummary$likedUsers(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Fragment$LetterSummary$likedUsers<TRes>
+    implements CopyWith$Fragment$LetterSummary$likedUsers<TRes> {
+  _CopyWithStubImpl$Fragment$LetterSummary$likedUsers(this._res);
+
+  TRes _res;
+
+  call({String? id, String? $__typename}) => _res;
 }
 
 class Fragment$PraiseSummary {

@@ -60,7 +60,11 @@ class Letters extends HookWidget {
               ],
             )
           : Container(),
-      ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
+      ...letters
+          .map((letter) => Letter(
+              letter: letter!.node!,
+              optimistic: result.source == QueryResultSource.optimisticResult))
+          .toList(),
       hasNextPage!
           ? FetchMoreButton(
               first: first,
@@ -113,7 +117,12 @@ class FetchMoreButton extends HookWidget {
 
     return pushed.value
         ? Column(children: [
-            ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
+            ...letters
+                .map((letter) => Letter(
+                    letter: letter!.node!,
+                    optimistic:
+                        result.source == QueryResultSource.optimisticResult))
+                .toList(),
             hasNextPage!
                 ? FetchMoreButton(
                     first: first,

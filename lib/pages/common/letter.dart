@@ -1,14 +1,107 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hokkori/graphql/schema.graphql.dart';
 import 'package:hokkori/pages/common/common.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
+import 'package:hokkori/utils/providers.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class Letter extends StatelessWidget {
+class Letter extends HookConsumerWidget {
   final Fragment$LetterSummary letter;
-  const Letter({super.key, required this.letter});
+  final bool optimistic;
+  const Letter({super.key, required this.letter, required this.optimistic});
+
+  Map<String, dynamic>? extractPostData(Map<String, Object?> data) {
+    final action = data['action'] as Map<String, dynamic>?;
+    if (action == null) {
+      return null;
+    }
+    return action['post'] as Map<String, dynamic>?;
+  }
+
+  FutureOr<void> Function(GraphQLDataProxy, QueryResult?)? get update =>
+      (cache, result) {
+        if (result!.hasException) {
+          return;
+        } else {
+          final updated = {
+            ...letter.toJson(),
+            ...extractPostData(result.data!)!,
+          };
+          cache.writeFragment(
+            Fragment(
+              document: gql(
+                '''
+                  fragment fields on Post {
+                    id
+                    likedUsers
+                  }
+                ''',
+              ),
+            ).asRequest(idFields: {
+              '__typename': updated['__typename'],
+              'id': updated['id'],
+            }),
+            data: updated,
+          );
+        }
+      };
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    Map<String, dynamic> expectedResult(bool liked) {
+      final likedUsers = letter.likedUsers;
+      if (liked) {
+        likedUsers!
+            .removeWhere((user) => user.id == ref.watch(userProvider).id);
+      } else {
+        likedUsers!.add(Fragment$LetterSummary$likedUsers(
+            $__typename: "Post", id: ref.watch(userProvider).id));
+      }
+
+      return <String, dynamic>{
+        'action': {
+          'post': {
+            '__typename': 'Post',
+            'id': letter.id,
+            'likedUsers': likedUsers,
+          }
+        }
+      };
+    }
+
+    final liked = letter.likedUsers!
+        .map((user) => user.id)
+        .contains(ref.watch(userProvider).id);
+
+    final likePostMutation =
+        useMutation$LikePost(WidgetOptions$Mutation$LikePost(update: update));
+    final unlikePostMutation = useMutation$UnlikePost(
+        WidgetOptions$Mutation$UnlikePost(update: update));
+
+    like() {
+      likePostMutation.runMutation(
+          Variables$Mutation$LikePost(
+              likePostInput: Input$LikePostInput(
+                  userID: ref.watch(userProvider).id, postID: letter.id)),
+          optimisticResult: expectedResult(false));
+    }
+
+    unlike() {
+      unlikePostMutation.runMutation(
+          Variables$Mutation$UnlikePost(
+              unlikePostInput: Input$UnlikePostInput(
+                  userID: ref.watch(userProvider).id, postID: letter.id)),
+          optimisticResult: expectedResult(true));
+    }
+
+    final anyLoading = likePostMutation.result.isLoading ||
+        unlikePostMutation.result.isLoading ||
+        optimistic;
+
     return Container(
         margin: const EdgeInsets.only(top: 20, right: 5, left: 5),
         decoration: BoxDecoration(
@@ -21,11 +114,27 @@ class Letter extends StatelessWidget {
             ],
             color: Colors.white,
             borderRadius: const BorderRadius.all(Radius.circular(20))),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+        padding: const EdgeInsets.only(left: 14, right: 14, top: 15, bottom: 6),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(
-            letter.createTime.substring(0, 10).replaceAll('-', '.'),
-            style: const TextStyle(color: Colors.grey),
+          Row(
+            children: [
+              CircleAvatar(
+                  backgroundColor: primaryColor,
+                  radius: 10,
+                  child: SvgPicture.asset(
+                    'assets/palette.svg',
+                    width: 14,
+                  )),
+              const SizedBox(
+                width: 5,
+              ),
+              Text(letter.category.name),
+              const Spacer(),
+              Text(
+                letter.createTime.substring(0, 10).replaceAll('-', '.'),
+                style: const TextStyle(color: Colors.grey),
+              ),
+            ],
           ),
           const SizedBox(
             height: 10,
@@ -62,10 +171,13 @@ class Letter extends StatelessWidget {
           ),
           Row(
             children: [
-              const Icon(
-                Icons.person,
-                color: Color(0xffa2a2a2),
-              ),
+              letter.owner.avatarURL != ""
+                  ? CircleAvatar(
+                      maxRadius: 12,
+                      backgroundImage: NetworkImage(letter.owner.avatarURL!))
+                  : const CircleAvatar(
+                      maxRadius: 12,
+                      backgroundImage: AssetImage("assets/noimage.png")),
               const SizedBox(
                 width: 5,
               ),
@@ -77,10 +189,41 @@ class Letter extends StatelessWidget {
                     decorationThickness: 2),
               ),
               const Spacer(),
+              SizedBox(
+                width: 36,
+                child: IconButton(
+                    padding: const EdgeInsets.all(0),
+                    onPressed: anyLoading
+                        ? null
+                        : liked
+                            ? unlike
+                            : like,
+                    icon: liked
+                        ? const Icon(
+                            Icons.favorite,
+                            color: redErrorColor,
+                            size: 20,
+                          )
+                        : const Icon(
+                            Icons.favorite_border,
+                            color: Colors.grey,
+                            size: 20,
+                          )),
+              ),
+              SizedBox(
+                width: 10,
+                child: Text(
+                  letter.likedUsers!.length.toString(),
+                  style: const TextStyle(color: Colors.black87, fontSize: 14),
+                ),
+              ),
+              const SizedBox(
+                width: 30,
+              ),
               const Icon(
-                Icons.favorite,
-                color: primaryColor,
-                size: 16,
+                Icons.bookmark,
+                color: greenAccentColor,
+                size: 20,
               ),
               const SizedBox(
                 width: 5,
@@ -89,20 +232,8 @@ class Letter extends StatelessWidget {
                 "27",
                 style: TextStyle(color: Colors.black87, fontSize: 14),
               ),
-              const Spacer(),
-              CircleAvatar(
-                  backgroundColor: primaryColor,
-                  radius: 10,
-                  child: SvgPicture.asset(
-                    'assets/palette.svg',
-                    width: 14,
-                  )),
               const SizedBox(
-                width: 5,
-              ),
-              Text(letter.category.name),
-              const SizedBox(
-                width: 10,
+                width: 40,
               ),
             ],
           ),

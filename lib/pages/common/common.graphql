@@ -12,6 +12,9 @@ fragment LetterSummary on Post {
     id
     name
   }
+  likedUsers {
+    id
+  }
 }
 
 fragment PraiseSummary on Post {
