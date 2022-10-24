@@ -38,6 +38,7 @@ class Letter extends HookConsumerWidget {
                   fragment fields on Post {
                     id
                     likedUsers
+                    bookmarkedUsers
                   }
                 ''',
               ),
@@ -52,7 +53,7 @@ class Letter extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Map<String, dynamic> expectedResult(bool liked) {
+    Map<String, dynamic> expectedLikeResult(bool liked) {
       final likedUsers = letter.likedUsers;
       if (liked) {
         likedUsers!
@@ -73,7 +74,31 @@ class Letter extends HookConsumerWidget {
       };
     }
 
+    Map<String, dynamic> expectedBookmarkResult(bool bookmarked) {
+      final bookmarkedUsers = letter.bookmarkedUsers;
+      if (bookmarked) {
+        bookmarkedUsers!
+            .removeWhere((user) => user.id == ref.watch(userProvider).id);
+      } else {
+        bookmarkedUsers!.add(Fragment$LetterSummary$bookmarkedUsers(
+            $__typename: "Post", id: ref.watch(userProvider).id));
+      }
+
+      return <String, dynamic>{
+        'action': {
+          'post': {
+            '__typename': 'Post',
+            'id': letter.id,
+            'bookmarkedUsers': bookmarkedUsers,
+          }
+        }
+      };
+    }
+
     final liked = letter.likedUsers!
+        .map((user) => user.id)
+        .contains(ref.watch(userProvider).id);
+    final bookmarked = letter.bookmarkedUsers!
         .map((user) => user.id)
         .contains(ref.watch(userProvider).id);
 
@@ -81,13 +106,17 @@ class Letter extends HookConsumerWidget {
         useMutation$LikePost(WidgetOptions$Mutation$LikePost(update: update));
     final unlikePostMutation = useMutation$UnlikePost(
         WidgetOptions$Mutation$UnlikePost(update: update));
+    final bookmarkPostMutation = useMutation$BookmarkPost(
+        WidgetOptions$Mutation$BookmarkPost(update: update));
+    final unbookmarkPostMutation = useMutation$UnbookmarkPost(
+        WidgetOptions$Mutation$UnbookmarkPost(update: update));
 
     like() {
       likePostMutation.runMutation(
           Variables$Mutation$LikePost(
               likePostInput: Input$LikePostInput(
                   userID: ref.watch(userProvider).id, postID: letter.id)),
-          optimisticResult: expectedResult(false));
+          optimisticResult: expectedLikeResult(false));
     }
 
     unlike() {
@@ -95,11 +124,31 @@ class Letter extends HookConsumerWidget {
           Variables$Mutation$UnlikePost(
               unlikePostInput: Input$UnlikePostInput(
                   userID: ref.watch(userProvider).id, postID: letter.id)),
-          optimisticResult: expectedResult(true));
+          optimisticResult: expectedLikeResult(true));
     }
 
-    final anyLoading = likePostMutation.result.isLoading ||
+    bookmark() {
+      bookmarkPostMutation.runMutation(
+          Variables$Mutation$BookmarkPost(
+              bookmarkPostInput: Input$BookmarkPostInput(
+                  userID: ref.watch(userProvider).id, postID: letter.id)),
+          optimisticResult: expectedBookmarkResult(false));
+    }
+
+    unbookmark() {
+      unbookmarkPostMutation.runMutation(
+          Variables$Mutation$UnbookmarkPost(
+              unbookmarkPostInput: Input$UnbookmarkPostInput(
+                  userID: ref.watch(userProvider).id, postID: letter.id)),
+          optimisticResult: expectedBookmarkResult(true));
+    }
+
+    final anyLikeLoading = likePostMutation.result.isLoading ||
         unlikePostMutation.result.isLoading ||
+        optimistic;
+
+    final anyBookmarkLoading = bookmarkPostMutation.result.isLoading ||
+        unbookmarkPostMutation.result.isLoading ||
         optimistic;
 
     return Container(
@@ -193,7 +242,7 @@ class Letter extends HookConsumerWidget {
                 width: 36,
                 child: IconButton(
                     padding: const EdgeInsets.all(0),
-                    onPressed: anyLoading
+                    onPressed: anyLikeLoading
                         ? null
                         : liked
                             ? unlike
@@ -220,17 +269,33 @@ class Letter extends HookConsumerWidget {
               const SizedBox(
                 width: 30,
               ),
-              const Icon(
-                Icons.bookmark,
-                color: greenAccentColor,
-                size: 20,
+              SizedBox(
+                width: 36,
+                child: IconButton(
+                    padding: const EdgeInsets.all(0),
+                    onPressed: anyBookmarkLoading
+                        ? null
+                        : bookmarked
+                            ? unbookmark
+                            : bookmark,
+                    icon: bookmarked
+                        ? const Icon(
+                            Icons.bookmark,
+                            color: greenAccentColor,
+                            size: 20,
+                          )
+                        : const Icon(
+                            Icons.bookmark_border,
+                            color: Colors.grey,
+                            size: 20,
+                          )),
               ),
-              const SizedBox(
-                width: 5,
-              ),
-              const Text(
-                "27",
-                style: TextStyle(color: Colors.black87, fontSize: 14),
+              SizedBox(
+                width: 10,
+                child: Text(
+                  letter.bookmarkedUsers!.length.toString(),
+                  style: const TextStyle(color: Colors.black87, fontSize: 14),
+                ),
               ),
               const SizedBox(
                 width: 40,

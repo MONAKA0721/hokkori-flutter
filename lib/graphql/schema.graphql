@@ -12,6 +12,8 @@ type Mutation {
   createWork(input: CreateWorkInput!): Work!
   likePost(input: LikePostInput!): LikePostPayload!
   unlikePost(input: UnlikePostInput!): UnlikePostPayload!
+  bookmarkPost(input: BookmarkPostInput!): BookmarkPostPayload!
+  unbookmarkPost(input: UnbookmarkPostInput!): UnbookmarkPostPayload!
 }
 
 extend type Query {
@@ -36,6 +38,28 @@ input UnlikePostInput {
 }
 
 type UnlikePostPayload {
+  clientMutationId: String
+  post: Post
+}
+
+input BookmarkPostInput {
+  clientMutationId: String
+  userID: ID!
+  postID: ID!
+}
+
+type BookmarkPostPayload {
+  clientMutationId: String
+  post: Post
+}
+
+input UnbookmarkPostInput {
+  clientMutationId: String
+  userID: ID!
+  postID: ID!
+}
+
+type UnbookmarkPostPayload {
   clientMutationId: String
   post: Post
 }

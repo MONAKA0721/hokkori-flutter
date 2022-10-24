@@ -15,6 +15,7 @@ class Fragment$LetterSummary {
       required this.owner,
       required this.category,
       this.likedUsers,
+      this.bookmarkedUsers,
       required this.$__typename});
 
   factory Fragment$LetterSummary.fromJson(Map<String, dynamic> json) {
@@ -25,6 +26,7 @@ class Fragment$LetterSummary {
     final l$owner = json['owner'];
     final l$category = json['category'];
     final l$likedUsers = json['likedUsers'];
+    final l$bookmarkedUsers = json['bookmarkedUsers'];
     final l$$__typename = json['__typename'];
     return Fragment$LetterSummary(
         title: (l$title as String),
@@ -37,6 +39,10 @@ class Fragment$LetterSummary {
             (l$category as Map<String, dynamic>)),
         likedUsers: (l$likedUsers as List<dynamic>?)
             ?.map((e) => Fragment$LetterSummary$likedUsers.fromJson(
+                (e as Map<String, dynamic>)))
+            .toList(),
+        bookmarkedUsers: (l$bookmarkedUsers as List<dynamic>?)
+            ?.map((e) => Fragment$LetterSummary$bookmarkedUsers.fromJson(
                 (e as Map<String, dynamic>)))
             .toList(),
         $__typename: (l$$__typename as String));
@@ -56,6 +62,8 @@ class Fragment$LetterSummary {
 
   final List<Fragment$LetterSummary$likedUsers>? likedUsers;
 
+  final List<Fragment$LetterSummary$bookmarkedUsers>? bookmarkedUsers;
+
   final String $__typename;
 
   Map<String, dynamic> toJson() {
@@ -74,6 +82,9 @@ class Fragment$LetterSummary {
     _resultData['category'] = l$category.toJson();
     final l$likedUsers = likedUsers;
     _resultData['likedUsers'] = l$likedUsers?.map((e) => e.toJson()).toList();
+    final l$bookmarkedUsers = bookmarkedUsers;
+    _resultData['bookmarkedUsers'] =
+        l$bookmarkedUsers?.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -88,6 +99,7 @@ class Fragment$LetterSummary {
     final l$owner = owner;
     final l$category = category;
     final l$likedUsers = likedUsers;
+    final l$bookmarkedUsers = bookmarkedUsers;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$title,
@@ -97,6 +109,9 @@ class Fragment$LetterSummary {
       l$owner,
       l$category,
       l$likedUsers == null ? null : Object.hashAll(l$likedUsers.map((v) => v)),
+      l$bookmarkedUsers == null
+          ? null
+          : Object.hashAll(l$bookmarkedUsers.map((v) => v)),
       l$$__typename
     ]);
   }
@@ -156,6 +171,22 @@ class Fragment$LetterSummary {
     } else if (l$likedUsers != lOther$likedUsers) {
       return false;
     }
+    final l$bookmarkedUsers = bookmarkedUsers;
+    final lOther$bookmarkedUsers = other.bookmarkedUsers;
+    if (l$bookmarkedUsers != null && lOther$bookmarkedUsers != null) {
+      if (l$bookmarkedUsers.length != lOther$bookmarkedUsers.length) {
+        return false;
+      }
+      for (int i = 0; i < l$bookmarkedUsers.length; i++) {
+        final l$bookmarkedUsers$entry = l$bookmarkedUsers[i];
+        final lOther$bookmarkedUsers$entry = lOther$bookmarkedUsers[i];
+        if (l$bookmarkedUsers$entry != lOther$bookmarkedUsers$entry) {
+          return false;
+        }
+      }
+    } else if (l$bookmarkedUsers != lOther$bookmarkedUsers) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -186,6 +217,7 @@ abstract class CopyWith$Fragment$LetterSummary<TRes> {
       Fragment$LetterSummary$owner? owner,
       Fragment$LetterSummary$category? category,
       List<Fragment$LetterSummary$likedUsers>? likedUsers,
+      List<Fragment$LetterSummary$bookmarkedUsers>? bookmarkedUsers,
       String? $__typename});
   CopyWith$Fragment$LetterSummary$owner<TRes> get owner;
   CopyWith$Fragment$LetterSummary$category<TRes> get category;
@@ -194,6 +226,12 @@ abstract class CopyWith$Fragment$LetterSummary<TRes> {
               Iterable<
                   CopyWith$Fragment$LetterSummary$likedUsers<
                       Fragment$LetterSummary$likedUsers>>?)
+          _fn);
+  TRes bookmarkedUsers(
+      Iterable<Fragment$LetterSummary$bookmarkedUsers>? Function(
+              Iterable<
+                  CopyWith$Fragment$LetterSummary$bookmarkedUsers<
+                      Fragment$LetterSummary$bookmarkedUsers>>?)
           _fn);
 }
 
@@ -215,6 +253,7 @@ class _CopyWithImpl$Fragment$LetterSummary<TRes>
           Object? owner = _undefined,
           Object? category = _undefined,
           Object? likedUsers = _undefined,
+          Object? bookmarkedUsers = _undefined,
           Object? $__typename = _undefined}) =>
       _then(Fragment$LetterSummary(
           title: title == _undefined || title == null
@@ -236,6 +275,10 @@ class _CopyWithImpl$Fragment$LetterSummary<TRes>
           likedUsers: likedUsers == _undefined
               ? _instance.likedUsers
               : (likedUsers as List<Fragment$LetterSummary$likedUsers>?),
+          bookmarkedUsers: bookmarkedUsers == _undefined
+              ? _instance.bookmarkedUsers
+              : (bookmarkedUsers
+                  as List<Fragment$LetterSummary$bookmarkedUsers>?),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
@@ -261,6 +304,16 @@ class _CopyWithImpl$Fragment$LetterSummary<TRes>
           likedUsers: _fn(_instance.likedUsers?.map((e) =>
                   CopyWith$Fragment$LetterSummary$likedUsers(e, (i) => i)))
               ?.toList());
+  TRes bookmarkedUsers(
+          Iterable<Fragment$LetterSummary$bookmarkedUsers>? Function(
+                  Iterable<
+                      CopyWith$Fragment$LetterSummary$bookmarkedUsers<
+                          Fragment$LetterSummary$bookmarkedUsers>>?)
+              _fn) =>
+      call(
+          bookmarkedUsers: _fn(_instance.bookmarkedUsers?.map((e) =>
+                  CopyWith$Fragment$LetterSummary$bookmarkedUsers(e, (i) => i)))
+              ?.toList());
 }
 
 class _CopyWithStubImpl$Fragment$LetterSummary<TRes>
@@ -277,6 +330,7 @@ class _CopyWithStubImpl$Fragment$LetterSummary<TRes>
           Fragment$LetterSummary$owner? owner,
           Fragment$LetterSummary$category? category,
           List<Fragment$LetterSummary$likedUsers>? likedUsers,
+          List<Fragment$LetterSummary$bookmarkedUsers>? bookmarkedUsers,
           String? $__typename}) =>
       _res;
   CopyWith$Fragment$LetterSummary$owner<TRes> get owner =>
@@ -284,6 +338,7 @@ class _CopyWithStubImpl$Fragment$LetterSummary<TRes>
   CopyWith$Fragment$LetterSummary$category<TRes> get category =>
       CopyWith$Fragment$LetterSummary$category.stub(_res);
   likedUsers(_fn) => _res;
+  bookmarkedUsers(_fn) => _res;
 }
 
 const fragmentDefinitionLetterSummary = FragmentDefinitionNode(
@@ -374,6 +429,25 @@ const fragmentDefinitionLetterSummary = FragmentDefinitionNode(
           ])),
       FieldNode(
           name: NameNode(value: 'likedUsers'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null)
+          ])),
+      FieldNode(
+          name: NameNode(value: 'bookmarkedUsers'),
           alias: null,
           arguments: [],
           directives: [],
@@ -785,6 +859,109 @@ class _CopyWithStubImpl$Fragment$LetterSummary$likedUsers<TRes>
   call({String? id, String? $__typename}) => _res;
 }
 
+class Fragment$LetterSummary$bookmarkedUsers {
+  Fragment$LetterSummary$bookmarkedUsers(
+      {required this.id, required this.$__typename});
+
+  factory Fragment$LetterSummary$bookmarkedUsers.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Fragment$LetterSummary$bookmarkedUsers(
+        id: (l$id as String), $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$LetterSummary$bookmarkedUsers) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$LetterSummary$bookmarkedUsers
+    on Fragment$LetterSummary$bookmarkedUsers {
+  CopyWith$Fragment$LetterSummary$bookmarkedUsers<
+          Fragment$LetterSummary$bookmarkedUsers>
+      get copyWith =>
+          CopyWith$Fragment$LetterSummary$bookmarkedUsers(this, (i) => i);
+}
+
+abstract class CopyWith$Fragment$LetterSummary$bookmarkedUsers<TRes> {
+  factory CopyWith$Fragment$LetterSummary$bookmarkedUsers(
+          Fragment$LetterSummary$bookmarkedUsers instance,
+          TRes Function(Fragment$LetterSummary$bookmarkedUsers) then) =
+      _CopyWithImpl$Fragment$LetterSummary$bookmarkedUsers;
+
+  factory CopyWith$Fragment$LetterSummary$bookmarkedUsers.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$LetterSummary$bookmarkedUsers;
+
+  TRes call({String? id, String? $__typename});
+}
+
+class _CopyWithImpl$Fragment$LetterSummary$bookmarkedUsers<TRes>
+    implements CopyWith$Fragment$LetterSummary$bookmarkedUsers<TRes> {
+  _CopyWithImpl$Fragment$LetterSummary$bookmarkedUsers(
+      this._instance, this._then);
+
+  final Fragment$LetterSummary$bookmarkedUsers _instance;
+
+  final TRes Function(Fragment$LetterSummary$bookmarkedUsers) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+      _then(Fragment$LetterSummary$bookmarkedUsers(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Fragment$LetterSummary$bookmarkedUsers<TRes>
+    implements CopyWith$Fragment$LetterSummary$bookmarkedUsers<TRes> {
+  _CopyWithStubImpl$Fragment$LetterSummary$bookmarkedUsers(this._res);
+
+  TRes _res;
+
+  call({String? id, String? $__typename}) => _res;
+}
+
 class Fragment$PraiseSummary {
   Fragment$PraiseSummary(
       {required this.title,
@@ -794,6 +971,7 @@ class Fragment$PraiseSummary {
       required this.owner,
       required this.category,
       this.likedUsers,
+      this.bookmarkedUsers,
       required this.$__typename});
 
   factory Fragment$PraiseSummary.fromJson(Map<String, dynamic> json) {
@@ -804,6 +982,7 @@ class Fragment$PraiseSummary {
     final l$owner = json['owner'];
     final l$category = json['category'];
     final l$likedUsers = json['likedUsers'];
+    final l$bookmarkedUsers = json['bookmarkedUsers'];
     final l$$__typename = json['__typename'];
     return Fragment$PraiseSummary(
         title: (l$title as String),
@@ -819,6 +998,10 @@ class Fragment$PraiseSummary {
             (l$category as Map<String, dynamic>)),
         likedUsers: (l$likedUsers as List<dynamic>?)
             ?.map((e) => Fragment$PraiseSummary$likedUsers.fromJson(
+                (e as Map<String, dynamic>)))
+            .toList(),
+        bookmarkedUsers: (l$bookmarkedUsers as List<dynamic>?)
+            ?.map((e) => Fragment$PraiseSummary$bookmarkedUsers.fromJson(
                 (e as Map<String, dynamic>)))
             .toList(),
         $__typename: (l$$__typename as String));
@@ -838,6 +1021,8 @@ class Fragment$PraiseSummary {
 
   final List<Fragment$PraiseSummary$likedUsers>? likedUsers;
 
+  final List<Fragment$PraiseSummary$bookmarkedUsers>? bookmarkedUsers;
+
   final String $__typename;
 
   Map<String, dynamic> toJson() {
@@ -856,6 +1041,9 @@ class Fragment$PraiseSummary {
     _resultData['category'] = l$category.toJson();
     final l$likedUsers = likedUsers;
     _resultData['likedUsers'] = l$likedUsers?.map((e) => e.toJson()).toList();
+    final l$bookmarkedUsers = bookmarkedUsers;
+    _resultData['bookmarkedUsers'] =
+        l$bookmarkedUsers?.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -870,6 +1058,7 @@ class Fragment$PraiseSummary {
     final l$owner = owner;
     final l$category = category;
     final l$likedUsers = likedUsers;
+    final l$bookmarkedUsers = bookmarkedUsers;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$title,
@@ -879,6 +1068,9 @@ class Fragment$PraiseSummary {
       l$owner,
       l$category,
       l$likedUsers == null ? null : Object.hashAll(l$likedUsers.map((v) => v)),
+      l$bookmarkedUsers == null
+          ? null
+          : Object.hashAll(l$bookmarkedUsers.map((v) => v)),
       l$$__typename
     ]);
   }
@@ -949,6 +1141,22 @@ class Fragment$PraiseSummary {
     } else if (l$likedUsers != lOther$likedUsers) {
       return false;
     }
+    final l$bookmarkedUsers = bookmarkedUsers;
+    final lOther$bookmarkedUsers = other.bookmarkedUsers;
+    if (l$bookmarkedUsers != null && lOther$bookmarkedUsers != null) {
+      if (l$bookmarkedUsers.length != lOther$bookmarkedUsers.length) {
+        return false;
+      }
+      for (int i = 0; i < l$bookmarkedUsers.length; i++) {
+        final l$bookmarkedUsers$entry = l$bookmarkedUsers[i];
+        final lOther$bookmarkedUsers$entry = lOther$bookmarkedUsers[i];
+        if (l$bookmarkedUsers$entry != lOther$bookmarkedUsers$entry) {
+          return false;
+        }
+      }
+    } else if (l$bookmarkedUsers != lOther$bookmarkedUsers) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -979,6 +1187,7 @@ abstract class CopyWith$Fragment$PraiseSummary<TRes> {
       Fragment$PraiseSummary$owner? owner,
       Fragment$PraiseSummary$category? category,
       List<Fragment$PraiseSummary$likedUsers>? likedUsers,
+      List<Fragment$PraiseSummary$bookmarkedUsers>? bookmarkedUsers,
       String? $__typename});
   TRes hashtags(
       Iterable<Fragment$PraiseSummary$hashtags>? Function(
@@ -993,6 +1202,12 @@ abstract class CopyWith$Fragment$PraiseSummary<TRes> {
               Iterable<
                   CopyWith$Fragment$PraiseSummary$likedUsers<
                       Fragment$PraiseSummary$likedUsers>>?)
+          _fn);
+  TRes bookmarkedUsers(
+      Iterable<Fragment$PraiseSummary$bookmarkedUsers>? Function(
+              Iterable<
+                  CopyWith$Fragment$PraiseSummary$bookmarkedUsers<
+                      Fragment$PraiseSummary$bookmarkedUsers>>?)
           _fn);
 }
 
@@ -1014,6 +1229,7 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
           Object? owner = _undefined,
           Object? category = _undefined,
           Object? likedUsers = _undefined,
+          Object? bookmarkedUsers = _undefined,
           Object? $__typename = _undefined}) =>
       _then(Fragment$PraiseSummary(
           title: title == _undefined || title == null
@@ -1035,6 +1251,10 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
           likedUsers: likedUsers == _undefined
               ? _instance.likedUsers
               : (likedUsers as List<Fragment$PraiseSummary$likedUsers>?),
+          bookmarkedUsers: bookmarkedUsers == _undefined
+              ? _instance.bookmarkedUsers
+              : (bookmarkedUsers
+                  as List<Fragment$PraiseSummary$bookmarkedUsers>?),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
@@ -1070,6 +1290,16 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
           likedUsers: _fn(_instance.likedUsers?.map((e) =>
                   CopyWith$Fragment$PraiseSummary$likedUsers(e, (i) => i)))
               ?.toList());
+  TRes bookmarkedUsers(
+          Iterable<Fragment$PraiseSummary$bookmarkedUsers>? Function(
+                  Iterable<
+                      CopyWith$Fragment$PraiseSummary$bookmarkedUsers<
+                          Fragment$PraiseSummary$bookmarkedUsers>>?)
+              _fn) =>
+      call(
+          bookmarkedUsers: _fn(_instance.bookmarkedUsers?.map((e) =>
+                  CopyWith$Fragment$PraiseSummary$bookmarkedUsers(e, (i) => i)))
+              ?.toList());
 }
 
 class _CopyWithStubImpl$Fragment$PraiseSummary<TRes>
@@ -1086,6 +1316,7 @@ class _CopyWithStubImpl$Fragment$PraiseSummary<TRes>
           Fragment$PraiseSummary$owner? owner,
           Fragment$PraiseSummary$category? category,
           List<Fragment$PraiseSummary$likedUsers>? likedUsers,
+          List<Fragment$PraiseSummary$bookmarkedUsers>? bookmarkedUsers,
           String? $__typename}) =>
       _res;
   hashtags(_fn) => _res;
@@ -1094,6 +1325,7 @@ class _CopyWithStubImpl$Fragment$PraiseSummary<TRes>
   CopyWith$Fragment$PraiseSummary$category<TRes> get category =>
       CopyWith$Fragment$PraiseSummary$category.stub(_res);
   likedUsers(_fn) => _res;
+  bookmarkedUsers(_fn) => _res;
 }
 
 const fragmentDefinitionPraiseSummary = FragmentDefinitionNode(
@@ -1203,6 +1435,25 @@ const fragmentDefinitionPraiseSummary = FragmentDefinitionNode(
           ])),
       FieldNode(
           name: NameNode(value: 'likedUsers'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null)
+          ])),
+      FieldNode(
+          name: NameNode(value: 'bookmarkedUsers'),
           alias: null,
           arguments: [],
           directives: [],
@@ -1726,6 +1977,109 @@ class _CopyWithImpl$Fragment$PraiseSummary$likedUsers<TRes>
 class _CopyWithStubImpl$Fragment$PraiseSummary$likedUsers<TRes>
     implements CopyWith$Fragment$PraiseSummary$likedUsers<TRes> {
   _CopyWithStubImpl$Fragment$PraiseSummary$likedUsers(this._res);
+
+  TRes _res;
+
+  call({String? id, String? $__typename}) => _res;
+}
+
+class Fragment$PraiseSummary$bookmarkedUsers {
+  Fragment$PraiseSummary$bookmarkedUsers(
+      {required this.id, required this.$__typename});
+
+  factory Fragment$PraiseSummary$bookmarkedUsers.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Fragment$PraiseSummary$bookmarkedUsers(
+        id: (l$id as String), $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$PraiseSummary$bookmarkedUsers) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$PraiseSummary$bookmarkedUsers
+    on Fragment$PraiseSummary$bookmarkedUsers {
+  CopyWith$Fragment$PraiseSummary$bookmarkedUsers<
+          Fragment$PraiseSummary$bookmarkedUsers>
+      get copyWith =>
+          CopyWith$Fragment$PraiseSummary$bookmarkedUsers(this, (i) => i);
+}
+
+abstract class CopyWith$Fragment$PraiseSummary$bookmarkedUsers<TRes> {
+  factory CopyWith$Fragment$PraiseSummary$bookmarkedUsers(
+          Fragment$PraiseSummary$bookmarkedUsers instance,
+          TRes Function(Fragment$PraiseSummary$bookmarkedUsers) then) =
+      _CopyWithImpl$Fragment$PraiseSummary$bookmarkedUsers;
+
+  factory CopyWith$Fragment$PraiseSummary$bookmarkedUsers.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$PraiseSummary$bookmarkedUsers;
+
+  TRes call({String? id, String? $__typename});
+}
+
+class _CopyWithImpl$Fragment$PraiseSummary$bookmarkedUsers<TRes>
+    implements CopyWith$Fragment$PraiseSummary$bookmarkedUsers<TRes> {
+  _CopyWithImpl$Fragment$PraiseSummary$bookmarkedUsers(
+      this._instance, this._then);
+
+  final Fragment$PraiseSummary$bookmarkedUsers _instance;
+
+  final TRes Function(Fragment$PraiseSummary$bookmarkedUsers) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+      _then(Fragment$PraiseSummary$bookmarkedUsers(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Fragment$PraiseSummary$bookmarkedUsers<TRes>
+    implements CopyWith$Fragment$PraiseSummary$bookmarkedUsers<TRes> {
+  _CopyWithStubImpl$Fragment$PraiseSummary$bookmarkedUsers(this._res);
 
   TRes _res;
 
@@ -5036,6 +5390,1385 @@ class _CopyWithImpl$Mutation$UnlikePost$action$post<TRes>
 class _CopyWithStubImpl$Mutation$UnlikePost$action$post<TRes>
     implements CopyWith$Mutation$UnlikePost$action$post<TRes> {
   _CopyWithStubImpl$Mutation$UnlikePost$action$post(this._res);
+
+  TRes _res;
+
+  call({String? id, String? $__typename}) => _res;
+}
+
+class Variables$Mutation$BookmarkPost {
+  factory Variables$Mutation$BookmarkPost(
+          {required Input$BookmarkPostInput bookmarkPostInput}) =>
+      Variables$Mutation$BookmarkPost._({
+        r'bookmarkPostInput': bookmarkPostInput,
+      });
+
+  Variables$Mutation$BookmarkPost._(this._$data);
+
+  factory Variables$Mutation$BookmarkPost.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$bookmarkPostInput = data['bookmarkPostInput'];
+    result$data['bookmarkPostInput'] = Input$BookmarkPostInput.fromJson(
+        (l$bookmarkPostInput as Map<String, dynamic>));
+    return Variables$Mutation$BookmarkPost._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$BookmarkPostInput get bookmarkPostInput =>
+      (_$data['bookmarkPostInput'] as Input$BookmarkPostInput);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$bookmarkPostInput = bookmarkPostInput;
+    result$data['bookmarkPostInput'] = l$bookmarkPostInput.toJson();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$BookmarkPost<Variables$Mutation$BookmarkPost>
+      get copyWith => CopyWith$Variables$Mutation$BookmarkPost(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$BookmarkPost) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$bookmarkPostInput = bookmarkPostInput;
+    final lOther$bookmarkPostInput = other.bookmarkPostInput;
+    if (l$bookmarkPostInput != lOther$bookmarkPostInput) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$bookmarkPostInput = bookmarkPostInput;
+    return Object.hashAll([l$bookmarkPostInput]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$BookmarkPost<TRes> {
+  factory CopyWith$Variables$Mutation$BookmarkPost(
+          Variables$Mutation$BookmarkPost instance,
+          TRes Function(Variables$Mutation$BookmarkPost) then) =
+      _CopyWithImpl$Variables$Mutation$BookmarkPost;
+
+  factory CopyWith$Variables$Mutation$BookmarkPost.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$BookmarkPost;
+
+  TRes call({Input$BookmarkPostInput? bookmarkPostInput});
+}
+
+class _CopyWithImpl$Variables$Mutation$BookmarkPost<TRes>
+    implements CopyWith$Variables$Mutation$BookmarkPost<TRes> {
+  _CopyWithImpl$Variables$Mutation$BookmarkPost(this._instance, this._then);
+
+  final Variables$Mutation$BookmarkPost _instance;
+
+  final TRes Function(Variables$Mutation$BookmarkPost) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? bookmarkPostInput = _undefined}) =>
+      _then(Variables$Mutation$BookmarkPost._({
+        ..._instance._$data,
+        if (bookmarkPostInput != _undefined && bookmarkPostInput != null)
+          'bookmarkPostInput': (bookmarkPostInput as Input$BookmarkPostInput),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$BookmarkPost<TRes>
+    implements CopyWith$Variables$Mutation$BookmarkPost<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$BookmarkPost(this._res);
+
+  TRes _res;
+
+  call({Input$BookmarkPostInput? bookmarkPostInput}) => _res;
+}
+
+class Mutation$BookmarkPost {
+  Mutation$BookmarkPost({required this.action, required this.$__typename});
+
+  factory Mutation$BookmarkPost.fromJson(Map<String, dynamic> json) {
+    final l$action = json['action'];
+    final l$$__typename = json['__typename'];
+    return Mutation$BookmarkPost(
+        action: Mutation$BookmarkPost$action.fromJson(
+            (l$action as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final Mutation$BookmarkPost$action action;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$action = action;
+    _resultData['action'] = l$action.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$action = action;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$action, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$BookmarkPost) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$action = action;
+    final lOther$action = other.action;
+    if (l$action != lOther$action) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$BookmarkPost on Mutation$BookmarkPost {
+  CopyWith$Mutation$BookmarkPost<Mutation$BookmarkPost> get copyWith =>
+      CopyWith$Mutation$BookmarkPost(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$BookmarkPost<TRes> {
+  factory CopyWith$Mutation$BookmarkPost(Mutation$BookmarkPost instance,
+          TRes Function(Mutation$BookmarkPost) then) =
+      _CopyWithImpl$Mutation$BookmarkPost;
+
+  factory CopyWith$Mutation$BookmarkPost.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$BookmarkPost;
+
+  TRes call({Mutation$BookmarkPost$action? action, String? $__typename});
+  CopyWith$Mutation$BookmarkPost$action<TRes> get action;
+}
+
+class _CopyWithImpl$Mutation$BookmarkPost<TRes>
+    implements CopyWith$Mutation$BookmarkPost<TRes> {
+  _CopyWithImpl$Mutation$BookmarkPost(this._instance, this._then);
+
+  final Mutation$BookmarkPost _instance;
+
+  final TRes Function(Mutation$BookmarkPost) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? action = _undefined, Object? $__typename = _undefined}) =>
+      _then(Mutation$BookmarkPost(
+          action: action == _undefined || action == null
+              ? _instance.action
+              : (action as Mutation$BookmarkPost$action),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Mutation$BookmarkPost$action<TRes> get action {
+    final local$action = _instance.action;
+    return CopyWith$Mutation$BookmarkPost$action(
+        local$action, (e) => call(action: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$BookmarkPost<TRes>
+    implements CopyWith$Mutation$BookmarkPost<TRes> {
+  _CopyWithStubImpl$Mutation$BookmarkPost(this._res);
+
+  TRes _res;
+
+  call({Mutation$BookmarkPost$action? action, String? $__typename}) => _res;
+  CopyWith$Mutation$BookmarkPost$action<TRes> get action =>
+      CopyWith$Mutation$BookmarkPost$action.stub(_res);
+}
+
+const documentNodeMutationBookmarkPost = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.mutation,
+      name: NameNode(value: 'BookmarkPost'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'bookmarkPostInput')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'BookmarkPostInput'), isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'bookmarkPost'),
+            alias: NameNode(value: 'action'),
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'input'),
+                  value:
+                      VariableNode(name: NameNode(value: 'bookmarkPostInput')))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'clientMutationId'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: 'post'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'id'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+]);
+Mutation$BookmarkPost _parserFn$Mutation$BookmarkPost(
+        Map<String, dynamic> data) =>
+    Mutation$BookmarkPost.fromJson(data);
+typedef OnMutationCompleted$Mutation$BookmarkPost = FutureOr<void> Function(
+    dynamic, Mutation$BookmarkPost?);
+
+class Options$Mutation$BookmarkPost
+    extends graphql.MutationOptions<Mutation$BookmarkPost> {
+  Options$Mutation$BookmarkPost(
+      {String? operationName,
+      required Variables$Mutation$BookmarkPost variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$BookmarkPost? onCompleted,
+      graphql.OnMutationUpdate<Mutation$BookmarkPost>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$BookmarkPost(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationBookmarkPost,
+            parserFn: _parserFn$Mutation$BookmarkPost);
+
+  final OnMutationCompleted$Mutation$BookmarkPost? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+class WatchOptions$Mutation$BookmarkPost
+    extends graphql.WatchQueryOptions<Mutation$BookmarkPost> {
+  WatchOptions$Mutation$BookmarkPost(
+      {String? operationName,
+      required Variables$Mutation$BookmarkPost variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeMutationBookmarkPost,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Mutation$BookmarkPost);
+}
+
+extension ClientExtension$Mutation$BookmarkPost on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$BookmarkPost>> mutate$BookmarkPost(
+          Options$Mutation$BookmarkPost options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$BookmarkPost> watchMutation$BookmarkPost(
+          WatchOptions$Mutation$BookmarkPost options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$BookmarkPost$HookResult {
+  Mutation$BookmarkPost$HookResult(this.runMutation, this.result);
+
+  final RunMutation$Mutation$BookmarkPost runMutation;
+
+  final graphql.QueryResult<Mutation$BookmarkPost> result;
+}
+
+Mutation$BookmarkPost$HookResult useMutation$BookmarkPost(
+    [WidgetOptions$Mutation$BookmarkPost? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$BookmarkPost());
+  return Mutation$BookmarkPost$HookResult(
+    (variables, {optimisticResult}) => result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult,
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$BookmarkPost> useWatchMutation$BookmarkPost(
+        WatchOptions$Mutation$BookmarkPost options) =>
+    graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$BookmarkPost
+    extends graphql.MutationOptions<Mutation$BookmarkPost> {
+  WidgetOptions$Mutation$BookmarkPost(
+      {String? operationName,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$BookmarkPost? onCompleted,
+      graphql.OnMutationUpdate<Mutation$BookmarkPost>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$BookmarkPost(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationBookmarkPost,
+            parserFn: _parserFn$Mutation$BookmarkPost);
+
+  final OnMutationCompleted$Mutation$BookmarkPost? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+typedef RunMutation$Mutation$BookmarkPost
+    = graphql.MultiSourceResult<Mutation$BookmarkPost>
+        Function(Variables$Mutation$BookmarkPost, {Object? optimisticResult});
+typedef Builder$Mutation$BookmarkPost = widgets.Widget Function(
+    RunMutation$Mutation$BookmarkPost,
+    graphql.QueryResult<Mutation$BookmarkPost>?);
+
+class Mutation$BookmarkPost$Widget
+    extends graphql_flutter.Mutation<Mutation$BookmarkPost> {
+  Mutation$BookmarkPost$Widget(
+      {widgets.Key? key,
+      WidgetOptions$Mutation$BookmarkPost? options,
+      required Builder$Mutation$BookmarkPost builder})
+      : super(
+            key: key,
+            options: options ?? WidgetOptions$Mutation$BookmarkPost(),
+            builder: (run, result) => builder(
+                (variables, {optimisticResult}) =>
+                    run(variables.toJson(), optimisticResult: optimisticResult),
+                result));
+}
+
+class Mutation$BookmarkPost$action {
+  Mutation$BookmarkPost$action(
+      {this.clientMutationId, this.post, required this.$__typename});
+
+  factory Mutation$BookmarkPost$action.fromJson(Map<String, dynamic> json) {
+    final l$clientMutationId = json['clientMutationId'];
+    final l$post = json['post'];
+    final l$$__typename = json['__typename'];
+    return Mutation$BookmarkPost$action(
+        clientMutationId: (l$clientMutationId as String?),
+        post: l$post == null
+            ? null
+            : Mutation$BookmarkPost$action$post.fromJson(
+                (l$post as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String? clientMutationId;
+
+  final Mutation$BookmarkPost$action$post? post;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$clientMutationId = clientMutationId;
+    _resultData['clientMutationId'] = l$clientMutationId;
+    final l$post = post;
+    _resultData['post'] = l$post?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$clientMutationId = clientMutationId;
+    final l$post = post;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$clientMutationId, l$post, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$BookmarkPost$action) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$clientMutationId = clientMutationId;
+    final lOther$clientMutationId = other.clientMutationId;
+    if (l$clientMutationId != lOther$clientMutationId) {
+      return false;
+    }
+    final l$post = post;
+    final lOther$post = other.post;
+    if (l$post != lOther$post) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$BookmarkPost$action
+    on Mutation$BookmarkPost$action {
+  CopyWith$Mutation$BookmarkPost$action<Mutation$BookmarkPost$action>
+      get copyWith => CopyWith$Mutation$BookmarkPost$action(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$BookmarkPost$action<TRes> {
+  factory CopyWith$Mutation$BookmarkPost$action(
+          Mutation$BookmarkPost$action instance,
+          TRes Function(Mutation$BookmarkPost$action) then) =
+      _CopyWithImpl$Mutation$BookmarkPost$action;
+
+  factory CopyWith$Mutation$BookmarkPost$action.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$BookmarkPost$action;
+
+  TRes call(
+      {String? clientMutationId,
+      Mutation$BookmarkPost$action$post? post,
+      String? $__typename});
+  CopyWith$Mutation$BookmarkPost$action$post<TRes> get post;
+}
+
+class _CopyWithImpl$Mutation$BookmarkPost$action<TRes>
+    implements CopyWith$Mutation$BookmarkPost$action<TRes> {
+  _CopyWithImpl$Mutation$BookmarkPost$action(this._instance, this._then);
+
+  final Mutation$BookmarkPost$action _instance;
+
+  final TRes Function(Mutation$BookmarkPost$action) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? clientMutationId = _undefined,
+          Object? post = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Mutation$BookmarkPost$action(
+          clientMutationId: clientMutationId == _undefined
+              ? _instance.clientMutationId
+              : (clientMutationId as String?),
+          post: post == _undefined
+              ? _instance.post
+              : (post as Mutation$BookmarkPost$action$post?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Mutation$BookmarkPost$action$post<TRes> get post {
+    final local$post = _instance.post;
+    return local$post == null
+        ? CopyWith$Mutation$BookmarkPost$action$post.stub(_then(_instance))
+        : CopyWith$Mutation$BookmarkPost$action$post(
+            local$post, (e) => call(post: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$BookmarkPost$action<TRes>
+    implements CopyWith$Mutation$BookmarkPost$action<TRes> {
+  _CopyWithStubImpl$Mutation$BookmarkPost$action(this._res);
+
+  TRes _res;
+
+  call(
+          {String? clientMutationId,
+          Mutation$BookmarkPost$action$post? post,
+          String? $__typename}) =>
+      _res;
+  CopyWith$Mutation$BookmarkPost$action$post<TRes> get post =>
+      CopyWith$Mutation$BookmarkPost$action$post.stub(_res);
+}
+
+class Mutation$BookmarkPost$action$post {
+  Mutation$BookmarkPost$action$post(
+      {required this.id, required this.$__typename});
+
+  factory Mutation$BookmarkPost$action$post.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Mutation$BookmarkPost$action$post(
+        id: (l$id as String), $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$BookmarkPost$action$post) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$BookmarkPost$action$post
+    on Mutation$BookmarkPost$action$post {
+  CopyWith$Mutation$BookmarkPost$action$post<Mutation$BookmarkPost$action$post>
+      get copyWith =>
+          CopyWith$Mutation$BookmarkPost$action$post(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$BookmarkPost$action$post<TRes> {
+  factory CopyWith$Mutation$BookmarkPost$action$post(
+          Mutation$BookmarkPost$action$post instance,
+          TRes Function(Mutation$BookmarkPost$action$post) then) =
+      _CopyWithImpl$Mutation$BookmarkPost$action$post;
+
+  factory CopyWith$Mutation$BookmarkPost$action$post.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$BookmarkPost$action$post;
+
+  TRes call({String? id, String? $__typename});
+}
+
+class _CopyWithImpl$Mutation$BookmarkPost$action$post<TRes>
+    implements CopyWith$Mutation$BookmarkPost$action$post<TRes> {
+  _CopyWithImpl$Mutation$BookmarkPost$action$post(this._instance, this._then);
+
+  final Mutation$BookmarkPost$action$post _instance;
+
+  final TRes Function(Mutation$BookmarkPost$action$post) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+      _then(Mutation$BookmarkPost$action$post(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Mutation$BookmarkPost$action$post<TRes>
+    implements CopyWith$Mutation$BookmarkPost$action$post<TRes> {
+  _CopyWithStubImpl$Mutation$BookmarkPost$action$post(this._res);
+
+  TRes _res;
+
+  call({String? id, String? $__typename}) => _res;
+}
+
+class Variables$Mutation$UnbookmarkPost {
+  factory Variables$Mutation$UnbookmarkPost(
+          {required Input$UnbookmarkPostInput unbookmarkPostInput}) =>
+      Variables$Mutation$UnbookmarkPost._({
+        r'unbookmarkPostInput': unbookmarkPostInput,
+      });
+
+  Variables$Mutation$UnbookmarkPost._(this._$data);
+
+  factory Variables$Mutation$UnbookmarkPost.fromJson(
+      Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$unbookmarkPostInput = data['unbookmarkPostInput'];
+    result$data['unbookmarkPostInput'] = Input$UnbookmarkPostInput.fromJson(
+        (l$unbookmarkPostInput as Map<String, dynamic>));
+    return Variables$Mutation$UnbookmarkPost._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$UnbookmarkPostInput get unbookmarkPostInput =>
+      (_$data['unbookmarkPostInput'] as Input$UnbookmarkPostInput);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$unbookmarkPostInput = unbookmarkPostInput;
+    result$data['unbookmarkPostInput'] = l$unbookmarkPostInput.toJson();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$UnbookmarkPost<Variables$Mutation$UnbookmarkPost>
+      get copyWith =>
+          CopyWith$Variables$Mutation$UnbookmarkPost(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$UnbookmarkPost) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$unbookmarkPostInput = unbookmarkPostInput;
+    final lOther$unbookmarkPostInput = other.unbookmarkPostInput;
+    if (l$unbookmarkPostInput != lOther$unbookmarkPostInput) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$unbookmarkPostInput = unbookmarkPostInput;
+    return Object.hashAll([l$unbookmarkPostInput]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$UnbookmarkPost<TRes> {
+  factory CopyWith$Variables$Mutation$UnbookmarkPost(
+          Variables$Mutation$UnbookmarkPost instance,
+          TRes Function(Variables$Mutation$UnbookmarkPost) then) =
+      _CopyWithImpl$Variables$Mutation$UnbookmarkPost;
+
+  factory CopyWith$Variables$Mutation$UnbookmarkPost.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$UnbookmarkPost;
+
+  TRes call({Input$UnbookmarkPostInput? unbookmarkPostInput});
+}
+
+class _CopyWithImpl$Variables$Mutation$UnbookmarkPost<TRes>
+    implements CopyWith$Variables$Mutation$UnbookmarkPost<TRes> {
+  _CopyWithImpl$Variables$Mutation$UnbookmarkPost(this._instance, this._then);
+
+  final Variables$Mutation$UnbookmarkPost _instance;
+
+  final TRes Function(Variables$Mutation$UnbookmarkPost) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? unbookmarkPostInput = _undefined}) =>
+      _then(Variables$Mutation$UnbookmarkPost._({
+        ..._instance._$data,
+        if (unbookmarkPostInput != _undefined && unbookmarkPostInput != null)
+          'unbookmarkPostInput':
+              (unbookmarkPostInput as Input$UnbookmarkPostInput),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$UnbookmarkPost<TRes>
+    implements CopyWith$Variables$Mutation$UnbookmarkPost<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$UnbookmarkPost(this._res);
+
+  TRes _res;
+
+  call({Input$UnbookmarkPostInput? unbookmarkPostInput}) => _res;
+}
+
+class Mutation$UnbookmarkPost {
+  Mutation$UnbookmarkPost({required this.action, required this.$__typename});
+
+  factory Mutation$UnbookmarkPost.fromJson(Map<String, dynamic> json) {
+    final l$action = json['action'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UnbookmarkPost(
+        action: Mutation$UnbookmarkPost$action.fromJson(
+            (l$action as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final Mutation$UnbookmarkPost$action action;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$action = action;
+    _resultData['action'] = l$action.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$action = action;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$action, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UnbookmarkPost) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$action = action;
+    final lOther$action = other.action;
+    if (l$action != lOther$action) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$UnbookmarkPost on Mutation$UnbookmarkPost {
+  CopyWith$Mutation$UnbookmarkPost<Mutation$UnbookmarkPost> get copyWith =>
+      CopyWith$Mutation$UnbookmarkPost(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$UnbookmarkPost<TRes> {
+  factory CopyWith$Mutation$UnbookmarkPost(Mutation$UnbookmarkPost instance,
+          TRes Function(Mutation$UnbookmarkPost) then) =
+      _CopyWithImpl$Mutation$UnbookmarkPost;
+
+  factory CopyWith$Mutation$UnbookmarkPost.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$UnbookmarkPost;
+
+  TRes call({Mutation$UnbookmarkPost$action? action, String? $__typename});
+  CopyWith$Mutation$UnbookmarkPost$action<TRes> get action;
+}
+
+class _CopyWithImpl$Mutation$UnbookmarkPost<TRes>
+    implements CopyWith$Mutation$UnbookmarkPost<TRes> {
+  _CopyWithImpl$Mutation$UnbookmarkPost(this._instance, this._then);
+
+  final Mutation$UnbookmarkPost _instance;
+
+  final TRes Function(Mutation$UnbookmarkPost) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? action = _undefined, Object? $__typename = _undefined}) =>
+      _then(Mutation$UnbookmarkPost(
+          action: action == _undefined || action == null
+              ? _instance.action
+              : (action as Mutation$UnbookmarkPost$action),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Mutation$UnbookmarkPost$action<TRes> get action {
+    final local$action = _instance.action;
+    return CopyWith$Mutation$UnbookmarkPost$action(
+        local$action, (e) => call(action: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$UnbookmarkPost<TRes>
+    implements CopyWith$Mutation$UnbookmarkPost<TRes> {
+  _CopyWithStubImpl$Mutation$UnbookmarkPost(this._res);
+
+  TRes _res;
+
+  call({Mutation$UnbookmarkPost$action? action, String? $__typename}) => _res;
+  CopyWith$Mutation$UnbookmarkPost$action<TRes> get action =>
+      CopyWith$Mutation$UnbookmarkPost$action.stub(_res);
+}
+
+const documentNodeMutationUnbookmarkPost = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.mutation,
+      name: NameNode(value: 'UnbookmarkPost'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable:
+                VariableNode(name: NameNode(value: 'unbookmarkPostInput')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'UnbookmarkPostInput'), isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'unbookmarkPost'),
+            alias: NameNode(value: 'action'),
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'input'),
+                  value: VariableNode(
+                      name: NameNode(value: 'unbookmarkPostInput')))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'clientMutationId'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: 'post'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'id'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+]);
+Mutation$UnbookmarkPost _parserFn$Mutation$UnbookmarkPost(
+        Map<String, dynamic> data) =>
+    Mutation$UnbookmarkPost.fromJson(data);
+typedef OnMutationCompleted$Mutation$UnbookmarkPost = FutureOr<void> Function(
+    dynamic, Mutation$UnbookmarkPost?);
+
+class Options$Mutation$UnbookmarkPost
+    extends graphql.MutationOptions<Mutation$UnbookmarkPost> {
+  Options$Mutation$UnbookmarkPost(
+      {String? operationName,
+      required Variables$Mutation$UnbookmarkPost variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$UnbookmarkPost? onCompleted,
+      graphql.OnMutationUpdate<Mutation$UnbookmarkPost>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$UnbookmarkPost(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationUnbookmarkPost,
+            parserFn: _parserFn$Mutation$UnbookmarkPost);
+
+  final OnMutationCompleted$Mutation$UnbookmarkPost? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+class WatchOptions$Mutation$UnbookmarkPost
+    extends graphql.WatchQueryOptions<Mutation$UnbookmarkPost> {
+  WatchOptions$Mutation$UnbookmarkPost(
+      {String? operationName,
+      required Variables$Mutation$UnbookmarkPost variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeMutationUnbookmarkPost,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Mutation$UnbookmarkPost);
+}
+
+extension ClientExtension$Mutation$UnbookmarkPost on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$UnbookmarkPost>> mutate$UnbookmarkPost(
+          Options$Mutation$UnbookmarkPost options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$UnbookmarkPost> watchMutation$UnbookmarkPost(
+          WatchOptions$Mutation$UnbookmarkPost options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$UnbookmarkPost$HookResult {
+  Mutation$UnbookmarkPost$HookResult(this.runMutation, this.result);
+
+  final RunMutation$Mutation$UnbookmarkPost runMutation;
+
+  final graphql.QueryResult<Mutation$UnbookmarkPost> result;
+}
+
+Mutation$UnbookmarkPost$HookResult useMutation$UnbookmarkPost(
+    [WidgetOptions$Mutation$UnbookmarkPost? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$UnbookmarkPost());
+  return Mutation$UnbookmarkPost$HookResult(
+    (variables, {optimisticResult}) => result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult,
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$UnbookmarkPost>
+    useWatchMutation$UnbookmarkPost(
+            WatchOptions$Mutation$UnbookmarkPost options) =>
+        graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$UnbookmarkPost
+    extends graphql.MutationOptions<Mutation$UnbookmarkPost> {
+  WidgetOptions$Mutation$UnbookmarkPost(
+      {String? operationName,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$UnbookmarkPost? onCompleted,
+      graphql.OnMutationUpdate<Mutation$UnbookmarkPost>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$UnbookmarkPost(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationUnbookmarkPost,
+            parserFn: _parserFn$Mutation$UnbookmarkPost);
+
+  final OnMutationCompleted$Mutation$UnbookmarkPost? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+typedef RunMutation$Mutation$UnbookmarkPost
+    = graphql.MultiSourceResult<Mutation$UnbookmarkPost>
+        Function(Variables$Mutation$UnbookmarkPost, {Object? optimisticResult});
+typedef Builder$Mutation$UnbookmarkPost = widgets.Widget Function(
+    RunMutation$Mutation$UnbookmarkPost,
+    graphql.QueryResult<Mutation$UnbookmarkPost>?);
+
+class Mutation$UnbookmarkPost$Widget
+    extends graphql_flutter.Mutation<Mutation$UnbookmarkPost> {
+  Mutation$UnbookmarkPost$Widget(
+      {widgets.Key? key,
+      WidgetOptions$Mutation$UnbookmarkPost? options,
+      required Builder$Mutation$UnbookmarkPost builder})
+      : super(
+            key: key,
+            options: options ?? WidgetOptions$Mutation$UnbookmarkPost(),
+            builder: (run, result) => builder(
+                (variables, {optimisticResult}) =>
+                    run(variables.toJson(), optimisticResult: optimisticResult),
+                result));
+}
+
+class Mutation$UnbookmarkPost$action {
+  Mutation$UnbookmarkPost$action(
+      {this.clientMutationId, this.post, required this.$__typename});
+
+  factory Mutation$UnbookmarkPost$action.fromJson(Map<String, dynamic> json) {
+    final l$clientMutationId = json['clientMutationId'];
+    final l$post = json['post'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UnbookmarkPost$action(
+        clientMutationId: (l$clientMutationId as String?),
+        post: l$post == null
+            ? null
+            : Mutation$UnbookmarkPost$action$post.fromJson(
+                (l$post as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String? clientMutationId;
+
+  final Mutation$UnbookmarkPost$action$post? post;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$clientMutationId = clientMutationId;
+    _resultData['clientMutationId'] = l$clientMutationId;
+    final l$post = post;
+    _resultData['post'] = l$post?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$clientMutationId = clientMutationId;
+    final l$post = post;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$clientMutationId, l$post, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UnbookmarkPost$action) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$clientMutationId = clientMutationId;
+    final lOther$clientMutationId = other.clientMutationId;
+    if (l$clientMutationId != lOther$clientMutationId) {
+      return false;
+    }
+    final l$post = post;
+    final lOther$post = other.post;
+    if (l$post != lOther$post) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$UnbookmarkPost$action
+    on Mutation$UnbookmarkPost$action {
+  CopyWith$Mutation$UnbookmarkPost$action<Mutation$UnbookmarkPost$action>
+      get copyWith => CopyWith$Mutation$UnbookmarkPost$action(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$UnbookmarkPost$action<TRes> {
+  factory CopyWith$Mutation$UnbookmarkPost$action(
+          Mutation$UnbookmarkPost$action instance,
+          TRes Function(Mutation$UnbookmarkPost$action) then) =
+      _CopyWithImpl$Mutation$UnbookmarkPost$action;
+
+  factory CopyWith$Mutation$UnbookmarkPost$action.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$UnbookmarkPost$action;
+
+  TRes call(
+      {String? clientMutationId,
+      Mutation$UnbookmarkPost$action$post? post,
+      String? $__typename});
+  CopyWith$Mutation$UnbookmarkPost$action$post<TRes> get post;
+}
+
+class _CopyWithImpl$Mutation$UnbookmarkPost$action<TRes>
+    implements CopyWith$Mutation$UnbookmarkPost$action<TRes> {
+  _CopyWithImpl$Mutation$UnbookmarkPost$action(this._instance, this._then);
+
+  final Mutation$UnbookmarkPost$action _instance;
+
+  final TRes Function(Mutation$UnbookmarkPost$action) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? clientMutationId = _undefined,
+          Object? post = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Mutation$UnbookmarkPost$action(
+          clientMutationId: clientMutationId == _undefined
+              ? _instance.clientMutationId
+              : (clientMutationId as String?),
+          post: post == _undefined
+              ? _instance.post
+              : (post as Mutation$UnbookmarkPost$action$post?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Mutation$UnbookmarkPost$action$post<TRes> get post {
+    final local$post = _instance.post;
+    return local$post == null
+        ? CopyWith$Mutation$UnbookmarkPost$action$post.stub(_then(_instance))
+        : CopyWith$Mutation$UnbookmarkPost$action$post(
+            local$post, (e) => call(post: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$UnbookmarkPost$action<TRes>
+    implements CopyWith$Mutation$UnbookmarkPost$action<TRes> {
+  _CopyWithStubImpl$Mutation$UnbookmarkPost$action(this._res);
+
+  TRes _res;
+
+  call(
+          {String? clientMutationId,
+          Mutation$UnbookmarkPost$action$post? post,
+          String? $__typename}) =>
+      _res;
+  CopyWith$Mutation$UnbookmarkPost$action$post<TRes> get post =>
+      CopyWith$Mutation$UnbookmarkPost$action$post.stub(_res);
+}
+
+class Mutation$UnbookmarkPost$action$post {
+  Mutation$UnbookmarkPost$action$post(
+      {required this.id, required this.$__typename});
+
+  factory Mutation$UnbookmarkPost$action$post.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UnbookmarkPost$action$post(
+        id: (l$id as String), $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UnbookmarkPost$action$post) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$UnbookmarkPost$action$post
+    on Mutation$UnbookmarkPost$action$post {
+  CopyWith$Mutation$UnbookmarkPost$action$post<
+          Mutation$UnbookmarkPost$action$post>
+      get copyWith =>
+          CopyWith$Mutation$UnbookmarkPost$action$post(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$UnbookmarkPost$action$post<TRes> {
+  factory CopyWith$Mutation$UnbookmarkPost$action$post(
+          Mutation$UnbookmarkPost$action$post instance,
+          TRes Function(Mutation$UnbookmarkPost$action$post) then) =
+      _CopyWithImpl$Mutation$UnbookmarkPost$action$post;
+
+  factory CopyWith$Mutation$UnbookmarkPost$action$post.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$UnbookmarkPost$action$post;
+
+  TRes call({String? id, String? $__typename});
+}
+
+class _CopyWithImpl$Mutation$UnbookmarkPost$action$post<TRes>
+    implements CopyWith$Mutation$UnbookmarkPost$action$post<TRes> {
+  _CopyWithImpl$Mutation$UnbookmarkPost$action$post(this._instance, this._then);
+
+  final Mutation$UnbookmarkPost$action$post _instance;
+
+  final TRes Function(Mutation$UnbookmarkPost$action$post) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+      _then(Mutation$UnbookmarkPost$action$post(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Mutation$UnbookmarkPost$action$post<TRes>
+    implements CopyWith$Mutation$UnbookmarkPost$action$post<TRes> {
+  _CopyWithStubImpl$Mutation$UnbookmarkPost$action$post(this._res);
 
   TRes _res;
 

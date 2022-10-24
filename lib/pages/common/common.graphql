@@ -15,6 +15,9 @@ fragment LetterSummary on Post {
   likedUsers {
     id
   }
+  bookmarkedUsers {
+    id
+  }
 }
 
 fragment PraiseSummary on Post {
@@ -35,6 +38,9 @@ fragment PraiseSummary on Post {
     name
   }
   likedUsers {
+    id
+  }
+  bookmarkedUsers {
     id
   }
 }
@@ -98,6 +104,24 @@ mutation LikePost($likePostInput: LikePostInput!) {
 
 mutation UnlikePost($unlikePostInput: UnlikePostInput!) {
   action: unlikePost(input: $unlikePostInput) {
+    clientMutationId
+    post {
+      id
+    }
+  }
+}
+
+mutation BookmarkPost($bookmarkPostInput: BookmarkPostInput!) {
+  action: bookmarkPost(input: $bookmarkPostInput) {
+    clientMutationId
+    post {
+      id
+    }
+  }
+}
+
+mutation UnbookmarkPost($unbookmarkPostInput: UnbookmarkPostInput!) {
+  action: unbookmarkPost(input: $unbookmarkPostInput) {
     clientMutationId
     post {
       id

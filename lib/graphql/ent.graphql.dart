@@ -1059,7 +1059,8 @@ class Input$CreatePostInput {
           List<String>? hashtagIDs,
           required String workID,
           required String categoryID,
-          List<String>? likedUserIDs}) =>
+          List<String>? likedUserIDs,
+          List<String>? bookmarkedUserIDs}) =>
       Input$CreatePostInput._({
         if (createTime != null) r'createTime': createTime,
         if (updateTime != null) r'updateTime': updateTime,
@@ -1072,6 +1073,7 @@ class Input$CreatePostInput {
         r'workID': workID,
         r'categoryID': categoryID,
         if (likedUserIDs != null) r'likedUserIDs': likedUserIDs,
+        if (bookmarkedUserIDs != null) r'bookmarkedUserIDs': bookmarkedUserIDs,
       });
 
   Input$CreatePostInput._(this._$data);
@@ -1111,6 +1113,12 @@ class Input$CreatePostInput {
           ?.map((e) => (e as String))
           .toList();
     }
+    if (data.containsKey('bookmarkedUserIDs')) {
+      final l$bookmarkedUserIDs = data['bookmarkedUserIDs'];
+      result$data['bookmarkedUserIDs'] = (l$bookmarkedUserIDs as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
     return Input$CreatePostInput._(result$data);
   }
 
@@ -1127,6 +1135,8 @@ class Input$CreatePostInput {
   String get workID => (_$data['workID'] as String);
   String get categoryID => (_$data['categoryID'] as String);
   List<String>? get likedUserIDs => (_$data['likedUserIDs'] as List<String>?);
+  List<String>? get bookmarkedUserIDs =>
+      (_$data['bookmarkedUserIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('createTime')) {
@@ -1158,6 +1168,11 @@ class Input$CreatePostInput {
     if (_$data.containsKey('likedUserIDs')) {
       final l$likedUserIDs = likedUserIDs;
       result$data['likedUserIDs'] = l$likedUserIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('bookmarkedUserIDs')) {
+      final l$bookmarkedUserIDs = bookmarkedUserIDs;
+      result$data['bookmarkedUserIDs'] =
+          l$bookmarkedUserIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -1265,6 +1280,26 @@ class Input$CreatePostInput {
     } else if (l$likedUserIDs != lOther$likedUserIDs) {
       return false;
     }
+    final l$bookmarkedUserIDs = bookmarkedUserIDs;
+    final lOther$bookmarkedUserIDs = other.bookmarkedUserIDs;
+    if (_$data.containsKey('bookmarkedUserIDs') !=
+        other._$data.containsKey('bookmarkedUserIDs')) {
+      return false;
+    }
+    if (l$bookmarkedUserIDs != null && lOther$bookmarkedUserIDs != null) {
+      if (l$bookmarkedUserIDs.length != lOther$bookmarkedUserIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$bookmarkedUserIDs.length; i++) {
+        final l$bookmarkedUserIDs$entry = l$bookmarkedUserIDs[i];
+        final lOther$bookmarkedUserIDs$entry = lOther$bookmarkedUserIDs[i];
+        if (l$bookmarkedUserIDs$entry != lOther$bookmarkedUserIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$bookmarkedUserIDs != lOther$bookmarkedUserIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -1281,6 +1316,7 @@ class Input$CreatePostInput {
     final l$workID = workID;
     final l$categoryID = categoryID;
     final l$likedUserIDs = likedUserIDs;
+    final l$bookmarkedUserIDs = bookmarkedUserIDs;
     return Object.hashAll([
       _$data.containsKey('createTime') ? l$createTime : const {},
       _$data.containsKey('updateTime') ? l$updateTime : const {},
@@ -1300,6 +1336,11 @@ class Input$CreatePostInput {
           ? l$likedUserIDs == null
               ? null
               : Object.hashAll(l$likedUserIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('bookmarkedUserIDs')
+          ? l$bookmarkedUserIDs == null
+              ? null
+              : Object.hashAll(l$bookmarkedUserIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -1324,7 +1365,8 @@ abstract class CopyWith$Input$CreatePostInput<TRes> {
       List<String>? hashtagIDs,
       String? workID,
       String? categoryID,
-      List<String>? likedUserIDs});
+      List<String>? likedUserIDs,
+      List<String>? bookmarkedUserIDs});
 }
 
 class _CopyWithImpl$Input$CreatePostInput<TRes>
@@ -1348,7 +1390,8 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           Object? hashtagIDs = _undefined,
           Object? workID = _undefined,
           Object? categoryID = _undefined,
-          Object? likedUserIDs = _undefined}) =>
+          Object? likedUserIDs = _undefined,
+          Object? bookmarkedUserIDs = _undefined}) =>
       _then(Input$CreatePostInput._({
         ..._instance._$data,
         if (createTime != _undefined) 'createTime': (createTime as String?),
@@ -1370,6 +1413,8 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           'categoryID': (categoryID as String),
         if (likedUserIDs != _undefined)
           'likedUserIDs': (likedUserIDs as List<String>?),
+        if (bookmarkedUserIDs != _undefined)
+          'bookmarkedUserIDs': (bookmarkedUserIDs as List<String>?),
       }));
 }
 
@@ -1390,7 +1435,8 @@ class _CopyWithStubImpl$Input$CreatePostInput<TRes>
           List<String>? hashtagIDs,
           String? workID,
           String? categoryID,
-          List<String>? likedUserIDs}) =>
+          List<String>? likedUserIDs,
+          List<String>? bookmarkedUserIDs}) =>
       _res;
 }
 
@@ -1401,7 +1447,8 @@ class Input$CreateUserInput {
           String? profile,
           String? avatarURL,
           List<String>? postIDs,
-          List<String>? likedPostIDs}) =>
+          List<String>? likedPostIDs,
+          List<String>? bookmarkedPostIDs}) =>
       Input$CreateUserInput._({
         r'name': name,
         if (username != null) r'username': username,
@@ -1409,6 +1456,7 @@ class Input$CreateUserInput {
         if (avatarURL != null) r'avatarURL': avatarURL,
         if (postIDs != null) r'postIDs': postIDs,
         if (likedPostIDs != null) r'likedPostIDs': likedPostIDs,
+        if (bookmarkedPostIDs != null) r'bookmarkedPostIDs': bookmarkedPostIDs,
       });
 
   Input$CreateUserInput._(this._$data);
@@ -1440,6 +1488,12 @@ class Input$CreateUserInput {
           ?.map((e) => (e as String))
           .toList();
     }
+    if (data.containsKey('bookmarkedPostIDs')) {
+      final l$bookmarkedPostIDs = data['bookmarkedPostIDs'];
+      result$data['bookmarkedPostIDs'] = (l$bookmarkedPostIDs as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
     return Input$CreateUserInput._(result$data);
   }
 
@@ -1451,6 +1505,8 @@ class Input$CreateUserInput {
   String? get avatarURL => (_$data['avatarURL'] as String?);
   List<String>? get postIDs => (_$data['postIDs'] as List<String>?);
   List<String>? get likedPostIDs => (_$data['likedPostIDs'] as List<String>?);
+  List<String>? get bookmarkedPostIDs =>
+      (_$data['bookmarkedPostIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     final l$name = name;
@@ -1474,6 +1530,11 @@ class Input$CreateUserInput {
     if (_$data.containsKey('likedPostIDs')) {
       final l$likedPostIDs = likedPostIDs;
       result$data['likedPostIDs'] = l$likedPostIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('bookmarkedPostIDs')) {
+      final l$bookmarkedPostIDs = bookmarkedPostIDs;
+      result$data['bookmarkedPostIDs'] =
+          l$bookmarkedPostIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -1558,6 +1619,26 @@ class Input$CreateUserInput {
     } else if (l$likedPostIDs != lOther$likedPostIDs) {
       return false;
     }
+    final l$bookmarkedPostIDs = bookmarkedPostIDs;
+    final lOther$bookmarkedPostIDs = other.bookmarkedPostIDs;
+    if (_$data.containsKey('bookmarkedPostIDs') !=
+        other._$data.containsKey('bookmarkedPostIDs')) {
+      return false;
+    }
+    if (l$bookmarkedPostIDs != null && lOther$bookmarkedPostIDs != null) {
+      if (l$bookmarkedPostIDs.length != lOther$bookmarkedPostIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$bookmarkedPostIDs.length; i++) {
+        final l$bookmarkedPostIDs$entry = l$bookmarkedPostIDs[i];
+        final lOther$bookmarkedPostIDs$entry = lOther$bookmarkedPostIDs[i];
+        if (l$bookmarkedPostIDs$entry != lOther$bookmarkedPostIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$bookmarkedPostIDs != lOther$bookmarkedPostIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -1569,6 +1650,7 @@ class Input$CreateUserInput {
     final l$avatarURL = avatarURL;
     final l$postIDs = postIDs;
     final l$likedPostIDs = likedPostIDs;
+    final l$bookmarkedPostIDs = bookmarkedPostIDs;
     return Object.hashAll([
       l$name,
       _$data.containsKey('username') ? l$username : const {},
@@ -1583,6 +1665,11 @@ class Input$CreateUserInput {
           ? l$likedPostIDs == null
               ? null
               : Object.hashAll(l$likedPostIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('bookmarkedPostIDs')
+          ? l$bookmarkedPostIDs == null
+              ? null
+              : Object.hashAll(l$bookmarkedPostIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -1602,7 +1689,8 @@ abstract class CopyWith$Input$CreateUserInput<TRes> {
       String? profile,
       String? avatarURL,
       List<String>? postIDs,
-      List<String>? likedPostIDs});
+      List<String>? likedPostIDs,
+      List<String>? bookmarkedPostIDs});
 }
 
 class _CopyWithImpl$Input$CreateUserInput<TRes>
@@ -1621,7 +1709,8 @@ class _CopyWithImpl$Input$CreateUserInput<TRes>
           Object? profile = _undefined,
           Object? avatarURL = _undefined,
           Object? postIDs = _undefined,
-          Object? likedPostIDs = _undefined}) =>
+          Object? likedPostIDs = _undefined,
+          Object? bookmarkedPostIDs = _undefined}) =>
       _then(Input$CreateUserInput._({
         ..._instance._$data,
         if (name != _undefined && name != null) 'name': (name as String),
@@ -1631,6 +1720,8 @@ class _CopyWithImpl$Input$CreateUserInput<TRes>
         if (postIDs != _undefined) 'postIDs': (postIDs as List<String>?),
         if (likedPostIDs != _undefined)
           'likedPostIDs': (likedPostIDs as List<String>?),
+        if (bookmarkedPostIDs != _undefined)
+          'bookmarkedPostIDs': (bookmarkedPostIDs as List<String>?),
       }));
 }
 
@@ -1646,7 +1737,8 @@ class _CopyWithStubImpl$Input$CreateUserInput<TRes>
           String? profile,
           String? avatarURL,
           List<String>? postIDs,
-          List<String>? likedPostIDs}) =>
+          List<String>? likedPostIDs,
+          List<String>? bookmarkedPostIDs}) =>
       _res;
 }
 
@@ -2904,7 +2996,9 @@ class Input$PostWhereInput {
           bool? hasCategory,
           List<Input$CategoryWhereInput>? hasCategoryWith,
           bool? hasLikedUsers,
-          List<Input$UserWhereInput>? hasLikedUsersWith}) =>
+          List<Input$UserWhereInput>? hasLikedUsersWith,
+          bool? hasBookmarkedUsers,
+          List<Input$UserWhereInput>? hasBookmarkedUsersWith}) =>
       Input$PostWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -2976,6 +3070,10 @@ class Input$PostWhereInput {
         if (hasCategoryWith != null) r'hasCategoryWith': hasCategoryWith,
         if (hasLikedUsers != null) r'hasLikedUsers': hasLikedUsers,
         if (hasLikedUsersWith != null) r'hasLikedUsersWith': hasLikedUsersWith,
+        if (hasBookmarkedUsers != null)
+          r'hasBookmarkedUsers': hasBookmarkedUsers,
+        if (hasBookmarkedUsersWith != null)
+          r'hasBookmarkedUsersWith': hasBookmarkedUsersWith,
       });
 
   Input$PostWhereInput._(this._$data);
@@ -3304,6 +3402,18 @@ class Input$PostWhereInput {
               (e) => Input$UserWhereInput.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
+    if (data.containsKey('hasBookmarkedUsers')) {
+      final l$hasBookmarkedUsers = data['hasBookmarkedUsers'];
+      result$data['hasBookmarkedUsers'] = (l$hasBookmarkedUsers as bool?);
+    }
+    if (data.containsKey('hasBookmarkedUsersWith')) {
+      final l$hasBookmarkedUsersWith = data['hasBookmarkedUsersWith'];
+      result$data['hasBookmarkedUsersWith'] = (l$hasBookmarkedUsersWith
+              as List<dynamic>?)
+          ?.map(
+              (e) => Input$UserWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
     return Input$PostWhereInput._(result$data);
   }
 
@@ -3389,6 +3499,9 @@ class Input$PostWhereInput {
   bool? get hasLikedUsers => (_$data['hasLikedUsers'] as bool?);
   List<Input$UserWhereInput>? get hasLikedUsersWith =>
       (_$data['hasLikedUsersWith'] as List<Input$UserWhereInput>?);
+  bool? get hasBookmarkedUsers => (_$data['hasBookmarkedUsers'] as bool?);
+  List<Input$UserWhereInput>? get hasBookmarkedUsersWith =>
+      (_$data['hasBookmarkedUsersWith'] as List<Input$UserWhereInput>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('not')) {
@@ -3677,6 +3790,15 @@ class Input$PostWhereInput {
       final l$hasLikedUsersWith = hasLikedUsersWith;
       result$data['hasLikedUsersWith'] =
           l$hasLikedUsersWith?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasBookmarkedUsers')) {
+      final l$hasBookmarkedUsers = hasBookmarkedUsers;
+      result$data['hasBookmarkedUsers'] = l$hasBookmarkedUsers;
+    }
+    if (_$data.containsKey('hasBookmarkedUsersWith')) {
+      final l$hasBookmarkedUsersWith = hasBookmarkedUsersWith;
+      result$data['hasBookmarkedUsersWith'] =
+          l$hasBookmarkedUsersWith?.map((e) => e.toJson()).toList();
     }
     return result$data;
   }
@@ -4500,6 +4622,39 @@ class Input$PostWhereInput {
     } else if (l$hasLikedUsersWith != lOther$hasLikedUsersWith) {
       return false;
     }
+    final l$hasBookmarkedUsers = hasBookmarkedUsers;
+    final lOther$hasBookmarkedUsers = other.hasBookmarkedUsers;
+    if (_$data.containsKey('hasBookmarkedUsers') !=
+        other._$data.containsKey('hasBookmarkedUsers')) {
+      return false;
+    }
+    if (l$hasBookmarkedUsers != lOther$hasBookmarkedUsers) {
+      return false;
+    }
+    final l$hasBookmarkedUsersWith = hasBookmarkedUsersWith;
+    final lOther$hasBookmarkedUsersWith = other.hasBookmarkedUsersWith;
+    if (_$data.containsKey('hasBookmarkedUsersWith') !=
+        other._$data.containsKey('hasBookmarkedUsersWith')) {
+      return false;
+    }
+    if (l$hasBookmarkedUsersWith != null &&
+        lOther$hasBookmarkedUsersWith != null) {
+      if (l$hasBookmarkedUsersWith.length !=
+          lOther$hasBookmarkedUsersWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasBookmarkedUsersWith.length; i++) {
+        final l$hasBookmarkedUsersWith$entry = l$hasBookmarkedUsersWith[i];
+        final lOther$hasBookmarkedUsersWith$entry =
+            lOther$hasBookmarkedUsersWith[i];
+        if (l$hasBookmarkedUsersWith$entry !=
+            lOther$hasBookmarkedUsersWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasBookmarkedUsersWith != lOther$hasBookmarkedUsersWith) {
+      return false;
+    }
     return true;
   }
 
@@ -4574,6 +4729,8 @@ class Input$PostWhereInput {
     final l$hasCategoryWith = hasCategoryWith;
     final l$hasLikedUsers = hasLikedUsers;
     final l$hasLikedUsersWith = hasLikedUsersWith;
+    final l$hasBookmarkedUsers = hasBookmarkedUsers;
+    final l$hasBookmarkedUsersWith = hasBookmarkedUsersWith;
     return Object.hashAll([
       _$data.containsKey('not') ? l$not : const {},
       _$data.containsKey('and')
@@ -4721,6 +4878,14 @@ class Input$PostWhereInput {
           ? l$hasLikedUsersWith == null
               ? null
               : Object.hashAll(l$hasLikedUsersWith.map((v) => v))
+          : const {},
+      _$data.containsKey('hasBookmarkedUsers')
+          ? l$hasBookmarkedUsers
+          : const {},
+      _$data.containsKey('hasBookmarkedUsersWith')
+          ? l$hasBookmarkedUsersWith == null
+              ? null
+              : Object.hashAll(l$hasBookmarkedUsersWith.map((v) => v))
           : const {}
     ]);
   }
@@ -4803,7 +4968,9 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
       bool? hasCategory,
       List<Input$CategoryWhereInput>? hasCategoryWith,
       bool? hasLikedUsers,
-      List<Input$UserWhereInput>? hasLikedUsersWith});
+      List<Input$UserWhereInput>? hasLikedUsersWith,
+      bool? hasBookmarkedUsers,
+      List<Input$UserWhereInput>? hasBookmarkedUsersWith});
   CopyWith$Input$PostWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$PostWhereInput>? Function(
@@ -4832,6 +4999,10 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
                   CopyWith$Input$CategoryWhereInput<Input$CategoryWhereInput>>?)
           _fn);
   TRes hasLikedUsersWith(
+      Iterable<Input$UserWhereInput>? Function(
+              Iterable<CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
+          _fn);
+  TRes hasBookmarkedUsersWith(
       Iterable<Input$UserWhereInput>? Function(
               Iterable<CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
           _fn);
@@ -4916,7 +5087,9 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           Object? hasCategory = _undefined,
           Object? hasCategoryWith = _undefined,
           Object? hasLikedUsers = _undefined,
-          Object? hasLikedUsersWith = _undefined}) =>
+          Object? hasLikedUsersWith = _undefined,
+          Object? hasBookmarkedUsers = _undefined,
+          Object? hasBookmarkedUsersWith = _undefined}) =>
       _then(Input$PostWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$PostWhereInput?),
@@ -5025,6 +5198,11 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
         if (hasLikedUsersWith != _undefined)
           'hasLikedUsersWith':
               (hasLikedUsersWith as List<Input$UserWhereInput>?),
+        if (hasBookmarkedUsers != _undefined)
+          'hasBookmarkedUsers': (hasBookmarkedUsers as bool?),
+        if (hasBookmarkedUsersWith != _undefined)
+          'hasBookmarkedUsersWith':
+              (hasBookmarkedUsersWith as List<Input$UserWhereInput>?),
       }));
   CopyWith$Input$PostWhereInput<TRes> get not {
     final local$not = _instance.not;
@@ -5096,6 +5274,15 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
               _fn) =>
       call(
           hasLikedUsersWith: _fn(_instance.hasLikedUsersWith
+                  ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasBookmarkedUsersWith(
+          Iterable<Input$UserWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
+              _fn) =>
+      call(
+          hasBookmarkedUsersWith: _fn(_instance.hasBookmarkedUsersWith
                   ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
               ?.toList());
 }
@@ -5175,7 +5362,9 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
           bool? hasCategory,
           List<Input$CategoryWhereInput>? hasCategoryWith,
           bool? hasLikedUsers,
-          List<Input$UserWhereInput>? hasLikedUsersWith}) =>
+          List<Input$UserWhereInput>? hasLikedUsersWith,
+          bool? hasBookmarkedUsers,
+          List<Input$UserWhereInput>? hasBookmarkedUsersWith}) =>
       _res;
   CopyWith$Input$PostWhereInput<TRes> get not =>
       CopyWith$Input$PostWhereInput.stub(_res);
@@ -5186,6 +5375,7 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
   hasWorkWith(_fn) => _res;
   hasCategoryWith(_fn) => _res;
   hasLikedUsersWith(_fn) => _res;
+  hasBookmarkedUsersWith(_fn) => _res;
 }
 
 class Input$UpdateHashtagInput {
@@ -5391,7 +5581,9 @@ class Input$UpdatePostInput {
           bool? clearCategory,
           String? categoryID,
           List<String>? addLikedUserIDs,
-          List<String>? removeLikedUserIDs}) =>
+          List<String>? removeLikedUserIDs,
+          List<String>? addBookmarkedUserIDs,
+          List<String>? removeBookmarkedUserIDs}) =>
       Input$UpdatePostInput._({
         if (updateTime != null) r'updateTime': updateTime,
         if (title != null) r'title': title,
@@ -5409,6 +5601,10 @@ class Input$UpdatePostInput {
         if (addLikedUserIDs != null) r'addLikedUserIDs': addLikedUserIDs,
         if (removeLikedUserIDs != null)
           r'removeLikedUserIDs': removeLikedUserIDs,
+        if (addBookmarkedUserIDs != null)
+          r'addBookmarkedUserIDs': addBookmarkedUserIDs,
+        if (removeBookmarkedUserIDs != null)
+          r'removeBookmarkedUserIDs': removeBookmarkedUserIDs,
       });
 
   Input$UpdatePostInput._(this._$data);
@@ -5486,6 +5682,20 @@ class Input$UpdatePostInput {
               ?.map((e) => (e as String))
               .toList();
     }
+    if (data.containsKey('addBookmarkedUserIDs')) {
+      final l$addBookmarkedUserIDs = data['addBookmarkedUserIDs'];
+      result$data['addBookmarkedUserIDs'] =
+          (l$addBookmarkedUserIDs as List<dynamic>?)
+              ?.map((e) => (e as String))
+              .toList();
+    }
+    if (data.containsKey('removeBookmarkedUserIDs')) {
+      final l$removeBookmarkedUserIDs = data['removeBookmarkedUserIDs'];
+      result$data['removeBookmarkedUserIDs'] =
+          (l$removeBookmarkedUserIDs as List<dynamic>?)
+              ?.map((e) => (e as String))
+              .toList();
+    }
     return Input$UpdatePostInput._(result$data);
   }
 
@@ -5509,6 +5719,10 @@ class Input$UpdatePostInput {
       (_$data['addLikedUserIDs'] as List<String>?);
   List<String>? get removeLikedUserIDs =>
       (_$data['removeLikedUserIDs'] as List<String>?);
+  List<String>? get addBookmarkedUserIDs =>
+      (_$data['addBookmarkedUserIDs'] as List<String>?);
+  List<String>? get removeBookmarkedUserIDs =>
+      (_$data['removeBookmarkedUserIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('updateTime')) {
@@ -5574,6 +5788,16 @@ class Input$UpdatePostInput {
       final l$removeLikedUserIDs = removeLikedUserIDs;
       result$data['removeLikedUserIDs'] =
           l$removeLikedUserIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('addBookmarkedUserIDs')) {
+      final l$addBookmarkedUserIDs = addBookmarkedUserIDs;
+      result$data['addBookmarkedUserIDs'] =
+          l$addBookmarkedUserIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('removeBookmarkedUserIDs')) {
+      final l$removeBookmarkedUserIDs = removeBookmarkedUserIDs;
+      result$data['removeBookmarkedUserIDs'] =
+          l$removeBookmarkedUserIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -5761,6 +5985,51 @@ class Input$UpdatePostInput {
     } else if (l$removeLikedUserIDs != lOther$removeLikedUserIDs) {
       return false;
     }
+    final l$addBookmarkedUserIDs = addBookmarkedUserIDs;
+    final lOther$addBookmarkedUserIDs = other.addBookmarkedUserIDs;
+    if (_$data.containsKey('addBookmarkedUserIDs') !=
+        other._$data.containsKey('addBookmarkedUserIDs')) {
+      return false;
+    }
+    if (l$addBookmarkedUserIDs != null && lOther$addBookmarkedUserIDs != null) {
+      if (l$addBookmarkedUserIDs.length != lOther$addBookmarkedUserIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$addBookmarkedUserIDs.length; i++) {
+        final l$addBookmarkedUserIDs$entry = l$addBookmarkedUserIDs[i];
+        final lOther$addBookmarkedUserIDs$entry =
+            lOther$addBookmarkedUserIDs[i];
+        if (l$addBookmarkedUserIDs$entry != lOther$addBookmarkedUserIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$addBookmarkedUserIDs != lOther$addBookmarkedUserIDs) {
+      return false;
+    }
+    final l$removeBookmarkedUserIDs = removeBookmarkedUserIDs;
+    final lOther$removeBookmarkedUserIDs = other.removeBookmarkedUserIDs;
+    if (_$data.containsKey('removeBookmarkedUserIDs') !=
+        other._$data.containsKey('removeBookmarkedUserIDs')) {
+      return false;
+    }
+    if (l$removeBookmarkedUserIDs != null &&
+        lOther$removeBookmarkedUserIDs != null) {
+      if (l$removeBookmarkedUserIDs.length !=
+          lOther$removeBookmarkedUserIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$removeBookmarkedUserIDs.length; i++) {
+        final l$removeBookmarkedUserIDs$entry = l$removeBookmarkedUserIDs[i];
+        final lOther$removeBookmarkedUserIDs$entry =
+            lOther$removeBookmarkedUserIDs[i];
+        if (l$removeBookmarkedUserIDs$entry !=
+            lOther$removeBookmarkedUserIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$removeBookmarkedUserIDs != lOther$removeBookmarkedUserIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -5781,6 +6050,8 @@ class Input$UpdatePostInput {
     final l$categoryID = categoryID;
     final l$addLikedUserIDs = addLikedUserIDs;
     final l$removeLikedUserIDs = removeLikedUserIDs;
+    final l$addBookmarkedUserIDs = addBookmarkedUserIDs;
+    final l$removeBookmarkedUserIDs = removeBookmarkedUserIDs;
     return Object.hashAll([
       _$data.containsKey('updateTime') ? l$updateTime : const {},
       _$data.containsKey('title') ? l$title : const {},
@@ -5812,6 +6083,16 @@ class Input$UpdatePostInput {
           ? l$removeLikedUserIDs == null
               ? null
               : Object.hashAll(l$removeLikedUserIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('addBookmarkedUserIDs')
+          ? l$addBookmarkedUserIDs == null
+              ? null
+              : Object.hashAll(l$addBookmarkedUserIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('removeBookmarkedUserIDs')
+          ? l$removeBookmarkedUserIDs == null
+              ? null
+              : Object.hashAll(l$removeBookmarkedUserIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -5840,7 +6121,9 @@ abstract class CopyWith$Input$UpdatePostInput<TRes> {
       bool? clearCategory,
       String? categoryID,
       List<String>? addLikedUserIDs,
-      List<String>? removeLikedUserIDs});
+      List<String>? removeLikedUserIDs,
+      List<String>? addBookmarkedUserIDs,
+      List<String>? removeBookmarkedUserIDs});
 }
 
 class _CopyWithImpl$Input$UpdatePostInput<TRes>
@@ -5868,7 +6151,9 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           Object? clearCategory = _undefined,
           Object? categoryID = _undefined,
           Object? addLikedUserIDs = _undefined,
-          Object? removeLikedUserIDs = _undefined}) =>
+          Object? removeLikedUserIDs = _undefined,
+          Object? addBookmarkedUserIDs = _undefined,
+          Object? removeBookmarkedUserIDs = _undefined}) =>
       _then(Input$UpdatePostInput._({
         ..._instance._$data,
         if (updateTime != _undefined) 'updateTime': (updateTime as String?),
@@ -5891,6 +6176,10 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           'addLikedUserIDs': (addLikedUserIDs as List<String>?),
         if (removeLikedUserIDs != _undefined)
           'removeLikedUserIDs': (removeLikedUserIDs as List<String>?),
+        if (addBookmarkedUserIDs != _undefined)
+          'addBookmarkedUserIDs': (addBookmarkedUserIDs as List<String>?),
+        if (removeBookmarkedUserIDs != _undefined)
+          'removeBookmarkedUserIDs': (removeBookmarkedUserIDs as List<String>?),
       }));
 }
 
@@ -5915,7 +6204,9 @@ class _CopyWithStubImpl$Input$UpdatePostInput<TRes>
           bool? clearCategory,
           String? categoryID,
           List<String>? addLikedUserIDs,
-          List<String>? removeLikedUserIDs}) =>
+          List<String>? removeLikedUserIDs,
+          List<String>? addBookmarkedUserIDs,
+          List<String>? removeBookmarkedUserIDs}) =>
       _res;
 }
 
@@ -5931,7 +6222,9 @@ class Input$UpdateUserInput {
           List<String>? addPostIDs,
           List<String>? removePostIDs,
           List<String>? addLikedPostIDs,
-          List<String>? removeLikedPostIDs}) =>
+          List<String>? removeLikedPostIDs,
+          List<String>? addBookmarkedPostIDs,
+          List<String>? removeBookmarkedPostIDs}) =>
       Input$UpdateUserInput._({
         if (name != null) r'name': name,
         if (clearUsername != null) r'clearUsername': clearUsername,
@@ -5945,6 +6238,10 @@ class Input$UpdateUserInput {
         if (addLikedPostIDs != null) r'addLikedPostIDs': addLikedPostIDs,
         if (removeLikedPostIDs != null)
           r'removeLikedPostIDs': removeLikedPostIDs,
+        if (addBookmarkedPostIDs != null)
+          r'addBookmarkedPostIDs': addBookmarkedPostIDs,
+        if (removeBookmarkedPostIDs != null)
+          r'removeBookmarkedPostIDs': removeBookmarkedPostIDs,
       });
 
   Input$UpdateUserInput._(this._$data);
@@ -6003,6 +6300,20 @@ class Input$UpdateUserInput {
               ?.map((e) => (e as String))
               .toList();
     }
+    if (data.containsKey('addBookmarkedPostIDs')) {
+      final l$addBookmarkedPostIDs = data['addBookmarkedPostIDs'];
+      result$data['addBookmarkedPostIDs'] =
+          (l$addBookmarkedPostIDs as List<dynamic>?)
+              ?.map((e) => (e as String))
+              .toList();
+    }
+    if (data.containsKey('removeBookmarkedPostIDs')) {
+      final l$removeBookmarkedPostIDs = data['removeBookmarkedPostIDs'];
+      result$data['removeBookmarkedPostIDs'] =
+          (l$removeBookmarkedPostIDs as List<dynamic>?)
+              ?.map((e) => (e as String))
+              .toList();
+    }
     return Input$UpdateUserInput._(result$data);
   }
 
@@ -6021,6 +6332,10 @@ class Input$UpdateUserInput {
       (_$data['addLikedPostIDs'] as List<String>?);
   List<String>? get removeLikedPostIDs =>
       (_$data['removeLikedPostIDs'] as List<String>?);
+  List<String>? get addBookmarkedPostIDs =>
+      (_$data['addBookmarkedPostIDs'] as List<String>?);
+  List<String>? get removeBookmarkedPostIDs =>
+      (_$data['removeBookmarkedPostIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('name')) {
@@ -6068,6 +6383,16 @@ class Input$UpdateUserInput {
       final l$removeLikedPostIDs = removeLikedPostIDs;
       result$data['removeLikedPostIDs'] =
           l$removeLikedPostIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('addBookmarkedPostIDs')) {
+      final l$addBookmarkedPostIDs = addBookmarkedPostIDs;
+      result$data['addBookmarkedPostIDs'] =
+          l$addBookmarkedPostIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('removeBookmarkedPostIDs')) {
+      final l$removeBookmarkedPostIDs = removeBookmarkedPostIDs;
+      result$data['removeBookmarkedPostIDs'] =
+          l$removeBookmarkedPostIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -6223,6 +6548,51 @@ class Input$UpdateUserInput {
     } else if (l$removeLikedPostIDs != lOther$removeLikedPostIDs) {
       return false;
     }
+    final l$addBookmarkedPostIDs = addBookmarkedPostIDs;
+    final lOther$addBookmarkedPostIDs = other.addBookmarkedPostIDs;
+    if (_$data.containsKey('addBookmarkedPostIDs') !=
+        other._$data.containsKey('addBookmarkedPostIDs')) {
+      return false;
+    }
+    if (l$addBookmarkedPostIDs != null && lOther$addBookmarkedPostIDs != null) {
+      if (l$addBookmarkedPostIDs.length != lOther$addBookmarkedPostIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$addBookmarkedPostIDs.length; i++) {
+        final l$addBookmarkedPostIDs$entry = l$addBookmarkedPostIDs[i];
+        final lOther$addBookmarkedPostIDs$entry =
+            lOther$addBookmarkedPostIDs[i];
+        if (l$addBookmarkedPostIDs$entry != lOther$addBookmarkedPostIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$addBookmarkedPostIDs != lOther$addBookmarkedPostIDs) {
+      return false;
+    }
+    final l$removeBookmarkedPostIDs = removeBookmarkedPostIDs;
+    final lOther$removeBookmarkedPostIDs = other.removeBookmarkedPostIDs;
+    if (_$data.containsKey('removeBookmarkedPostIDs') !=
+        other._$data.containsKey('removeBookmarkedPostIDs')) {
+      return false;
+    }
+    if (l$removeBookmarkedPostIDs != null &&
+        lOther$removeBookmarkedPostIDs != null) {
+      if (l$removeBookmarkedPostIDs.length !=
+          lOther$removeBookmarkedPostIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$removeBookmarkedPostIDs.length; i++) {
+        final l$removeBookmarkedPostIDs$entry = l$removeBookmarkedPostIDs[i];
+        final lOther$removeBookmarkedPostIDs$entry =
+            lOther$removeBookmarkedPostIDs[i];
+        if (l$removeBookmarkedPostIDs$entry !=
+            lOther$removeBookmarkedPostIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$removeBookmarkedPostIDs != lOther$removeBookmarkedPostIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -6239,6 +6609,8 @@ class Input$UpdateUserInput {
     final l$removePostIDs = removePostIDs;
     final l$addLikedPostIDs = addLikedPostIDs;
     final l$removeLikedPostIDs = removeLikedPostIDs;
+    final l$addBookmarkedPostIDs = addBookmarkedPostIDs;
+    final l$removeBookmarkedPostIDs = removeBookmarkedPostIDs;
     return Object.hashAll([
       _$data.containsKey('name') ? l$name : const {},
       _$data.containsKey('clearUsername') ? l$clearUsername : const {},
@@ -6266,6 +6638,16 @@ class Input$UpdateUserInput {
           ? l$removeLikedPostIDs == null
               ? null
               : Object.hashAll(l$removeLikedPostIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('addBookmarkedPostIDs')
+          ? l$addBookmarkedPostIDs == null
+              ? null
+              : Object.hashAll(l$addBookmarkedPostIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('removeBookmarkedPostIDs')
+          ? l$removeBookmarkedPostIDs == null
+              ? null
+              : Object.hashAll(l$removeBookmarkedPostIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -6290,7 +6672,9 @@ abstract class CopyWith$Input$UpdateUserInput<TRes> {
       List<String>? addPostIDs,
       List<String>? removePostIDs,
       List<String>? addLikedPostIDs,
-      List<String>? removeLikedPostIDs});
+      List<String>? removeLikedPostIDs,
+      List<String>? addBookmarkedPostIDs,
+      List<String>? removeBookmarkedPostIDs});
 }
 
 class _CopyWithImpl$Input$UpdateUserInput<TRes>
@@ -6314,7 +6698,9 @@ class _CopyWithImpl$Input$UpdateUserInput<TRes>
           Object? addPostIDs = _undefined,
           Object? removePostIDs = _undefined,
           Object? addLikedPostIDs = _undefined,
-          Object? removeLikedPostIDs = _undefined}) =>
+          Object? removeLikedPostIDs = _undefined,
+          Object? addBookmarkedPostIDs = _undefined,
+          Object? removeBookmarkedPostIDs = _undefined}) =>
       _then(Input$UpdateUserInput._({
         ..._instance._$data,
         if (name != _undefined) 'name': (name as String?),
@@ -6334,6 +6720,10 @@ class _CopyWithImpl$Input$UpdateUserInput<TRes>
           'addLikedPostIDs': (addLikedPostIDs as List<String>?),
         if (removeLikedPostIDs != _undefined)
           'removeLikedPostIDs': (removeLikedPostIDs as List<String>?),
+        if (addBookmarkedPostIDs != _undefined)
+          'addBookmarkedPostIDs': (addBookmarkedPostIDs as List<String>?),
+        if (removeBookmarkedPostIDs != _undefined)
+          'removeBookmarkedPostIDs': (removeBookmarkedPostIDs as List<String>?),
       }));
 }
 
@@ -6354,7 +6744,9 @@ class _CopyWithStubImpl$Input$UpdateUserInput<TRes>
           List<String>? addPostIDs,
           List<String>? removePostIDs,
           List<String>? addLikedPostIDs,
-          List<String>? removeLikedPostIDs}) =>
+          List<String>? removeLikedPostIDs,
+          List<String>? addBookmarkedPostIDs,
+          List<String>? removeBookmarkedPostIDs}) =>
       _res;
 }
 
@@ -6673,7 +7065,9 @@ class Input$UserWhereInput {
           bool? hasPosts,
           List<Input$PostWhereInput>? hasPostsWith,
           bool? hasLikedPosts,
-          List<Input$PostWhereInput>? hasLikedPostsWith}) =>
+          List<Input$PostWhereInput>? hasLikedPostsWith,
+          bool? hasBookmarkedPosts,
+          List<Input$PostWhereInput>? hasBookmarkedPostsWith}) =>
       Input$UserWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -6754,6 +7148,10 @@ class Input$UserWhereInput {
         if (hasPostsWith != null) r'hasPostsWith': hasPostsWith,
         if (hasLikedPosts != null) r'hasLikedPosts': hasLikedPosts,
         if (hasLikedPostsWith != null) r'hasLikedPostsWith': hasLikedPostsWith,
+        if (hasBookmarkedPosts != null)
+          r'hasBookmarkedPosts': hasBookmarkedPosts,
+        if (hasBookmarkedPostsWith != null)
+          r'hasBookmarkedPostsWith': hasBookmarkedPostsWith,
       });
 
   Input$UserWhereInput._(this._$data);
@@ -7080,6 +7478,18 @@ class Input$UserWhereInput {
               (e) => Input$PostWhereInput.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
+    if (data.containsKey('hasBookmarkedPosts')) {
+      final l$hasBookmarkedPosts = data['hasBookmarkedPosts'];
+      result$data['hasBookmarkedPosts'] = (l$hasBookmarkedPosts as bool?);
+    }
+    if (data.containsKey('hasBookmarkedPostsWith')) {
+      final l$hasBookmarkedPostsWith = data['hasBookmarkedPostsWith'];
+      result$data['hasBookmarkedPostsWith'] = (l$hasBookmarkedPostsWith
+              as List<dynamic>?)
+          ?.map(
+              (e) => Input$PostWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
     return Input$UserWhereInput._(result$data);
   }
 
@@ -7165,6 +7575,9 @@ class Input$UserWhereInput {
   bool? get hasLikedPosts => (_$data['hasLikedPosts'] as bool?);
   List<Input$PostWhereInput>? get hasLikedPostsWith =>
       (_$data['hasLikedPostsWith'] as List<Input$PostWhereInput>?);
+  bool? get hasBookmarkedPosts => (_$data['hasBookmarkedPosts'] as bool?);
+  List<Input$PostWhereInput>? get hasBookmarkedPostsWith =>
+      (_$data['hasBookmarkedPostsWith'] as List<Input$PostWhereInput>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('not')) {
@@ -7460,6 +7873,15 @@ class Input$UserWhereInput {
       final l$hasLikedPostsWith = hasLikedPostsWith;
       result$data['hasLikedPostsWith'] =
           l$hasLikedPostsWith?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasBookmarkedPosts')) {
+      final l$hasBookmarkedPosts = hasBookmarkedPosts;
+      result$data['hasBookmarkedPosts'] = l$hasBookmarkedPosts;
+    }
+    if (_$data.containsKey('hasBookmarkedPostsWith')) {
+      final l$hasBookmarkedPostsWith = hasBookmarkedPostsWith;
+      result$data['hasBookmarkedPostsWith'] =
+          l$hasBookmarkedPostsWith?.map((e) => e.toJson()).toList();
     }
     return result$data;
   }
@@ -8266,6 +8688,39 @@ class Input$UserWhereInput {
     } else if (l$hasLikedPostsWith != lOther$hasLikedPostsWith) {
       return false;
     }
+    final l$hasBookmarkedPosts = hasBookmarkedPosts;
+    final lOther$hasBookmarkedPosts = other.hasBookmarkedPosts;
+    if (_$data.containsKey('hasBookmarkedPosts') !=
+        other._$data.containsKey('hasBookmarkedPosts')) {
+      return false;
+    }
+    if (l$hasBookmarkedPosts != lOther$hasBookmarkedPosts) {
+      return false;
+    }
+    final l$hasBookmarkedPostsWith = hasBookmarkedPostsWith;
+    final lOther$hasBookmarkedPostsWith = other.hasBookmarkedPostsWith;
+    if (_$data.containsKey('hasBookmarkedPostsWith') !=
+        other._$data.containsKey('hasBookmarkedPostsWith')) {
+      return false;
+    }
+    if (l$hasBookmarkedPostsWith != null &&
+        lOther$hasBookmarkedPostsWith != null) {
+      if (l$hasBookmarkedPostsWith.length !=
+          lOther$hasBookmarkedPostsWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasBookmarkedPostsWith.length; i++) {
+        final l$hasBookmarkedPostsWith$entry = l$hasBookmarkedPostsWith[i];
+        final lOther$hasBookmarkedPostsWith$entry =
+            lOther$hasBookmarkedPostsWith[i];
+        if (l$hasBookmarkedPostsWith$entry !=
+            lOther$hasBookmarkedPostsWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasBookmarkedPostsWith != lOther$hasBookmarkedPostsWith) {
+      return false;
+    }
     return true;
   }
 
@@ -8344,6 +8799,8 @@ class Input$UserWhereInput {
     final l$hasPostsWith = hasPostsWith;
     final l$hasLikedPosts = hasLikedPosts;
     final l$hasLikedPostsWith = hasLikedPostsWith;
+    final l$hasBookmarkedPosts = hasBookmarkedPosts;
+    final l$hasBookmarkedPostsWith = hasBookmarkedPostsWith;
     return Object.hashAll([
       _$data.containsKey('not') ? l$not : const {},
       _$data.containsKey('and')
@@ -8485,6 +8942,14 @@ class Input$UserWhereInput {
           ? l$hasLikedPostsWith == null
               ? null
               : Object.hashAll(l$hasLikedPostsWith.map((v) => v))
+          : const {},
+      _$data.containsKey('hasBookmarkedPosts')
+          ? l$hasBookmarkedPosts
+          : const {},
+      _$data.containsKey('hasBookmarkedPostsWith')
+          ? l$hasBookmarkedPostsWith == null
+              ? null
+              : Object.hashAll(l$hasBookmarkedPostsWith.map((v) => v))
           : const {}
     ]);
   }
@@ -8571,7 +9036,9 @@ abstract class CopyWith$Input$UserWhereInput<TRes> {
       bool? hasPosts,
       List<Input$PostWhereInput>? hasPostsWith,
       bool? hasLikedPosts,
-      List<Input$PostWhereInput>? hasLikedPostsWith});
+      List<Input$PostWhereInput>? hasLikedPostsWith,
+      bool? hasBookmarkedPosts,
+      List<Input$PostWhereInput>? hasBookmarkedPostsWith});
   CopyWith$Input$UserWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$UserWhereInput>? Function(
@@ -8586,6 +9053,10 @@ abstract class CopyWith$Input$UserWhereInput<TRes> {
               Iterable<CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
           _fn);
   TRes hasLikedPostsWith(
+      Iterable<Input$PostWhereInput>? Function(
+              Iterable<CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+          _fn);
+  TRes hasBookmarkedPostsWith(
       Iterable<Input$PostWhereInput>? Function(
               Iterable<CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
           _fn);
@@ -8674,7 +9145,9 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
           Object? hasPosts = _undefined,
           Object? hasPostsWith = _undefined,
           Object? hasLikedPosts = _undefined,
-          Object? hasLikedPostsWith = _undefined}) =>
+          Object? hasLikedPostsWith = _undefined,
+          Object? hasBookmarkedPosts = _undefined,
+          Object? hasBookmarkedPostsWith = _undefined}) =>
       _then(Input$UserWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$UserWhereInput?),
@@ -8787,6 +9260,11 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
         if (hasLikedPostsWith != _undefined)
           'hasLikedPostsWith':
               (hasLikedPostsWith as List<Input$PostWhereInput>?),
+        if (hasBookmarkedPosts != _undefined)
+          'hasBookmarkedPosts': (hasBookmarkedPosts as bool?),
+        if (hasBookmarkedPostsWith != _undefined)
+          'hasBookmarkedPostsWith':
+              (hasBookmarkedPostsWith as List<Input$PostWhereInput>?),
       }));
   CopyWith$Input$UserWhereInput<TRes> get not {
     final local$not = _instance.not;
@@ -8829,6 +9307,15 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
               _fn) =>
       call(
           hasLikedPostsWith: _fn(_instance.hasLikedPostsWith
+                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasBookmarkedPostsWith(
+          Iterable<Input$PostWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+              _fn) =>
+      call(
+          hasBookmarkedPostsWith: _fn(_instance.hasBookmarkedPostsWith
                   ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
               ?.toList());
 }
@@ -8912,7 +9399,9 @@ class _CopyWithStubImpl$Input$UserWhereInput<TRes>
           bool? hasPosts,
           List<Input$PostWhereInput>? hasPostsWith,
           bool? hasLikedPosts,
-          List<Input$PostWhereInput>? hasLikedPostsWith}) =>
+          List<Input$PostWhereInput>? hasLikedPostsWith,
+          bool? hasBookmarkedPosts,
+          List<Input$PostWhereInput>? hasBookmarkedPostsWith}) =>
       _res;
   CopyWith$Input$UserWhereInput<TRes> get not =>
       CopyWith$Input$UserWhereInput.stub(_res);
@@ -8920,6 +9409,7 @@ class _CopyWithStubImpl$Input$UserWhereInput<TRes>
   or(_fn) => _res;
   hasPostsWith(_fn) => _res;
   hasLikedPostsWith(_fn) => _res;
+  hasBookmarkedPostsWith(_fn) => _res;
 }
 
 class Input$WorkWhereInput {
