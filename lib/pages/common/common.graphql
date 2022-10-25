@@ -3,6 +3,11 @@ fragment LetterSummary on Post {
   id
   content
   createTime
+  thumbnail
+  work {
+    id
+    thumbnail
+  }
   owner {
     id
     name

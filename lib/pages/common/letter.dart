@@ -151,6 +151,12 @@ class Letter extends HookConsumerWidget {
         unbookmarkPostMutation.result.isLoading ||
         optimistic;
 
+    final thumbnail = letter.thumbnail != ""
+        ? letter.thumbnail!
+        : letter.work.thumbnail != ""
+            ? letter.work.thumbnail!
+            : null;
+
     return Container(
         margin: const EdgeInsets.only(top: 20, right: 5, left: 5),
         decoration: BoxDecoration(
@@ -199,11 +205,17 @@ class Letter extends HookConsumerWidget {
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
               )),
-              Image.network(
-                "https://www.ojamakan.com/wp/wp-content/uploads/2022/04/4129Q0P1GML._AC_.jpg",
-                width: 80,
-                height: 80,
-              ),
+              thumbnail != null
+                  ? Image.network(
+                      thumbnail,
+                      width: 80,
+                      height: 80,
+                    )
+                  : Image.asset(
+                      "assets/noimage.png",
+                      width: 80,
+                      height: 80,
+                    ),
             ],
           ),
           const SizedBox(

@@ -1055,6 +1055,7 @@ class Input$CreatePostInput {
           required String content,
           required Enum$PostPostType type,
           required bool spoiled,
+          String? thumbnail,
           required String ownerID,
           List<String>? hashtagIDs,
           required String workID,
@@ -1068,6 +1069,7 @@ class Input$CreatePostInput {
         r'content': content,
         r'type': type,
         r'spoiled': spoiled,
+        if (thumbnail != null) r'thumbnail': thumbnail,
         r'ownerID': ownerID,
         if (hashtagIDs != null) r'hashtagIDs': hashtagIDs,
         r'workID': workID,
@@ -1096,6 +1098,10 @@ class Input$CreatePostInput {
     result$data['type'] = fromJson$Enum$PostPostType((l$type as String));
     final l$spoiled = data['spoiled'];
     result$data['spoiled'] = (l$spoiled as bool);
+    if (data.containsKey('thumbnail')) {
+      final l$thumbnail = data['thumbnail'];
+      result$data['thumbnail'] = (l$thumbnail as String?);
+    }
     final l$ownerID = data['ownerID'];
     result$data['ownerID'] = (l$ownerID as String);
     if (data.containsKey('hashtagIDs')) {
@@ -1130,6 +1136,7 @@ class Input$CreatePostInput {
   String get content => (_$data['content'] as String);
   Enum$PostPostType get type => (_$data['type'] as Enum$PostPostType);
   bool get spoiled => (_$data['spoiled'] as bool);
+  String? get thumbnail => (_$data['thumbnail'] as String?);
   String get ownerID => (_$data['ownerID'] as String);
   List<String>? get hashtagIDs => (_$data['hashtagIDs'] as List<String>?);
   String get workID => (_$data['workID'] as String);
@@ -1155,6 +1162,10 @@ class Input$CreatePostInput {
     result$data['type'] = toJson$Enum$PostPostType(l$type);
     final l$spoiled = spoiled;
     result$data['spoiled'] = l$spoiled;
+    if (_$data.containsKey('thumbnail')) {
+      final l$thumbnail = thumbnail;
+      result$data['thumbnail'] = l$thumbnail;
+    }
     final l$ownerID = ownerID;
     result$data['ownerID'] = l$ownerID;
     if (_$data.containsKey('hashtagIDs')) {
@@ -1223,6 +1234,15 @@ class Input$CreatePostInput {
     final l$spoiled = spoiled;
     final lOther$spoiled = other.spoiled;
     if (l$spoiled != lOther$spoiled) {
+      return false;
+    }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (_$data.containsKey('thumbnail') !=
+        other._$data.containsKey('thumbnail')) {
+      return false;
+    }
+    if (l$thumbnail != lOther$thumbnail) {
       return false;
     }
     final l$ownerID = ownerID;
@@ -1311,6 +1331,7 @@ class Input$CreatePostInput {
     final l$content = content;
     final l$type = type;
     final l$spoiled = spoiled;
+    final l$thumbnail = thumbnail;
     final l$ownerID = ownerID;
     final l$hashtagIDs = hashtagIDs;
     final l$workID = workID;
@@ -1324,6 +1345,7 @@ class Input$CreatePostInput {
       l$content,
       l$type,
       l$spoiled,
+      _$data.containsKey('thumbnail') ? l$thumbnail : const {},
       l$ownerID,
       _$data.containsKey('hashtagIDs')
           ? l$hashtagIDs == null
@@ -1361,6 +1383,7 @@ abstract class CopyWith$Input$CreatePostInput<TRes> {
       String? content,
       Enum$PostPostType? type,
       bool? spoiled,
+      String? thumbnail,
       String? ownerID,
       List<String>? hashtagIDs,
       String? workID,
@@ -1386,6 +1409,7 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           Object? content = _undefined,
           Object? type = _undefined,
           Object? spoiled = _undefined,
+          Object? thumbnail = _undefined,
           Object? ownerID = _undefined,
           Object? hashtagIDs = _undefined,
           Object? workID = _undefined,
@@ -1403,6 +1427,7 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           'type': (type as Enum$PostPostType),
         if (spoiled != _undefined && spoiled != null)
           'spoiled': (spoiled as bool),
+        if (thumbnail != _undefined) 'thumbnail': (thumbnail as String?),
         if (ownerID != _undefined && ownerID != null)
           'ownerID': (ownerID as String),
         if (hashtagIDs != _undefined)
@@ -1431,6 +1456,7 @@ class _CopyWithStubImpl$Input$CreatePostInput<TRes>
           String? content,
           Enum$PostPostType? type,
           bool? spoiled,
+          String? thumbnail,
           String? ownerID,
           List<String>? hashtagIDs,
           String? workID,
@@ -2987,6 +3013,21 @@ class Input$PostWhereInput {
           List<Enum$PostPostType>? typeNotIn,
           bool? spoiled,
           bool? spoiledNEQ,
+          String? thumbnail,
+          String? thumbnailNEQ,
+          List<String>? thumbnailIn,
+          List<String>? thumbnailNotIn,
+          String? thumbnailGT,
+          String? thumbnailGTE,
+          String? thumbnailLT,
+          String? thumbnailLTE,
+          String? thumbnailContains,
+          String? thumbnailHasPrefix,
+          String? thumbnailHasSuffix,
+          bool? thumbnailIsNil,
+          bool? thumbnailNotNil,
+          String? thumbnailEqualFold,
+          String? thumbnailContainsFold,
           bool? hasOwner,
           List<Input$UserWhereInput>? hasOwnerWith,
           bool? hasHashtags,
@@ -3060,6 +3101,25 @@ class Input$PostWhereInput {
         if (typeNotIn != null) r'typeNotIn': typeNotIn,
         if (spoiled != null) r'spoiled': spoiled,
         if (spoiledNEQ != null) r'spoiledNEQ': spoiledNEQ,
+        if (thumbnail != null) r'thumbnail': thumbnail,
+        if (thumbnailNEQ != null) r'thumbnailNEQ': thumbnailNEQ,
+        if (thumbnailIn != null) r'thumbnailIn': thumbnailIn,
+        if (thumbnailNotIn != null) r'thumbnailNotIn': thumbnailNotIn,
+        if (thumbnailGT != null) r'thumbnailGT': thumbnailGT,
+        if (thumbnailGTE != null) r'thumbnailGTE': thumbnailGTE,
+        if (thumbnailLT != null) r'thumbnailLT': thumbnailLT,
+        if (thumbnailLTE != null) r'thumbnailLTE': thumbnailLTE,
+        if (thumbnailContains != null) r'thumbnailContains': thumbnailContains,
+        if (thumbnailHasPrefix != null)
+          r'thumbnailHasPrefix': thumbnailHasPrefix,
+        if (thumbnailHasSuffix != null)
+          r'thumbnailHasSuffix': thumbnailHasSuffix,
+        if (thumbnailIsNil != null) r'thumbnailIsNil': thumbnailIsNil,
+        if (thumbnailNotNil != null) r'thumbnailNotNil': thumbnailNotNil,
+        if (thumbnailEqualFold != null)
+          r'thumbnailEqualFold': thumbnailEqualFold,
+        if (thumbnailContainsFold != null)
+          r'thumbnailContainsFold': thumbnailContainsFold,
         if (hasOwner != null) r'hasOwner': hasOwner,
         if (hasOwnerWith != null) r'hasOwnerWith': hasOwnerWith,
         if (hasHashtags != null) r'hasHashtags': hasHashtags,
@@ -3347,6 +3407,70 @@ class Input$PostWhereInput {
       final l$spoiledNEQ = data['spoiledNEQ'];
       result$data['spoiledNEQ'] = (l$spoiledNEQ as bool?);
     }
+    if (data.containsKey('thumbnail')) {
+      final l$thumbnail = data['thumbnail'];
+      result$data['thumbnail'] = (l$thumbnail as String?);
+    }
+    if (data.containsKey('thumbnailNEQ')) {
+      final l$thumbnailNEQ = data['thumbnailNEQ'];
+      result$data['thumbnailNEQ'] = (l$thumbnailNEQ as String?);
+    }
+    if (data.containsKey('thumbnailIn')) {
+      final l$thumbnailIn = data['thumbnailIn'];
+      result$data['thumbnailIn'] =
+          (l$thumbnailIn as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
+    if (data.containsKey('thumbnailNotIn')) {
+      final l$thumbnailNotIn = data['thumbnailNotIn'];
+      result$data['thumbnailNotIn'] = (l$thumbnailNotIn as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('thumbnailGT')) {
+      final l$thumbnailGT = data['thumbnailGT'];
+      result$data['thumbnailGT'] = (l$thumbnailGT as String?);
+    }
+    if (data.containsKey('thumbnailGTE')) {
+      final l$thumbnailGTE = data['thumbnailGTE'];
+      result$data['thumbnailGTE'] = (l$thumbnailGTE as String?);
+    }
+    if (data.containsKey('thumbnailLT')) {
+      final l$thumbnailLT = data['thumbnailLT'];
+      result$data['thumbnailLT'] = (l$thumbnailLT as String?);
+    }
+    if (data.containsKey('thumbnailLTE')) {
+      final l$thumbnailLTE = data['thumbnailLTE'];
+      result$data['thumbnailLTE'] = (l$thumbnailLTE as String?);
+    }
+    if (data.containsKey('thumbnailContains')) {
+      final l$thumbnailContains = data['thumbnailContains'];
+      result$data['thumbnailContains'] = (l$thumbnailContains as String?);
+    }
+    if (data.containsKey('thumbnailHasPrefix')) {
+      final l$thumbnailHasPrefix = data['thumbnailHasPrefix'];
+      result$data['thumbnailHasPrefix'] = (l$thumbnailHasPrefix as String?);
+    }
+    if (data.containsKey('thumbnailHasSuffix')) {
+      final l$thumbnailHasSuffix = data['thumbnailHasSuffix'];
+      result$data['thumbnailHasSuffix'] = (l$thumbnailHasSuffix as String?);
+    }
+    if (data.containsKey('thumbnailIsNil')) {
+      final l$thumbnailIsNil = data['thumbnailIsNil'];
+      result$data['thumbnailIsNil'] = (l$thumbnailIsNil as bool?);
+    }
+    if (data.containsKey('thumbnailNotNil')) {
+      final l$thumbnailNotNil = data['thumbnailNotNil'];
+      result$data['thumbnailNotNil'] = (l$thumbnailNotNil as bool?);
+    }
+    if (data.containsKey('thumbnailEqualFold')) {
+      final l$thumbnailEqualFold = data['thumbnailEqualFold'];
+      result$data['thumbnailEqualFold'] = (l$thumbnailEqualFold as String?);
+    }
+    if (data.containsKey('thumbnailContainsFold')) {
+      final l$thumbnailContainsFold = data['thumbnailContainsFold'];
+      result$data['thumbnailContainsFold'] =
+          (l$thumbnailContainsFold as String?);
+    }
     if (data.containsKey('hasOwner')) {
       final l$hasOwner = data['hasOwner'];
       result$data['hasOwner'] = (l$hasOwner as bool?);
@@ -3484,6 +3608,23 @@ class Input$PostWhereInput {
       (_$data['typeNotIn'] as List<Enum$PostPostType>?);
   bool? get spoiled => (_$data['spoiled'] as bool?);
   bool? get spoiledNEQ => (_$data['spoiledNEQ'] as bool?);
+  String? get thumbnail => (_$data['thumbnail'] as String?);
+  String? get thumbnailNEQ => (_$data['thumbnailNEQ'] as String?);
+  List<String>? get thumbnailIn => (_$data['thumbnailIn'] as List<String>?);
+  List<String>? get thumbnailNotIn =>
+      (_$data['thumbnailNotIn'] as List<String>?);
+  String? get thumbnailGT => (_$data['thumbnailGT'] as String?);
+  String? get thumbnailGTE => (_$data['thumbnailGTE'] as String?);
+  String? get thumbnailLT => (_$data['thumbnailLT'] as String?);
+  String? get thumbnailLTE => (_$data['thumbnailLTE'] as String?);
+  String? get thumbnailContains => (_$data['thumbnailContains'] as String?);
+  String? get thumbnailHasPrefix => (_$data['thumbnailHasPrefix'] as String?);
+  String? get thumbnailHasSuffix => (_$data['thumbnailHasSuffix'] as String?);
+  bool? get thumbnailIsNil => (_$data['thumbnailIsNil'] as bool?);
+  bool? get thumbnailNotNil => (_$data['thumbnailNotNil'] as bool?);
+  String? get thumbnailEqualFold => (_$data['thumbnailEqualFold'] as String?);
+  String? get thumbnailContainsFold =>
+      (_$data['thumbnailContainsFold'] as String?);
   bool? get hasOwner => (_$data['hasOwner'] as bool?);
   List<Input$UserWhereInput>? get hasOwnerWith =>
       (_$data['hasOwnerWith'] as List<Input$UserWhereInput>?);
@@ -3745,6 +3886,66 @@ class Input$PostWhereInput {
     if (_$data.containsKey('spoiledNEQ')) {
       final l$spoiledNEQ = spoiledNEQ;
       result$data['spoiledNEQ'] = l$spoiledNEQ;
+    }
+    if (_$data.containsKey('thumbnail')) {
+      final l$thumbnail = thumbnail;
+      result$data['thumbnail'] = l$thumbnail;
+    }
+    if (_$data.containsKey('thumbnailNEQ')) {
+      final l$thumbnailNEQ = thumbnailNEQ;
+      result$data['thumbnailNEQ'] = l$thumbnailNEQ;
+    }
+    if (_$data.containsKey('thumbnailIn')) {
+      final l$thumbnailIn = thumbnailIn;
+      result$data['thumbnailIn'] = l$thumbnailIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('thumbnailNotIn')) {
+      final l$thumbnailNotIn = thumbnailNotIn;
+      result$data['thumbnailNotIn'] = l$thumbnailNotIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('thumbnailGT')) {
+      final l$thumbnailGT = thumbnailGT;
+      result$data['thumbnailGT'] = l$thumbnailGT;
+    }
+    if (_$data.containsKey('thumbnailGTE')) {
+      final l$thumbnailGTE = thumbnailGTE;
+      result$data['thumbnailGTE'] = l$thumbnailGTE;
+    }
+    if (_$data.containsKey('thumbnailLT')) {
+      final l$thumbnailLT = thumbnailLT;
+      result$data['thumbnailLT'] = l$thumbnailLT;
+    }
+    if (_$data.containsKey('thumbnailLTE')) {
+      final l$thumbnailLTE = thumbnailLTE;
+      result$data['thumbnailLTE'] = l$thumbnailLTE;
+    }
+    if (_$data.containsKey('thumbnailContains')) {
+      final l$thumbnailContains = thumbnailContains;
+      result$data['thumbnailContains'] = l$thumbnailContains;
+    }
+    if (_$data.containsKey('thumbnailHasPrefix')) {
+      final l$thumbnailHasPrefix = thumbnailHasPrefix;
+      result$data['thumbnailHasPrefix'] = l$thumbnailHasPrefix;
+    }
+    if (_$data.containsKey('thumbnailHasSuffix')) {
+      final l$thumbnailHasSuffix = thumbnailHasSuffix;
+      result$data['thumbnailHasSuffix'] = l$thumbnailHasSuffix;
+    }
+    if (_$data.containsKey('thumbnailIsNil')) {
+      final l$thumbnailIsNil = thumbnailIsNil;
+      result$data['thumbnailIsNil'] = l$thumbnailIsNil;
+    }
+    if (_$data.containsKey('thumbnailNotNil')) {
+      final l$thumbnailNotNil = thumbnailNotNil;
+      result$data['thumbnailNotNil'] = l$thumbnailNotNil;
+    }
+    if (_$data.containsKey('thumbnailEqualFold')) {
+      final l$thumbnailEqualFold = thumbnailEqualFold;
+      result$data['thumbnailEqualFold'] = l$thumbnailEqualFold;
+    }
+    if (_$data.containsKey('thumbnailContainsFold')) {
+      final l$thumbnailContainsFold = thumbnailContainsFold;
+      result$data['thumbnailContainsFold'] = l$thumbnailContainsFold;
     }
     if (_$data.containsKey('hasOwner')) {
       final l$hasOwner = hasOwner;
@@ -4478,6 +4679,163 @@ class Input$PostWhereInput {
     if (l$spoiledNEQ != lOther$spoiledNEQ) {
       return false;
     }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (_$data.containsKey('thumbnail') !=
+        other._$data.containsKey('thumbnail')) {
+      return false;
+    }
+    if (l$thumbnail != lOther$thumbnail) {
+      return false;
+    }
+    final l$thumbnailNEQ = thumbnailNEQ;
+    final lOther$thumbnailNEQ = other.thumbnailNEQ;
+    if (_$data.containsKey('thumbnailNEQ') !=
+        other._$data.containsKey('thumbnailNEQ')) {
+      return false;
+    }
+    if (l$thumbnailNEQ != lOther$thumbnailNEQ) {
+      return false;
+    }
+    final l$thumbnailIn = thumbnailIn;
+    final lOther$thumbnailIn = other.thumbnailIn;
+    if (_$data.containsKey('thumbnailIn') !=
+        other._$data.containsKey('thumbnailIn')) {
+      return false;
+    }
+    if (l$thumbnailIn != null && lOther$thumbnailIn != null) {
+      if (l$thumbnailIn.length != lOther$thumbnailIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$thumbnailIn.length; i++) {
+        final l$thumbnailIn$entry = l$thumbnailIn[i];
+        final lOther$thumbnailIn$entry = lOther$thumbnailIn[i];
+        if (l$thumbnailIn$entry != lOther$thumbnailIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$thumbnailIn != lOther$thumbnailIn) {
+      return false;
+    }
+    final l$thumbnailNotIn = thumbnailNotIn;
+    final lOther$thumbnailNotIn = other.thumbnailNotIn;
+    if (_$data.containsKey('thumbnailNotIn') !=
+        other._$data.containsKey('thumbnailNotIn')) {
+      return false;
+    }
+    if (l$thumbnailNotIn != null && lOther$thumbnailNotIn != null) {
+      if (l$thumbnailNotIn.length != lOther$thumbnailNotIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$thumbnailNotIn.length; i++) {
+        final l$thumbnailNotIn$entry = l$thumbnailNotIn[i];
+        final lOther$thumbnailNotIn$entry = lOther$thumbnailNotIn[i];
+        if (l$thumbnailNotIn$entry != lOther$thumbnailNotIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$thumbnailNotIn != lOther$thumbnailNotIn) {
+      return false;
+    }
+    final l$thumbnailGT = thumbnailGT;
+    final lOther$thumbnailGT = other.thumbnailGT;
+    if (_$data.containsKey('thumbnailGT') !=
+        other._$data.containsKey('thumbnailGT')) {
+      return false;
+    }
+    if (l$thumbnailGT != lOther$thumbnailGT) {
+      return false;
+    }
+    final l$thumbnailGTE = thumbnailGTE;
+    final lOther$thumbnailGTE = other.thumbnailGTE;
+    if (_$data.containsKey('thumbnailGTE') !=
+        other._$data.containsKey('thumbnailGTE')) {
+      return false;
+    }
+    if (l$thumbnailGTE != lOther$thumbnailGTE) {
+      return false;
+    }
+    final l$thumbnailLT = thumbnailLT;
+    final lOther$thumbnailLT = other.thumbnailLT;
+    if (_$data.containsKey('thumbnailLT') !=
+        other._$data.containsKey('thumbnailLT')) {
+      return false;
+    }
+    if (l$thumbnailLT != lOther$thumbnailLT) {
+      return false;
+    }
+    final l$thumbnailLTE = thumbnailLTE;
+    final lOther$thumbnailLTE = other.thumbnailLTE;
+    if (_$data.containsKey('thumbnailLTE') !=
+        other._$data.containsKey('thumbnailLTE')) {
+      return false;
+    }
+    if (l$thumbnailLTE != lOther$thumbnailLTE) {
+      return false;
+    }
+    final l$thumbnailContains = thumbnailContains;
+    final lOther$thumbnailContains = other.thumbnailContains;
+    if (_$data.containsKey('thumbnailContains') !=
+        other._$data.containsKey('thumbnailContains')) {
+      return false;
+    }
+    if (l$thumbnailContains != lOther$thumbnailContains) {
+      return false;
+    }
+    final l$thumbnailHasPrefix = thumbnailHasPrefix;
+    final lOther$thumbnailHasPrefix = other.thumbnailHasPrefix;
+    if (_$data.containsKey('thumbnailHasPrefix') !=
+        other._$data.containsKey('thumbnailHasPrefix')) {
+      return false;
+    }
+    if (l$thumbnailHasPrefix != lOther$thumbnailHasPrefix) {
+      return false;
+    }
+    final l$thumbnailHasSuffix = thumbnailHasSuffix;
+    final lOther$thumbnailHasSuffix = other.thumbnailHasSuffix;
+    if (_$data.containsKey('thumbnailHasSuffix') !=
+        other._$data.containsKey('thumbnailHasSuffix')) {
+      return false;
+    }
+    if (l$thumbnailHasSuffix != lOther$thumbnailHasSuffix) {
+      return false;
+    }
+    final l$thumbnailIsNil = thumbnailIsNil;
+    final lOther$thumbnailIsNil = other.thumbnailIsNil;
+    if (_$data.containsKey('thumbnailIsNil') !=
+        other._$data.containsKey('thumbnailIsNil')) {
+      return false;
+    }
+    if (l$thumbnailIsNil != lOther$thumbnailIsNil) {
+      return false;
+    }
+    final l$thumbnailNotNil = thumbnailNotNil;
+    final lOther$thumbnailNotNil = other.thumbnailNotNil;
+    if (_$data.containsKey('thumbnailNotNil') !=
+        other._$data.containsKey('thumbnailNotNil')) {
+      return false;
+    }
+    if (l$thumbnailNotNil != lOther$thumbnailNotNil) {
+      return false;
+    }
+    final l$thumbnailEqualFold = thumbnailEqualFold;
+    final lOther$thumbnailEqualFold = other.thumbnailEqualFold;
+    if (_$data.containsKey('thumbnailEqualFold') !=
+        other._$data.containsKey('thumbnailEqualFold')) {
+      return false;
+    }
+    if (l$thumbnailEqualFold != lOther$thumbnailEqualFold) {
+      return false;
+    }
+    final l$thumbnailContainsFold = thumbnailContainsFold;
+    final lOther$thumbnailContainsFold = other.thumbnailContainsFold;
+    if (_$data.containsKey('thumbnailContainsFold') !=
+        other._$data.containsKey('thumbnailContainsFold')) {
+      return false;
+    }
+    if (l$thumbnailContainsFold != lOther$thumbnailContainsFold) {
+      return false;
+    }
     final l$hasOwner = hasOwner;
     final lOther$hasOwner = other.hasOwner;
     if (_$data.containsKey('hasOwner') !=
@@ -4719,6 +5077,21 @@ class Input$PostWhereInput {
     final l$typeNotIn = typeNotIn;
     final l$spoiled = spoiled;
     final l$spoiledNEQ = spoiledNEQ;
+    final l$thumbnail = thumbnail;
+    final l$thumbnailNEQ = thumbnailNEQ;
+    final l$thumbnailIn = thumbnailIn;
+    final l$thumbnailNotIn = thumbnailNotIn;
+    final l$thumbnailGT = thumbnailGT;
+    final l$thumbnailGTE = thumbnailGTE;
+    final l$thumbnailLT = thumbnailLT;
+    final l$thumbnailLTE = thumbnailLTE;
+    final l$thumbnailContains = thumbnailContains;
+    final l$thumbnailHasPrefix = thumbnailHasPrefix;
+    final l$thumbnailHasSuffix = thumbnailHasSuffix;
+    final l$thumbnailIsNil = thumbnailIsNil;
+    final l$thumbnailNotNil = thumbnailNotNil;
+    final l$thumbnailEqualFold = thumbnailEqualFold;
+    final l$thumbnailContainsFold = thumbnailContainsFold;
     final l$hasOwner = hasOwner;
     final l$hasOwnerWith = hasOwnerWith;
     final l$hasHashtags = hasHashtags;
@@ -4849,6 +5222,37 @@ class Input$PostWhereInput {
           : const {},
       _$data.containsKey('spoiled') ? l$spoiled : const {},
       _$data.containsKey('spoiledNEQ') ? l$spoiledNEQ : const {},
+      _$data.containsKey('thumbnail') ? l$thumbnail : const {},
+      _$data.containsKey('thumbnailNEQ') ? l$thumbnailNEQ : const {},
+      _$data.containsKey('thumbnailIn')
+          ? l$thumbnailIn == null
+              ? null
+              : Object.hashAll(l$thumbnailIn.map((v) => v))
+          : const {},
+      _$data.containsKey('thumbnailNotIn')
+          ? l$thumbnailNotIn == null
+              ? null
+              : Object.hashAll(l$thumbnailNotIn.map((v) => v))
+          : const {},
+      _$data.containsKey('thumbnailGT') ? l$thumbnailGT : const {},
+      _$data.containsKey('thumbnailGTE') ? l$thumbnailGTE : const {},
+      _$data.containsKey('thumbnailLT') ? l$thumbnailLT : const {},
+      _$data.containsKey('thumbnailLTE') ? l$thumbnailLTE : const {},
+      _$data.containsKey('thumbnailContains') ? l$thumbnailContains : const {},
+      _$data.containsKey('thumbnailHasPrefix')
+          ? l$thumbnailHasPrefix
+          : const {},
+      _$data.containsKey('thumbnailHasSuffix')
+          ? l$thumbnailHasSuffix
+          : const {},
+      _$data.containsKey('thumbnailIsNil') ? l$thumbnailIsNil : const {},
+      _$data.containsKey('thumbnailNotNil') ? l$thumbnailNotNil : const {},
+      _$data.containsKey('thumbnailEqualFold')
+          ? l$thumbnailEqualFold
+          : const {},
+      _$data.containsKey('thumbnailContainsFold')
+          ? l$thumbnailContainsFold
+          : const {},
       _$data.containsKey('hasOwner') ? l$hasOwner : const {},
       _$data.containsKey('hasOwnerWith')
           ? l$hasOwnerWith == null
@@ -4959,6 +5363,21 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
       List<Enum$PostPostType>? typeNotIn,
       bool? spoiled,
       bool? spoiledNEQ,
+      String? thumbnail,
+      String? thumbnailNEQ,
+      List<String>? thumbnailIn,
+      List<String>? thumbnailNotIn,
+      String? thumbnailGT,
+      String? thumbnailGTE,
+      String? thumbnailLT,
+      String? thumbnailLTE,
+      String? thumbnailContains,
+      String? thumbnailHasPrefix,
+      String? thumbnailHasSuffix,
+      bool? thumbnailIsNil,
+      bool? thumbnailNotNil,
+      String? thumbnailEqualFold,
+      String? thumbnailContainsFold,
       bool? hasOwner,
       List<Input$UserWhereInput>? hasOwnerWith,
       bool? hasHashtags,
@@ -5078,6 +5497,21 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           Object? typeNotIn = _undefined,
           Object? spoiled = _undefined,
           Object? spoiledNEQ = _undefined,
+          Object? thumbnail = _undefined,
+          Object? thumbnailNEQ = _undefined,
+          Object? thumbnailIn = _undefined,
+          Object? thumbnailNotIn = _undefined,
+          Object? thumbnailGT = _undefined,
+          Object? thumbnailGTE = _undefined,
+          Object? thumbnailLT = _undefined,
+          Object? thumbnailLTE = _undefined,
+          Object? thumbnailContains = _undefined,
+          Object? thumbnailHasPrefix = _undefined,
+          Object? thumbnailHasSuffix = _undefined,
+          Object? thumbnailIsNil = _undefined,
+          Object? thumbnailNotNil = _undefined,
+          Object? thumbnailEqualFold = _undefined,
+          Object? thumbnailContainsFold = _undefined,
           Object? hasOwner = _undefined,
           Object? hasOwnerWith = _undefined,
           Object? hasHashtags = _undefined,
@@ -5179,6 +5613,33 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           'typeNotIn': (typeNotIn as List<Enum$PostPostType>?),
         if (spoiled != _undefined) 'spoiled': (spoiled as bool?),
         if (spoiledNEQ != _undefined) 'spoiledNEQ': (spoiledNEQ as bool?),
+        if (thumbnail != _undefined) 'thumbnail': (thumbnail as String?),
+        if (thumbnailNEQ != _undefined)
+          'thumbnailNEQ': (thumbnailNEQ as String?),
+        if (thumbnailIn != _undefined)
+          'thumbnailIn': (thumbnailIn as List<String>?),
+        if (thumbnailNotIn != _undefined)
+          'thumbnailNotIn': (thumbnailNotIn as List<String>?),
+        if (thumbnailGT != _undefined) 'thumbnailGT': (thumbnailGT as String?),
+        if (thumbnailGTE != _undefined)
+          'thumbnailGTE': (thumbnailGTE as String?),
+        if (thumbnailLT != _undefined) 'thumbnailLT': (thumbnailLT as String?),
+        if (thumbnailLTE != _undefined)
+          'thumbnailLTE': (thumbnailLTE as String?),
+        if (thumbnailContains != _undefined)
+          'thumbnailContains': (thumbnailContains as String?),
+        if (thumbnailHasPrefix != _undefined)
+          'thumbnailHasPrefix': (thumbnailHasPrefix as String?),
+        if (thumbnailHasSuffix != _undefined)
+          'thumbnailHasSuffix': (thumbnailHasSuffix as String?),
+        if (thumbnailIsNil != _undefined)
+          'thumbnailIsNil': (thumbnailIsNil as bool?),
+        if (thumbnailNotNil != _undefined)
+          'thumbnailNotNil': (thumbnailNotNil as bool?),
+        if (thumbnailEqualFold != _undefined)
+          'thumbnailEqualFold': (thumbnailEqualFold as String?),
+        if (thumbnailContainsFold != _undefined)
+          'thumbnailContainsFold': (thumbnailContainsFold as String?),
         if (hasOwner != _undefined) 'hasOwner': (hasOwner as bool?),
         if (hasOwnerWith != _undefined)
           'hasOwnerWith': (hasOwnerWith as List<Input$UserWhereInput>?),
@@ -5353,6 +5814,21 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
           List<Enum$PostPostType>? typeNotIn,
           bool? spoiled,
           bool? spoiledNEQ,
+          String? thumbnail,
+          String? thumbnailNEQ,
+          List<String>? thumbnailIn,
+          List<String>? thumbnailNotIn,
+          String? thumbnailGT,
+          String? thumbnailGTE,
+          String? thumbnailLT,
+          String? thumbnailLTE,
+          String? thumbnailContains,
+          String? thumbnailHasPrefix,
+          String? thumbnailHasSuffix,
+          bool? thumbnailIsNil,
+          bool? thumbnailNotNil,
+          String? thumbnailEqualFold,
+          String? thumbnailContainsFold,
           bool? hasOwner,
           List<Input$UserWhereInput>? hasOwnerWith,
           bool? hasHashtags,
@@ -5572,6 +6048,8 @@ class Input$UpdatePostInput {
           String? content,
           Enum$PostPostType? type,
           bool? spoiled,
+          bool? clearThumbnail,
+          String? thumbnail,
           bool? clearOwner,
           String? ownerID,
           List<String>? addHashtagIDs,
@@ -5590,6 +6068,8 @@ class Input$UpdatePostInput {
         if (content != null) r'content': content,
         if (type != null) r'type': type,
         if (spoiled != null) r'spoiled': spoiled,
+        if (clearThumbnail != null) r'clearThumbnail': clearThumbnail,
+        if (thumbnail != null) r'thumbnail': thumbnail,
         if (clearOwner != null) r'clearOwner': clearOwner,
         if (ownerID != null) r'ownerID': ownerID,
         if (addHashtagIDs != null) r'addHashtagIDs': addHashtagIDs,
@@ -5632,6 +6112,14 @@ class Input$UpdatePostInput {
     if (data.containsKey('spoiled')) {
       final l$spoiled = data['spoiled'];
       result$data['spoiled'] = (l$spoiled as bool?);
+    }
+    if (data.containsKey('clearThumbnail')) {
+      final l$clearThumbnail = data['clearThumbnail'];
+      result$data['clearThumbnail'] = (l$clearThumbnail as bool?);
+    }
+    if (data.containsKey('thumbnail')) {
+      final l$thumbnail = data['thumbnail'];
+      result$data['thumbnail'] = (l$thumbnail as String?);
     }
     if (data.containsKey('clearOwner')) {
       final l$clearOwner = data['clearOwner'];
@@ -5706,6 +6194,8 @@ class Input$UpdatePostInput {
   String? get content => (_$data['content'] as String?);
   Enum$PostPostType? get type => (_$data['type'] as Enum$PostPostType?);
   bool? get spoiled => (_$data['spoiled'] as bool?);
+  bool? get clearThumbnail => (_$data['clearThumbnail'] as bool?);
+  String? get thumbnail => (_$data['thumbnail'] as String?);
   bool? get clearOwner => (_$data['clearOwner'] as bool?);
   String? get ownerID => (_$data['ownerID'] as String?);
   List<String>? get addHashtagIDs => (_$data['addHashtagIDs'] as List<String>?);
@@ -5745,6 +6235,14 @@ class Input$UpdatePostInput {
     if (_$data.containsKey('spoiled')) {
       final l$spoiled = spoiled;
       result$data['spoiled'] = l$spoiled;
+    }
+    if (_$data.containsKey('clearThumbnail')) {
+      final l$clearThumbnail = clearThumbnail;
+      result$data['clearThumbnail'] = l$clearThumbnail;
+    }
+    if (_$data.containsKey('thumbnail')) {
+      final l$thumbnail = thumbnail;
+      result$data['thumbnail'] = l$thumbnail;
     }
     if (_$data.containsKey('clearOwner')) {
       final l$clearOwner = clearOwner;
@@ -5851,6 +6349,24 @@ class Input$UpdatePostInput {
       return false;
     }
     if (l$spoiled != lOther$spoiled) {
+      return false;
+    }
+    final l$clearThumbnail = clearThumbnail;
+    final lOther$clearThumbnail = other.clearThumbnail;
+    if (_$data.containsKey('clearThumbnail') !=
+        other._$data.containsKey('clearThumbnail')) {
+      return false;
+    }
+    if (l$clearThumbnail != lOther$clearThumbnail) {
+      return false;
+    }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (_$data.containsKey('thumbnail') !=
+        other._$data.containsKey('thumbnail')) {
+      return false;
+    }
+    if (l$thumbnail != lOther$thumbnail) {
       return false;
     }
     final l$clearOwner = clearOwner;
@@ -6040,6 +6556,8 @@ class Input$UpdatePostInput {
     final l$content = content;
     final l$type = type;
     final l$spoiled = spoiled;
+    final l$clearThumbnail = clearThumbnail;
+    final l$thumbnail = thumbnail;
     final l$clearOwner = clearOwner;
     final l$ownerID = ownerID;
     final l$addHashtagIDs = addHashtagIDs;
@@ -6058,6 +6576,8 @@ class Input$UpdatePostInput {
       _$data.containsKey('content') ? l$content : const {},
       _$data.containsKey('type') ? l$type : const {},
       _$data.containsKey('spoiled') ? l$spoiled : const {},
+      _$data.containsKey('clearThumbnail') ? l$clearThumbnail : const {},
+      _$data.containsKey('thumbnail') ? l$thumbnail : const {},
       _$data.containsKey('clearOwner') ? l$clearOwner : const {},
       _$data.containsKey('ownerID') ? l$ownerID : const {},
       _$data.containsKey('addHashtagIDs')
@@ -6112,6 +6632,8 @@ abstract class CopyWith$Input$UpdatePostInput<TRes> {
       String? content,
       Enum$PostPostType? type,
       bool? spoiled,
+      bool? clearThumbnail,
+      String? thumbnail,
       bool? clearOwner,
       String? ownerID,
       List<String>? addHashtagIDs,
@@ -6142,6 +6664,8 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           Object? content = _undefined,
           Object? type = _undefined,
           Object? spoiled = _undefined,
+          Object? clearThumbnail = _undefined,
+          Object? thumbnail = _undefined,
           Object? clearOwner = _undefined,
           Object? ownerID = _undefined,
           Object? addHashtagIDs = _undefined,
@@ -6161,6 +6685,9 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
         if (content != _undefined) 'content': (content as String?),
         if (type != _undefined) 'type': (type as Enum$PostPostType?),
         if (spoiled != _undefined) 'spoiled': (spoiled as bool?),
+        if (clearThumbnail != _undefined)
+          'clearThumbnail': (clearThumbnail as bool?),
+        if (thumbnail != _undefined) 'thumbnail': (thumbnail as String?),
         if (clearOwner != _undefined) 'clearOwner': (clearOwner as bool?),
         if (ownerID != _undefined) 'ownerID': (ownerID as String?),
         if (addHashtagIDs != _undefined)
@@ -6195,6 +6722,8 @@ class _CopyWithStubImpl$Input$UpdatePostInput<TRes>
           String? content,
           Enum$PostPostType? type,
           bool? spoiled,
+          bool? clearThumbnail,
+          String? thumbnail,
           bool? clearOwner,
           String? ownerID,
           List<String>? addHashtagIDs,

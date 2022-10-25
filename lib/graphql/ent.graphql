@@ -101,6 +101,7 @@ input CreatePostInput {
   content: String!
   type: PostPostType!
   spoiled: Boolean!
+  thumbnail: String
   ownerID: ID!
   hashtagIDs: [ID!]
   workID: ID!
@@ -264,6 +265,7 @@ type Post implements Node {
   content: String!
   type: PostPostType!
   spoiled: Boolean!
+  thumbnail: String
   owner: User!
   hashtags: [Hashtag!]
   work: Work!
@@ -414,6 +416,24 @@ input PostWhereInput {
   """
   spoiled: Boolean
   spoiledNEQ: Boolean
+  """
+  thumbnail field predicates
+  """
+  thumbnail: String
+  thumbnailNEQ: String
+  thumbnailIn: [String!]
+  thumbnailNotIn: [String!]
+  thumbnailGT: String
+  thumbnailGTE: String
+  thumbnailLT: String
+  thumbnailLTE: String
+  thumbnailContains: String
+  thumbnailHasPrefix: String
+  thumbnailHasSuffix: String
+  thumbnailIsNil: Boolean
+  thumbnailNotNil: Boolean
+  thumbnailEqualFold: String
+  thumbnailContainsFold: String
   """
   owner edge predicates
   """
@@ -594,6 +614,8 @@ input UpdatePostInput {
   content: String
   type: PostPostType
   spoiled: Boolean
+  clearThumbnail: Boolean
+  thumbnail: String
   clearOwner: Boolean
   ownerID: ID
   addHashtagIDs: [ID!]

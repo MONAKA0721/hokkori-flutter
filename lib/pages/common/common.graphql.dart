@@ -12,6 +12,8 @@ class Fragment$LetterSummary {
       required this.id,
       required this.content,
       required this.createTime,
+      this.thumbnail,
+      required this.work,
       required this.owner,
       required this.category,
       this.likedUsers,
@@ -23,6 +25,8 @@ class Fragment$LetterSummary {
     final l$id = json['id'];
     final l$content = json['content'];
     final l$createTime = json['createTime'];
+    final l$thumbnail = json['thumbnail'];
+    final l$work = json['work'];
     final l$owner = json['owner'];
     final l$category = json['category'];
     final l$likedUsers = json['likedUsers'];
@@ -33,6 +37,9 @@ class Fragment$LetterSummary {
         id: (l$id as String),
         content: (l$content as String),
         createTime: (l$createTime as String),
+        thumbnail: (l$thumbnail as String?),
+        work: Fragment$LetterSummary$work.fromJson(
+            (l$work as Map<String, dynamic>)),
         owner: Fragment$LetterSummary$owner.fromJson(
             (l$owner as Map<String, dynamic>)),
         category: Fragment$LetterSummary$category.fromJson(
@@ -56,6 +63,10 @@ class Fragment$LetterSummary {
 
   final String createTime;
 
+  final String? thumbnail;
+
+  final Fragment$LetterSummary$work work;
+
   final Fragment$LetterSummary$owner owner;
 
   final Fragment$LetterSummary$category category;
@@ -76,6 +87,10 @@ class Fragment$LetterSummary {
     _resultData['content'] = l$content;
     final l$createTime = createTime;
     _resultData['createTime'] = l$createTime;
+    final l$thumbnail = thumbnail;
+    _resultData['thumbnail'] = l$thumbnail;
+    final l$work = work;
+    _resultData['work'] = l$work.toJson();
     final l$owner = owner;
     _resultData['owner'] = l$owner.toJson();
     final l$category = category;
@@ -96,6 +111,8 @@ class Fragment$LetterSummary {
     final l$id = id;
     final l$content = content;
     final l$createTime = createTime;
+    final l$thumbnail = thumbnail;
+    final l$work = work;
     final l$owner = owner;
     final l$category = category;
     final l$likedUsers = likedUsers;
@@ -106,6 +123,8 @@ class Fragment$LetterSummary {
       l$id,
       l$content,
       l$createTime,
+      l$thumbnail,
+      l$work,
       l$owner,
       l$category,
       l$likedUsers == null ? null : Object.hashAll(l$likedUsers.map((v) => v)),
@@ -143,6 +162,16 @@ class Fragment$LetterSummary {
     final l$createTime = createTime;
     final lOther$createTime = other.createTime;
     if (l$createTime != lOther$createTime) {
+      return false;
+    }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (l$thumbnail != lOther$thumbnail) {
+      return false;
+    }
+    final l$work = work;
+    final lOther$work = other.work;
+    if (l$work != lOther$work) {
       return false;
     }
     final l$owner = owner;
@@ -214,11 +243,14 @@ abstract class CopyWith$Fragment$LetterSummary<TRes> {
       String? id,
       String? content,
       String? createTime,
+      String? thumbnail,
+      Fragment$LetterSummary$work? work,
       Fragment$LetterSummary$owner? owner,
       Fragment$LetterSummary$category? category,
       List<Fragment$LetterSummary$likedUsers>? likedUsers,
       List<Fragment$LetterSummary$bookmarkedUsers>? bookmarkedUsers,
       String? $__typename});
+  CopyWith$Fragment$LetterSummary$work<TRes> get work;
   CopyWith$Fragment$LetterSummary$owner<TRes> get owner;
   CopyWith$Fragment$LetterSummary$category<TRes> get category;
   TRes likedUsers(
@@ -250,6 +282,8 @@ class _CopyWithImpl$Fragment$LetterSummary<TRes>
           Object? id = _undefined,
           Object? content = _undefined,
           Object? createTime = _undefined,
+          Object? thumbnail = _undefined,
+          Object? work = _undefined,
           Object? owner = _undefined,
           Object? category = _undefined,
           Object? likedUsers = _undefined,
@@ -266,6 +300,12 @@ class _CopyWithImpl$Fragment$LetterSummary<TRes>
           createTime: createTime == _undefined || createTime == null
               ? _instance.createTime
               : (createTime as String),
+          thumbnail: thumbnail == _undefined
+              ? _instance.thumbnail
+              : (thumbnail as String?),
+          work: work == _undefined || work == null
+              ? _instance.work
+              : (work as Fragment$LetterSummary$work),
           owner: owner == _undefined || owner == null
               ? _instance.owner
               : (owner as Fragment$LetterSummary$owner),
@@ -282,6 +322,12 @@ class _CopyWithImpl$Fragment$LetterSummary<TRes>
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
+  CopyWith$Fragment$LetterSummary$work<TRes> get work {
+    final local$work = _instance.work;
+    return CopyWith$Fragment$LetterSummary$work(
+        local$work, (e) => call(work: e));
+  }
+
   CopyWith$Fragment$LetterSummary$owner<TRes> get owner {
     final local$owner = _instance.owner;
     return CopyWith$Fragment$LetterSummary$owner(
@@ -327,12 +373,16 @@ class _CopyWithStubImpl$Fragment$LetterSummary<TRes>
           String? id,
           String? content,
           String? createTime,
+          String? thumbnail,
+          Fragment$LetterSummary$work? work,
           Fragment$LetterSummary$owner? owner,
           Fragment$LetterSummary$category? category,
           List<Fragment$LetterSummary$likedUsers>? likedUsers,
           List<Fragment$LetterSummary$bookmarkedUsers>? bookmarkedUsers,
           String? $__typename}) =>
       _res;
+  CopyWith$Fragment$LetterSummary$work<TRes> get work =>
+      CopyWith$Fragment$LetterSummary$work.stub(_res);
   CopyWith$Fragment$LetterSummary$owner<TRes> get owner =>
       CopyWith$Fragment$LetterSummary$owner.stub(_res);
   CopyWith$Fragment$LetterSummary$category<TRes> get category =>
@@ -371,6 +421,37 @@ const fragmentDefinitionLetterSummary = FragmentDefinitionNode(
           arguments: [],
           directives: [],
           selectionSet: null),
+      FieldNode(
+          name: NameNode(value: 'thumbnail'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null),
+      FieldNode(
+          name: NameNode(value: 'work'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            FieldNode(
+                name: NameNode(value: 'thumbnail'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null)
+          ])),
       FieldNode(
           name: NameNode(value: 'owner'),
           alias: null,
@@ -500,6 +581,124 @@ extension ClientExtension$Fragment$LetterSummary on graphql.GraphQLClient {
         optimistic: optimistic);
     return result == null ? null : Fragment$LetterSummary.fromJson(result);
   }
+}
+
+class Fragment$LetterSummary$work {
+  Fragment$LetterSummary$work(
+      {required this.id, this.thumbnail, required this.$__typename});
+
+  factory Fragment$LetterSummary$work.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$thumbnail = json['thumbnail'];
+    final l$$__typename = json['__typename'];
+    return Fragment$LetterSummary$work(
+        id: (l$id as String),
+        thumbnail: (l$thumbnail as String?),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String? thumbnail;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$thumbnail = thumbnail;
+    _resultData['thumbnail'] = l$thumbnail;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$thumbnail = thumbnail;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$thumbnail, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$LetterSummary$work) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (l$thumbnail != lOther$thumbnail) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$LetterSummary$work
+    on Fragment$LetterSummary$work {
+  CopyWith$Fragment$LetterSummary$work<Fragment$LetterSummary$work>
+      get copyWith => CopyWith$Fragment$LetterSummary$work(this, (i) => i);
+}
+
+abstract class CopyWith$Fragment$LetterSummary$work<TRes> {
+  factory CopyWith$Fragment$LetterSummary$work(
+          Fragment$LetterSummary$work instance,
+          TRes Function(Fragment$LetterSummary$work) then) =
+      _CopyWithImpl$Fragment$LetterSummary$work;
+
+  factory CopyWith$Fragment$LetterSummary$work.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$LetterSummary$work;
+
+  TRes call({String? id, String? thumbnail, String? $__typename});
+}
+
+class _CopyWithImpl$Fragment$LetterSummary$work<TRes>
+    implements CopyWith$Fragment$LetterSummary$work<TRes> {
+  _CopyWithImpl$Fragment$LetterSummary$work(this._instance, this._then);
+
+  final Fragment$LetterSummary$work _instance;
+
+  final TRes Function(Fragment$LetterSummary$work) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? id = _undefined,
+          Object? thumbnail = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Fragment$LetterSummary$work(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          thumbnail: thumbnail == _undefined
+              ? _instance.thumbnail
+              : (thumbnail as String?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Fragment$LetterSummary$work<TRes>
+    implements CopyWith$Fragment$LetterSummary$work<TRes> {
+  _CopyWithStubImpl$Fragment$LetterSummary$work(this._res);
+
+  TRes _res;
+
+  call({String? id, String? thumbnail, String? $__typename}) => _res;
 }
 
 class Fragment$LetterSummary$owner {
