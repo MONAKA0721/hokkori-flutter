@@ -31,16 +31,12 @@ class HomeWorks extends HookWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
-            children: const [
-              Icon(
-                Icons.favorite_border,
-                size: 30,
-                color: primaryColor,
-              ),
-              SizedBox(
+            children: [
+              Image.asset('assets/work.png'),
+              const SizedBox(
                 width: 10,
               ),
-              Text(
+              const Text(
                 "おすすめ作品",
                 style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
               ),
@@ -85,11 +81,11 @@ class Work extends StatelessWidget {
       SizedBox(
           width: width,
           child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text(
-                  '★${work.title}',
+                  work.title,
                   style: const TextStyle(fontSize: 12, color: blueButtonColor),
                 ),
                 const Icon(

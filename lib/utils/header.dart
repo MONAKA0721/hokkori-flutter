@@ -46,7 +46,7 @@ class Header extends ConsumerWidget {
             SizedBox(
               width: 50,
               child: IconButton(
-                  icon: SvgPicture.asset('assets/bell.svg'), onPressed: () {}),
+                  icon: Image.asset('assets/bell.png'), onPressed: () {}),
             )
           ],
         ));
