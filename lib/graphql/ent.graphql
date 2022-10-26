@@ -121,6 +121,8 @@ input CreateUserInput {
   postIDs: [ID!]
   likedPostIDs: [ID!]
   bookmarkedPostIDs: [ID!]
+  followerIDs: [ID!]
+  followingIDs: [ID!]
 }
 """
 CreateWorkInput is used for create Work object.
@@ -647,6 +649,10 @@ input UpdateUserInput {
   removeLikedPostIDs: [ID!]
   addBookmarkedPostIDs: [ID!]
   removeBookmarkedPostIDs: [ID!]
+  addFollowerIDs: [ID!]
+  removeFollowerIDs: [ID!]
+  addFollowingIDs: [ID!]
+  removeFollowingIDs: [ID!]
 }
 """
 UpdateWorkInput is used for update Work object.
@@ -668,6 +674,8 @@ type User implements Node {
   posts: [Post!]
   likedPosts: [Post!]
   bookmarkedPosts: [Post!]
+  followers: [User!]
+  following: [User!]
 }
 """
 UserWhereInput is used for filtering User objects.
@@ -773,6 +781,16 @@ input UserWhereInput {
   """
   hasBookmarkedPosts: Boolean
   hasBookmarkedPostsWith: [PostWhereInput!]
+  """
+  followers edge predicates
+  """
+  hasFollowers: Boolean
+  hasFollowersWith: [UserWhereInput!]
+  """
+  following edge predicates
+  """
+  hasFollowing: Boolean
+  hasFollowingWith: [UserWhereInput!]
 }
 type Work implements Node {
   id: ID!

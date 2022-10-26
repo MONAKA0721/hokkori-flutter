@@ -11,12 +11,14 @@ class Letters extends HookWidget {
   final List<Input$PostWhereInput>? or;
   final List<Input$CategoryWhereInput>? hasCategoryWith;
   final bool hasHeading;
+  final bool hasFetchMoreButton;
   const Letters(
       {super.key,
       this.first,
       this.or,
       this.hasCategoryWith,
-      this.hasHeading = true});
+      this.hasHeading = true,
+      this.hasFetchMoreButton = true});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +63,7 @@ class Letters extends HookWidget {
               letter: letter!.node!,
               optimistic: result.source == QueryResultSource.optimisticResult))
           .toList(),
-      hasNextPage!
+      hasFetchMoreButton && hasNextPage!
           ? FetchMoreButton(
               first: first,
               or: or,

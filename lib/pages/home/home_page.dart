@@ -5,6 +5,7 @@ import 'package:hokkori/pages/common/common.graphql.dart';
 import 'package:hokkori/pages/common/letters.dart';
 import 'package:hokkori/pages/common/praise.dart';
 import 'package:hokkori/pages/common/praises.dart';
+import 'package:hokkori/pages/home/letter_page.dart';
 import 'package:hokkori/pages/home/works.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/header.dart';
@@ -25,9 +26,9 @@ class HomePageNavigator extends StatelessWidget {
           case '/':
             builder = (BuildContext context) => const HomePage();
             break;
-          // case '/detail':
-          //   builder = (BuildContext context) => const DetailPage();
-          //   break;
+          case '/letter':
+            builder = (BuildContext context) => const LetterPage();
+            break;
           default:
             throw Exception('Invalid route: ${settings.name}');
         }
@@ -83,7 +84,44 @@ class HomePage extends HookWidget {
                   const HomeWorks(),
                   const Padding(
                       padding: EdgeInsets.only(left: 16, right: 16, top: 40),
-                      child: Letters(first: 3)),
+                      child: Letters(
+                        first: 3,
+                        hasFetchMoreButton: false,
+                      )),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    SizedBox(
+                        width: 280,
+                        child: OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 16, horizontal: 20),
+                              backgroundColor: blueButtonColor,
+                              side: const BorderSide(
+                                  color: blueButtonColor, width: 2),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pushNamed('/letter');
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                SizedBox(width: 24),
+                                Text(
+                                  "もっと見る",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 16),
+                                ),
+                                Icon(Icons.expand_circle_down,
+                                    color: Colors.white)
+                              ],
+                            )))
+                  ]),
                   const SizedBox(
                     height: 20,
                   ),
