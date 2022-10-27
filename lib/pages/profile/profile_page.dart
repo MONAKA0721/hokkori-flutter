@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/graphql/ent.graphql.dart';
+import 'package:hokkori/graphql/schema.graphql.dart';
 import 'package:hokkori/pages/common/letters.dart';
 import 'package:hokkori/pages/common/praises.dart';
 import 'package:hokkori/pages/profile/posted_works.dart';
@@ -9,6 +12,12 @@ import 'package:hokkori/pages/profile/profile_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+class ProfilePageArguments {
+  final String userID;
+
+  ProfilePageArguments(this.userID);
+}
 
 class ProfilePageNavigator extends StatelessWidget {
   const ProfilePageNavigator({Key? key}) : super(key: key);
@@ -35,11 +44,34 @@ class ProfilePageNavigator extends StatelessWidget {
   }
 }
 
-class ProfilePage extends ConsumerWidget {
+class ProfilePage extends HookConsumerWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final arguments = ModalRoute.of(context)!.settings.arguments;
+    final args = arguments != null ? arguments as ProfilePageArguments : null;
+    final userID = args == null ? ref.watch(userProvider).id : args.userID;
+
+    final result = useQuery$Profile(Options$Query$Profile(
+        fetchPolicy: FetchPolicy.networkOnly,
+        variables: Variables$Query$Profile(
+          userID: userID,
+        ))).result;
+    if (result.hasException) {
+      return Text(result.exception.toString());
+    }
+    if (result.isLoading) {
+      return const Center(
+        child: CircularProgressIndicator(
+          color: primaryColor,
+        ),
+      );
+    }
+
+    final user = result.parsedData?.user as Query$Profile$user$$User;
+    final optimistic = result.source == QueryResultSource.optimisticResult;
+
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -52,40 +84,88 @@ class ProfilePage extends ConsumerWidget {
               color: Colors.black,
             ),
             onPressed: () {
-              Navigator.of(context, rootNavigator: true).pop();
+              args == null
+                  ? Navigator.of(context, rootNavigator: true).pop()
+                  : Navigator.of(context).pop();
             },
           ),
           title: Text(
-            ref.watch(userProvider).username,
+            user.username!,
             style: const TextStyle(color: Colors.black),
           ),
         ),
-        body: const ProfileBody());
+        body: ProfileBody(user: user, optimistic: optimistic));
   }
 }
 
-class ProfileBody extends HookConsumerWidget {
-  const ProfileBody({Key? key}) : super(key: key);
+class ProfileBody extends ConsumerWidget {
+  final Query$Profile$user$$User user;
+  final bool optimistic;
+  const ProfileBody({Key? key, required this.user, required this.optimistic})
+      : super(key: key);
+
+  Map<String, dynamic>? extractUserData(Map<String, Object?> data) {
+    final action = data['action'] as Map<String, dynamic>?;
+    if (action == null) {
+      return null;
+    }
+    return action['user'] as Map<String, dynamic>?;
+  }
+
+  FutureOr<void> Function(GraphQLDataProxy, QueryResult?)? get update =>
+      (cache, result) {
+        if (result!.hasException) {
+          return;
+        } else {
+          final updated = {
+            ...user.toJson(),
+            ...extractUserData(result.data!)!,
+          };
+          cache.writeFragment(
+            Fragment(
+              document: gql(
+                '''
+                  fragment fields on User {
+                    id
+                    following
+                    followers
+                  }
+                ''',
+              ),
+            ).asRequest(idFields: {
+              '__typename': updated['__typename'],
+              'id': updated['id'],
+            }),
+            data: updated,
+          );
+        }
+      };
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final result = useQuery$MyInfo(Options$Query$MyInfo(
-        fetchPolicy: FetchPolicy.networkOnly,
-        variables: Variables$Query$MyInfo(
-          userID: ref.watch(userProvider).id,
-        ))).result;
-    if (result.hasException) {
-      return Text(result.exception.toString());
+    Map<String, dynamic> expectedFollowResult(bool followed) {
+      final followers = user.followers;
+      if (followed) {
+        followers!.removeWhere((user) => user.id == ref.watch(userProvider).id);
+      } else {
+        followers!.add(Query$Profile$user$$User$followers(
+            $__typename: "User", id: ref.watch(userProvider).id));
+      }
+
+      return <String, dynamic>{
+        'action': {
+          'user': {
+            '__typename': 'User',
+            'id': user.id,
+            'followers': followers,
+          }
+        }
+      };
     }
-    if (result.isLoading) {
-      return const Center(
-        child: CircularProgressIndicator(
-          color: primaryColor,
-        ),
-      );
-    }
-    final postCount = result.parsedData?.posts.totalCount;
-    final avatarURL = ref.watch(userProvider).avatarURL;
+
+    final followed = user.followers!
+        .map((user) => user.id)
+        .contains(ref.watch(userProvider).id);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -96,16 +176,17 @@ class ProfileBody extends HookConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              avatarURL != ""
+              user.avatarURL != ""
                   ? CircleAvatar(
-                      maxRadius: 40, backgroundImage: NetworkImage(avatarURL))
+                      maxRadius: 40,
+                      backgroundImage: NetworkImage(user.avatarURL!))
                   : const CircleAvatar(
                       maxRadius: 40,
                       backgroundImage: AssetImage("assets/noimage.png")),
               Column(
                 children: [
                   Text(
-                    postCount.toString(),
+                    user.posts!.length.toString(),
                     style: const TextStyle(
                         fontSize: 25, fontWeight: FontWeight.bold),
                   ),
@@ -113,19 +194,19 @@ class ProfileBody extends HookConsumerWidget {
                 ],
               ),
               Column(
-                children: const [
-                  Text("75",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                  Text("フォロー")
+                children: [
+                  Text(user.following!.length.toString(),
+                      style: const TextStyle(
+                          fontSize: 25, fontWeight: FontWeight.bold)),
+                  const Text("フォロー")
                 ],
               ),
               Column(
-                children: const [
-                  Text("30",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                  Text("フォロワー")
+                children: [
+                  Text(user.followers!.length.toString(),
+                      style: const TextStyle(
+                          fontSize: 25, fontWeight: FontWeight.bold)),
+                  const Text("フォロワー")
                 ],
               )
             ],
@@ -134,35 +215,150 @@ class ProfileBody extends HookConsumerWidget {
             height: 10,
           ),
           Text(
-            ref.watch(userProvider).name,
+            user.name,
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           const SizedBox(
             height: 10,
           ),
-          Text(ref.watch(userProvider).profile),
+          Text(user.profile!),
           const SizedBox(
             height: 10,
           ),
-          OutlinedButton(
-            style: OutlinedButton.styleFrom(
-                side: const BorderSide(color: Color(0xffF3F2F2)),
-                backgroundColor: const Color(0xffF3F2F2),
-                fixedSize: const Size.fromWidth(double.maxFinite)),
-            onPressed: () {
-              Navigator.of(context).pushNamed('/edit');
-            },
-            child: const Text(
-              "プロフィールを編集",
-              style: TextStyle(color: Colors.black),
-            ),
-          ),
+          user.id == ref.watch(userProvider).id
+              ? const ProfileEditButton()
+              : followed
+                  ? UnfollowButton(
+                      expectedFollowResult: expectedFollowResult,
+                      userID: user.id,
+                      update: update,
+                      optimistic: optimistic)
+                  : FollowButton(
+                      expectedFollowResult: expectedFollowResult,
+                      userID: user.id,
+                      update: update,
+                      optimistic: optimistic),
           const SizedBox(
             height: 20,
           ),
           const PostedItems()
         ],
       )),
+    );
+  }
+}
+
+class ProfileEditButton extends StatelessWidget {
+  const ProfileEditButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          side: const BorderSide(color: Color(0xffF3F2F2)),
+          backgroundColor: const Color(0xffF3F2F2),
+          fixedSize: const Size.fromWidth(double.maxFinite)),
+      onPressed: () {
+        Navigator.of(context).pushNamed('/edit');
+      },
+      child: const Text(
+        "プロフィールを編集",
+        style: TextStyle(color: Colors.black),
+      ),
+    );
+  }
+}
+
+class FollowButton extends HookConsumerWidget {
+  final Map<String, dynamic> Function(bool) expectedFollowResult;
+  final FutureOr<void> Function(GraphQLDataProxy, QueryResult?)? update;
+  final String userID;
+  final bool optimistic;
+  const FollowButton(
+      {Key? key,
+      required this.expectedFollowResult,
+      required this.userID,
+      required this.update,
+      required this.optimistic})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final followUserMutation = useMutation$FollowUser(
+        WidgetOptions$Mutation$FollowUser(update: update));
+
+    follow() {
+      followUserMutation.runMutation(
+          Variables$Mutation$FollowUser(
+              input: Input$FollowUserInput(
+                  userID: userID, followerID: ref.watch(userProvider).id)),
+          optimisticResult: expectedFollowResult(false));
+    }
+
+    final anyFollowLoading = followUserMutation.result.isLoading || optimistic;
+
+    return OutlinedButton(
+      style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          side: const BorderSide(color: blueButtonColor),
+          backgroundColor: blueButtonColor,
+          fixedSize: const Size.fromWidth(double.maxFinite)),
+      onPressed: anyFollowLoading ? null : follow,
+      child: const Text(
+        "フォローする",
+        style: TextStyle(color: Colors.white),
+      ),
+    );
+  }
+}
+
+class UnfollowButton extends HookConsumerWidget {
+  final Map<String, dynamic> Function(bool) expectedFollowResult;
+  final FutureOr<void> Function(GraphQLDataProxy, QueryResult?)? update;
+  final String userID;
+  final bool optimistic;
+  const UnfollowButton(
+      {Key? key,
+      required this.expectedFollowResult,
+      required this.update,
+      required this.userID,
+      required this.optimistic})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final unfollowUserMutation = useMutation$UnfollowUser(
+        WidgetOptions$Mutation$UnfollowUser(update: update));
+
+    unfollow() {
+      unfollowUserMutation.runMutation(
+          Variables$Mutation$UnfollowUser(
+              input: Input$UnfollowUserInput(
+                  userID: userID, followerID: ref.watch(userProvider).id)),
+          optimisticResult: expectedFollowResult(true));
+    }
+
+    final anyFollowLoading =
+        unfollowUserMutation.result.isLoading || optimistic;
+
+    return OutlinedButton(
+      style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          side: const BorderSide(color: blueButtonColor),
+          backgroundColor: Colors.white,
+          fixedSize: const Size.fromWidth(double.maxFinite)),
+      onPressed: anyFollowLoading ? null : unfollow,
+      child: const Text(
+        "フォロー中",
+        style: TextStyle(color: blueButtonColor),
+      ),
     );
   }
 }

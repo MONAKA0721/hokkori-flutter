@@ -535,3 +535,272 @@ class _CopyWithStubImpl$Input$UnbookmarkPostInput<TRes>
 
   call({String? clientMutationId, String? userID, String? postID}) => _res;
 }
+
+class Input$FollowUserInput {
+  factory Input$FollowUserInput(
+          {String? clientMutationId,
+          required String userID,
+          required String followerID}) =>
+      Input$FollowUserInput._({
+        if (clientMutationId != null) r'clientMutationId': clientMutationId,
+        r'userID': userID,
+        r'followerID': followerID,
+      });
+
+  Input$FollowUserInput._(this._$data);
+
+  factory Input$FollowUserInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('clientMutationId')) {
+      final l$clientMutationId = data['clientMutationId'];
+      result$data['clientMutationId'] = (l$clientMutationId as String?);
+    }
+    final l$userID = data['userID'];
+    result$data['userID'] = (l$userID as String);
+    final l$followerID = data['followerID'];
+    result$data['followerID'] = (l$followerID as String);
+    return Input$FollowUserInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get clientMutationId => (_$data['clientMutationId'] as String?);
+  String get userID => (_$data['userID'] as String);
+  String get followerID => (_$data['followerID'] as String);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('clientMutationId')) {
+      final l$clientMutationId = clientMutationId;
+      result$data['clientMutationId'] = l$clientMutationId;
+    }
+    final l$userID = userID;
+    result$data['userID'] = l$userID;
+    final l$followerID = followerID;
+    result$data['followerID'] = l$followerID;
+    return result$data;
+  }
+
+  CopyWith$Input$FollowUserInput<Input$FollowUserInput> get copyWith =>
+      CopyWith$Input$FollowUserInput(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Input$FollowUserInput) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$clientMutationId = clientMutationId;
+    final lOther$clientMutationId = other.clientMutationId;
+    if (_$data.containsKey('clientMutationId') !=
+        other._$data.containsKey('clientMutationId')) {
+      return false;
+    }
+    if (l$clientMutationId != lOther$clientMutationId) {
+      return false;
+    }
+    final l$userID = userID;
+    final lOther$userID = other.userID;
+    if (l$userID != lOther$userID) {
+      return false;
+    }
+    final l$followerID = followerID;
+    final lOther$followerID = other.followerID;
+    if (l$followerID != lOther$followerID) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$clientMutationId = clientMutationId;
+    final l$userID = userID;
+    final l$followerID = followerID;
+    return Object.hashAll([
+      _$data.containsKey('clientMutationId') ? l$clientMutationId : const {},
+      l$userID,
+      l$followerID
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$FollowUserInput<TRes> {
+  factory CopyWith$Input$FollowUserInput(Input$FollowUserInput instance,
+          TRes Function(Input$FollowUserInput) then) =
+      _CopyWithImpl$Input$FollowUserInput;
+
+  factory CopyWith$Input$FollowUserInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$FollowUserInput;
+
+  TRes call({String? clientMutationId, String? userID, String? followerID});
+}
+
+class _CopyWithImpl$Input$FollowUserInput<TRes>
+    implements CopyWith$Input$FollowUserInput<TRes> {
+  _CopyWithImpl$Input$FollowUserInput(this._instance, this._then);
+
+  final Input$FollowUserInput _instance;
+
+  final TRes Function(Input$FollowUserInput) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? clientMutationId = _undefined,
+          Object? userID = _undefined,
+          Object? followerID = _undefined}) =>
+      _then(Input$FollowUserInput._({
+        ..._instance._$data,
+        if (clientMutationId != _undefined)
+          'clientMutationId': (clientMutationId as String?),
+        if (userID != _undefined && userID != null)
+          'userID': (userID as String),
+        if (followerID != _undefined && followerID != null)
+          'followerID': (followerID as String),
+      }));
+}
+
+class _CopyWithStubImpl$Input$FollowUserInput<TRes>
+    implements CopyWith$Input$FollowUserInput<TRes> {
+  _CopyWithStubImpl$Input$FollowUserInput(this._res);
+
+  TRes _res;
+
+  call({String? clientMutationId, String? userID, String? followerID}) => _res;
+}
+
+class Input$UnfollowUserInput {
+  factory Input$UnfollowUserInput(
+          {String? clientMutationId,
+          required String userID,
+          required String followerID}) =>
+      Input$UnfollowUserInput._({
+        if (clientMutationId != null) r'clientMutationId': clientMutationId,
+        r'userID': userID,
+        r'followerID': followerID,
+      });
+
+  Input$UnfollowUserInput._(this._$data);
+
+  factory Input$UnfollowUserInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('clientMutationId')) {
+      final l$clientMutationId = data['clientMutationId'];
+      result$data['clientMutationId'] = (l$clientMutationId as String?);
+    }
+    final l$userID = data['userID'];
+    result$data['userID'] = (l$userID as String);
+    final l$followerID = data['followerID'];
+    result$data['followerID'] = (l$followerID as String);
+    return Input$UnfollowUserInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get clientMutationId => (_$data['clientMutationId'] as String?);
+  String get userID => (_$data['userID'] as String);
+  String get followerID => (_$data['followerID'] as String);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('clientMutationId')) {
+      final l$clientMutationId = clientMutationId;
+      result$data['clientMutationId'] = l$clientMutationId;
+    }
+    final l$userID = userID;
+    result$data['userID'] = l$userID;
+    final l$followerID = followerID;
+    result$data['followerID'] = l$followerID;
+    return result$data;
+  }
+
+  CopyWith$Input$UnfollowUserInput<Input$UnfollowUserInput> get copyWith =>
+      CopyWith$Input$UnfollowUserInput(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Input$UnfollowUserInput) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$clientMutationId = clientMutationId;
+    final lOther$clientMutationId = other.clientMutationId;
+    if (_$data.containsKey('clientMutationId') !=
+        other._$data.containsKey('clientMutationId')) {
+      return false;
+    }
+    if (l$clientMutationId != lOther$clientMutationId) {
+      return false;
+    }
+    final l$userID = userID;
+    final lOther$userID = other.userID;
+    if (l$userID != lOther$userID) {
+      return false;
+    }
+    final l$followerID = followerID;
+    final lOther$followerID = other.followerID;
+    if (l$followerID != lOther$followerID) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$clientMutationId = clientMutationId;
+    final l$userID = userID;
+    final l$followerID = followerID;
+    return Object.hashAll([
+      _$data.containsKey('clientMutationId') ? l$clientMutationId : const {},
+      l$userID,
+      l$followerID
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$UnfollowUserInput<TRes> {
+  factory CopyWith$Input$UnfollowUserInput(Input$UnfollowUserInput instance,
+          TRes Function(Input$UnfollowUserInput) then) =
+      _CopyWithImpl$Input$UnfollowUserInput;
+
+  factory CopyWith$Input$UnfollowUserInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$UnfollowUserInput;
+
+  TRes call({String? clientMutationId, String? userID, String? followerID});
+}
+
+class _CopyWithImpl$Input$UnfollowUserInput<TRes>
+    implements CopyWith$Input$UnfollowUserInput<TRes> {
+  _CopyWithImpl$Input$UnfollowUserInput(this._instance, this._then);
+
+  final Input$UnfollowUserInput _instance;
+
+  final TRes Function(Input$UnfollowUserInput) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? clientMutationId = _undefined,
+          Object? userID = _undefined,
+          Object? followerID = _undefined}) =>
+      _then(Input$UnfollowUserInput._({
+        ..._instance._$data,
+        if (clientMutationId != _undefined)
+          'clientMutationId': (clientMutationId as String?),
+        if (userID != _undefined && userID != null)
+          'userID': (userID as String),
+        if (followerID != _undefined && followerID != null)
+          'followerID': (followerID as String),
+      }));
+}
+
+class _CopyWithStubImpl$Input$UnfollowUserInput<TRes>
+    implements CopyWith$Input$UnfollowUserInput<TRes> {
+  _CopyWithStubImpl$Input$UnfollowUserInput(this._res);
+
+  TRes _res;
+
+  call({String? clientMutationId, String? userID, String? followerID}) => _res;
+}

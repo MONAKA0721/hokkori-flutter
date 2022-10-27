@@ -14,6 +14,8 @@ type Mutation {
   unlikePost(input: UnlikePostInput!): UnlikePostPayload!
   bookmarkPost(input: BookmarkPostInput!): BookmarkPostPayload!
   unbookmarkPost(input: UnbookmarkPostInput!): UnbookmarkPostPayload!
+  followUser(input: FollowUserInput!): FollowUserPayload!
+  unfollowUser(input: UnfollowUserInput!): UnfollowUserPayload!
 }
 
 extend type Query {
@@ -62,4 +64,26 @@ input UnbookmarkPostInput {
 type UnbookmarkPostPayload {
   clientMutationId: String
   post: Post
+}
+
+input FollowUserInput {
+  clientMutationId: String
+  userID: ID!
+  followerID: ID!
+}
+
+type FollowUserPayload {
+  clientMutationId: String
+  user: User
+}
+
+input UnfollowUserInput {
+  clientMutationId: String
+  userID: ID!
+  followerID: ID!
+}
+
+type UnfollowUserPayload {
+  clientMutationId: String
+  user: User
 }

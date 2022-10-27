@@ -6,6 +6,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/graphql/schema.graphql.dart';
 import 'package:hokkori/pages/common/common.graphql.dart';
 import 'package:hokkori/pages/home/hashtag.dart';
+import 'package:hokkori/pages/profile/profile_page.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -219,12 +220,18 @@ class Praise extends HookConsumerWidget {
               const SizedBox(
                 width: 5,
               ),
-              Text(
-                praise.owner.name,
-                style: const TextStyle(
-                    color: Colors.black87,
-                    decoration: TextDecoration.underline,
-                    decorationThickness: 2),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed('/profile',
+                      arguments: ProfilePageArguments(praise.owner.id));
+                },
+                child: Text(
+                  praise.owner.name,
+                  style: const TextStyle(
+                      color: Colors.black87,
+                      decoration: TextDecoration.underline,
+                      decorationThickness: 2),
+                ),
               ),
               const Spacer(),
               SizedBox(
