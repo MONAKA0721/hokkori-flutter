@@ -210,29 +210,35 @@ class Praise extends HookConsumerWidget {
           ),
           Row(
             children: [
-              praise.owner.avatarURL != ""
-                  ? CircleAvatar(
-                      maxRadius: 12,
-                      backgroundImage: NetworkImage(praise.owner.avatarURL!))
-                  : const CircleAvatar(
-                      maxRadius: 12,
-                      backgroundImage: AssetImage("assets/noimage.png")),
-              const SizedBox(
-                width: 5,
-              ),
               GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushNamed('/profile',
-                      arguments: ProfilePageArguments(praise.owner.id));
-                },
-                child: Text(
-                  praise.owner.name,
-                  style: const TextStyle(
-                      color: Colors.black87,
-                      decoration: TextDecoration.underline,
-                      decorationThickness: 2),
-                ),
-              ),
+                  onTap: () {
+                    Navigator.of(context).pushNamed('/profile',
+                        arguments: ProfilePageArguments(praise.owner.id));
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      praise.owner.avatarURL != ""
+                          ? CircleAvatar(
+                              maxRadius: 12,
+                              backgroundImage:
+                                  NetworkImage(praise.owner.avatarURL!))
+                          : const CircleAvatar(
+                              maxRadius: 12,
+                              backgroundImage:
+                                  AssetImage("assets/noimage.png")),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        praise.owner.name,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            decoration: TextDecoration.underline,
+                            decorationThickness: 2),
+                      )
+                    ],
+                  )),
               const Spacer(),
               SizedBox(
                 width: 36,

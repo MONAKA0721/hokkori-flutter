@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/graphql/schema.graphql.dart';
 import 'package:hokkori/pages/common/common.graphql.dart';
+import 'package:hokkori/pages/profile/profile_page.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -232,23 +233,35 @@ class Letter extends HookConsumerWidget {
           ),
           Row(
             children: [
-              letter.owner.avatarURL != ""
-                  ? CircleAvatar(
-                      maxRadius: 12,
-                      backgroundImage: NetworkImage(letter.owner.avatarURL!))
-                  : const CircleAvatar(
-                      maxRadius: 12,
-                      backgroundImage: AssetImage("assets/noimage.png")),
-              const SizedBox(
-                width: 5,
-              ),
-              Text(
-                letter.owner.name,
-                style: const TextStyle(
-                    color: Colors.black87,
-                    decoration: TextDecoration.underline,
-                    decorationThickness: 2),
-              ),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed('/profile',
+                        arguments: ProfilePageArguments(letter.owner.id));
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      letter.owner.avatarURL != ""
+                          ? CircleAvatar(
+                              maxRadius: 12,
+                              backgroundImage:
+                                  NetworkImage(letter.owner.avatarURL!))
+                          : const CircleAvatar(
+                              maxRadius: 12,
+                              backgroundImage:
+                                  AssetImage("assets/noimage.png")),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        letter.owner.name,
+                        style: const TextStyle(
+                            color: Colors.black87,
+                            decoration: TextDecoration.underline,
+                            decorationThickness: 2),
+                      )
+                    ],
+                  )),
               const Spacer(),
               SizedBox(
                 width: 36,
