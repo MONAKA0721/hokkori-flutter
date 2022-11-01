@@ -2285,6 +2285,203 @@ class _CopyWithStubImpl$Fragment$PraiseSummary$bookmarkedUsers<TRes>
   call({String? id, String? $__typename}) => _res;
 }
 
+class Fragment$WorkSummary {
+  Fragment$WorkSummary(
+      {required this.id,
+      required this.title,
+      this.thumbnail,
+      required this.$__typename});
+
+  factory Fragment$WorkSummary.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$title = json['title'];
+    final l$thumbnail = json['thumbnail'];
+    final l$$__typename = json['__typename'];
+    return Fragment$WorkSummary(
+        id: (l$id as String),
+        title: (l$title as String),
+        thumbnail: (l$thumbnail as String?),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String title;
+
+  final String? thumbnail;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$thumbnail = thumbnail;
+    _resultData['thumbnail'] = l$thumbnail;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$thumbnail = thumbnail;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$title, l$thumbnail, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$WorkSummary) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (l$thumbnail != lOther$thumbnail) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$WorkSummary on Fragment$WorkSummary {
+  CopyWith$Fragment$WorkSummary<Fragment$WorkSummary> get copyWith =>
+      CopyWith$Fragment$WorkSummary(this, (i) => i);
+}
+
+abstract class CopyWith$Fragment$WorkSummary<TRes> {
+  factory CopyWith$Fragment$WorkSummary(Fragment$WorkSummary instance,
+          TRes Function(Fragment$WorkSummary) then) =
+      _CopyWithImpl$Fragment$WorkSummary;
+
+  factory CopyWith$Fragment$WorkSummary.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$WorkSummary;
+
+  TRes call(
+      {String? id, String? title, String? thumbnail, String? $__typename});
+}
+
+class _CopyWithImpl$Fragment$WorkSummary<TRes>
+    implements CopyWith$Fragment$WorkSummary<TRes> {
+  _CopyWithImpl$Fragment$WorkSummary(this._instance, this._then);
+
+  final Fragment$WorkSummary _instance;
+
+  final TRes Function(Fragment$WorkSummary) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? id = _undefined,
+          Object? title = _undefined,
+          Object? thumbnail = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Fragment$WorkSummary(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          title: title == _undefined || title == null
+              ? _instance.title
+              : (title as String),
+          thumbnail: thumbnail == _undefined
+              ? _instance.thumbnail
+              : (thumbnail as String?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Fragment$WorkSummary<TRes>
+    implements CopyWith$Fragment$WorkSummary<TRes> {
+  _CopyWithStubImpl$Fragment$WorkSummary(this._res);
+
+  TRes _res;
+
+  call({String? id, String? title, String? thumbnail, String? $__typename}) =>
+      _res;
+}
+
+const fragmentDefinitionWorkSummary = FragmentDefinitionNode(
+    name: NameNode(value: 'WorkSummary'),
+    typeCondition: TypeConditionNode(
+        on: NamedTypeNode(name: NameNode(value: 'Work'), isNonNull: false)),
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+          name: NameNode(value: 'id'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null),
+      FieldNode(
+          name: NameNode(value: 'title'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null),
+      FieldNode(
+          name: NameNode(value: 'thumbnail'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null),
+      FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null)
+    ]));
+const documentNodeFragmentWorkSummary = DocumentNode(definitions: [
+  fragmentDefinitionWorkSummary,
+]);
+
+extension ClientExtension$Fragment$WorkSummary on graphql.GraphQLClient {
+  void writeFragment$WorkSummary(
+          {required Fragment$WorkSummary data,
+          required Map<String, dynamic> idFields,
+          bool broadcast = true}) =>
+      this.writeFragment(
+          graphql.FragmentRequest(
+              idFields: idFields,
+              fragment: const graphql.Fragment(
+                  fragmentName: 'WorkSummary',
+                  document: documentNodeFragmentWorkSummary)),
+          data: data.toJson(),
+          broadcast: broadcast);
+  Fragment$WorkSummary? readFragment$WorkSummary(
+      {required Map<String, dynamic> idFields, bool optimistic = true}) {
+    final result = this.readFragment(
+        graphql.FragmentRequest(
+            idFields: idFields,
+            fragment: const graphql.Fragment(
+                fragmentName: 'WorkSummary',
+                document: documentNodeFragmentWorkSummary)),
+        optimistic: optimistic);
+    return result == null ? null : Fragment$WorkSummary.fromJson(result);
+  }
+}
+
 class Variables$Query$Praises {
   factory Variables$Query$Praises(
           {int? first,

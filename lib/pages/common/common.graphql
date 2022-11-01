@@ -50,6 +50,12 @@ fragment PraiseSummary on Post {
   }
 }
 
+fragment WorkSummary on Work {
+  id
+  title
+  thumbnail
+}
+
 query Praises(
   $first: Int
   $after: Cursor

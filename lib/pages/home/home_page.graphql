@@ -2,9 +2,7 @@ query HomeWorks($first: Int) {
   works(first: $first) {
     edges {
       node {
-        id
-        title
-        thumbnail
+        ...WorkSummary
       }
     }
   }

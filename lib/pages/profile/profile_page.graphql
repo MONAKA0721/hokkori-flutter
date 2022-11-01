@@ -46,3 +46,34 @@ mutation UnfollowUser($input: UnfollowUserInput!) {
     }
   }
 }
+
+query PostedWorks($where: WorkWhereInput) {
+  works(where: $where) {
+    edges {
+      node {
+        ...WorkSummary
+      }
+    }
+  }
+}
+
+query BookmarkedPosts($first: Int!, $after: Cursor, $userID: ID!) {
+  posts(
+    first: $first
+    after: $after
+    orderBy: { direction: DESC, field: CREATE_TIME }
+    where: { hasBookmarkedUsersWith: { id: $userID } }
+  ) {
+    edges {
+      node {
+        type
+        ...PraiseSummary
+        ...LetterSummary
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}

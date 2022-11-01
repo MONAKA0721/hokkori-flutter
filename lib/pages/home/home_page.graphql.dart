@@ -1,3 +1,4 @@
+import '../common/common.graphql.dart';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
@@ -238,24 +239,9 @@ const documentNodeQueryHomeWorks = DocumentNode(definitions: [
                         arguments: [],
                         directives: [],
                         selectionSet: SelectionSetNode(selections: [
-                          FieldNode(
-                              name: NameNode(value: 'id'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: 'title'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: 'thumbnail'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
+                          FragmentSpreadNode(
+                              name: NameNode(value: 'WorkSummary'),
+                              directives: []),
                           FieldNode(
                               name: NameNode(value: '__typename'),
                               alias: null,
@@ -284,6 +270,7 @@ const documentNodeQueryHomeWorks = DocumentNode(definitions: [
             directives: [],
             selectionSet: null)
       ])),
+  fragmentDefinitionWorkSummary,
 ]);
 Query$HomeWorks _parserFn$Query$HomeWorks(Map<String, dynamic> data) =>
     Query$HomeWorks.fromJson(data);
@@ -542,12 +529,11 @@ class Query$HomeWorks$works$edges {
     return Query$HomeWorks$works$edges(
         node: l$node == null
             ? null
-            : Query$HomeWorks$works$edges$node.fromJson(
-                (l$node as Map<String, dynamic>)),
+            : Fragment$WorkSummary.fromJson((l$node as Map<String, dynamic>)),
         $__typename: (l$$__typename as String));
   }
 
-  final Query$HomeWorks$works$edges$node? node;
+  final Fragment$WorkSummary? node;
 
   final String $__typename;
 
@@ -605,8 +591,8 @@ abstract class CopyWith$Query$HomeWorks$works$edges<TRes> {
   factory CopyWith$Query$HomeWorks$works$edges.stub(TRes res) =
       _CopyWithStubImpl$Query$HomeWorks$works$edges;
 
-  TRes call({Query$HomeWorks$works$edges$node? node, String? $__typename});
-  CopyWith$Query$HomeWorks$works$edges$node<TRes> get node;
+  TRes call({Fragment$WorkSummary? node, String? $__typename});
+  CopyWith$Fragment$WorkSummary<TRes> get node;
 }
 
 class _CopyWithImpl$Query$HomeWorks$works$edges<TRes>
@@ -623,16 +609,15 @@ class _CopyWithImpl$Query$HomeWorks$works$edges<TRes>
       _then(Query$HomeWorks$works$edges(
           node: node == _undefined
               ? _instance.node
-              : (node as Query$HomeWorks$works$edges$node?),
+              : (node as Fragment$WorkSummary?),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
-  CopyWith$Query$HomeWorks$works$edges$node<TRes> get node {
+  CopyWith$Fragment$WorkSummary<TRes> get node {
     final local$node = _instance.node;
     return local$node == null
-        ? CopyWith$Query$HomeWorks$works$edges$node.stub(_then(_instance))
-        : CopyWith$Query$HomeWorks$works$edges$node(
-            local$node, (e) => call(node: e));
+        ? CopyWith$Fragment$WorkSummary.stub(_then(_instance))
+        : CopyWith$Fragment$WorkSummary(local$node, (e) => call(node: e));
   }
 }
 
@@ -642,146 +627,7 @@ class _CopyWithStubImpl$Query$HomeWorks$works$edges<TRes>
 
   TRes _res;
 
-  call({Query$HomeWorks$works$edges$node? node, String? $__typename}) => _res;
-  CopyWith$Query$HomeWorks$works$edges$node<TRes> get node =>
-      CopyWith$Query$HomeWorks$works$edges$node.stub(_res);
-}
-
-class Query$HomeWorks$works$edges$node {
-  Query$HomeWorks$works$edges$node(
-      {required this.id,
-      required this.title,
-      this.thumbnail,
-      required this.$__typename});
-
-  factory Query$HomeWorks$works$edges$node.fromJson(Map<String, dynamic> json) {
-    final l$id = json['id'];
-    final l$title = json['title'];
-    final l$thumbnail = json['thumbnail'];
-    final l$$__typename = json['__typename'];
-    return Query$HomeWorks$works$edges$node(
-        id: (l$id as String),
-        title: (l$title as String),
-        thumbnail: (l$thumbnail as String?),
-        $__typename: (l$$__typename as String));
-  }
-
-  final String id;
-
-  final String title;
-
-  final String? thumbnail;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$id = id;
-    _resultData['id'] = l$id;
-    final l$title = title;
-    _resultData['title'] = l$title;
-    final l$thumbnail = thumbnail;
-    _resultData['thumbnail'] = l$thumbnail;
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$title = title;
-    final l$thumbnail = thumbnail;
-    final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$title, l$thumbnail, l$$__typename]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Query$HomeWorks$works$edges$node) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$title = title;
-    final lOther$title = other.title;
-    if (l$title != lOther$title) {
-      return false;
-    }
-    final l$thumbnail = thumbnail;
-    final lOther$thumbnail = other.thumbnail;
-    if (l$thumbnail != lOther$thumbnail) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$HomeWorks$works$edges$node
-    on Query$HomeWorks$works$edges$node {
-  CopyWith$Query$HomeWorks$works$edges$node<Query$HomeWorks$works$edges$node>
-      get copyWith => CopyWith$Query$HomeWorks$works$edges$node(this, (i) => i);
-}
-
-abstract class CopyWith$Query$HomeWorks$works$edges$node<TRes> {
-  factory CopyWith$Query$HomeWorks$works$edges$node(
-          Query$HomeWorks$works$edges$node instance,
-          TRes Function(Query$HomeWorks$works$edges$node) then) =
-      _CopyWithImpl$Query$HomeWorks$works$edges$node;
-
-  factory CopyWith$Query$HomeWorks$works$edges$node.stub(TRes res) =
-      _CopyWithStubImpl$Query$HomeWorks$works$edges$node;
-
-  TRes call(
-      {String? id, String? title, String? thumbnail, String? $__typename});
-}
-
-class _CopyWithImpl$Query$HomeWorks$works$edges$node<TRes>
-    implements CopyWith$Query$HomeWorks$works$edges$node<TRes> {
-  _CopyWithImpl$Query$HomeWorks$works$edges$node(this._instance, this._then);
-
-  final Query$HomeWorks$works$edges$node _instance;
-
-  final TRes Function(Query$HomeWorks$works$edges$node) _then;
-
-  static const _undefined = {};
-
-  TRes call(
-          {Object? id = _undefined,
-          Object? title = _undefined,
-          Object? thumbnail = _undefined,
-          Object? $__typename = _undefined}) =>
-      _then(Query$HomeWorks$works$edges$node(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          title: title == _undefined || title == null
-              ? _instance.title
-              : (title as String),
-          thumbnail: thumbnail == _undefined
-              ? _instance.thumbnail
-              : (thumbnail as String?),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
-}
-
-class _CopyWithStubImpl$Query$HomeWorks$works$edges$node<TRes>
-    implements CopyWith$Query$HomeWorks$works$edges$node<TRes> {
-  _CopyWithStubImpl$Query$HomeWorks$works$edges$node(this._res);
-
-  TRes _res;
-
-  call({String? id, String? title, String? thumbnail, String? $__typename}) =>
-      _res;
+  call({Fragment$WorkSummary? node, String? $__typename}) => _res;
+  CopyWith$Fragment$WorkSummary<TRes> get node =>
+      CopyWith$Fragment$WorkSummary.stub(_res);
 }

@@ -70,7 +70,7 @@ void main() async {
 const bool isProduction = bool.fromEnvironment('dart.vm.product');
 const apiQueryURL = isProduction
     ? 'http://13.231.110.200:8080/query'
-    : 'https://fa6d-240f-7a-db47-1-d469-5e2e-180b-5789.ngrok.io/query';
+    : 'https://b548-240f-7a-db47-1-75ee-60d9-3624-b106.ngrok.io/query';
 final HttpLink httpLink = HttpLink(
   apiQueryURL,
 );
@@ -105,11 +105,20 @@ class _MyAppState extends ConsumerState<MyApp> {
       ),
     );
 
-    final storedRefreshToken = await secureStorage.read(key: 'refresh_token');
-    if (storedRefreshToken == null) return;
-
     box = await Hive.openBox('tutorialBox');
-    if (box.get('doneTutorial') != true) return;
+
+    final storedRefreshToken = await secureStorage.read(key: 'refresh_token');
+    if (storedRefreshToken == null) {
+      ref.watch(isBusyProvider.notifier).state = false;
+      ref.watch(isLoggedInProvider.notifier).state = false;
+      return;
+    }
+
+    if (box.get('doneTutorial') != true) {
+      ref.watch(isBusyProvider.notifier).state = false;
+      ref.watch(isLoggedInProvider.notifier).state = false;
+      return;
+    }
     setState(() {
       doneTutorial = true;
     });

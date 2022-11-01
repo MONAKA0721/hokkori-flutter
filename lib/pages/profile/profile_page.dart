@@ -6,6 +6,7 @@ import 'package:hokkori/graphql/ent.graphql.dart';
 import 'package:hokkori/graphql/schema.graphql.dart';
 import 'package:hokkori/pages/common/letters.dart';
 import 'package:hokkori/pages/common/praises.dart';
+import 'package:hokkori/pages/profile/bookmarked_posts.dart';
 import 'package:hokkori/pages/profile/posted_works.dart';
 import 'package:hokkori/pages/profile/profile_edit_page.dart';
 import 'package:hokkori/pages/profile/profile_page.graphql.dart';
@@ -241,7 +242,12 @@ class ProfileBody extends ConsumerWidget {
           const SizedBox(
             height: 20,
           ),
-          const PostedItems()
+          PostedItems(
+            userID: user.id,
+          ),
+          const SizedBox(
+            height: 50,
+          ),
         ],
       )),
     );
@@ -364,36 +370,56 @@ class UnfollowButton extends HookConsumerWidget {
 }
 
 class PostedItems extends ConsumerStatefulWidget {
-  const PostedItems({Key? key}) : super(key: key);
+  final String userID;
+  const PostedItems({Key? key, required this.userID}) : super(key: key);
 
   @override
   ConsumerState<PostedItems> createState() => _PostedItemsState();
 }
 
 class _PostedItemsState extends ConsumerState<PostedItems> {
-  int _selectedItemsIndex = 1;
+  int _selectedItemsIndex = 0;
 
-  Widget _itemsTab(int index, String name) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: () {
-          setState(() {
-            _selectedItemsIndex = index;
-          });
-        },
-        child: Container(
-            decoration: BoxDecoration(
-                color: _selectedItemsIndex == index
-                    ? Colors.white
-                    : const Color(0xff6B4283).withOpacity(0.3)),
-            alignment: Alignment.center,
-            child: Text(
-              name,
-              style: TextStyle(
-                  color: _selectedItemsIndex == index
-                      ? Colors.black
-                      : const Color(0xff6B4283).withOpacity(0.3)),
-            )),
+  Widget _itemsTab(int index) {
+    final String asset;
+    final selected = _selectedItemsIndex == index;
+    switch (index) {
+      case 0:
+        asset = selected ? 'assets/work.png' : 'assets/work_light.png';
+        break;
+      case 1:
+        asset = selected ? 'assets/praise.png' : 'assets/praise_light.png';
+        break;
+      case 2:
+        asset = selected ? 'assets/letter.png' : 'assets/letter_light.png';
+        break;
+      case 3:
+        asset = selected ? 'assets/bookmark.png' : 'assets/bookmark_light.png';
+        break;
+      default:
+        asset = '';
+        break;
+    }
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _selectedItemsIndex = index;
+        });
+      },
+      child: Container(
+        width: 40,
+        padding: const EdgeInsets.only(bottom: 5),
+        decoration: BoxDecoration(
+          border: _selectedItemsIndex == index
+              ? const Border(
+                  bottom: BorderSide(color: primaryColor, width: 2),
+                )
+              : null,
+        ),
+        alignment: Alignment.center,
+        child: Image.asset(
+          asset,
+        ),
       ),
     );
   }
@@ -403,30 +429,37 @@ class _PostedItemsState extends ConsumerState<PostedItems> {
     Widget items;
     switch (_selectedItemsIndex) {
       case 0:
-        items = const PostedWorks();
+        items = PostedWorks(
+          userID: widget.userID,
+        );
         break;
       case 1:
-        items = Letters(
+        items = Praises(
           hasHeading: false,
           or: [
             Input$PostWhereInput(hasOwnerWith: [
               Input$UserWhereInput(
-                id: ref.watch(userProvider).id,
+                id: widget.userID,
               )
             ])
           ],
         );
         break;
       case 2:
-        items = Praises(
+        items = Letters(
           hasHeading: false,
           or: [
             Input$PostWhereInput(hasOwnerWith: [
               Input$UserWhereInput(
-                id: ref.watch(userProvider).id,
+                id: widget.userID,
               )
             ])
           ],
+        );
+        break;
+      case 3:
+        items = BookmarkedPosts(
+          userID: widget.userID,
         );
         break;
       default:
@@ -436,11 +469,8 @@ class _PostedItemsState extends ConsumerState<PostedItems> {
     return Column(
       children: [
         Row(
-          children: [
-            _itemsTab(0, "作品"),
-            _itemsTab(1, "レター"),
-            _itemsTab(2, "ほっこり")
-          ],
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [_itemsTab(0), _itemsTab(1), _itemsTab(2), _itemsTab(3)],
         ),
         items
       ],
