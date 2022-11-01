@@ -1,6 +1,21 @@
-query MyInfo($userID: ID) {
-  posts(where: { hasOwnerWith: { id: $userID } }) {
-    totalCount
+query Profile($userID: ID!) {
+  user: node(id: $userID) {
+    ... on User {
+      id
+      name
+      username
+      profile
+      avatarURL
+      posts {
+        id
+      }
+      followers {
+        id
+      }
+      following {
+        id
+      }
+    }
   }
 }
 
@@ -11,5 +26,54 @@ mutation UpdateUser($userID: ID!, $input: UpdateUserInput!) {
     username
     profile
     avatarURL
+  }
+}
+
+mutation FollowUser($input: FollowUserInput!) {
+  action: followUser(input: $input) {
+    clientMutationId
+    user {
+      id
+    }
+  }
+}
+
+mutation UnfollowUser($input: UnfollowUserInput!) {
+  action: unfollowUser(input: $input) {
+    clientMutationId
+    user {
+      id
+    }
+  }
+}
+
+query PostedWorks($where: WorkWhereInput) {
+  works(where: $where) {
+    edges {
+      node {
+        ...WorkSummary
+      }
+    }
+  }
+}
+
+query BookmarkedPosts($first: Int!, $after: Cursor, $userID: ID!) {
+  posts(
+    first: $first
+    after: $after
+    orderBy: { direction: DESC, field: CREATE_TIME }
+    where: { hasBookmarkedUsersWith: { id: $userID } }
+  ) {
+    edges {
+      node {
+        type
+        ...PraiseSummary
+        ...LetterSummary
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
   }
 }

@@ -11,12 +11,14 @@ class Letters extends HookWidget {
   final List<Input$PostWhereInput>? or;
   final List<Input$CategoryWhereInput>? hasCategoryWith;
   final bool hasHeading;
+  final bool hasFetchMoreButton;
   const Letters(
       {super.key,
       this.first,
       this.or,
       this.hasCategoryWith,
-      this.hasHeading = true});
+      this.hasHeading = true,
+      this.hasFetchMoreButton = true});
 
   @override
   Widget build(BuildContext context) {
@@ -44,24 +46,24 @@ class Letters extends HookWidget {
       hasHeading
           ? Row(
               crossAxisAlignment: CrossAxisAlignment.end,
-              children: const [
-                Icon(
-                  Icons.favorite_border,
-                  size: 30,
-                  color: primaryColor,
-                ),
-                SizedBox(
+              children: [
+                Image.asset('assets/letter.png'),
+                const SizedBox(
                   width: 10,
                 ),
-                Text(
+                const Text(
                   "レター",
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
                 ),
               ],
             )
           : Container(),
-      ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
-      hasNextPage!
+      ...letters
+          .map((letter) => Letter(
+              letter: letter!.node!,
+              optimistic: result.source == QueryResultSource.optimisticResult))
+          .toList(),
+      hasFetchMoreButton && hasNextPage!
           ? FetchMoreButton(
               first: first,
               or: or,
@@ -113,7 +115,12 @@ class FetchMoreButton extends HookWidget {
 
     return pushed.value
         ? Column(children: [
-            ...letters.map((letter) => Letter(letter: letter!.node!)).toList(),
+            ...letters
+                .map((letter) => Letter(
+                    letter: letter!.node!,
+                    optimistic:
+                        result.source == QueryResultSource.optimisticResult))
+                .toList(),
             hasNextPage!
                 ? FetchMoreButton(
                     first: first,

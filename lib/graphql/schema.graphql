@@ -10,8 +10,80 @@ type Mutation {
   createPost(input: CreatePostInput!): Post!
   createHashtag(input: CreateHashtagInput!): Hashtag!
   createWork(input: CreateWorkInput!): Work!
+  likePost(input: LikePostInput!): LikePostPayload!
+  unlikePost(input: UnlikePostInput!): UnlikePostPayload!
+  bookmarkPost(input: BookmarkPostInput!): BookmarkPostPayload!
+  unbookmarkPost(input: UnbookmarkPostInput!): UnbookmarkPostPayload!
+  followUser(input: FollowUserInput!): FollowUserPayload!
+  unfollowUser(input: UnfollowUserInput!): UnfollowUserPayload!
 }
 
 extend type Query {
   likedPosts(first: Int!, type: PostPostType!): [Post]!
+}
+
+input LikePostInput {
+  clientMutationId: String
+  userID: ID!
+  postID: ID!
+}
+
+type LikePostPayload {
+  clientMutationId: String
+  post: Post
+}
+
+input UnlikePostInput {
+  clientMutationId: String
+  userID: ID!
+  postID: ID!
+}
+
+type UnlikePostPayload {
+  clientMutationId: String
+  post: Post
+}
+
+input BookmarkPostInput {
+  clientMutationId: String
+  userID: ID!
+  postID: ID!
+}
+
+type BookmarkPostPayload {
+  clientMutationId: String
+  post: Post
+}
+
+input UnbookmarkPostInput {
+  clientMutationId: String
+  userID: ID!
+  postID: ID!
+}
+
+type UnbookmarkPostPayload {
+  clientMutationId: String
+  post: Post
+}
+
+input FollowUserInput {
+  clientMutationId: String
+  userID: ID!
+  followerID: ID!
+}
+
+type FollowUserPayload {
+  clientMutationId: String
+  user: User
+}
+
+input UnfollowUserInput {
+  clientMutationId: String
+  userID: ID!
+  followerID: ID!
+}
+
+type UnfollowUserPayload {
+  clientMutationId: String
+  user: User
 }

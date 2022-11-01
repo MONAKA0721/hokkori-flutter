@@ -1055,11 +1055,13 @@ class Input$CreatePostInput {
           required String content,
           required Enum$PostPostType type,
           required bool spoiled,
+          String? thumbnail,
           required String ownerID,
           List<String>? hashtagIDs,
           required String workID,
           required String categoryID,
-          List<String>? likedUserIDs}) =>
+          List<String>? likedUserIDs,
+          List<String>? bookmarkedUserIDs}) =>
       Input$CreatePostInput._({
         if (createTime != null) r'createTime': createTime,
         if (updateTime != null) r'updateTime': updateTime,
@@ -1067,11 +1069,13 @@ class Input$CreatePostInput {
         r'content': content,
         r'type': type,
         r'spoiled': spoiled,
+        if (thumbnail != null) r'thumbnail': thumbnail,
         r'ownerID': ownerID,
         if (hashtagIDs != null) r'hashtagIDs': hashtagIDs,
         r'workID': workID,
         r'categoryID': categoryID,
         if (likedUserIDs != null) r'likedUserIDs': likedUserIDs,
+        if (bookmarkedUserIDs != null) r'bookmarkedUserIDs': bookmarkedUserIDs,
       });
 
   Input$CreatePostInput._(this._$data);
@@ -1094,6 +1098,10 @@ class Input$CreatePostInput {
     result$data['type'] = fromJson$Enum$PostPostType((l$type as String));
     final l$spoiled = data['spoiled'];
     result$data['spoiled'] = (l$spoiled as bool);
+    if (data.containsKey('thumbnail')) {
+      final l$thumbnail = data['thumbnail'];
+      result$data['thumbnail'] = (l$thumbnail as String?);
+    }
     final l$ownerID = data['ownerID'];
     result$data['ownerID'] = (l$ownerID as String);
     if (data.containsKey('hashtagIDs')) {
@@ -1111,6 +1119,12 @@ class Input$CreatePostInput {
           ?.map((e) => (e as String))
           .toList();
     }
+    if (data.containsKey('bookmarkedUserIDs')) {
+      final l$bookmarkedUserIDs = data['bookmarkedUserIDs'];
+      result$data['bookmarkedUserIDs'] = (l$bookmarkedUserIDs as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
     return Input$CreatePostInput._(result$data);
   }
 
@@ -1122,11 +1136,14 @@ class Input$CreatePostInput {
   String get content => (_$data['content'] as String);
   Enum$PostPostType get type => (_$data['type'] as Enum$PostPostType);
   bool get spoiled => (_$data['spoiled'] as bool);
+  String? get thumbnail => (_$data['thumbnail'] as String?);
   String get ownerID => (_$data['ownerID'] as String);
   List<String>? get hashtagIDs => (_$data['hashtagIDs'] as List<String>?);
   String get workID => (_$data['workID'] as String);
   String get categoryID => (_$data['categoryID'] as String);
   List<String>? get likedUserIDs => (_$data['likedUserIDs'] as List<String>?);
+  List<String>? get bookmarkedUserIDs =>
+      (_$data['bookmarkedUserIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('createTime')) {
@@ -1145,6 +1162,10 @@ class Input$CreatePostInput {
     result$data['type'] = toJson$Enum$PostPostType(l$type);
     final l$spoiled = spoiled;
     result$data['spoiled'] = l$spoiled;
+    if (_$data.containsKey('thumbnail')) {
+      final l$thumbnail = thumbnail;
+      result$data['thumbnail'] = l$thumbnail;
+    }
     final l$ownerID = ownerID;
     result$data['ownerID'] = l$ownerID;
     if (_$data.containsKey('hashtagIDs')) {
@@ -1158,6 +1179,11 @@ class Input$CreatePostInput {
     if (_$data.containsKey('likedUserIDs')) {
       final l$likedUserIDs = likedUserIDs;
       result$data['likedUserIDs'] = l$likedUserIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('bookmarkedUserIDs')) {
+      final l$bookmarkedUserIDs = bookmarkedUserIDs;
+      result$data['bookmarkedUserIDs'] =
+          l$bookmarkedUserIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -1208,6 +1234,15 @@ class Input$CreatePostInput {
     final l$spoiled = spoiled;
     final lOther$spoiled = other.spoiled;
     if (l$spoiled != lOther$spoiled) {
+      return false;
+    }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (_$data.containsKey('thumbnail') !=
+        other._$data.containsKey('thumbnail')) {
+      return false;
+    }
+    if (l$thumbnail != lOther$thumbnail) {
       return false;
     }
     final l$ownerID = ownerID;
@@ -1265,6 +1300,26 @@ class Input$CreatePostInput {
     } else if (l$likedUserIDs != lOther$likedUserIDs) {
       return false;
     }
+    final l$bookmarkedUserIDs = bookmarkedUserIDs;
+    final lOther$bookmarkedUserIDs = other.bookmarkedUserIDs;
+    if (_$data.containsKey('bookmarkedUserIDs') !=
+        other._$data.containsKey('bookmarkedUserIDs')) {
+      return false;
+    }
+    if (l$bookmarkedUserIDs != null && lOther$bookmarkedUserIDs != null) {
+      if (l$bookmarkedUserIDs.length != lOther$bookmarkedUserIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$bookmarkedUserIDs.length; i++) {
+        final l$bookmarkedUserIDs$entry = l$bookmarkedUserIDs[i];
+        final lOther$bookmarkedUserIDs$entry = lOther$bookmarkedUserIDs[i];
+        if (l$bookmarkedUserIDs$entry != lOther$bookmarkedUserIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$bookmarkedUserIDs != lOther$bookmarkedUserIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -1276,11 +1331,13 @@ class Input$CreatePostInput {
     final l$content = content;
     final l$type = type;
     final l$spoiled = spoiled;
+    final l$thumbnail = thumbnail;
     final l$ownerID = ownerID;
     final l$hashtagIDs = hashtagIDs;
     final l$workID = workID;
     final l$categoryID = categoryID;
     final l$likedUserIDs = likedUserIDs;
+    final l$bookmarkedUserIDs = bookmarkedUserIDs;
     return Object.hashAll([
       _$data.containsKey('createTime') ? l$createTime : const {},
       _$data.containsKey('updateTime') ? l$updateTime : const {},
@@ -1288,6 +1345,7 @@ class Input$CreatePostInput {
       l$content,
       l$type,
       l$spoiled,
+      _$data.containsKey('thumbnail') ? l$thumbnail : const {},
       l$ownerID,
       _$data.containsKey('hashtagIDs')
           ? l$hashtagIDs == null
@@ -1300,6 +1358,11 @@ class Input$CreatePostInput {
           ? l$likedUserIDs == null
               ? null
               : Object.hashAll(l$likedUserIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('bookmarkedUserIDs')
+          ? l$bookmarkedUserIDs == null
+              ? null
+              : Object.hashAll(l$bookmarkedUserIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -1320,11 +1383,13 @@ abstract class CopyWith$Input$CreatePostInput<TRes> {
       String? content,
       Enum$PostPostType? type,
       bool? spoiled,
+      String? thumbnail,
       String? ownerID,
       List<String>? hashtagIDs,
       String? workID,
       String? categoryID,
-      List<String>? likedUserIDs});
+      List<String>? likedUserIDs,
+      List<String>? bookmarkedUserIDs});
 }
 
 class _CopyWithImpl$Input$CreatePostInput<TRes>
@@ -1344,11 +1409,13 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           Object? content = _undefined,
           Object? type = _undefined,
           Object? spoiled = _undefined,
+          Object? thumbnail = _undefined,
           Object? ownerID = _undefined,
           Object? hashtagIDs = _undefined,
           Object? workID = _undefined,
           Object? categoryID = _undefined,
-          Object? likedUserIDs = _undefined}) =>
+          Object? likedUserIDs = _undefined,
+          Object? bookmarkedUserIDs = _undefined}) =>
       _then(Input$CreatePostInput._({
         ..._instance._$data,
         if (createTime != _undefined) 'createTime': (createTime as String?),
@@ -1360,6 +1427,7 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           'type': (type as Enum$PostPostType),
         if (spoiled != _undefined && spoiled != null)
           'spoiled': (spoiled as bool),
+        if (thumbnail != _undefined) 'thumbnail': (thumbnail as String?),
         if (ownerID != _undefined && ownerID != null)
           'ownerID': (ownerID as String),
         if (hashtagIDs != _undefined)
@@ -1370,6 +1438,8 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           'categoryID': (categoryID as String),
         if (likedUserIDs != _undefined)
           'likedUserIDs': (likedUserIDs as List<String>?),
+        if (bookmarkedUserIDs != _undefined)
+          'bookmarkedUserIDs': (bookmarkedUserIDs as List<String>?),
       }));
 }
 
@@ -1386,11 +1456,13 @@ class _CopyWithStubImpl$Input$CreatePostInput<TRes>
           String? content,
           Enum$PostPostType? type,
           bool? spoiled,
+          String? thumbnail,
           String? ownerID,
           List<String>? hashtagIDs,
           String? workID,
           String? categoryID,
-          List<String>? likedUserIDs}) =>
+          List<String>? likedUserIDs,
+          List<String>? bookmarkedUserIDs}) =>
       _res;
 }
 
@@ -1401,7 +1473,10 @@ class Input$CreateUserInput {
           String? profile,
           String? avatarURL,
           List<String>? postIDs,
-          List<String>? likedPostIDs}) =>
+          List<String>? likedPostIDs,
+          List<String>? bookmarkedPostIDs,
+          List<String>? followerIDs,
+          List<String>? followingIDs}) =>
       Input$CreateUserInput._({
         r'name': name,
         if (username != null) r'username': username,
@@ -1409,6 +1484,9 @@ class Input$CreateUserInput {
         if (avatarURL != null) r'avatarURL': avatarURL,
         if (postIDs != null) r'postIDs': postIDs,
         if (likedPostIDs != null) r'likedPostIDs': likedPostIDs,
+        if (bookmarkedPostIDs != null) r'bookmarkedPostIDs': bookmarkedPostIDs,
+        if (followerIDs != null) r'followerIDs': followerIDs,
+        if (followingIDs != null) r'followingIDs': followingIDs,
       });
 
   Input$CreateUserInput._(this._$data);
@@ -1440,6 +1518,23 @@ class Input$CreateUserInput {
           ?.map((e) => (e as String))
           .toList();
     }
+    if (data.containsKey('bookmarkedPostIDs')) {
+      final l$bookmarkedPostIDs = data['bookmarkedPostIDs'];
+      result$data['bookmarkedPostIDs'] = (l$bookmarkedPostIDs as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('followerIDs')) {
+      final l$followerIDs = data['followerIDs'];
+      result$data['followerIDs'] =
+          (l$followerIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
+    if (data.containsKey('followingIDs')) {
+      final l$followingIDs = data['followingIDs'];
+      result$data['followingIDs'] = (l$followingIDs as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
     return Input$CreateUserInput._(result$data);
   }
 
@@ -1451,6 +1546,10 @@ class Input$CreateUserInput {
   String? get avatarURL => (_$data['avatarURL'] as String?);
   List<String>? get postIDs => (_$data['postIDs'] as List<String>?);
   List<String>? get likedPostIDs => (_$data['likedPostIDs'] as List<String>?);
+  List<String>? get bookmarkedPostIDs =>
+      (_$data['bookmarkedPostIDs'] as List<String>?);
+  List<String>? get followerIDs => (_$data['followerIDs'] as List<String>?);
+  List<String>? get followingIDs => (_$data['followingIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     final l$name = name;
@@ -1474,6 +1573,19 @@ class Input$CreateUserInput {
     if (_$data.containsKey('likedPostIDs')) {
       final l$likedPostIDs = likedPostIDs;
       result$data['likedPostIDs'] = l$likedPostIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('bookmarkedPostIDs')) {
+      final l$bookmarkedPostIDs = bookmarkedPostIDs;
+      result$data['bookmarkedPostIDs'] =
+          l$bookmarkedPostIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('followerIDs')) {
+      final l$followerIDs = followerIDs;
+      result$data['followerIDs'] = l$followerIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('followingIDs')) {
+      final l$followingIDs = followingIDs;
+      result$data['followingIDs'] = l$followingIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -1558,6 +1670,66 @@ class Input$CreateUserInput {
     } else if (l$likedPostIDs != lOther$likedPostIDs) {
       return false;
     }
+    final l$bookmarkedPostIDs = bookmarkedPostIDs;
+    final lOther$bookmarkedPostIDs = other.bookmarkedPostIDs;
+    if (_$data.containsKey('bookmarkedPostIDs') !=
+        other._$data.containsKey('bookmarkedPostIDs')) {
+      return false;
+    }
+    if (l$bookmarkedPostIDs != null && lOther$bookmarkedPostIDs != null) {
+      if (l$bookmarkedPostIDs.length != lOther$bookmarkedPostIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$bookmarkedPostIDs.length; i++) {
+        final l$bookmarkedPostIDs$entry = l$bookmarkedPostIDs[i];
+        final lOther$bookmarkedPostIDs$entry = lOther$bookmarkedPostIDs[i];
+        if (l$bookmarkedPostIDs$entry != lOther$bookmarkedPostIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$bookmarkedPostIDs != lOther$bookmarkedPostIDs) {
+      return false;
+    }
+    final l$followerIDs = followerIDs;
+    final lOther$followerIDs = other.followerIDs;
+    if (_$data.containsKey('followerIDs') !=
+        other._$data.containsKey('followerIDs')) {
+      return false;
+    }
+    if (l$followerIDs != null && lOther$followerIDs != null) {
+      if (l$followerIDs.length != lOther$followerIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$followerIDs.length; i++) {
+        final l$followerIDs$entry = l$followerIDs[i];
+        final lOther$followerIDs$entry = lOther$followerIDs[i];
+        if (l$followerIDs$entry != lOther$followerIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$followerIDs != lOther$followerIDs) {
+      return false;
+    }
+    final l$followingIDs = followingIDs;
+    final lOther$followingIDs = other.followingIDs;
+    if (_$data.containsKey('followingIDs') !=
+        other._$data.containsKey('followingIDs')) {
+      return false;
+    }
+    if (l$followingIDs != null && lOther$followingIDs != null) {
+      if (l$followingIDs.length != lOther$followingIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$followingIDs.length; i++) {
+        final l$followingIDs$entry = l$followingIDs[i];
+        final lOther$followingIDs$entry = lOther$followingIDs[i];
+        if (l$followingIDs$entry != lOther$followingIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$followingIDs != lOther$followingIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -1569,6 +1741,9 @@ class Input$CreateUserInput {
     final l$avatarURL = avatarURL;
     final l$postIDs = postIDs;
     final l$likedPostIDs = likedPostIDs;
+    final l$bookmarkedPostIDs = bookmarkedPostIDs;
+    final l$followerIDs = followerIDs;
+    final l$followingIDs = followingIDs;
     return Object.hashAll([
       l$name,
       _$data.containsKey('username') ? l$username : const {},
@@ -1583,6 +1758,21 @@ class Input$CreateUserInput {
           ? l$likedPostIDs == null
               ? null
               : Object.hashAll(l$likedPostIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('bookmarkedPostIDs')
+          ? l$bookmarkedPostIDs == null
+              ? null
+              : Object.hashAll(l$bookmarkedPostIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('followerIDs')
+          ? l$followerIDs == null
+              ? null
+              : Object.hashAll(l$followerIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('followingIDs')
+          ? l$followingIDs == null
+              ? null
+              : Object.hashAll(l$followingIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -1602,7 +1792,10 @@ abstract class CopyWith$Input$CreateUserInput<TRes> {
       String? profile,
       String? avatarURL,
       List<String>? postIDs,
-      List<String>? likedPostIDs});
+      List<String>? likedPostIDs,
+      List<String>? bookmarkedPostIDs,
+      List<String>? followerIDs,
+      List<String>? followingIDs});
 }
 
 class _CopyWithImpl$Input$CreateUserInput<TRes>
@@ -1621,7 +1814,10 @@ class _CopyWithImpl$Input$CreateUserInput<TRes>
           Object? profile = _undefined,
           Object? avatarURL = _undefined,
           Object? postIDs = _undefined,
-          Object? likedPostIDs = _undefined}) =>
+          Object? likedPostIDs = _undefined,
+          Object? bookmarkedPostIDs = _undefined,
+          Object? followerIDs = _undefined,
+          Object? followingIDs = _undefined}) =>
       _then(Input$CreateUserInput._({
         ..._instance._$data,
         if (name != _undefined && name != null) 'name': (name as String),
@@ -1631,6 +1827,12 @@ class _CopyWithImpl$Input$CreateUserInput<TRes>
         if (postIDs != _undefined) 'postIDs': (postIDs as List<String>?),
         if (likedPostIDs != _undefined)
           'likedPostIDs': (likedPostIDs as List<String>?),
+        if (bookmarkedPostIDs != _undefined)
+          'bookmarkedPostIDs': (bookmarkedPostIDs as List<String>?),
+        if (followerIDs != _undefined)
+          'followerIDs': (followerIDs as List<String>?),
+        if (followingIDs != _undefined)
+          'followingIDs': (followingIDs as List<String>?),
       }));
 }
 
@@ -1646,7 +1848,10 @@ class _CopyWithStubImpl$Input$CreateUserInput<TRes>
           String? profile,
           String? avatarURL,
           List<String>? postIDs,
-          List<String>? likedPostIDs}) =>
+          List<String>? likedPostIDs,
+          List<String>? bookmarkedPostIDs,
+          List<String>? followerIDs,
+          List<String>? followingIDs}) =>
       _res;
 }
 
@@ -2895,6 +3100,21 @@ class Input$PostWhereInput {
           List<Enum$PostPostType>? typeNotIn,
           bool? spoiled,
           bool? spoiledNEQ,
+          String? thumbnail,
+          String? thumbnailNEQ,
+          List<String>? thumbnailIn,
+          List<String>? thumbnailNotIn,
+          String? thumbnailGT,
+          String? thumbnailGTE,
+          String? thumbnailLT,
+          String? thumbnailLTE,
+          String? thumbnailContains,
+          String? thumbnailHasPrefix,
+          String? thumbnailHasSuffix,
+          bool? thumbnailIsNil,
+          bool? thumbnailNotNil,
+          String? thumbnailEqualFold,
+          String? thumbnailContainsFold,
           bool? hasOwner,
           List<Input$UserWhereInput>? hasOwnerWith,
           bool? hasHashtags,
@@ -2904,7 +3124,9 @@ class Input$PostWhereInput {
           bool? hasCategory,
           List<Input$CategoryWhereInput>? hasCategoryWith,
           bool? hasLikedUsers,
-          List<Input$UserWhereInput>? hasLikedUsersWith}) =>
+          List<Input$UserWhereInput>? hasLikedUsersWith,
+          bool? hasBookmarkedUsers,
+          List<Input$UserWhereInput>? hasBookmarkedUsersWith}) =>
       Input$PostWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -2966,6 +3188,25 @@ class Input$PostWhereInput {
         if (typeNotIn != null) r'typeNotIn': typeNotIn,
         if (spoiled != null) r'spoiled': spoiled,
         if (spoiledNEQ != null) r'spoiledNEQ': spoiledNEQ,
+        if (thumbnail != null) r'thumbnail': thumbnail,
+        if (thumbnailNEQ != null) r'thumbnailNEQ': thumbnailNEQ,
+        if (thumbnailIn != null) r'thumbnailIn': thumbnailIn,
+        if (thumbnailNotIn != null) r'thumbnailNotIn': thumbnailNotIn,
+        if (thumbnailGT != null) r'thumbnailGT': thumbnailGT,
+        if (thumbnailGTE != null) r'thumbnailGTE': thumbnailGTE,
+        if (thumbnailLT != null) r'thumbnailLT': thumbnailLT,
+        if (thumbnailLTE != null) r'thumbnailLTE': thumbnailLTE,
+        if (thumbnailContains != null) r'thumbnailContains': thumbnailContains,
+        if (thumbnailHasPrefix != null)
+          r'thumbnailHasPrefix': thumbnailHasPrefix,
+        if (thumbnailHasSuffix != null)
+          r'thumbnailHasSuffix': thumbnailHasSuffix,
+        if (thumbnailIsNil != null) r'thumbnailIsNil': thumbnailIsNil,
+        if (thumbnailNotNil != null) r'thumbnailNotNil': thumbnailNotNil,
+        if (thumbnailEqualFold != null)
+          r'thumbnailEqualFold': thumbnailEqualFold,
+        if (thumbnailContainsFold != null)
+          r'thumbnailContainsFold': thumbnailContainsFold,
         if (hasOwner != null) r'hasOwner': hasOwner,
         if (hasOwnerWith != null) r'hasOwnerWith': hasOwnerWith,
         if (hasHashtags != null) r'hasHashtags': hasHashtags,
@@ -2976,6 +3217,10 @@ class Input$PostWhereInput {
         if (hasCategoryWith != null) r'hasCategoryWith': hasCategoryWith,
         if (hasLikedUsers != null) r'hasLikedUsers': hasLikedUsers,
         if (hasLikedUsersWith != null) r'hasLikedUsersWith': hasLikedUsersWith,
+        if (hasBookmarkedUsers != null)
+          r'hasBookmarkedUsers': hasBookmarkedUsers,
+        if (hasBookmarkedUsersWith != null)
+          r'hasBookmarkedUsersWith': hasBookmarkedUsersWith,
       });
 
   Input$PostWhereInput._(this._$data);
@@ -3249,6 +3494,70 @@ class Input$PostWhereInput {
       final l$spoiledNEQ = data['spoiledNEQ'];
       result$data['spoiledNEQ'] = (l$spoiledNEQ as bool?);
     }
+    if (data.containsKey('thumbnail')) {
+      final l$thumbnail = data['thumbnail'];
+      result$data['thumbnail'] = (l$thumbnail as String?);
+    }
+    if (data.containsKey('thumbnailNEQ')) {
+      final l$thumbnailNEQ = data['thumbnailNEQ'];
+      result$data['thumbnailNEQ'] = (l$thumbnailNEQ as String?);
+    }
+    if (data.containsKey('thumbnailIn')) {
+      final l$thumbnailIn = data['thumbnailIn'];
+      result$data['thumbnailIn'] =
+          (l$thumbnailIn as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
+    if (data.containsKey('thumbnailNotIn')) {
+      final l$thumbnailNotIn = data['thumbnailNotIn'];
+      result$data['thumbnailNotIn'] = (l$thumbnailNotIn as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('thumbnailGT')) {
+      final l$thumbnailGT = data['thumbnailGT'];
+      result$data['thumbnailGT'] = (l$thumbnailGT as String?);
+    }
+    if (data.containsKey('thumbnailGTE')) {
+      final l$thumbnailGTE = data['thumbnailGTE'];
+      result$data['thumbnailGTE'] = (l$thumbnailGTE as String?);
+    }
+    if (data.containsKey('thumbnailLT')) {
+      final l$thumbnailLT = data['thumbnailLT'];
+      result$data['thumbnailLT'] = (l$thumbnailLT as String?);
+    }
+    if (data.containsKey('thumbnailLTE')) {
+      final l$thumbnailLTE = data['thumbnailLTE'];
+      result$data['thumbnailLTE'] = (l$thumbnailLTE as String?);
+    }
+    if (data.containsKey('thumbnailContains')) {
+      final l$thumbnailContains = data['thumbnailContains'];
+      result$data['thumbnailContains'] = (l$thumbnailContains as String?);
+    }
+    if (data.containsKey('thumbnailHasPrefix')) {
+      final l$thumbnailHasPrefix = data['thumbnailHasPrefix'];
+      result$data['thumbnailHasPrefix'] = (l$thumbnailHasPrefix as String?);
+    }
+    if (data.containsKey('thumbnailHasSuffix')) {
+      final l$thumbnailHasSuffix = data['thumbnailHasSuffix'];
+      result$data['thumbnailHasSuffix'] = (l$thumbnailHasSuffix as String?);
+    }
+    if (data.containsKey('thumbnailIsNil')) {
+      final l$thumbnailIsNil = data['thumbnailIsNil'];
+      result$data['thumbnailIsNil'] = (l$thumbnailIsNil as bool?);
+    }
+    if (data.containsKey('thumbnailNotNil')) {
+      final l$thumbnailNotNil = data['thumbnailNotNil'];
+      result$data['thumbnailNotNil'] = (l$thumbnailNotNil as bool?);
+    }
+    if (data.containsKey('thumbnailEqualFold')) {
+      final l$thumbnailEqualFold = data['thumbnailEqualFold'];
+      result$data['thumbnailEqualFold'] = (l$thumbnailEqualFold as String?);
+    }
+    if (data.containsKey('thumbnailContainsFold')) {
+      final l$thumbnailContainsFold = data['thumbnailContainsFold'];
+      result$data['thumbnailContainsFold'] =
+          (l$thumbnailContainsFold as String?);
+    }
     if (data.containsKey('hasOwner')) {
       final l$hasOwner = data['hasOwner'];
       result$data['hasOwner'] = (l$hasOwner as bool?);
@@ -3300,6 +3609,18 @@ class Input$PostWhereInput {
     if (data.containsKey('hasLikedUsersWith')) {
       final l$hasLikedUsersWith = data['hasLikedUsersWith'];
       result$data['hasLikedUsersWith'] = (l$hasLikedUsersWith as List<dynamic>?)
+          ?.map(
+              (e) => Input$UserWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('hasBookmarkedUsers')) {
+      final l$hasBookmarkedUsers = data['hasBookmarkedUsers'];
+      result$data['hasBookmarkedUsers'] = (l$hasBookmarkedUsers as bool?);
+    }
+    if (data.containsKey('hasBookmarkedUsersWith')) {
+      final l$hasBookmarkedUsersWith = data['hasBookmarkedUsersWith'];
+      result$data['hasBookmarkedUsersWith'] = (l$hasBookmarkedUsersWith
+              as List<dynamic>?)
           ?.map(
               (e) => Input$UserWhereInput.fromJson((e as Map<String, dynamic>)))
           .toList();
@@ -3374,6 +3695,23 @@ class Input$PostWhereInput {
       (_$data['typeNotIn'] as List<Enum$PostPostType>?);
   bool? get spoiled => (_$data['spoiled'] as bool?);
   bool? get spoiledNEQ => (_$data['spoiledNEQ'] as bool?);
+  String? get thumbnail => (_$data['thumbnail'] as String?);
+  String? get thumbnailNEQ => (_$data['thumbnailNEQ'] as String?);
+  List<String>? get thumbnailIn => (_$data['thumbnailIn'] as List<String>?);
+  List<String>? get thumbnailNotIn =>
+      (_$data['thumbnailNotIn'] as List<String>?);
+  String? get thumbnailGT => (_$data['thumbnailGT'] as String?);
+  String? get thumbnailGTE => (_$data['thumbnailGTE'] as String?);
+  String? get thumbnailLT => (_$data['thumbnailLT'] as String?);
+  String? get thumbnailLTE => (_$data['thumbnailLTE'] as String?);
+  String? get thumbnailContains => (_$data['thumbnailContains'] as String?);
+  String? get thumbnailHasPrefix => (_$data['thumbnailHasPrefix'] as String?);
+  String? get thumbnailHasSuffix => (_$data['thumbnailHasSuffix'] as String?);
+  bool? get thumbnailIsNil => (_$data['thumbnailIsNil'] as bool?);
+  bool? get thumbnailNotNil => (_$data['thumbnailNotNil'] as bool?);
+  String? get thumbnailEqualFold => (_$data['thumbnailEqualFold'] as String?);
+  String? get thumbnailContainsFold =>
+      (_$data['thumbnailContainsFold'] as String?);
   bool? get hasOwner => (_$data['hasOwner'] as bool?);
   List<Input$UserWhereInput>? get hasOwnerWith =>
       (_$data['hasOwnerWith'] as List<Input$UserWhereInput>?);
@@ -3389,6 +3727,9 @@ class Input$PostWhereInput {
   bool? get hasLikedUsers => (_$data['hasLikedUsers'] as bool?);
   List<Input$UserWhereInput>? get hasLikedUsersWith =>
       (_$data['hasLikedUsersWith'] as List<Input$UserWhereInput>?);
+  bool? get hasBookmarkedUsers => (_$data['hasBookmarkedUsers'] as bool?);
+  List<Input$UserWhereInput>? get hasBookmarkedUsersWith =>
+      (_$data['hasBookmarkedUsersWith'] as List<Input$UserWhereInput>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('not')) {
@@ -3633,6 +3974,66 @@ class Input$PostWhereInput {
       final l$spoiledNEQ = spoiledNEQ;
       result$data['spoiledNEQ'] = l$spoiledNEQ;
     }
+    if (_$data.containsKey('thumbnail')) {
+      final l$thumbnail = thumbnail;
+      result$data['thumbnail'] = l$thumbnail;
+    }
+    if (_$data.containsKey('thumbnailNEQ')) {
+      final l$thumbnailNEQ = thumbnailNEQ;
+      result$data['thumbnailNEQ'] = l$thumbnailNEQ;
+    }
+    if (_$data.containsKey('thumbnailIn')) {
+      final l$thumbnailIn = thumbnailIn;
+      result$data['thumbnailIn'] = l$thumbnailIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('thumbnailNotIn')) {
+      final l$thumbnailNotIn = thumbnailNotIn;
+      result$data['thumbnailNotIn'] = l$thumbnailNotIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('thumbnailGT')) {
+      final l$thumbnailGT = thumbnailGT;
+      result$data['thumbnailGT'] = l$thumbnailGT;
+    }
+    if (_$data.containsKey('thumbnailGTE')) {
+      final l$thumbnailGTE = thumbnailGTE;
+      result$data['thumbnailGTE'] = l$thumbnailGTE;
+    }
+    if (_$data.containsKey('thumbnailLT')) {
+      final l$thumbnailLT = thumbnailLT;
+      result$data['thumbnailLT'] = l$thumbnailLT;
+    }
+    if (_$data.containsKey('thumbnailLTE')) {
+      final l$thumbnailLTE = thumbnailLTE;
+      result$data['thumbnailLTE'] = l$thumbnailLTE;
+    }
+    if (_$data.containsKey('thumbnailContains')) {
+      final l$thumbnailContains = thumbnailContains;
+      result$data['thumbnailContains'] = l$thumbnailContains;
+    }
+    if (_$data.containsKey('thumbnailHasPrefix')) {
+      final l$thumbnailHasPrefix = thumbnailHasPrefix;
+      result$data['thumbnailHasPrefix'] = l$thumbnailHasPrefix;
+    }
+    if (_$data.containsKey('thumbnailHasSuffix')) {
+      final l$thumbnailHasSuffix = thumbnailHasSuffix;
+      result$data['thumbnailHasSuffix'] = l$thumbnailHasSuffix;
+    }
+    if (_$data.containsKey('thumbnailIsNil')) {
+      final l$thumbnailIsNil = thumbnailIsNil;
+      result$data['thumbnailIsNil'] = l$thumbnailIsNil;
+    }
+    if (_$data.containsKey('thumbnailNotNil')) {
+      final l$thumbnailNotNil = thumbnailNotNil;
+      result$data['thumbnailNotNil'] = l$thumbnailNotNil;
+    }
+    if (_$data.containsKey('thumbnailEqualFold')) {
+      final l$thumbnailEqualFold = thumbnailEqualFold;
+      result$data['thumbnailEqualFold'] = l$thumbnailEqualFold;
+    }
+    if (_$data.containsKey('thumbnailContainsFold')) {
+      final l$thumbnailContainsFold = thumbnailContainsFold;
+      result$data['thumbnailContainsFold'] = l$thumbnailContainsFold;
+    }
     if (_$data.containsKey('hasOwner')) {
       final l$hasOwner = hasOwner;
       result$data['hasOwner'] = l$hasOwner;
@@ -3677,6 +4078,15 @@ class Input$PostWhereInput {
       final l$hasLikedUsersWith = hasLikedUsersWith;
       result$data['hasLikedUsersWith'] =
           l$hasLikedUsersWith?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasBookmarkedUsers')) {
+      final l$hasBookmarkedUsers = hasBookmarkedUsers;
+      result$data['hasBookmarkedUsers'] = l$hasBookmarkedUsers;
+    }
+    if (_$data.containsKey('hasBookmarkedUsersWith')) {
+      final l$hasBookmarkedUsersWith = hasBookmarkedUsersWith;
+      result$data['hasBookmarkedUsersWith'] =
+          l$hasBookmarkedUsersWith?.map((e) => e.toJson()).toList();
     }
     return result$data;
   }
@@ -4356,6 +4766,163 @@ class Input$PostWhereInput {
     if (l$spoiledNEQ != lOther$spoiledNEQ) {
       return false;
     }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (_$data.containsKey('thumbnail') !=
+        other._$data.containsKey('thumbnail')) {
+      return false;
+    }
+    if (l$thumbnail != lOther$thumbnail) {
+      return false;
+    }
+    final l$thumbnailNEQ = thumbnailNEQ;
+    final lOther$thumbnailNEQ = other.thumbnailNEQ;
+    if (_$data.containsKey('thumbnailNEQ') !=
+        other._$data.containsKey('thumbnailNEQ')) {
+      return false;
+    }
+    if (l$thumbnailNEQ != lOther$thumbnailNEQ) {
+      return false;
+    }
+    final l$thumbnailIn = thumbnailIn;
+    final lOther$thumbnailIn = other.thumbnailIn;
+    if (_$data.containsKey('thumbnailIn') !=
+        other._$data.containsKey('thumbnailIn')) {
+      return false;
+    }
+    if (l$thumbnailIn != null && lOther$thumbnailIn != null) {
+      if (l$thumbnailIn.length != lOther$thumbnailIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$thumbnailIn.length; i++) {
+        final l$thumbnailIn$entry = l$thumbnailIn[i];
+        final lOther$thumbnailIn$entry = lOther$thumbnailIn[i];
+        if (l$thumbnailIn$entry != lOther$thumbnailIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$thumbnailIn != lOther$thumbnailIn) {
+      return false;
+    }
+    final l$thumbnailNotIn = thumbnailNotIn;
+    final lOther$thumbnailNotIn = other.thumbnailNotIn;
+    if (_$data.containsKey('thumbnailNotIn') !=
+        other._$data.containsKey('thumbnailNotIn')) {
+      return false;
+    }
+    if (l$thumbnailNotIn != null && lOther$thumbnailNotIn != null) {
+      if (l$thumbnailNotIn.length != lOther$thumbnailNotIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$thumbnailNotIn.length; i++) {
+        final l$thumbnailNotIn$entry = l$thumbnailNotIn[i];
+        final lOther$thumbnailNotIn$entry = lOther$thumbnailNotIn[i];
+        if (l$thumbnailNotIn$entry != lOther$thumbnailNotIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$thumbnailNotIn != lOther$thumbnailNotIn) {
+      return false;
+    }
+    final l$thumbnailGT = thumbnailGT;
+    final lOther$thumbnailGT = other.thumbnailGT;
+    if (_$data.containsKey('thumbnailGT') !=
+        other._$data.containsKey('thumbnailGT')) {
+      return false;
+    }
+    if (l$thumbnailGT != lOther$thumbnailGT) {
+      return false;
+    }
+    final l$thumbnailGTE = thumbnailGTE;
+    final lOther$thumbnailGTE = other.thumbnailGTE;
+    if (_$data.containsKey('thumbnailGTE') !=
+        other._$data.containsKey('thumbnailGTE')) {
+      return false;
+    }
+    if (l$thumbnailGTE != lOther$thumbnailGTE) {
+      return false;
+    }
+    final l$thumbnailLT = thumbnailLT;
+    final lOther$thumbnailLT = other.thumbnailLT;
+    if (_$data.containsKey('thumbnailLT') !=
+        other._$data.containsKey('thumbnailLT')) {
+      return false;
+    }
+    if (l$thumbnailLT != lOther$thumbnailLT) {
+      return false;
+    }
+    final l$thumbnailLTE = thumbnailLTE;
+    final lOther$thumbnailLTE = other.thumbnailLTE;
+    if (_$data.containsKey('thumbnailLTE') !=
+        other._$data.containsKey('thumbnailLTE')) {
+      return false;
+    }
+    if (l$thumbnailLTE != lOther$thumbnailLTE) {
+      return false;
+    }
+    final l$thumbnailContains = thumbnailContains;
+    final lOther$thumbnailContains = other.thumbnailContains;
+    if (_$data.containsKey('thumbnailContains') !=
+        other._$data.containsKey('thumbnailContains')) {
+      return false;
+    }
+    if (l$thumbnailContains != lOther$thumbnailContains) {
+      return false;
+    }
+    final l$thumbnailHasPrefix = thumbnailHasPrefix;
+    final lOther$thumbnailHasPrefix = other.thumbnailHasPrefix;
+    if (_$data.containsKey('thumbnailHasPrefix') !=
+        other._$data.containsKey('thumbnailHasPrefix')) {
+      return false;
+    }
+    if (l$thumbnailHasPrefix != lOther$thumbnailHasPrefix) {
+      return false;
+    }
+    final l$thumbnailHasSuffix = thumbnailHasSuffix;
+    final lOther$thumbnailHasSuffix = other.thumbnailHasSuffix;
+    if (_$data.containsKey('thumbnailHasSuffix') !=
+        other._$data.containsKey('thumbnailHasSuffix')) {
+      return false;
+    }
+    if (l$thumbnailHasSuffix != lOther$thumbnailHasSuffix) {
+      return false;
+    }
+    final l$thumbnailIsNil = thumbnailIsNil;
+    final lOther$thumbnailIsNil = other.thumbnailIsNil;
+    if (_$data.containsKey('thumbnailIsNil') !=
+        other._$data.containsKey('thumbnailIsNil')) {
+      return false;
+    }
+    if (l$thumbnailIsNil != lOther$thumbnailIsNil) {
+      return false;
+    }
+    final l$thumbnailNotNil = thumbnailNotNil;
+    final lOther$thumbnailNotNil = other.thumbnailNotNil;
+    if (_$data.containsKey('thumbnailNotNil') !=
+        other._$data.containsKey('thumbnailNotNil')) {
+      return false;
+    }
+    if (l$thumbnailNotNil != lOther$thumbnailNotNil) {
+      return false;
+    }
+    final l$thumbnailEqualFold = thumbnailEqualFold;
+    final lOther$thumbnailEqualFold = other.thumbnailEqualFold;
+    if (_$data.containsKey('thumbnailEqualFold') !=
+        other._$data.containsKey('thumbnailEqualFold')) {
+      return false;
+    }
+    if (l$thumbnailEqualFold != lOther$thumbnailEqualFold) {
+      return false;
+    }
+    final l$thumbnailContainsFold = thumbnailContainsFold;
+    final lOther$thumbnailContainsFold = other.thumbnailContainsFold;
+    if (_$data.containsKey('thumbnailContainsFold') !=
+        other._$data.containsKey('thumbnailContainsFold')) {
+      return false;
+    }
+    if (l$thumbnailContainsFold != lOther$thumbnailContainsFold) {
+      return false;
+    }
     final l$hasOwner = hasOwner;
     final lOther$hasOwner = other.hasOwner;
     if (_$data.containsKey('hasOwner') !=
@@ -4500,6 +5067,39 @@ class Input$PostWhereInput {
     } else if (l$hasLikedUsersWith != lOther$hasLikedUsersWith) {
       return false;
     }
+    final l$hasBookmarkedUsers = hasBookmarkedUsers;
+    final lOther$hasBookmarkedUsers = other.hasBookmarkedUsers;
+    if (_$data.containsKey('hasBookmarkedUsers') !=
+        other._$data.containsKey('hasBookmarkedUsers')) {
+      return false;
+    }
+    if (l$hasBookmarkedUsers != lOther$hasBookmarkedUsers) {
+      return false;
+    }
+    final l$hasBookmarkedUsersWith = hasBookmarkedUsersWith;
+    final lOther$hasBookmarkedUsersWith = other.hasBookmarkedUsersWith;
+    if (_$data.containsKey('hasBookmarkedUsersWith') !=
+        other._$data.containsKey('hasBookmarkedUsersWith')) {
+      return false;
+    }
+    if (l$hasBookmarkedUsersWith != null &&
+        lOther$hasBookmarkedUsersWith != null) {
+      if (l$hasBookmarkedUsersWith.length !=
+          lOther$hasBookmarkedUsersWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasBookmarkedUsersWith.length; i++) {
+        final l$hasBookmarkedUsersWith$entry = l$hasBookmarkedUsersWith[i];
+        final lOther$hasBookmarkedUsersWith$entry =
+            lOther$hasBookmarkedUsersWith[i];
+        if (l$hasBookmarkedUsersWith$entry !=
+            lOther$hasBookmarkedUsersWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasBookmarkedUsersWith != lOther$hasBookmarkedUsersWith) {
+      return false;
+    }
     return true;
   }
 
@@ -4564,6 +5164,21 @@ class Input$PostWhereInput {
     final l$typeNotIn = typeNotIn;
     final l$spoiled = spoiled;
     final l$spoiledNEQ = spoiledNEQ;
+    final l$thumbnail = thumbnail;
+    final l$thumbnailNEQ = thumbnailNEQ;
+    final l$thumbnailIn = thumbnailIn;
+    final l$thumbnailNotIn = thumbnailNotIn;
+    final l$thumbnailGT = thumbnailGT;
+    final l$thumbnailGTE = thumbnailGTE;
+    final l$thumbnailLT = thumbnailLT;
+    final l$thumbnailLTE = thumbnailLTE;
+    final l$thumbnailContains = thumbnailContains;
+    final l$thumbnailHasPrefix = thumbnailHasPrefix;
+    final l$thumbnailHasSuffix = thumbnailHasSuffix;
+    final l$thumbnailIsNil = thumbnailIsNil;
+    final l$thumbnailNotNil = thumbnailNotNil;
+    final l$thumbnailEqualFold = thumbnailEqualFold;
+    final l$thumbnailContainsFold = thumbnailContainsFold;
     final l$hasOwner = hasOwner;
     final l$hasOwnerWith = hasOwnerWith;
     final l$hasHashtags = hasHashtags;
@@ -4574,6 +5189,8 @@ class Input$PostWhereInput {
     final l$hasCategoryWith = hasCategoryWith;
     final l$hasLikedUsers = hasLikedUsers;
     final l$hasLikedUsersWith = hasLikedUsersWith;
+    final l$hasBookmarkedUsers = hasBookmarkedUsers;
+    final l$hasBookmarkedUsersWith = hasBookmarkedUsersWith;
     return Object.hashAll([
       _$data.containsKey('not') ? l$not : const {},
       _$data.containsKey('and')
@@ -4692,6 +5309,37 @@ class Input$PostWhereInput {
           : const {},
       _$data.containsKey('spoiled') ? l$spoiled : const {},
       _$data.containsKey('spoiledNEQ') ? l$spoiledNEQ : const {},
+      _$data.containsKey('thumbnail') ? l$thumbnail : const {},
+      _$data.containsKey('thumbnailNEQ') ? l$thumbnailNEQ : const {},
+      _$data.containsKey('thumbnailIn')
+          ? l$thumbnailIn == null
+              ? null
+              : Object.hashAll(l$thumbnailIn.map((v) => v))
+          : const {},
+      _$data.containsKey('thumbnailNotIn')
+          ? l$thumbnailNotIn == null
+              ? null
+              : Object.hashAll(l$thumbnailNotIn.map((v) => v))
+          : const {},
+      _$data.containsKey('thumbnailGT') ? l$thumbnailGT : const {},
+      _$data.containsKey('thumbnailGTE') ? l$thumbnailGTE : const {},
+      _$data.containsKey('thumbnailLT') ? l$thumbnailLT : const {},
+      _$data.containsKey('thumbnailLTE') ? l$thumbnailLTE : const {},
+      _$data.containsKey('thumbnailContains') ? l$thumbnailContains : const {},
+      _$data.containsKey('thumbnailHasPrefix')
+          ? l$thumbnailHasPrefix
+          : const {},
+      _$data.containsKey('thumbnailHasSuffix')
+          ? l$thumbnailHasSuffix
+          : const {},
+      _$data.containsKey('thumbnailIsNil') ? l$thumbnailIsNil : const {},
+      _$data.containsKey('thumbnailNotNil') ? l$thumbnailNotNil : const {},
+      _$data.containsKey('thumbnailEqualFold')
+          ? l$thumbnailEqualFold
+          : const {},
+      _$data.containsKey('thumbnailContainsFold')
+          ? l$thumbnailContainsFold
+          : const {},
       _$data.containsKey('hasOwner') ? l$hasOwner : const {},
       _$data.containsKey('hasOwnerWith')
           ? l$hasOwnerWith == null
@@ -4721,6 +5369,14 @@ class Input$PostWhereInput {
           ? l$hasLikedUsersWith == null
               ? null
               : Object.hashAll(l$hasLikedUsersWith.map((v) => v))
+          : const {},
+      _$data.containsKey('hasBookmarkedUsers')
+          ? l$hasBookmarkedUsers
+          : const {},
+      _$data.containsKey('hasBookmarkedUsersWith')
+          ? l$hasBookmarkedUsersWith == null
+              ? null
+              : Object.hashAll(l$hasBookmarkedUsersWith.map((v) => v))
           : const {}
     ]);
   }
@@ -4794,6 +5450,21 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
       List<Enum$PostPostType>? typeNotIn,
       bool? spoiled,
       bool? spoiledNEQ,
+      String? thumbnail,
+      String? thumbnailNEQ,
+      List<String>? thumbnailIn,
+      List<String>? thumbnailNotIn,
+      String? thumbnailGT,
+      String? thumbnailGTE,
+      String? thumbnailLT,
+      String? thumbnailLTE,
+      String? thumbnailContains,
+      String? thumbnailHasPrefix,
+      String? thumbnailHasSuffix,
+      bool? thumbnailIsNil,
+      bool? thumbnailNotNil,
+      String? thumbnailEqualFold,
+      String? thumbnailContainsFold,
       bool? hasOwner,
       List<Input$UserWhereInput>? hasOwnerWith,
       bool? hasHashtags,
@@ -4803,7 +5474,9 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
       bool? hasCategory,
       List<Input$CategoryWhereInput>? hasCategoryWith,
       bool? hasLikedUsers,
-      List<Input$UserWhereInput>? hasLikedUsersWith});
+      List<Input$UserWhereInput>? hasLikedUsersWith,
+      bool? hasBookmarkedUsers,
+      List<Input$UserWhereInput>? hasBookmarkedUsersWith});
   CopyWith$Input$PostWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$PostWhereInput>? Function(
@@ -4832,6 +5505,10 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
                   CopyWith$Input$CategoryWhereInput<Input$CategoryWhereInput>>?)
           _fn);
   TRes hasLikedUsersWith(
+      Iterable<Input$UserWhereInput>? Function(
+              Iterable<CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
+          _fn);
+  TRes hasBookmarkedUsersWith(
       Iterable<Input$UserWhereInput>? Function(
               Iterable<CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
           _fn);
@@ -4907,6 +5584,21 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           Object? typeNotIn = _undefined,
           Object? spoiled = _undefined,
           Object? spoiledNEQ = _undefined,
+          Object? thumbnail = _undefined,
+          Object? thumbnailNEQ = _undefined,
+          Object? thumbnailIn = _undefined,
+          Object? thumbnailNotIn = _undefined,
+          Object? thumbnailGT = _undefined,
+          Object? thumbnailGTE = _undefined,
+          Object? thumbnailLT = _undefined,
+          Object? thumbnailLTE = _undefined,
+          Object? thumbnailContains = _undefined,
+          Object? thumbnailHasPrefix = _undefined,
+          Object? thumbnailHasSuffix = _undefined,
+          Object? thumbnailIsNil = _undefined,
+          Object? thumbnailNotNil = _undefined,
+          Object? thumbnailEqualFold = _undefined,
+          Object? thumbnailContainsFold = _undefined,
           Object? hasOwner = _undefined,
           Object? hasOwnerWith = _undefined,
           Object? hasHashtags = _undefined,
@@ -4916,7 +5608,9 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           Object? hasCategory = _undefined,
           Object? hasCategoryWith = _undefined,
           Object? hasLikedUsers = _undefined,
-          Object? hasLikedUsersWith = _undefined}) =>
+          Object? hasLikedUsersWith = _undefined,
+          Object? hasBookmarkedUsers = _undefined,
+          Object? hasBookmarkedUsersWith = _undefined}) =>
       _then(Input$PostWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$PostWhereInput?),
@@ -5006,6 +5700,33 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           'typeNotIn': (typeNotIn as List<Enum$PostPostType>?),
         if (spoiled != _undefined) 'spoiled': (spoiled as bool?),
         if (spoiledNEQ != _undefined) 'spoiledNEQ': (spoiledNEQ as bool?),
+        if (thumbnail != _undefined) 'thumbnail': (thumbnail as String?),
+        if (thumbnailNEQ != _undefined)
+          'thumbnailNEQ': (thumbnailNEQ as String?),
+        if (thumbnailIn != _undefined)
+          'thumbnailIn': (thumbnailIn as List<String>?),
+        if (thumbnailNotIn != _undefined)
+          'thumbnailNotIn': (thumbnailNotIn as List<String>?),
+        if (thumbnailGT != _undefined) 'thumbnailGT': (thumbnailGT as String?),
+        if (thumbnailGTE != _undefined)
+          'thumbnailGTE': (thumbnailGTE as String?),
+        if (thumbnailLT != _undefined) 'thumbnailLT': (thumbnailLT as String?),
+        if (thumbnailLTE != _undefined)
+          'thumbnailLTE': (thumbnailLTE as String?),
+        if (thumbnailContains != _undefined)
+          'thumbnailContains': (thumbnailContains as String?),
+        if (thumbnailHasPrefix != _undefined)
+          'thumbnailHasPrefix': (thumbnailHasPrefix as String?),
+        if (thumbnailHasSuffix != _undefined)
+          'thumbnailHasSuffix': (thumbnailHasSuffix as String?),
+        if (thumbnailIsNil != _undefined)
+          'thumbnailIsNil': (thumbnailIsNil as bool?),
+        if (thumbnailNotNil != _undefined)
+          'thumbnailNotNil': (thumbnailNotNil as bool?),
+        if (thumbnailEqualFold != _undefined)
+          'thumbnailEqualFold': (thumbnailEqualFold as String?),
+        if (thumbnailContainsFold != _undefined)
+          'thumbnailContainsFold': (thumbnailContainsFold as String?),
         if (hasOwner != _undefined) 'hasOwner': (hasOwner as bool?),
         if (hasOwnerWith != _undefined)
           'hasOwnerWith': (hasOwnerWith as List<Input$UserWhereInput>?),
@@ -5025,6 +5746,11 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
         if (hasLikedUsersWith != _undefined)
           'hasLikedUsersWith':
               (hasLikedUsersWith as List<Input$UserWhereInput>?),
+        if (hasBookmarkedUsers != _undefined)
+          'hasBookmarkedUsers': (hasBookmarkedUsers as bool?),
+        if (hasBookmarkedUsersWith != _undefined)
+          'hasBookmarkedUsersWith':
+              (hasBookmarkedUsersWith as List<Input$UserWhereInput>?),
       }));
   CopyWith$Input$PostWhereInput<TRes> get not {
     final local$not = _instance.not;
@@ -5098,6 +5824,15 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           hasLikedUsersWith: _fn(_instance.hasLikedUsersWith
                   ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
               ?.toList());
+  TRes hasBookmarkedUsersWith(
+          Iterable<Input$UserWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
+              _fn) =>
+      call(
+          hasBookmarkedUsersWith: _fn(_instance.hasBookmarkedUsersWith
+                  ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
+              ?.toList());
 }
 
 class _CopyWithStubImpl$Input$PostWhereInput<TRes>
@@ -5166,6 +5901,21 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
           List<Enum$PostPostType>? typeNotIn,
           bool? spoiled,
           bool? spoiledNEQ,
+          String? thumbnail,
+          String? thumbnailNEQ,
+          List<String>? thumbnailIn,
+          List<String>? thumbnailNotIn,
+          String? thumbnailGT,
+          String? thumbnailGTE,
+          String? thumbnailLT,
+          String? thumbnailLTE,
+          String? thumbnailContains,
+          String? thumbnailHasPrefix,
+          String? thumbnailHasSuffix,
+          bool? thumbnailIsNil,
+          bool? thumbnailNotNil,
+          String? thumbnailEqualFold,
+          String? thumbnailContainsFold,
           bool? hasOwner,
           List<Input$UserWhereInput>? hasOwnerWith,
           bool? hasHashtags,
@@ -5175,7 +5925,9 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
           bool? hasCategory,
           List<Input$CategoryWhereInput>? hasCategoryWith,
           bool? hasLikedUsers,
-          List<Input$UserWhereInput>? hasLikedUsersWith}) =>
+          List<Input$UserWhereInput>? hasLikedUsersWith,
+          bool? hasBookmarkedUsers,
+          List<Input$UserWhereInput>? hasBookmarkedUsersWith}) =>
       _res;
   CopyWith$Input$PostWhereInput<TRes> get not =>
       CopyWith$Input$PostWhereInput.stub(_res);
@@ -5186,6 +5938,7 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
   hasWorkWith(_fn) => _res;
   hasCategoryWith(_fn) => _res;
   hasLikedUsersWith(_fn) => _res;
+  hasBookmarkedUsersWith(_fn) => _res;
 }
 
 class Input$UpdateHashtagInput {
@@ -5382,6 +6135,8 @@ class Input$UpdatePostInput {
           String? content,
           Enum$PostPostType? type,
           bool? spoiled,
+          bool? clearThumbnail,
+          String? thumbnail,
           bool? clearOwner,
           String? ownerID,
           List<String>? addHashtagIDs,
@@ -5391,13 +6146,17 @@ class Input$UpdatePostInput {
           bool? clearCategory,
           String? categoryID,
           List<String>? addLikedUserIDs,
-          List<String>? removeLikedUserIDs}) =>
+          List<String>? removeLikedUserIDs,
+          List<String>? addBookmarkedUserIDs,
+          List<String>? removeBookmarkedUserIDs}) =>
       Input$UpdatePostInput._({
         if (updateTime != null) r'updateTime': updateTime,
         if (title != null) r'title': title,
         if (content != null) r'content': content,
         if (type != null) r'type': type,
         if (spoiled != null) r'spoiled': spoiled,
+        if (clearThumbnail != null) r'clearThumbnail': clearThumbnail,
+        if (thumbnail != null) r'thumbnail': thumbnail,
         if (clearOwner != null) r'clearOwner': clearOwner,
         if (ownerID != null) r'ownerID': ownerID,
         if (addHashtagIDs != null) r'addHashtagIDs': addHashtagIDs,
@@ -5409,6 +6168,10 @@ class Input$UpdatePostInput {
         if (addLikedUserIDs != null) r'addLikedUserIDs': addLikedUserIDs,
         if (removeLikedUserIDs != null)
           r'removeLikedUserIDs': removeLikedUserIDs,
+        if (addBookmarkedUserIDs != null)
+          r'addBookmarkedUserIDs': addBookmarkedUserIDs,
+        if (removeBookmarkedUserIDs != null)
+          r'removeBookmarkedUserIDs': removeBookmarkedUserIDs,
       });
 
   Input$UpdatePostInput._(this._$data);
@@ -5436,6 +6199,14 @@ class Input$UpdatePostInput {
     if (data.containsKey('spoiled')) {
       final l$spoiled = data['spoiled'];
       result$data['spoiled'] = (l$spoiled as bool?);
+    }
+    if (data.containsKey('clearThumbnail')) {
+      final l$clearThumbnail = data['clearThumbnail'];
+      result$data['clearThumbnail'] = (l$clearThumbnail as bool?);
+    }
+    if (data.containsKey('thumbnail')) {
+      final l$thumbnail = data['thumbnail'];
+      result$data['thumbnail'] = (l$thumbnail as String?);
     }
     if (data.containsKey('clearOwner')) {
       final l$clearOwner = data['clearOwner'];
@@ -5486,6 +6257,20 @@ class Input$UpdatePostInput {
               ?.map((e) => (e as String))
               .toList();
     }
+    if (data.containsKey('addBookmarkedUserIDs')) {
+      final l$addBookmarkedUserIDs = data['addBookmarkedUserIDs'];
+      result$data['addBookmarkedUserIDs'] =
+          (l$addBookmarkedUserIDs as List<dynamic>?)
+              ?.map((e) => (e as String))
+              .toList();
+    }
+    if (data.containsKey('removeBookmarkedUserIDs')) {
+      final l$removeBookmarkedUserIDs = data['removeBookmarkedUserIDs'];
+      result$data['removeBookmarkedUserIDs'] =
+          (l$removeBookmarkedUserIDs as List<dynamic>?)
+              ?.map((e) => (e as String))
+              .toList();
+    }
     return Input$UpdatePostInput._(result$data);
   }
 
@@ -5496,6 +6281,8 @@ class Input$UpdatePostInput {
   String? get content => (_$data['content'] as String?);
   Enum$PostPostType? get type => (_$data['type'] as Enum$PostPostType?);
   bool? get spoiled => (_$data['spoiled'] as bool?);
+  bool? get clearThumbnail => (_$data['clearThumbnail'] as bool?);
+  String? get thumbnail => (_$data['thumbnail'] as String?);
   bool? get clearOwner => (_$data['clearOwner'] as bool?);
   String? get ownerID => (_$data['ownerID'] as String?);
   List<String>? get addHashtagIDs => (_$data['addHashtagIDs'] as List<String>?);
@@ -5509,6 +6296,10 @@ class Input$UpdatePostInput {
       (_$data['addLikedUserIDs'] as List<String>?);
   List<String>? get removeLikedUserIDs =>
       (_$data['removeLikedUserIDs'] as List<String>?);
+  List<String>? get addBookmarkedUserIDs =>
+      (_$data['addBookmarkedUserIDs'] as List<String>?);
+  List<String>? get removeBookmarkedUserIDs =>
+      (_$data['removeBookmarkedUserIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('updateTime')) {
@@ -5531,6 +6322,14 @@ class Input$UpdatePostInput {
     if (_$data.containsKey('spoiled')) {
       final l$spoiled = spoiled;
       result$data['spoiled'] = l$spoiled;
+    }
+    if (_$data.containsKey('clearThumbnail')) {
+      final l$clearThumbnail = clearThumbnail;
+      result$data['clearThumbnail'] = l$clearThumbnail;
+    }
+    if (_$data.containsKey('thumbnail')) {
+      final l$thumbnail = thumbnail;
+      result$data['thumbnail'] = l$thumbnail;
     }
     if (_$data.containsKey('clearOwner')) {
       final l$clearOwner = clearOwner;
@@ -5574,6 +6373,16 @@ class Input$UpdatePostInput {
       final l$removeLikedUserIDs = removeLikedUserIDs;
       result$data['removeLikedUserIDs'] =
           l$removeLikedUserIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('addBookmarkedUserIDs')) {
+      final l$addBookmarkedUserIDs = addBookmarkedUserIDs;
+      result$data['addBookmarkedUserIDs'] =
+          l$addBookmarkedUserIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('removeBookmarkedUserIDs')) {
+      final l$removeBookmarkedUserIDs = removeBookmarkedUserIDs;
+      result$data['removeBookmarkedUserIDs'] =
+          l$removeBookmarkedUserIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -5627,6 +6436,24 @@ class Input$UpdatePostInput {
       return false;
     }
     if (l$spoiled != lOther$spoiled) {
+      return false;
+    }
+    final l$clearThumbnail = clearThumbnail;
+    final lOther$clearThumbnail = other.clearThumbnail;
+    if (_$data.containsKey('clearThumbnail') !=
+        other._$data.containsKey('clearThumbnail')) {
+      return false;
+    }
+    if (l$clearThumbnail != lOther$clearThumbnail) {
+      return false;
+    }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (_$data.containsKey('thumbnail') !=
+        other._$data.containsKey('thumbnail')) {
+      return false;
+    }
+    if (l$thumbnail != lOther$thumbnail) {
       return false;
     }
     final l$clearOwner = clearOwner;
@@ -5761,6 +6588,51 @@ class Input$UpdatePostInput {
     } else if (l$removeLikedUserIDs != lOther$removeLikedUserIDs) {
       return false;
     }
+    final l$addBookmarkedUserIDs = addBookmarkedUserIDs;
+    final lOther$addBookmarkedUserIDs = other.addBookmarkedUserIDs;
+    if (_$data.containsKey('addBookmarkedUserIDs') !=
+        other._$data.containsKey('addBookmarkedUserIDs')) {
+      return false;
+    }
+    if (l$addBookmarkedUserIDs != null && lOther$addBookmarkedUserIDs != null) {
+      if (l$addBookmarkedUserIDs.length != lOther$addBookmarkedUserIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$addBookmarkedUserIDs.length; i++) {
+        final l$addBookmarkedUserIDs$entry = l$addBookmarkedUserIDs[i];
+        final lOther$addBookmarkedUserIDs$entry =
+            lOther$addBookmarkedUserIDs[i];
+        if (l$addBookmarkedUserIDs$entry != lOther$addBookmarkedUserIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$addBookmarkedUserIDs != lOther$addBookmarkedUserIDs) {
+      return false;
+    }
+    final l$removeBookmarkedUserIDs = removeBookmarkedUserIDs;
+    final lOther$removeBookmarkedUserIDs = other.removeBookmarkedUserIDs;
+    if (_$data.containsKey('removeBookmarkedUserIDs') !=
+        other._$data.containsKey('removeBookmarkedUserIDs')) {
+      return false;
+    }
+    if (l$removeBookmarkedUserIDs != null &&
+        lOther$removeBookmarkedUserIDs != null) {
+      if (l$removeBookmarkedUserIDs.length !=
+          lOther$removeBookmarkedUserIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$removeBookmarkedUserIDs.length; i++) {
+        final l$removeBookmarkedUserIDs$entry = l$removeBookmarkedUserIDs[i];
+        final lOther$removeBookmarkedUserIDs$entry =
+            lOther$removeBookmarkedUserIDs[i];
+        if (l$removeBookmarkedUserIDs$entry !=
+            lOther$removeBookmarkedUserIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$removeBookmarkedUserIDs != lOther$removeBookmarkedUserIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -5771,6 +6643,8 @@ class Input$UpdatePostInput {
     final l$content = content;
     final l$type = type;
     final l$spoiled = spoiled;
+    final l$clearThumbnail = clearThumbnail;
+    final l$thumbnail = thumbnail;
     final l$clearOwner = clearOwner;
     final l$ownerID = ownerID;
     final l$addHashtagIDs = addHashtagIDs;
@@ -5781,12 +6655,16 @@ class Input$UpdatePostInput {
     final l$categoryID = categoryID;
     final l$addLikedUserIDs = addLikedUserIDs;
     final l$removeLikedUserIDs = removeLikedUserIDs;
+    final l$addBookmarkedUserIDs = addBookmarkedUserIDs;
+    final l$removeBookmarkedUserIDs = removeBookmarkedUserIDs;
     return Object.hashAll([
       _$data.containsKey('updateTime') ? l$updateTime : const {},
       _$data.containsKey('title') ? l$title : const {},
       _$data.containsKey('content') ? l$content : const {},
       _$data.containsKey('type') ? l$type : const {},
       _$data.containsKey('spoiled') ? l$spoiled : const {},
+      _$data.containsKey('clearThumbnail') ? l$clearThumbnail : const {},
+      _$data.containsKey('thumbnail') ? l$thumbnail : const {},
       _$data.containsKey('clearOwner') ? l$clearOwner : const {},
       _$data.containsKey('ownerID') ? l$ownerID : const {},
       _$data.containsKey('addHashtagIDs')
@@ -5812,6 +6690,16 @@ class Input$UpdatePostInput {
           ? l$removeLikedUserIDs == null
               ? null
               : Object.hashAll(l$removeLikedUserIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('addBookmarkedUserIDs')
+          ? l$addBookmarkedUserIDs == null
+              ? null
+              : Object.hashAll(l$addBookmarkedUserIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('removeBookmarkedUserIDs')
+          ? l$removeBookmarkedUserIDs == null
+              ? null
+              : Object.hashAll(l$removeBookmarkedUserIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -5831,6 +6719,8 @@ abstract class CopyWith$Input$UpdatePostInput<TRes> {
       String? content,
       Enum$PostPostType? type,
       bool? spoiled,
+      bool? clearThumbnail,
+      String? thumbnail,
       bool? clearOwner,
       String? ownerID,
       List<String>? addHashtagIDs,
@@ -5840,7 +6730,9 @@ abstract class CopyWith$Input$UpdatePostInput<TRes> {
       bool? clearCategory,
       String? categoryID,
       List<String>? addLikedUserIDs,
-      List<String>? removeLikedUserIDs});
+      List<String>? removeLikedUserIDs,
+      List<String>? addBookmarkedUserIDs,
+      List<String>? removeBookmarkedUserIDs});
 }
 
 class _CopyWithImpl$Input$UpdatePostInput<TRes>
@@ -5859,6 +6751,8 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           Object? content = _undefined,
           Object? type = _undefined,
           Object? spoiled = _undefined,
+          Object? clearThumbnail = _undefined,
+          Object? thumbnail = _undefined,
           Object? clearOwner = _undefined,
           Object? ownerID = _undefined,
           Object? addHashtagIDs = _undefined,
@@ -5868,7 +6762,9 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           Object? clearCategory = _undefined,
           Object? categoryID = _undefined,
           Object? addLikedUserIDs = _undefined,
-          Object? removeLikedUserIDs = _undefined}) =>
+          Object? removeLikedUserIDs = _undefined,
+          Object? addBookmarkedUserIDs = _undefined,
+          Object? removeBookmarkedUserIDs = _undefined}) =>
       _then(Input$UpdatePostInput._({
         ..._instance._$data,
         if (updateTime != _undefined) 'updateTime': (updateTime as String?),
@@ -5876,6 +6772,9 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
         if (content != _undefined) 'content': (content as String?),
         if (type != _undefined) 'type': (type as Enum$PostPostType?),
         if (spoiled != _undefined) 'spoiled': (spoiled as bool?),
+        if (clearThumbnail != _undefined)
+          'clearThumbnail': (clearThumbnail as bool?),
+        if (thumbnail != _undefined) 'thumbnail': (thumbnail as String?),
         if (clearOwner != _undefined) 'clearOwner': (clearOwner as bool?),
         if (ownerID != _undefined) 'ownerID': (ownerID as String?),
         if (addHashtagIDs != _undefined)
@@ -5891,6 +6790,10 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           'addLikedUserIDs': (addLikedUserIDs as List<String>?),
         if (removeLikedUserIDs != _undefined)
           'removeLikedUserIDs': (removeLikedUserIDs as List<String>?),
+        if (addBookmarkedUserIDs != _undefined)
+          'addBookmarkedUserIDs': (addBookmarkedUserIDs as List<String>?),
+        if (removeBookmarkedUserIDs != _undefined)
+          'removeBookmarkedUserIDs': (removeBookmarkedUserIDs as List<String>?),
       }));
 }
 
@@ -5906,6 +6809,8 @@ class _CopyWithStubImpl$Input$UpdatePostInput<TRes>
           String? content,
           Enum$PostPostType? type,
           bool? spoiled,
+          bool? clearThumbnail,
+          String? thumbnail,
           bool? clearOwner,
           String? ownerID,
           List<String>? addHashtagIDs,
@@ -5915,7 +6820,9 @@ class _CopyWithStubImpl$Input$UpdatePostInput<TRes>
           bool? clearCategory,
           String? categoryID,
           List<String>? addLikedUserIDs,
-          List<String>? removeLikedUserIDs}) =>
+          List<String>? removeLikedUserIDs,
+          List<String>? addBookmarkedUserIDs,
+          List<String>? removeBookmarkedUserIDs}) =>
       _res;
 }
 
@@ -5931,7 +6838,13 @@ class Input$UpdateUserInput {
           List<String>? addPostIDs,
           List<String>? removePostIDs,
           List<String>? addLikedPostIDs,
-          List<String>? removeLikedPostIDs}) =>
+          List<String>? removeLikedPostIDs,
+          List<String>? addBookmarkedPostIDs,
+          List<String>? removeBookmarkedPostIDs,
+          List<String>? addFollowerIDs,
+          List<String>? removeFollowerIDs,
+          List<String>? addFollowingIDs,
+          List<String>? removeFollowingIDs}) =>
       Input$UpdateUserInput._({
         if (name != null) r'name': name,
         if (clearUsername != null) r'clearUsername': clearUsername,
@@ -5945,6 +6858,15 @@ class Input$UpdateUserInput {
         if (addLikedPostIDs != null) r'addLikedPostIDs': addLikedPostIDs,
         if (removeLikedPostIDs != null)
           r'removeLikedPostIDs': removeLikedPostIDs,
+        if (addBookmarkedPostIDs != null)
+          r'addBookmarkedPostIDs': addBookmarkedPostIDs,
+        if (removeBookmarkedPostIDs != null)
+          r'removeBookmarkedPostIDs': removeBookmarkedPostIDs,
+        if (addFollowerIDs != null) r'addFollowerIDs': addFollowerIDs,
+        if (removeFollowerIDs != null) r'removeFollowerIDs': removeFollowerIDs,
+        if (addFollowingIDs != null) r'addFollowingIDs': addFollowingIDs,
+        if (removeFollowingIDs != null)
+          r'removeFollowingIDs': removeFollowingIDs,
       });
 
   Input$UpdateUserInput._(this._$data);
@@ -6003,6 +6925,45 @@ class Input$UpdateUserInput {
               ?.map((e) => (e as String))
               .toList();
     }
+    if (data.containsKey('addBookmarkedPostIDs')) {
+      final l$addBookmarkedPostIDs = data['addBookmarkedPostIDs'];
+      result$data['addBookmarkedPostIDs'] =
+          (l$addBookmarkedPostIDs as List<dynamic>?)
+              ?.map((e) => (e as String))
+              .toList();
+    }
+    if (data.containsKey('removeBookmarkedPostIDs')) {
+      final l$removeBookmarkedPostIDs = data['removeBookmarkedPostIDs'];
+      result$data['removeBookmarkedPostIDs'] =
+          (l$removeBookmarkedPostIDs as List<dynamic>?)
+              ?.map((e) => (e as String))
+              .toList();
+    }
+    if (data.containsKey('addFollowerIDs')) {
+      final l$addFollowerIDs = data['addFollowerIDs'];
+      result$data['addFollowerIDs'] = (l$addFollowerIDs as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('removeFollowerIDs')) {
+      final l$removeFollowerIDs = data['removeFollowerIDs'];
+      result$data['removeFollowerIDs'] = (l$removeFollowerIDs as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('addFollowingIDs')) {
+      final l$addFollowingIDs = data['addFollowingIDs'];
+      result$data['addFollowingIDs'] = (l$addFollowingIDs as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('removeFollowingIDs')) {
+      final l$removeFollowingIDs = data['removeFollowingIDs'];
+      result$data['removeFollowingIDs'] =
+          (l$removeFollowingIDs as List<dynamic>?)
+              ?.map((e) => (e as String))
+              .toList();
+    }
     return Input$UpdateUserInput._(result$data);
   }
 
@@ -6021,6 +6982,18 @@ class Input$UpdateUserInput {
       (_$data['addLikedPostIDs'] as List<String>?);
   List<String>? get removeLikedPostIDs =>
       (_$data['removeLikedPostIDs'] as List<String>?);
+  List<String>? get addBookmarkedPostIDs =>
+      (_$data['addBookmarkedPostIDs'] as List<String>?);
+  List<String>? get removeBookmarkedPostIDs =>
+      (_$data['removeBookmarkedPostIDs'] as List<String>?);
+  List<String>? get addFollowerIDs =>
+      (_$data['addFollowerIDs'] as List<String>?);
+  List<String>? get removeFollowerIDs =>
+      (_$data['removeFollowerIDs'] as List<String>?);
+  List<String>? get addFollowingIDs =>
+      (_$data['addFollowingIDs'] as List<String>?);
+  List<String>? get removeFollowingIDs =>
+      (_$data['removeFollowingIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('name')) {
@@ -6068,6 +7041,35 @@ class Input$UpdateUserInput {
       final l$removeLikedPostIDs = removeLikedPostIDs;
       result$data['removeLikedPostIDs'] =
           l$removeLikedPostIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('addBookmarkedPostIDs')) {
+      final l$addBookmarkedPostIDs = addBookmarkedPostIDs;
+      result$data['addBookmarkedPostIDs'] =
+          l$addBookmarkedPostIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('removeBookmarkedPostIDs')) {
+      final l$removeBookmarkedPostIDs = removeBookmarkedPostIDs;
+      result$data['removeBookmarkedPostIDs'] =
+          l$removeBookmarkedPostIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('addFollowerIDs')) {
+      final l$addFollowerIDs = addFollowerIDs;
+      result$data['addFollowerIDs'] = l$addFollowerIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('removeFollowerIDs')) {
+      final l$removeFollowerIDs = removeFollowerIDs;
+      result$data['removeFollowerIDs'] =
+          l$removeFollowerIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('addFollowingIDs')) {
+      final l$addFollowingIDs = addFollowingIDs;
+      result$data['addFollowingIDs'] =
+          l$addFollowingIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('removeFollowingIDs')) {
+      final l$removeFollowingIDs = removeFollowingIDs;
+      result$data['removeFollowingIDs'] =
+          l$removeFollowingIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -6223,6 +7225,131 @@ class Input$UpdateUserInput {
     } else if (l$removeLikedPostIDs != lOther$removeLikedPostIDs) {
       return false;
     }
+    final l$addBookmarkedPostIDs = addBookmarkedPostIDs;
+    final lOther$addBookmarkedPostIDs = other.addBookmarkedPostIDs;
+    if (_$data.containsKey('addBookmarkedPostIDs') !=
+        other._$data.containsKey('addBookmarkedPostIDs')) {
+      return false;
+    }
+    if (l$addBookmarkedPostIDs != null && lOther$addBookmarkedPostIDs != null) {
+      if (l$addBookmarkedPostIDs.length != lOther$addBookmarkedPostIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$addBookmarkedPostIDs.length; i++) {
+        final l$addBookmarkedPostIDs$entry = l$addBookmarkedPostIDs[i];
+        final lOther$addBookmarkedPostIDs$entry =
+            lOther$addBookmarkedPostIDs[i];
+        if (l$addBookmarkedPostIDs$entry != lOther$addBookmarkedPostIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$addBookmarkedPostIDs != lOther$addBookmarkedPostIDs) {
+      return false;
+    }
+    final l$removeBookmarkedPostIDs = removeBookmarkedPostIDs;
+    final lOther$removeBookmarkedPostIDs = other.removeBookmarkedPostIDs;
+    if (_$data.containsKey('removeBookmarkedPostIDs') !=
+        other._$data.containsKey('removeBookmarkedPostIDs')) {
+      return false;
+    }
+    if (l$removeBookmarkedPostIDs != null &&
+        lOther$removeBookmarkedPostIDs != null) {
+      if (l$removeBookmarkedPostIDs.length !=
+          lOther$removeBookmarkedPostIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$removeBookmarkedPostIDs.length; i++) {
+        final l$removeBookmarkedPostIDs$entry = l$removeBookmarkedPostIDs[i];
+        final lOther$removeBookmarkedPostIDs$entry =
+            lOther$removeBookmarkedPostIDs[i];
+        if (l$removeBookmarkedPostIDs$entry !=
+            lOther$removeBookmarkedPostIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$removeBookmarkedPostIDs != lOther$removeBookmarkedPostIDs) {
+      return false;
+    }
+    final l$addFollowerIDs = addFollowerIDs;
+    final lOther$addFollowerIDs = other.addFollowerIDs;
+    if (_$data.containsKey('addFollowerIDs') !=
+        other._$data.containsKey('addFollowerIDs')) {
+      return false;
+    }
+    if (l$addFollowerIDs != null && lOther$addFollowerIDs != null) {
+      if (l$addFollowerIDs.length != lOther$addFollowerIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$addFollowerIDs.length; i++) {
+        final l$addFollowerIDs$entry = l$addFollowerIDs[i];
+        final lOther$addFollowerIDs$entry = lOther$addFollowerIDs[i];
+        if (l$addFollowerIDs$entry != lOther$addFollowerIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$addFollowerIDs != lOther$addFollowerIDs) {
+      return false;
+    }
+    final l$removeFollowerIDs = removeFollowerIDs;
+    final lOther$removeFollowerIDs = other.removeFollowerIDs;
+    if (_$data.containsKey('removeFollowerIDs') !=
+        other._$data.containsKey('removeFollowerIDs')) {
+      return false;
+    }
+    if (l$removeFollowerIDs != null && lOther$removeFollowerIDs != null) {
+      if (l$removeFollowerIDs.length != lOther$removeFollowerIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$removeFollowerIDs.length; i++) {
+        final l$removeFollowerIDs$entry = l$removeFollowerIDs[i];
+        final lOther$removeFollowerIDs$entry = lOther$removeFollowerIDs[i];
+        if (l$removeFollowerIDs$entry != lOther$removeFollowerIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$removeFollowerIDs != lOther$removeFollowerIDs) {
+      return false;
+    }
+    final l$addFollowingIDs = addFollowingIDs;
+    final lOther$addFollowingIDs = other.addFollowingIDs;
+    if (_$data.containsKey('addFollowingIDs') !=
+        other._$data.containsKey('addFollowingIDs')) {
+      return false;
+    }
+    if (l$addFollowingIDs != null && lOther$addFollowingIDs != null) {
+      if (l$addFollowingIDs.length != lOther$addFollowingIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$addFollowingIDs.length; i++) {
+        final l$addFollowingIDs$entry = l$addFollowingIDs[i];
+        final lOther$addFollowingIDs$entry = lOther$addFollowingIDs[i];
+        if (l$addFollowingIDs$entry != lOther$addFollowingIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$addFollowingIDs != lOther$addFollowingIDs) {
+      return false;
+    }
+    final l$removeFollowingIDs = removeFollowingIDs;
+    final lOther$removeFollowingIDs = other.removeFollowingIDs;
+    if (_$data.containsKey('removeFollowingIDs') !=
+        other._$data.containsKey('removeFollowingIDs')) {
+      return false;
+    }
+    if (l$removeFollowingIDs != null && lOther$removeFollowingIDs != null) {
+      if (l$removeFollowingIDs.length != lOther$removeFollowingIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$removeFollowingIDs.length; i++) {
+        final l$removeFollowingIDs$entry = l$removeFollowingIDs[i];
+        final lOther$removeFollowingIDs$entry = lOther$removeFollowingIDs[i];
+        if (l$removeFollowingIDs$entry != lOther$removeFollowingIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$removeFollowingIDs != lOther$removeFollowingIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -6239,6 +7366,12 @@ class Input$UpdateUserInput {
     final l$removePostIDs = removePostIDs;
     final l$addLikedPostIDs = addLikedPostIDs;
     final l$removeLikedPostIDs = removeLikedPostIDs;
+    final l$addBookmarkedPostIDs = addBookmarkedPostIDs;
+    final l$removeBookmarkedPostIDs = removeBookmarkedPostIDs;
+    final l$addFollowerIDs = addFollowerIDs;
+    final l$removeFollowerIDs = removeFollowerIDs;
+    final l$addFollowingIDs = addFollowingIDs;
+    final l$removeFollowingIDs = removeFollowingIDs;
     return Object.hashAll([
       _$data.containsKey('name') ? l$name : const {},
       _$data.containsKey('clearUsername') ? l$clearUsername : const {},
@@ -6266,6 +7399,36 @@ class Input$UpdateUserInput {
           ? l$removeLikedPostIDs == null
               ? null
               : Object.hashAll(l$removeLikedPostIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('addBookmarkedPostIDs')
+          ? l$addBookmarkedPostIDs == null
+              ? null
+              : Object.hashAll(l$addBookmarkedPostIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('removeBookmarkedPostIDs')
+          ? l$removeBookmarkedPostIDs == null
+              ? null
+              : Object.hashAll(l$removeBookmarkedPostIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('addFollowerIDs')
+          ? l$addFollowerIDs == null
+              ? null
+              : Object.hashAll(l$addFollowerIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('removeFollowerIDs')
+          ? l$removeFollowerIDs == null
+              ? null
+              : Object.hashAll(l$removeFollowerIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('addFollowingIDs')
+          ? l$addFollowingIDs == null
+              ? null
+              : Object.hashAll(l$addFollowingIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('removeFollowingIDs')
+          ? l$removeFollowingIDs == null
+              ? null
+              : Object.hashAll(l$removeFollowingIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -6290,7 +7453,13 @@ abstract class CopyWith$Input$UpdateUserInput<TRes> {
       List<String>? addPostIDs,
       List<String>? removePostIDs,
       List<String>? addLikedPostIDs,
-      List<String>? removeLikedPostIDs});
+      List<String>? removeLikedPostIDs,
+      List<String>? addBookmarkedPostIDs,
+      List<String>? removeBookmarkedPostIDs,
+      List<String>? addFollowerIDs,
+      List<String>? removeFollowerIDs,
+      List<String>? addFollowingIDs,
+      List<String>? removeFollowingIDs});
 }
 
 class _CopyWithImpl$Input$UpdateUserInput<TRes>
@@ -6314,7 +7483,13 @@ class _CopyWithImpl$Input$UpdateUserInput<TRes>
           Object? addPostIDs = _undefined,
           Object? removePostIDs = _undefined,
           Object? addLikedPostIDs = _undefined,
-          Object? removeLikedPostIDs = _undefined}) =>
+          Object? removeLikedPostIDs = _undefined,
+          Object? addBookmarkedPostIDs = _undefined,
+          Object? removeBookmarkedPostIDs = _undefined,
+          Object? addFollowerIDs = _undefined,
+          Object? removeFollowerIDs = _undefined,
+          Object? addFollowingIDs = _undefined,
+          Object? removeFollowingIDs = _undefined}) =>
       _then(Input$UpdateUserInput._({
         ..._instance._$data,
         if (name != _undefined) 'name': (name as String?),
@@ -6334,6 +7509,18 @@ class _CopyWithImpl$Input$UpdateUserInput<TRes>
           'addLikedPostIDs': (addLikedPostIDs as List<String>?),
         if (removeLikedPostIDs != _undefined)
           'removeLikedPostIDs': (removeLikedPostIDs as List<String>?),
+        if (addBookmarkedPostIDs != _undefined)
+          'addBookmarkedPostIDs': (addBookmarkedPostIDs as List<String>?),
+        if (removeBookmarkedPostIDs != _undefined)
+          'removeBookmarkedPostIDs': (removeBookmarkedPostIDs as List<String>?),
+        if (addFollowerIDs != _undefined)
+          'addFollowerIDs': (addFollowerIDs as List<String>?),
+        if (removeFollowerIDs != _undefined)
+          'removeFollowerIDs': (removeFollowerIDs as List<String>?),
+        if (addFollowingIDs != _undefined)
+          'addFollowingIDs': (addFollowingIDs as List<String>?),
+        if (removeFollowingIDs != _undefined)
+          'removeFollowingIDs': (removeFollowingIDs as List<String>?),
       }));
 }
 
@@ -6354,7 +7541,13 @@ class _CopyWithStubImpl$Input$UpdateUserInput<TRes>
           List<String>? addPostIDs,
           List<String>? removePostIDs,
           List<String>? addLikedPostIDs,
-          List<String>? removeLikedPostIDs}) =>
+          List<String>? removeLikedPostIDs,
+          List<String>? addBookmarkedPostIDs,
+          List<String>? removeBookmarkedPostIDs,
+          List<String>? addFollowerIDs,
+          List<String>? removeFollowerIDs,
+          List<String>? addFollowingIDs,
+          List<String>? removeFollowingIDs}) =>
       _res;
 }
 
@@ -6673,7 +7866,13 @@ class Input$UserWhereInput {
           bool? hasPosts,
           List<Input$PostWhereInput>? hasPostsWith,
           bool? hasLikedPosts,
-          List<Input$PostWhereInput>? hasLikedPostsWith}) =>
+          List<Input$PostWhereInput>? hasLikedPostsWith,
+          bool? hasBookmarkedPosts,
+          List<Input$PostWhereInput>? hasBookmarkedPostsWith,
+          bool? hasFollowers,
+          List<Input$UserWhereInput>? hasFollowersWith,
+          bool? hasFollowing,
+          List<Input$UserWhereInput>? hasFollowingWith}) =>
       Input$UserWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -6754,6 +7953,14 @@ class Input$UserWhereInput {
         if (hasPostsWith != null) r'hasPostsWith': hasPostsWith,
         if (hasLikedPosts != null) r'hasLikedPosts': hasLikedPosts,
         if (hasLikedPostsWith != null) r'hasLikedPostsWith': hasLikedPostsWith,
+        if (hasBookmarkedPosts != null)
+          r'hasBookmarkedPosts': hasBookmarkedPosts,
+        if (hasBookmarkedPostsWith != null)
+          r'hasBookmarkedPostsWith': hasBookmarkedPostsWith,
+        if (hasFollowers != null) r'hasFollowers': hasFollowers,
+        if (hasFollowersWith != null) r'hasFollowersWith': hasFollowersWith,
+        if (hasFollowing != null) r'hasFollowing': hasFollowing,
+        if (hasFollowingWith != null) r'hasFollowingWith': hasFollowingWith,
       });
 
   Input$UserWhereInput._(this._$data);
@@ -7080,6 +8287,40 @@ class Input$UserWhereInput {
               (e) => Input$PostWhereInput.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
+    if (data.containsKey('hasBookmarkedPosts')) {
+      final l$hasBookmarkedPosts = data['hasBookmarkedPosts'];
+      result$data['hasBookmarkedPosts'] = (l$hasBookmarkedPosts as bool?);
+    }
+    if (data.containsKey('hasBookmarkedPostsWith')) {
+      final l$hasBookmarkedPostsWith = data['hasBookmarkedPostsWith'];
+      result$data['hasBookmarkedPostsWith'] = (l$hasBookmarkedPostsWith
+              as List<dynamic>?)
+          ?.map(
+              (e) => Input$PostWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('hasFollowers')) {
+      final l$hasFollowers = data['hasFollowers'];
+      result$data['hasFollowers'] = (l$hasFollowers as bool?);
+    }
+    if (data.containsKey('hasFollowersWith')) {
+      final l$hasFollowersWith = data['hasFollowersWith'];
+      result$data['hasFollowersWith'] = (l$hasFollowersWith as List<dynamic>?)
+          ?.map(
+              (e) => Input$UserWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('hasFollowing')) {
+      final l$hasFollowing = data['hasFollowing'];
+      result$data['hasFollowing'] = (l$hasFollowing as bool?);
+    }
+    if (data.containsKey('hasFollowingWith')) {
+      final l$hasFollowingWith = data['hasFollowingWith'];
+      result$data['hasFollowingWith'] = (l$hasFollowingWith as List<dynamic>?)
+          ?.map(
+              (e) => Input$UserWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
     return Input$UserWhereInput._(result$data);
   }
 
@@ -7165,6 +8406,15 @@ class Input$UserWhereInput {
   bool? get hasLikedPosts => (_$data['hasLikedPosts'] as bool?);
   List<Input$PostWhereInput>? get hasLikedPostsWith =>
       (_$data['hasLikedPostsWith'] as List<Input$PostWhereInput>?);
+  bool? get hasBookmarkedPosts => (_$data['hasBookmarkedPosts'] as bool?);
+  List<Input$PostWhereInput>? get hasBookmarkedPostsWith =>
+      (_$data['hasBookmarkedPostsWith'] as List<Input$PostWhereInput>?);
+  bool? get hasFollowers => (_$data['hasFollowers'] as bool?);
+  List<Input$UserWhereInput>? get hasFollowersWith =>
+      (_$data['hasFollowersWith'] as List<Input$UserWhereInput>?);
+  bool? get hasFollowing => (_$data['hasFollowing'] as bool?);
+  List<Input$UserWhereInput>? get hasFollowingWith =>
+      (_$data['hasFollowingWith'] as List<Input$UserWhereInput>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('not')) {
@@ -7460,6 +8710,33 @@ class Input$UserWhereInput {
       final l$hasLikedPostsWith = hasLikedPostsWith;
       result$data['hasLikedPostsWith'] =
           l$hasLikedPostsWith?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasBookmarkedPosts')) {
+      final l$hasBookmarkedPosts = hasBookmarkedPosts;
+      result$data['hasBookmarkedPosts'] = l$hasBookmarkedPosts;
+    }
+    if (_$data.containsKey('hasBookmarkedPostsWith')) {
+      final l$hasBookmarkedPostsWith = hasBookmarkedPostsWith;
+      result$data['hasBookmarkedPostsWith'] =
+          l$hasBookmarkedPostsWith?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasFollowers')) {
+      final l$hasFollowers = hasFollowers;
+      result$data['hasFollowers'] = l$hasFollowers;
+    }
+    if (_$data.containsKey('hasFollowersWith')) {
+      final l$hasFollowersWith = hasFollowersWith;
+      result$data['hasFollowersWith'] =
+          l$hasFollowersWith?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasFollowing')) {
+      final l$hasFollowing = hasFollowing;
+      result$data['hasFollowing'] = l$hasFollowing;
+    }
+    if (_$data.containsKey('hasFollowingWith')) {
+      final l$hasFollowingWith = hasFollowingWith;
+      result$data['hasFollowingWith'] =
+          l$hasFollowingWith?.map((e) => e.toJson()).toList();
     }
     return result$data;
   }
@@ -8266,6 +9543,97 @@ class Input$UserWhereInput {
     } else if (l$hasLikedPostsWith != lOther$hasLikedPostsWith) {
       return false;
     }
+    final l$hasBookmarkedPosts = hasBookmarkedPosts;
+    final lOther$hasBookmarkedPosts = other.hasBookmarkedPosts;
+    if (_$data.containsKey('hasBookmarkedPosts') !=
+        other._$data.containsKey('hasBookmarkedPosts')) {
+      return false;
+    }
+    if (l$hasBookmarkedPosts != lOther$hasBookmarkedPosts) {
+      return false;
+    }
+    final l$hasBookmarkedPostsWith = hasBookmarkedPostsWith;
+    final lOther$hasBookmarkedPostsWith = other.hasBookmarkedPostsWith;
+    if (_$data.containsKey('hasBookmarkedPostsWith') !=
+        other._$data.containsKey('hasBookmarkedPostsWith')) {
+      return false;
+    }
+    if (l$hasBookmarkedPostsWith != null &&
+        lOther$hasBookmarkedPostsWith != null) {
+      if (l$hasBookmarkedPostsWith.length !=
+          lOther$hasBookmarkedPostsWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasBookmarkedPostsWith.length; i++) {
+        final l$hasBookmarkedPostsWith$entry = l$hasBookmarkedPostsWith[i];
+        final lOther$hasBookmarkedPostsWith$entry =
+            lOther$hasBookmarkedPostsWith[i];
+        if (l$hasBookmarkedPostsWith$entry !=
+            lOther$hasBookmarkedPostsWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasBookmarkedPostsWith != lOther$hasBookmarkedPostsWith) {
+      return false;
+    }
+    final l$hasFollowers = hasFollowers;
+    final lOther$hasFollowers = other.hasFollowers;
+    if (_$data.containsKey('hasFollowers') !=
+        other._$data.containsKey('hasFollowers')) {
+      return false;
+    }
+    if (l$hasFollowers != lOther$hasFollowers) {
+      return false;
+    }
+    final l$hasFollowersWith = hasFollowersWith;
+    final lOther$hasFollowersWith = other.hasFollowersWith;
+    if (_$data.containsKey('hasFollowersWith') !=
+        other._$data.containsKey('hasFollowersWith')) {
+      return false;
+    }
+    if (l$hasFollowersWith != null && lOther$hasFollowersWith != null) {
+      if (l$hasFollowersWith.length != lOther$hasFollowersWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasFollowersWith.length; i++) {
+        final l$hasFollowersWith$entry = l$hasFollowersWith[i];
+        final lOther$hasFollowersWith$entry = lOther$hasFollowersWith[i];
+        if (l$hasFollowersWith$entry != lOther$hasFollowersWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasFollowersWith != lOther$hasFollowersWith) {
+      return false;
+    }
+    final l$hasFollowing = hasFollowing;
+    final lOther$hasFollowing = other.hasFollowing;
+    if (_$data.containsKey('hasFollowing') !=
+        other._$data.containsKey('hasFollowing')) {
+      return false;
+    }
+    if (l$hasFollowing != lOther$hasFollowing) {
+      return false;
+    }
+    final l$hasFollowingWith = hasFollowingWith;
+    final lOther$hasFollowingWith = other.hasFollowingWith;
+    if (_$data.containsKey('hasFollowingWith') !=
+        other._$data.containsKey('hasFollowingWith')) {
+      return false;
+    }
+    if (l$hasFollowingWith != null && lOther$hasFollowingWith != null) {
+      if (l$hasFollowingWith.length != lOther$hasFollowingWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasFollowingWith.length; i++) {
+        final l$hasFollowingWith$entry = l$hasFollowingWith[i];
+        final lOther$hasFollowingWith$entry = lOther$hasFollowingWith[i];
+        if (l$hasFollowingWith$entry != lOther$hasFollowingWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasFollowingWith != lOther$hasFollowingWith) {
+      return false;
+    }
     return true;
   }
 
@@ -8344,6 +9712,12 @@ class Input$UserWhereInput {
     final l$hasPostsWith = hasPostsWith;
     final l$hasLikedPosts = hasLikedPosts;
     final l$hasLikedPostsWith = hasLikedPostsWith;
+    final l$hasBookmarkedPosts = hasBookmarkedPosts;
+    final l$hasBookmarkedPostsWith = hasBookmarkedPostsWith;
+    final l$hasFollowers = hasFollowers;
+    final l$hasFollowersWith = hasFollowersWith;
+    final l$hasFollowing = hasFollowing;
+    final l$hasFollowingWith = hasFollowingWith;
     return Object.hashAll([
       _$data.containsKey('not') ? l$not : const {},
       _$data.containsKey('and')
@@ -8485,6 +9859,26 @@ class Input$UserWhereInput {
           ? l$hasLikedPostsWith == null
               ? null
               : Object.hashAll(l$hasLikedPostsWith.map((v) => v))
+          : const {},
+      _$data.containsKey('hasBookmarkedPosts')
+          ? l$hasBookmarkedPosts
+          : const {},
+      _$data.containsKey('hasBookmarkedPostsWith')
+          ? l$hasBookmarkedPostsWith == null
+              ? null
+              : Object.hashAll(l$hasBookmarkedPostsWith.map((v) => v))
+          : const {},
+      _$data.containsKey('hasFollowers') ? l$hasFollowers : const {},
+      _$data.containsKey('hasFollowersWith')
+          ? l$hasFollowersWith == null
+              ? null
+              : Object.hashAll(l$hasFollowersWith.map((v) => v))
+          : const {},
+      _$data.containsKey('hasFollowing') ? l$hasFollowing : const {},
+      _$data.containsKey('hasFollowingWith')
+          ? l$hasFollowingWith == null
+              ? null
+              : Object.hashAll(l$hasFollowingWith.map((v) => v))
           : const {}
     ]);
   }
@@ -8571,7 +9965,13 @@ abstract class CopyWith$Input$UserWhereInput<TRes> {
       bool? hasPosts,
       List<Input$PostWhereInput>? hasPostsWith,
       bool? hasLikedPosts,
-      List<Input$PostWhereInput>? hasLikedPostsWith});
+      List<Input$PostWhereInput>? hasLikedPostsWith,
+      bool? hasBookmarkedPosts,
+      List<Input$PostWhereInput>? hasBookmarkedPostsWith,
+      bool? hasFollowers,
+      List<Input$UserWhereInput>? hasFollowersWith,
+      bool? hasFollowing,
+      List<Input$UserWhereInput>? hasFollowingWith});
   CopyWith$Input$UserWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$UserWhereInput>? Function(
@@ -8588,6 +9988,18 @@ abstract class CopyWith$Input$UserWhereInput<TRes> {
   TRes hasLikedPostsWith(
       Iterable<Input$PostWhereInput>? Function(
               Iterable<CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+          _fn);
+  TRes hasBookmarkedPostsWith(
+      Iterable<Input$PostWhereInput>? Function(
+              Iterable<CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+          _fn);
+  TRes hasFollowersWith(
+      Iterable<Input$UserWhereInput>? Function(
+              Iterable<CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
+          _fn);
+  TRes hasFollowingWith(
+      Iterable<Input$UserWhereInput>? Function(
+              Iterable<CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
           _fn);
 }
 
@@ -8674,7 +10086,13 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
           Object? hasPosts = _undefined,
           Object? hasPostsWith = _undefined,
           Object? hasLikedPosts = _undefined,
-          Object? hasLikedPostsWith = _undefined}) =>
+          Object? hasLikedPostsWith = _undefined,
+          Object? hasBookmarkedPosts = _undefined,
+          Object? hasBookmarkedPostsWith = _undefined,
+          Object? hasFollowers = _undefined,
+          Object? hasFollowersWith = _undefined,
+          Object? hasFollowing = _undefined,
+          Object? hasFollowingWith = _undefined}) =>
       _then(Input$UserWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$UserWhereInput?),
@@ -8787,6 +10205,17 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
         if (hasLikedPostsWith != _undefined)
           'hasLikedPostsWith':
               (hasLikedPostsWith as List<Input$PostWhereInput>?),
+        if (hasBookmarkedPosts != _undefined)
+          'hasBookmarkedPosts': (hasBookmarkedPosts as bool?),
+        if (hasBookmarkedPostsWith != _undefined)
+          'hasBookmarkedPostsWith':
+              (hasBookmarkedPostsWith as List<Input$PostWhereInput>?),
+        if (hasFollowers != _undefined) 'hasFollowers': (hasFollowers as bool?),
+        if (hasFollowersWith != _undefined)
+          'hasFollowersWith': (hasFollowersWith as List<Input$UserWhereInput>?),
+        if (hasFollowing != _undefined) 'hasFollowing': (hasFollowing as bool?),
+        if (hasFollowingWith != _undefined)
+          'hasFollowingWith': (hasFollowingWith as List<Input$UserWhereInput>?),
       }));
   CopyWith$Input$UserWhereInput<TRes> get not {
     final local$not = _instance.not;
@@ -8830,6 +10259,33 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
       call(
           hasLikedPostsWith: _fn(_instance.hasLikedPostsWith
                   ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasBookmarkedPostsWith(
+          Iterable<Input$PostWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+              _fn) =>
+      call(
+          hasBookmarkedPostsWith: _fn(_instance.hasBookmarkedPostsWith
+                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasFollowersWith(
+          Iterable<Input$UserWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
+              _fn) =>
+      call(
+          hasFollowersWith: _fn(_instance.hasFollowersWith
+                  ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasFollowingWith(
+          Iterable<Input$UserWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
+              _fn) =>
+      call(
+          hasFollowingWith: _fn(_instance.hasFollowingWith
+                  ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
               ?.toList());
 }
 
@@ -8912,7 +10368,13 @@ class _CopyWithStubImpl$Input$UserWhereInput<TRes>
           bool? hasPosts,
           List<Input$PostWhereInput>? hasPostsWith,
           bool? hasLikedPosts,
-          List<Input$PostWhereInput>? hasLikedPostsWith}) =>
+          List<Input$PostWhereInput>? hasLikedPostsWith,
+          bool? hasBookmarkedPosts,
+          List<Input$PostWhereInput>? hasBookmarkedPostsWith,
+          bool? hasFollowers,
+          List<Input$UserWhereInput>? hasFollowersWith,
+          bool? hasFollowing,
+          List<Input$UserWhereInput>? hasFollowingWith}) =>
       _res;
   CopyWith$Input$UserWhereInput<TRes> get not =>
       CopyWith$Input$UserWhereInput.stub(_res);
@@ -8920,6 +10382,9 @@ class _CopyWithStubImpl$Input$UserWhereInput<TRes>
   or(_fn) => _res;
   hasPostsWith(_fn) => _res;
   hasLikedPostsWith(_fn) => _res;
+  hasBookmarkedPostsWith(_fn) => _res;
+  hasFollowersWith(_fn) => _res;
+  hasFollowingWith(_fn) => _res;
 }
 
 class Input$WorkWhereInput {

@@ -3,13 +3,25 @@ fragment LetterSummary on Post {
   id
   content
   createTime
+  thumbnail
+  work {
+    id
+    thumbnail
+  }
   owner {
     id
     name
+    avatarURL
   }
   category {
     id
     name
+  }
+  likedUsers {
+    id
+  }
+  bookmarkedUsers {
+    id
   }
 }
 
@@ -24,11 +36,24 @@ fragment PraiseSummary on Post {
   owner {
     id
     name
+    avatarURL
   }
   category {
     id
     name
   }
+  likedUsers {
+    id
+  }
+  bookmarkedUsers {
+    id
+  }
+}
+
+fragment WorkSummary on Work {
+  id
+  title
+  thumbnail
 }
 
 query Praises(
@@ -75,6 +100,42 @@ query Letters(
     pageInfo {
       endCursor
       hasNextPage
+    }
+  }
+}
+
+mutation LikePost($likePostInput: LikePostInput!) {
+  action: likePost(input: $likePostInput) {
+    clientMutationId
+    post {
+      id
+    }
+  }
+}
+
+mutation UnlikePost($unlikePostInput: UnlikePostInput!) {
+  action: unlikePost(input: $unlikePostInput) {
+    clientMutationId
+    post {
+      id
+    }
+  }
+}
+
+mutation BookmarkPost($bookmarkPostInput: BookmarkPostInput!) {
+  action: bookmarkPost(input: $bookmarkPostInput) {
+    clientMutationId
+    post {
+      id
+    }
+  }
+}
+
+mutation UnbookmarkPost($unbookmarkPostInput: UnbookmarkPostInput!) {
+  action: unbookmarkPost(input: $unbookmarkPostInput) {
+    clientMutationId
+    post {
+      id
     }
   }
 }
