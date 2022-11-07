@@ -51,34 +51,38 @@ class SearchPage extends ConsumerWidget {
         const Header(),
         const SearchInput(),
         Expanded(
-            child: SingleChildScrollView(
-                child: ref.watch(searchTextProvider) != ""
-                    ? const Candidates()
-                    : Column(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.only(
-                                top: 30, left: 20, bottom: 50),
-                            decoration:
-                                const BoxDecoration(color: backgroundColor),
-                            child: Column(
-                              children: const [
-                                TopicContents(type: ContentType.praise),
-                                SizedBox(
-                                  height: 50,
+            child: Container(
+                decoration: const BoxDecoration(color: backgroundColor),
+                child: SingleChildScrollView(
+                    child: ref.watch(searchTextProvider) != ""
+                        ? const Candidates()
+                        : Column(
+                            children: [
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              Container(
+                                decoration:
+                                    const BoxDecoration(color: backgroundColor),
+                                child: Column(
+                                  children: const [
+                                    TopicContents(type: ContentType.praise),
+                                    SizedBox(
+                                      height: 50,
+                                    ),
+                                    TopicContents(type: ContentType.work),
+                                  ],
                                 ),
-                                TopicContents(type: ContentType.work),
-                              ],
-                            ),
-                          ),
-                          Container(
-                              padding: const EdgeInsets.only(
-                                  top: 30, left: 20, right: 20, bottom: 50),
-                              decoration:
-                                  const BoxDecoration(color: backgroundColor),
-                              child: const TopLetters())
-                        ],
-                      )))
+                              ),
+                              const SizedBox(height: 80),
+                              Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 50),
+                                  decoration: const BoxDecoration(
+                                      color: backgroundColor),
+                                  child: const TopLetters())
+                            ],
+                          ))))
       ],
     );
   }

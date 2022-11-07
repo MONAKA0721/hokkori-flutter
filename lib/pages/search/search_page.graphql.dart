@@ -887,6 +887,532 @@ class Query$LikedLetters$Widget
       : super(key: key, options: options, builder: builder);
 }
 
+class Variables$Query$TopicWorks {
+  factory Variables$Query$TopicWorks({required int first}) =>
+      Variables$Query$TopicWorks._({
+        r'first': first,
+      });
+
+  Variables$Query$TopicWorks._(this._$data);
+
+  factory Variables$Query$TopicWorks.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$first = data['first'];
+    result$data['first'] = (l$first as int);
+    return Variables$Query$TopicWorks._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  int get first => (_$data['first'] as int);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$first = first;
+    result$data['first'] = l$first;
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$TopicWorks<Variables$Query$TopicWorks>
+      get copyWith => CopyWith$Variables$Query$TopicWorks(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Query$TopicWorks) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$first = first;
+    final lOther$first = other.first;
+    if (l$first != lOther$first) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$first = first;
+    return Object.hashAll([l$first]);
+  }
+}
+
+abstract class CopyWith$Variables$Query$TopicWorks<TRes> {
+  factory CopyWith$Variables$Query$TopicWorks(
+          Variables$Query$TopicWorks instance,
+          TRes Function(Variables$Query$TopicWorks) then) =
+      _CopyWithImpl$Variables$Query$TopicWorks;
+
+  factory CopyWith$Variables$Query$TopicWorks.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$TopicWorks;
+
+  TRes call({int? first});
+}
+
+class _CopyWithImpl$Variables$Query$TopicWorks<TRes>
+    implements CopyWith$Variables$Query$TopicWorks<TRes> {
+  _CopyWithImpl$Variables$Query$TopicWorks(this._instance, this._then);
+
+  final Variables$Query$TopicWorks _instance;
+
+  final TRes Function(Variables$Query$TopicWorks) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? first = _undefined}) =>
+      _then(Variables$Query$TopicWorks._({
+        ..._instance._$data,
+        if (first != _undefined && first != null) 'first': (first as int),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Query$TopicWorks<TRes>
+    implements CopyWith$Variables$Query$TopicWorks<TRes> {
+  _CopyWithStubImpl$Variables$Query$TopicWorks(this._res);
+
+  TRes _res;
+
+  call({int? first}) => _res;
+}
+
+class Query$TopicWorks {
+  Query$TopicWorks({required this.topicWorks, required this.$__typename});
+
+  factory Query$TopicWorks.fromJson(Map<String, dynamic> json) {
+    final l$topicWorks = json['topicWorks'];
+    final l$$__typename = json['__typename'];
+    return Query$TopicWorks(
+        topicWorks: (l$topicWorks as List<dynamic>)
+            .map((e) => e == null
+                ? null
+                : Query$TopicWorks$topicWorks.fromJson(
+                    (e as Map<String, dynamic>)))
+            .toList(),
+        $__typename: (l$$__typename as String));
+  }
+
+  final List<Query$TopicWorks$topicWorks?> topicWorks;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$topicWorks = topicWorks;
+    _resultData['topicWorks'] = l$topicWorks.map((e) => e?.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$topicWorks = topicWorks;
+    final l$$__typename = $__typename;
+    return Object.hashAll(
+        [Object.hashAll(l$topicWorks.map((v) => v)), l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$TopicWorks) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$topicWorks = topicWorks;
+    final lOther$topicWorks = other.topicWorks;
+    if (l$topicWorks.length != lOther$topicWorks.length) {
+      return false;
+    }
+    for (int i = 0; i < l$topicWorks.length; i++) {
+      final l$topicWorks$entry = l$topicWorks[i];
+      final lOther$topicWorks$entry = lOther$topicWorks[i];
+      if (l$topicWorks$entry != lOther$topicWorks$entry) {
+        return false;
+      }
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$TopicWorks on Query$TopicWorks {
+  CopyWith$Query$TopicWorks<Query$TopicWorks> get copyWith =>
+      CopyWith$Query$TopicWorks(this, (i) => i);
+}
+
+abstract class CopyWith$Query$TopicWorks<TRes> {
+  factory CopyWith$Query$TopicWorks(
+          Query$TopicWorks instance, TRes Function(Query$TopicWorks) then) =
+      _CopyWithImpl$Query$TopicWorks;
+
+  factory CopyWith$Query$TopicWorks.stub(TRes res) =
+      _CopyWithStubImpl$Query$TopicWorks;
+
+  TRes call(
+      {List<Query$TopicWorks$topicWorks?>? topicWorks, String? $__typename});
+  TRes topicWorks(
+      Iterable<Query$TopicWorks$topicWorks?> Function(
+              Iterable<
+                  CopyWith$Query$TopicWorks$topicWorks<
+                      Query$TopicWorks$topicWorks>?>)
+          _fn);
+}
+
+class _CopyWithImpl$Query$TopicWorks<TRes>
+    implements CopyWith$Query$TopicWorks<TRes> {
+  _CopyWithImpl$Query$TopicWorks(this._instance, this._then);
+
+  final Query$TopicWorks _instance;
+
+  final TRes Function(Query$TopicWorks) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? topicWorks = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$TopicWorks(
+          topicWorks: topicWorks == _undefined || topicWorks == null
+              ? _instance.topicWorks
+              : (topicWorks as List<Query$TopicWorks$topicWorks?>),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  TRes topicWorks(
+          Iterable<Query$TopicWorks$topicWorks?> Function(
+                  Iterable<
+                      CopyWith$Query$TopicWorks$topicWorks<
+                          Query$TopicWorks$topicWorks>?>)
+              _fn) =>
+      call(
+          topicWorks: _fn(_instance.topicWorks.map((e) => e == null
+              ? null
+              : CopyWith$Query$TopicWorks$topicWorks(e, (i) => i))).toList());
+}
+
+class _CopyWithStubImpl$Query$TopicWorks<TRes>
+    implements CopyWith$Query$TopicWorks<TRes> {
+  _CopyWithStubImpl$Query$TopicWorks(this._res);
+
+  TRes _res;
+
+  call({List<Query$TopicWorks$topicWorks?>? topicWorks, String? $__typename}) =>
+      _res;
+  topicWorks(_fn) => _res;
+}
+
+const documentNodeQueryTopicWorks = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.query,
+      name: NameNode(value: 'TopicWorks'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'first')),
+            type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'topicWorks'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'first'),
+                  value: VariableNode(name: NameNode(value: 'first')))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'id'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: 'title'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: 'thumbnail'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+]);
+Query$TopicWorks _parserFn$Query$TopicWorks(Map<String, dynamic> data) =>
+    Query$TopicWorks.fromJson(data);
+
+class Options$Query$TopicWorks extends graphql.QueryOptions<Query$TopicWorks> {
+  Options$Query$TopicWorks(
+      {String? operationName,
+      required Variables$Query$TopicWorks variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      Duration? pollInterval,
+      graphql.Context? context})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            pollInterval: pollInterval,
+            context: context,
+            document: documentNodeQueryTopicWorks,
+            parserFn: _parserFn$Query$TopicWorks);
+}
+
+class WatchOptions$Query$TopicWorks
+    extends graphql.WatchQueryOptions<Query$TopicWorks> {
+  WatchOptions$Query$TopicWorks(
+      {String? operationName,
+      required Variables$Query$TopicWorks variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeQueryTopicWorks,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Query$TopicWorks);
+}
+
+class FetchMoreOptions$Query$TopicWorks extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$TopicWorks(
+      {required graphql.UpdateQuery updateQuery,
+      required Variables$Query$TopicWorks variables})
+      : super(
+            updateQuery: updateQuery,
+            variables: variables.toJson(),
+            document: documentNodeQueryTopicWorks);
+}
+
+extension ClientExtension$Query$TopicWorks on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$TopicWorks>> query$TopicWorks(
+          Options$Query$TopicWorks options) async =>
+      await this.query(options);
+  graphql.ObservableQuery<Query$TopicWorks> watchQuery$TopicWorks(
+          WatchOptions$Query$TopicWorks options) =>
+      this.watchQuery(options);
+  void writeQuery$TopicWorks(
+          {required Query$TopicWorks data,
+          required Variables$Query$TopicWorks variables,
+          bool broadcast = true}) =>
+      this.writeQuery(
+          graphql.Request(
+              operation:
+                  graphql.Operation(document: documentNodeQueryTopicWorks),
+              variables: variables.toJson()),
+          data: data.toJson(),
+          broadcast: broadcast);
+  Query$TopicWorks? readQuery$TopicWorks(
+      {required Variables$Query$TopicWorks variables, bool optimistic = true}) {
+    final result = this.readQuery(
+        graphql.Request(
+            operation: graphql.Operation(document: documentNodeQueryTopicWorks),
+            variables: variables.toJson()),
+        optimistic: optimistic);
+    return result == null ? null : Query$TopicWorks.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$TopicWorks> useQuery$TopicWorks(
+        Options$Query$TopicWorks options) =>
+    graphql_flutter.useQuery(options);
+graphql.ObservableQuery<Query$TopicWorks> useWatchQuery$TopicWorks(
+        WatchOptions$Query$TopicWorks options) =>
+    graphql_flutter.useWatchQuery(options);
+
+class Query$TopicWorks$Widget extends graphql_flutter.Query<Query$TopicWorks> {
+  Query$TopicWorks$Widget(
+      {widgets.Key? key,
+      required Options$Query$TopicWorks options,
+      required graphql_flutter.QueryBuilder<Query$TopicWorks> builder})
+      : super(key: key, options: options, builder: builder);
+}
+
+class Query$TopicWorks$topicWorks {
+  Query$TopicWorks$topicWorks(
+      {required this.id,
+      required this.title,
+      this.thumbnail,
+      required this.$__typename});
+
+  factory Query$TopicWorks$topicWorks.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$title = json['title'];
+    final l$thumbnail = json['thumbnail'];
+    final l$$__typename = json['__typename'];
+    return Query$TopicWorks$topicWorks(
+        id: (l$id as String),
+        title: (l$title as String),
+        thumbnail: (l$thumbnail as String?),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String title;
+
+  final String? thumbnail;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$thumbnail = thumbnail;
+    _resultData['thumbnail'] = l$thumbnail;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$thumbnail = thumbnail;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$title, l$thumbnail, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$TopicWorks$topicWorks) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (l$thumbnail != lOther$thumbnail) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$TopicWorks$topicWorks
+    on Query$TopicWorks$topicWorks {
+  CopyWith$Query$TopicWorks$topicWorks<Query$TopicWorks$topicWorks>
+      get copyWith => CopyWith$Query$TopicWorks$topicWorks(this, (i) => i);
+}
+
+abstract class CopyWith$Query$TopicWorks$topicWorks<TRes> {
+  factory CopyWith$Query$TopicWorks$topicWorks(
+          Query$TopicWorks$topicWorks instance,
+          TRes Function(Query$TopicWorks$topicWorks) then) =
+      _CopyWithImpl$Query$TopicWorks$topicWorks;
+
+  factory CopyWith$Query$TopicWorks$topicWorks.stub(TRes res) =
+      _CopyWithStubImpl$Query$TopicWorks$topicWorks;
+
+  TRes call(
+      {String? id, String? title, String? thumbnail, String? $__typename});
+}
+
+class _CopyWithImpl$Query$TopicWorks$topicWorks<TRes>
+    implements CopyWith$Query$TopicWorks$topicWorks<TRes> {
+  _CopyWithImpl$Query$TopicWorks$topicWorks(this._instance, this._then);
+
+  final Query$TopicWorks$topicWorks _instance;
+
+  final TRes Function(Query$TopicWorks$topicWorks) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? id = _undefined,
+          Object? title = _undefined,
+          Object? thumbnail = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$TopicWorks$topicWorks(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          title: title == _undefined || title == null
+              ? _instance.title
+              : (title as String),
+          thumbnail: thumbnail == _undefined
+              ? _instance.thumbnail
+              : (thumbnail as String?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$TopicWorks$topicWorks<TRes>
+    implements CopyWith$Query$TopicWorks$topicWorks<TRes> {
+  _CopyWithStubImpl$Query$TopicWorks$topicWorks(this._res);
+
+  TRes _res;
+
+  call({String? id, String? title, String? thumbnail, String? $__typename}) =>
+      _res;
+}
+
 class Variables$Query$SearchCandidates {
   factory Variables$Query$SearchCandidates({String? searchText}) =>
       Variables$Query$SearchCandidates._({

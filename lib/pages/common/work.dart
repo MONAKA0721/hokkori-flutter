@@ -11,7 +11,7 @@ class Work extends StatelessWidget {
     const width = 125.0;
     final thumbnail = work.thumbnail!;
     return Column(mainAxisSize: MainAxisSize.min, children: [
-      thumbnail != "null"
+      thumbnail != ""
           ? Image.network(thumbnail, width: width)
           : Image.asset(
               "assets/noimage.png",

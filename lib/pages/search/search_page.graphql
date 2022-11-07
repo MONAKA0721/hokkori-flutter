@@ -11,6 +11,14 @@ query LikedLetters($first: Int!) {
   }
 }
 
+query TopicWorks($first: Int!) {
+  topicWorks(first: $first) {
+    id
+    title
+    thumbnail
+  }
+}
+
 query SearchCandidates($searchText: String) {
   categories(where: { nameContainsFold: $searchText }) {
     edges {

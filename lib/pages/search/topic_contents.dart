@@ -12,14 +12,21 @@ class TopicContents extends StatelessWidget {
   Widget build(BuildContext context) {
     final Widget contents;
     final String heading;
+    final Widget icon;
     switch (type) {
       case ContentType.praise:
         contents = const TopPraises();
         heading = "注目のほっこり";
+        icon = const Icon(
+          Icons.favorite_border,
+          size: 30,
+          color: primaryColor,
+        );
         break;
       case ContentType.work:
         contents = const TopWorks();
         heading = "話題作品";
+        icon = Image.asset('assets/work.png');
         break;
     }
     return Column(
@@ -28,11 +35,10 @@ class TopicContents extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Icon(
-              Icons.favorite_border,
-              size: 30,
-              color: primaryColor,
+            const SizedBox(
+              width: 20,
             ),
+            icon,
             const SizedBox(
               width: 10,
             ),
@@ -46,18 +52,22 @@ class TopicContents extends StatelessWidget {
           height: 10,
         ),
         SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             scrollDirection: Axis.horizontal,
-            child: Card(
-                clipBehavior: Clip.antiAlias,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 20),
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                    ),
-                    child: contents)))
+            child: Container(
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.4),
+                        spreadRadius: 0.1,
+                        blurRadius: 3,
+                      ),
+                    ],
+                    color: Colors.white,
+                    borderRadius: const BorderRadius.all(Radius.circular(20))),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                child: contents))
       ],
     );
   }
