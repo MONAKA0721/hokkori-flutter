@@ -112,9 +112,26 @@ class Candidates extends HookConsumerWidget {
     }
     final categories = result.parsedData?.categories.edges ?? [];
     final hashtags = result.parsedData?.hashtags.edges ?? [];
+    final works = result.parsedData?.works.edges ?? [];
 
+    const width = 35.0;
     return Column(
-        children: categories
+        children: works
+                .map((work) => ListTile(
+                      leading: work!.node!.thumbnail != ""
+                          ? Image.network(work.node!.thumbnail!, width: width)
+                          : Image.asset(
+                              "assets/noimage.png",
+                              width: width,
+                            ),
+                      onTap: () {
+                        // Navigator.of(context).pushNamed('/work',
+                        //     arguments: WorkPageArguments(work.node!.id));
+                      },
+                      title: Text(work.node!.title),
+                    ))
+                .toList() +
+            categories
                 .map((category) => ListTile(
                       leading: CircleAvatar(
                           backgroundColor: primaryColor,

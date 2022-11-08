@@ -1513,21 +1513,27 @@ class _CopyWithStubImpl$Variables$Query$SearchCandidates<TRes>
 
 class Query$SearchCandidates {
   Query$SearchCandidates(
-      {required this.categories,
+      {required this.works,
+      required this.categories,
       required this.hashtags,
       required this.$__typename});
 
   factory Query$SearchCandidates.fromJson(Map<String, dynamic> json) {
+    final l$works = json['works'];
     final l$categories = json['categories'];
     final l$hashtags = json['hashtags'];
     final l$$__typename = json['__typename'];
     return Query$SearchCandidates(
+        works: Query$SearchCandidates$works.fromJson(
+            (l$works as Map<String, dynamic>)),
         categories: Query$SearchCandidates$categories.fromJson(
             (l$categories as Map<String, dynamic>)),
         hashtags: Query$SearchCandidates$hashtags.fromJson(
             (l$hashtags as Map<String, dynamic>)),
         $__typename: (l$$__typename as String));
   }
+
+  final Query$SearchCandidates$works works;
 
   final Query$SearchCandidates$categories categories;
 
@@ -1537,6 +1543,8 @@ class Query$SearchCandidates {
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
+    final l$works = works;
+    _resultData['works'] = l$works.toJson();
     final l$categories = categories;
     _resultData['categories'] = l$categories.toJson();
     final l$hashtags = hashtags;
@@ -1548,10 +1556,11 @@ class Query$SearchCandidates {
 
   @override
   int get hashCode {
+    final l$works = works;
     final l$categories = categories;
     final l$hashtags = hashtags;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$categories, l$hashtags, l$$__typename]);
+    return Object.hashAll([l$works, l$categories, l$hashtags, l$$__typename]);
   }
 
   @override
@@ -1561,6 +1570,11 @@ class Query$SearchCandidates {
     }
     if (!(other is Query$SearchCandidates) ||
         runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$works = works;
+    final lOther$works = other.works;
+    if (l$works != lOther$works) {
       return false;
     }
     final l$categories = categories;
@@ -1596,9 +1610,11 @@ abstract class CopyWith$Query$SearchCandidates<TRes> {
       _CopyWithStubImpl$Query$SearchCandidates;
 
   TRes call(
-      {Query$SearchCandidates$categories? categories,
+      {Query$SearchCandidates$works? works,
+      Query$SearchCandidates$categories? categories,
       Query$SearchCandidates$hashtags? hashtags,
       String? $__typename});
+  CopyWith$Query$SearchCandidates$works<TRes> get works;
   CopyWith$Query$SearchCandidates$categories<TRes> get categories;
   CopyWith$Query$SearchCandidates$hashtags<TRes> get hashtags;
 }
@@ -1614,10 +1630,14 @@ class _CopyWithImpl$Query$SearchCandidates<TRes>
   static const _undefined = {};
 
   TRes call(
-          {Object? categories = _undefined,
+          {Object? works = _undefined,
+          Object? categories = _undefined,
           Object? hashtags = _undefined,
           Object? $__typename = _undefined}) =>
       _then(Query$SearchCandidates(
+          works: works == _undefined || works == null
+              ? _instance.works
+              : (works as Query$SearchCandidates$works),
           categories: categories == _undefined || categories == null
               ? _instance.categories
               : (categories as Query$SearchCandidates$categories),
@@ -1627,6 +1647,12 @@ class _CopyWithImpl$Query$SearchCandidates<TRes>
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
+  CopyWith$Query$SearchCandidates$works<TRes> get works {
+    final local$works = _instance.works;
+    return CopyWith$Query$SearchCandidates$works(
+        local$works, (e) => call(works: e));
+  }
+
   CopyWith$Query$SearchCandidates$categories<TRes> get categories {
     final local$categories = _instance.categories;
     return CopyWith$Query$SearchCandidates$categories(
@@ -1647,10 +1673,13 @@ class _CopyWithStubImpl$Query$SearchCandidates<TRes>
   TRes _res;
 
   call(
-          {Query$SearchCandidates$categories? categories,
+          {Query$SearchCandidates$works? works,
+          Query$SearchCandidates$categories? categories,
           Query$SearchCandidates$hashtags? hashtags,
           String? $__typename}) =>
       _res;
+  CopyWith$Query$SearchCandidates$works<TRes> get works =>
+      CopyWith$Query$SearchCandidates$works.stub(_res);
   CopyWith$Query$SearchCandidates$categories<TRes> get categories =>
       CopyWith$Query$SearchCandidates$categories.stub(_res);
   CopyWith$Query$SearchCandidates$hashtags<TRes> get hashtags =>
@@ -1672,9 +1701,81 @@ const documentNodeQuerySearchCandidates = DocumentNode(definitions: [
       directives: [],
       selectionSet: SelectionSetNode(selections: [
         FieldNode(
+            name: NameNode(value: 'works'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'first'),
+                  value: IntValueNode(value: '9')),
+              ArgumentNode(
+                  name: NameNode(value: 'where'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'titleContainsFold'),
+                        value:
+                            VariableNode(name: NameNode(value: 'searchText')))
+                  ]))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'edges'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'node'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: SelectionSetNode(selections: [
+                          FieldNode(
+                              name: NameNode(value: 'id'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
+                              name: NameNode(value: 'title'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
+                              name: NameNode(value: 'thumbnail'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
+                              name: NameNode(value: '__typename'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null)
+                        ])),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
             name: NameNode(value: 'categories'),
             alias: null,
             arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'first'),
+                  value: IntValueNode(value: '9')),
               ArgumentNode(
                   name: NameNode(value: 'where'),
                   value: ObjectValueNode(fields: [
@@ -1735,6 +1836,9 @@ const documentNodeQuerySearchCandidates = DocumentNode(definitions: [
             name: NameNode(value: 'hashtags'),
             alias: null,
             arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'first'),
+                  value: IntValueNode(value: '9')),
               ArgumentNode(
                   name: NameNode(value: 'where'),
                   value: ObjectValueNode(fields: [
@@ -1915,6 +2019,411 @@ class Query$SearchCandidates$Widget
             key: key,
             options: options ?? Options$Query$SearchCandidates(),
             builder: builder);
+}
+
+class Query$SearchCandidates$works {
+  Query$SearchCandidates$works({this.edges, required this.$__typename});
+
+  factory Query$SearchCandidates$works.fromJson(Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Query$SearchCandidates$works(
+        edges: (l$edges as List<dynamic>?)
+            ?.map((e) => e == null
+                ? null
+                : Query$SearchCandidates$works$edges.fromJson(
+                    (e as Map<String, dynamic>)))
+            .toList(),
+        $__typename: (l$$__typename as String));
+  }
+
+  final List<Query$SearchCandidates$works$edges?>? edges;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges?.map((e) => e?.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$SearchCandidates$works) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges != null && lOther$edges != null) {
+      if (l$edges.length != lOther$edges.length) {
+        return false;
+      }
+      for (int i = 0; i < l$edges.length; i++) {
+        final l$edges$entry = l$edges[i];
+        final lOther$edges$entry = lOther$edges[i];
+        if (l$edges$entry != lOther$edges$entry) {
+          return false;
+        }
+      }
+    } else if (l$edges != lOther$edges) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$SearchCandidates$works
+    on Query$SearchCandidates$works {
+  CopyWith$Query$SearchCandidates$works<Query$SearchCandidates$works>
+      get copyWith => CopyWith$Query$SearchCandidates$works(this, (i) => i);
+}
+
+abstract class CopyWith$Query$SearchCandidates$works<TRes> {
+  factory CopyWith$Query$SearchCandidates$works(
+          Query$SearchCandidates$works instance,
+          TRes Function(Query$SearchCandidates$works) then) =
+      _CopyWithImpl$Query$SearchCandidates$works;
+
+  factory CopyWith$Query$SearchCandidates$works.stub(TRes res) =
+      _CopyWithStubImpl$Query$SearchCandidates$works;
+
+  TRes call(
+      {List<Query$SearchCandidates$works$edges?>? edges, String? $__typename});
+  TRes edges(
+      Iterable<Query$SearchCandidates$works$edges?>? Function(
+              Iterable<
+                  CopyWith$Query$SearchCandidates$works$edges<
+                      Query$SearchCandidates$works$edges>?>?)
+          _fn);
+}
+
+class _CopyWithImpl$Query$SearchCandidates$works<TRes>
+    implements CopyWith$Query$SearchCandidates$works<TRes> {
+  _CopyWithImpl$Query$SearchCandidates$works(this._instance, this._then);
+
+  final Query$SearchCandidates$works _instance;
+
+  final TRes Function(Query$SearchCandidates$works) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$SearchCandidates$works(
+          edges: edges == _undefined
+              ? _instance.edges
+              : (edges as List<Query$SearchCandidates$works$edges?>?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  TRes edges(
+          Iterable<Query$SearchCandidates$works$edges?>? Function(
+                  Iterable<
+                      CopyWith$Query$SearchCandidates$works$edges<
+                          Query$SearchCandidates$works$edges>?>?)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges?.map((e) => e == null
+                  ? null
+                  : CopyWith$Query$SearchCandidates$works$edges(e, (i) => i)))
+              ?.toList());
+}
+
+class _CopyWithStubImpl$Query$SearchCandidates$works<TRes>
+    implements CopyWith$Query$SearchCandidates$works<TRes> {
+  _CopyWithStubImpl$Query$SearchCandidates$works(this._res);
+
+  TRes _res;
+
+  call(
+          {List<Query$SearchCandidates$works$edges?>? edges,
+          String? $__typename}) =>
+      _res;
+  edges(_fn) => _res;
+}
+
+class Query$SearchCandidates$works$edges {
+  Query$SearchCandidates$works$edges({this.node, required this.$__typename});
+
+  factory Query$SearchCandidates$works$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$SearchCandidates$works$edges(
+        node: l$node == null
+            ? null
+            : Query$SearchCandidates$works$edges$node.fromJson(
+                (l$node as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final Query$SearchCandidates$works$edges$node? node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$node, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$SearchCandidates$works$edges) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$SearchCandidates$works$edges
+    on Query$SearchCandidates$works$edges {
+  CopyWith$Query$SearchCandidates$works$edges<
+          Query$SearchCandidates$works$edges>
+      get copyWith =>
+          CopyWith$Query$SearchCandidates$works$edges(this, (i) => i);
+}
+
+abstract class CopyWith$Query$SearchCandidates$works$edges<TRes> {
+  factory CopyWith$Query$SearchCandidates$works$edges(
+          Query$SearchCandidates$works$edges instance,
+          TRes Function(Query$SearchCandidates$works$edges) then) =
+      _CopyWithImpl$Query$SearchCandidates$works$edges;
+
+  factory CopyWith$Query$SearchCandidates$works$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$SearchCandidates$works$edges;
+
+  TRes call(
+      {Query$SearchCandidates$works$edges$node? node, String? $__typename});
+  CopyWith$Query$SearchCandidates$works$edges$node<TRes> get node;
+}
+
+class _CopyWithImpl$Query$SearchCandidates$works$edges<TRes>
+    implements CopyWith$Query$SearchCandidates$works$edges<TRes> {
+  _CopyWithImpl$Query$SearchCandidates$works$edges(this._instance, this._then);
+
+  final Query$SearchCandidates$works$edges _instance;
+
+  final TRes Function(Query$SearchCandidates$works$edges) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$SearchCandidates$works$edges(
+          node: node == _undefined
+              ? _instance.node
+              : (node as Query$SearchCandidates$works$edges$node?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Query$SearchCandidates$works$edges$node<TRes> get node {
+    final local$node = _instance.node;
+    return local$node == null
+        ? CopyWith$Query$SearchCandidates$works$edges$node.stub(
+            _then(_instance))
+        : CopyWith$Query$SearchCandidates$works$edges$node(
+            local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$SearchCandidates$works$edges<TRes>
+    implements CopyWith$Query$SearchCandidates$works$edges<TRes> {
+  _CopyWithStubImpl$Query$SearchCandidates$works$edges(this._res);
+
+  TRes _res;
+
+  call({Query$SearchCandidates$works$edges$node? node, String? $__typename}) =>
+      _res;
+  CopyWith$Query$SearchCandidates$works$edges$node<TRes> get node =>
+      CopyWith$Query$SearchCandidates$works$edges$node.stub(_res);
+}
+
+class Query$SearchCandidates$works$edges$node {
+  Query$SearchCandidates$works$edges$node(
+      {required this.id,
+      required this.title,
+      this.thumbnail,
+      required this.$__typename});
+
+  factory Query$SearchCandidates$works$edges$node.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$title = json['title'];
+    final l$thumbnail = json['thumbnail'];
+    final l$$__typename = json['__typename'];
+    return Query$SearchCandidates$works$edges$node(
+        id: (l$id as String),
+        title: (l$title as String),
+        thumbnail: (l$thumbnail as String?),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String title;
+
+  final String? thumbnail;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$thumbnail = thumbnail;
+    _resultData['thumbnail'] = l$thumbnail;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$thumbnail = thumbnail;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$title, l$thumbnail, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$SearchCandidates$works$edges$node) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (l$thumbnail != lOther$thumbnail) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$SearchCandidates$works$edges$node
+    on Query$SearchCandidates$works$edges$node {
+  CopyWith$Query$SearchCandidates$works$edges$node<
+          Query$SearchCandidates$works$edges$node>
+      get copyWith =>
+          CopyWith$Query$SearchCandidates$works$edges$node(this, (i) => i);
+}
+
+abstract class CopyWith$Query$SearchCandidates$works$edges$node<TRes> {
+  factory CopyWith$Query$SearchCandidates$works$edges$node(
+          Query$SearchCandidates$works$edges$node instance,
+          TRes Function(Query$SearchCandidates$works$edges$node) then) =
+      _CopyWithImpl$Query$SearchCandidates$works$edges$node;
+
+  factory CopyWith$Query$SearchCandidates$works$edges$node.stub(TRes res) =
+      _CopyWithStubImpl$Query$SearchCandidates$works$edges$node;
+
+  TRes call(
+      {String? id, String? title, String? thumbnail, String? $__typename});
+}
+
+class _CopyWithImpl$Query$SearchCandidates$works$edges$node<TRes>
+    implements CopyWith$Query$SearchCandidates$works$edges$node<TRes> {
+  _CopyWithImpl$Query$SearchCandidates$works$edges$node(
+      this._instance, this._then);
+
+  final Query$SearchCandidates$works$edges$node _instance;
+
+  final TRes Function(Query$SearchCandidates$works$edges$node) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? id = _undefined,
+          Object? title = _undefined,
+          Object? thumbnail = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$SearchCandidates$works$edges$node(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          title: title == _undefined || title == null
+              ? _instance.title
+              : (title as String),
+          thumbnail: thumbnail == _undefined
+              ? _instance.thumbnail
+              : (thumbnail as String?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$SearchCandidates$works$edges$node<TRes>
+    implements CopyWith$Query$SearchCandidates$works$edges$node<TRes> {
+  _CopyWithStubImpl$Query$SearchCandidates$works$edges$node(this._res);
+
+  TRes _res;
+
+  call({String? id, String? title, String? thumbnail, String? $__typename}) =>
+      _res;
 }
 
 class Query$SearchCandidates$categories {
