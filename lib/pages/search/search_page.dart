@@ -52,6 +52,7 @@ class SearchPage extends ConsumerWidget {
         const SearchInput(),
         Expanded(
             child: Container(
+                width: double.infinity,
                 decoration: const BoxDecoration(color: backgroundColor),
                 child: SingleChildScrollView(
                     child: ref.watch(searchTextProvider) != ""
@@ -101,10 +102,12 @@ class Candidates extends HookConsumerWidget {
       return Text(result.exception.toString());
     }
     if (result.isLoading) {
-      return const Center(
-        child: CircularProgressIndicator(
+      return Container(
+        color: backgroundColor,
+        child: const Center(
+            child: CircularProgressIndicator(
           color: primaryColor,
-        ),
+        )),
       );
     }
     final categories = result.parsedData?.categories.edges ?? [];
