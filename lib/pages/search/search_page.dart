@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hokkori/pages/search/category_page.dart';
+import 'package:hokkori/pages/search/custom_popup_route.dart';
 import 'package:hokkori/pages/search/hashtag_page.dart';
+import 'package:hokkori/pages/search/praise_page.dart';
 import 'package:hokkori/pages/search/search_input.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/pages/search/top_letters.dart';
 import 'package:hokkori/pages/search/topic_contents.dart';
+import 'package:hokkori/pages/search/work_page.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/content_type.dart';
 import 'package:hokkori/utils/header.dart';
@@ -26,12 +29,18 @@ class SearchPageNavigator extends StatelessWidget {
           case '/':
             builder = (BuildContext context) => const SearchPage();
             break;
+          case '/work':
+            builder = (BuildContext context) => const WorkPage();
+            break;
           case '/category':
             builder = (BuildContext context) => const CategoryPage();
             break;
           case '/hashtag':
             builder = (BuildContext context) => const HashtagPage();
             break;
+          case '/praise':
+            return CustomPopupRoute(
+                builder: (_) => const PraisePage(), settings: settings);
           default:
             throw Exception('Invalid route: ${settings.name}');
         }
@@ -51,34 +60,39 @@ class SearchPage extends ConsumerWidget {
         const Header(),
         const SearchInput(),
         Expanded(
-            child: SingleChildScrollView(
-                child: ref.watch(searchTextProvider) != ""
-                    ? const Candidates()
-                    : Column(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.only(
-                                top: 30, left: 20, bottom: 50),
-                            decoration:
-                                const BoxDecoration(color: backgroundColor),
-                            child: Column(
-                              children: const [
-                                TopicContents(type: ContentType.praise),
-                                SizedBox(
-                                  height: 50,
+            child: Container(
+                width: double.infinity,
+                decoration: const BoxDecoration(color: backgroundColor),
+                child: SingleChildScrollView(
+                    child: ref.watch(searchTextProvider) != ""
+                        ? const Candidates()
+                        : Column(
+                            children: [
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              Container(
+                                decoration:
+                                    const BoxDecoration(color: backgroundColor),
+                                child: Column(
+                                  children: const [
+                                    TopicContents(type: ContentType.praise),
+                                    SizedBox(
+                                      height: 50,
+                                    ),
+                                    TopicContents(type: ContentType.work),
+                                  ],
                                 ),
-                                TopicContents(type: ContentType.work),
-                              ],
-                            ),
-                          ),
-                          Container(
-                              padding: const EdgeInsets.only(
-                                  top: 30, left: 20, right: 20, bottom: 50),
-                              decoration:
-                                  const BoxDecoration(color: backgroundColor),
-                              child: const TopLetters())
-                        ],
-                      )))
+                              ),
+                              const SizedBox(height: 80),
+                              Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 50),
+                                  decoration: const BoxDecoration(
+                                      color: backgroundColor),
+                                  child: const TopLetters())
+                            ],
+                          ))))
       ],
     );
   }
@@ -97,17 +111,36 @@ class Candidates extends HookConsumerWidget {
       return Text(result.exception.toString());
     }
     if (result.isLoading) {
-      return const Center(
-        child: CircularProgressIndicator(
+      return Container(
+        color: backgroundColor,
+        child: const Center(
+            child: CircularProgressIndicator(
           color: primaryColor,
-        ),
+        )),
       );
     }
     final categories = result.parsedData?.categories.edges ?? [];
     final hashtags = result.parsedData?.hashtags.edges ?? [];
+    final works = result.parsedData?.works.edges ?? [];
 
+    const width = 35.0;
     return Column(
-        children: categories
+        children: works
+                .map((work) => ListTile(
+                      leading: work!.node!.thumbnail != ""
+                          ? Image.network(work.node!.thumbnail!, width: width)
+                          : Image.asset(
+                              "assets/noimage.png",
+                              width: width,
+                            ),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/work',
+                            arguments: WorkPageArguments(work.node!.id));
+                      },
+                      title: Text(work.node!.title),
+                    ))
+                .toList() +
+            categories
                 .map((category) => ListTile(
                       leading: CircleAvatar(
                           backgroundColor: primaryColor,

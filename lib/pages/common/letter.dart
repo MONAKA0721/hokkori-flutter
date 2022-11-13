@@ -209,8 +209,8 @@ class Letter extends HookConsumerWidget {
               thumbnail != null
                   ? Image.network(
                       thumbnail,
-                      width: 80,
-                      height: 80,
+                      width: 110,
+                      height: 110,
                     )
                   : Image.asset(
                       "assets/noimage.png",

@@ -28,11 +28,14 @@ class HomeWorks extends HookWidget {
     final works = result.parsedData?.works.edges ?? [];
 
     return Padding(
-        padding: const EdgeInsets.only(left: 16, top: 40),
+        padding: const EdgeInsets.only(top: 40),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
+              const SizedBox(
+                width: 16,
+              ),
               Image.asset('assets/work.png'),
               const SizedBox(
                 width: 10,
@@ -49,6 +52,7 @@ class HomeWorks extends HookWidget {
           SizedBox(
               height: 200,
               child: ListView.separated(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 scrollDirection: Axis.horizontal,
                 separatorBuilder: (context, index) => const SizedBox(
                   width: 10,

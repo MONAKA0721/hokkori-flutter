@@ -44,6 +44,7 @@ class TopPraises extends HookWidget {
     }
 
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: children,
     );
   }
@@ -82,11 +83,6 @@ class TopPraise extends StatelessWidget {
           rank.toString().padLeft(2, '0'),
           style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
         ),
-        const Icon(
-          Icons.arrow_upward,
-          size: 19,
-          color: Color(0xffD15F60),
-        )
       ]),
       const SizedBox(
         width: 7,
@@ -94,8 +90,8 @@ class TopPraise extends StatelessWidget {
       Container(
         padding: const EdgeInsets.only(top: 4),
         width: 150,
-        child:
-            Text(praise!.title, overflow: TextOverflow.ellipsis, maxLines: 2),
+        child: Text(praise!.title + '\n',
+            overflow: TextOverflow.ellipsis, maxLines: 2),
       ),
     ]);
   }

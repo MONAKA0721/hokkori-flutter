@@ -26,8 +26,10 @@ fragment LetterSummary on Post {
 }
 
 fragment PraiseSummary on Post {
-  title
   id
+  title
+  type
+  createTime
   content
   hashtags {
     id

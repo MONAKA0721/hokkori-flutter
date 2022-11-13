@@ -11,8 +11,25 @@ query LikedLetters($first: Int!) {
   }
 }
 
+query TopicWorks($first: Int!) {
+  topicWorks(first: $first) {
+    id
+    title
+    thumbnail
+  }
+}
+
 query SearchCandidates($searchText: String) {
-  categories(where: { nameContainsFold: $searchText }) {
+  works(first: 9, where: { titleContainsFold: $searchText }) {
+    edges {
+      node {
+        id
+        title
+        thumbnail
+      }
+    }
+  }
+  categories(first: 9, where: { nameContainsFold: $searchText }) {
     edges {
       node {
         id
@@ -20,11 +37,24 @@ query SearchCandidates($searchText: String) {
       }
     }
   }
-  hashtags(where: { titleContainsFold: $searchText }) {
+  hashtags(first: 9, where: { titleContainsFold: $searchText }) {
     edges {
       node {
         id
         title
+      }
+    }
+  }
+}
+
+query Work($workID: ID!) {
+  work: node(id: $workID) {
+    ... on Work {
+      id
+      title
+      thumbnail
+      posts {
+        ...PraiseSummary
       }
     }
   }

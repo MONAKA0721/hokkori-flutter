@@ -9,9 +9,19 @@ class SearchInput extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       decoration: const BoxDecoration(color: backgroundColor),
-      child: SizedBox(
+      child: Container(
+        decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.4),
+                spreadRadius: 0.1,
+                blurRadius: 3,
+              ),
+            ],
+            color: Colors.white,
+            borderRadius: const BorderRadius.all(Radius.circular(20))),
         child: TextField(
             onChanged: (value) {
               ref.watch(searchTextProvider.notifier).state = value;
@@ -19,13 +29,13 @@ class SearchInput extends ConsumerWidget {
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(50),
-                borderSide: BorderSide(color: Colors.black.withOpacity(0.2)),
+                borderSide: const BorderSide(color: Colors.white),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(50),
-                borderSide: BorderSide(color: Colors.black.withOpacity(0.2)),
+                borderSide: const BorderSide(color: Colors.white),
               ),
-              hintText: "ほっこりをさがす",
+              hintText: "ほっこりをさがす...",
               hintStyle: const TextStyle(color: headingColor),
               prefixIcon: const Icon(
                 Icons.search,
