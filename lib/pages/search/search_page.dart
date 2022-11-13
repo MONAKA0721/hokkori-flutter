@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hokkori/pages/search/category_page.dart';
+import 'package:hokkori/pages/search/custom_popup_route.dart';
 import 'package:hokkori/pages/search/hashtag_page.dart';
+import 'package:hokkori/pages/search/praise_page.dart';
 import 'package:hokkori/pages/search/search_input.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/pages/search/top_letters.dart';
 import 'package:hokkori/pages/search/topic_contents.dart';
+import 'package:hokkori/pages/search/work_page.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/content_type.dart';
 import 'package:hokkori/utils/header.dart';
@@ -26,12 +29,18 @@ class SearchPageNavigator extends StatelessWidget {
           case '/':
             builder = (BuildContext context) => const SearchPage();
             break;
+          case '/work':
+            builder = (BuildContext context) => const WorkPage();
+            break;
           case '/category':
             builder = (BuildContext context) => const CategoryPage();
             break;
           case '/hashtag':
             builder = (BuildContext context) => const HashtagPage();
             break;
+          case '/praise':
+            return CustomPopupRoute(
+                builder: (_) => const PraisePage(), settings: settings);
           default:
             throw Exception('Invalid route: ${settings.name}');
         }
@@ -125,8 +134,8 @@ class Candidates extends HookConsumerWidget {
                               width: width,
                             ),
                       onTap: () {
-                        // Navigator.of(context).pushNamed('/work',
-                        //     arguments: WorkPageArguments(work.node!.id));
+                        Navigator.of(context).pushNamed('/work',
+                            arguments: WorkPageArguments(work.node!.id));
                       },
                       title: Text(work.node!.title),
                     ))

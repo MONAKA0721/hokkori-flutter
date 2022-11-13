@@ -49,16 +49,12 @@ class Praises extends HookWidget {
       hasHeading
           ? Row(
               crossAxisAlignment: CrossAxisAlignment.end,
-              children: const [
-                Icon(
-                  Icons.favorite_border,
-                  size: 30,
-                  color: primaryColor,
-                ),
-                SizedBox(
+              children: [
+                Image.asset('assets/praise.png'),
+                const SizedBox(
                   width: 10,
                 ),
-                Text(
+                const Text(
                   "ほっこり",
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
                 ),

@@ -46,3 +46,19 @@ query SearchCandidates($searchText: String) {
     }
   }
 }
+
+query Work($workID: ID!) {
+  work: node(id: $workID) {
+    ... on Work {
+      id
+      title
+      thumbnail
+      posts {
+        id
+        title
+        type
+        createTime
+      }
+    }
+  }
+}
