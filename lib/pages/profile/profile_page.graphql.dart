@@ -4614,8 +4614,9 @@ class Query$BookmarkedPosts$posts$edges$node
     implements Fragment$PraiseSummary, Fragment$LetterSummary {
   Query$BookmarkedPosts$posts$edges$node(
       {required this.type,
-      required this.title,
       required this.id,
+      required this.title,
+      required this.createTime,
       required this.content,
       this.hashtags,
       required this.owner,
@@ -4623,15 +4624,15 @@ class Query$BookmarkedPosts$posts$edges$node
       this.likedUsers,
       this.bookmarkedUsers,
       required this.$__typename,
-      required this.createTime,
       this.thumbnail,
       required this.work});
 
   factory Query$BookmarkedPosts$posts$edges$node.fromJson(
       Map<String, dynamic> json) {
     final l$type = json['type'];
-    final l$title = json['title'];
     final l$id = json['id'];
+    final l$title = json['title'];
+    final l$createTime = json['createTime'];
     final l$content = json['content'];
     final l$hashtags = json['hashtags'];
     final l$owner = json['owner'];
@@ -4639,13 +4640,13 @@ class Query$BookmarkedPosts$posts$edges$node
     final l$likedUsers = json['likedUsers'];
     final l$bookmarkedUsers = json['bookmarkedUsers'];
     final l$$__typename = json['__typename'];
-    final l$createTime = json['createTime'];
     final l$thumbnail = json['thumbnail'];
     final l$work = json['work'];
     return Query$BookmarkedPosts$posts$edges$node(
         type: fromJson$Enum$PostPostType((l$type as String)),
-        title: (l$title as String),
         id: (l$id as String),
+        title: (l$title as String),
+        createTime: (l$createTime as String),
         content: (l$content as String),
         hashtags: (l$hashtags as List<dynamic>?)
             ?.map((e) =>
@@ -4666,16 +4667,17 @@ class Query$BookmarkedPosts$posts$edges$node
                 Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers.fromJson((e as Map<String, dynamic>)))
             .toList(),
         $__typename: (l$$__typename as String),
-        createTime: (l$createTime as String),
         thumbnail: (l$thumbnail as String?),
         work: Query$BookmarkedPosts$posts$edges$node$work.fromJson((l$work as Map<String, dynamic>)));
   }
 
   final Enum$PostPostType type;
 
+  final String id;
+
   final String title;
 
-  final String id;
+  final String createTime;
 
   final String content;
 
@@ -4692,8 +4694,6 @@ class Query$BookmarkedPosts$posts$edges$node
 
   final String $__typename;
 
-  final String createTime;
-
   final String? thumbnail;
 
   final Query$BookmarkedPosts$posts$edges$node$work work;
@@ -4702,10 +4702,12 @@ class Query$BookmarkedPosts$posts$edges$node
     final _resultData = <String, dynamic>{};
     final l$type = type;
     _resultData['type'] = toJson$Enum$PostPostType(l$type);
-    final l$title = title;
-    _resultData['title'] = l$title;
     final l$id = id;
     _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$createTime = createTime;
+    _resultData['createTime'] = l$createTime;
     final l$content = content;
     _resultData['content'] = l$content;
     final l$hashtags = hashtags;
@@ -4721,8 +4723,6 @@ class Query$BookmarkedPosts$posts$edges$node
         l$bookmarkedUsers?.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
-    final l$createTime = createTime;
-    _resultData['createTime'] = l$createTime;
     final l$thumbnail = thumbnail;
     _resultData['thumbnail'] = l$thumbnail;
     final l$work = work;
@@ -4733,8 +4733,9 @@ class Query$BookmarkedPosts$posts$edges$node
   @override
   int get hashCode {
     final l$type = type;
-    final l$title = title;
     final l$id = id;
+    final l$title = title;
+    final l$createTime = createTime;
     final l$content = content;
     final l$hashtags = hashtags;
     final l$owner = owner;
@@ -4742,13 +4743,13 @@ class Query$BookmarkedPosts$posts$edges$node
     final l$likedUsers = likedUsers;
     final l$bookmarkedUsers = bookmarkedUsers;
     final l$$__typename = $__typename;
-    final l$createTime = createTime;
     final l$thumbnail = thumbnail;
     final l$work = work;
     return Object.hashAll([
       l$type,
-      l$title,
       l$id,
+      l$title,
+      l$createTime,
       l$content,
       l$hashtags == null ? null : Object.hashAll(l$hashtags.map((v) => v)),
       l$owner,
@@ -4758,7 +4759,6 @@ class Query$BookmarkedPosts$posts$edges$node
           ? null
           : Object.hashAll(l$bookmarkedUsers.map((v) => v)),
       l$$__typename,
-      l$createTime,
       l$thumbnail,
       l$work
     ]);
@@ -4778,14 +4778,19 @@ class Query$BookmarkedPosts$posts$edges$node
     if (l$type != lOther$type) {
       return false;
     }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$title = title;
     final lOther$title = other.title;
     if (l$title != lOther$title) {
       return false;
     }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) {
+    final l$createTime = createTime;
+    final lOther$createTime = other.createTime;
+    if (l$createTime != lOther$createTime) {
       return false;
     }
     final l$content = content;
@@ -4856,11 +4861,6 @@ class Query$BookmarkedPosts$posts$edges$node
     if (l$$__typename != lOther$$__typename) {
       return false;
     }
-    final l$createTime = createTime;
-    final lOther$createTime = other.createTime;
-    if (l$createTime != lOther$createTime) {
-      return false;
-    }
     final l$thumbnail = thumbnail;
     final lOther$thumbnail = other.thumbnail;
     if (l$thumbnail != lOther$thumbnail) {
@@ -4894,8 +4894,9 @@ abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node<TRes> {
 
   TRes call(
       {Enum$PostPostType? type,
-      String? title,
       String? id,
+      String? title,
+      String? createTime,
       String? content,
       List<Query$BookmarkedPosts$posts$edges$node$hashtags>? hashtags,
       Query$BookmarkedPosts$posts$edges$node$owner? owner,
@@ -4904,7 +4905,6 @@ abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node<TRes> {
       List<Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers>?
           bookmarkedUsers,
       String? $__typename,
-      String? createTime,
       String? thumbnail,
       Query$BookmarkedPosts$posts$edges$node$work? work});
   TRes hashtags(
@@ -4943,8 +4943,9 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
 
   TRes call(
           {Object? type = _undefined,
-          Object? title = _undefined,
           Object? id = _undefined,
+          Object? title = _undefined,
+          Object? createTime = _undefined,
           Object? content = _undefined,
           Object? hashtags = _undefined,
           Object? owner = _undefined,
@@ -4952,17 +4953,19 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
           Object? likedUsers = _undefined,
           Object? bookmarkedUsers = _undefined,
           Object? $__typename = _undefined,
-          Object? createTime = _undefined,
           Object? thumbnail = _undefined,
           Object? work = _undefined}) =>
       _then(Query$BookmarkedPosts$posts$edges$node(
           type: type == _undefined || type == null
               ? _instance.type
               : (type as Enum$PostPostType),
+          id: id == _undefined || id == null ? _instance.id : (id as String),
           title: title == _undefined || title == null
               ? _instance.title
               : (title as String),
-          id: id == _undefined || id == null ? _instance.id : (id as String),
+          createTime: createTime == _undefined || createTime == null
+              ? _instance.createTime
+              : (createTime as String),
           content: content == _undefined || content == null
               ? _instance.content
               : (content as String),
@@ -4984,10 +4987,7 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
               ? _instance.bookmarkedUsers
               : (bookmarkedUsers as List<
                   Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers>?),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-          createTime: createTime == _undefined || createTime == null ? _instance.createTime : (createTime as String),
+          $__typename: $__typename == _undefined || $__typename == null ? _instance.$__typename : ($__typename as String),
           thumbnail: thumbnail == _undefined ? _instance.thumbnail : (thumbnail as String?),
           work: work == _undefined || work == null ? _instance.work : (work as Query$BookmarkedPosts$posts$edges$node$work)));
   TRes hashtags(
@@ -5047,8 +5047,9 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
 
   call(
           {Enum$PostPostType? type,
-          String? title,
           String? id,
+          String? title,
+          String? createTime,
           String? content,
           List<Query$BookmarkedPosts$posts$edges$node$hashtags>? hashtags,
           Query$BookmarkedPosts$posts$edges$node$owner? owner,
@@ -5057,7 +5058,6 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
           List<Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers>?
               bookmarkedUsers,
           String? $__typename,
-          String? createTime,
           String? thumbnail,
           Query$BookmarkedPosts$posts$edges$node$work? work}) =>
       _res;

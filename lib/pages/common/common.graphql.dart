@@ -1163,8 +1163,10 @@ class _CopyWithStubImpl$Fragment$LetterSummary$bookmarkedUsers<TRes>
 
 class Fragment$PraiseSummary {
   Fragment$PraiseSummary(
-      {required this.title,
-      required this.id,
+      {required this.id,
+      required this.title,
+      required this.type,
+      required this.createTime,
       required this.content,
       this.hashtags,
       required this.owner,
@@ -1174,8 +1176,10 @@ class Fragment$PraiseSummary {
       required this.$__typename});
 
   factory Fragment$PraiseSummary.fromJson(Map<String, dynamic> json) {
-    final l$title = json['title'];
     final l$id = json['id'];
+    final l$title = json['title'];
+    final l$type = json['type'];
+    final l$createTime = json['createTime'];
     final l$content = json['content'];
     final l$hashtags = json['hashtags'];
     final l$owner = json['owner'];
@@ -1184,8 +1188,10 @@ class Fragment$PraiseSummary {
     final l$bookmarkedUsers = json['bookmarkedUsers'];
     final l$$__typename = json['__typename'];
     return Fragment$PraiseSummary(
-        title: (l$title as String),
         id: (l$id as String),
+        title: (l$title as String),
+        type: fromJson$Enum$PostPostType((l$type as String)),
+        createTime: (l$createTime as String),
         content: (l$content as String),
         hashtags: (l$hashtags as List<dynamic>?)
             ?.map((e) => Fragment$PraiseSummary$hashtags.fromJson(
@@ -1206,9 +1212,13 @@ class Fragment$PraiseSummary {
         $__typename: (l$$__typename as String));
   }
 
+  final String id;
+
   final String title;
 
-  final String id;
+  final Enum$PostPostType type;
+
+  final String createTime;
 
   final String content;
 
@@ -1226,10 +1236,14 @@ class Fragment$PraiseSummary {
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$title = title;
-    _resultData['title'] = l$title;
     final l$id = id;
     _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$type = type;
+    _resultData['type'] = toJson$Enum$PostPostType(l$type);
+    final l$createTime = createTime;
+    _resultData['createTime'] = l$createTime;
     final l$content = content;
     _resultData['content'] = l$content;
     final l$hashtags = hashtags;
@@ -1250,8 +1264,10 @@ class Fragment$PraiseSummary {
 
   @override
   int get hashCode {
-    final l$title = title;
     final l$id = id;
+    final l$title = title;
+    final l$type = type;
+    final l$createTime = createTime;
     final l$content = content;
     final l$hashtags = hashtags;
     final l$owner = owner;
@@ -1260,8 +1276,10 @@ class Fragment$PraiseSummary {
     final l$bookmarkedUsers = bookmarkedUsers;
     final l$$__typename = $__typename;
     return Object.hashAll([
-      l$title,
       l$id,
+      l$title,
+      l$type,
+      l$createTime,
       l$content,
       l$hashtags == null ? null : Object.hashAll(l$hashtags.map((v) => v)),
       l$owner,
@@ -1283,14 +1301,24 @@ class Fragment$PraiseSummary {
         runtimeType != other.runtimeType) {
       return false;
     }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
     final l$title = title;
     final lOther$title = other.title;
     if (l$title != lOther$title) {
       return false;
     }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) {
+    final l$type = type;
+    final lOther$type = other.type;
+    if (l$type != lOther$type) {
+      return false;
+    }
+    final l$createTime = createTime;
+    final lOther$createTime = other.createTime;
+    if (l$createTime != lOther$createTime) {
       return false;
     }
     final l$content = content;
@@ -1379,8 +1407,10 @@ abstract class CopyWith$Fragment$PraiseSummary<TRes> {
       _CopyWithStubImpl$Fragment$PraiseSummary;
 
   TRes call(
-      {String? title,
-      String? id,
+      {String? id,
+      String? title,
+      Enum$PostPostType? type,
+      String? createTime,
       String? content,
       List<Fragment$PraiseSummary$hashtags>? hashtags,
       Fragment$PraiseSummary$owner? owner,
@@ -1421,8 +1451,10 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
   static const _undefined = {};
 
   TRes call(
-          {Object? title = _undefined,
-          Object? id = _undefined,
+          {Object? id = _undefined,
+          Object? title = _undefined,
+          Object? type = _undefined,
+          Object? createTime = _undefined,
           Object? content = _undefined,
           Object? hashtags = _undefined,
           Object? owner = _undefined,
@@ -1431,10 +1463,16 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
           Object? bookmarkedUsers = _undefined,
           Object? $__typename = _undefined}) =>
       _then(Fragment$PraiseSummary(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
           title: title == _undefined || title == null
               ? _instance.title
               : (title as String),
-          id: id == _undefined || id == null ? _instance.id : (id as String),
+          type: type == _undefined || type == null
+              ? _instance.type
+              : (type as Enum$PostPostType),
+          createTime: createTime == _undefined || createTime == null
+              ? _instance.createTime
+              : (createTime as String),
           content: content == _undefined || content == null
               ? _instance.content
               : (content as String),
@@ -1508,8 +1546,10 @@ class _CopyWithStubImpl$Fragment$PraiseSummary<TRes>
   TRes _res;
 
   call(
-          {String? title,
-          String? id,
+          {String? id,
+          String? title,
+          Enum$PostPostType? type,
+          String? createTime,
           String? content,
           List<Fragment$PraiseSummary$hashtags>? hashtags,
           Fragment$PraiseSummary$owner? owner,
@@ -1534,13 +1574,25 @@ const fragmentDefinitionPraiseSummary = FragmentDefinitionNode(
     directives: [],
     selectionSet: SelectionSetNode(selections: [
       FieldNode(
+          name: NameNode(value: 'id'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null),
+      FieldNode(
           name: NameNode(value: 'title'),
           alias: null,
           arguments: [],
           directives: [],
           selectionSet: null),
       FieldNode(
-          name: NameNode(value: 'id'),
+          name: NameNode(value: 'type'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null),
+      FieldNode(
+          name: NameNode(value: 'createTime'),
           alias: null,
           arguments: [],
           directives: [],

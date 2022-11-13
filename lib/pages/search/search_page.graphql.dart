@@ -1,4 +1,3 @@
-import '../../graphql/ent.graphql.dart';
 import '../common/common.graphql.dart';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
@@ -3452,30 +3451,9 @@ const documentNodeQueryWork = DocumentNode(definitions: [
                         arguments: [],
                         directives: [],
                         selectionSet: SelectionSetNode(selections: [
-                          FieldNode(
-                              name: NameNode(value: 'id'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: 'title'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: 'type'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: 'createTime'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
+                          FragmentSpreadNode(
+                              name: NameNode(value: 'PraiseSummary'),
+                              directives: []),
                           FieldNode(
                               name: NameNode(value: '__typename'),
                               alias: null,
@@ -3504,6 +3482,7 @@ const documentNodeQueryWork = DocumentNode(definitions: [
             directives: [],
             selectionSet: null)
       ])),
+  fragmentDefinitionPraiseSummary,
 ]);
 Query$Work _parserFn$Query$Work(Map<String, dynamic> data) =>
     Query$Work.fromJson(data);
@@ -3720,8 +3699,8 @@ class Query$Work$work$$Work implements Query$Work$work {
         title: (l$title as String),
         thumbnail: (l$thumbnail as String?),
         posts: (l$posts as List<dynamic>?)
-            ?.map((e) => Query$Work$work$$Work$posts.fromJson(
-                (e as Map<String, dynamic>)))
+            ?.map((e) =>
+                Fragment$PraiseSummary.fromJson((e as Map<String, dynamic>)))
             .toList());
   }
 
@@ -3733,7 +3712,7 @@ class Query$Work$work$$Work implements Query$Work$work {
 
   final String? thumbnail;
 
-  final List<Query$Work$work$$Work$posts>? posts;
+  final List<Fragment$PraiseSummary>? posts;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
@@ -3832,12 +3811,11 @@ abstract class CopyWith$Query$Work$work$$Work<TRes> {
       String? id,
       String? title,
       String? thumbnail,
-      List<Query$Work$work$$Work$posts>? posts});
+      List<Fragment$PraiseSummary>? posts});
   TRes posts(
-      Iterable<Query$Work$work$$Work$posts>? Function(
+      Iterable<Fragment$PraiseSummary>? Function(
               Iterable<
-                  CopyWith$Query$Work$work$$Work$posts<
-                      Query$Work$work$$Work$posts>>?)
+                  CopyWith$Fragment$PraiseSummary<Fragment$PraiseSummary>>?)
           _fn);
 }
 
@@ -3870,16 +3848,15 @@ class _CopyWithImpl$Query$Work$work$$Work<TRes>
               : (thumbnail as String?),
           posts: posts == _undefined
               ? _instance.posts
-              : (posts as List<Query$Work$work$$Work$posts>?)));
+              : (posts as List<Fragment$PraiseSummary>?)));
   TRes posts(
-          Iterable<Query$Work$work$$Work$posts>? Function(
+          Iterable<Fragment$PraiseSummary>? Function(
                   Iterable<
-                      CopyWith$Query$Work$work$$Work$posts<
-                          Query$Work$work$$Work$posts>>?)
+                      CopyWith$Fragment$PraiseSummary<Fragment$PraiseSummary>>?)
               _fn) =>
       call(
-          posts: _fn(_instance.posts?.map(
-                  (e) => CopyWith$Query$Work$work$$Work$posts(e, (i) => i)))
+          posts: _fn(_instance.posts
+                  ?.map((e) => CopyWith$Fragment$PraiseSummary(e, (i) => i)))
               ?.toList());
 }
 
@@ -3894,172 +3871,7 @@ class _CopyWithStubImpl$Query$Work$work$$Work<TRes>
           String? id,
           String? title,
           String? thumbnail,
-          List<Query$Work$work$$Work$posts>? posts}) =>
+          List<Fragment$PraiseSummary>? posts}) =>
       _res;
   posts(_fn) => _res;
-}
-
-class Query$Work$work$$Work$posts {
-  Query$Work$work$$Work$posts(
-      {required this.id,
-      required this.title,
-      required this.type,
-      required this.createTime,
-      required this.$__typename});
-
-  factory Query$Work$work$$Work$posts.fromJson(Map<String, dynamic> json) {
-    final l$id = json['id'];
-    final l$title = json['title'];
-    final l$type = json['type'];
-    final l$createTime = json['createTime'];
-    final l$$__typename = json['__typename'];
-    return Query$Work$work$$Work$posts(
-        id: (l$id as String),
-        title: (l$title as String),
-        type: fromJson$Enum$PostPostType((l$type as String)),
-        createTime: (l$createTime as String),
-        $__typename: (l$$__typename as String));
-  }
-
-  final String id;
-
-  final String title;
-
-  final Enum$PostPostType type;
-
-  final String createTime;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$id = id;
-    _resultData['id'] = l$id;
-    final l$title = title;
-    _resultData['title'] = l$title;
-    final l$type = type;
-    _resultData['type'] = toJson$Enum$PostPostType(l$type);
-    final l$createTime = createTime;
-    _resultData['createTime'] = l$createTime;
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$title = title;
-    final l$type = type;
-    final l$createTime = createTime;
-    final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$title, l$type, l$createTime, l$$__typename]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Query$Work$work$$Work$posts) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$title = title;
-    final lOther$title = other.title;
-    if (l$title != lOther$title) {
-      return false;
-    }
-    final l$type = type;
-    final lOther$type = other.type;
-    if (l$type != lOther$type) {
-      return false;
-    }
-    final l$createTime = createTime;
-    final lOther$createTime = other.createTime;
-    if (l$createTime != lOther$createTime) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$Work$work$$Work$posts
-    on Query$Work$work$$Work$posts {
-  CopyWith$Query$Work$work$$Work$posts<Query$Work$work$$Work$posts>
-      get copyWith => CopyWith$Query$Work$work$$Work$posts(this, (i) => i);
-}
-
-abstract class CopyWith$Query$Work$work$$Work$posts<TRes> {
-  factory CopyWith$Query$Work$work$$Work$posts(
-          Query$Work$work$$Work$posts instance,
-          TRes Function(Query$Work$work$$Work$posts) then) =
-      _CopyWithImpl$Query$Work$work$$Work$posts;
-
-  factory CopyWith$Query$Work$work$$Work$posts.stub(TRes res) =
-      _CopyWithStubImpl$Query$Work$work$$Work$posts;
-
-  TRes call(
-      {String? id,
-      String? title,
-      Enum$PostPostType? type,
-      String? createTime,
-      String? $__typename});
-}
-
-class _CopyWithImpl$Query$Work$work$$Work$posts<TRes>
-    implements CopyWith$Query$Work$work$$Work$posts<TRes> {
-  _CopyWithImpl$Query$Work$work$$Work$posts(this._instance, this._then);
-
-  final Query$Work$work$$Work$posts _instance;
-
-  final TRes Function(Query$Work$work$$Work$posts) _then;
-
-  static const _undefined = {};
-
-  TRes call(
-          {Object? id = _undefined,
-          Object? title = _undefined,
-          Object? type = _undefined,
-          Object? createTime = _undefined,
-          Object? $__typename = _undefined}) =>
-      _then(Query$Work$work$$Work$posts(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          title: title == _undefined || title == null
-              ? _instance.title
-              : (title as String),
-          type: type == _undefined || type == null
-              ? _instance.type
-              : (type as Enum$PostPostType),
-          createTime: createTime == _undefined || createTime == null
-              ? _instance.createTime
-              : (createTime as String),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
-}
-
-class _CopyWithStubImpl$Query$Work$work$$Work$posts<TRes>
-    implements CopyWith$Query$Work$work$$Work$posts<TRes> {
-  _CopyWithStubImpl$Query$Work$work$$Work$posts(this._res);
-
-  TRes _res;
-
-  call(
-          {String? id,
-          String? title,
-          Enum$PostPostType? type,
-          String? createTime,
-          String? $__typename}) =>
-      _res;
 }

@@ -54,10 +54,7 @@ query Work($workID: ID!) {
       title
       thumbnail
       posts {
-        id
-        title
-        type
-        createTime
+        ...PraiseSummary
       }
     }
   }

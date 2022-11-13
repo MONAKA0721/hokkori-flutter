@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/graphql/ent.graphql.dart';
+import 'package:hokkori/pages/common/common.graphql.dart';
+import 'package:hokkori/pages/search/praise_page.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 
@@ -91,6 +93,7 @@ class WorkPage extends HookWidget {
                             fit: BoxFit.fitWidth))),
                 ...latestPraises.asMap().entries.map((entry) {
                   return PositionedPraise(
+                    praises: latestPraises,
                     entry: entry,
                   );
                 })
@@ -102,8 +105,10 @@ class WorkPage extends HookWidget {
 }
 
 class PositionedPraise extends StatelessWidget {
-  final MapEntry<int, Query$Work$work$$Work$posts> entry;
-  const PositionedPraise({Key? key, required this.entry}) : super(key: key);
+  final List<Fragment$PraiseSummary> praises;
+  final MapEntry<int, Fragment$PraiseSummary> entry;
+  const PositionedPraise({Key? key, required this.entry, required this.praises})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -241,7 +246,8 @@ class PositionedPraise extends StatelessWidget {
                     radius: 14,
                     child: Icon(Icons.chevron_right)),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/praise');
+                  Navigator.pushNamed(context, '/praise',
+                      arguments: PraisePageArguments(praises, index));
                 },
               )
             ])));

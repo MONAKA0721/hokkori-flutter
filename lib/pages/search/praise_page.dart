@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hokkori/pages/common/common.graphql.dart';
+import 'package:hokkori/pages/common/praise.dart';
 import 'package:hokkori/pages/search/overlay_state_mixin.dart';
+
+class PraisePageArguments {
+  final List<Fragment$PraiseSummary> praises;
+  final int index;
+
+  PraisePageArguments(this.praises, this.index);
+}
 
 class PraisePage extends StatefulWidget {
   const PraisePage({Key? key}) : super(key: key);
@@ -11,13 +20,14 @@ class PraisePage extends StatefulWidget {
 
 class _PraisePageState extends State<PraisePage> with OverlayStateMixin {
   late ScrollController _scrollController;
+  late double scroll;
 
   @override
   void initState() {
     super.initState();
     _scrollController = ScrollController();
     WidgetsBinding.instance
-        .addPostFrameCallback((_) => _scrollController.jumpTo(200));
+        .addPostFrameCallback((_) => _scrollController.jumpTo(scroll));
   }
 
   @override
@@ -28,22 +38,23 @@ class _PraisePageState extends State<PraisePage> with OverlayStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final arguments =
+        ModalRoute.of(context)!.settings.arguments as PraisePageArguments;
+    scroll = arguments.index * 380;
+    final praises = arguments.praises;
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       SingleChildScrollView(
         controller: _scrollController,
         scrollDirection: Axis.horizontal,
-        child: Row(children: [
-          Container(
-            width: 500,
-            height: 200,
-            color: Colors.yellow,
-          ),
-          Container(
-            width: 500,
-            height: 200,
-            color: Colors.blue,
-          ),
-        ]),
+        child: Row(
+            children: praises
+                .map((praise) => SizedBox(
+                    width: 380,
+                    child: Praise(
+                      praise: praise,
+                      optimistic: false,
+                    )))
+                .toList()),
       ),
       IconButton(
         iconSize: 80,
