@@ -597,6 +597,7 @@ type Query {
   ): WorkConnection!
   likedPosts(first: Int!, type: PostPostType!): [Post]!
   topicWorks(first: Int!): [Work]!
+  workCategories(workID: ID!): [WorkCategory]!
 }
 """
 UpdateHashtagInput is used for update Hashtag object.

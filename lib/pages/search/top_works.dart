@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
+import 'package:hokkori/pages/search/work_page.dart';
 import 'package:hokkori/utils/colors.dart';
 
 class TopWorks extends HookWidget {
@@ -93,25 +94,35 @@ class TopWork extends StatelessWidget {
       const SizedBox(
         width: 7,
       ),
-      thumbnail != ""
-          ? Image.network(
-              thumbnail,
-              width: width,
-              height: height,
-            )
-          : Image.asset(
-              "assets/noimage.png",
-              width: width,
-              height: height,
-            ),
-      const SizedBox(
-        width: 2,
-      ),
-      Container(
-        padding: const EdgeInsets.only(top: 4),
-        width: 150,
-        child: Text(work!.title, overflow: TextOverflow.ellipsis, maxLines: 2),
-      ),
+      GestureDetector(
+          onTap: () {
+            Navigator.of(context)
+                .pushNamed('/work', arguments: WorkPageArguments(work!.id));
+          },
+          child: Row(
+            children: [
+              thumbnail != ""
+                  ? Image.network(
+                      thumbnail,
+                      width: width,
+                      height: height,
+                    )
+                  : Image.asset(
+                      "assets/noimage.png",
+                      width: width,
+                      height: height,
+                    ),
+              const SizedBox(
+                width: 2,
+              ),
+              Container(
+                padding: const EdgeInsets.only(top: 4),
+                width: 150,
+                child: Text(work!.title,
+                    overflow: TextOverflow.ellipsis, maxLines: 2),
+              ),
+            ],
+          ))
     ]);
   }
 }

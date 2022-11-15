@@ -3294,19 +3294,29 @@ class _CopyWithStubImpl$Variables$Query$Work<TRes>
 }
 
 class Query$Work {
-  Query$Work({this.work, required this.$__typename});
+  Query$Work(
+      {this.work, required this.workCategories, required this.$__typename});
 
   factory Query$Work.fromJson(Map<String, dynamic> json) {
     final l$work = json['work'];
+    final l$workCategories = json['workCategories'];
     final l$$__typename = json['__typename'];
     return Query$Work(
         work: l$work == null
             ? null
             : Query$Work$work.fromJson((l$work as Map<String, dynamic>)),
+        workCategories: (l$workCategories as List<dynamic>)
+            .map((e) => e == null
+                ? null
+                : Query$Work$workCategories.fromJson(
+                    (e as Map<String, dynamic>)))
+            .toList(),
         $__typename: (l$$__typename as String));
   }
 
   final Query$Work$work? work;
+
+  final List<Query$Work$workCategories?> workCategories;
 
   final String $__typename;
 
@@ -3314,6 +3324,9 @@ class Query$Work {
     final _resultData = <String, dynamic>{};
     final l$work = work;
     _resultData['work'] = l$work?.toJson();
+    final l$workCategories = workCategories;
+    _resultData['workCategories'] =
+        l$workCategories.map((e) => e?.toJson()).toList();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -3322,8 +3335,13 @@ class Query$Work {
   @override
   int get hashCode {
     final l$work = work;
+    final l$workCategories = workCategories;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$work, l$$__typename]);
+    return Object.hashAll([
+      l$work,
+      Object.hashAll(l$workCategories.map((v) => v)),
+      l$$__typename
+    ]);
   }
 
   @override
@@ -3338,6 +3356,18 @@ class Query$Work {
     final lOther$work = other.work;
     if (l$work != lOther$work) {
       return false;
+    }
+    final l$workCategories = workCategories;
+    final lOther$workCategories = other.workCategories;
+    if (l$workCategories.length != lOther$workCategories.length) {
+      return false;
+    }
+    for (int i = 0; i < l$workCategories.length; i++) {
+      final l$workCategories$entry = l$workCategories[i];
+      final lOther$workCategories$entry = lOther$workCategories[i];
+      if (l$workCategories$entry != lOther$workCategories$entry) {
+        return false;
+      }
     }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
@@ -3360,8 +3390,17 @@ abstract class CopyWith$Query$Work<TRes> {
 
   factory CopyWith$Query$Work.stub(TRes res) = _CopyWithStubImpl$Query$Work;
 
-  TRes call({Query$Work$work? work, String? $__typename});
+  TRes call(
+      {Query$Work$work? work,
+      List<Query$Work$workCategories?>? workCategories,
+      String? $__typename});
   CopyWith$Query$Work$work<TRes> get work;
+  TRes workCategories(
+      Iterable<Query$Work$workCategories?> Function(
+              Iterable<
+                  CopyWith$Query$Work$workCategories<
+                      Query$Work$workCategories>?>)
+          _fn);
 }
 
 class _CopyWithImpl$Query$Work<TRes> implements CopyWith$Query$Work<TRes> {
@@ -3373,10 +3412,16 @@ class _CopyWithImpl$Query$Work<TRes> implements CopyWith$Query$Work<TRes> {
 
   static const _undefined = {};
 
-  TRes call({Object? work = _undefined, Object? $__typename = _undefined}) =>
+  TRes call(
+          {Object? work = _undefined,
+          Object? workCategories = _undefined,
+          Object? $__typename = _undefined}) =>
       _then(Query$Work(
           work:
               work == _undefined ? _instance.work : (work as Query$Work$work?),
+          workCategories: workCategories == _undefined || workCategories == null
+              ? _instance.workCategories
+              : (workCategories as List<Query$Work$workCategories?>),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
@@ -3386,6 +3431,17 @@ class _CopyWithImpl$Query$Work<TRes> implements CopyWith$Query$Work<TRes> {
         ? CopyWith$Query$Work$work.stub(_then(_instance))
         : CopyWith$Query$Work$work(local$work, (e) => call(work: e));
   }
+
+  TRes workCategories(
+          Iterable<Query$Work$workCategories?> Function(
+                  Iterable<
+                      CopyWith$Query$Work$workCategories<
+                          Query$Work$workCategories>?>)
+              _fn) =>
+      call(
+          workCategories: _fn(_instance.workCategories.map((e) => e == null
+              ? null
+              : CopyWith$Query$Work$workCategories(e, (i) => i))).toList());
 }
 
 class _CopyWithStubImpl$Query$Work<TRes> implements CopyWith$Query$Work<TRes> {
@@ -3393,9 +3449,14 @@ class _CopyWithStubImpl$Query$Work<TRes> implements CopyWith$Query$Work<TRes> {
 
   TRes _res;
 
-  call({Query$Work$work? work, String? $__typename}) => _res;
+  call(
+          {Query$Work$work? work,
+          List<Query$Work$workCategories?>? workCategories,
+          String? $__typename}) =>
+      _res;
   CopyWith$Query$Work$work<TRes> get work =>
       CopyWith$Query$Work$work.stub(_res);
+  workCategories(_fn) => _res;
 }
 
 const documentNodeQueryWork = DocumentNode(definitions: [
@@ -3468,6 +3529,41 @@ const documentNodeQueryWork = DocumentNode(definitions: [
                         directives: [],
                         selectionSet: null)
                   ])),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: 'workCategories'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'workID'),
+                  value: VariableNode(name: NameNode(value: 'workID')))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'categoryID'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: 'categoryName'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: 'postCount'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
               FieldNode(
                   name: NameNode(value: '__typename'),
                   alias: null,
@@ -3874,4 +3970,152 @@ class _CopyWithStubImpl$Query$Work$work$$Work<TRes>
           List<Fragment$PraiseSummary>? posts}) =>
       _res;
   posts(_fn) => _res;
+}
+
+class Query$Work$workCategories {
+  Query$Work$workCategories(
+      {required this.categoryID,
+      required this.categoryName,
+      required this.postCount,
+      required this.$__typename});
+
+  factory Query$Work$workCategories.fromJson(Map<String, dynamic> json) {
+    final l$categoryID = json['categoryID'];
+    final l$categoryName = json['categoryName'];
+    final l$postCount = json['postCount'];
+    final l$$__typename = json['__typename'];
+    return Query$Work$workCategories(
+        categoryID: (l$categoryID as String),
+        categoryName: (l$categoryName as String),
+        postCount: (l$postCount as int),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String categoryID;
+
+  final String categoryName;
+
+  final int postCount;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$categoryID = categoryID;
+    _resultData['categoryID'] = l$categoryID;
+    final l$categoryName = categoryName;
+    _resultData['categoryName'] = l$categoryName;
+    final l$postCount = postCount;
+    _resultData['postCount'] = l$postCount;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$categoryID = categoryID;
+    final l$categoryName = categoryName;
+    final l$postCount = postCount;
+    final l$$__typename = $__typename;
+    return Object.hashAll(
+        [l$categoryID, l$categoryName, l$postCount, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$Work$workCategories) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$categoryID = categoryID;
+    final lOther$categoryID = other.categoryID;
+    if (l$categoryID != lOther$categoryID) {
+      return false;
+    }
+    final l$categoryName = categoryName;
+    final lOther$categoryName = other.categoryName;
+    if (l$categoryName != lOther$categoryName) {
+      return false;
+    }
+    final l$postCount = postCount;
+    final lOther$postCount = other.postCount;
+    if (l$postCount != lOther$postCount) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$Work$workCategories
+    on Query$Work$workCategories {
+  CopyWith$Query$Work$workCategories<Query$Work$workCategories> get copyWith =>
+      CopyWith$Query$Work$workCategories(this, (i) => i);
+}
+
+abstract class CopyWith$Query$Work$workCategories<TRes> {
+  factory CopyWith$Query$Work$workCategories(Query$Work$workCategories instance,
+          TRes Function(Query$Work$workCategories) then) =
+      _CopyWithImpl$Query$Work$workCategories;
+
+  factory CopyWith$Query$Work$workCategories.stub(TRes res) =
+      _CopyWithStubImpl$Query$Work$workCategories;
+
+  TRes call(
+      {String? categoryID,
+      String? categoryName,
+      int? postCount,
+      String? $__typename});
+}
+
+class _CopyWithImpl$Query$Work$workCategories<TRes>
+    implements CopyWith$Query$Work$workCategories<TRes> {
+  _CopyWithImpl$Query$Work$workCategories(this._instance, this._then);
+
+  final Query$Work$workCategories _instance;
+
+  final TRes Function(Query$Work$workCategories) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? categoryID = _undefined,
+          Object? categoryName = _undefined,
+          Object? postCount = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$Work$workCategories(
+          categoryID: categoryID == _undefined || categoryID == null
+              ? _instance.categoryID
+              : (categoryID as String),
+          categoryName: categoryName == _undefined || categoryName == null
+              ? _instance.categoryName
+              : (categoryName as String),
+          postCount: postCount == _undefined || postCount == null
+              ? _instance.postCount
+              : (postCount as int),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$Work$workCategories<TRes>
+    implements CopyWith$Query$Work$workCategories<TRes> {
+  _CopyWithStubImpl$Query$Work$workCategories(this._res);
+
+  TRes _res;
+
+  call(
+          {String? categoryID,
+          String? categoryName,
+          int? postCount,
+          String? $__typename}) =>
+      _res;
 }

@@ -48,12 +48,17 @@ class _PraisePageState extends State<PraisePage> with OverlayStateMixin {
         scrollDirection: Axis.horizontal,
         child: Row(
             children: praises
-                .map((praise) => SizedBox(
-                    width: 380,
-                    child: Praise(
-                      praise: praise,
-                      optimistic: false,
-                    )))
+                .asMap()
+                .entries
+                .map((entry) => Column(children: [
+                      SizedBox(
+                          width: 380,
+                          child: Praise(
+                            praise: entry.value,
+                            optimistic: false,
+                          )),
+                      Indicator(nowIndex: entry.key, max: praises.length)
+                    ]))
                 .toList()),
       ),
       IconButton(
@@ -68,5 +73,32 @@ class _PraisePageState extends State<PraisePage> with OverlayStateMixin {
         style: TextStyle(color: Colors.white, fontSize: 20),
       )
     ]);
+  }
+}
+
+class Indicator extends StatelessWidget {
+  final int nowIndex;
+  final int max;
+  const Indicator({Key? key, required this.nowIndex, required this.max})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final indices = List.generate(max, (index) => index);
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: indices
+            .map((index) => Container(
+                  width: 10,
+                  height: 10,
+                  margin: const EdgeInsets.symmetric(
+                      vertical: 20.0, horizontal: 4.0),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color:
+                          index == nowIndex ? Colors.white : Colors.transparent,
+                      border: Border.all(color: Colors.white, width: 1)),
+                ))
+            .toList());
   }
 }

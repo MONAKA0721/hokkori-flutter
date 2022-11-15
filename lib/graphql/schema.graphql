@@ -87,3 +87,9 @@ type UnfollowUserPayload {
   clientMutationId: String
   user: User
 }
+
+type WorkCategory {
+  categoryID: ID!
+  categoryName: String!
+  postCount: Int!
+}

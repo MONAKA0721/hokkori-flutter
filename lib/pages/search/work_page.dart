@@ -5,6 +5,8 @@ import 'package:hokkori/graphql/ent.graphql.dart';
 import 'package:hokkori/pages/common/common.graphql.dart';
 import 'package:hokkori/pages/search/praise_page.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
+import 'package:hokkori/pages/search/work_letters.dart';
+import 'package:hokkori/pages/search/work_praises.dart';
 import 'package:hokkori/utils/colors.dart';
 
 class WorkPageArguments {
@@ -45,6 +47,8 @@ class WorkPage extends HookWidget {
         .toList();
     praises.sort((a, b) => b.createTime.compareTo(a.createTime));
     final latestPraises = praises.take(6).toList();
+
+    final workCategories = result.parsedData?.workCategories;
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -98,7 +102,17 @@ class WorkPage extends HookWidget {
                   );
                 })
               ],
-            ))
+            )),
+        WorkPraises(workID: work.id, workCategories: workCategories),
+        const SizedBox(
+          height: 50,
+        ),
+        WorkLetters(
+          workID: work.id,
+        ),
+        const SizedBox(
+          height: 50,
+        ),
       ])),
     );
   }
