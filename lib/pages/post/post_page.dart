@@ -60,7 +60,7 @@ class _PostPageState extends ConsumerState<PostPage> {
     return Scaffold(
       body: Container(
           decoration: const BoxDecoration(color: backgroundColor),
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Column(children: [
             const SizedBox(
               height: 40,
@@ -111,22 +111,37 @@ class _PostPageState extends ConsumerState<PostPage> {
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Step1(),
-                const SizedBox(
-                  height: 20,
-                ),
-                Step2(
-                  controller: praiseContentController,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Step3(
-                  controller: letterContentController,
-                ),
+                Container(
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.4),
+                            spreadRadius: 0.1,
+                            blurRadius: 5,
+                          ),
+                        ],
+                        color: Colors.white,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(20))),
+                    child: Column(
+                      children: [
+                        const Step1(),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Step2(
+                          controller: praiseContentController,
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Step3(
+                          controller: letterContentController,
+                        ),
+                      ],
+                    )),
               ],
             ))),
           ])),
@@ -149,6 +164,8 @@ class _Step1State extends ConsumerState<Step1> {
     WorkModel? item,
     bool isSelected,
   ) {
+    final thumbnail = item?.thumbnail;
+    const width = 35.0;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),
       decoration: !isSelected
@@ -161,10 +178,15 @@ class _Step1State extends ConsumerState<Step1> {
       child: ListTile(
         selected: isSelected,
         title: Text(item?.title ?? ''),
-        leading: const CircleAvatar(
-            // this does not work - throws 404 error
-            // backgroundImage: NetworkImage(item.avatar ?? ''),
-            ),
+        leading: thumbnail != null
+            ? Image.network(
+                thumbnail,
+                width: width,
+              )
+            : Image.asset(
+                "assets/noimage.png",
+                width: width,
+              ),
       ),
     );
   }
@@ -220,10 +242,8 @@ class _Step1State extends ConsumerState<Step1> {
   @override
   Widget build(BuildContext context) {
     final work = ref.watch(workProvider);
-    return Container(
+    return Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(20)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -234,7 +254,7 @@ class _Step1State extends ConsumerState<Step1> {
                   width: 10,
                 ),
                 Text(
-                  "作品情報",
+                  "投稿情報",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
@@ -278,7 +298,7 @@ class _Step1State extends ConsumerState<Step1> {
                                         fontWeight: FontWeight.bold,
                                         color: ref.watch(workErrorProvider)
                                             ? redErrorColor
-                                            : headingColor))),
+                                            : Colors.grey))),
                             onChanged: (value) => {
                               ref.watch(workProvider.notifier).state = value
                             },
@@ -322,6 +342,7 @@ class _Step1State extends ConsumerState<Step1> {
                                     ? redErrorColor
                                     : null),
                           ),
+                          buttonHeight: 60,
                           itemPadding: const EdgeInsets.all(0),
                           items: _addDividersAfterCategories(masterCategories),
                           customItemsIndexes: _getDividersIndexes(),
@@ -377,8 +398,11 @@ List<DropdownMenuItem<int>> _addDividersAfterCategories(
               padding: const EdgeInsets.only(left: 10),
               child: Row(children: [
                 CircleAvatar(
-                  child: SvgPicture.asset('assets/palette.svg'),
-                  radius: 13,
+                  child: SvgPicture.asset(
+                    'assets/category_${category.asset}.svg',
+                    width: 18,
+                  ),
+                  radius: 14,
                   backgroundColor: category.color,
                 ),
                 const SizedBox(

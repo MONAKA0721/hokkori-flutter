@@ -7,6 +7,7 @@ import 'package:hokkori/graphql/schema.graphql.dart';
 import 'package:hokkori/pages/common/common.graphql.dart';
 import 'package:hokkori/pages/home/hashtag.dart';
 import 'package:hokkori/pages/profile/profile_page.dart';
+import 'package:hokkori/utils/categories.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -153,6 +154,9 @@ class Praise extends HookConsumerWidget {
         unbookmarkPostMutation.result.isLoading ||
         optimistic;
 
+    final category = masterCategories.firstWhere(
+        (masterCategory) => masterCategory.id.toString() == praise.category.id);
+
     return Container(
         margin: const EdgeInsets.only(top: 20, right: 5, left: 5),
         decoration: BoxDecoration(
@@ -170,16 +174,17 @@ class Praise extends HookConsumerWidget {
           Row(
             children: [
               CircleAvatar(
-                  backgroundColor: primaryColor,
+                  backgroundColor: category.color,
                   radius: 14,
                   child: SvgPicture.asset(
-                    'assets/palette.svg',
+                    'assets/category_${category.asset}.svg',
                     width: 18,
+                    color: Colors.white,
                   )),
               const SizedBox(
                 width: 10,
               ),
-              Text(praise.category.name),
+              Text(category.name),
             ],
           ),
           const SizedBox(

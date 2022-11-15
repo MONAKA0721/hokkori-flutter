@@ -6,6 +6,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/graphql/schema.graphql.dart';
 import 'package:hokkori/pages/common/common.graphql.dart';
 import 'package:hokkori/pages/profile/profile_page.dart';
+import 'package:hokkori/utils/categories.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -158,6 +159,9 @@ class Letter extends HookConsumerWidget {
             ? letter.work.thumbnail!
             : null;
 
+    final category = masterCategories.firstWhere(
+        (masterCategory) => masterCategory.id.toString() == letter.category.id);
+
     return Container(
         margin: const EdgeInsets.only(top: 20, right: 5, left: 5),
         decoration: BoxDecoration(
@@ -175,16 +179,16 @@ class Letter extends HookConsumerWidget {
           Row(
             children: [
               CircleAvatar(
-                  backgroundColor: primaryColor,
+                  backgroundColor: category.color,
                   radius: 10,
                   child: SvgPicture.asset(
-                    'assets/palette.svg',
+                    'assets/category_${category.asset}.svg',
                     width: 14,
                   )),
               const SizedBox(
                 width: 5,
               ),
-              Text(letter.category.name),
+              Text(category.name),
               const Spacer(),
               Text(
                 letter.createTime.substring(0, 10).replaceAll('-', '.'),

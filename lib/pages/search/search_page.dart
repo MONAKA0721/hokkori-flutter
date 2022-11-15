@@ -9,6 +9,7 @@ import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/pages/search/top_letters.dart';
 import 'package:hokkori/pages/search/topic_contents.dart';
 import 'package:hokkori/pages/search/work_page.dart';
+import 'package:hokkori/utils/categories.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/content_type.dart';
 import 'package:hokkori/utils/header.dart';
@@ -119,7 +120,8 @@ class Candidates extends HookConsumerWidget {
         )),
       );
     }
-    final categories = result.parsedData?.categories.edges ?? [];
+    final categories = masterCategories.where((masterCategory) =>
+        masterCategory.name.contains(ref.watch(searchTextProvider)));
     final hashtags = result.parsedData?.hashtags.edges ?? [];
     final works = result.parsedData?.works.edges ?? [];
 
@@ -143,18 +145,17 @@ class Candidates extends HookConsumerWidget {
             categories
                 .map((category) => ListTile(
                       leading: CircleAvatar(
-                          backgroundColor: primaryColor,
+                          backgroundColor: category.color,
                           radius: 16,
                           child: SvgPicture.asset(
-                            'assets/palette.svg',
+                            'assets/category_${category.asset}.svg',
                             width: 18,
                           )),
                       onTap: () {
                         Navigator.of(context).pushNamed('/category',
-                            arguments: CategoryPageArguments(
-                                category!.node!.id, category.node!.name));
+                            arguments: CategoryPageArguments(category));
                       },
-                      title: Text(category!.node!.name),
+                      title: Text(category.name),
                     ))
                 .toList() +
             hashtags
