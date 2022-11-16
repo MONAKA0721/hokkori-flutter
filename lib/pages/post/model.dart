@@ -38,7 +38,7 @@ class HashtagModel {
 
   ///custom comparing function to check if two users are equal
   bool isEqual(HashtagModel model) {
-    return id == model.id;
+    return title == model.title;
   }
 
   static List<HashtagModel> fromList(

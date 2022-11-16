@@ -9,6 +9,7 @@ final isBusyProvider = StateProvider<bool>((ref) => true);
 final accessTokenProvider = StateProvider<String>((ref) => "");
 final titleProvider = StateProvider<String>((ref) => "");
 final workProvider = StateProvider<WorkModel?>((ref) => null);
+
 final tutorialNameProvider = StateProvider<String>((ref) => "");
 final tutorialNameErrorProvider = StateProvider<bool>((ref) => false);
 final tutorialUsernameProvider = StateProvider<String>((ref) => "");

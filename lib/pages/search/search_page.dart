@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/pages/search/category_page.dart';
 import 'package:hokkori/pages/search/custom_popup_route.dart';
 import 'package:hokkori/pages/search/hashtag_page.dart';
@@ -105,6 +106,7 @@ class Candidates extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final result = useQuery$SearchCandidates(Options$Query$SearchCandidates(
+            fetchPolicy: FetchPolicy.networkOnly,
             variables: Variables$Query$SearchCandidates(
                 searchText: ref.watch(searchTextProvider))))
         .result;

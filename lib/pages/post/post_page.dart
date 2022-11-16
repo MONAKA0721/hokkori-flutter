@@ -26,7 +26,6 @@ query Hashtags($searchText: String) {
 }
 """;
 
-final hashtagProvider = StateProvider<String>((ref) => "");
 final hashtagsProvider =
     StateProvider<List<HashtagModel>>((ref) => List.empty());
 final praiseSpoiledProvider = StateProvider<bool>((ref) => false);
@@ -208,10 +207,10 @@ class _Step1State extends ConsumerState<Step1> {
       child: ListTile(
         selected: isSelected,
         title: Text(item?.title ?? ''),
-        leading: const CircleAvatar(
-            // this does not work - throws 404 error
-            // backgroundImage: NetworkImage(item.avatar ?? ''),
-            ),
+        leading: const Icon(
+          Icons.tag,
+          size: 30,
+        ),
       ),
     );
   }
@@ -220,6 +219,7 @@ class _Step1State extends ConsumerState<Step1> {
       String filter, GraphQLClient client) async {
     if (filter == "") return [];
     var queryResult = await client.query$SearchWorks(Options$Query$SearchWorks(
+        fetchPolicy: FetchPolicy.networkOnly,
         variables: Variables$Query$SearchWorks(searchText: filter)));
 
     final works = queryResult.parsedData?.works.edges;
@@ -232,11 +232,17 @@ class _Step1State extends ConsumerState<Step1> {
     if (filter == "") return [];
     var queryResult = await client.query$SearchHashtags(
         Options$Query$SearchHashtags(
+            fetchPolicy: FetchPolicy.networkOnly,
             variables: Variables$Query$SearchHashtags(searchText: filter)));
 
     final hashtags = queryResult.parsedData?.hashtags.edges;
 
-    return HashtagModel.fromList(hashtags!);
+    final list = HashtagModel.fromList(hashtags!);
+    if (!list.map((e) => e.title).contains(filter)) {
+      list.insert(0, HashtagModel(id: "", title: filter));
+    }
+
+    return list;
   }
 
   @override

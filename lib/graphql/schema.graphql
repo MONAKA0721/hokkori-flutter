@@ -6,8 +6,12 @@ scalar Time
 type Mutation {
   createUser(input: CreateUserInput!): User!
   updateUser(id: ID!, input: UpdateUserInput!): User!
-  createPosts(input: CreatePostInput!, input2: CreatePostInput!): Post!
-  createPost(input: CreatePostInput!): Post!
+  createPosts(
+    input: CreatePostInput!
+    input2: CreatePostInput!
+    hashtagTitles: [String]!
+  ): Post!
+  createPost(input: CreatePostInput!, hashtagTitles: [String]!): Post!
   createHashtag(input: CreateHashtagInput!): Hashtag!
   createWork(input: CreateWorkInput!): Work!
   likePost(input: LikePostInput!): LikePostPayload!

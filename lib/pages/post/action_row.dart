@@ -154,8 +154,14 @@ class SubmitButton extends HookConsumerWidget {
                             categoryID: ref.watch(categoryProvider).toString(),
                             hashtagIDs: ref
                                 .watch(hashtagsProvider)
+                                .where((h) => h.id != "")
                                 .map((m) => m.id)
-                                .toList())));
+                                .toList()),
+                        hashtagTitles: ref
+                            .watch(hashtagsProvider)
+                            .where((h) => h.id == "")
+                            .map((h) => h.title)
+                            .toList()));
                 if ((await result.networkResult)!.hasException) {
                   return;
                 }
@@ -173,6 +179,7 @@ class SubmitButton extends HookConsumerWidget {
                             categoryID: ref.watch(categoryProvider).toString(),
                             hashtagIDs: ref
                                 .watch(hashtagsProvider)
+                                .where((h) => h.id != "")
                                 .map((m) => m.id)
                                 .toList()),
                         createPostInput2: Input$CreatePostInput(
@@ -186,8 +193,14 @@ class SubmitButton extends HookConsumerWidget {
                             categoryID: ref.watch(categoryProvider).toString(),
                             hashtagIDs: ref
                                 .watch(hashtagsProvider)
+                                .where((h) => h.id != "")
                                 .map((m) => m.id)
-                                .toList())));
+                                .toList()),
+                        hashtagTitles: ref
+                            .watch(hashtagsProvider)
+                            .where((h) => h.id == "")
+                            .map((h) => h.title)
+                            .toList()));
                 if ((await result.networkResult)!.hasException) {
                   return;
                 }
