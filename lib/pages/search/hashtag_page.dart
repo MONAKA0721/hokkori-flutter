@@ -3,6 +3,7 @@ import 'package:hokkori/graphql/ent.graphql.dart';
 import 'package:hokkori/pages/common/letters.dart';
 import 'package:hokkori/pages/common/praises.dart';
 import 'package:hokkori/pages/search/hashtag_header.dart';
+import 'package:hokkori/utils/colors.dart';
 
 class HashtagPageArguments {
   final String id;
@@ -24,7 +25,7 @@ class HashtagPage extends StatelessWidget {
         Expanded(
           child: Container(
             padding: const EdgeInsets.only(left: 16, right: 16, top: 12),
-            decoration: const BoxDecoration(color: Colors.white),
+            decoration: const BoxDecoration(color: backgroundColor),
             child: SingleChildScrollView(
                 child: Column(
               children: [

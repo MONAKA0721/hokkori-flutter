@@ -13,6 +13,8 @@ class Fragment$LetterSummary {
       required this.content,
       required this.createTime,
       this.thumbnail,
+      required this.spoiled,
+      this.hashtags,
       required this.work,
       required this.owner,
       required this.category,
@@ -26,6 +28,8 @@ class Fragment$LetterSummary {
     final l$content = json['content'];
     final l$createTime = json['createTime'];
     final l$thumbnail = json['thumbnail'];
+    final l$spoiled = json['spoiled'];
+    final l$hashtags = json['hashtags'];
     final l$work = json['work'];
     final l$owner = json['owner'];
     final l$category = json['category'];
@@ -38,6 +42,11 @@ class Fragment$LetterSummary {
         content: (l$content as String),
         createTime: (l$createTime as String),
         thumbnail: (l$thumbnail as String?),
+        spoiled: (l$spoiled as bool),
+        hashtags: (l$hashtags as List<dynamic>?)
+            ?.map((e) => Fragment$LetterSummary$hashtags.fromJson(
+                (e as Map<String, dynamic>)))
+            .toList(),
         work: Fragment$LetterSummary$work.fromJson(
             (l$work as Map<String, dynamic>)),
         owner: Fragment$LetterSummary$owner.fromJson(
@@ -65,6 +74,10 @@ class Fragment$LetterSummary {
 
   final String? thumbnail;
 
+  final bool spoiled;
+
+  final List<Fragment$LetterSummary$hashtags>? hashtags;
+
   final Fragment$LetterSummary$work work;
 
   final Fragment$LetterSummary$owner owner;
@@ -89,6 +102,10 @@ class Fragment$LetterSummary {
     _resultData['createTime'] = l$createTime;
     final l$thumbnail = thumbnail;
     _resultData['thumbnail'] = l$thumbnail;
+    final l$spoiled = spoiled;
+    _resultData['spoiled'] = l$spoiled;
+    final l$hashtags = hashtags;
+    _resultData['hashtags'] = l$hashtags?.map((e) => e.toJson()).toList();
     final l$work = work;
     _resultData['work'] = l$work.toJson();
     final l$owner = owner;
@@ -112,6 +129,8 @@ class Fragment$LetterSummary {
     final l$content = content;
     final l$createTime = createTime;
     final l$thumbnail = thumbnail;
+    final l$spoiled = spoiled;
+    final l$hashtags = hashtags;
     final l$work = work;
     final l$owner = owner;
     final l$category = category;
@@ -124,6 +143,8 @@ class Fragment$LetterSummary {
       l$content,
       l$createTime,
       l$thumbnail,
+      l$spoiled,
+      l$hashtags == null ? null : Object.hashAll(l$hashtags.map((v) => v)),
       l$work,
       l$owner,
       l$category,
@@ -167,6 +188,27 @@ class Fragment$LetterSummary {
     final l$thumbnail = thumbnail;
     final lOther$thumbnail = other.thumbnail;
     if (l$thumbnail != lOther$thumbnail) {
+      return false;
+    }
+    final l$spoiled = spoiled;
+    final lOther$spoiled = other.spoiled;
+    if (l$spoiled != lOther$spoiled) {
+      return false;
+    }
+    final l$hashtags = hashtags;
+    final lOther$hashtags = other.hashtags;
+    if (l$hashtags != null && lOther$hashtags != null) {
+      if (l$hashtags.length != lOther$hashtags.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hashtags.length; i++) {
+        final l$hashtags$entry = l$hashtags[i];
+        final lOther$hashtags$entry = lOther$hashtags[i];
+        if (l$hashtags$entry != lOther$hashtags$entry) {
+          return false;
+        }
+      }
+    } else if (l$hashtags != lOther$hashtags) {
       return false;
     }
     final l$work = work;
@@ -244,12 +286,20 @@ abstract class CopyWith$Fragment$LetterSummary<TRes> {
       String? content,
       String? createTime,
       String? thumbnail,
+      bool? spoiled,
+      List<Fragment$LetterSummary$hashtags>? hashtags,
       Fragment$LetterSummary$work? work,
       Fragment$LetterSummary$owner? owner,
       Fragment$LetterSummary$category? category,
       List<Fragment$LetterSummary$likedUsers>? likedUsers,
       List<Fragment$LetterSummary$bookmarkedUsers>? bookmarkedUsers,
       String? $__typename});
+  TRes hashtags(
+      Iterable<Fragment$LetterSummary$hashtags>? Function(
+              Iterable<
+                  CopyWith$Fragment$LetterSummary$hashtags<
+                      Fragment$LetterSummary$hashtags>>?)
+          _fn);
   CopyWith$Fragment$LetterSummary$work<TRes> get work;
   CopyWith$Fragment$LetterSummary$owner<TRes> get owner;
   CopyWith$Fragment$LetterSummary$category<TRes> get category;
@@ -283,6 +333,8 @@ class _CopyWithImpl$Fragment$LetterSummary<TRes>
           Object? content = _undefined,
           Object? createTime = _undefined,
           Object? thumbnail = _undefined,
+          Object? spoiled = _undefined,
+          Object? hashtags = _undefined,
           Object? work = _undefined,
           Object? owner = _undefined,
           Object? category = _undefined,
@@ -303,6 +355,12 @@ class _CopyWithImpl$Fragment$LetterSummary<TRes>
           thumbnail: thumbnail == _undefined
               ? _instance.thumbnail
               : (thumbnail as String?),
+          spoiled: spoiled == _undefined || spoiled == null
+              ? _instance.spoiled
+              : (spoiled as bool),
+          hashtags: hashtags == _undefined
+              ? _instance.hashtags
+              : (hashtags as List<Fragment$LetterSummary$hashtags>?),
           work: work == _undefined || work == null
               ? _instance.work
               : (work as Fragment$LetterSummary$work),
@@ -322,6 +380,16 @@ class _CopyWithImpl$Fragment$LetterSummary<TRes>
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
+  TRes hashtags(
+          Iterable<Fragment$LetterSummary$hashtags>? Function(
+                  Iterable<
+                      CopyWith$Fragment$LetterSummary$hashtags<
+                          Fragment$LetterSummary$hashtags>>?)
+              _fn) =>
+      call(
+          hashtags: _fn(_instance.hashtags?.map(
+                  (e) => CopyWith$Fragment$LetterSummary$hashtags(e, (i) => i)))
+              ?.toList());
   CopyWith$Fragment$LetterSummary$work<TRes> get work {
     final local$work = _instance.work;
     return CopyWith$Fragment$LetterSummary$work(
@@ -374,6 +442,8 @@ class _CopyWithStubImpl$Fragment$LetterSummary<TRes>
           String? content,
           String? createTime,
           String? thumbnail,
+          bool? spoiled,
+          List<Fragment$LetterSummary$hashtags>? hashtags,
           Fragment$LetterSummary$work? work,
           Fragment$LetterSummary$owner? owner,
           Fragment$LetterSummary$category? category,
@@ -381,6 +451,7 @@ class _CopyWithStubImpl$Fragment$LetterSummary<TRes>
           List<Fragment$LetterSummary$bookmarkedUsers>? bookmarkedUsers,
           String? $__typename}) =>
       _res;
+  hashtags(_fn) => _res;
   CopyWith$Fragment$LetterSummary$work<TRes> get work =>
       CopyWith$Fragment$LetterSummary$work.stub(_res);
   CopyWith$Fragment$LetterSummary$owner<TRes> get owner =>
@@ -427,6 +498,37 @@ const fragmentDefinitionLetterSummary = FragmentDefinitionNode(
           arguments: [],
           directives: [],
           selectionSet: null),
+      FieldNode(
+          name: NameNode(value: 'spoiled'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null),
+      FieldNode(
+          name: NameNode(value: 'hashtags'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: SelectionSetNode(selections: [
+            FieldNode(
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            FieldNode(
+                name: NameNode(value: 'title'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null)
+          ])),
       FieldNode(
           name: NameNode(value: 'work'),
           alias: null,
@@ -581,6 +683,124 @@ extension ClientExtension$Fragment$LetterSummary on graphql.GraphQLClient {
         optimistic: optimistic);
     return result == null ? null : Fragment$LetterSummary.fromJson(result);
   }
+}
+
+class Fragment$LetterSummary$hashtags {
+  Fragment$LetterSummary$hashtags(
+      {required this.id, required this.title, required this.$__typename});
+
+  factory Fragment$LetterSummary$hashtags.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$title = json['title'];
+    final l$$__typename = json['__typename'];
+    return Fragment$LetterSummary$hashtags(
+        id: (l$id as String),
+        title: (l$title as String),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String title;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$title, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$LetterSummary$hashtags) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$LetterSummary$hashtags
+    on Fragment$LetterSummary$hashtags {
+  CopyWith$Fragment$LetterSummary$hashtags<Fragment$LetterSummary$hashtags>
+      get copyWith => CopyWith$Fragment$LetterSummary$hashtags(this, (i) => i);
+}
+
+abstract class CopyWith$Fragment$LetterSummary$hashtags<TRes> {
+  factory CopyWith$Fragment$LetterSummary$hashtags(
+          Fragment$LetterSummary$hashtags instance,
+          TRes Function(Fragment$LetterSummary$hashtags) then) =
+      _CopyWithImpl$Fragment$LetterSummary$hashtags;
+
+  factory CopyWith$Fragment$LetterSummary$hashtags.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$LetterSummary$hashtags;
+
+  TRes call({String? id, String? title, String? $__typename});
+}
+
+class _CopyWithImpl$Fragment$LetterSummary$hashtags<TRes>
+    implements CopyWith$Fragment$LetterSummary$hashtags<TRes> {
+  _CopyWithImpl$Fragment$LetterSummary$hashtags(this._instance, this._then);
+
+  final Fragment$LetterSummary$hashtags _instance;
+
+  final TRes Function(Fragment$LetterSummary$hashtags) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? id = _undefined,
+          Object? title = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Fragment$LetterSummary$hashtags(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          title: title == _undefined || title == null
+              ? _instance.title
+              : (title as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Fragment$LetterSummary$hashtags<TRes>
+    implements CopyWith$Fragment$LetterSummary$hashtags<TRes> {
+  _CopyWithStubImpl$Fragment$LetterSummary$hashtags(this._res);
+
+  TRes _res;
+
+  call({String? id, String? title, String? $__typename}) => _res;
 }
 
 class Fragment$LetterSummary$work {
@@ -1168,6 +1388,7 @@ class Fragment$PraiseSummary {
       required this.type,
       required this.createTime,
       required this.content,
+      required this.spoiled,
       this.hashtags,
       required this.owner,
       required this.category,
@@ -1181,6 +1402,7 @@ class Fragment$PraiseSummary {
     final l$type = json['type'];
     final l$createTime = json['createTime'];
     final l$content = json['content'];
+    final l$spoiled = json['spoiled'];
     final l$hashtags = json['hashtags'];
     final l$owner = json['owner'];
     final l$category = json['category'];
@@ -1193,6 +1415,7 @@ class Fragment$PraiseSummary {
         type: fromJson$Enum$PostPostType((l$type as String)),
         createTime: (l$createTime as String),
         content: (l$content as String),
+        spoiled: (l$spoiled as bool),
         hashtags: (l$hashtags as List<dynamic>?)
             ?.map((e) => Fragment$PraiseSummary$hashtags.fromJson(
                 (e as Map<String, dynamic>)))
@@ -1222,6 +1445,8 @@ class Fragment$PraiseSummary {
 
   final String content;
 
+  final bool spoiled;
+
   final List<Fragment$PraiseSummary$hashtags>? hashtags;
 
   final Fragment$PraiseSummary$owner owner;
@@ -1246,6 +1471,8 @@ class Fragment$PraiseSummary {
     _resultData['createTime'] = l$createTime;
     final l$content = content;
     _resultData['content'] = l$content;
+    final l$spoiled = spoiled;
+    _resultData['spoiled'] = l$spoiled;
     final l$hashtags = hashtags;
     _resultData['hashtags'] = l$hashtags?.map((e) => e.toJson()).toList();
     final l$owner = owner;
@@ -1269,6 +1496,7 @@ class Fragment$PraiseSummary {
     final l$type = type;
     final l$createTime = createTime;
     final l$content = content;
+    final l$spoiled = spoiled;
     final l$hashtags = hashtags;
     final l$owner = owner;
     final l$category = category;
@@ -1281,6 +1509,7 @@ class Fragment$PraiseSummary {
       l$type,
       l$createTime,
       l$content,
+      l$spoiled,
       l$hashtags == null ? null : Object.hashAll(l$hashtags.map((v) => v)),
       l$owner,
       l$category,
@@ -1324,6 +1553,11 @@ class Fragment$PraiseSummary {
     final l$content = content;
     final lOther$content = other.content;
     if (l$content != lOther$content) {
+      return false;
+    }
+    final l$spoiled = spoiled;
+    final lOther$spoiled = other.spoiled;
+    if (l$spoiled != lOther$spoiled) {
       return false;
     }
     final l$hashtags = hashtags;
@@ -1412,6 +1646,7 @@ abstract class CopyWith$Fragment$PraiseSummary<TRes> {
       Enum$PostPostType? type,
       String? createTime,
       String? content,
+      bool? spoiled,
       List<Fragment$PraiseSummary$hashtags>? hashtags,
       Fragment$PraiseSummary$owner? owner,
       Fragment$PraiseSummary$category? category,
@@ -1456,6 +1691,7 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
           Object? type = _undefined,
           Object? createTime = _undefined,
           Object? content = _undefined,
+          Object? spoiled = _undefined,
           Object? hashtags = _undefined,
           Object? owner = _undefined,
           Object? category = _undefined,
@@ -1476,6 +1712,9 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
           content: content == _undefined || content == null
               ? _instance.content
               : (content as String),
+          spoiled: spoiled == _undefined || spoiled == null
+              ? _instance.spoiled
+              : (spoiled as bool),
           hashtags: hashtags == _undefined
               ? _instance.hashtags
               : (hashtags as List<Fragment$PraiseSummary$hashtags>?),
@@ -1551,6 +1790,7 @@ class _CopyWithStubImpl$Fragment$PraiseSummary<TRes>
           Enum$PostPostType? type,
           String? createTime,
           String? content,
+          bool? spoiled,
           List<Fragment$PraiseSummary$hashtags>? hashtags,
           Fragment$PraiseSummary$owner? owner,
           Fragment$PraiseSummary$category? category,
@@ -1599,6 +1839,12 @@ const fragmentDefinitionPraiseSummary = FragmentDefinitionNode(
           selectionSet: null),
       FieldNode(
           name: NameNode(value: 'content'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null),
+      FieldNode(
+          name: NameNode(value: 'spoiled'),
           alias: null,
           arguments: [],
           directives: [],

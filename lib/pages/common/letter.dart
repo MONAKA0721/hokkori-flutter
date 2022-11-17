@@ -5,7 +5,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/graphql/schema.graphql.dart';
 import 'package:hokkori/pages/common/common.graphql.dart';
+import 'package:hokkori/pages/home/hashtag.dart';
 import 'package:hokkori/pages/profile/profile_page.dart';
+import 'package:hokkori/utils/categories.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -152,11 +154,8 @@ class Letter extends HookConsumerWidget {
         unbookmarkPostMutation.result.isLoading ||
         optimistic;
 
-    final thumbnail = letter.thumbnail != ""
-        ? letter.thumbnail!
-        : letter.work.thumbnail != ""
-            ? letter.work.thumbnail!
-            : null;
+    final category = masterCategories.firstWhere(
+        (masterCategory) => masterCategory.id.toString() == letter.category.id);
 
     return Container(
         margin: const EdgeInsets.only(top: 20, right: 5, left: 5),
@@ -175,16 +174,16 @@ class Letter extends HookConsumerWidget {
           Row(
             children: [
               CircleAvatar(
-                  backgroundColor: primaryColor,
+                  backgroundColor: category.color,
                   radius: 10,
                   child: SvgPicture.asset(
-                    'assets/palette.svg',
+                    'assets/category_${category.asset}.svg',
                     width: 14,
                   )),
               const SizedBox(
                 width: 5,
               ),
-              Text(letter.category.name),
+              Text(category.name),
               const Spacer(),
               Text(
                 letter.createTime.substring(0, 10).replaceAll('-', '.'),
@@ -195,41 +194,14 @@ class Letter extends HookConsumerWidget {
           const SizedBox(
             height: 10,
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                  child: Text(
-                letter.title,
-                style:
-                    const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-              )),
-              thumbnail != null
-                  ? Image.network(
-                      thumbnail,
-                      width: 110,
-                      height: 110,
-                    )
-                  : Image.asset(
-                      "assets/noimage.png",
-                      width: 80,
-                      height: 80,
-                    ),
-            ],
-          ),
+          Content(letter: letter),
           const SizedBox(
             height: 10,
           ),
-          Text(
-            letter.content,
-            style: const TextStyle(color: Colors.grey, fontSize: 14),
-            overflow: TextOverflow.ellipsis,
-            maxLines: 3,
-          ),
-          const SizedBox(
-            height: 10,
+          Wrap(
+            children: letter.hashtags!
+                .map((hashtag) => HashTag(name: hashtag.title))
+                .toList(),
           ),
           Row(
             children: [
@@ -328,5 +300,98 @@ class Letter extends HookConsumerWidget {
             ],
           ),
         ]));
+  }
+}
+
+class Content extends StatefulWidget {
+  final Fragment$LetterSummary letter;
+  const Content({Key? key, required this.letter}) : super(key: key);
+
+  @override
+  State<Content> createState() => _ContentState();
+}
+
+class _ContentState extends State<Content> {
+  bool isShowed = false;
+
+  @override
+  void initState() {
+    super.initState();
+    isShowed = !widget.letter.spoiled;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final thumbnail = widget.letter.thumbnail != ""
+        ? widget.letter.thumbnail!
+        : widget.letter.work.thumbnail != ""
+            ? widget.letter.work.thumbnail!
+            : null;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+                child: isShowed
+                    ? Text(
+                        widget.letter.title,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w700, fontSize: 18),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                      )
+                    : const Text(
+                        "ネタバレを含む投稿です",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                            color: blueButtonColor),
+                      )),
+            thumbnail != null
+                ? Image.network(
+                    thumbnail,
+                    width: 110,
+                    height: 110,
+                  )
+                : Image.asset(
+                    "assets/noimage.png",
+                    width: 80,
+                    height: 80,
+                  ),
+          ],
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        isShowed
+            ? Text(
+                widget.letter.content,
+                style: const TextStyle(color: Colors.grey, fontSize: 14),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 3,
+              )
+            : TextButton(
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                  minimumSize: Size.zero,
+                ),
+                child: const Text(
+                  "表示する",
+                  style: TextStyle(
+                      color: blueButtonColor,
+                      decoration: TextDecoration.underline,
+                      decorationThickness: 4),
+                ),
+                onPressed: () {
+                  setState(() {
+                    isShowed = true;
+                  });
+                },
+              ),
+      ],
+    );
   }
 }

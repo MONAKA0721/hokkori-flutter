@@ -23,19 +23,27 @@ class ActionRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         OutlinedButton(
-          child: Row(children: const [
-            Icon(
-              Icons.chevron_left,
-              color: blueButtonColor,
-              size: 20,
-            ),
-            SizedBox(
+          child: Row(children: [
+            Container(
+                decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: blueButtonColor, width: 1)),
+                child: const Icon(
+                  Icons.chevron_left,
+                  color: blueButtonColor,
+                  size: 20,
+                )),
+            const SizedBox(
               width: 10,
             ),
-            Text(
+            const Text(
               "休憩する",
-              style:
-                  TextStyle(color: blueButtonColor, fontSize: 16, height: 1.25),
+              style: TextStyle(
+                  color: blueButtonColor,
+                  fontSize: 16,
+                  height: 1.25,
+                  fontWeight: FontWeight.bold),
             ),
           ]),
           style: OutlinedButton.styleFrom(
@@ -101,18 +109,26 @@ class SubmitButton extends HookConsumerWidget {
     return postMutationResult.isLoading || postsMutationResult.isLoading
         ? const CircularProgressIndicator()
         : OutlinedButton(
-            child: Row(children: const [
-              Text("つたえる",
+            child: Row(children: [
+              const Text("つたえる",
                   style: TextStyle(
-                      color: Colors.white, fontSize: 16, height: 1.25)),
-              SizedBox(
+                      color: Colors.white,
+                      fontSize: 16,
+                      height: 1.25,
+                      fontWeight: FontWeight.bold)),
+              const SizedBox(
                 width: 5,
               ),
-              Icon(
-                Icons.chevron_right,
-                color: Colors.white,
-                size: 20,
-              ),
+              Container(
+                  decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: 1)),
+                  child: const Icon(
+                    Icons.chevron_right,
+                    color: Colors.white,
+                    size: 20,
+                  )),
             ]),
             style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
@@ -138,8 +154,14 @@ class SubmitButton extends HookConsumerWidget {
                             categoryID: ref.watch(categoryProvider).toString(),
                             hashtagIDs: ref
                                 .watch(hashtagsProvider)
+                                .where((h) => h.id != "")
                                 .map((m) => m.id)
-                                .toList())));
+                                .toList()),
+                        hashtagTitles: ref
+                            .watch(hashtagsProvider)
+                            .where((h) => h.id == "")
+                            .map((h) => h.title)
+                            .toList()));
                 if ((await result.networkResult)!.hasException) {
                   return;
                 }
@@ -157,6 +179,7 @@ class SubmitButton extends HookConsumerWidget {
                             categoryID: ref.watch(categoryProvider).toString(),
                             hashtagIDs: ref
                                 .watch(hashtagsProvider)
+                                .where((h) => h.id != "")
                                 .map((m) => m.id)
                                 .toList()),
                         createPostInput2: Input$CreatePostInput(
@@ -170,8 +193,14 @@ class SubmitButton extends HookConsumerWidget {
                             categoryID: ref.watch(categoryProvider).toString(),
                             hashtagIDs: ref
                                 .watch(hashtagsProvider)
+                                .where((h) => h.id != "")
                                 .map((m) => m.id)
-                                .toList())));
+                                .toList()),
+                        hashtagTitles: ref
+                            .watch(hashtagsProvider)
+                            .where((h) => h.id == "")
+                            .map((h) => h.title)
+                            .toList()));
                 if ((await result.networkResult)!.hasException) {
                   return;
                 }

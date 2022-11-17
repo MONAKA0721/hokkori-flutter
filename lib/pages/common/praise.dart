@@ -7,6 +7,7 @@ import 'package:hokkori/graphql/schema.graphql.dart';
 import 'package:hokkori/pages/common/common.graphql.dart';
 import 'package:hokkori/pages/home/hashtag.dart';
 import 'package:hokkori/pages/profile/profile_page.dart';
+import 'package:hokkori/utils/categories.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -153,6 +154,9 @@ class Praise extends HookConsumerWidget {
         unbookmarkPostMutation.result.isLoading ||
         optimistic;
 
+    final category = masterCategories.firstWhere(
+        (masterCategory) => masterCategory.id.toString() == praise.category.id);
+
     return Container(
         margin: const EdgeInsets.only(top: 20, right: 5, left: 5),
         decoration: BoxDecoration(
@@ -170,36 +174,23 @@ class Praise extends HookConsumerWidget {
           Row(
             children: [
               CircleAvatar(
-                  backgroundColor: primaryColor,
+                  backgroundColor: category.color,
                   radius: 14,
                   child: SvgPicture.asset(
-                    'assets/palette.svg',
+                    'assets/category_${category.asset}.svg',
                     width: 18,
+                    color: Colors.white,
                   )),
               const SizedBox(
                 width: 10,
               ),
-              Text(praise.category.name),
+              Text(category.name),
             ],
           ),
           const SizedBox(
             height: 10,
           ),
-          Text(
-            praise.title,
-            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
-            overflow: TextOverflow.ellipsis,
-            maxLines: 2,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            praise.content,
-            style: const TextStyle(color: Colors.black87, fontSize: 14),
-            overflow: TextOverflow.ellipsis,
-            maxLines: 3,
-          ),
+          Content(praise: praise),
           const SizedBox(
             height: 10,
           ),
@@ -305,5 +296,75 @@ class Praise extends HookConsumerWidget {
             ],
           )
         ]));
+  }
+}
+
+class Content extends StatefulWidget {
+  final Fragment$PraiseSummary praise;
+  const Content({Key? key, required this.praise}) : super(key: key);
+
+  @override
+  State<Content> createState() => _ContentState();
+}
+
+class _ContentState extends State<Content> {
+  bool isShowed = false;
+
+  @override
+  void initState() {
+    super.initState();
+    isShowed = !widget.praise.spoiled;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        isShowed
+            ? Text(
+                widget.praise.title,
+                style:
+                    const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              )
+            : const Text(
+                "ネタバレを含む投稿です",
+                style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 18,
+                    color: blueButtonColor),
+              ),
+        const SizedBox(
+          height: 10,
+        ),
+        isShowed
+            ? Text(
+                widget.praise.content,
+                style: const TextStyle(color: Colors.black87, fontSize: 14),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 3,
+              )
+            : TextButton(
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                  minimumSize: Size.zero,
+                ),
+                child: const Text(
+                  "表示する",
+                  style: TextStyle(
+                      color: blueButtonColor,
+                      decoration: TextDecoration.underline,
+                      decorationThickness: 4),
+                ),
+                onPressed: () {
+                  setState(() {
+                    isShowed = true;
+                  });
+                },
+              ),
+      ],
+    );
   }
 }

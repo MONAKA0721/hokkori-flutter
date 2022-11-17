@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hokkori/utils/colors.dart';
 
 class HashtagHeader extends StatelessWidget {
   final String title;
@@ -7,7 +8,7 @@ class HashtagHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(color: Colors.white),
+      decoration: const BoxDecoration(color: backgroundColor),
       padding: const EdgeInsets.only(left: 20, right: 20, top: 40, bottom: 10),
       child: Row(children: [
         IconButton(

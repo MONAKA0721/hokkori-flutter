@@ -21,17 +21,25 @@ query SearchHashtags($searchText: String) {
   }
 }
 
-mutation CreatePost($createPostInput: CreatePostInput!) {
-  createPost(input: $createPostInput) {
+mutation CreatePosts(
+  $createPostInput: CreatePostInput!
+  $createPostInput2: CreatePostInput!
+  $hashtagTitles: [String]!
+) {
+  createPosts(
+    input: $createPostInput
+    input2: $createPostInput2
+    hashtagTitles: $hashtagTitles
+  ) {
     id
   }
 }
 
-mutation CreatePosts(
+mutation CreatePost(
   $createPostInput: CreatePostInput!
-  $createPostInput2: CreatePostInput!
+  $hashtagTitles: [String]!
 ) {
-  createPosts(input: $createPostInput, input2: $createPostInput2) {
+  createPost(input: $createPostInput, hashtagTitles: $hashtagTitles) {
     id
   }
 }

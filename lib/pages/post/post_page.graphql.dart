@@ -1596,531 +1596,15 @@ class _CopyWithStubImpl$Query$SearchHashtags$hashtags$edges$node<TRes>
   call({String? id, String? title, String? $__typename}) => _res;
 }
 
-class Variables$Mutation$CreatePost {
-  factory Variables$Mutation$CreatePost(
-          {required Input$CreatePostInput createPostInput}) =>
-      Variables$Mutation$CreatePost._({
-        r'createPostInput': createPostInput,
-      });
-
-  Variables$Mutation$CreatePost._(this._$data);
-
-  factory Variables$Mutation$CreatePost.fromJson(Map<String, dynamic> data) {
-    final result$data = <String, dynamic>{};
-    final l$createPostInput = data['createPostInput'];
-    result$data['createPostInput'] = Input$CreatePostInput.fromJson(
-        (l$createPostInput as Map<String, dynamic>));
-    return Variables$Mutation$CreatePost._(result$data);
-  }
-
-  Map<String, dynamic> _$data;
-
-  Input$CreatePostInput get createPostInput =>
-      (_$data['createPostInput'] as Input$CreatePostInput);
-  Map<String, dynamic> toJson() {
-    final result$data = <String, dynamic>{};
-    final l$createPostInput = createPostInput;
-    result$data['createPostInput'] = l$createPostInput.toJson();
-    return result$data;
-  }
-
-  CopyWith$Variables$Mutation$CreatePost<Variables$Mutation$CreatePost>
-      get copyWith => CopyWith$Variables$Mutation$CreatePost(this, (i) => i);
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Variables$Mutation$CreatePost) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$createPostInput = createPostInput;
-    final lOther$createPostInput = other.createPostInput;
-    if (l$createPostInput != lOther$createPostInput) {
-      return false;
-    }
-    return true;
-  }
-
-  @override
-  int get hashCode {
-    final l$createPostInput = createPostInput;
-    return Object.hashAll([l$createPostInput]);
-  }
-}
-
-abstract class CopyWith$Variables$Mutation$CreatePost<TRes> {
-  factory CopyWith$Variables$Mutation$CreatePost(
-          Variables$Mutation$CreatePost instance,
-          TRes Function(Variables$Mutation$CreatePost) then) =
-      _CopyWithImpl$Variables$Mutation$CreatePost;
-
-  factory CopyWith$Variables$Mutation$CreatePost.stub(TRes res) =
-      _CopyWithStubImpl$Variables$Mutation$CreatePost;
-
-  TRes call({Input$CreatePostInput? createPostInput});
-}
-
-class _CopyWithImpl$Variables$Mutation$CreatePost<TRes>
-    implements CopyWith$Variables$Mutation$CreatePost<TRes> {
-  _CopyWithImpl$Variables$Mutation$CreatePost(this._instance, this._then);
-
-  final Variables$Mutation$CreatePost _instance;
-
-  final TRes Function(Variables$Mutation$CreatePost) _then;
-
-  static const _undefined = {};
-
-  TRes call({Object? createPostInput = _undefined}) =>
-      _then(Variables$Mutation$CreatePost._({
-        ..._instance._$data,
-        if (createPostInput != _undefined && createPostInput != null)
-          'createPostInput': (createPostInput as Input$CreatePostInput),
-      }));
-}
-
-class _CopyWithStubImpl$Variables$Mutation$CreatePost<TRes>
-    implements CopyWith$Variables$Mutation$CreatePost<TRes> {
-  _CopyWithStubImpl$Variables$Mutation$CreatePost(this._res);
-
-  TRes _res;
-
-  call({Input$CreatePostInput? createPostInput}) => _res;
-}
-
-class Mutation$CreatePost {
-  Mutation$CreatePost({required this.createPost, required this.$__typename});
-
-  factory Mutation$CreatePost.fromJson(Map<String, dynamic> json) {
-    final l$createPost = json['createPost'];
-    final l$$__typename = json['__typename'];
-    return Mutation$CreatePost(
-        createPost: Mutation$CreatePost$createPost.fromJson(
-            (l$createPost as Map<String, dynamic>)),
-        $__typename: (l$$__typename as String));
-  }
-
-  final Mutation$CreatePost$createPost createPost;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$createPost = createPost;
-    _resultData['createPost'] = l$createPost.toJson();
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$createPost = createPost;
-    final l$$__typename = $__typename;
-    return Object.hashAll([l$createPost, l$$__typename]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Mutation$CreatePost) || runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$createPost = createPost;
-    final lOther$createPost = other.createPost;
-    if (l$createPost != lOther$createPost) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Mutation$CreatePost on Mutation$CreatePost {
-  CopyWith$Mutation$CreatePost<Mutation$CreatePost> get copyWith =>
-      CopyWith$Mutation$CreatePost(this, (i) => i);
-}
-
-abstract class CopyWith$Mutation$CreatePost<TRes> {
-  factory CopyWith$Mutation$CreatePost(Mutation$CreatePost instance,
-          TRes Function(Mutation$CreatePost) then) =
-      _CopyWithImpl$Mutation$CreatePost;
-
-  factory CopyWith$Mutation$CreatePost.stub(TRes res) =
-      _CopyWithStubImpl$Mutation$CreatePost;
-
-  TRes call({Mutation$CreatePost$createPost? createPost, String? $__typename});
-  CopyWith$Mutation$CreatePost$createPost<TRes> get createPost;
-}
-
-class _CopyWithImpl$Mutation$CreatePost<TRes>
-    implements CopyWith$Mutation$CreatePost<TRes> {
-  _CopyWithImpl$Mutation$CreatePost(this._instance, this._then);
-
-  final Mutation$CreatePost _instance;
-
-  final TRes Function(Mutation$CreatePost) _then;
-
-  static const _undefined = {};
-
-  TRes call(
-          {Object? createPost = _undefined,
-          Object? $__typename = _undefined}) =>
-      _then(Mutation$CreatePost(
-          createPost: createPost == _undefined || createPost == null
-              ? _instance.createPost
-              : (createPost as Mutation$CreatePost$createPost),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
-  CopyWith$Mutation$CreatePost$createPost<TRes> get createPost {
-    final local$createPost = _instance.createPost;
-    return CopyWith$Mutation$CreatePost$createPost(
-        local$createPost, (e) => call(createPost: e));
-  }
-}
-
-class _CopyWithStubImpl$Mutation$CreatePost<TRes>
-    implements CopyWith$Mutation$CreatePost<TRes> {
-  _CopyWithStubImpl$Mutation$CreatePost(this._res);
-
-  TRes _res;
-
-  call({Mutation$CreatePost$createPost? createPost, String? $__typename}) =>
-      _res;
-  CopyWith$Mutation$CreatePost$createPost<TRes> get createPost =>
-      CopyWith$Mutation$CreatePost$createPost.stub(_res);
-}
-
-const documentNodeMutationCreatePost = DocumentNode(definitions: [
-  OperationDefinitionNode(
-      type: OperationType.mutation,
-      name: NameNode(value: 'CreatePost'),
-      variableDefinitions: [
-        VariableDefinitionNode(
-            variable: VariableNode(name: NameNode(value: 'createPostInput')),
-            type: NamedTypeNode(
-                name: NameNode(value: 'CreatePostInput'), isNonNull: true),
-            defaultValue: DefaultValueNode(value: null),
-            directives: [])
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-            name: NameNode(value: 'createPost'),
-            alias: null,
-            arguments: [
-              ArgumentNode(
-                  name: NameNode(value: 'input'),
-                  value: VariableNode(name: NameNode(value: 'createPostInput')))
-            ],
-            directives: [],
-            selectionSet: SelectionSetNode(selections: [
-              FieldNode(
-                  name: NameNode(value: 'id'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null),
-              FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null)
-            ])),
-        FieldNode(
-            name: NameNode(value: '__typename'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null)
-      ])),
-]);
-Mutation$CreatePost _parserFn$Mutation$CreatePost(Map<String, dynamic> data) =>
-    Mutation$CreatePost.fromJson(data);
-typedef OnMutationCompleted$Mutation$CreatePost = FutureOr<void> Function(
-    dynamic, Mutation$CreatePost?);
-
-class Options$Mutation$CreatePost
-    extends graphql.MutationOptions<Mutation$CreatePost> {
-  Options$Mutation$CreatePost(
-      {String? operationName,
-      required Variables$Mutation$CreatePost variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      OnMutationCompleted$Mutation$CreatePost? onCompleted,
-      graphql.OnMutationUpdate<Mutation$CreatePost>? update,
-      graphql.OnError? onError})
-      : onCompletedWithParsed = onCompleted,
-        super(
-            variables: variables.toJson(),
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            onCompleted: onCompleted == null
-                ? null
-                : (data) => onCompleted(data,
-                    data == null ? null : _parserFn$Mutation$CreatePost(data)),
-            update: update,
-            onError: onError,
-            document: documentNodeMutationCreatePost,
-            parserFn: _parserFn$Mutation$CreatePost);
-
-  final OnMutationCompleted$Mutation$CreatePost? onCompletedWithParsed;
-
-  @override
-  List<Object?> get properties => [
-        ...super.onCompleted == null
-            ? super.properties
-            : super.properties.where((property) => property != onCompleted),
-        onCompletedWithParsed
-      ];
-}
-
-class WatchOptions$Mutation$CreatePost
-    extends graphql.WatchQueryOptions<Mutation$CreatePost> {
-  WatchOptions$Mutation$CreatePost(
-      {String? operationName,
-      required Variables$Mutation$CreatePost variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      Duration? pollInterval,
-      bool? eagerlyFetchResults,
-      bool carryForwardDataOnException = true,
-      bool fetchResults = false})
-      : super(
-            variables: variables.toJson(),
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            document: documentNodeMutationCreatePost,
-            pollInterval: pollInterval,
-            eagerlyFetchResults: eagerlyFetchResults,
-            carryForwardDataOnException: carryForwardDataOnException,
-            fetchResults: fetchResults,
-            parserFn: _parserFn$Mutation$CreatePost);
-}
-
-extension ClientExtension$Mutation$CreatePost on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Mutation$CreatePost>> mutate$CreatePost(
-          Options$Mutation$CreatePost options) async =>
-      await this.mutate(options);
-  graphql.ObservableQuery<Mutation$CreatePost> watchMutation$CreatePost(
-          WatchOptions$Mutation$CreatePost options) =>
-      this.watchMutation(options);
-}
-
-class Mutation$CreatePost$HookResult {
-  Mutation$CreatePost$HookResult(this.runMutation, this.result);
-
-  final RunMutation$Mutation$CreatePost runMutation;
-
-  final graphql.QueryResult<Mutation$CreatePost> result;
-}
-
-Mutation$CreatePost$HookResult useMutation$CreatePost(
-    [WidgetOptions$Mutation$CreatePost? options]) {
-  final result = graphql_flutter
-      .useMutation(options ?? WidgetOptions$Mutation$CreatePost());
-  return Mutation$CreatePost$HookResult(
-    (variables, {optimisticResult}) => result.runMutation(
-      variables.toJson(),
-      optimisticResult: optimisticResult,
-    ),
-    result.result,
-  );
-}
-
-graphql.ObservableQuery<Mutation$CreatePost> useWatchMutation$CreatePost(
-        WatchOptions$Mutation$CreatePost options) =>
-    graphql_flutter.useWatchMutation(options);
-
-class WidgetOptions$Mutation$CreatePost
-    extends graphql.MutationOptions<Mutation$CreatePost> {
-  WidgetOptions$Mutation$CreatePost(
-      {String? operationName,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      OnMutationCompleted$Mutation$CreatePost? onCompleted,
-      graphql.OnMutationUpdate<Mutation$CreatePost>? update,
-      graphql.OnError? onError})
-      : onCompletedWithParsed = onCompleted,
-        super(
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            onCompleted: onCompleted == null
-                ? null
-                : (data) => onCompleted(data,
-                    data == null ? null : _parserFn$Mutation$CreatePost(data)),
-            update: update,
-            onError: onError,
-            document: documentNodeMutationCreatePost,
-            parserFn: _parserFn$Mutation$CreatePost);
-
-  final OnMutationCompleted$Mutation$CreatePost? onCompletedWithParsed;
-
-  @override
-  List<Object?> get properties => [
-        ...super.onCompleted == null
-            ? super.properties
-            : super.properties.where((property) => property != onCompleted),
-        onCompletedWithParsed
-      ];
-}
-
-typedef RunMutation$Mutation$CreatePost
-    = graphql.MultiSourceResult<Mutation$CreatePost>
-        Function(Variables$Mutation$CreatePost, {Object? optimisticResult});
-typedef Builder$Mutation$CreatePost = widgets.Widget Function(
-    RunMutation$Mutation$CreatePost, graphql.QueryResult<Mutation$CreatePost>?);
-
-class Mutation$CreatePost$Widget
-    extends graphql_flutter.Mutation<Mutation$CreatePost> {
-  Mutation$CreatePost$Widget(
-      {widgets.Key? key,
-      WidgetOptions$Mutation$CreatePost? options,
-      required Builder$Mutation$CreatePost builder})
-      : super(
-            key: key,
-            options: options ?? WidgetOptions$Mutation$CreatePost(),
-            builder: (run, result) => builder(
-                (variables, {optimisticResult}) =>
-                    run(variables.toJson(), optimisticResult: optimisticResult),
-                result));
-}
-
-class Mutation$CreatePost$createPost {
-  Mutation$CreatePost$createPost({required this.id, required this.$__typename});
-
-  factory Mutation$CreatePost$createPost.fromJson(Map<String, dynamic> json) {
-    final l$id = json['id'];
-    final l$$__typename = json['__typename'];
-    return Mutation$CreatePost$createPost(
-        id: (l$id as String), $__typename: (l$$__typename as String));
-  }
-
-  final String id;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$id = id;
-    _resultData['id'] = l$id;
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$$__typename]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Mutation$CreatePost$createPost) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Mutation$CreatePost$createPost
-    on Mutation$CreatePost$createPost {
-  CopyWith$Mutation$CreatePost$createPost<Mutation$CreatePost$createPost>
-      get copyWith => CopyWith$Mutation$CreatePost$createPost(this, (i) => i);
-}
-
-abstract class CopyWith$Mutation$CreatePost$createPost<TRes> {
-  factory CopyWith$Mutation$CreatePost$createPost(
-          Mutation$CreatePost$createPost instance,
-          TRes Function(Mutation$CreatePost$createPost) then) =
-      _CopyWithImpl$Mutation$CreatePost$createPost;
-
-  factory CopyWith$Mutation$CreatePost$createPost.stub(TRes res) =
-      _CopyWithStubImpl$Mutation$CreatePost$createPost;
-
-  TRes call({String? id, String? $__typename});
-}
-
-class _CopyWithImpl$Mutation$CreatePost$createPost<TRes>
-    implements CopyWith$Mutation$CreatePost$createPost<TRes> {
-  _CopyWithImpl$Mutation$CreatePost$createPost(this._instance, this._then);
-
-  final Mutation$CreatePost$createPost _instance;
-
-  final TRes Function(Mutation$CreatePost$createPost) _then;
-
-  static const _undefined = {};
-
-  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
-      _then(Mutation$CreatePost$createPost(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
-}
-
-class _CopyWithStubImpl$Mutation$CreatePost$createPost<TRes>
-    implements CopyWith$Mutation$CreatePost$createPost<TRes> {
-  _CopyWithStubImpl$Mutation$CreatePost$createPost(this._res);
-
-  TRes _res;
-
-  call({String? id, String? $__typename}) => _res;
-}
-
 class Variables$Mutation$CreatePosts {
   factory Variables$Mutation$CreatePosts(
           {required Input$CreatePostInput createPostInput,
-          required Input$CreatePostInput createPostInput2}) =>
+          required Input$CreatePostInput createPostInput2,
+          required List<String?> hashtagTitles}) =>
       Variables$Mutation$CreatePosts._({
         r'createPostInput': createPostInput,
         r'createPostInput2': createPostInput2,
+        r'hashtagTitles': hashtagTitles,
       });
 
   Variables$Mutation$CreatePosts._(this._$data);
@@ -2133,6 +1617,9 @@ class Variables$Mutation$CreatePosts {
     final l$createPostInput2 = data['createPostInput2'];
     result$data['createPostInput2'] = Input$CreatePostInput.fromJson(
         (l$createPostInput2 as Map<String, dynamic>));
+    final l$hashtagTitles = data['hashtagTitles'];
+    result$data['hashtagTitles'] =
+        (l$hashtagTitles as List<dynamic>).map((e) => (e as String?)).toList();
     return Variables$Mutation$CreatePosts._(result$data);
   }
 
@@ -2142,12 +1629,15 @@ class Variables$Mutation$CreatePosts {
       (_$data['createPostInput'] as Input$CreatePostInput);
   Input$CreatePostInput get createPostInput2 =>
       (_$data['createPostInput2'] as Input$CreatePostInput);
+  List<String?> get hashtagTitles => (_$data['hashtagTitles'] as List<String?>);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     final l$createPostInput = createPostInput;
     result$data['createPostInput'] = l$createPostInput.toJson();
     final l$createPostInput2 = createPostInput2;
     result$data['createPostInput2'] = l$createPostInput2.toJson();
+    final l$hashtagTitles = hashtagTitles;
+    result$data['hashtagTitles'] = l$hashtagTitles.map((e) => e).toList();
     return result$data;
   }
 
@@ -2172,6 +1662,18 @@ class Variables$Mutation$CreatePosts {
     if (l$createPostInput2 != lOther$createPostInput2) {
       return false;
     }
+    final l$hashtagTitles = hashtagTitles;
+    final lOther$hashtagTitles = other.hashtagTitles;
+    if (l$hashtagTitles.length != lOther$hashtagTitles.length) {
+      return false;
+    }
+    for (int i = 0; i < l$hashtagTitles.length; i++) {
+      final l$hashtagTitles$entry = l$hashtagTitles[i];
+      final lOther$hashtagTitles$entry = lOther$hashtagTitles[i];
+      if (l$hashtagTitles$entry != lOther$hashtagTitles$entry) {
+        return false;
+      }
+    }
     return true;
   }
 
@@ -2179,7 +1681,12 @@ class Variables$Mutation$CreatePosts {
   int get hashCode {
     final l$createPostInput = createPostInput;
     final l$createPostInput2 = createPostInput2;
-    return Object.hashAll([l$createPostInput, l$createPostInput2]);
+    final l$hashtagTitles = hashtagTitles;
+    return Object.hashAll([
+      l$createPostInput,
+      l$createPostInput2,
+      Object.hashAll(l$hashtagTitles.map((v) => v))
+    ]);
   }
 }
 
@@ -2194,7 +1701,8 @@ abstract class CopyWith$Variables$Mutation$CreatePosts<TRes> {
 
   TRes call(
       {Input$CreatePostInput? createPostInput,
-      Input$CreatePostInput? createPostInput2});
+      Input$CreatePostInput? createPostInput2,
+      List<String?>? hashtagTitles});
 }
 
 class _CopyWithImpl$Variables$Mutation$CreatePosts<TRes>
@@ -2209,13 +1717,16 @@ class _CopyWithImpl$Variables$Mutation$CreatePosts<TRes>
 
   TRes call(
           {Object? createPostInput = _undefined,
-          Object? createPostInput2 = _undefined}) =>
+          Object? createPostInput2 = _undefined,
+          Object? hashtagTitles = _undefined}) =>
       _then(Variables$Mutation$CreatePosts._({
         ..._instance._$data,
         if (createPostInput != _undefined && createPostInput != null)
           'createPostInput': (createPostInput as Input$CreatePostInput),
         if (createPostInput2 != _undefined && createPostInput2 != null)
           'createPostInput2': (createPostInput2 as Input$CreatePostInput),
+        if (hashtagTitles != _undefined && hashtagTitles != null)
+          'hashtagTitles': (hashtagTitles as List<String?>),
       }));
 }
 
@@ -2227,7 +1738,8 @@ class _CopyWithStubImpl$Variables$Mutation$CreatePosts<TRes>
 
   call(
           {Input$CreatePostInput? createPostInput,
-          Input$CreatePostInput? createPostInput2}) =>
+          Input$CreatePostInput? createPostInput2,
+          List<String?>? hashtagTitles}) =>
       _res;
 }
 
@@ -2358,6 +1870,14 @@ const documentNodeMutationCreatePosts = DocumentNode(definitions: [
             type: NamedTypeNode(
                 name: NameNode(value: 'CreatePostInput'), isNonNull: true),
             defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'hashtagTitles')),
+            type: ListTypeNode(
+                type: NamedTypeNode(
+                    name: NameNode(value: 'String'), isNonNull: false),
+                isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
             directives: [])
       ],
       directives: [],
@@ -2373,7 +1893,10 @@ const documentNodeMutationCreatePosts = DocumentNode(definitions: [
               ArgumentNode(
                   name: NameNode(value: 'input2'),
                   value:
-                      VariableNode(name: NameNode(value: 'createPostInput2')))
+                      VariableNode(name: NameNode(value: 'createPostInput2'))),
+              ArgumentNode(
+                  name: NameNode(value: 'hashtagTitles'),
+                  value: VariableNode(name: NameNode(value: 'hashtagTitles')))
             ],
             directives: [],
             selectionSet: SelectionSetNode(selections: [
@@ -2665,6 +2188,566 @@ class _CopyWithImpl$Mutation$CreatePosts$createPosts<TRes>
 class _CopyWithStubImpl$Mutation$CreatePosts$createPosts<TRes>
     implements CopyWith$Mutation$CreatePosts$createPosts<TRes> {
   _CopyWithStubImpl$Mutation$CreatePosts$createPosts(this._res);
+
+  TRes _res;
+
+  call({String? id, String? $__typename}) => _res;
+}
+
+class Variables$Mutation$CreatePost {
+  factory Variables$Mutation$CreatePost(
+          {required Input$CreatePostInput createPostInput,
+          required List<String?> hashtagTitles}) =>
+      Variables$Mutation$CreatePost._({
+        r'createPostInput': createPostInput,
+        r'hashtagTitles': hashtagTitles,
+      });
+
+  Variables$Mutation$CreatePost._(this._$data);
+
+  factory Variables$Mutation$CreatePost.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$createPostInput = data['createPostInput'];
+    result$data['createPostInput'] = Input$CreatePostInput.fromJson(
+        (l$createPostInput as Map<String, dynamic>));
+    final l$hashtagTitles = data['hashtagTitles'];
+    result$data['hashtagTitles'] =
+        (l$hashtagTitles as List<dynamic>).map((e) => (e as String?)).toList();
+    return Variables$Mutation$CreatePost._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$CreatePostInput get createPostInput =>
+      (_$data['createPostInput'] as Input$CreatePostInput);
+  List<String?> get hashtagTitles => (_$data['hashtagTitles'] as List<String?>);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$createPostInput = createPostInput;
+    result$data['createPostInput'] = l$createPostInput.toJson();
+    final l$hashtagTitles = hashtagTitles;
+    result$data['hashtagTitles'] = l$hashtagTitles.map((e) => e).toList();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$CreatePost<Variables$Mutation$CreatePost>
+      get copyWith => CopyWith$Variables$Mutation$CreatePost(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$CreatePost) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$createPostInput = createPostInput;
+    final lOther$createPostInput = other.createPostInput;
+    if (l$createPostInput != lOther$createPostInput) {
+      return false;
+    }
+    final l$hashtagTitles = hashtagTitles;
+    final lOther$hashtagTitles = other.hashtagTitles;
+    if (l$hashtagTitles.length != lOther$hashtagTitles.length) {
+      return false;
+    }
+    for (int i = 0; i < l$hashtagTitles.length; i++) {
+      final l$hashtagTitles$entry = l$hashtagTitles[i];
+      final lOther$hashtagTitles$entry = lOther$hashtagTitles[i];
+      if (l$hashtagTitles$entry != lOther$hashtagTitles$entry) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$createPostInput = createPostInput;
+    final l$hashtagTitles = hashtagTitles;
+    return Object.hashAll(
+        [l$createPostInput, Object.hashAll(l$hashtagTitles.map((v) => v))]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$CreatePost<TRes> {
+  factory CopyWith$Variables$Mutation$CreatePost(
+          Variables$Mutation$CreatePost instance,
+          TRes Function(Variables$Mutation$CreatePost) then) =
+      _CopyWithImpl$Variables$Mutation$CreatePost;
+
+  factory CopyWith$Variables$Mutation$CreatePost.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$CreatePost;
+
+  TRes call(
+      {Input$CreatePostInput? createPostInput, List<String?>? hashtagTitles});
+}
+
+class _CopyWithImpl$Variables$Mutation$CreatePost<TRes>
+    implements CopyWith$Variables$Mutation$CreatePost<TRes> {
+  _CopyWithImpl$Variables$Mutation$CreatePost(this._instance, this._then);
+
+  final Variables$Mutation$CreatePost _instance;
+
+  final TRes Function(Variables$Mutation$CreatePost) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? createPostInput = _undefined,
+          Object? hashtagTitles = _undefined}) =>
+      _then(Variables$Mutation$CreatePost._({
+        ..._instance._$data,
+        if (createPostInput != _undefined && createPostInput != null)
+          'createPostInput': (createPostInput as Input$CreatePostInput),
+        if (hashtagTitles != _undefined && hashtagTitles != null)
+          'hashtagTitles': (hashtagTitles as List<String?>),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$CreatePost<TRes>
+    implements CopyWith$Variables$Mutation$CreatePost<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$CreatePost(this._res);
+
+  TRes _res;
+
+  call(
+          {Input$CreatePostInput? createPostInput,
+          List<String?>? hashtagTitles}) =>
+      _res;
+}
+
+class Mutation$CreatePost {
+  Mutation$CreatePost({required this.createPost, required this.$__typename});
+
+  factory Mutation$CreatePost.fromJson(Map<String, dynamic> json) {
+    final l$createPost = json['createPost'];
+    final l$$__typename = json['__typename'];
+    return Mutation$CreatePost(
+        createPost: Mutation$CreatePost$createPost.fromJson(
+            (l$createPost as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final Mutation$CreatePost$createPost createPost;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$createPost = createPost;
+    _resultData['createPost'] = l$createPost.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$createPost = createPost;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$createPost, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$CreatePost) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$createPost = createPost;
+    final lOther$createPost = other.createPost;
+    if (l$createPost != lOther$createPost) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$CreatePost on Mutation$CreatePost {
+  CopyWith$Mutation$CreatePost<Mutation$CreatePost> get copyWith =>
+      CopyWith$Mutation$CreatePost(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$CreatePost<TRes> {
+  factory CopyWith$Mutation$CreatePost(Mutation$CreatePost instance,
+          TRes Function(Mutation$CreatePost) then) =
+      _CopyWithImpl$Mutation$CreatePost;
+
+  factory CopyWith$Mutation$CreatePost.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$CreatePost;
+
+  TRes call({Mutation$CreatePost$createPost? createPost, String? $__typename});
+  CopyWith$Mutation$CreatePost$createPost<TRes> get createPost;
+}
+
+class _CopyWithImpl$Mutation$CreatePost<TRes>
+    implements CopyWith$Mutation$CreatePost<TRes> {
+  _CopyWithImpl$Mutation$CreatePost(this._instance, this._then);
+
+  final Mutation$CreatePost _instance;
+
+  final TRes Function(Mutation$CreatePost) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? createPost = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Mutation$CreatePost(
+          createPost: createPost == _undefined || createPost == null
+              ? _instance.createPost
+              : (createPost as Mutation$CreatePost$createPost),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Mutation$CreatePost$createPost<TRes> get createPost {
+    final local$createPost = _instance.createPost;
+    return CopyWith$Mutation$CreatePost$createPost(
+        local$createPost, (e) => call(createPost: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$CreatePost<TRes>
+    implements CopyWith$Mutation$CreatePost<TRes> {
+  _CopyWithStubImpl$Mutation$CreatePost(this._res);
+
+  TRes _res;
+
+  call({Mutation$CreatePost$createPost? createPost, String? $__typename}) =>
+      _res;
+  CopyWith$Mutation$CreatePost$createPost<TRes> get createPost =>
+      CopyWith$Mutation$CreatePost$createPost.stub(_res);
+}
+
+const documentNodeMutationCreatePost = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.mutation,
+      name: NameNode(value: 'CreatePost'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'createPostInput')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'CreatePostInput'), isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'hashtagTitles')),
+            type: ListTypeNode(
+                type: NamedTypeNode(
+                    name: NameNode(value: 'String'), isNonNull: false),
+                isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'createPost'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'input'),
+                  value:
+                      VariableNode(name: NameNode(value: 'createPostInput'))),
+              ArgumentNode(
+                  name: NameNode(value: 'hashtagTitles'),
+                  value: VariableNode(name: NameNode(value: 'hashtagTitles')))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'id'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+]);
+Mutation$CreatePost _parserFn$Mutation$CreatePost(Map<String, dynamic> data) =>
+    Mutation$CreatePost.fromJson(data);
+typedef OnMutationCompleted$Mutation$CreatePost = FutureOr<void> Function(
+    dynamic, Mutation$CreatePost?);
+
+class Options$Mutation$CreatePost
+    extends graphql.MutationOptions<Mutation$CreatePost> {
+  Options$Mutation$CreatePost(
+      {String? operationName,
+      required Variables$Mutation$CreatePost variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$CreatePost? onCompleted,
+      graphql.OnMutationUpdate<Mutation$CreatePost>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(data,
+                    data == null ? null : _parserFn$Mutation$CreatePost(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationCreatePost,
+            parserFn: _parserFn$Mutation$CreatePost);
+
+  final OnMutationCompleted$Mutation$CreatePost? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+class WatchOptions$Mutation$CreatePost
+    extends graphql.WatchQueryOptions<Mutation$CreatePost> {
+  WatchOptions$Mutation$CreatePost(
+      {String? operationName,
+      required Variables$Mutation$CreatePost variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeMutationCreatePost,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Mutation$CreatePost);
+}
+
+extension ClientExtension$Mutation$CreatePost on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$CreatePost>> mutate$CreatePost(
+          Options$Mutation$CreatePost options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$CreatePost> watchMutation$CreatePost(
+          WatchOptions$Mutation$CreatePost options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$CreatePost$HookResult {
+  Mutation$CreatePost$HookResult(this.runMutation, this.result);
+
+  final RunMutation$Mutation$CreatePost runMutation;
+
+  final graphql.QueryResult<Mutation$CreatePost> result;
+}
+
+Mutation$CreatePost$HookResult useMutation$CreatePost(
+    [WidgetOptions$Mutation$CreatePost? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$CreatePost());
+  return Mutation$CreatePost$HookResult(
+    (variables, {optimisticResult}) => result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult,
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$CreatePost> useWatchMutation$CreatePost(
+        WatchOptions$Mutation$CreatePost options) =>
+    graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$CreatePost
+    extends graphql.MutationOptions<Mutation$CreatePost> {
+  WidgetOptions$Mutation$CreatePost(
+      {String? operationName,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$CreatePost? onCompleted,
+      graphql.OnMutationUpdate<Mutation$CreatePost>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(data,
+                    data == null ? null : _parserFn$Mutation$CreatePost(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationCreatePost,
+            parserFn: _parserFn$Mutation$CreatePost);
+
+  final OnMutationCompleted$Mutation$CreatePost? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+typedef RunMutation$Mutation$CreatePost
+    = graphql.MultiSourceResult<Mutation$CreatePost>
+        Function(Variables$Mutation$CreatePost, {Object? optimisticResult});
+typedef Builder$Mutation$CreatePost = widgets.Widget Function(
+    RunMutation$Mutation$CreatePost, graphql.QueryResult<Mutation$CreatePost>?);
+
+class Mutation$CreatePost$Widget
+    extends graphql_flutter.Mutation<Mutation$CreatePost> {
+  Mutation$CreatePost$Widget(
+      {widgets.Key? key,
+      WidgetOptions$Mutation$CreatePost? options,
+      required Builder$Mutation$CreatePost builder})
+      : super(
+            key: key,
+            options: options ?? WidgetOptions$Mutation$CreatePost(),
+            builder: (run, result) => builder(
+                (variables, {optimisticResult}) =>
+                    run(variables.toJson(), optimisticResult: optimisticResult),
+                result));
+}
+
+class Mutation$CreatePost$createPost {
+  Mutation$CreatePost$createPost({required this.id, required this.$__typename});
+
+  factory Mutation$CreatePost$createPost.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Mutation$CreatePost$createPost(
+        id: (l$id as String), $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$CreatePost$createPost) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$CreatePost$createPost
+    on Mutation$CreatePost$createPost {
+  CopyWith$Mutation$CreatePost$createPost<Mutation$CreatePost$createPost>
+      get copyWith => CopyWith$Mutation$CreatePost$createPost(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$CreatePost$createPost<TRes> {
+  factory CopyWith$Mutation$CreatePost$createPost(
+          Mutation$CreatePost$createPost instance,
+          TRes Function(Mutation$CreatePost$createPost) then) =
+      _CopyWithImpl$Mutation$CreatePost$createPost;
+
+  factory CopyWith$Mutation$CreatePost$createPost.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$CreatePost$createPost;
+
+  TRes call({String? id, String? $__typename});
+}
+
+class _CopyWithImpl$Mutation$CreatePost$createPost<TRes>
+    implements CopyWith$Mutation$CreatePost$createPost<TRes> {
+  _CopyWithImpl$Mutation$CreatePost$createPost(this._instance, this._then);
+
+  final Mutation$CreatePost$createPost _instance;
+
+  final TRes Function(Mutation$CreatePost$createPost) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+      _then(Mutation$CreatePost$createPost(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Mutation$CreatePost$createPost<TRes>
+    implements CopyWith$Mutation$CreatePost$createPost<TRes> {
+  _CopyWithStubImpl$Mutation$CreatePost$createPost(this._res);
 
   TRes _res;
 

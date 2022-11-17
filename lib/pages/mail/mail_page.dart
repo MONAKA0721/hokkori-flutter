@@ -8,7 +8,7 @@ class MailPage extends StatelessWidget {
     return Column(
       children: [
         Row(
-          children: [const Icon(Icons.arrow_left), Text("満島ひかり")],
+          children: const [Icon(Icons.arrow_left), Text("満島ひかり")],
         ),
         // Expanded(child:
 

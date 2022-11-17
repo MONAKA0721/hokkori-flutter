@@ -9,7 +9,7 @@ class CustomPopupRoute extends PopupRoute {
   final WidgetBuilder builder;
 
   @override
-  Color get barrierColor => Colors.black54.withAlpha(100);
+  Color get barrierColor => Colors.black54.withAlpha(150);
 
   @override
   bool get barrierDismissible => true;
