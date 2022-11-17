@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/graphql/schema.graphql.dart';
 import 'package:hokkori/pages/common/common.graphql.dart';
+import 'package:hokkori/pages/home/hashtag.dart';
 import 'package:hokkori/pages/profile/profile_page.dart';
 import 'package:hokkori/utils/categories.dart';
 import 'package:hokkori/utils/colors.dart';
@@ -234,6 +235,11 @@ class Letter extends HookConsumerWidget {
           ),
           const SizedBox(
             height: 10,
+          ),
+          Wrap(
+            children: letter.hashtags!
+                .map((hashtag) => HashTag(name: hashtag.title))
+                .toList(),
           ),
           Row(
             children: [

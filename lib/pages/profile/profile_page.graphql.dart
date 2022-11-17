@@ -5073,7 +5073,9 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
 }
 
 class Query$BookmarkedPosts$posts$edges$node$hashtags
-    implements Fragment$PraiseSummary$hashtags {
+    implements
+        Fragment$PraiseSummary$hashtags,
+        Fragment$LetterSummary$hashtags {
   Query$BookmarkedPosts$posts$edges$node$hashtags(
       {required this.id, required this.title, required this.$__typename});
 

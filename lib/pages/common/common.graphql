@@ -4,6 +4,10 @@ fragment LetterSummary on Post {
   content
   createTime
   thumbnail
+  hashtags {
+    id
+    title
+  }
   work {
     id
     thumbnail
