@@ -4618,6 +4618,7 @@ class Query$BookmarkedPosts$posts$edges$node
       required this.title,
       required this.createTime,
       required this.content,
+      required this.spoiled,
       this.hashtags,
       required this.owner,
       required this.category,
@@ -4634,6 +4635,7 @@ class Query$BookmarkedPosts$posts$edges$node
     final l$title = json['title'];
     final l$createTime = json['createTime'];
     final l$content = json['content'];
+    final l$spoiled = json['spoiled'];
     final l$hashtags = json['hashtags'];
     final l$owner = json['owner'];
     final l$category = json['category'];
@@ -4648,6 +4650,7 @@ class Query$BookmarkedPosts$posts$edges$node
         title: (l$title as String),
         createTime: (l$createTime as String),
         content: (l$content as String),
+        spoiled: (l$spoiled as bool),
         hashtags: (l$hashtags as List<dynamic>?)
             ?.map((e) =>
                 Query$BookmarkedPosts$posts$edges$node$hashtags.fromJson(
@@ -4681,6 +4684,8 @@ class Query$BookmarkedPosts$posts$edges$node
 
   final String content;
 
+  final bool spoiled;
+
   final List<Query$BookmarkedPosts$posts$edges$node$hashtags>? hashtags;
 
   final Query$BookmarkedPosts$posts$edges$node$owner owner;
@@ -4710,6 +4715,8 @@ class Query$BookmarkedPosts$posts$edges$node
     _resultData['createTime'] = l$createTime;
     final l$content = content;
     _resultData['content'] = l$content;
+    final l$spoiled = spoiled;
+    _resultData['spoiled'] = l$spoiled;
     final l$hashtags = hashtags;
     _resultData['hashtags'] = l$hashtags?.map((e) => e.toJson()).toList();
     final l$owner = owner;
@@ -4737,6 +4744,7 @@ class Query$BookmarkedPosts$posts$edges$node
     final l$title = title;
     final l$createTime = createTime;
     final l$content = content;
+    final l$spoiled = spoiled;
     final l$hashtags = hashtags;
     final l$owner = owner;
     final l$category = category;
@@ -4751,6 +4759,7 @@ class Query$BookmarkedPosts$posts$edges$node
       l$title,
       l$createTime,
       l$content,
+      l$spoiled,
       l$hashtags == null ? null : Object.hashAll(l$hashtags.map((v) => v)),
       l$owner,
       l$category,
@@ -4796,6 +4805,11 @@ class Query$BookmarkedPosts$posts$edges$node
     final l$content = content;
     final lOther$content = other.content;
     if (l$content != lOther$content) {
+      return false;
+    }
+    final l$spoiled = spoiled;
+    final lOther$spoiled = other.spoiled;
+    if (l$spoiled != lOther$spoiled) {
       return false;
     }
     final l$hashtags = hashtags;
@@ -4898,6 +4912,7 @@ abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node<TRes> {
       String? title,
       String? createTime,
       String? content,
+      bool? spoiled,
       List<Query$BookmarkedPosts$posts$edges$node$hashtags>? hashtags,
       Query$BookmarkedPosts$posts$edges$node$owner? owner,
       Query$BookmarkedPosts$posts$edges$node$category? category,
@@ -4947,6 +4962,7 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
           Object? title = _undefined,
           Object? createTime = _undefined,
           Object? content = _undefined,
+          Object? spoiled = _undefined,
           Object? hashtags = _undefined,
           Object? owner = _undefined,
           Object? category = _undefined,
@@ -4969,6 +4985,9 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
           content: content == _undefined || content == null
               ? _instance.content
               : (content as String),
+          spoiled: spoiled == _undefined || spoiled == null
+              ? _instance.spoiled
+              : (spoiled as bool),
           hashtags: hashtags == _undefined
               ? _instance.hashtags
               : (hashtags
@@ -4985,8 +5004,8 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
                   as List<Query$BookmarkedPosts$posts$edges$node$likedUsers>?),
           bookmarkedUsers: bookmarkedUsers == _undefined
               ? _instance.bookmarkedUsers
-              : (bookmarkedUsers as List<
-                  Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers>?),
+              : (bookmarkedUsers
+                  as List<Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers>?),
           $__typename: $__typename == _undefined || $__typename == null ? _instance.$__typename : ($__typename as String),
           thumbnail: thumbnail == _undefined ? _instance.thumbnail : (thumbnail as String?),
           work: work == _undefined || work == null ? _instance.work : (work as Query$BookmarkedPosts$posts$edges$node$work)));
@@ -5051,6 +5070,7 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
           String? title,
           String? createTime,
           String? content,
+          bool? spoiled,
           List<Query$BookmarkedPosts$posts$edges$node$hashtags>? hashtags,
           Query$BookmarkedPosts$posts$edges$node$owner? owner,
           Query$BookmarkedPosts$posts$edges$node$category? category,

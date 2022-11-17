@@ -13,6 +13,7 @@ class Fragment$LetterSummary {
       required this.content,
       required this.createTime,
       this.thumbnail,
+      required this.spoiled,
       this.hashtags,
       required this.work,
       required this.owner,
@@ -27,6 +28,7 @@ class Fragment$LetterSummary {
     final l$content = json['content'];
     final l$createTime = json['createTime'];
     final l$thumbnail = json['thumbnail'];
+    final l$spoiled = json['spoiled'];
     final l$hashtags = json['hashtags'];
     final l$work = json['work'];
     final l$owner = json['owner'];
@@ -40,6 +42,7 @@ class Fragment$LetterSummary {
         content: (l$content as String),
         createTime: (l$createTime as String),
         thumbnail: (l$thumbnail as String?),
+        spoiled: (l$spoiled as bool),
         hashtags: (l$hashtags as List<dynamic>?)
             ?.map((e) => Fragment$LetterSummary$hashtags.fromJson(
                 (e as Map<String, dynamic>)))
@@ -71,6 +74,8 @@ class Fragment$LetterSummary {
 
   final String? thumbnail;
 
+  final bool spoiled;
+
   final List<Fragment$LetterSummary$hashtags>? hashtags;
 
   final Fragment$LetterSummary$work work;
@@ -97,6 +102,8 @@ class Fragment$LetterSummary {
     _resultData['createTime'] = l$createTime;
     final l$thumbnail = thumbnail;
     _resultData['thumbnail'] = l$thumbnail;
+    final l$spoiled = spoiled;
+    _resultData['spoiled'] = l$spoiled;
     final l$hashtags = hashtags;
     _resultData['hashtags'] = l$hashtags?.map((e) => e.toJson()).toList();
     final l$work = work;
@@ -122,6 +129,7 @@ class Fragment$LetterSummary {
     final l$content = content;
     final l$createTime = createTime;
     final l$thumbnail = thumbnail;
+    final l$spoiled = spoiled;
     final l$hashtags = hashtags;
     final l$work = work;
     final l$owner = owner;
@@ -135,6 +143,7 @@ class Fragment$LetterSummary {
       l$content,
       l$createTime,
       l$thumbnail,
+      l$spoiled,
       l$hashtags == null ? null : Object.hashAll(l$hashtags.map((v) => v)),
       l$work,
       l$owner,
@@ -179,6 +188,11 @@ class Fragment$LetterSummary {
     final l$thumbnail = thumbnail;
     final lOther$thumbnail = other.thumbnail;
     if (l$thumbnail != lOther$thumbnail) {
+      return false;
+    }
+    final l$spoiled = spoiled;
+    final lOther$spoiled = other.spoiled;
+    if (l$spoiled != lOther$spoiled) {
       return false;
     }
     final l$hashtags = hashtags;
@@ -272,6 +286,7 @@ abstract class CopyWith$Fragment$LetterSummary<TRes> {
       String? content,
       String? createTime,
       String? thumbnail,
+      bool? spoiled,
       List<Fragment$LetterSummary$hashtags>? hashtags,
       Fragment$LetterSummary$work? work,
       Fragment$LetterSummary$owner? owner,
@@ -318,6 +333,7 @@ class _CopyWithImpl$Fragment$LetterSummary<TRes>
           Object? content = _undefined,
           Object? createTime = _undefined,
           Object? thumbnail = _undefined,
+          Object? spoiled = _undefined,
           Object? hashtags = _undefined,
           Object? work = _undefined,
           Object? owner = _undefined,
@@ -339,6 +355,9 @@ class _CopyWithImpl$Fragment$LetterSummary<TRes>
           thumbnail: thumbnail == _undefined
               ? _instance.thumbnail
               : (thumbnail as String?),
+          spoiled: spoiled == _undefined || spoiled == null
+              ? _instance.spoiled
+              : (spoiled as bool),
           hashtags: hashtags == _undefined
               ? _instance.hashtags
               : (hashtags as List<Fragment$LetterSummary$hashtags>?),
@@ -423,6 +442,7 @@ class _CopyWithStubImpl$Fragment$LetterSummary<TRes>
           String? content,
           String? createTime,
           String? thumbnail,
+          bool? spoiled,
           List<Fragment$LetterSummary$hashtags>? hashtags,
           Fragment$LetterSummary$work? work,
           Fragment$LetterSummary$owner? owner,
@@ -474,6 +494,12 @@ const fragmentDefinitionLetterSummary = FragmentDefinitionNode(
           selectionSet: null),
       FieldNode(
           name: NameNode(value: 'thumbnail'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null),
+      FieldNode(
+          name: NameNode(value: 'spoiled'),
           alias: null,
           arguments: [],
           directives: [],
@@ -1362,6 +1388,7 @@ class Fragment$PraiseSummary {
       required this.type,
       required this.createTime,
       required this.content,
+      required this.spoiled,
       this.hashtags,
       required this.owner,
       required this.category,
@@ -1375,6 +1402,7 @@ class Fragment$PraiseSummary {
     final l$type = json['type'];
     final l$createTime = json['createTime'];
     final l$content = json['content'];
+    final l$spoiled = json['spoiled'];
     final l$hashtags = json['hashtags'];
     final l$owner = json['owner'];
     final l$category = json['category'];
@@ -1387,6 +1415,7 @@ class Fragment$PraiseSummary {
         type: fromJson$Enum$PostPostType((l$type as String)),
         createTime: (l$createTime as String),
         content: (l$content as String),
+        spoiled: (l$spoiled as bool),
         hashtags: (l$hashtags as List<dynamic>?)
             ?.map((e) => Fragment$PraiseSummary$hashtags.fromJson(
                 (e as Map<String, dynamic>)))
@@ -1416,6 +1445,8 @@ class Fragment$PraiseSummary {
 
   final String content;
 
+  final bool spoiled;
+
   final List<Fragment$PraiseSummary$hashtags>? hashtags;
 
   final Fragment$PraiseSummary$owner owner;
@@ -1440,6 +1471,8 @@ class Fragment$PraiseSummary {
     _resultData['createTime'] = l$createTime;
     final l$content = content;
     _resultData['content'] = l$content;
+    final l$spoiled = spoiled;
+    _resultData['spoiled'] = l$spoiled;
     final l$hashtags = hashtags;
     _resultData['hashtags'] = l$hashtags?.map((e) => e.toJson()).toList();
     final l$owner = owner;
@@ -1463,6 +1496,7 @@ class Fragment$PraiseSummary {
     final l$type = type;
     final l$createTime = createTime;
     final l$content = content;
+    final l$spoiled = spoiled;
     final l$hashtags = hashtags;
     final l$owner = owner;
     final l$category = category;
@@ -1475,6 +1509,7 @@ class Fragment$PraiseSummary {
       l$type,
       l$createTime,
       l$content,
+      l$spoiled,
       l$hashtags == null ? null : Object.hashAll(l$hashtags.map((v) => v)),
       l$owner,
       l$category,
@@ -1518,6 +1553,11 @@ class Fragment$PraiseSummary {
     final l$content = content;
     final lOther$content = other.content;
     if (l$content != lOther$content) {
+      return false;
+    }
+    final l$spoiled = spoiled;
+    final lOther$spoiled = other.spoiled;
+    if (l$spoiled != lOther$spoiled) {
       return false;
     }
     final l$hashtags = hashtags;
@@ -1606,6 +1646,7 @@ abstract class CopyWith$Fragment$PraiseSummary<TRes> {
       Enum$PostPostType? type,
       String? createTime,
       String? content,
+      bool? spoiled,
       List<Fragment$PraiseSummary$hashtags>? hashtags,
       Fragment$PraiseSummary$owner? owner,
       Fragment$PraiseSummary$category? category,
@@ -1650,6 +1691,7 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
           Object? type = _undefined,
           Object? createTime = _undefined,
           Object? content = _undefined,
+          Object? spoiled = _undefined,
           Object? hashtags = _undefined,
           Object? owner = _undefined,
           Object? category = _undefined,
@@ -1670,6 +1712,9 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
           content: content == _undefined || content == null
               ? _instance.content
               : (content as String),
+          spoiled: spoiled == _undefined || spoiled == null
+              ? _instance.spoiled
+              : (spoiled as bool),
           hashtags: hashtags == _undefined
               ? _instance.hashtags
               : (hashtags as List<Fragment$PraiseSummary$hashtags>?),
@@ -1745,6 +1790,7 @@ class _CopyWithStubImpl$Fragment$PraiseSummary<TRes>
           Enum$PostPostType? type,
           String? createTime,
           String? content,
+          bool? spoiled,
           List<Fragment$PraiseSummary$hashtags>? hashtags,
           Fragment$PraiseSummary$owner? owner,
           Fragment$PraiseSummary$category? category,
@@ -1793,6 +1839,12 @@ const fragmentDefinitionPraiseSummary = FragmentDefinitionNode(
           selectionSet: null),
       FieldNode(
           name: NameNode(value: 'content'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null),
+      FieldNode(
+          name: NameNode(value: 'spoiled'),
           alias: null,
           arguments: [],
           directives: [],

@@ -190,21 +190,7 @@ class Praise extends HookConsumerWidget {
           const SizedBox(
             height: 10,
           ),
-          Text(
-            praise.title,
-            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
-            overflow: TextOverflow.ellipsis,
-            maxLines: 2,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            praise.content,
-            style: const TextStyle(color: Colors.black87, fontSize: 14),
-            overflow: TextOverflow.ellipsis,
-            maxLines: 3,
-          ),
+          Content(praise: praise),
           const SizedBox(
             height: 10,
           ),
@@ -310,5 +296,75 @@ class Praise extends HookConsumerWidget {
             ],
           )
         ]));
+  }
+}
+
+class Content extends StatefulWidget {
+  final Fragment$PraiseSummary praise;
+  const Content({Key? key, required this.praise}) : super(key: key);
+
+  @override
+  State<Content> createState() => _ContentState();
+}
+
+class _ContentState extends State<Content> {
+  bool isShowed = false;
+
+  @override
+  void initState() {
+    super.initState();
+    isShowed = !widget.praise.spoiled;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        isShowed
+            ? Text(
+                widget.praise.title,
+                style:
+                    const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              )
+            : const Text(
+                "ネタバレを含む投稿です",
+                style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 18,
+                    color: blueButtonColor),
+              ),
+        const SizedBox(
+          height: 10,
+        ),
+        isShowed
+            ? Text(
+                widget.praise.content,
+                style: const TextStyle(color: Colors.black87, fontSize: 14),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 3,
+              )
+            : TextButton(
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                  minimumSize: Size.zero,
+                ),
+                child: const Text(
+                  "表示する",
+                  style: TextStyle(
+                      color: blueButtonColor,
+                      decoration: TextDecoration.underline,
+                      decorationThickness: 4),
+                ),
+                onPressed: () {
+                  setState(() {
+                    isShowed = true;
+                  });
+                },
+              ),
+      ],
+    );
   }
 }

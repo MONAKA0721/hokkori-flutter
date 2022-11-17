@@ -4,6 +4,7 @@ fragment LetterSummary on Post {
   content
   createTime
   thumbnail
+  spoiled
   hashtags {
     id
     title
@@ -35,6 +36,7 @@ fragment PraiseSummary on Post {
   type
   createTime
   content
+  spoiled
   hashtags {
     id
     title
