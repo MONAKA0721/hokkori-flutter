@@ -6,3 +6,6 @@ targets:
           clients:
             - graphql
             - graphql_flutter
+          scalars:
+            Upload:
+              type: MultipartFile

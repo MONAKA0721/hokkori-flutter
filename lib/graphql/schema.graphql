@@ -3,9 +3,11 @@ Maps a Time GraphQL scalar to a Go time.Time struct.
 """
 scalar Time
 
+scalar Upload
+
 type Mutation {
   createUser(input: CreateUserInput!): User!
-  updateUser(id: ID!, input: UpdateUserInput!): User!
+  updateUser(id: ID!, input: UpdateUserInput!, image: Upload): User!
   createPosts(
     input: CreatePostInput!
     input2: CreatePostInput!

@@ -19,8 +19,8 @@ query Profile($userID: ID!) {
   }
 }
 
-mutation UpdateUser($userID: ID!, $input: UpdateUserInput!) {
-  updateUser(id: $userID, input: $input) {
+mutation UpdateUser($userID: ID!, $input: UpdateUserInput!, $image: Upload) {
+  updateUser(id: $userID, input: $input, image: $image) {
     id
     name
     username

@@ -1184,10 +1184,13 @@ class _CopyWithStubImpl$Query$Profile$user$$User$following<TRes>
 
 class Variables$Mutation$UpdateUser {
   factory Variables$Mutation$UpdateUser(
-          {required String userID, required Input$UpdateUserInput input}) =>
+          {required String userID,
+          required Input$UpdateUserInput input,
+          MultipartFile? image}) =>
       Variables$Mutation$UpdateUser._({
         r'userID': userID,
         r'input': input,
+        if (image != null) r'image': image,
       });
 
   Variables$Mutation$UpdateUser._(this._$data);
@@ -1199,6 +1202,10 @@ class Variables$Mutation$UpdateUser {
     final l$input = data['input'];
     result$data['input'] =
         Input$UpdateUserInput.fromJson((l$input as Map<String, dynamic>));
+    if (data.containsKey('image')) {
+      final l$image = data['image'];
+      result$data['image'] = (l$image as MultipartFile?);
+    }
     return Variables$Mutation$UpdateUser._(result$data);
   }
 
@@ -1206,12 +1213,17 @@ class Variables$Mutation$UpdateUser {
 
   String get userID => (_$data['userID'] as String);
   Input$UpdateUserInput get input => (_$data['input'] as Input$UpdateUserInput);
+  MultipartFile? get image => (_$data['image'] as MultipartFile?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     final l$userID = userID;
     result$data['userID'] = l$userID;
     final l$input = input;
     result$data['input'] = l$input.toJson();
+    if (_$data.containsKey('image')) {
+      final l$image = image;
+      result$data['image'] = l$image;
+    }
     return result$data;
   }
 
@@ -1236,6 +1248,14 @@ class Variables$Mutation$UpdateUser {
     if (l$input != lOther$input) {
       return false;
     }
+    final l$image = image;
+    final lOther$image = other.image;
+    if (_$data.containsKey('image') != other._$data.containsKey('image')) {
+      return false;
+    }
+    if (l$image != lOther$image) {
+      return false;
+    }
     return true;
   }
 
@@ -1243,7 +1263,9 @@ class Variables$Mutation$UpdateUser {
   int get hashCode {
     final l$userID = userID;
     final l$input = input;
-    return Object.hashAll([l$userID, l$input]);
+    final l$image = image;
+    return Object.hashAll(
+        [l$userID, l$input, _$data.containsKey('image') ? l$image : const {}]);
   }
 }
 
@@ -1256,7 +1278,8 @@ abstract class CopyWith$Variables$Mutation$UpdateUser<TRes> {
   factory CopyWith$Variables$Mutation$UpdateUser.stub(TRes res) =
       _CopyWithStubImpl$Variables$Mutation$UpdateUser;
 
-  TRes call({String? userID, Input$UpdateUserInput? input});
+  TRes call(
+      {String? userID, Input$UpdateUserInput? input, MultipartFile? image});
 }
 
 class _CopyWithImpl$Variables$Mutation$UpdateUser<TRes>
@@ -1269,13 +1292,17 @@ class _CopyWithImpl$Variables$Mutation$UpdateUser<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? userID = _undefined, Object? input = _undefined}) =>
+  TRes call(
+          {Object? userID = _undefined,
+          Object? input = _undefined,
+          Object? image = _undefined}) =>
       _then(Variables$Mutation$UpdateUser._({
         ..._instance._$data,
         if (userID != _undefined && userID != null)
           'userID': (userID as String),
         if (input != _undefined && input != null)
           'input': (input as Input$UpdateUserInput),
+        if (image != _undefined) 'image': (image as MultipartFile?),
       }));
 }
 
@@ -1285,7 +1312,8 @@ class _CopyWithStubImpl$Variables$Mutation$UpdateUser<TRes>
 
   TRes _res;
 
-  call({String? userID, Input$UpdateUserInput? input}) => _res;
+  call({String? userID, Input$UpdateUserInput? input, MultipartFile? image}) =>
+      _res;
 }
 
 class Mutation$UpdateUser {
@@ -1413,6 +1441,12 @@ const documentNodeMutationUpdateUser = DocumentNode(definitions: [
             type: NamedTypeNode(
                 name: NameNode(value: 'UpdateUserInput'), isNonNull: true),
             defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'image')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'Upload'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
             directives: [])
       ],
       directives: [],
@@ -1426,7 +1460,10 @@ const documentNodeMutationUpdateUser = DocumentNode(definitions: [
                   value: VariableNode(name: NameNode(value: 'userID'))),
               ArgumentNode(
                   name: NameNode(value: 'input'),
-                  value: VariableNode(name: NameNode(value: 'input')))
+                  value: VariableNode(name: NameNode(value: 'input'))),
+              ArgumentNode(
+                  name: NameNode(value: 'image'),
+                  value: VariableNode(name: NameNode(value: 'image')))
             ],
             directives: [],
             selectionSet: SelectionSetNode(selections: [

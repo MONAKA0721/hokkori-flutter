@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:hokkori/graphql/ent.graphql.dart';
 import 'package:hokkori/pages/profile/profile_page.graphql.dart';
@@ -5,6 +7,8 @@ import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hokkori/utils/user.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:http/http.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfileEditPage extends StatefulHookConsumerWidget {
   const ProfileEditPage({Key? key}) : super(key: key);
@@ -17,6 +21,8 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
   final _nameController = TextEditingController();
   final _usernameController = TextEditingController();
   final _profileController = TextEditingController();
+  final _picker = ImagePicker();
+  File? image;
 
   @override
   Widget build(BuildContext context) {
@@ -48,20 +54,33 @@ class _ProfileEditPageState extends ConsumerState<ProfileEditPage> {
               nameController: _nameController,
               usernameController: _usernameController,
               profileController: _profileController,
+              image: image,
             )
           ],
           title:
               const Text("プロフィールを編集", style: TextStyle(color: Colors.black))),
       body: Column(children: [
         Center(
-            child: avatarURL != ""
+            child: image != null
                 ? CircleAvatar(
-                    maxRadius: 40, backgroundImage: NetworkImage(avatarURL))
-                : const CircleAvatar(
                     maxRadius: 40,
-                    backgroundImage: AssetImage("assets/noimage.png"))),
+                    backgroundImage: FileImage(image!),
+                  )
+                : avatarURL != ""
+                    ? CircleAvatar(
+                        maxRadius: 40, backgroundImage: NetworkImage(avatarURL))
+                    : const CircleAvatar(
+                        maxRadius: 40,
+                        backgroundImage: AssetImage("assets/noimage.png"))),
         TextButton(
-            onPressed: () {},
+            onPressed: () async {
+              final _image = await _picker.pickImage(
+                  source: ImageSource.gallery, requestFullMetadata: false);
+              if (_image == null) return;
+              setState(() {
+                image = File(_image.path);
+              });
+            },
             child: const Text(
               "プロフィール写真を変更",
               style: TextStyle(color: blueButtonColor, fontSize: 16),
@@ -146,11 +165,13 @@ class SubmitButton extends HookConsumerWidget {
   final TextEditingController nameController;
   final TextEditingController usernameController;
   final TextEditingController profileController;
+  final File? image;
   const SubmitButton(
       {Key? key,
       required this.nameController,
       required this.usernameController,
-      required this.profileController})
+      required this.profileController,
+      required this.image})
       : super(key: key);
 
   @override
@@ -165,8 +186,12 @@ class SubmitButton extends HookConsumerWidget {
             child: Center(child: CircularProgressIndicator()))
         : TextButton(
             onPressed: () async {
-              final result =
-                  updateUserMutation.runMutation(Variables$Mutation$UpdateUser(
+              final result = updateUserMutation.runMutation(
+                  Variables$Mutation$UpdateUser(
+                      image: image == null
+                          ? null
+                          : MultipartFile.fromBytes(
+                              '', image!.readAsBytesSync()),
                       userID: ref.watch(userProvider).id,
                       input: Input$UpdateUserInput(
                         name: nameController.text,
