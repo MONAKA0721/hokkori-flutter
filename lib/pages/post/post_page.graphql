@@ -25,11 +25,13 @@ mutation CreatePosts(
   $createPostInput: CreatePostInput!
   $createPostInput2: CreatePostInput!
   $hashtagTitles: [String]!
+  $image: Upload
 ) {
   createPosts(
     input: $createPostInput
     input2: $createPostInput2
     hashtagTitles: $hashtagTitles
+    image: $image
   ) {
     id
   }

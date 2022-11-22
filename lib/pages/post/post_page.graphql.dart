@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
+import 'package:http/http.dart';
 
 class Variables$Query$SearchWorks {
   factory Variables$Query$SearchWorks({String? searchText}) =>
@@ -1600,11 +1601,13 @@ class Variables$Mutation$CreatePosts {
   factory Variables$Mutation$CreatePosts(
           {required Input$CreatePostInput createPostInput,
           required Input$CreatePostInput createPostInput2,
-          required List<String?> hashtagTitles}) =>
+          required List<String?> hashtagTitles,
+          MultipartFile? image}) =>
       Variables$Mutation$CreatePosts._({
         r'createPostInput': createPostInput,
         r'createPostInput2': createPostInput2,
         r'hashtagTitles': hashtagTitles,
+        if (image != null) r'image': image,
       });
 
   Variables$Mutation$CreatePosts._(this._$data);
@@ -1620,6 +1623,10 @@ class Variables$Mutation$CreatePosts {
     final l$hashtagTitles = data['hashtagTitles'];
     result$data['hashtagTitles'] =
         (l$hashtagTitles as List<dynamic>).map((e) => (e as String?)).toList();
+    if (data.containsKey('image')) {
+      final l$image = data['image'];
+      result$data['image'] = (l$image as MultipartFile?);
+    }
     return Variables$Mutation$CreatePosts._(result$data);
   }
 
@@ -1630,6 +1637,7 @@ class Variables$Mutation$CreatePosts {
   Input$CreatePostInput get createPostInput2 =>
       (_$data['createPostInput2'] as Input$CreatePostInput);
   List<String?> get hashtagTitles => (_$data['hashtagTitles'] as List<String?>);
+  MultipartFile? get image => (_$data['image'] as MultipartFile?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     final l$createPostInput = createPostInput;
@@ -1638,6 +1646,10 @@ class Variables$Mutation$CreatePosts {
     result$data['createPostInput2'] = l$createPostInput2.toJson();
     final l$hashtagTitles = hashtagTitles;
     result$data['hashtagTitles'] = l$hashtagTitles.map((e) => e).toList();
+    if (_$data.containsKey('image')) {
+      final l$image = image;
+      result$data['image'] = l$image;
+    }
     return result$data;
   }
 
@@ -1674,6 +1686,14 @@ class Variables$Mutation$CreatePosts {
         return false;
       }
     }
+    final l$image = image;
+    final lOther$image = other.image;
+    if (_$data.containsKey('image') != other._$data.containsKey('image')) {
+      return false;
+    }
+    if (l$image != lOther$image) {
+      return false;
+    }
     return true;
   }
 
@@ -1682,10 +1702,12 @@ class Variables$Mutation$CreatePosts {
     final l$createPostInput = createPostInput;
     final l$createPostInput2 = createPostInput2;
     final l$hashtagTitles = hashtagTitles;
+    final l$image = image;
     return Object.hashAll([
       l$createPostInput,
       l$createPostInput2,
-      Object.hashAll(l$hashtagTitles.map((v) => v))
+      Object.hashAll(l$hashtagTitles.map((v) => v)),
+      _$data.containsKey('image') ? l$image : const {}
     ]);
   }
 }
@@ -1702,7 +1724,8 @@ abstract class CopyWith$Variables$Mutation$CreatePosts<TRes> {
   TRes call(
       {Input$CreatePostInput? createPostInput,
       Input$CreatePostInput? createPostInput2,
-      List<String?>? hashtagTitles});
+      List<String?>? hashtagTitles,
+      MultipartFile? image});
 }
 
 class _CopyWithImpl$Variables$Mutation$CreatePosts<TRes>
@@ -1718,7 +1741,8 @@ class _CopyWithImpl$Variables$Mutation$CreatePosts<TRes>
   TRes call(
           {Object? createPostInput = _undefined,
           Object? createPostInput2 = _undefined,
-          Object? hashtagTitles = _undefined}) =>
+          Object? hashtagTitles = _undefined,
+          Object? image = _undefined}) =>
       _then(Variables$Mutation$CreatePosts._({
         ..._instance._$data,
         if (createPostInput != _undefined && createPostInput != null)
@@ -1727,6 +1751,7 @@ class _CopyWithImpl$Variables$Mutation$CreatePosts<TRes>
           'createPostInput2': (createPostInput2 as Input$CreatePostInput),
         if (hashtagTitles != _undefined && hashtagTitles != null)
           'hashtagTitles': (hashtagTitles as List<String?>),
+        if (image != _undefined) 'image': (image as MultipartFile?),
       }));
 }
 
@@ -1739,7 +1764,8 @@ class _CopyWithStubImpl$Variables$Mutation$CreatePosts<TRes>
   call(
           {Input$CreatePostInput? createPostInput,
           Input$CreatePostInput? createPostInput2,
-          List<String?>? hashtagTitles}) =>
+          List<String?>? hashtagTitles,
+          MultipartFile? image}) =>
       _res;
 }
 
@@ -1878,6 +1904,12 @@ const documentNodeMutationCreatePosts = DocumentNode(definitions: [
                     name: NameNode(value: 'String'), isNonNull: false),
                 isNonNull: true),
             defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'image')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'Upload'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
             directives: [])
       ],
       directives: [],
@@ -1896,7 +1928,10 @@ const documentNodeMutationCreatePosts = DocumentNode(definitions: [
                       VariableNode(name: NameNode(value: 'createPostInput2'))),
               ArgumentNode(
                   name: NameNode(value: 'hashtagTitles'),
-                  value: VariableNode(name: NameNode(value: 'hashtagTitles')))
+                  value: VariableNode(name: NameNode(value: 'hashtagTitles'))),
+              ArgumentNode(
+                  name: NameNode(value: 'image'),
+                  value: VariableNode(name: NameNode(value: 'image')))
             ],
             directives: [],
             selectionSet: SelectionSetNode(selections: [

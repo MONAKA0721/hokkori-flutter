@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
+import 'package:http/http.dart';
 
 class Variables$Query$Profile {
   factory Variables$Query$Profile({required String userID}) =>

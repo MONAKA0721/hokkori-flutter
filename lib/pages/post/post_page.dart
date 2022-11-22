@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ import 'package:hokkori/utils/categories.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'label.dart';
 import 'model.dart';
@@ -33,7 +36,8 @@ final letterSpoiledProvider = StateProvider<bool>((ref) => false);
 final workErrorProvider = StateProvider<bool>((ref) => false);
 final categoryProvider = StateProvider<int?>((ref) => null);
 final categoryErrorProvider = StateProvider<bool>((ref) => false);
-final praiseErrorProvider = StateProvider<bool>((ref) => false);
+final praiseTitleErrorProvider = StateProvider<bool>((ref) => false);
+final praiseContentErrorProvider = StateProvider<bool>((ref) => false);
 
 class PostPage extends ConsumerStatefulWidget {
   final Function? navigate;
@@ -44,12 +48,16 @@ class PostPage extends ConsumerStatefulWidget {
 }
 
 class _PostPageState extends ConsumerState<PostPage> {
+  final praiseTitleController = TextEditingController();
   final praiseContentController = TextEditingController();
+  final letterTitleController = TextEditingController();
   final letterContentController = TextEditingController();
 
   @override
   void dispose() {
+    praiseTitleController.dispose();
     praiseContentController.dispose();
+    letterTitleController.dispose();
     letterContentController.dispose();
     super.dispose();
   }
@@ -66,7 +74,9 @@ class _PostPageState extends ConsumerState<PostPage> {
             ),
             ActionRow(
               navigate: widget.navigate,
+              praiseTitleController: praiseTitleController,
               praiseContentController: praiseContentController,
+              letterTitleController: letterTitleController,
               letterContentController: letterContentController,
             ),
             const SizedBox(
@@ -78,7 +88,8 @@ class _PostPageState extends ConsumerState<PostPage> {
               children: [
                 ref.watch(workErrorProvider) ||
                         ref.watch(categoryErrorProvider) ||
-                        ref.watch(praiseErrorProvider)
+                        ref.watch(praiseTitleErrorProvider) ||
+                        ref.watch(praiseContentErrorProvider)
                     ? Container(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         decoration: BoxDecoration(
@@ -131,13 +142,15 @@ class _PostPageState extends ConsumerState<PostPage> {
                           height: 20,
                         ),
                         Step2(
-                          controller: praiseContentController,
+                          titleController: praiseTitleController,
+                          contentController: praiseContentController,
                         ),
                         const SizedBox(
                           height: 20,
                         ),
                         Step3(
-                          controller: letterContentController,
+                          titleController: letterTitleController,
+                          contentController: letterContentController,
                         ),
                       ],
                     )),
@@ -441,8 +454,11 @@ List<int> _getDividersIndexes() {
 }
 
 class Step2 extends ConsumerWidget {
-  final TextEditingController controller;
-  const Step2({super.key, required this.controller});
+  final TextEditingController titleController, contentController;
+  const Step2(
+      {super.key,
+      required this.titleController,
+      required this.contentController});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -478,13 +494,32 @@ class Step2 extends ConsumerWidget {
               )
             ]),
             TextField(
+              cursorColor: blueButtonColor,
+              decoration: InputDecoration(
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                        color: ref.watch(praiseTitleErrorProvider)
+                            ? redErrorColor
+                            : headingColor),
+                  ),
+                  focusedBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(color: blueButtonColor),
+                  ),
+                  hintText: " 見出しを入力...",
+                  hintStyle: TextStyle(
+                      color: ref.watch(praiseTitleErrorProvider)
+                          ? redErrorColor
+                          : null)),
+              controller: titleController,
+            ),
+            TextField(
               keyboardType: TextInputType.multiline,
               maxLines: null,
               cursorColor: blueButtonColor,
               decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
-                        color: ref.watch(workErrorProvider)
+                        color: ref.watch(praiseContentErrorProvider)
                             ? redErrorColor
                             : headingColor),
                   ),
@@ -493,10 +528,10 @@ class Step2 extends ConsumerWidget {
                   ),
                   hintText: " 文章を入力",
                   hintStyle: TextStyle(
-                      color: ref.watch(praiseErrorProvider)
+                      color: ref.watch(praiseContentErrorProvider)
                           ? redErrorColor
                           : null)),
-              controller: controller,
+              controller: contentController,
             ),
             CheckboxListTile(
               side: MaterialStateBorderSide.resolveWith(
@@ -522,16 +557,22 @@ class Step2 extends ConsumerWidget {
 }
 
 class Step3 extends ConsumerWidget {
-  final TextEditingController controller;
-  const Step3({super.key, required this.controller});
+  final TextEditingController titleController, contentController;
+  final _picker = ImagePicker();
+  Step3(
+      {super.key,
+      required this.titleController,
+      required this.contentController});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final letterThumbnail = ref.watch(thumbnailProvider);
+    const thumbnailSize = 100.0;
+
     return Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(20)),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: const [
@@ -548,6 +589,38 @@ class Step3 extends ConsumerWidget {
                 )
               ],
             ),
+            const SizedBox(
+              height: 10,
+            ),
+            GestureDetector(
+                child: letterThumbnail == null
+                    ? Image.asset(
+                        'assets/noimage.png',
+                        width: thumbnailSize,
+                        height: thumbnailSize,
+                      )
+                    : Image.file(
+                        letterThumbnail,
+                        width: thumbnailSize,
+                        height: thumbnailSize,
+                      ),
+                onTap: () async {
+                  final _image = await _picker.pickImage(
+                      source: ImageSource.gallery, requestFullMetadata: false);
+                  if (_image == null) return;
+                  ref.watch(thumbnailProvider.notifier).state =
+                      File(_image.path);
+                }),
+            TextField(
+              cursorColor: blueButtonColor,
+              decoration: const InputDecoration(
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: blueButtonColor),
+                ),
+                hintText: " 見出しを入力...",
+              ),
+              controller: titleController,
+            ),
             TextField(
               keyboardType: TextInputType.multiline,
               maxLines: null,
@@ -558,7 +631,7 @@ class Step3 extends ConsumerWidget {
                 ),
                 hintText: " 文章を入力",
               ),
-              controller: controller,
+              controller: contentController,
             ),
             CheckboxListTile(
               side: MaterialStateBorderSide.resolveWith(

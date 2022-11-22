@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hokkori/pages/post/model.dart';
 import 'package:hokkori/utils/user.dart';
@@ -9,6 +11,7 @@ final isBusyProvider = StateProvider<bool>((ref) => true);
 final accessTokenProvider = StateProvider<String>((ref) => "");
 final titleProvider = StateProvider<String>((ref) => "");
 final workProvider = StateProvider<WorkModel?>((ref) => null);
+final thumbnailProvider = StateProvider<File?>((ref) => null);
 
 final tutorialNameProvider = StateProvider<String>((ref) => "");
 final tutorialNameErrorProvider = StateProvider<bool>((ref) => false);

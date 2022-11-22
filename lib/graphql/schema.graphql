@@ -12,6 +12,7 @@ type Mutation {
     input: CreatePostInput!
     input2: CreatePostInput!
     hashtagTitles: [String]!
+    image: Upload
   ): Post!
   createPost(input: CreatePostInput!, hashtagTitles: [String]!): Post!
   createHashtag(input: CreateHashtagInput!): Hashtag!

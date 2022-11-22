@@ -5,17 +5,22 @@ import 'package:hokkori/pages/post/post_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:http/http.dart';
 
 class ActionRow extends StatelessWidget {
   final Function? navigate;
+  final TextEditingController praiseTitleController;
   final TextEditingController praiseContentController;
+  final TextEditingController letterTitleController;
   final TextEditingController letterContentController;
-  const ActionRow(
-      {Key? key,
-      required this.navigate,
-      required this.praiseContentController,
-      required this.letterContentController})
-      : super(key: key);
+  const ActionRow({
+    Key? key,
+    required this.navigate,
+    required this.praiseTitleController,
+    required this.praiseContentController,
+    required this.letterTitleController,
+    required this.letterContentController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +64,9 @@ class ActionRow extends StatelessWidget {
           },
         ),
         SubmitButton(
+            praiseTitleController: praiseTitleController,
             praiseContentController: praiseContentController,
+            letterTitleController: letterTitleController,
             letterContentController: letterContentController,
             navigate: navigate),
       ],
@@ -68,12 +75,14 @@ class ActionRow extends StatelessWidget {
 }
 
 class SubmitButton extends HookConsumerWidget {
-  final TextEditingController praiseContentController;
-  final TextEditingController letterContentController;
+  final TextEditingController praiseTitleController, praiseContentController;
+  final TextEditingController letterTitleController, letterContentController;
   final Function? navigate;
   const SubmitButton(
       {Key? key,
+      required this.praiseTitleController,
       required this.praiseContentController,
+      required this.letterTitleController,
       required this.letterContentController,
       required this.navigate})
       : super(key: key);
@@ -85,11 +94,14 @@ class SubmitButton extends HookConsumerWidget {
           ref.watch(workProvider) == null;
       ref.watch(categoryErrorProvider.notifier).state =
           ref.watch(categoryProvider) == null;
-      ref.watch(praiseErrorProvider.notifier).state =
+      ref.watch(praiseTitleErrorProvider.notifier).state =
+          praiseTitleController.text == "";
+      ref.watch(praiseContentErrorProvider.notifier).state =
           praiseContentController.text == "";
       return !ref.watch(workErrorProvider) &&
           !ref.watch(categoryErrorProvider) &&
-          !ref.watch(praiseErrorProvider);
+          !ref.watch(praiseTitleErrorProvider) &&
+          !ref.watch(praiseContentErrorProvider);
     }
 
     void resetForm() {
@@ -140,12 +152,12 @@ class SubmitButton extends HookConsumerWidget {
             ),
             onPressed: () async {
               if (!validate()) return;
-              if (letterContentController.text == "") {
+              if (letterTitleController.text == "" &&
+                  letterContentController.text == "") {
                 final result = createPostMutation.runMutation(
                     Variables$Mutation$CreatePost(
                         createPostInput: Input$CreatePostInput(
-                            // title: ref.watch(titleProvider),
-                            title: "テスト",
+                            title: praiseTitleController.text,
                             content: praiseContentController.text,
                             type: Enum$PostPostType.praise,
                             ownerID: ref.watch(userProvider).id,
@@ -167,40 +179,45 @@ class SubmitButton extends HookConsumerWidget {
                 }
               } else {
                 final result = createPostsMutation.runMutation(
-                    Variables$Mutation$CreatePosts(
-                        createPostInput: Input$CreatePostInput(
-                            // title: ref.watch(titleProvider),
-                            title: "テスト",
-                            content: praiseContentController.text,
-                            type: Enum$PostPostType.praise,
-                            ownerID: ref.watch(userProvider).id,
-                            workID: ref.watch(workProvider)!.id,
-                            spoiled: ref.watch(praiseSpoiledProvider),
-                            categoryID: ref.watch(categoryProvider).toString(),
-                            hashtagIDs: ref
-                                .watch(hashtagsProvider)
-                                .where((h) => h.id != "")
-                                .map((m) => m.id)
-                                .toList()),
-                        createPostInput2: Input$CreatePostInput(
-                            // title: ref.watch(titleProvider),
-                            title: "テスト",
-                            content: letterContentController.text,
-                            type: Enum$PostPostType.letter,
-                            ownerID: ref.watch(userProvider).id,
-                            workID: ref.watch(workProvider)!.id,
-                            spoiled: ref.watch(letterSpoiledProvider),
-                            categoryID: ref.watch(categoryProvider).toString(),
-                            hashtagIDs: ref
-                                .watch(hashtagsProvider)
-                                .where((h) => h.id != "")
-                                .map((m) => m.id)
-                                .toList()),
-                        hashtagTitles: ref
-                            .watch(hashtagsProvider)
-                            .where((h) => h.id == "")
-                            .map((h) => h.title)
-                            .toList()));
+                  Variables$Mutation$CreatePosts(
+                      createPostInput: Input$CreatePostInput(
+                          title: praiseTitleController.text,
+                          content: praiseContentController.text,
+                          type: Enum$PostPostType.praise,
+                          ownerID: ref.watch(userProvider).id,
+                          workID: ref.watch(workProvider)!.id,
+                          spoiled: ref.watch(praiseSpoiledProvider),
+                          categoryID: ref.watch(categoryProvider).toString(),
+                          hashtagIDs: ref
+                              .watch(hashtagsProvider)
+                              .where((h) => h.id != "")
+                              .map((m) => m.id)
+                              .toList()),
+                      createPostInput2: Input$CreatePostInput(
+                          title: letterTitleController.text,
+                          content: letterContentController.text,
+                          type: Enum$PostPostType.letter,
+                          ownerID: ref.watch(userProvider).id,
+                          workID: ref.watch(workProvider)!.id,
+                          spoiled: ref.watch(letterSpoiledProvider),
+                          categoryID: ref.watch(categoryProvider).toString(),
+                          hashtagIDs: ref
+                              .watch(hashtagsProvider)
+                              .where((h) => h.id != "")
+                              .map((m) => m.id)
+                              .toList()),
+                      hashtagTitles: ref
+                          .watch(hashtagsProvider)
+                          .where((h) => h.id == "")
+                          .map((h) => h.title)
+                          .toList(),
+                      image: ref.watch(thumbnailProvider) == null
+                          ? null
+                          : MultipartFile.fromBytes(
+                              '',
+                              ref.watch(thumbnailProvider)!.readAsBytesSync(),
+                            )),
+                );
                 if ((await result.networkResult)!.hasException) {
                   return;
                 }
