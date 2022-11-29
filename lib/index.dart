@@ -31,7 +31,7 @@ class _IndexState extends ConsumerState<Index> {
     final List<Widget> _widgetOptions = <Widget>[
       const HomePageNavigator(),
       const SearchPageNavigator(),
-      PostPage(
+      PostPageNavigator(
         navigate: () {
           setState(() {
             _selectedIndex = 0;

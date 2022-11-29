@@ -21,6 +21,25 @@ query SearchHashtags($searchText: String) {
   }
 }
 
+query Drafts($userID: ID!) {
+  drafts(where: { hasOwnerWith: { id: $userID } }) {
+    edges {
+      node {
+        id
+        posts {
+          id
+          title
+          category {
+            id
+            name
+          }
+          type
+        }
+      }
+    }
+  }
+}
+
 mutation CreatePosts(
   $createPostInput: CreatePostInput!
   $createPostInput2: CreatePostInput!

@@ -602,6 +602,8 @@ class Query$Profile$user$$User implements Query$Profile$user {
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
     final l$id = id;
     _resultData['id'] = l$id;
     final l$name = name;
@@ -618,8 +620,6 @@ class Query$Profile$user$$User implements Query$Profile$user {
     _resultData['followers'] = l$followers?.map((e) => e.toJson()).toList();
     final l$following = following;
     _resultData['following'] = l$following?.map((e) => e.toJson()).toList();
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
     return _resultData;
   }
 

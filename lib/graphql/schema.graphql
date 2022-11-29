@@ -23,10 +23,14 @@ type Mutation {
   unbookmarkPost(input: UnbookmarkPostInput!): UnbookmarkPostPayload!
   followUser(input: FollowUserInput!): FollowUserPayload!
   unfollowUser(input: UnfollowUserInput!): UnfollowUserPayload!
+  createDraft(input: CreateDraftInput!): Draft!
+  updateDraft(id: ID!, input: UpdateDraftInput!): Draft!
 }
 
 extend type Query {
   likedPosts(first: Int!, type: PostPostType!): [Post]!
+  topicWorks(first: Int!): [Work]!
+  workCategories(workID: ID!): [WorkCategory]!
 }
 
 input LikePostInput {

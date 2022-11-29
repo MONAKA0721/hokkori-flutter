@@ -919,6 +919,135 @@ class _CopyWithStubImpl$Input$CategoryWhereInput<TRes>
   hasPostWith(_fn) => _res;
 }
 
+class Input$CreateDraftInput {
+  factory Input$CreateDraftInput(
+          {required String ownerID, List<String>? postIDs}) =>
+      Input$CreateDraftInput._({
+        r'ownerID': ownerID,
+        if (postIDs != null) r'postIDs': postIDs,
+      });
+
+  Input$CreateDraftInput._(this._$data);
+
+  factory Input$CreateDraftInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$ownerID = data['ownerID'];
+    result$data['ownerID'] = (l$ownerID as String);
+    if (data.containsKey('postIDs')) {
+      final l$postIDs = data['postIDs'];
+      result$data['postIDs'] =
+          (l$postIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
+    return Input$CreateDraftInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get ownerID => (_$data['ownerID'] as String);
+  List<String>? get postIDs => (_$data['postIDs'] as List<String>?);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$ownerID = ownerID;
+    result$data['ownerID'] = l$ownerID;
+    if (_$data.containsKey('postIDs')) {
+      final l$postIDs = postIDs;
+      result$data['postIDs'] = l$postIDs?.map((e) => e).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$CreateDraftInput<Input$CreateDraftInput> get copyWith =>
+      CopyWith$Input$CreateDraftInput(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Input$CreateDraftInput) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$ownerID = ownerID;
+    final lOther$ownerID = other.ownerID;
+    if (l$ownerID != lOther$ownerID) {
+      return false;
+    }
+    final l$postIDs = postIDs;
+    final lOther$postIDs = other.postIDs;
+    if (_$data.containsKey('postIDs') != other._$data.containsKey('postIDs')) {
+      return false;
+    }
+    if (l$postIDs != null && lOther$postIDs != null) {
+      if (l$postIDs.length != lOther$postIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$postIDs.length; i++) {
+        final l$postIDs$entry = l$postIDs[i];
+        final lOther$postIDs$entry = lOther$postIDs[i];
+        if (l$postIDs$entry != lOther$postIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$postIDs != lOther$postIDs) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$ownerID = ownerID;
+    final l$postIDs = postIDs;
+    return Object.hashAll([
+      l$ownerID,
+      _$data.containsKey('postIDs')
+          ? l$postIDs == null
+              ? null
+              : Object.hashAll(l$postIDs.map((v) => v))
+          : const {}
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$CreateDraftInput<TRes> {
+  factory CopyWith$Input$CreateDraftInput(Input$CreateDraftInput instance,
+          TRes Function(Input$CreateDraftInput) then) =
+      _CopyWithImpl$Input$CreateDraftInput;
+
+  factory CopyWith$Input$CreateDraftInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$CreateDraftInput;
+
+  TRes call({String? ownerID, List<String>? postIDs});
+}
+
+class _CopyWithImpl$Input$CreateDraftInput<TRes>
+    implements CopyWith$Input$CreateDraftInput<TRes> {
+  _CopyWithImpl$Input$CreateDraftInput(this._instance, this._then);
+
+  final Input$CreateDraftInput _instance;
+
+  final TRes Function(Input$CreateDraftInput) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? ownerID = _undefined, Object? postIDs = _undefined}) =>
+      _then(Input$CreateDraftInput._({
+        ..._instance._$data,
+        if (ownerID != _undefined && ownerID != null)
+          'ownerID': (ownerID as String),
+        if (postIDs != _undefined) 'postIDs': (postIDs as List<String>?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$CreateDraftInput<TRes>
+    implements CopyWith$Input$CreateDraftInput<TRes> {
+  _CopyWithStubImpl$Input$CreateDraftInput(this._res);
+
+  TRes _res;
+
+  call({String? ownerID, List<String>? postIDs}) => _res;
+}
+
 class Input$CreateHashtagInput {
   factory Input$CreateHashtagInput(
           {required String title, List<String>? postIDs}) =>
@@ -1061,7 +1190,8 @@ class Input$CreatePostInput {
           required String workID,
           required String categoryID,
           List<String>? likedUserIDs,
-          List<String>? bookmarkedUserIDs}) =>
+          List<String>? bookmarkedUserIDs,
+          List<String>? draftIDs}) =>
       Input$CreatePostInput._({
         if (createTime != null) r'createTime': createTime,
         if (updateTime != null) r'updateTime': updateTime,
@@ -1076,6 +1206,7 @@ class Input$CreatePostInput {
         r'categoryID': categoryID,
         if (likedUserIDs != null) r'likedUserIDs': likedUserIDs,
         if (bookmarkedUserIDs != null) r'bookmarkedUserIDs': bookmarkedUserIDs,
+        if (draftIDs != null) r'draftIDs': draftIDs,
       });
 
   Input$CreatePostInput._(this._$data);
@@ -1125,6 +1256,11 @@ class Input$CreatePostInput {
           ?.map((e) => (e as String))
           .toList();
     }
+    if (data.containsKey('draftIDs')) {
+      final l$draftIDs = data['draftIDs'];
+      result$data['draftIDs'] =
+          (l$draftIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
     return Input$CreatePostInput._(result$data);
   }
 
@@ -1144,6 +1280,7 @@ class Input$CreatePostInput {
   List<String>? get likedUserIDs => (_$data['likedUserIDs'] as List<String>?);
   List<String>? get bookmarkedUserIDs =>
       (_$data['bookmarkedUserIDs'] as List<String>?);
+  List<String>? get draftIDs => (_$data['draftIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('createTime')) {
@@ -1184,6 +1321,10 @@ class Input$CreatePostInput {
       final l$bookmarkedUserIDs = bookmarkedUserIDs;
       result$data['bookmarkedUserIDs'] =
           l$bookmarkedUserIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('draftIDs')) {
+      final l$draftIDs = draftIDs;
+      result$data['draftIDs'] = l$draftIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -1320,6 +1461,26 @@ class Input$CreatePostInput {
     } else if (l$bookmarkedUserIDs != lOther$bookmarkedUserIDs) {
       return false;
     }
+    final l$draftIDs = draftIDs;
+    final lOther$draftIDs = other.draftIDs;
+    if (_$data.containsKey('draftIDs') !=
+        other._$data.containsKey('draftIDs')) {
+      return false;
+    }
+    if (l$draftIDs != null && lOther$draftIDs != null) {
+      if (l$draftIDs.length != lOther$draftIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$draftIDs.length; i++) {
+        final l$draftIDs$entry = l$draftIDs[i];
+        final lOther$draftIDs$entry = lOther$draftIDs[i];
+        if (l$draftIDs$entry != lOther$draftIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$draftIDs != lOther$draftIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -1338,6 +1499,7 @@ class Input$CreatePostInput {
     final l$categoryID = categoryID;
     final l$likedUserIDs = likedUserIDs;
     final l$bookmarkedUserIDs = bookmarkedUserIDs;
+    final l$draftIDs = draftIDs;
     return Object.hashAll([
       _$data.containsKey('createTime') ? l$createTime : const {},
       _$data.containsKey('updateTime') ? l$updateTime : const {},
@@ -1363,6 +1525,11 @@ class Input$CreatePostInput {
           ? l$bookmarkedUserIDs == null
               ? null
               : Object.hashAll(l$bookmarkedUserIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('draftIDs')
+          ? l$draftIDs == null
+              ? null
+              : Object.hashAll(l$draftIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -1389,7 +1556,8 @@ abstract class CopyWith$Input$CreatePostInput<TRes> {
       String? workID,
       String? categoryID,
       List<String>? likedUserIDs,
-      List<String>? bookmarkedUserIDs});
+      List<String>? bookmarkedUserIDs,
+      List<String>? draftIDs});
 }
 
 class _CopyWithImpl$Input$CreatePostInput<TRes>
@@ -1415,7 +1583,8 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           Object? workID = _undefined,
           Object? categoryID = _undefined,
           Object? likedUserIDs = _undefined,
-          Object? bookmarkedUserIDs = _undefined}) =>
+          Object? bookmarkedUserIDs = _undefined,
+          Object? draftIDs = _undefined}) =>
       _then(Input$CreatePostInput._({
         ..._instance._$data,
         if (createTime != _undefined) 'createTime': (createTime as String?),
@@ -1440,6 +1609,7 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           'likedUserIDs': (likedUserIDs as List<String>?),
         if (bookmarkedUserIDs != _undefined)
           'bookmarkedUserIDs': (bookmarkedUserIDs as List<String>?),
+        if (draftIDs != _undefined) 'draftIDs': (draftIDs as List<String>?),
       }));
 }
 
@@ -1462,7 +1632,8 @@ class _CopyWithStubImpl$Input$CreatePostInput<TRes>
           String? workID,
           String? categoryID,
           List<String>? likedUserIDs,
-          List<String>? bookmarkedUserIDs}) =>
+          List<String>? bookmarkedUserIDs,
+          List<String>? draftIDs}) =>
       _res;
 }
 
@@ -1476,7 +1647,8 @@ class Input$CreateUserInput {
           List<String>? likedPostIDs,
           List<String>? bookmarkedPostIDs,
           List<String>? followerIDs,
-          List<String>? followingIDs}) =>
+          List<String>? followingIDs,
+          List<String>? draftIDs}) =>
       Input$CreateUserInput._({
         r'name': name,
         if (username != null) r'username': username,
@@ -1487,6 +1659,7 @@ class Input$CreateUserInput {
         if (bookmarkedPostIDs != null) r'bookmarkedPostIDs': bookmarkedPostIDs,
         if (followerIDs != null) r'followerIDs': followerIDs,
         if (followingIDs != null) r'followingIDs': followingIDs,
+        if (draftIDs != null) r'draftIDs': draftIDs,
       });
 
   Input$CreateUserInput._(this._$data);
@@ -1535,6 +1708,11 @@ class Input$CreateUserInput {
           ?.map((e) => (e as String))
           .toList();
     }
+    if (data.containsKey('draftIDs')) {
+      final l$draftIDs = data['draftIDs'];
+      result$data['draftIDs'] =
+          (l$draftIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
     return Input$CreateUserInput._(result$data);
   }
 
@@ -1550,6 +1728,7 @@ class Input$CreateUserInput {
       (_$data['bookmarkedPostIDs'] as List<String>?);
   List<String>? get followerIDs => (_$data['followerIDs'] as List<String>?);
   List<String>? get followingIDs => (_$data['followingIDs'] as List<String>?);
+  List<String>? get draftIDs => (_$data['draftIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     final l$name = name;
@@ -1586,6 +1765,10 @@ class Input$CreateUserInput {
     if (_$data.containsKey('followingIDs')) {
       final l$followingIDs = followingIDs;
       result$data['followingIDs'] = l$followingIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('draftIDs')) {
+      final l$draftIDs = draftIDs;
+      result$data['draftIDs'] = l$draftIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -1730,6 +1913,26 @@ class Input$CreateUserInput {
     } else if (l$followingIDs != lOther$followingIDs) {
       return false;
     }
+    final l$draftIDs = draftIDs;
+    final lOther$draftIDs = other.draftIDs;
+    if (_$data.containsKey('draftIDs') !=
+        other._$data.containsKey('draftIDs')) {
+      return false;
+    }
+    if (l$draftIDs != null && lOther$draftIDs != null) {
+      if (l$draftIDs.length != lOther$draftIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$draftIDs.length; i++) {
+        final l$draftIDs$entry = l$draftIDs[i];
+        final lOther$draftIDs$entry = lOther$draftIDs[i];
+        if (l$draftIDs$entry != lOther$draftIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$draftIDs != lOther$draftIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -1744,6 +1947,7 @@ class Input$CreateUserInput {
     final l$bookmarkedPostIDs = bookmarkedPostIDs;
     final l$followerIDs = followerIDs;
     final l$followingIDs = followingIDs;
+    final l$draftIDs = draftIDs;
     return Object.hashAll([
       l$name,
       _$data.containsKey('username') ? l$username : const {},
@@ -1773,6 +1977,11 @@ class Input$CreateUserInput {
           ? l$followingIDs == null
               ? null
               : Object.hashAll(l$followingIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('draftIDs')
+          ? l$draftIDs == null
+              ? null
+              : Object.hashAll(l$draftIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -1795,7 +2004,8 @@ abstract class CopyWith$Input$CreateUserInput<TRes> {
       List<String>? likedPostIDs,
       List<String>? bookmarkedPostIDs,
       List<String>? followerIDs,
-      List<String>? followingIDs});
+      List<String>? followingIDs,
+      List<String>? draftIDs});
 }
 
 class _CopyWithImpl$Input$CreateUserInput<TRes>
@@ -1817,7 +2027,8 @@ class _CopyWithImpl$Input$CreateUserInput<TRes>
           Object? likedPostIDs = _undefined,
           Object? bookmarkedPostIDs = _undefined,
           Object? followerIDs = _undefined,
-          Object? followingIDs = _undefined}) =>
+          Object? followingIDs = _undefined,
+          Object? draftIDs = _undefined}) =>
       _then(Input$CreateUserInput._({
         ..._instance._$data,
         if (name != _undefined && name != null) 'name': (name as String),
@@ -1833,6 +2044,7 @@ class _CopyWithImpl$Input$CreateUserInput<TRes>
           'followerIDs': (followerIDs as List<String>?),
         if (followingIDs != _undefined)
           'followingIDs': (followingIDs as List<String>?),
+        if (draftIDs != _undefined) 'draftIDs': (draftIDs as List<String>?),
       }));
 }
 
@@ -1851,7 +2063,8 @@ class _CopyWithStubImpl$Input$CreateUserInput<TRes>
           List<String>? likedPostIDs,
           List<String>? bookmarkedPostIDs,
           List<String>? followerIDs,
-          List<String>? followingIDs}) =>
+          List<String>? followingIDs,
+          List<String>? draftIDs}) =>
       _res;
 }
 
@@ -2005,6 +2218,641 @@ class _CopyWithStubImpl$Input$CreateWorkInput<TRes>
   TRes _res;
 
   call({String? title, String? thumbnail, List<String>? postIDs}) => _res;
+}
+
+class Input$DraftWhereInput {
+  factory Input$DraftWhereInput(
+          {Input$DraftWhereInput? not,
+          List<Input$DraftWhereInput>? and,
+          List<Input$DraftWhereInput>? or,
+          String? id,
+          String? idNEQ,
+          List<String>? idIn,
+          List<String>? idNotIn,
+          String? idGT,
+          String? idGTE,
+          String? idLT,
+          String? idLTE,
+          bool? hasOwner,
+          List<Input$UserWhereInput>? hasOwnerWith,
+          bool? hasPosts,
+          List<Input$PostWhereInput>? hasPostsWith}) =>
+      Input$DraftWhereInput._({
+        if (not != null) r'not': not,
+        if (and != null) r'and': and,
+        if (or != null) r'or': or,
+        if (id != null) r'id': id,
+        if (idNEQ != null) r'idNEQ': idNEQ,
+        if (idIn != null) r'idIn': idIn,
+        if (idNotIn != null) r'idNotIn': idNotIn,
+        if (idGT != null) r'idGT': idGT,
+        if (idGTE != null) r'idGTE': idGTE,
+        if (idLT != null) r'idLT': idLT,
+        if (idLTE != null) r'idLTE': idLTE,
+        if (hasOwner != null) r'hasOwner': hasOwner,
+        if (hasOwnerWith != null) r'hasOwnerWith': hasOwnerWith,
+        if (hasPosts != null) r'hasPosts': hasPosts,
+        if (hasPostsWith != null) r'hasPostsWith': hasPostsWith,
+      });
+
+  Input$DraftWhereInput._(this._$data);
+
+  factory Input$DraftWhereInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('not')) {
+      final l$not = data['not'];
+      result$data['not'] = l$not == null
+          ? null
+          : Input$DraftWhereInput.fromJson((l$not as Map<String, dynamic>));
+    }
+    if (data.containsKey('and')) {
+      final l$and = data['and'];
+      result$data['and'] = (l$and as List<dynamic>?)
+          ?.map((e) =>
+              Input$DraftWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map((e) =>
+              Input$DraftWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('id')) {
+      final l$id = data['id'];
+      result$data['id'] = (l$id as String?);
+    }
+    if (data.containsKey('idNEQ')) {
+      final l$idNEQ = data['idNEQ'];
+      result$data['idNEQ'] = (l$idNEQ as String?);
+    }
+    if (data.containsKey('idIn')) {
+      final l$idIn = data['idIn'];
+      result$data['idIn'] =
+          (l$idIn as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
+    if (data.containsKey('idNotIn')) {
+      final l$idNotIn = data['idNotIn'];
+      result$data['idNotIn'] =
+          (l$idNotIn as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
+    if (data.containsKey('idGT')) {
+      final l$idGT = data['idGT'];
+      result$data['idGT'] = (l$idGT as String?);
+    }
+    if (data.containsKey('idGTE')) {
+      final l$idGTE = data['idGTE'];
+      result$data['idGTE'] = (l$idGTE as String?);
+    }
+    if (data.containsKey('idLT')) {
+      final l$idLT = data['idLT'];
+      result$data['idLT'] = (l$idLT as String?);
+    }
+    if (data.containsKey('idLTE')) {
+      final l$idLTE = data['idLTE'];
+      result$data['idLTE'] = (l$idLTE as String?);
+    }
+    if (data.containsKey('hasOwner')) {
+      final l$hasOwner = data['hasOwner'];
+      result$data['hasOwner'] = (l$hasOwner as bool?);
+    }
+    if (data.containsKey('hasOwnerWith')) {
+      final l$hasOwnerWith = data['hasOwnerWith'];
+      result$data['hasOwnerWith'] = (l$hasOwnerWith as List<dynamic>?)
+          ?.map(
+              (e) => Input$UserWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('hasPosts')) {
+      final l$hasPosts = data['hasPosts'];
+      result$data['hasPosts'] = (l$hasPosts as bool?);
+    }
+    if (data.containsKey('hasPostsWith')) {
+      final l$hasPostsWith = data['hasPostsWith'];
+      result$data['hasPostsWith'] = (l$hasPostsWith as List<dynamic>?)
+          ?.map(
+              (e) => Input$PostWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    return Input$DraftWhereInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$DraftWhereInput? get not => (_$data['not'] as Input$DraftWhereInput?);
+  List<Input$DraftWhereInput>? get and =>
+      (_$data['and'] as List<Input$DraftWhereInput>?);
+  List<Input$DraftWhereInput>? get or =>
+      (_$data['or'] as List<Input$DraftWhereInput>?);
+  String? get id => (_$data['id'] as String?);
+  String? get idNEQ => (_$data['idNEQ'] as String?);
+  List<String>? get idIn => (_$data['idIn'] as List<String>?);
+  List<String>? get idNotIn => (_$data['idNotIn'] as List<String>?);
+  String? get idGT => (_$data['idGT'] as String?);
+  String? get idGTE => (_$data['idGTE'] as String?);
+  String? get idLT => (_$data['idLT'] as String?);
+  String? get idLTE => (_$data['idLTE'] as String?);
+  bool? get hasOwner => (_$data['hasOwner'] as bool?);
+  List<Input$UserWhereInput>? get hasOwnerWith =>
+      (_$data['hasOwnerWith'] as List<Input$UserWhereInput>?);
+  bool? get hasPosts => (_$data['hasPosts'] as bool?);
+  List<Input$PostWhereInput>? get hasPostsWith =>
+      (_$data['hasPostsWith'] as List<Input$PostWhereInput>?);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('not')) {
+      final l$not = not;
+      result$data['not'] = l$not?.toJson();
+    }
+    if (_$data.containsKey('and')) {
+      final l$and = and;
+      result$data['and'] = l$and?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('id')) {
+      final l$id = id;
+      result$data['id'] = l$id;
+    }
+    if (_$data.containsKey('idNEQ')) {
+      final l$idNEQ = idNEQ;
+      result$data['idNEQ'] = l$idNEQ;
+    }
+    if (_$data.containsKey('idIn')) {
+      final l$idIn = idIn;
+      result$data['idIn'] = l$idIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('idNotIn')) {
+      final l$idNotIn = idNotIn;
+      result$data['idNotIn'] = l$idNotIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('idGT')) {
+      final l$idGT = idGT;
+      result$data['idGT'] = l$idGT;
+    }
+    if (_$data.containsKey('idGTE')) {
+      final l$idGTE = idGTE;
+      result$data['idGTE'] = l$idGTE;
+    }
+    if (_$data.containsKey('idLT')) {
+      final l$idLT = idLT;
+      result$data['idLT'] = l$idLT;
+    }
+    if (_$data.containsKey('idLTE')) {
+      final l$idLTE = idLTE;
+      result$data['idLTE'] = l$idLTE;
+    }
+    if (_$data.containsKey('hasOwner')) {
+      final l$hasOwner = hasOwner;
+      result$data['hasOwner'] = l$hasOwner;
+    }
+    if (_$data.containsKey('hasOwnerWith')) {
+      final l$hasOwnerWith = hasOwnerWith;
+      result$data['hasOwnerWith'] =
+          l$hasOwnerWith?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasPosts')) {
+      final l$hasPosts = hasPosts;
+      result$data['hasPosts'] = l$hasPosts;
+    }
+    if (_$data.containsKey('hasPostsWith')) {
+      final l$hasPostsWith = hasPostsWith;
+      result$data['hasPostsWith'] =
+          l$hasPostsWith?.map((e) => e.toJson()).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$DraftWhereInput<Input$DraftWhereInput> get copyWith =>
+      CopyWith$Input$DraftWhereInput(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Input$DraftWhereInput) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$not = not;
+    final lOther$not = other.not;
+    if (_$data.containsKey('not') != other._$data.containsKey('not')) {
+      return false;
+    }
+    if (l$not != lOther$not) {
+      return false;
+    }
+    final l$and = and;
+    final lOther$and = other.and;
+    if (_$data.containsKey('and') != other._$data.containsKey('and')) {
+      return false;
+    }
+    if (l$and != null && lOther$and != null) {
+      if (l$and.length != lOther$and.length) {
+        return false;
+      }
+      for (int i = 0; i < l$and.length; i++) {
+        final l$and$entry = l$and[i];
+        final lOther$and$entry = lOther$and[i];
+        if (l$and$entry != lOther$and$entry) {
+          return false;
+        }
+      }
+    } else if (l$and != lOther$and) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (_$data.containsKey('id') != other._$data.containsKey('id')) {
+      return false;
+    }
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$idNEQ = idNEQ;
+    final lOther$idNEQ = other.idNEQ;
+    if (_$data.containsKey('idNEQ') != other._$data.containsKey('idNEQ')) {
+      return false;
+    }
+    if (l$idNEQ != lOther$idNEQ) {
+      return false;
+    }
+    final l$idIn = idIn;
+    final lOther$idIn = other.idIn;
+    if (_$data.containsKey('idIn') != other._$data.containsKey('idIn')) {
+      return false;
+    }
+    if (l$idIn != null && lOther$idIn != null) {
+      if (l$idIn.length != lOther$idIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$idIn.length; i++) {
+        final l$idIn$entry = l$idIn[i];
+        final lOther$idIn$entry = lOther$idIn[i];
+        if (l$idIn$entry != lOther$idIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$idIn != lOther$idIn) {
+      return false;
+    }
+    final l$idNotIn = idNotIn;
+    final lOther$idNotIn = other.idNotIn;
+    if (_$data.containsKey('idNotIn') != other._$data.containsKey('idNotIn')) {
+      return false;
+    }
+    if (l$idNotIn != null && lOther$idNotIn != null) {
+      if (l$idNotIn.length != lOther$idNotIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$idNotIn.length; i++) {
+        final l$idNotIn$entry = l$idNotIn[i];
+        final lOther$idNotIn$entry = lOther$idNotIn[i];
+        if (l$idNotIn$entry != lOther$idNotIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$idNotIn != lOther$idNotIn) {
+      return false;
+    }
+    final l$idGT = idGT;
+    final lOther$idGT = other.idGT;
+    if (_$data.containsKey('idGT') != other._$data.containsKey('idGT')) {
+      return false;
+    }
+    if (l$idGT != lOther$idGT) {
+      return false;
+    }
+    final l$idGTE = idGTE;
+    final lOther$idGTE = other.idGTE;
+    if (_$data.containsKey('idGTE') != other._$data.containsKey('idGTE')) {
+      return false;
+    }
+    if (l$idGTE != lOther$idGTE) {
+      return false;
+    }
+    final l$idLT = idLT;
+    final lOther$idLT = other.idLT;
+    if (_$data.containsKey('idLT') != other._$data.containsKey('idLT')) {
+      return false;
+    }
+    if (l$idLT != lOther$idLT) {
+      return false;
+    }
+    final l$idLTE = idLTE;
+    final lOther$idLTE = other.idLTE;
+    if (_$data.containsKey('idLTE') != other._$data.containsKey('idLTE')) {
+      return false;
+    }
+    if (l$idLTE != lOther$idLTE) {
+      return false;
+    }
+    final l$hasOwner = hasOwner;
+    final lOther$hasOwner = other.hasOwner;
+    if (_$data.containsKey('hasOwner') !=
+        other._$data.containsKey('hasOwner')) {
+      return false;
+    }
+    if (l$hasOwner != lOther$hasOwner) {
+      return false;
+    }
+    final l$hasOwnerWith = hasOwnerWith;
+    final lOther$hasOwnerWith = other.hasOwnerWith;
+    if (_$data.containsKey('hasOwnerWith') !=
+        other._$data.containsKey('hasOwnerWith')) {
+      return false;
+    }
+    if (l$hasOwnerWith != null && lOther$hasOwnerWith != null) {
+      if (l$hasOwnerWith.length != lOther$hasOwnerWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasOwnerWith.length; i++) {
+        final l$hasOwnerWith$entry = l$hasOwnerWith[i];
+        final lOther$hasOwnerWith$entry = lOther$hasOwnerWith[i];
+        if (l$hasOwnerWith$entry != lOther$hasOwnerWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasOwnerWith != lOther$hasOwnerWith) {
+      return false;
+    }
+    final l$hasPosts = hasPosts;
+    final lOther$hasPosts = other.hasPosts;
+    if (_$data.containsKey('hasPosts') !=
+        other._$data.containsKey('hasPosts')) {
+      return false;
+    }
+    if (l$hasPosts != lOther$hasPosts) {
+      return false;
+    }
+    final l$hasPostsWith = hasPostsWith;
+    final lOther$hasPostsWith = other.hasPostsWith;
+    if (_$data.containsKey('hasPostsWith') !=
+        other._$data.containsKey('hasPostsWith')) {
+      return false;
+    }
+    if (l$hasPostsWith != null && lOther$hasPostsWith != null) {
+      if (l$hasPostsWith.length != lOther$hasPostsWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasPostsWith.length; i++) {
+        final l$hasPostsWith$entry = l$hasPostsWith[i];
+        final lOther$hasPostsWith$entry = lOther$hasPostsWith[i];
+        if (l$hasPostsWith$entry != lOther$hasPostsWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasPostsWith != lOther$hasPostsWith) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$not = not;
+    final l$and = and;
+    final l$or = or;
+    final l$id = id;
+    final l$idNEQ = idNEQ;
+    final l$idIn = idIn;
+    final l$idNotIn = idNotIn;
+    final l$idGT = idGT;
+    final l$idGTE = idGTE;
+    final l$idLT = idLT;
+    final l$idLTE = idLTE;
+    final l$hasOwner = hasOwner;
+    final l$hasOwnerWith = hasOwnerWith;
+    final l$hasPosts = hasPosts;
+    final l$hasPostsWith = hasPostsWith;
+    return Object.hashAll([
+      _$data.containsKey('not') ? l$not : const {},
+      _$data.containsKey('and')
+          ? l$and == null
+              ? null
+              : Object.hashAll(l$and.map((v) => v))
+          : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {},
+      _$data.containsKey('id') ? l$id : const {},
+      _$data.containsKey('idNEQ') ? l$idNEQ : const {},
+      _$data.containsKey('idIn')
+          ? l$idIn == null
+              ? null
+              : Object.hashAll(l$idIn.map((v) => v))
+          : const {},
+      _$data.containsKey('idNotIn')
+          ? l$idNotIn == null
+              ? null
+              : Object.hashAll(l$idNotIn.map((v) => v))
+          : const {},
+      _$data.containsKey('idGT') ? l$idGT : const {},
+      _$data.containsKey('idGTE') ? l$idGTE : const {},
+      _$data.containsKey('idLT') ? l$idLT : const {},
+      _$data.containsKey('idLTE') ? l$idLTE : const {},
+      _$data.containsKey('hasOwner') ? l$hasOwner : const {},
+      _$data.containsKey('hasOwnerWith')
+          ? l$hasOwnerWith == null
+              ? null
+              : Object.hashAll(l$hasOwnerWith.map((v) => v))
+          : const {},
+      _$data.containsKey('hasPosts') ? l$hasPosts : const {},
+      _$data.containsKey('hasPostsWith')
+          ? l$hasPostsWith == null
+              ? null
+              : Object.hashAll(l$hasPostsWith.map((v) => v))
+          : const {}
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DraftWhereInput<TRes> {
+  factory CopyWith$Input$DraftWhereInput(Input$DraftWhereInput instance,
+          TRes Function(Input$DraftWhereInput) then) =
+      _CopyWithImpl$Input$DraftWhereInput;
+
+  factory CopyWith$Input$DraftWhereInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$DraftWhereInput;
+
+  TRes call(
+      {Input$DraftWhereInput? not,
+      List<Input$DraftWhereInput>? and,
+      List<Input$DraftWhereInput>? or,
+      String? id,
+      String? idNEQ,
+      List<String>? idIn,
+      List<String>? idNotIn,
+      String? idGT,
+      String? idGTE,
+      String? idLT,
+      String? idLTE,
+      bool? hasOwner,
+      List<Input$UserWhereInput>? hasOwnerWith,
+      bool? hasPosts,
+      List<Input$PostWhereInput>? hasPostsWith});
+  CopyWith$Input$DraftWhereInput<TRes> get not;
+  TRes and(
+      Iterable<Input$DraftWhereInput>? Function(
+              Iterable<CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
+          _fn);
+  TRes or(
+      Iterable<Input$DraftWhereInput>? Function(
+              Iterable<CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
+          _fn);
+  TRes hasOwnerWith(
+      Iterable<Input$UserWhereInput>? Function(
+              Iterable<CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
+          _fn);
+  TRes hasPostsWith(
+      Iterable<Input$PostWhereInput>? Function(
+              Iterable<CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+          _fn);
+}
+
+class _CopyWithImpl$Input$DraftWhereInput<TRes>
+    implements CopyWith$Input$DraftWhereInput<TRes> {
+  _CopyWithImpl$Input$DraftWhereInput(this._instance, this._then);
+
+  final Input$DraftWhereInput _instance;
+
+  final TRes Function(Input$DraftWhereInput) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? not = _undefined,
+          Object? and = _undefined,
+          Object? or = _undefined,
+          Object? id = _undefined,
+          Object? idNEQ = _undefined,
+          Object? idIn = _undefined,
+          Object? idNotIn = _undefined,
+          Object? idGT = _undefined,
+          Object? idGTE = _undefined,
+          Object? idLT = _undefined,
+          Object? idLTE = _undefined,
+          Object? hasOwner = _undefined,
+          Object? hasOwnerWith = _undefined,
+          Object? hasPosts = _undefined,
+          Object? hasPostsWith = _undefined}) =>
+      _then(Input$DraftWhereInput._({
+        ..._instance._$data,
+        if (not != _undefined) 'not': (not as Input$DraftWhereInput?),
+        if (and != _undefined) 'and': (and as List<Input$DraftWhereInput>?),
+        if (or != _undefined) 'or': (or as List<Input$DraftWhereInput>?),
+        if (id != _undefined) 'id': (id as String?),
+        if (idNEQ != _undefined) 'idNEQ': (idNEQ as String?),
+        if (idIn != _undefined) 'idIn': (idIn as List<String>?),
+        if (idNotIn != _undefined) 'idNotIn': (idNotIn as List<String>?),
+        if (idGT != _undefined) 'idGT': (idGT as String?),
+        if (idGTE != _undefined) 'idGTE': (idGTE as String?),
+        if (idLT != _undefined) 'idLT': (idLT as String?),
+        if (idLTE != _undefined) 'idLTE': (idLTE as String?),
+        if (hasOwner != _undefined) 'hasOwner': (hasOwner as bool?),
+        if (hasOwnerWith != _undefined)
+          'hasOwnerWith': (hasOwnerWith as List<Input$UserWhereInput>?),
+        if (hasPosts != _undefined) 'hasPosts': (hasPosts as bool?),
+        if (hasPostsWith != _undefined)
+          'hasPostsWith': (hasPostsWith as List<Input$PostWhereInput>?),
+      }));
+  CopyWith$Input$DraftWhereInput<TRes> get not {
+    final local$not = _instance.not;
+    return local$not == null
+        ? CopyWith$Input$DraftWhereInput.stub(_then(_instance))
+        : CopyWith$Input$DraftWhereInput(local$not, (e) => call(not: e));
+  }
+
+  TRes and(
+          Iterable<Input$DraftWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
+              _fn) =>
+      call(
+          and: _fn(_instance.and
+                  ?.map((e) => CopyWith$Input$DraftWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes or(
+          Iterable<Input$DraftWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
+              _fn) =>
+      call(
+          or: _fn(_instance.or
+                  ?.map((e) => CopyWith$Input$DraftWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasOwnerWith(
+          Iterable<Input$UserWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
+              _fn) =>
+      call(
+          hasOwnerWith: _fn(_instance.hasOwnerWith
+                  ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasPostsWith(
+          Iterable<Input$PostWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+              _fn) =>
+      call(
+          hasPostsWith: _fn(_instance.hasPostsWith
+                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
+              ?.toList());
+}
+
+class _CopyWithStubImpl$Input$DraftWhereInput<TRes>
+    implements CopyWith$Input$DraftWhereInput<TRes> {
+  _CopyWithStubImpl$Input$DraftWhereInput(this._res);
+
+  TRes _res;
+
+  call(
+          {Input$DraftWhereInput? not,
+          List<Input$DraftWhereInput>? and,
+          List<Input$DraftWhereInput>? or,
+          String? id,
+          String? idNEQ,
+          List<String>? idIn,
+          List<String>? idNotIn,
+          String? idGT,
+          String? idGTE,
+          String? idLT,
+          String? idLTE,
+          bool? hasOwner,
+          List<Input$UserWhereInput>? hasOwnerWith,
+          bool? hasPosts,
+          List<Input$PostWhereInput>? hasPostsWith}) =>
+      _res;
+  CopyWith$Input$DraftWhereInput<TRes> get not =>
+      CopyWith$Input$DraftWhereInput.stub(_res);
+  and(_fn) => _res;
+  or(_fn) => _res;
+  hasOwnerWith(_fn) => _res;
+  hasPostsWith(_fn) => _res;
 }
 
 class Input$HashtagWhereInput {
@@ -3126,7 +3974,9 @@ class Input$PostWhereInput {
           bool? hasLikedUsers,
           List<Input$UserWhereInput>? hasLikedUsersWith,
           bool? hasBookmarkedUsers,
-          List<Input$UserWhereInput>? hasBookmarkedUsersWith}) =>
+          List<Input$UserWhereInput>? hasBookmarkedUsersWith,
+          bool? hasDraft,
+          List<Input$DraftWhereInput>? hasDraftWith}) =>
       Input$PostWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -3221,6 +4071,8 @@ class Input$PostWhereInput {
           r'hasBookmarkedUsers': hasBookmarkedUsers,
         if (hasBookmarkedUsersWith != null)
           r'hasBookmarkedUsersWith': hasBookmarkedUsersWith,
+        if (hasDraft != null) r'hasDraft': hasDraft,
+        if (hasDraftWith != null) r'hasDraftWith': hasDraftWith,
       });
 
   Input$PostWhereInput._(this._$data);
@@ -3625,6 +4477,17 @@ class Input$PostWhereInput {
               (e) => Input$UserWhereInput.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
+    if (data.containsKey('hasDraft')) {
+      final l$hasDraft = data['hasDraft'];
+      result$data['hasDraft'] = (l$hasDraft as bool?);
+    }
+    if (data.containsKey('hasDraftWith')) {
+      final l$hasDraftWith = data['hasDraftWith'];
+      result$data['hasDraftWith'] = (l$hasDraftWith as List<dynamic>?)
+          ?.map((e) =>
+              Input$DraftWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
     return Input$PostWhereInput._(result$data);
   }
 
@@ -3730,6 +4593,9 @@ class Input$PostWhereInput {
   bool? get hasBookmarkedUsers => (_$data['hasBookmarkedUsers'] as bool?);
   List<Input$UserWhereInput>? get hasBookmarkedUsersWith =>
       (_$data['hasBookmarkedUsersWith'] as List<Input$UserWhereInput>?);
+  bool? get hasDraft => (_$data['hasDraft'] as bool?);
+  List<Input$DraftWhereInput>? get hasDraftWith =>
+      (_$data['hasDraftWith'] as List<Input$DraftWhereInput>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('not')) {
@@ -4087,6 +4953,15 @@ class Input$PostWhereInput {
       final l$hasBookmarkedUsersWith = hasBookmarkedUsersWith;
       result$data['hasBookmarkedUsersWith'] =
           l$hasBookmarkedUsersWith?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasDraft')) {
+      final l$hasDraft = hasDraft;
+      result$data['hasDraft'] = l$hasDraft;
+    }
+    if (_$data.containsKey('hasDraftWith')) {
+      final l$hasDraftWith = hasDraftWith;
+      result$data['hasDraftWith'] =
+          l$hasDraftWith?.map((e) => e.toJson()).toList();
     }
     return result$data;
   }
@@ -5100,6 +5975,35 @@ class Input$PostWhereInput {
     } else if (l$hasBookmarkedUsersWith != lOther$hasBookmarkedUsersWith) {
       return false;
     }
+    final l$hasDraft = hasDraft;
+    final lOther$hasDraft = other.hasDraft;
+    if (_$data.containsKey('hasDraft') !=
+        other._$data.containsKey('hasDraft')) {
+      return false;
+    }
+    if (l$hasDraft != lOther$hasDraft) {
+      return false;
+    }
+    final l$hasDraftWith = hasDraftWith;
+    final lOther$hasDraftWith = other.hasDraftWith;
+    if (_$data.containsKey('hasDraftWith') !=
+        other._$data.containsKey('hasDraftWith')) {
+      return false;
+    }
+    if (l$hasDraftWith != null && lOther$hasDraftWith != null) {
+      if (l$hasDraftWith.length != lOther$hasDraftWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasDraftWith.length; i++) {
+        final l$hasDraftWith$entry = l$hasDraftWith[i];
+        final lOther$hasDraftWith$entry = lOther$hasDraftWith[i];
+        if (l$hasDraftWith$entry != lOther$hasDraftWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasDraftWith != lOther$hasDraftWith) {
+      return false;
+    }
     return true;
   }
 
@@ -5191,6 +6095,8 @@ class Input$PostWhereInput {
     final l$hasLikedUsersWith = hasLikedUsersWith;
     final l$hasBookmarkedUsers = hasBookmarkedUsers;
     final l$hasBookmarkedUsersWith = hasBookmarkedUsersWith;
+    final l$hasDraft = hasDraft;
+    final l$hasDraftWith = hasDraftWith;
     return Object.hashAll([
       _$data.containsKey('not') ? l$not : const {},
       _$data.containsKey('and')
@@ -5377,6 +6283,12 @@ class Input$PostWhereInput {
           ? l$hasBookmarkedUsersWith == null
               ? null
               : Object.hashAll(l$hasBookmarkedUsersWith.map((v) => v))
+          : const {},
+      _$data.containsKey('hasDraft') ? l$hasDraft : const {},
+      _$data.containsKey('hasDraftWith')
+          ? l$hasDraftWith == null
+              ? null
+              : Object.hashAll(l$hasDraftWith.map((v) => v))
           : const {}
     ]);
   }
@@ -5476,7 +6388,9 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
       bool? hasLikedUsers,
       List<Input$UserWhereInput>? hasLikedUsersWith,
       bool? hasBookmarkedUsers,
-      List<Input$UserWhereInput>? hasBookmarkedUsersWith});
+      List<Input$UserWhereInput>? hasBookmarkedUsersWith,
+      bool? hasDraft,
+      List<Input$DraftWhereInput>? hasDraftWith});
   CopyWith$Input$PostWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$PostWhereInput>? Function(
@@ -5511,6 +6425,10 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
   TRes hasBookmarkedUsersWith(
       Iterable<Input$UserWhereInput>? Function(
               Iterable<CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
+          _fn);
+  TRes hasDraftWith(
+      Iterable<Input$DraftWhereInput>? Function(
+              Iterable<CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
           _fn);
 }
 
@@ -5610,7 +6528,9 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           Object? hasLikedUsers = _undefined,
           Object? hasLikedUsersWith = _undefined,
           Object? hasBookmarkedUsers = _undefined,
-          Object? hasBookmarkedUsersWith = _undefined}) =>
+          Object? hasBookmarkedUsersWith = _undefined,
+          Object? hasDraft = _undefined,
+          Object? hasDraftWith = _undefined}) =>
       _then(Input$PostWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$PostWhereInput?),
@@ -5751,6 +6671,9 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
         if (hasBookmarkedUsersWith != _undefined)
           'hasBookmarkedUsersWith':
               (hasBookmarkedUsersWith as List<Input$UserWhereInput>?),
+        if (hasDraft != _undefined) 'hasDraft': (hasDraft as bool?),
+        if (hasDraftWith != _undefined)
+          'hasDraftWith': (hasDraftWith as List<Input$DraftWhereInput>?),
       }));
   CopyWith$Input$PostWhereInput<TRes> get not {
     final local$not = _instance.not;
@@ -5832,6 +6755,15 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
       call(
           hasBookmarkedUsersWith: _fn(_instance.hasBookmarkedUsersWith
                   ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasDraftWith(
+          Iterable<Input$DraftWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
+              _fn) =>
+      call(
+          hasDraftWith: _fn(_instance.hasDraftWith
+                  ?.map((e) => CopyWith$Input$DraftWhereInput(e, (i) => i)))
               ?.toList());
 }
 
@@ -5927,7 +6859,9 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
           bool? hasLikedUsers,
           List<Input$UserWhereInput>? hasLikedUsersWith,
           bool? hasBookmarkedUsers,
-          List<Input$UserWhereInput>? hasBookmarkedUsersWith}) =>
+          List<Input$UserWhereInput>? hasBookmarkedUsersWith,
+          bool? hasDraft,
+          List<Input$DraftWhereInput>? hasDraftWith}) =>
       _res;
   CopyWith$Input$PostWhereInput<TRes> get not =>
       CopyWith$Input$PostWhereInput.stub(_res);
@@ -5939,6 +6873,222 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
   hasCategoryWith(_fn) => _res;
   hasLikedUsersWith(_fn) => _res;
   hasBookmarkedUsersWith(_fn) => _res;
+  hasDraftWith(_fn) => _res;
+}
+
+class Input$UpdateDraftInput {
+  factory Input$UpdateDraftInput(
+          {bool? clearOwner,
+          String? ownerID,
+          List<String>? addPostIDs,
+          List<String>? removePostIDs}) =>
+      Input$UpdateDraftInput._({
+        if (clearOwner != null) r'clearOwner': clearOwner,
+        if (ownerID != null) r'ownerID': ownerID,
+        if (addPostIDs != null) r'addPostIDs': addPostIDs,
+        if (removePostIDs != null) r'removePostIDs': removePostIDs,
+      });
+
+  Input$UpdateDraftInput._(this._$data);
+
+  factory Input$UpdateDraftInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('clearOwner')) {
+      final l$clearOwner = data['clearOwner'];
+      result$data['clearOwner'] = (l$clearOwner as bool?);
+    }
+    if (data.containsKey('ownerID')) {
+      final l$ownerID = data['ownerID'];
+      result$data['ownerID'] = (l$ownerID as String?);
+    }
+    if (data.containsKey('addPostIDs')) {
+      final l$addPostIDs = data['addPostIDs'];
+      result$data['addPostIDs'] =
+          (l$addPostIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
+    if (data.containsKey('removePostIDs')) {
+      final l$removePostIDs = data['removePostIDs'];
+      result$data['removePostIDs'] = (l$removePostIDs as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    return Input$UpdateDraftInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  bool? get clearOwner => (_$data['clearOwner'] as bool?);
+  String? get ownerID => (_$data['ownerID'] as String?);
+  List<String>? get addPostIDs => (_$data['addPostIDs'] as List<String>?);
+  List<String>? get removePostIDs => (_$data['removePostIDs'] as List<String>?);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('clearOwner')) {
+      final l$clearOwner = clearOwner;
+      result$data['clearOwner'] = l$clearOwner;
+    }
+    if (_$data.containsKey('ownerID')) {
+      final l$ownerID = ownerID;
+      result$data['ownerID'] = l$ownerID;
+    }
+    if (_$data.containsKey('addPostIDs')) {
+      final l$addPostIDs = addPostIDs;
+      result$data['addPostIDs'] = l$addPostIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('removePostIDs')) {
+      final l$removePostIDs = removePostIDs;
+      result$data['removePostIDs'] = l$removePostIDs?.map((e) => e).toList();
+    }
+    return result$data;
+  }
+
+  CopyWith$Input$UpdateDraftInput<Input$UpdateDraftInput> get copyWith =>
+      CopyWith$Input$UpdateDraftInput(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Input$UpdateDraftInput) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$clearOwner = clearOwner;
+    final lOther$clearOwner = other.clearOwner;
+    if (_$data.containsKey('clearOwner') !=
+        other._$data.containsKey('clearOwner')) {
+      return false;
+    }
+    if (l$clearOwner != lOther$clearOwner) {
+      return false;
+    }
+    final l$ownerID = ownerID;
+    final lOther$ownerID = other.ownerID;
+    if (_$data.containsKey('ownerID') != other._$data.containsKey('ownerID')) {
+      return false;
+    }
+    if (l$ownerID != lOther$ownerID) {
+      return false;
+    }
+    final l$addPostIDs = addPostIDs;
+    final lOther$addPostIDs = other.addPostIDs;
+    if (_$data.containsKey('addPostIDs') !=
+        other._$data.containsKey('addPostIDs')) {
+      return false;
+    }
+    if (l$addPostIDs != null && lOther$addPostIDs != null) {
+      if (l$addPostIDs.length != lOther$addPostIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$addPostIDs.length; i++) {
+        final l$addPostIDs$entry = l$addPostIDs[i];
+        final lOther$addPostIDs$entry = lOther$addPostIDs[i];
+        if (l$addPostIDs$entry != lOther$addPostIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$addPostIDs != lOther$addPostIDs) {
+      return false;
+    }
+    final l$removePostIDs = removePostIDs;
+    final lOther$removePostIDs = other.removePostIDs;
+    if (_$data.containsKey('removePostIDs') !=
+        other._$data.containsKey('removePostIDs')) {
+      return false;
+    }
+    if (l$removePostIDs != null && lOther$removePostIDs != null) {
+      if (l$removePostIDs.length != lOther$removePostIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$removePostIDs.length; i++) {
+        final l$removePostIDs$entry = l$removePostIDs[i];
+        final lOther$removePostIDs$entry = lOther$removePostIDs[i];
+        if (l$removePostIDs$entry != lOther$removePostIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$removePostIDs != lOther$removePostIDs) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$clearOwner = clearOwner;
+    final l$ownerID = ownerID;
+    final l$addPostIDs = addPostIDs;
+    final l$removePostIDs = removePostIDs;
+    return Object.hashAll([
+      _$data.containsKey('clearOwner') ? l$clearOwner : const {},
+      _$data.containsKey('ownerID') ? l$ownerID : const {},
+      _$data.containsKey('addPostIDs')
+          ? l$addPostIDs == null
+              ? null
+              : Object.hashAll(l$addPostIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('removePostIDs')
+          ? l$removePostIDs == null
+              ? null
+              : Object.hashAll(l$removePostIDs.map((v) => v))
+          : const {}
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$UpdateDraftInput<TRes> {
+  factory CopyWith$Input$UpdateDraftInput(Input$UpdateDraftInput instance,
+          TRes Function(Input$UpdateDraftInput) then) =
+      _CopyWithImpl$Input$UpdateDraftInput;
+
+  factory CopyWith$Input$UpdateDraftInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$UpdateDraftInput;
+
+  TRes call(
+      {bool? clearOwner,
+      String? ownerID,
+      List<String>? addPostIDs,
+      List<String>? removePostIDs});
+}
+
+class _CopyWithImpl$Input$UpdateDraftInput<TRes>
+    implements CopyWith$Input$UpdateDraftInput<TRes> {
+  _CopyWithImpl$Input$UpdateDraftInput(this._instance, this._then);
+
+  final Input$UpdateDraftInput _instance;
+
+  final TRes Function(Input$UpdateDraftInput) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? clearOwner = _undefined,
+          Object? ownerID = _undefined,
+          Object? addPostIDs = _undefined,
+          Object? removePostIDs = _undefined}) =>
+      _then(Input$UpdateDraftInput._({
+        ..._instance._$data,
+        if (clearOwner != _undefined) 'clearOwner': (clearOwner as bool?),
+        if (ownerID != _undefined) 'ownerID': (ownerID as String?),
+        if (addPostIDs != _undefined)
+          'addPostIDs': (addPostIDs as List<String>?),
+        if (removePostIDs != _undefined)
+          'removePostIDs': (removePostIDs as List<String>?),
+      }));
+}
+
+class _CopyWithStubImpl$Input$UpdateDraftInput<TRes>
+    implements CopyWith$Input$UpdateDraftInput<TRes> {
+  _CopyWithStubImpl$Input$UpdateDraftInput(this._res);
+
+  TRes _res;
+
+  call(
+          {bool? clearOwner,
+          String? ownerID,
+          List<String>? addPostIDs,
+          List<String>? removePostIDs}) =>
+      _res;
 }
 
 class Input$UpdateHashtagInput {
@@ -6148,7 +7298,9 @@ class Input$UpdatePostInput {
           List<String>? addLikedUserIDs,
           List<String>? removeLikedUserIDs,
           List<String>? addBookmarkedUserIDs,
-          List<String>? removeBookmarkedUserIDs}) =>
+          List<String>? removeBookmarkedUserIDs,
+          List<String>? addDraftIDs,
+          List<String>? removeDraftIDs}) =>
       Input$UpdatePostInput._({
         if (updateTime != null) r'updateTime': updateTime,
         if (title != null) r'title': title,
@@ -6172,6 +7324,8 @@ class Input$UpdatePostInput {
           r'addBookmarkedUserIDs': addBookmarkedUserIDs,
         if (removeBookmarkedUserIDs != null)
           r'removeBookmarkedUserIDs': removeBookmarkedUserIDs,
+        if (addDraftIDs != null) r'addDraftIDs': addDraftIDs,
+        if (removeDraftIDs != null) r'removeDraftIDs': removeDraftIDs,
       });
 
   Input$UpdatePostInput._(this._$data);
@@ -6271,6 +7425,17 @@ class Input$UpdatePostInput {
               ?.map((e) => (e as String))
               .toList();
     }
+    if (data.containsKey('addDraftIDs')) {
+      final l$addDraftIDs = data['addDraftIDs'];
+      result$data['addDraftIDs'] =
+          (l$addDraftIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
+    if (data.containsKey('removeDraftIDs')) {
+      final l$removeDraftIDs = data['removeDraftIDs'];
+      result$data['removeDraftIDs'] = (l$removeDraftIDs as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
     return Input$UpdatePostInput._(result$data);
   }
 
@@ -6300,6 +7465,9 @@ class Input$UpdatePostInput {
       (_$data['addBookmarkedUserIDs'] as List<String>?);
   List<String>? get removeBookmarkedUserIDs =>
       (_$data['removeBookmarkedUserIDs'] as List<String>?);
+  List<String>? get addDraftIDs => (_$data['addDraftIDs'] as List<String>?);
+  List<String>? get removeDraftIDs =>
+      (_$data['removeDraftIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('updateTime')) {
@@ -6383,6 +7551,14 @@ class Input$UpdatePostInput {
       final l$removeBookmarkedUserIDs = removeBookmarkedUserIDs;
       result$data['removeBookmarkedUserIDs'] =
           l$removeBookmarkedUserIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('addDraftIDs')) {
+      final l$addDraftIDs = addDraftIDs;
+      result$data['addDraftIDs'] = l$addDraftIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('removeDraftIDs')) {
+      final l$removeDraftIDs = removeDraftIDs;
+      result$data['removeDraftIDs'] = l$removeDraftIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -6633,6 +7809,46 @@ class Input$UpdatePostInput {
     } else if (l$removeBookmarkedUserIDs != lOther$removeBookmarkedUserIDs) {
       return false;
     }
+    final l$addDraftIDs = addDraftIDs;
+    final lOther$addDraftIDs = other.addDraftIDs;
+    if (_$data.containsKey('addDraftIDs') !=
+        other._$data.containsKey('addDraftIDs')) {
+      return false;
+    }
+    if (l$addDraftIDs != null && lOther$addDraftIDs != null) {
+      if (l$addDraftIDs.length != lOther$addDraftIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$addDraftIDs.length; i++) {
+        final l$addDraftIDs$entry = l$addDraftIDs[i];
+        final lOther$addDraftIDs$entry = lOther$addDraftIDs[i];
+        if (l$addDraftIDs$entry != lOther$addDraftIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$addDraftIDs != lOther$addDraftIDs) {
+      return false;
+    }
+    final l$removeDraftIDs = removeDraftIDs;
+    final lOther$removeDraftIDs = other.removeDraftIDs;
+    if (_$data.containsKey('removeDraftIDs') !=
+        other._$data.containsKey('removeDraftIDs')) {
+      return false;
+    }
+    if (l$removeDraftIDs != null && lOther$removeDraftIDs != null) {
+      if (l$removeDraftIDs.length != lOther$removeDraftIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$removeDraftIDs.length; i++) {
+        final l$removeDraftIDs$entry = l$removeDraftIDs[i];
+        final lOther$removeDraftIDs$entry = lOther$removeDraftIDs[i];
+        if (l$removeDraftIDs$entry != lOther$removeDraftIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$removeDraftIDs != lOther$removeDraftIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -6657,6 +7873,8 @@ class Input$UpdatePostInput {
     final l$removeLikedUserIDs = removeLikedUserIDs;
     final l$addBookmarkedUserIDs = addBookmarkedUserIDs;
     final l$removeBookmarkedUserIDs = removeBookmarkedUserIDs;
+    final l$addDraftIDs = addDraftIDs;
+    final l$removeDraftIDs = removeDraftIDs;
     return Object.hashAll([
       _$data.containsKey('updateTime') ? l$updateTime : const {},
       _$data.containsKey('title') ? l$title : const {},
@@ -6700,6 +7918,16 @@ class Input$UpdatePostInput {
           ? l$removeBookmarkedUserIDs == null
               ? null
               : Object.hashAll(l$removeBookmarkedUserIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('addDraftIDs')
+          ? l$addDraftIDs == null
+              ? null
+              : Object.hashAll(l$addDraftIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('removeDraftIDs')
+          ? l$removeDraftIDs == null
+              ? null
+              : Object.hashAll(l$removeDraftIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -6732,7 +7960,9 @@ abstract class CopyWith$Input$UpdatePostInput<TRes> {
       List<String>? addLikedUserIDs,
       List<String>? removeLikedUserIDs,
       List<String>? addBookmarkedUserIDs,
-      List<String>? removeBookmarkedUserIDs});
+      List<String>? removeBookmarkedUserIDs,
+      List<String>? addDraftIDs,
+      List<String>? removeDraftIDs});
 }
 
 class _CopyWithImpl$Input$UpdatePostInput<TRes>
@@ -6764,7 +7994,9 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           Object? addLikedUserIDs = _undefined,
           Object? removeLikedUserIDs = _undefined,
           Object? addBookmarkedUserIDs = _undefined,
-          Object? removeBookmarkedUserIDs = _undefined}) =>
+          Object? removeBookmarkedUserIDs = _undefined,
+          Object? addDraftIDs = _undefined,
+          Object? removeDraftIDs = _undefined}) =>
       _then(Input$UpdatePostInput._({
         ..._instance._$data,
         if (updateTime != _undefined) 'updateTime': (updateTime as String?),
@@ -6794,6 +8026,10 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           'addBookmarkedUserIDs': (addBookmarkedUserIDs as List<String>?),
         if (removeBookmarkedUserIDs != _undefined)
           'removeBookmarkedUserIDs': (removeBookmarkedUserIDs as List<String>?),
+        if (addDraftIDs != _undefined)
+          'addDraftIDs': (addDraftIDs as List<String>?),
+        if (removeDraftIDs != _undefined)
+          'removeDraftIDs': (removeDraftIDs as List<String>?),
       }));
 }
 
@@ -6822,7 +8058,9 @@ class _CopyWithStubImpl$Input$UpdatePostInput<TRes>
           List<String>? addLikedUserIDs,
           List<String>? removeLikedUserIDs,
           List<String>? addBookmarkedUserIDs,
-          List<String>? removeBookmarkedUserIDs}) =>
+          List<String>? removeBookmarkedUserIDs,
+          List<String>? addDraftIDs,
+          List<String>? removeDraftIDs}) =>
       _res;
 }
 
@@ -6844,7 +8082,9 @@ class Input$UpdateUserInput {
           List<String>? addFollowerIDs,
           List<String>? removeFollowerIDs,
           List<String>? addFollowingIDs,
-          List<String>? removeFollowingIDs}) =>
+          List<String>? removeFollowingIDs,
+          List<String>? addDraftIDs,
+          List<String>? removeDraftIDs}) =>
       Input$UpdateUserInput._({
         if (name != null) r'name': name,
         if (clearUsername != null) r'clearUsername': clearUsername,
@@ -6867,6 +8107,8 @@ class Input$UpdateUserInput {
         if (addFollowingIDs != null) r'addFollowingIDs': addFollowingIDs,
         if (removeFollowingIDs != null)
           r'removeFollowingIDs': removeFollowingIDs,
+        if (addDraftIDs != null) r'addDraftIDs': addDraftIDs,
+        if (removeDraftIDs != null) r'removeDraftIDs': removeDraftIDs,
       });
 
   Input$UpdateUserInput._(this._$data);
@@ -6964,6 +8206,17 @@ class Input$UpdateUserInput {
               ?.map((e) => (e as String))
               .toList();
     }
+    if (data.containsKey('addDraftIDs')) {
+      final l$addDraftIDs = data['addDraftIDs'];
+      result$data['addDraftIDs'] =
+          (l$addDraftIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
+    if (data.containsKey('removeDraftIDs')) {
+      final l$removeDraftIDs = data['removeDraftIDs'];
+      result$data['removeDraftIDs'] = (l$removeDraftIDs as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
     return Input$UpdateUserInput._(result$data);
   }
 
@@ -6994,6 +8247,9 @@ class Input$UpdateUserInput {
       (_$data['addFollowingIDs'] as List<String>?);
   List<String>? get removeFollowingIDs =>
       (_$data['removeFollowingIDs'] as List<String>?);
+  List<String>? get addDraftIDs => (_$data['addDraftIDs'] as List<String>?);
+  List<String>? get removeDraftIDs =>
+      (_$data['removeDraftIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('name')) {
@@ -7070,6 +8326,14 @@ class Input$UpdateUserInput {
       final l$removeFollowingIDs = removeFollowingIDs;
       result$data['removeFollowingIDs'] =
           l$removeFollowingIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('addDraftIDs')) {
+      final l$addDraftIDs = addDraftIDs;
+      result$data['addDraftIDs'] = l$addDraftIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('removeDraftIDs')) {
+      final l$removeDraftIDs = removeDraftIDs;
+      result$data['removeDraftIDs'] = l$removeDraftIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -7350,6 +8614,46 @@ class Input$UpdateUserInput {
     } else if (l$removeFollowingIDs != lOther$removeFollowingIDs) {
       return false;
     }
+    final l$addDraftIDs = addDraftIDs;
+    final lOther$addDraftIDs = other.addDraftIDs;
+    if (_$data.containsKey('addDraftIDs') !=
+        other._$data.containsKey('addDraftIDs')) {
+      return false;
+    }
+    if (l$addDraftIDs != null && lOther$addDraftIDs != null) {
+      if (l$addDraftIDs.length != lOther$addDraftIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$addDraftIDs.length; i++) {
+        final l$addDraftIDs$entry = l$addDraftIDs[i];
+        final lOther$addDraftIDs$entry = lOther$addDraftIDs[i];
+        if (l$addDraftIDs$entry != lOther$addDraftIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$addDraftIDs != lOther$addDraftIDs) {
+      return false;
+    }
+    final l$removeDraftIDs = removeDraftIDs;
+    final lOther$removeDraftIDs = other.removeDraftIDs;
+    if (_$data.containsKey('removeDraftIDs') !=
+        other._$data.containsKey('removeDraftIDs')) {
+      return false;
+    }
+    if (l$removeDraftIDs != null && lOther$removeDraftIDs != null) {
+      if (l$removeDraftIDs.length != lOther$removeDraftIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$removeDraftIDs.length; i++) {
+        final l$removeDraftIDs$entry = l$removeDraftIDs[i];
+        final lOther$removeDraftIDs$entry = lOther$removeDraftIDs[i];
+        if (l$removeDraftIDs$entry != lOther$removeDraftIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$removeDraftIDs != lOther$removeDraftIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -7372,6 +8676,8 @@ class Input$UpdateUserInput {
     final l$removeFollowerIDs = removeFollowerIDs;
     final l$addFollowingIDs = addFollowingIDs;
     final l$removeFollowingIDs = removeFollowingIDs;
+    final l$addDraftIDs = addDraftIDs;
+    final l$removeDraftIDs = removeDraftIDs;
     return Object.hashAll([
       _$data.containsKey('name') ? l$name : const {},
       _$data.containsKey('clearUsername') ? l$clearUsername : const {},
@@ -7429,6 +8735,16 @@ class Input$UpdateUserInput {
           ? l$removeFollowingIDs == null
               ? null
               : Object.hashAll(l$removeFollowingIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('addDraftIDs')
+          ? l$addDraftIDs == null
+              ? null
+              : Object.hashAll(l$addDraftIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('removeDraftIDs')
+          ? l$removeDraftIDs == null
+              ? null
+              : Object.hashAll(l$removeDraftIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -7459,7 +8775,9 @@ abstract class CopyWith$Input$UpdateUserInput<TRes> {
       List<String>? addFollowerIDs,
       List<String>? removeFollowerIDs,
       List<String>? addFollowingIDs,
-      List<String>? removeFollowingIDs});
+      List<String>? removeFollowingIDs,
+      List<String>? addDraftIDs,
+      List<String>? removeDraftIDs});
 }
 
 class _CopyWithImpl$Input$UpdateUserInput<TRes>
@@ -7489,7 +8807,9 @@ class _CopyWithImpl$Input$UpdateUserInput<TRes>
           Object? addFollowerIDs = _undefined,
           Object? removeFollowerIDs = _undefined,
           Object? addFollowingIDs = _undefined,
-          Object? removeFollowingIDs = _undefined}) =>
+          Object? removeFollowingIDs = _undefined,
+          Object? addDraftIDs = _undefined,
+          Object? removeDraftIDs = _undefined}) =>
       _then(Input$UpdateUserInput._({
         ..._instance._$data,
         if (name != _undefined) 'name': (name as String?),
@@ -7521,6 +8841,10 @@ class _CopyWithImpl$Input$UpdateUserInput<TRes>
           'addFollowingIDs': (addFollowingIDs as List<String>?),
         if (removeFollowingIDs != _undefined)
           'removeFollowingIDs': (removeFollowingIDs as List<String>?),
+        if (addDraftIDs != _undefined)
+          'addDraftIDs': (addDraftIDs as List<String>?),
+        if (removeDraftIDs != _undefined)
+          'removeDraftIDs': (removeDraftIDs as List<String>?),
       }));
 }
 
@@ -7547,7 +8871,9 @@ class _CopyWithStubImpl$Input$UpdateUserInput<TRes>
           List<String>? addFollowerIDs,
           List<String>? removeFollowerIDs,
           List<String>? addFollowingIDs,
-          List<String>? removeFollowingIDs}) =>
+          List<String>? removeFollowingIDs,
+          List<String>? addDraftIDs,
+          List<String>? removeDraftIDs}) =>
       _res;
 }
 
@@ -7872,7 +9198,9 @@ class Input$UserWhereInput {
           bool? hasFollowers,
           List<Input$UserWhereInput>? hasFollowersWith,
           bool? hasFollowing,
-          List<Input$UserWhereInput>? hasFollowingWith}) =>
+          List<Input$UserWhereInput>? hasFollowingWith,
+          bool? hasDrafts,
+          List<Input$DraftWhereInput>? hasDraftsWith}) =>
       Input$UserWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -7961,6 +9289,8 @@ class Input$UserWhereInput {
         if (hasFollowersWith != null) r'hasFollowersWith': hasFollowersWith,
         if (hasFollowing != null) r'hasFollowing': hasFollowing,
         if (hasFollowingWith != null) r'hasFollowingWith': hasFollowingWith,
+        if (hasDrafts != null) r'hasDrafts': hasDrafts,
+        if (hasDraftsWith != null) r'hasDraftsWith': hasDraftsWith,
       });
 
   Input$UserWhereInput._(this._$data);
@@ -8321,6 +9651,17 @@ class Input$UserWhereInput {
               (e) => Input$UserWhereInput.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
+    if (data.containsKey('hasDrafts')) {
+      final l$hasDrafts = data['hasDrafts'];
+      result$data['hasDrafts'] = (l$hasDrafts as bool?);
+    }
+    if (data.containsKey('hasDraftsWith')) {
+      final l$hasDraftsWith = data['hasDraftsWith'];
+      result$data['hasDraftsWith'] = (l$hasDraftsWith as List<dynamic>?)
+          ?.map((e) =>
+              Input$DraftWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
     return Input$UserWhereInput._(result$data);
   }
 
@@ -8415,6 +9756,9 @@ class Input$UserWhereInput {
   bool? get hasFollowing => (_$data['hasFollowing'] as bool?);
   List<Input$UserWhereInput>? get hasFollowingWith =>
       (_$data['hasFollowingWith'] as List<Input$UserWhereInput>?);
+  bool? get hasDrafts => (_$data['hasDrafts'] as bool?);
+  List<Input$DraftWhereInput>? get hasDraftsWith =>
+      (_$data['hasDraftsWith'] as List<Input$DraftWhereInput>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('not')) {
@@ -8737,6 +10081,15 @@ class Input$UserWhereInput {
       final l$hasFollowingWith = hasFollowingWith;
       result$data['hasFollowingWith'] =
           l$hasFollowingWith?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasDrafts')) {
+      final l$hasDrafts = hasDrafts;
+      result$data['hasDrafts'] = l$hasDrafts;
+    }
+    if (_$data.containsKey('hasDraftsWith')) {
+      final l$hasDraftsWith = hasDraftsWith;
+      result$data['hasDraftsWith'] =
+          l$hasDraftsWith?.map((e) => e.toJson()).toList();
     }
     return result$data;
   }
@@ -9634,6 +10987,35 @@ class Input$UserWhereInput {
     } else if (l$hasFollowingWith != lOther$hasFollowingWith) {
       return false;
     }
+    final l$hasDrafts = hasDrafts;
+    final lOther$hasDrafts = other.hasDrafts;
+    if (_$data.containsKey('hasDrafts') !=
+        other._$data.containsKey('hasDrafts')) {
+      return false;
+    }
+    if (l$hasDrafts != lOther$hasDrafts) {
+      return false;
+    }
+    final l$hasDraftsWith = hasDraftsWith;
+    final lOther$hasDraftsWith = other.hasDraftsWith;
+    if (_$data.containsKey('hasDraftsWith') !=
+        other._$data.containsKey('hasDraftsWith')) {
+      return false;
+    }
+    if (l$hasDraftsWith != null && lOther$hasDraftsWith != null) {
+      if (l$hasDraftsWith.length != lOther$hasDraftsWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasDraftsWith.length; i++) {
+        final l$hasDraftsWith$entry = l$hasDraftsWith[i];
+        final lOther$hasDraftsWith$entry = lOther$hasDraftsWith[i];
+        if (l$hasDraftsWith$entry != lOther$hasDraftsWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasDraftsWith != lOther$hasDraftsWith) {
+      return false;
+    }
     return true;
   }
 
@@ -9718,6 +11100,8 @@ class Input$UserWhereInput {
     final l$hasFollowersWith = hasFollowersWith;
     final l$hasFollowing = hasFollowing;
     final l$hasFollowingWith = hasFollowingWith;
+    final l$hasDrafts = hasDrafts;
+    final l$hasDraftsWith = hasDraftsWith;
     return Object.hashAll([
       _$data.containsKey('not') ? l$not : const {},
       _$data.containsKey('and')
@@ -9879,6 +11263,12 @@ class Input$UserWhereInput {
           ? l$hasFollowingWith == null
               ? null
               : Object.hashAll(l$hasFollowingWith.map((v) => v))
+          : const {},
+      _$data.containsKey('hasDrafts') ? l$hasDrafts : const {},
+      _$data.containsKey('hasDraftsWith')
+          ? l$hasDraftsWith == null
+              ? null
+              : Object.hashAll(l$hasDraftsWith.map((v) => v))
           : const {}
     ]);
   }
@@ -9971,7 +11361,9 @@ abstract class CopyWith$Input$UserWhereInput<TRes> {
       bool? hasFollowers,
       List<Input$UserWhereInput>? hasFollowersWith,
       bool? hasFollowing,
-      List<Input$UserWhereInput>? hasFollowingWith});
+      List<Input$UserWhereInput>? hasFollowingWith,
+      bool? hasDrafts,
+      List<Input$DraftWhereInput>? hasDraftsWith});
   CopyWith$Input$UserWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$UserWhereInput>? Function(
@@ -10000,6 +11392,10 @@ abstract class CopyWith$Input$UserWhereInput<TRes> {
   TRes hasFollowingWith(
       Iterable<Input$UserWhereInput>? Function(
               Iterable<CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
+          _fn);
+  TRes hasDraftsWith(
+      Iterable<Input$DraftWhereInput>? Function(
+              Iterable<CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
           _fn);
 }
 
@@ -10092,7 +11488,9 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
           Object? hasFollowers = _undefined,
           Object? hasFollowersWith = _undefined,
           Object? hasFollowing = _undefined,
-          Object? hasFollowingWith = _undefined}) =>
+          Object? hasFollowingWith = _undefined,
+          Object? hasDrafts = _undefined,
+          Object? hasDraftsWith = _undefined}) =>
       _then(Input$UserWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$UserWhereInput?),
@@ -10216,6 +11614,9 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
         if (hasFollowing != _undefined) 'hasFollowing': (hasFollowing as bool?),
         if (hasFollowingWith != _undefined)
           'hasFollowingWith': (hasFollowingWith as List<Input$UserWhereInput>?),
+        if (hasDrafts != _undefined) 'hasDrafts': (hasDrafts as bool?),
+        if (hasDraftsWith != _undefined)
+          'hasDraftsWith': (hasDraftsWith as List<Input$DraftWhereInput>?),
       }));
   CopyWith$Input$UserWhereInput<TRes> get not {
     final local$not = _instance.not;
@@ -10286,6 +11687,15 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
       call(
           hasFollowingWith: _fn(_instance.hasFollowingWith
                   ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasDraftsWith(
+          Iterable<Input$DraftWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
+              _fn) =>
+      call(
+          hasDraftsWith: _fn(_instance.hasDraftsWith
+                  ?.map((e) => CopyWith$Input$DraftWhereInput(e, (i) => i)))
               ?.toList());
 }
 
@@ -10374,7 +11784,9 @@ class _CopyWithStubImpl$Input$UserWhereInput<TRes>
           bool? hasFollowers,
           List<Input$UserWhereInput>? hasFollowersWith,
           bool? hasFollowing,
-          List<Input$UserWhereInput>? hasFollowingWith}) =>
+          List<Input$UserWhereInput>? hasFollowingWith,
+          bool? hasDrafts,
+          List<Input$DraftWhereInput>? hasDraftsWith}) =>
       _res;
   CopyWith$Input$UserWhereInput<TRes> get not =>
       CopyWith$Input$UserWhereInput.stub(_res);
@@ -10385,6 +11797,7 @@ class _CopyWithStubImpl$Input$UserWhereInput<TRes>
   hasBookmarkedPostsWith(_fn) => _res;
   hasFollowersWith(_fn) => _res;
   hasFollowingWith(_fn) => _res;
+  hasDraftsWith(_fn) => _res;
 }
 
 class Input$WorkWhereInput {
@@ -11830,5 +13243,5 @@ Enum$PostPostType fromJson$Enum$PostPostType(String value) {
 }
 
 const possibleTypesMap = {
-  'Node': {'Category', 'Hashtag', 'Post', 'User', 'Work'}
+  'Node': {'Category', 'Draft', 'Hashtag', 'Post', 'User', 'Work'}
 };

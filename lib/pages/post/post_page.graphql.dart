@@ -1597,6 +1597,1150 @@ class _CopyWithStubImpl$Query$SearchHashtags$hashtags$edges$node<TRes>
   call({String? id, String? title, String? $__typename}) => _res;
 }
 
+class Variables$Query$Drafts {
+  factory Variables$Query$Drafts({required String userID}) =>
+      Variables$Query$Drafts._({
+        r'userID': userID,
+      });
+
+  Variables$Query$Drafts._(this._$data);
+
+  factory Variables$Query$Drafts.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$userID = data['userID'];
+    result$data['userID'] = (l$userID as String);
+    return Variables$Query$Drafts._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get userID => (_$data['userID'] as String);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$userID = userID;
+    result$data['userID'] = l$userID;
+    return result$data;
+  }
+
+  CopyWith$Variables$Query$Drafts<Variables$Query$Drafts> get copyWith =>
+      CopyWith$Variables$Query$Drafts(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Query$Drafts) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$userID = userID;
+    final lOther$userID = other.userID;
+    if (l$userID != lOther$userID) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$userID = userID;
+    return Object.hashAll([l$userID]);
+  }
+}
+
+abstract class CopyWith$Variables$Query$Drafts<TRes> {
+  factory CopyWith$Variables$Query$Drafts(Variables$Query$Drafts instance,
+          TRes Function(Variables$Query$Drafts) then) =
+      _CopyWithImpl$Variables$Query$Drafts;
+
+  factory CopyWith$Variables$Query$Drafts.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Query$Drafts;
+
+  TRes call({String? userID});
+}
+
+class _CopyWithImpl$Variables$Query$Drafts<TRes>
+    implements CopyWith$Variables$Query$Drafts<TRes> {
+  _CopyWithImpl$Variables$Query$Drafts(this._instance, this._then);
+
+  final Variables$Query$Drafts _instance;
+
+  final TRes Function(Variables$Query$Drafts) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? userID = _undefined}) => _then(Variables$Query$Drafts._({
+        ..._instance._$data,
+        if (userID != _undefined && userID != null)
+          'userID': (userID as String),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Query$Drafts<TRes>
+    implements CopyWith$Variables$Query$Drafts<TRes> {
+  _CopyWithStubImpl$Variables$Query$Drafts(this._res);
+
+  TRes _res;
+
+  call({String? userID}) => _res;
+}
+
+class Query$Drafts {
+  Query$Drafts({required this.drafts, required this.$__typename});
+
+  factory Query$Drafts.fromJson(Map<String, dynamic> json) {
+    final l$drafts = json['drafts'];
+    final l$$__typename = json['__typename'];
+    return Query$Drafts(
+        drafts:
+            Query$Drafts$drafts.fromJson((l$drafts as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final Query$Drafts$drafts drafts;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$drafts = drafts;
+    _resultData['drafts'] = l$drafts.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$drafts = drafts;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$drafts, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$Drafts) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$drafts = drafts;
+    final lOther$drafts = other.drafts;
+    if (l$drafts != lOther$drafts) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$Drafts on Query$Drafts {
+  CopyWith$Query$Drafts<Query$Drafts> get copyWith =>
+      CopyWith$Query$Drafts(this, (i) => i);
+}
+
+abstract class CopyWith$Query$Drafts<TRes> {
+  factory CopyWith$Query$Drafts(
+          Query$Drafts instance, TRes Function(Query$Drafts) then) =
+      _CopyWithImpl$Query$Drafts;
+
+  factory CopyWith$Query$Drafts.stub(TRes res) = _CopyWithStubImpl$Query$Drafts;
+
+  TRes call({Query$Drafts$drafts? drafts, String? $__typename});
+  CopyWith$Query$Drafts$drafts<TRes> get drafts;
+}
+
+class _CopyWithImpl$Query$Drafts<TRes> implements CopyWith$Query$Drafts<TRes> {
+  _CopyWithImpl$Query$Drafts(this._instance, this._then);
+
+  final Query$Drafts _instance;
+
+  final TRes Function(Query$Drafts) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? drafts = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$Drafts(
+          drafts: drafts == _undefined || drafts == null
+              ? _instance.drafts
+              : (drafts as Query$Drafts$drafts),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Query$Drafts$drafts<TRes> get drafts {
+    final local$drafts = _instance.drafts;
+    return CopyWith$Query$Drafts$drafts(local$drafts, (e) => call(drafts: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$Drafts<TRes>
+    implements CopyWith$Query$Drafts<TRes> {
+  _CopyWithStubImpl$Query$Drafts(this._res);
+
+  TRes _res;
+
+  call({Query$Drafts$drafts? drafts, String? $__typename}) => _res;
+  CopyWith$Query$Drafts$drafts<TRes> get drafts =>
+      CopyWith$Query$Drafts$drafts.stub(_res);
+}
+
+const documentNodeQueryDrafts = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.query,
+      name: NameNode(value: 'Drafts'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'userID')),
+            type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'drafts'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'where'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'hasOwnerWith'),
+                        value: ObjectValueNode(fields: [
+                          ObjectFieldNode(
+                              name: NameNode(value: 'id'),
+                              value:
+                                  VariableNode(name: NameNode(value: 'userID')))
+                        ]))
+                  ]))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'edges'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'node'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: SelectionSetNode(selections: [
+                          FieldNode(
+                              name: NameNode(value: 'id'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
+                              name: NameNode(value: 'posts'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: SelectionSetNode(selections: [
+                                FieldNode(
+                                    name: NameNode(value: 'id'),
+                                    alias: null,
+                                    arguments: [],
+                                    directives: [],
+                                    selectionSet: null),
+                                FieldNode(
+                                    name: NameNode(value: 'title'),
+                                    alias: null,
+                                    arguments: [],
+                                    directives: [],
+                                    selectionSet: null),
+                                FieldNode(
+                                    name: NameNode(value: 'category'),
+                                    alias: null,
+                                    arguments: [],
+                                    directives: [],
+                                    selectionSet: SelectionSetNode(selections: [
+                                      FieldNode(
+                                          name: NameNode(value: 'id'),
+                                          alias: null,
+                                          arguments: [],
+                                          directives: [],
+                                          selectionSet: null),
+                                      FieldNode(
+                                          name: NameNode(value: 'name'),
+                                          alias: null,
+                                          arguments: [],
+                                          directives: [],
+                                          selectionSet: null),
+                                      FieldNode(
+                                          name: NameNode(value: '__typename'),
+                                          alias: null,
+                                          arguments: [],
+                                          directives: [],
+                                          selectionSet: null)
+                                    ])),
+                                FieldNode(
+                                    name: NameNode(value: 'type'),
+                                    alias: null,
+                                    arguments: [],
+                                    directives: [],
+                                    selectionSet: null),
+                                FieldNode(
+                                    name: NameNode(value: '__typename'),
+                                    alias: null,
+                                    arguments: [],
+                                    directives: [],
+                                    selectionSet: null)
+                              ])),
+                          FieldNode(
+                              name: NameNode(value: '__typename'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null)
+                        ])),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+]);
+Query$Drafts _parserFn$Query$Drafts(Map<String, dynamic> data) =>
+    Query$Drafts.fromJson(data);
+
+class Options$Query$Drafts extends graphql.QueryOptions<Query$Drafts> {
+  Options$Query$Drafts(
+      {String? operationName,
+      required Variables$Query$Drafts variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      Duration? pollInterval,
+      graphql.Context? context})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            pollInterval: pollInterval,
+            context: context,
+            document: documentNodeQueryDrafts,
+            parserFn: _parserFn$Query$Drafts);
+}
+
+class WatchOptions$Query$Drafts
+    extends graphql.WatchQueryOptions<Query$Drafts> {
+  WatchOptions$Query$Drafts(
+      {String? operationName,
+      required Variables$Query$Drafts variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeQueryDrafts,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Query$Drafts);
+}
+
+class FetchMoreOptions$Query$Drafts extends graphql.FetchMoreOptions {
+  FetchMoreOptions$Query$Drafts(
+      {required graphql.UpdateQuery updateQuery,
+      required Variables$Query$Drafts variables})
+      : super(
+            updateQuery: updateQuery,
+            variables: variables.toJson(),
+            document: documentNodeQueryDrafts);
+}
+
+extension ClientExtension$Query$Drafts on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Query$Drafts>> query$Drafts(
+          Options$Query$Drafts options) async =>
+      await this.query(options);
+  graphql.ObservableQuery<Query$Drafts> watchQuery$Drafts(
+          WatchOptions$Query$Drafts options) =>
+      this.watchQuery(options);
+  void writeQuery$Drafts(
+          {required Query$Drafts data,
+          required Variables$Query$Drafts variables,
+          bool broadcast = true}) =>
+      this.writeQuery(
+          graphql.Request(
+              operation: graphql.Operation(document: documentNodeQueryDrafts),
+              variables: variables.toJson()),
+          data: data.toJson(),
+          broadcast: broadcast);
+  Query$Drafts? readQuery$Drafts(
+      {required Variables$Query$Drafts variables, bool optimistic = true}) {
+    final result = this.readQuery(
+        graphql.Request(
+            operation: graphql.Operation(document: documentNodeQueryDrafts),
+            variables: variables.toJson()),
+        optimistic: optimistic);
+    return result == null ? null : Query$Drafts.fromJson(result);
+  }
+}
+
+graphql_flutter.QueryHookResult<Query$Drafts> useQuery$Drafts(
+        Options$Query$Drafts options) =>
+    graphql_flutter.useQuery(options);
+graphql.ObservableQuery<Query$Drafts> useWatchQuery$Drafts(
+        WatchOptions$Query$Drafts options) =>
+    graphql_flutter.useWatchQuery(options);
+
+class Query$Drafts$Widget extends graphql_flutter.Query<Query$Drafts> {
+  Query$Drafts$Widget(
+      {widgets.Key? key,
+      required Options$Query$Drafts options,
+      required graphql_flutter.QueryBuilder<Query$Drafts> builder})
+      : super(key: key, options: options, builder: builder);
+}
+
+class Query$Drafts$drafts {
+  Query$Drafts$drafts({this.edges, required this.$__typename});
+
+  factory Query$Drafts$drafts.fromJson(Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Query$Drafts$drafts(
+        edges: (l$edges as List<dynamic>?)
+            ?.map((e) => e == null
+                ? null
+                : Query$Drafts$drafts$edges.fromJson(
+                    (e as Map<String, dynamic>)))
+            .toList(),
+        $__typename: (l$$__typename as String));
+  }
+
+  final List<Query$Drafts$drafts$edges?>? edges;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges?.map((e) => e?.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$Drafts$drafts) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges != null && lOther$edges != null) {
+      if (l$edges.length != lOther$edges.length) {
+        return false;
+      }
+      for (int i = 0; i < l$edges.length; i++) {
+        final l$edges$entry = l$edges[i];
+        final lOther$edges$entry = lOther$edges[i];
+        if (l$edges$entry != lOther$edges$entry) {
+          return false;
+        }
+      }
+    } else if (l$edges != lOther$edges) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$Drafts$drafts on Query$Drafts$drafts {
+  CopyWith$Query$Drafts$drafts<Query$Drafts$drafts> get copyWith =>
+      CopyWith$Query$Drafts$drafts(this, (i) => i);
+}
+
+abstract class CopyWith$Query$Drafts$drafts<TRes> {
+  factory CopyWith$Query$Drafts$drafts(Query$Drafts$drafts instance,
+          TRes Function(Query$Drafts$drafts) then) =
+      _CopyWithImpl$Query$Drafts$drafts;
+
+  factory CopyWith$Query$Drafts$drafts.stub(TRes res) =
+      _CopyWithStubImpl$Query$Drafts$drafts;
+
+  TRes call({List<Query$Drafts$drafts$edges?>? edges, String? $__typename});
+  TRes edges(
+      Iterable<Query$Drafts$drafts$edges?>? Function(
+              Iterable<
+                  CopyWith$Query$Drafts$drafts$edges<
+                      Query$Drafts$drafts$edges>?>?)
+          _fn);
+}
+
+class _CopyWithImpl$Query$Drafts$drafts<TRes>
+    implements CopyWith$Query$Drafts$drafts<TRes> {
+  _CopyWithImpl$Query$Drafts$drafts(this._instance, this._then);
+
+  final Query$Drafts$drafts _instance;
+
+  final TRes Function(Query$Drafts$drafts) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$Drafts$drafts(
+          edges: edges == _undefined
+              ? _instance.edges
+              : (edges as List<Query$Drafts$drafts$edges?>?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  TRes edges(
+          Iterable<Query$Drafts$drafts$edges?>? Function(
+                  Iterable<
+                      CopyWith$Query$Drafts$drafts$edges<
+                          Query$Drafts$drafts$edges>?>?)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges?.map((e) => e == null
+              ? null
+              : CopyWith$Query$Drafts$drafts$edges(e, (i) => i)))?.toList());
+}
+
+class _CopyWithStubImpl$Query$Drafts$drafts<TRes>
+    implements CopyWith$Query$Drafts$drafts<TRes> {
+  _CopyWithStubImpl$Query$Drafts$drafts(this._res);
+
+  TRes _res;
+
+  call({List<Query$Drafts$drafts$edges?>? edges, String? $__typename}) => _res;
+  edges(_fn) => _res;
+}
+
+class Query$Drafts$drafts$edges {
+  Query$Drafts$drafts$edges({this.node, required this.$__typename});
+
+  factory Query$Drafts$drafts$edges.fromJson(Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$Drafts$drafts$edges(
+        node: l$node == null
+            ? null
+            : Query$Drafts$drafts$edges$node.fromJson(
+                (l$node as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final Query$Drafts$drafts$edges$node? node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$node, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$Drafts$drafts$edges) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$Drafts$drafts$edges
+    on Query$Drafts$drafts$edges {
+  CopyWith$Query$Drafts$drafts$edges<Query$Drafts$drafts$edges> get copyWith =>
+      CopyWith$Query$Drafts$drafts$edges(this, (i) => i);
+}
+
+abstract class CopyWith$Query$Drafts$drafts$edges<TRes> {
+  factory CopyWith$Query$Drafts$drafts$edges(Query$Drafts$drafts$edges instance,
+          TRes Function(Query$Drafts$drafts$edges) then) =
+      _CopyWithImpl$Query$Drafts$drafts$edges;
+
+  factory CopyWith$Query$Drafts$drafts$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$Drafts$drafts$edges;
+
+  TRes call({Query$Drafts$drafts$edges$node? node, String? $__typename});
+  CopyWith$Query$Drafts$drafts$edges$node<TRes> get node;
+}
+
+class _CopyWithImpl$Query$Drafts$drafts$edges<TRes>
+    implements CopyWith$Query$Drafts$drafts$edges<TRes> {
+  _CopyWithImpl$Query$Drafts$drafts$edges(this._instance, this._then);
+
+  final Query$Drafts$drafts$edges _instance;
+
+  final TRes Function(Query$Drafts$drafts$edges) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$Drafts$drafts$edges(
+          node: node == _undefined
+              ? _instance.node
+              : (node as Query$Drafts$drafts$edges$node?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Query$Drafts$drafts$edges$node<TRes> get node {
+    final local$node = _instance.node;
+    return local$node == null
+        ? CopyWith$Query$Drafts$drafts$edges$node.stub(_then(_instance))
+        : CopyWith$Query$Drafts$drafts$edges$node(
+            local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$Drafts$drafts$edges<TRes>
+    implements CopyWith$Query$Drafts$drafts$edges<TRes> {
+  _CopyWithStubImpl$Query$Drafts$drafts$edges(this._res);
+
+  TRes _res;
+
+  call({Query$Drafts$drafts$edges$node? node, String? $__typename}) => _res;
+  CopyWith$Query$Drafts$drafts$edges$node<TRes> get node =>
+      CopyWith$Query$Drafts$drafts$edges$node.stub(_res);
+}
+
+class Query$Drafts$drafts$edges$node {
+  Query$Drafts$drafts$edges$node(
+      {required this.id, this.posts, required this.$__typename});
+
+  factory Query$Drafts$drafts$edges$node.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$posts = json['posts'];
+    final l$$__typename = json['__typename'];
+    return Query$Drafts$drafts$edges$node(
+        id: (l$id as String),
+        posts: (l$posts as List<dynamic>?)
+            ?.map((e) => Query$Drafts$drafts$edges$node$posts.fromJson(
+                (e as Map<String, dynamic>)))
+            .toList(),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final List<Query$Drafts$drafts$edges$node$posts>? posts;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$posts = posts;
+    _resultData['posts'] = l$posts?.map((e) => e.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$posts = posts;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$posts == null ? null : Object.hashAll(l$posts.map((v) => v)),
+      l$$__typename
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$Drafts$drafts$edges$node) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$posts = posts;
+    final lOther$posts = other.posts;
+    if (l$posts != null && lOther$posts != null) {
+      if (l$posts.length != lOther$posts.length) {
+        return false;
+      }
+      for (int i = 0; i < l$posts.length; i++) {
+        final l$posts$entry = l$posts[i];
+        final lOther$posts$entry = lOther$posts[i];
+        if (l$posts$entry != lOther$posts$entry) {
+          return false;
+        }
+      }
+    } else if (l$posts != lOther$posts) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$Drafts$drafts$edges$node
+    on Query$Drafts$drafts$edges$node {
+  CopyWith$Query$Drafts$drafts$edges$node<Query$Drafts$drafts$edges$node>
+      get copyWith => CopyWith$Query$Drafts$drafts$edges$node(this, (i) => i);
+}
+
+abstract class CopyWith$Query$Drafts$drafts$edges$node<TRes> {
+  factory CopyWith$Query$Drafts$drafts$edges$node(
+          Query$Drafts$drafts$edges$node instance,
+          TRes Function(Query$Drafts$drafts$edges$node) then) =
+      _CopyWithImpl$Query$Drafts$drafts$edges$node;
+
+  factory CopyWith$Query$Drafts$drafts$edges$node.stub(TRes res) =
+      _CopyWithStubImpl$Query$Drafts$drafts$edges$node;
+
+  TRes call(
+      {String? id,
+      List<Query$Drafts$drafts$edges$node$posts>? posts,
+      String? $__typename});
+  TRes posts(
+      Iterable<Query$Drafts$drafts$edges$node$posts>? Function(
+              Iterable<
+                  CopyWith$Query$Drafts$drafts$edges$node$posts<
+                      Query$Drafts$drafts$edges$node$posts>>?)
+          _fn);
+}
+
+class _CopyWithImpl$Query$Drafts$drafts$edges$node<TRes>
+    implements CopyWith$Query$Drafts$drafts$edges$node<TRes> {
+  _CopyWithImpl$Query$Drafts$drafts$edges$node(this._instance, this._then);
+
+  final Query$Drafts$drafts$edges$node _instance;
+
+  final TRes Function(Query$Drafts$drafts$edges$node) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? id = _undefined,
+          Object? posts = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$Drafts$drafts$edges$node(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          posts: posts == _undefined
+              ? _instance.posts
+              : (posts as List<Query$Drafts$drafts$edges$node$posts>?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  TRes posts(
+          Iterable<Query$Drafts$drafts$edges$node$posts>? Function(
+                  Iterable<
+                      CopyWith$Query$Drafts$drafts$edges$node$posts<
+                          Query$Drafts$drafts$edges$node$posts>>?)
+              _fn) =>
+      call(
+          posts: _fn(_instance.posts?.map((e) =>
+                  CopyWith$Query$Drafts$drafts$edges$node$posts(e, (i) => i)))
+              ?.toList());
+}
+
+class _CopyWithStubImpl$Query$Drafts$drafts$edges$node<TRes>
+    implements CopyWith$Query$Drafts$drafts$edges$node<TRes> {
+  _CopyWithStubImpl$Query$Drafts$drafts$edges$node(this._res);
+
+  TRes _res;
+
+  call(
+          {String? id,
+          List<Query$Drafts$drafts$edges$node$posts>? posts,
+          String? $__typename}) =>
+      _res;
+  posts(_fn) => _res;
+}
+
+class Query$Drafts$drafts$edges$node$posts {
+  Query$Drafts$drafts$edges$node$posts(
+      {required this.id,
+      required this.title,
+      required this.category,
+      required this.type,
+      required this.$__typename});
+
+  factory Query$Drafts$drafts$edges$node$posts.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$title = json['title'];
+    final l$category = json['category'];
+    final l$type = json['type'];
+    final l$$__typename = json['__typename'];
+    return Query$Drafts$drafts$edges$node$posts(
+        id: (l$id as String),
+        title: (l$title as String),
+        category: Query$Drafts$drafts$edges$node$posts$category.fromJson(
+            (l$category as Map<String, dynamic>)),
+        type: fromJson$Enum$PostPostType((l$type as String)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String title;
+
+  final Query$Drafts$drafts$edges$node$posts$category category;
+
+  final Enum$PostPostType type;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$category = category;
+    _resultData['category'] = l$category.toJson();
+    final l$type = type;
+    _resultData['type'] = toJson$Enum$PostPostType(l$type);
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$category = category;
+    final l$type = type;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$title, l$category, l$type, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$Drafts$drafts$edges$node$posts) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$category = category;
+    final lOther$category = other.category;
+    if (l$category != lOther$category) {
+      return false;
+    }
+    final l$type = type;
+    final lOther$type = other.type;
+    if (l$type != lOther$type) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$Drafts$drafts$edges$node$posts
+    on Query$Drafts$drafts$edges$node$posts {
+  CopyWith$Query$Drafts$drafts$edges$node$posts<
+          Query$Drafts$drafts$edges$node$posts>
+      get copyWith =>
+          CopyWith$Query$Drafts$drafts$edges$node$posts(this, (i) => i);
+}
+
+abstract class CopyWith$Query$Drafts$drafts$edges$node$posts<TRes> {
+  factory CopyWith$Query$Drafts$drafts$edges$node$posts(
+          Query$Drafts$drafts$edges$node$posts instance,
+          TRes Function(Query$Drafts$drafts$edges$node$posts) then) =
+      _CopyWithImpl$Query$Drafts$drafts$edges$node$posts;
+
+  factory CopyWith$Query$Drafts$drafts$edges$node$posts.stub(TRes res) =
+      _CopyWithStubImpl$Query$Drafts$drafts$edges$node$posts;
+
+  TRes call(
+      {String? id,
+      String? title,
+      Query$Drafts$drafts$edges$node$posts$category? category,
+      Enum$PostPostType? type,
+      String? $__typename});
+  CopyWith$Query$Drafts$drafts$edges$node$posts$category<TRes> get category;
+}
+
+class _CopyWithImpl$Query$Drafts$drafts$edges$node$posts<TRes>
+    implements CopyWith$Query$Drafts$drafts$edges$node$posts<TRes> {
+  _CopyWithImpl$Query$Drafts$drafts$edges$node$posts(
+      this._instance, this._then);
+
+  final Query$Drafts$drafts$edges$node$posts _instance;
+
+  final TRes Function(Query$Drafts$drafts$edges$node$posts) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? id = _undefined,
+          Object? title = _undefined,
+          Object? category = _undefined,
+          Object? type = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$Drafts$drafts$edges$node$posts(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          title: title == _undefined || title == null
+              ? _instance.title
+              : (title as String),
+          category: category == _undefined || category == null
+              ? _instance.category
+              : (category as Query$Drafts$drafts$edges$node$posts$category),
+          type: type == _undefined || type == null
+              ? _instance.type
+              : (type as Enum$PostPostType),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Query$Drafts$drafts$edges$node$posts$category<TRes> get category {
+    final local$category = _instance.category;
+    return CopyWith$Query$Drafts$drafts$edges$node$posts$category(
+        local$category, (e) => call(category: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$Drafts$drafts$edges$node$posts<TRes>
+    implements CopyWith$Query$Drafts$drafts$edges$node$posts<TRes> {
+  _CopyWithStubImpl$Query$Drafts$drafts$edges$node$posts(this._res);
+
+  TRes _res;
+
+  call(
+          {String? id,
+          String? title,
+          Query$Drafts$drafts$edges$node$posts$category? category,
+          Enum$PostPostType? type,
+          String? $__typename}) =>
+      _res;
+  CopyWith$Query$Drafts$drafts$edges$node$posts$category<TRes> get category =>
+      CopyWith$Query$Drafts$drafts$edges$node$posts$category.stub(_res);
+}
+
+class Query$Drafts$drafts$edges$node$posts$category {
+  Query$Drafts$drafts$edges$node$posts$category(
+      {required this.id, required this.name, required this.$__typename});
+
+  factory Query$Drafts$drafts$edges$node$posts$category.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$name = json['name'];
+    final l$$__typename = json['__typename'];
+    return Query$Drafts$drafts$edges$node$posts$category(
+        id: (l$id as String),
+        name: (l$name as String),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String name;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$name = name;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$name, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$Drafts$drafts$edges$node$posts$category) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$Drafts$drafts$edges$node$posts$category
+    on Query$Drafts$drafts$edges$node$posts$category {
+  CopyWith$Query$Drafts$drafts$edges$node$posts$category<
+          Query$Drafts$drafts$edges$node$posts$category>
+      get copyWith => CopyWith$Query$Drafts$drafts$edges$node$posts$category(
+          this, (i) => i);
+}
+
+abstract class CopyWith$Query$Drafts$drafts$edges$node$posts$category<TRes> {
+  factory CopyWith$Query$Drafts$drafts$edges$node$posts$category(
+          Query$Drafts$drafts$edges$node$posts$category instance,
+          TRes Function(Query$Drafts$drafts$edges$node$posts$category) then) =
+      _CopyWithImpl$Query$Drafts$drafts$edges$node$posts$category;
+
+  factory CopyWith$Query$Drafts$drafts$edges$node$posts$category.stub(
+          TRes res) =
+      _CopyWithStubImpl$Query$Drafts$drafts$edges$node$posts$category;
+
+  TRes call({String? id, String? name, String? $__typename});
+}
+
+class _CopyWithImpl$Query$Drafts$drafts$edges$node$posts$category<TRes>
+    implements CopyWith$Query$Drafts$drafts$edges$node$posts$category<TRes> {
+  _CopyWithImpl$Query$Drafts$drafts$edges$node$posts$category(
+      this._instance, this._then);
+
+  final Query$Drafts$drafts$edges$node$posts$category _instance;
+
+  final TRes Function(Query$Drafts$drafts$edges$node$posts$category) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? id = _undefined,
+          Object? name = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$Drafts$drafts$edges$node$posts$category(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          name: name == _undefined || name == null
+              ? _instance.name
+              : (name as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$Drafts$drafts$edges$node$posts$category<TRes>
+    implements CopyWith$Query$Drafts$drafts$edges$node$posts$category<TRes> {
+  _CopyWithStubImpl$Query$Drafts$drafts$edges$node$posts$category(this._res);
+
+  TRes _res;
+
+  call({String? id, String? name, String? $__typename}) => _res;
+}
+
 class Variables$Mutation$CreatePosts {
   factory Variables$Mutation$CreatePosts(
           {required Input$CreatePostInput createPostInput,

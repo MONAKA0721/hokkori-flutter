@@ -3812,6 +3812,8 @@ class Query$Work$work$$Work implements Query$Work$work {
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
     final l$id = id;
     _resultData['id'] = l$id;
     final l$title = title;
@@ -3820,8 +3822,6 @@ class Query$Work$work$$Work implements Query$Work$work {
     _resultData['thumbnail'] = l$thumbnail;
     final l$posts = posts;
     _resultData['posts'] = l$posts?.map((e) => e.toJson()).toList();
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
     return _resultData;
   }
 

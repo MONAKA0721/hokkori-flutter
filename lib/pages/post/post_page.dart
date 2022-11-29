@@ -3,10 +3,13 @@ import 'dart:io';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/pages/post/action_row.dart';
+import 'package:hokkori/pages/post/draft_page.dart';
 import 'package:hokkori/pages/post/post_page.graphql.dart';
+import 'package:hokkori/pages/search/custom_popup_route.dart';
 import 'package:hokkori/utils/categories.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
@@ -16,9 +19,11 @@ import 'package:image_picker/image_picker.dart';
 import 'label.dart';
 import 'model.dart';
 
-String listHashtags = r"""
-query Hashtags($searchText: String) {
-  hashtags(where: {titleContainsFold: $searchText}) {
+String getDrafts = r"""
+query GetDrafts($userID: ID!) {
+  posts(where: {hasOwnerWith: {
+    id: $userID
+  }}) {
     edges {
       node {
         id
@@ -28,6 +33,34 @@ query Hashtags($searchText: String) {
   }
 }
 """;
+
+class PostPageNavigator extends HookWidget {
+  final Function navigate;
+  const PostPageNavigator({Key? key, required this.navigate}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final client = useGraphQLClient();
+    return Navigator(
+      initialRoute: '/',
+      onGenerateRoute: (RouteSettings settings) {
+        WidgetBuilder builder;
+        switch (settings.name) {
+          case '/':
+            builder = (BuildContext context) =>
+                PostPage(navigate: navigate, client: client);
+            break;
+          case '/draft':
+            return CustomPopupRoute(
+                builder: (_) => const DraftPage(), settings: settings);
+          default:
+            throw Exception('Invalid route: ${settings.name}');
+        }
+        return MaterialPageRoute<Widget>(builder: builder, settings: settings);
+      },
+    );
+  }
+}
 
 final hashtagsProvider =
     StateProvider<List<HashtagModel>>((ref) => List.empty());
@@ -40,8 +73,9 @@ final praiseTitleErrorProvider = StateProvider<bool>((ref) => false);
 final praiseContentErrorProvider = StateProvider<bool>((ref) => false);
 
 class PostPage extends ConsumerStatefulWidget {
-  final Function? navigate;
-  const PostPage({super.key, required this.navigate});
+  final Function navigate;
+  final GraphQLClient client;
+  const PostPage({super.key, required this.navigate, required this.client});
 
   @override
   ConsumerState<PostPage> createState() => _PostPageState();
@@ -52,6 +86,21 @@ class _PostPageState extends ConsumerState<PostPage> {
   final praiseContentController = TextEditingController();
   final letterTitleController = TextEditingController();
   final letterContentController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      var queryResult = await widget.client.query$Drafts(Options$Query$Drafts(
+          fetchPolicy: FetchPolicy.networkOnly,
+          variables:
+              Variables$Query$Drafts(userID: ref.watch(userProvider).id)));
+      final drafts = queryResult.parsedData?.drafts.edges;
+      if (drafts!.isNotEmpty) {
+        Navigator.of(context).pushNamed('/draft');
+      }
+    });
+  }
 
   @override
   void dispose() {
