@@ -26,15 +26,15 @@ query Drafts($userID: ID!) {
     edges {
       node {
         id
-        posts {
+        work {
           id
           title
-          category {
-            id
-            name
-          }
-          type
         }
+        category {
+          id
+          name
+        }
+        praiseTitle
       }
     }
   }

@@ -9,17 +9,10 @@ import 'package:http/http.dart';
 
 class ActionRow extends StatelessWidget {
   final Function? navigate;
-  final TextEditingController praiseTitleController;
-  final TextEditingController praiseContentController;
-  final TextEditingController letterTitleController;
-  final TextEditingController letterContentController;
+
   const ActionRow({
     Key? key,
     required this.navigate,
-    required this.praiseTitleController,
-    required this.praiseContentController,
-    required this.letterTitleController,
-    required this.letterContentController,
   }) : super(key: key);
 
   @override
@@ -63,29 +56,15 @@ class ActionRow extends StatelessWidget {
             navigate!();
           },
         ),
-        SubmitButton(
-            praiseTitleController: praiseTitleController,
-            praiseContentController: praiseContentController,
-            letterTitleController: letterTitleController,
-            letterContentController: letterContentController,
-            navigate: navigate),
+        SubmitButton(navigate: navigate),
       ],
     );
   }
 }
 
 class SubmitButton extends HookConsumerWidget {
-  final TextEditingController praiseTitleController, praiseContentController;
-  final TextEditingController letterTitleController, letterContentController;
   final Function? navigate;
-  const SubmitButton(
-      {Key? key,
-      required this.praiseTitleController,
-      required this.praiseContentController,
-      required this.letterTitleController,
-      required this.letterContentController,
-      required this.navigate})
-      : super(key: key);
+  const SubmitButton({Key? key, required this.navigate}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -95,20 +74,34 @@ class SubmitButton extends HookConsumerWidget {
       ref.watch(categoryErrorProvider.notifier).state =
           ref.watch(categoryProvider) == null;
       ref.watch(praiseTitleErrorProvider.notifier).state =
-          praiseTitleController.text == "";
+          ref.watch(praiseTitleProvider) == "";
       ref.watch(praiseContentErrorProvider.notifier).state =
-          praiseContentController.text == "";
+          ref.watch(praiseContentProvider) == "";
+
+      ref.watch(letterTitleErrorProvider.notifier).state =
+          ref.watch(letterTitleProvider) == "" &&
+              ref.watch(letterContentProvider) != "";
+      ref.watch(letterContentErrorProvider.notifier).state =
+          ref.watch(letterTitleProvider) != "" &&
+              ref.watch(letterContentProvider) == "";
+
       return !ref.watch(workErrorProvider) &&
           !ref.watch(categoryErrorProvider) &&
           !ref.watch(praiseTitleErrorProvider) &&
-          !ref.watch(praiseContentErrorProvider);
+          !ref.watch(praiseContentErrorProvider) &&
+          !ref.watch(letterTitleErrorProvider) &&
+          !ref.watch(letterContentErrorProvider);
     }
 
     void resetForm() {
       ref.watch(workProvider.notifier).state = null;
       ref.watch(categoryProvider.notifier).state = null;
       ref.watch(hashtagsProvider.notifier).state = List.empty();
+      ref.watch(praiseTitleProvider.notifier).state = "";
+      ref.watch(praiseContentProvider.notifier).state = "";
       ref.watch(praiseSpoiledProvider.notifier).state = false;
+      ref.watch(letterTitleProvider.notifier).state = "";
+      ref.watch(letterContentProvider.notifier).state = "";
       ref.watch(letterSpoiledProvider.notifier).state = false;
     }
 
@@ -152,13 +145,13 @@ class SubmitButton extends HookConsumerWidget {
             ),
             onPressed: () async {
               if (!validate()) return;
-              if (letterTitleController.text == "" &&
-                  letterContentController.text == "") {
+              if (ref.watch(letterTitleProvider) == "" &&
+                  ref.watch(letterContentProvider) == "") {
                 final result = createPostMutation.runMutation(
                     Variables$Mutation$CreatePost(
                         createPostInput: Input$CreatePostInput(
-                            title: praiseTitleController.text,
-                            content: praiseContentController.text,
+                            title: ref.watch(praiseTitleProvider),
+                            content: ref.watch(praiseContentProvider),
                             type: Enum$PostPostType.praise,
                             ownerID: ref.watch(userProvider).id,
                             workID: ref.watch(workProvider)!.id,
@@ -181,8 +174,8 @@ class SubmitButton extends HookConsumerWidget {
                 final result = createPostsMutation.runMutation(
                   Variables$Mutation$CreatePosts(
                       createPostInput: Input$CreatePostInput(
-                          title: praiseTitleController.text,
-                          content: praiseContentController.text,
+                          title: ref.watch(praiseTitleProvider),
+                          content: ref.watch(praiseContentProvider),
                           type: Enum$PostPostType.praise,
                           ownerID: ref.watch(userProvider).id,
                           workID: ref.watch(workProvider)!.id,
@@ -194,8 +187,8 @@ class SubmitButton extends HookConsumerWidget {
                               .map((m) => m.id)
                               .toList()),
                       createPostInput2: Input$CreatePostInput(
-                          title: letterTitleController.text,
-                          content: letterContentController.text,
+                          title: ref.watch(letterTitleProvider),
+                          content: ref.watch(letterContentProvider),
                           type: Enum$PostPostType.letter,
                           ownerID: ref.watch(userProvider).id,
                           workID: ref.watch(workProvider)!.id,

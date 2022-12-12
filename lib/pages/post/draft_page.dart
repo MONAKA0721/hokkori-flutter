@@ -1,20 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hokkori/pages/post/draft_page.graphql.dart';
+import 'package:hokkori/pages/post/model.dart';
+import 'package:hokkori/pages/post/post_page.dart';
+import 'package:hokkori/pages/post/post_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
+import 'package:hokkori/utils/providers.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class Draft {}
 
 class DraftPageArguments {
-  final List<Draft> drafts;
+  final List<Query$Drafts$drafts$edges?> drafts;
 
   DraftPageArguments(this.drafts);
 }
 
-class DraftPage extends StatelessWidget {
+class DraftPage extends HookConsumerWidget {
   const DraftPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final arguments =
+        ModalRoute.of(context)!.settings.arguments as DraftPageArguments;
+    final drafts = arguments.drafts;
+
+    final client = useGraphQLClient();
+
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Container(
         margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -22,6 +35,9 @@ class DraftPage extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30), color: Colors.white),
         child: Column(children: [
+          const SizedBox(
+            height: 20,
+          ),
           OutlinedButton(
               style: OutlinedButton.styleFrom(
                   backgroundColor: blueButtonColor,
@@ -29,7 +45,9 @@ class DraftPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(28),
                   ),
                   padding: const EdgeInsets.symmetric(vertical: 16)),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
               child: Row(
                 children: [
                   const SizedBox(
@@ -64,30 +82,89 @@ class DraftPage extends StatelessWidget {
               child: Scrollbar(
                   thumbVisibility: true,
                   child: ListView.separated(
-                      itemCount: 2,
+                      itemCount: drafts.length + 1,
                       itemBuilder: (context, index) => index == 0
                           ? const Text(
                               "書きかけの投稿",
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             )
-                          : Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "作品名:",
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                                Text(
-                                  "カテゴリ:",
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                                Text(
-                                  "ほっこり見出し",
-                                  style: TextStyle(fontSize: 16),
-                                )
-                              ],
-                            ),
+                          : GestureDetector(
+                              onTap: () async {
+                                var queryResult = await client.query$GetDraft(
+                                    Options$Query$GetDraft(
+                                        fetchPolicy: FetchPolicy.networkOnly,
+                                        variables: Variables$Query$GetDraft(
+                                            id: drafts[index - 1]!.node!.id)));
+                                final draft = queryResult.parsedData!.draft
+                                    as Query$GetDraft$draft$$Draft;
+
+                                final work = draft.work;
+                                ref.watch(workProvider.notifier).state =
+                                    WorkModel(
+                                        id: work.id,
+                                        title: work.title,
+                                        thumbnail: work.thumbnail);
+
+                                ref.watch(categoryProvider.notifier).state =
+                                    int.parse(draft.category.id);
+
+                                ref.watch(hashtagsProvider.notifier).state =
+                                    draft.hashtags!
+                                        .map((hashtag) => HashtagModel(
+                                            id: hashtag.id,
+                                            title: hashtag.title))
+                                        .toList();
+
+                                ref.watch(praiseTitleProvider.notifier).state =
+                                    draft.praiseTitle;
+
+                                ref
+                                    .watch(praiseContentProvider.notifier)
+                                    .state = draft.praiseContent;
+
+                                ref
+                                    .watch(praiseSpoiledProvider.notifier)
+                                    .state = draft.praiseSpoiled;
+
+                                ref.watch(letterTitleProvider.notifier).state =
+                                    draft.letterTitle;
+
+                                ref
+                                    .watch(letterContentProvider.notifier)
+                                    .state = draft.letterContent;
+
+                                ref
+                                    .watch(letterSpoiledProvider.notifier)
+                                    .state = draft.praiseSpoiled;
+
+                                Navigator.of(context).pop();
+                              },
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "作品名:${drafts[index - 1]!.node!.work.title}",
+                                    style: const TextStyle(fontSize: 16),
+                                  ),
+                                  Text(
+                                    "カテゴリ:${drafts[index - 1]!.node!.category.name}",
+                                    style: const TextStyle(fontSize: 16),
+                                  ),
+                                  Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                            child: Text(
+                                          drafts[index - 1]!.node!.praiseTitle,
+                                          style: const TextStyle(fontSize: 16),
+                                          overflow: TextOverflow.ellipsis,
+                                        )),
+                                        const Icon(Icons.chevron_right)
+                                      ])
+                                ],
+                              )),
                       separatorBuilder: (context, index) => const Divider(
                             color: Colors.black12,
                             thickness: 1,

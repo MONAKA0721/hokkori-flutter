@@ -25,7 +25,9 @@ class Input$CategoryWhereInput {
           String? nameEqualFold,
           String? nameContainsFold,
           bool? hasPost,
-          List<Input$PostWhereInput>? hasPostWith}) =>
+          List<Input$PostWhereInput>? hasPostWith,
+          bool? hasDraft,
+          List<Input$DraftWhereInput>? hasDraftWith}) =>
       Input$CategoryWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -53,6 +55,8 @@ class Input$CategoryWhereInput {
         if (nameContainsFold != null) r'nameContainsFold': nameContainsFold,
         if (hasPost != null) r'hasPost': hasPost,
         if (hasPostWith != null) r'hasPostWith': hasPostWith,
+        if (hasDraft != null) r'hasDraft': hasDraft,
+        if (hasDraftWith != null) r'hasDraftWith': hasDraftWith,
       });
 
   Input$CategoryWhereInput._(this._$data);
@@ -178,6 +182,17 @@ class Input$CategoryWhereInput {
               (e) => Input$PostWhereInput.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
+    if (data.containsKey('hasDraft')) {
+      final l$hasDraft = data['hasDraft'];
+      result$data['hasDraft'] = (l$hasDraft as bool?);
+    }
+    if (data.containsKey('hasDraftWith')) {
+      final l$hasDraftWith = data['hasDraftWith'];
+      result$data['hasDraftWith'] = (l$hasDraftWith as List<dynamic>?)
+          ?.map((e) =>
+              Input$DraftWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
     return Input$CategoryWhereInput._(result$data);
   }
 
@@ -213,6 +228,9 @@ class Input$CategoryWhereInput {
   bool? get hasPost => (_$data['hasPost'] as bool?);
   List<Input$PostWhereInput>? get hasPostWith =>
       (_$data['hasPostWith'] as List<Input$PostWhereInput>?);
+  bool? get hasDraft => (_$data['hasDraft'] as bool?);
+  List<Input$DraftWhereInput>? get hasDraftWith =>
+      (_$data['hasDraftWith'] as List<Input$DraftWhereInput>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('not')) {
@@ -319,6 +337,15 @@ class Input$CategoryWhereInput {
       final l$hasPostWith = hasPostWith;
       result$data['hasPostWith'] =
           l$hasPostWith?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasDraft')) {
+      final l$hasDraft = hasDraft;
+      result$data['hasDraft'] = l$hasDraft;
+    }
+    if (_$data.containsKey('hasDraftWith')) {
+      final l$hasDraftWith = hasDraftWith;
+      result$data['hasDraftWith'] =
+          l$hasDraftWith?.map((e) => e.toJson()).toList();
     }
     return result$data;
   }
@@ -626,6 +653,35 @@ class Input$CategoryWhereInput {
     } else if (l$hasPostWith != lOther$hasPostWith) {
       return false;
     }
+    final l$hasDraft = hasDraft;
+    final lOther$hasDraft = other.hasDraft;
+    if (_$data.containsKey('hasDraft') !=
+        other._$data.containsKey('hasDraft')) {
+      return false;
+    }
+    if (l$hasDraft != lOther$hasDraft) {
+      return false;
+    }
+    final l$hasDraftWith = hasDraftWith;
+    final lOther$hasDraftWith = other.hasDraftWith;
+    if (_$data.containsKey('hasDraftWith') !=
+        other._$data.containsKey('hasDraftWith')) {
+      return false;
+    }
+    if (l$hasDraftWith != null && lOther$hasDraftWith != null) {
+      if (l$hasDraftWith.length != lOther$hasDraftWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasDraftWith.length; i++) {
+        final l$hasDraftWith$entry = l$hasDraftWith[i];
+        final lOther$hasDraftWith$entry = lOther$hasDraftWith[i];
+        if (l$hasDraftWith$entry != lOther$hasDraftWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasDraftWith != lOther$hasDraftWith) {
+      return false;
+    }
     return true;
   }
 
@@ -657,6 +713,8 @@ class Input$CategoryWhereInput {
     final l$nameContainsFold = nameContainsFold;
     final l$hasPost = hasPost;
     final l$hasPostWith = hasPostWith;
+    final l$hasDraft = hasDraft;
+    final l$hasDraftWith = hasDraftWith;
     return Object.hashAll([
       _$data.containsKey('not') ? l$not : const {},
       _$data.containsKey('and')
@@ -711,6 +769,12 @@ class Input$CategoryWhereInput {
           ? l$hasPostWith == null
               ? null
               : Object.hashAll(l$hasPostWith.map((v) => v))
+          : const {},
+      _$data.containsKey('hasDraft') ? l$hasDraft : const {},
+      _$data.containsKey('hasDraftWith')
+          ? l$hasDraftWith == null
+              ? null
+              : Object.hashAll(l$hasDraftWith.map((v) => v))
           : const {}
     ]);
   }
@@ -750,7 +814,9 @@ abstract class CopyWith$Input$CategoryWhereInput<TRes> {
       String? nameEqualFold,
       String? nameContainsFold,
       bool? hasPost,
-      List<Input$PostWhereInput>? hasPostWith});
+      List<Input$PostWhereInput>? hasPostWith,
+      bool? hasDraft,
+      List<Input$DraftWhereInput>? hasDraftWith});
   CopyWith$Input$CategoryWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$CategoryWhereInput>? Function(
@@ -765,6 +831,10 @@ abstract class CopyWith$Input$CategoryWhereInput<TRes> {
   TRes hasPostWith(
       Iterable<Input$PostWhereInput>? Function(
               Iterable<CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+          _fn);
+  TRes hasDraftWith(
+      Iterable<Input$DraftWhereInput>? Function(
+              Iterable<CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
           _fn);
 }
 
@@ -804,7 +874,9 @@ class _CopyWithImpl$Input$CategoryWhereInput<TRes>
           Object? nameEqualFold = _undefined,
           Object? nameContainsFold = _undefined,
           Object? hasPost = _undefined,
-          Object? hasPostWith = _undefined}) =>
+          Object? hasPostWith = _undefined,
+          Object? hasDraft = _undefined,
+          Object? hasDraftWith = _undefined}) =>
       _then(Input$CategoryWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$CategoryWhereInput?),
@@ -839,6 +911,9 @@ class _CopyWithImpl$Input$CategoryWhereInput<TRes>
         if (hasPost != _undefined) 'hasPost': (hasPost as bool?),
         if (hasPostWith != _undefined)
           'hasPostWith': (hasPostWith as List<Input$PostWhereInput>?),
+        if (hasDraft != _undefined) 'hasDraft': (hasDraft as bool?),
+        if (hasDraftWith != _undefined)
+          'hasDraftWith': (hasDraftWith as List<Input$DraftWhereInput>?),
       }));
   CopyWith$Input$CategoryWhereInput<TRes> get not {
     final local$not = _instance.not;
@@ -876,6 +951,15 @@ class _CopyWithImpl$Input$CategoryWhereInput<TRes>
           hasPostWith: _fn(_instance.hasPostWith
                   ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
               ?.toList());
+  TRes hasDraftWith(
+          Iterable<Input$DraftWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
+              _fn) =>
+      call(
+          hasDraftWith: _fn(_instance.hasDraftWith
+                  ?.map((e) => CopyWith$Input$DraftWhereInput(e, (i) => i)))
+              ?.toList());
 }
 
 class _CopyWithStubImpl$Input$CategoryWhereInput<TRes>
@@ -910,49 +994,142 @@ class _CopyWithStubImpl$Input$CategoryWhereInput<TRes>
           String? nameEqualFold,
           String? nameContainsFold,
           bool? hasPost,
-          List<Input$PostWhereInput>? hasPostWith}) =>
+          List<Input$PostWhereInput>? hasPostWith,
+          bool? hasDraft,
+          List<Input$DraftWhereInput>? hasDraftWith}) =>
       _res;
   CopyWith$Input$CategoryWhereInput<TRes> get not =>
       CopyWith$Input$CategoryWhereInput.stub(_res);
   and(_fn) => _res;
   or(_fn) => _res;
   hasPostWith(_fn) => _res;
+  hasDraftWith(_fn) => _res;
 }
 
 class Input$CreateDraftInput {
   factory Input$CreateDraftInput(
-          {required String ownerID, List<String>? postIDs}) =>
+          {String? createTime,
+          String? updateTime,
+          required String praiseTitle,
+          required String letterTitle,
+          required String praiseContent,
+          required String letterContent,
+          required bool praiseSpoiled,
+          required bool letterSpoiled,
+          String? thumbnail,
+          required String ownerID,
+          List<String>? hashtagIDs,
+          required String workID,
+          required String categoryID}) =>
       Input$CreateDraftInput._({
+        if (createTime != null) r'createTime': createTime,
+        if (updateTime != null) r'updateTime': updateTime,
+        r'praiseTitle': praiseTitle,
+        r'letterTitle': letterTitle,
+        r'praiseContent': praiseContent,
+        r'letterContent': letterContent,
+        r'praiseSpoiled': praiseSpoiled,
+        r'letterSpoiled': letterSpoiled,
+        if (thumbnail != null) r'thumbnail': thumbnail,
         r'ownerID': ownerID,
-        if (postIDs != null) r'postIDs': postIDs,
+        if (hashtagIDs != null) r'hashtagIDs': hashtagIDs,
+        r'workID': workID,
+        r'categoryID': categoryID,
       });
 
   Input$CreateDraftInput._(this._$data);
 
   factory Input$CreateDraftInput.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
+    if (data.containsKey('createTime')) {
+      final l$createTime = data['createTime'];
+      result$data['createTime'] = (l$createTime as String?);
+    }
+    if (data.containsKey('updateTime')) {
+      final l$updateTime = data['updateTime'];
+      result$data['updateTime'] = (l$updateTime as String?);
+    }
+    final l$praiseTitle = data['praiseTitle'];
+    result$data['praiseTitle'] = (l$praiseTitle as String);
+    final l$letterTitle = data['letterTitle'];
+    result$data['letterTitle'] = (l$letterTitle as String);
+    final l$praiseContent = data['praiseContent'];
+    result$data['praiseContent'] = (l$praiseContent as String);
+    final l$letterContent = data['letterContent'];
+    result$data['letterContent'] = (l$letterContent as String);
+    final l$praiseSpoiled = data['praiseSpoiled'];
+    result$data['praiseSpoiled'] = (l$praiseSpoiled as bool);
+    final l$letterSpoiled = data['letterSpoiled'];
+    result$data['letterSpoiled'] = (l$letterSpoiled as bool);
+    if (data.containsKey('thumbnail')) {
+      final l$thumbnail = data['thumbnail'];
+      result$data['thumbnail'] = (l$thumbnail as String?);
+    }
     final l$ownerID = data['ownerID'];
     result$data['ownerID'] = (l$ownerID as String);
-    if (data.containsKey('postIDs')) {
-      final l$postIDs = data['postIDs'];
-      result$data['postIDs'] =
-          (l$postIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
+    if (data.containsKey('hashtagIDs')) {
+      final l$hashtagIDs = data['hashtagIDs'];
+      result$data['hashtagIDs'] =
+          (l$hashtagIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
     }
+    final l$workID = data['workID'];
+    result$data['workID'] = (l$workID as String);
+    final l$categoryID = data['categoryID'];
+    result$data['categoryID'] = (l$categoryID as String);
     return Input$CreateDraftInput._(result$data);
   }
 
   Map<String, dynamic> _$data;
 
+  String? get createTime => (_$data['createTime'] as String?);
+  String? get updateTime => (_$data['updateTime'] as String?);
+  String get praiseTitle => (_$data['praiseTitle'] as String);
+  String get letterTitle => (_$data['letterTitle'] as String);
+  String get praiseContent => (_$data['praiseContent'] as String);
+  String get letterContent => (_$data['letterContent'] as String);
+  bool get praiseSpoiled => (_$data['praiseSpoiled'] as bool);
+  bool get letterSpoiled => (_$data['letterSpoiled'] as bool);
+  String? get thumbnail => (_$data['thumbnail'] as String?);
   String get ownerID => (_$data['ownerID'] as String);
-  List<String>? get postIDs => (_$data['postIDs'] as List<String>?);
+  List<String>? get hashtagIDs => (_$data['hashtagIDs'] as List<String>?);
+  String get workID => (_$data['workID'] as String);
+  String get categoryID => (_$data['categoryID'] as String);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
+    if (_$data.containsKey('createTime')) {
+      final l$createTime = createTime;
+      result$data['createTime'] = l$createTime;
+    }
+    if (_$data.containsKey('updateTime')) {
+      final l$updateTime = updateTime;
+      result$data['updateTime'] = l$updateTime;
+    }
+    final l$praiseTitle = praiseTitle;
+    result$data['praiseTitle'] = l$praiseTitle;
+    final l$letterTitle = letterTitle;
+    result$data['letterTitle'] = l$letterTitle;
+    final l$praiseContent = praiseContent;
+    result$data['praiseContent'] = l$praiseContent;
+    final l$letterContent = letterContent;
+    result$data['letterContent'] = l$letterContent;
+    final l$praiseSpoiled = praiseSpoiled;
+    result$data['praiseSpoiled'] = l$praiseSpoiled;
+    final l$letterSpoiled = letterSpoiled;
+    result$data['letterSpoiled'] = l$letterSpoiled;
+    if (_$data.containsKey('thumbnail')) {
+      final l$thumbnail = thumbnail;
+      result$data['thumbnail'] = l$thumbnail;
+    }
     final l$ownerID = ownerID;
     result$data['ownerID'] = l$ownerID;
-    if (_$data.containsKey('postIDs')) {
-      final l$postIDs = postIDs;
-      result$data['postIDs'] = l$postIDs?.map((e) => e).toList();
+    if (_$data.containsKey('hashtagIDs')) {
+      final l$hashtagIDs = hashtagIDs;
+      result$data['hashtagIDs'] = l$hashtagIDs?.map((e) => e).toList();
     }
+    final l$workID = workID;
+    result$data['workID'] = l$workID;
+    final l$categoryID = categoryID;
+    result$data['categoryID'] = l$categoryID;
     return result$data;
   }
 
@@ -967,28 +1144,96 @@ class Input$CreateDraftInput {
         runtimeType != other.runtimeType) {
       return false;
     }
+    final l$createTime = createTime;
+    final lOther$createTime = other.createTime;
+    if (_$data.containsKey('createTime') !=
+        other._$data.containsKey('createTime')) {
+      return false;
+    }
+    if (l$createTime != lOther$createTime) {
+      return false;
+    }
+    final l$updateTime = updateTime;
+    final lOther$updateTime = other.updateTime;
+    if (_$data.containsKey('updateTime') !=
+        other._$data.containsKey('updateTime')) {
+      return false;
+    }
+    if (l$updateTime != lOther$updateTime) {
+      return false;
+    }
+    final l$praiseTitle = praiseTitle;
+    final lOther$praiseTitle = other.praiseTitle;
+    if (l$praiseTitle != lOther$praiseTitle) {
+      return false;
+    }
+    final l$letterTitle = letterTitle;
+    final lOther$letterTitle = other.letterTitle;
+    if (l$letterTitle != lOther$letterTitle) {
+      return false;
+    }
+    final l$praiseContent = praiseContent;
+    final lOther$praiseContent = other.praiseContent;
+    if (l$praiseContent != lOther$praiseContent) {
+      return false;
+    }
+    final l$letterContent = letterContent;
+    final lOther$letterContent = other.letterContent;
+    if (l$letterContent != lOther$letterContent) {
+      return false;
+    }
+    final l$praiseSpoiled = praiseSpoiled;
+    final lOther$praiseSpoiled = other.praiseSpoiled;
+    if (l$praiseSpoiled != lOther$praiseSpoiled) {
+      return false;
+    }
+    final l$letterSpoiled = letterSpoiled;
+    final lOther$letterSpoiled = other.letterSpoiled;
+    if (l$letterSpoiled != lOther$letterSpoiled) {
+      return false;
+    }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (_$data.containsKey('thumbnail') !=
+        other._$data.containsKey('thumbnail')) {
+      return false;
+    }
+    if (l$thumbnail != lOther$thumbnail) {
+      return false;
+    }
     final l$ownerID = ownerID;
     final lOther$ownerID = other.ownerID;
     if (l$ownerID != lOther$ownerID) {
       return false;
     }
-    final l$postIDs = postIDs;
-    final lOther$postIDs = other.postIDs;
-    if (_$data.containsKey('postIDs') != other._$data.containsKey('postIDs')) {
+    final l$hashtagIDs = hashtagIDs;
+    final lOther$hashtagIDs = other.hashtagIDs;
+    if (_$data.containsKey('hashtagIDs') !=
+        other._$data.containsKey('hashtagIDs')) {
       return false;
     }
-    if (l$postIDs != null && lOther$postIDs != null) {
-      if (l$postIDs.length != lOther$postIDs.length) {
+    if (l$hashtagIDs != null && lOther$hashtagIDs != null) {
+      if (l$hashtagIDs.length != lOther$hashtagIDs.length) {
         return false;
       }
-      for (int i = 0; i < l$postIDs.length; i++) {
-        final l$postIDs$entry = l$postIDs[i];
-        final lOther$postIDs$entry = lOther$postIDs[i];
-        if (l$postIDs$entry != lOther$postIDs$entry) {
+      for (int i = 0; i < l$hashtagIDs.length; i++) {
+        final l$hashtagIDs$entry = l$hashtagIDs[i];
+        final lOther$hashtagIDs$entry = lOther$hashtagIDs[i];
+        if (l$hashtagIDs$entry != lOther$hashtagIDs$entry) {
           return false;
         }
       }
-    } else if (l$postIDs != lOther$postIDs) {
+    } else if (l$hashtagIDs != lOther$hashtagIDs) {
+      return false;
+    }
+    final l$workID = workID;
+    final lOther$workID = other.workID;
+    if (l$workID != lOther$workID) {
+      return false;
+    }
+    final l$categoryID = categoryID;
+    final lOther$categoryID = other.categoryID;
+    if (l$categoryID != lOther$categoryID) {
       return false;
     }
     return true;
@@ -996,15 +1241,37 @@ class Input$CreateDraftInput {
 
   @override
   int get hashCode {
+    final l$createTime = createTime;
+    final l$updateTime = updateTime;
+    final l$praiseTitle = praiseTitle;
+    final l$letterTitle = letterTitle;
+    final l$praiseContent = praiseContent;
+    final l$letterContent = letterContent;
+    final l$praiseSpoiled = praiseSpoiled;
+    final l$letterSpoiled = letterSpoiled;
+    final l$thumbnail = thumbnail;
     final l$ownerID = ownerID;
-    final l$postIDs = postIDs;
+    final l$hashtagIDs = hashtagIDs;
+    final l$workID = workID;
+    final l$categoryID = categoryID;
     return Object.hashAll([
+      _$data.containsKey('createTime') ? l$createTime : const {},
+      _$data.containsKey('updateTime') ? l$updateTime : const {},
+      l$praiseTitle,
+      l$letterTitle,
+      l$praiseContent,
+      l$letterContent,
+      l$praiseSpoiled,
+      l$letterSpoiled,
+      _$data.containsKey('thumbnail') ? l$thumbnail : const {},
       l$ownerID,
-      _$data.containsKey('postIDs')
-          ? l$postIDs == null
+      _$data.containsKey('hashtagIDs')
+          ? l$hashtagIDs == null
               ? null
-              : Object.hashAll(l$postIDs.map((v) => v))
-          : const {}
+              : Object.hashAll(l$hashtagIDs.map((v) => v))
+          : const {},
+      l$workID,
+      l$categoryID
     ]);
   }
 }
@@ -1017,7 +1284,20 @@ abstract class CopyWith$Input$CreateDraftInput<TRes> {
   factory CopyWith$Input$CreateDraftInput.stub(TRes res) =
       _CopyWithStubImpl$Input$CreateDraftInput;
 
-  TRes call({String? ownerID, List<String>? postIDs});
+  TRes call(
+      {String? createTime,
+      String? updateTime,
+      String? praiseTitle,
+      String? letterTitle,
+      String? praiseContent,
+      String? letterContent,
+      bool? praiseSpoiled,
+      bool? letterSpoiled,
+      String? thumbnail,
+      String? ownerID,
+      List<String>? hashtagIDs,
+      String? workID,
+      String? categoryID});
 }
 
 class _CopyWithImpl$Input$CreateDraftInput<TRes>
@@ -1030,12 +1310,45 @@ class _CopyWithImpl$Input$CreateDraftInput<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? ownerID = _undefined, Object? postIDs = _undefined}) =>
+  TRes call(
+          {Object? createTime = _undefined,
+          Object? updateTime = _undefined,
+          Object? praiseTitle = _undefined,
+          Object? letterTitle = _undefined,
+          Object? praiseContent = _undefined,
+          Object? letterContent = _undefined,
+          Object? praiseSpoiled = _undefined,
+          Object? letterSpoiled = _undefined,
+          Object? thumbnail = _undefined,
+          Object? ownerID = _undefined,
+          Object? hashtagIDs = _undefined,
+          Object? workID = _undefined,
+          Object? categoryID = _undefined}) =>
       _then(Input$CreateDraftInput._({
         ..._instance._$data,
+        if (createTime != _undefined) 'createTime': (createTime as String?),
+        if (updateTime != _undefined) 'updateTime': (updateTime as String?),
+        if (praiseTitle != _undefined && praiseTitle != null)
+          'praiseTitle': (praiseTitle as String),
+        if (letterTitle != _undefined && letterTitle != null)
+          'letterTitle': (letterTitle as String),
+        if (praiseContent != _undefined && praiseContent != null)
+          'praiseContent': (praiseContent as String),
+        if (letterContent != _undefined && letterContent != null)
+          'letterContent': (letterContent as String),
+        if (praiseSpoiled != _undefined && praiseSpoiled != null)
+          'praiseSpoiled': (praiseSpoiled as bool),
+        if (letterSpoiled != _undefined && letterSpoiled != null)
+          'letterSpoiled': (letterSpoiled as bool),
+        if (thumbnail != _undefined) 'thumbnail': (thumbnail as String?),
         if (ownerID != _undefined && ownerID != null)
           'ownerID': (ownerID as String),
-        if (postIDs != _undefined) 'postIDs': (postIDs as List<String>?),
+        if (hashtagIDs != _undefined)
+          'hashtagIDs': (hashtagIDs as List<String>?),
+        if (workID != _undefined && workID != null)
+          'workID': (workID as String),
+        if (categoryID != _undefined && categoryID != null)
+          'categoryID': (categoryID as String),
       }));
 }
 
@@ -1045,15 +1358,32 @@ class _CopyWithStubImpl$Input$CreateDraftInput<TRes>
 
   TRes _res;
 
-  call({String? ownerID, List<String>? postIDs}) => _res;
+  call(
+          {String? createTime,
+          String? updateTime,
+          String? praiseTitle,
+          String? letterTitle,
+          String? praiseContent,
+          String? letterContent,
+          bool? praiseSpoiled,
+          bool? letterSpoiled,
+          String? thumbnail,
+          String? ownerID,
+          List<String>? hashtagIDs,
+          String? workID,
+          String? categoryID}) =>
+      _res;
 }
 
 class Input$CreateHashtagInput {
   factory Input$CreateHashtagInput(
-          {required String title, List<String>? postIDs}) =>
+          {required String title,
+          List<String>? postIDs,
+          List<String>? draftIDs}) =>
       Input$CreateHashtagInput._({
         r'title': title,
         if (postIDs != null) r'postIDs': postIDs,
+        if (draftIDs != null) r'draftIDs': draftIDs,
       });
 
   Input$CreateHashtagInput._(this._$data);
@@ -1067,6 +1397,11 @@ class Input$CreateHashtagInput {
       result$data['postIDs'] =
           (l$postIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
     }
+    if (data.containsKey('draftIDs')) {
+      final l$draftIDs = data['draftIDs'];
+      result$data['draftIDs'] =
+          (l$draftIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
     return Input$CreateHashtagInput._(result$data);
   }
 
@@ -1074,6 +1409,7 @@ class Input$CreateHashtagInput {
 
   String get title => (_$data['title'] as String);
   List<String>? get postIDs => (_$data['postIDs'] as List<String>?);
+  List<String>? get draftIDs => (_$data['draftIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     final l$title = title;
@@ -1081,6 +1417,10 @@ class Input$CreateHashtagInput {
     if (_$data.containsKey('postIDs')) {
       final l$postIDs = postIDs;
       result$data['postIDs'] = l$postIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('draftIDs')) {
+      final l$draftIDs = draftIDs;
+      result$data['draftIDs'] = l$draftIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -1120,6 +1460,26 @@ class Input$CreateHashtagInput {
     } else if (l$postIDs != lOther$postIDs) {
       return false;
     }
+    final l$draftIDs = draftIDs;
+    final lOther$draftIDs = other.draftIDs;
+    if (_$data.containsKey('draftIDs') !=
+        other._$data.containsKey('draftIDs')) {
+      return false;
+    }
+    if (l$draftIDs != null && lOther$draftIDs != null) {
+      if (l$draftIDs.length != lOther$draftIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$draftIDs.length; i++) {
+        final l$draftIDs$entry = l$draftIDs[i];
+        final lOther$draftIDs$entry = lOther$draftIDs[i];
+        if (l$draftIDs$entry != lOther$draftIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$draftIDs != lOther$draftIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -1127,12 +1487,18 @@ class Input$CreateHashtagInput {
   int get hashCode {
     final l$title = title;
     final l$postIDs = postIDs;
+    final l$draftIDs = draftIDs;
     return Object.hashAll([
       l$title,
       _$data.containsKey('postIDs')
           ? l$postIDs == null
               ? null
               : Object.hashAll(l$postIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('draftIDs')
+          ? l$draftIDs == null
+              ? null
+              : Object.hashAll(l$draftIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -1146,7 +1512,7 @@ abstract class CopyWith$Input$CreateHashtagInput<TRes> {
   factory CopyWith$Input$CreateHashtagInput.stub(TRes res) =
       _CopyWithStubImpl$Input$CreateHashtagInput;
 
-  TRes call({String? title, List<String>? postIDs});
+  TRes call({String? title, List<String>? postIDs, List<String>? draftIDs});
 }
 
 class _CopyWithImpl$Input$CreateHashtagInput<TRes>
@@ -1159,11 +1525,15 @@ class _CopyWithImpl$Input$CreateHashtagInput<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? title = _undefined, Object? postIDs = _undefined}) =>
+  TRes call(
+          {Object? title = _undefined,
+          Object? postIDs = _undefined,
+          Object? draftIDs = _undefined}) =>
       _then(Input$CreateHashtagInput._({
         ..._instance._$data,
         if (title != _undefined && title != null) 'title': (title as String),
         if (postIDs != _undefined) 'postIDs': (postIDs as List<String>?),
+        if (draftIDs != _undefined) 'draftIDs': (draftIDs as List<String>?),
       }));
 }
 
@@ -1173,7 +1543,7 @@ class _CopyWithStubImpl$Input$CreateHashtagInput<TRes>
 
   TRes _res;
 
-  call({String? title, List<String>? postIDs}) => _res;
+  call({String? title, List<String>? postIDs, List<String>? draftIDs}) => _res;
 }
 
 class Input$CreatePostInput {
@@ -1190,8 +1560,7 @@ class Input$CreatePostInput {
           required String workID,
           required String categoryID,
           List<String>? likedUserIDs,
-          List<String>? bookmarkedUserIDs,
-          List<String>? draftIDs}) =>
+          List<String>? bookmarkedUserIDs}) =>
       Input$CreatePostInput._({
         if (createTime != null) r'createTime': createTime,
         if (updateTime != null) r'updateTime': updateTime,
@@ -1206,7 +1575,6 @@ class Input$CreatePostInput {
         r'categoryID': categoryID,
         if (likedUserIDs != null) r'likedUserIDs': likedUserIDs,
         if (bookmarkedUserIDs != null) r'bookmarkedUserIDs': bookmarkedUserIDs,
-        if (draftIDs != null) r'draftIDs': draftIDs,
       });
 
   Input$CreatePostInput._(this._$data);
@@ -1256,11 +1624,6 @@ class Input$CreatePostInput {
           ?.map((e) => (e as String))
           .toList();
     }
-    if (data.containsKey('draftIDs')) {
-      final l$draftIDs = data['draftIDs'];
-      result$data['draftIDs'] =
-          (l$draftIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
-    }
     return Input$CreatePostInput._(result$data);
   }
 
@@ -1280,7 +1643,6 @@ class Input$CreatePostInput {
   List<String>? get likedUserIDs => (_$data['likedUserIDs'] as List<String>?);
   List<String>? get bookmarkedUserIDs =>
       (_$data['bookmarkedUserIDs'] as List<String>?);
-  List<String>? get draftIDs => (_$data['draftIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('createTime')) {
@@ -1321,10 +1683,6 @@ class Input$CreatePostInput {
       final l$bookmarkedUserIDs = bookmarkedUserIDs;
       result$data['bookmarkedUserIDs'] =
           l$bookmarkedUserIDs?.map((e) => e).toList();
-    }
-    if (_$data.containsKey('draftIDs')) {
-      final l$draftIDs = draftIDs;
-      result$data['draftIDs'] = l$draftIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -1461,26 +1819,6 @@ class Input$CreatePostInput {
     } else if (l$bookmarkedUserIDs != lOther$bookmarkedUserIDs) {
       return false;
     }
-    final l$draftIDs = draftIDs;
-    final lOther$draftIDs = other.draftIDs;
-    if (_$data.containsKey('draftIDs') !=
-        other._$data.containsKey('draftIDs')) {
-      return false;
-    }
-    if (l$draftIDs != null && lOther$draftIDs != null) {
-      if (l$draftIDs.length != lOther$draftIDs.length) {
-        return false;
-      }
-      for (int i = 0; i < l$draftIDs.length; i++) {
-        final l$draftIDs$entry = l$draftIDs[i];
-        final lOther$draftIDs$entry = lOther$draftIDs[i];
-        if (l$draftIDs$entry != lOther$draftIDs$entry) {
-          return false;
-        }
-      }
-    } else if (l$draftIDs != lOther$draftIDs) {
-      return false;
-    }
     return true;
   }
 
@@ -1499,7 +1837,6 @@ class Input$CreatePostInput {
     final l$categoryID = categoryID;
     final l$likedUserIDs = likedUserIDs;
     final l$bookmarkedUserIDs = bookmarkedUserIDs;
-    final l$draftIDs = draftIDs;
     return Object.hashAll([
       _$data.containsKey('createTime') ? l$createTime : const {},
       _$data.containsKey('updateTime') ? l$updateTime : const {},
@@ -1525,11 +1862,6 @@ class Input$CreatePostInput {
           ? l$bookmarkedUserIDs == null
               ? null
               : Object.hashAll(l$bookmarkedUserIDs.map((v) => v))
-          : const {},
-      _$data.containsKey('draftIDs')
-          ? l$draftIDs == null
-              ? null
-              : Object.hashAll(l$draftIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -1556,8 +1888,7 @@ abstract class CopyWith$Input$CreatePostInput<TRes> {
       String? workID,
       String? categoryID,
       List<String>? likedUserIDs,
-      List<String>? bookmarkedUserIDs,
-      List<String>? draftIDs});
+      List<String>? bookmarkedUserIDs});
 }
 
 class _CopyWithImpl$Input$CreatePostInput<TRes>
@@ -1583,8 +1914,7 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           Object? workID = _undefined,
           Object? categoryID = _undefined,
           Object? likedUserIDs = _undefined,
-          Object? bookmarkedUserIDs = _undefined,
-          Object? draftIDs = _undefined}) =>
+          Object? bookmarkedUserIDs = _undefined}) =>
       _then(Input$CreatePostInput._({
         ..._instance._$data,
         if (createTime != _undefined) 'createTime': (createTime as String?),
@@ -1609,7 +1939,6 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
           'likedUserIDs': (likedUserIDs as List<String>?),
         if (bookmarkedUserIDs != _undefined)
           'bookmarkedUserIDs': (bookmarkedUserIDs as List<String>?),
-        if (draftIDs != _undefined) 'draftIDs': (draftIDs as List<String>?),
       }));
 }
 
@@ -1632,8 +1961,7 @@ class _CopyWithStubImpl$Input$CreatePostInput<TRes>
           String? workID,
           String? categoryID,
           List<String>? likedUserIDs,
-          List<String>? bookmarkedUserIDs,
-          List<String>? draftIDs}) =>
+          List<String>? bookmarkedUserIDs}) =>
       _res;
 }
 
@@ -2070,11 +2398,15 @@ class _CopyWithStubImpl$Input$CreateUserInput<TRes>
 
 class Input$CreateWorkInput {
   factory Input$CreateWorkInput(
-          {required String title, String? thumbnail, List<String>? postIDs}) =>
+          {required String title,
+          String? thumbnail,
+          List<String>? postIDs,
+          List<String>? draftIDs}) =>
       Input$CreateWorkInput._({
         r'title': title,
         if (thumbnail != null) r'thumbnail': thumbnail,
         if (postIDs != null) r'postIDs': postIDs,
+        if (draftIDs != null) r'draftIDs': draftIDs,
       });
 
   Input$CreateWorkInput._(this._$data);
@@ -2092,6 +2424,11 @@ class Input$CreateWorkInput {
       result$data['postIDs'] =
           (l$postIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
     }
+    if (data.containsKey('draftIDs')) {
+      final l$draftIDs = data['draftIDs'];
+      result$data['draftIDs'] =
+          (l$draftIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
     return Input$CreateWorkInput._(result$data);
   }
 
@@ -2100,6 +2437,7 @@ class Input$CreateWorkInput {
   String get title => (_$data['title'] as String);
   String? get thumbnail => (_$data['thumbnail'] as String?);
   List<String>? get postIDs => (_$data['postIDs'] as List<String>?);
+  List<String>? get draftIDs => (_$data['draftIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     final l$title = title;
@@ -2111,6 +2449,10 @@ class Input$CreateWorkInput {
     if (_$data.containsKey('postIDs')) {
       final l$postIDs = postIDs;
       result$data['postIDs'] = l$postIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('draftIDs')) {
+      final l$draftIDs = draftIDs;
+      result$data['draftIDs'] = l$draftIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -2158,6 +2500,26 @@ class Input$CreateWorkInput {
     } else if (l$postIDs != lOther$postIDs) {
       return false;
     }
+    final l$draftIDs = draftIDs;
+    final lOther$draftIDs = other.draftIDs;
+    if (_$data.containsKey('draftIDs') !=
+        other._$data.containsKey('draftIDs')) {
+      return false;
+    }
+    if (l$draftIDs != null && lOther$draftIDs != null) {
+      if (l$draftIDs.length != lOther$draftIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$draftIDs.length; i++) {
+        final l$draftIDs$entry = l$draftIDs[i];
+        final lOther$draftIDs$entry = lOther$draftIDs[i];
+        if (l$draftIDs$entry != lOther$draftIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$draftIDs != lOther$draftIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -2166,6 +2528,7 @@ class Input$CreateWorkInput {
     final l$title = title;
     final l$thumbnail = thumbnail;
     final l$postIDs = postIDs;
+    final l$draftIDs = draftIDs;
     return Object.hashAll([
       l$title,
       _$data.containsKey('thumbnail') ? l$thumbnail : const {},
@@ -2173,6 +2536,11 @@ class Input$CreateWorkInput {
           ? l$postIDs == null
               ? null
               : Object.hashAll(l$postIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('draftIDs')
+          ? l$draftIDs == null
+              ? null
+              : Object.hashAll(l$draftIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -2186,7 +2554,11 @@ abstract class CopyWith$Input$CreateWorkInput<TRes> {
   factory CopyWith$Input$CreateWorkInput.stub(TRes res) =
       _CopyWithStubImpl$Input$CreateWorkInput;
 
-  TRes call({String? title, String? thumbnail, List<String>? postIDs});
+  TRes call(
+      {String? title,
+      String? thumbnail,
+      List<String>? postIDs,
+      List<String>? draftIDs});
 }
 
 class _CopyWithImpl$Input$CreateWorkInput<TRes>
@@ -2202,12 +2574,14 @@ class _CopyWithImpl$Input$CreateWorkInput<TRes>
   TRes call(
           {Object? title = _undefined,
           Object? thumbnail = _undefined,
-          Object? postIDs = _undefined}) =>
+          Object? postIDs = _undefined,
+          Object? draftIDs = _undefined}) =>
       _then(Input$CreateWorkInput._({
         ..._instance._$data,
         if (title != _undefined && title != null) 'title': (title as String),
         if (thumbnail != _undefined) 'thumbnail': (thumbnail as String?),
         if (postIDs != _undefined) 'postIDs': (postIDs as List<String>?),
+        if (draftIDs != _undefined) 'draftIDs': (draftIDs as List<String>?),
       }));
 }
 
@@ -2217,7 +2591,118 @@ class _CopyWithStubImpl$Input$CreateWorkInput<TRes>
 
   TRes _res;
 
-  call({String? title, String? thumbnail, List<String>? postIDs}) => _res;
+  call(
+          {String? title,
+          String? thumbnail,
+          List<String>? postIDs,
+          List<String>? draftIDs}) =>
+      _res;
+}
+
+class Input$DraftOrder {
+  factory Input$DraftOrder(
+          {required Enum$OrderDirection direction,
+          required Enum$DraftOrderField field}) =>
+      Input$DraftOrder._({
+        r'direction': direction,
+        r'field': field,
+      });
+
+  Input$DraftOrder._(this._$data);
+
+  factory Input$DraftOrder.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$direction = data['direction'];
+    result$data['direction'] =
+        fromJson$Enum$OrderDirection((l$direction as String));
+    final l$field = data['field'];
+    result$data['field'] = fromJson$Enum$DraftOrderField((l$field as String));
+    return Input$DraftOrder._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderDirection get direction =>
+      (_$data['direction'] as Enum$OrderDirection);
+  Enum$DraftOrderField get field => (_$data['field'] as Enum$DraftOrderField);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$direction = direction;
+    result$data['direction'] = toJson$Enum$OrderDirection(l$direction);
+    final l$field = field;
+    result$data['field'] = toJson$Enum$DraftOrderField(l$field);
+    return result$data;
+  }
+
+  CopyWith$Input$DraftOrder<Input$DraftOrder> get copyWith =>
+      CopyWith$Input$DraftOrder(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Input$DraftOrder) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$direction = direction;
+    final lOther$direction = other.direction;
+    if (l$direction != lOther$direction) {
+      return false;
+    }
+    final l$field = field;
+    final lOther$field = other.field;
+    if (l$field != lOther$field) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$direction = direction;
+    final l$field = field;
+    return Object.hashAll([l$direction, l$field]);
+  }
+}
+
+abstract class CopyWith$Input$DraftOrder<TRes> {
+  factory CopyWith$Input$DraftOrder(
+          Input$DraftOrder instance, TRes Function(Input$DraftOrder) then) =
+      _CopyWithImpl$Input$DraftOrder;
+
+  factory CopyWith$Input$DraftOrder.stub(TRes res) =
+      _CopyWithStubImpl$Input$DraftOrder;
+
+  TRes call({Enum$OrderDirection? direction, Enum$DraftOrderField? field});
+}
+
+class _CopyWithImpl$Input$DraftOrder<TRes>
+    implements CopyWith$Input$DraftOrder<TRes> {
+  _CopyWithImpl$Input$DraftOrder(this._instance, this._then);
+
+  final Input$DraftOrder _instance;
+
+  final TRes Function(Input$DraftOrder) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? direction = _undefined, Object? field = _undefined}) =>
+      _then(Input$DraftOrder._({
+        ..._instance._$data,
+        if (direction != _undefined && direction != null)
+          'direction': (direction as Enum$OrderDirection),
+        if (field != _undefined && field != null)
+          'field': (field as Enum$DraftOrderField),
+      }));
+}
+
+class _CopyWithStubImpl$Input$DraftOrder<TRes>
+    implements CopyWith$Input$DraftOrder<TRes> {
+  _CopyWithStubImpl$Input$DraftOrder(this._res);
+
+  TRes _res;
+
+  call({Enum$OrderDirection? direction, Enum$DraftOrderField? field}) => _res;
 }
 
 class Input$DraftWhereInput {
@@ -2233,10 +2718,101 @@ class Input$DraftWhereInput {
           String? idGTE,
           String? idLT,
           String? idLTE,
+          String? createTime,
+          String? createTimeNEQ,
+          List<String>? createTimeIn,
+          List<String>? createTimeNotIn,
+          String? createTimeGT,
+          String? createTimeGTE,
+          String? createTimeLT,
+          String? createTimeLTE,
+          String? updateTime,
+          String? updateTimeNEQ,
+          List<String>? updateTimeIn,
+          List<String>? updateTimeNotIn,
+          String? updateTimeGT,
+          String? updateTimeGTE,
+          String? updateTimeLT,
+          String? updateTimeLTE,
+          String? praiseTitle,
+          String? praiseTitleNEQ,
+          List<String>? praiseTitleIn,
+          List<String>? praiseTitleNotIn,
+          String? praiseTitleGT,
+          String? praiseTitleGTE,
+          String? praiseTitleLT,
+          String? praiseTitleLTE,
+          String? praiseTitleContains,
+          String? praiseTitleHasPrefix,
+          String? praiseTitleHasSuffix,
+          String? praiseTitleEqualFold,
+          String? praiseTitleContainsFold,
+          String? letterTitle,
+          String? letterTitleNEQ,
+          List<String>? letterTitleIn,
+          List<String>? letterTitleNotIn,
+          String? letterTitleGT,
+          String? letterTitleGTE,
+          String? letterTitleLT,
+          String? letterTitleLTE,
+          String? letterTitleContains,
+          String? letterTitleHasPrefix,
+          String? letterTitleHasSuffix,
+          String? letterTitleEqualFold,
+          String? letterTitleContainsFold,
+          String? praiseContent,
+          String? praiseContentNEQ,
+          List<String>? praiseContentIn,
+          List<String>? praiseContentNotIn,
+          String? praiseContentGT,
+          String? praiseContentGTE,
+          String? praiseContentLT,
+          String? praiseContentLTE,
+          String? praiseContentContains,
+          String? praiseContentHasPrefix,
+          String? praiseContentHasSuffix,
+          String? praiseContentEqualFold,
+          String? praiseContentContainsFold,
+          String? letterContent,
+          String? letterContentNEQ,
+          List<String>? letterContentIn,
+          List<String>? letterContentNotIn,
+          String? letterContentGT,
+          String? letterContentGTE,
+          String? letterContentLT,
+          String? letterContentLTE,
+          String? letterContentContains,
+          String? letterContentHasPrefix,
+          String? letterContentHasSuffix,
+          String? letterContentEqualFold,
+          String? letterContentContainsFold,
+          bool? praiseSpoiled,
+          bool? praiseSpoiledNEQ,
+          bool? letterSpoiled,
+          bool? letterSpoiledNEQ,
+          String? thumbnail,
+          String? thumbnailNEQ,
+          List<String>? thumbnailIn,
+          List<String>? thumbnailNotIn,
+          String? thumbnailGT,
+          String? thumbnailGTE,
+          String? thumbnailLT,
+          String? thumbnailLTE,
+          String? thumbnailContains,
+          String? thumbnailHasPrefix,
+          String? thumbnailHasSuffix,
+          bool? thumbnailIsNil,
+          bool? thumbnailNotNil,
+          String? thumbnailEqualFold,
+          String? thumbnailContainsFold,
           bool? hasOwner,
           List<Input$UserWhereInput>? hasOwnerWith,
-          bool? hasPosts,
-          List<Input$PostWhereInput>? hasPostsWith}) =>
+          bool? hasHashtags,
+          List<Input$HashtagWhereInput>? hasHashtagsWith,
+          bool? hasWork,
+          List<Input$WorkWhereInput>? hasWorkWith,
+          bool? hasCategory,
+          List<Input$CategoryWhereInput>? hasCategoryWith}) =>
       Input$DraftWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -2249,10 +2825,127 @@ class Input$DraftWhereInput {
         if (idGTE != null) r'idGTE': idGTE,
         if (idLT != null) r'idLT': idLT,
         if (idLTE != null) r'idLTE': idLTE,
+        if (createTime != null) r'createTime': createTime,
+        if (createTimeNEQ != null) r'createTimeNEQ': createTimeNEQ,
+        if (createTimeIn != null) r'createTimeIn': createTimeIn,
+        if (createTimeNotIn != null) r'createTimeNotIn': createTimeNotIn,
+        if (createTimeGT != null) r'createTimeGT': createTimeGT,
+        if (createTimeGTE != null) r'createTimeGTE': createTimeGTE,
+        if (createTimeLT != null) r'createTimeLT': createTimeLT,
+        if (createTimeLTE != null) r'createTimeLTE': createTimeLTE,
+        if (updateTime != null) r'updateTime': updateTime,
+        if (updateTimeNEQ != null) r'updateTimeNEQ': updateTimeNEQ,
+        if (updateTimeIn != null) r'updateTimeIn': updateTimeIn,
+        if (updateTimeNotIn != null) r'updateTimeNotIn': updateTimeNotIn,
+        if (updateTimeGT != null) r'updateTimeGT': updateTimeGT,
+        if (updateTimeGTE != null) r'updateTimeGTE': updateTimeGTE,
+        if (updateTimeLT != null) r'updateTimeLT': updateTimeLT,
+        if (updateTimeLTE != null) r'updateTimeLTE': updateTimeLTE,
+        if (praiseTitle != null) r'praiseTitle': praiseTitle,
+        if (praiseTitleNEQ != null) r'praiseTitleNEQ': praiseTitleNEQ,
+        if (praiseTitleIn != null) r'praiseTitleIn': praiseTitleIn,
+        if (praiseTitleNotIn != null) r'praiseTitleNotIn': praiseTitleNotIn,
+        if (praiseTitleGT != null) r'praiseTitleGT': praiseTitleGT,
+        if (praiseTitleGTE != null) r'praiseTitleGTE': praiseTitleGTE,
+        if (praiseTitleLT != null) r'praiseTitleLT': praiseTitleLT,
+        if (praiseTitleLTE != null) r'praiseTitleLTE': praiseTitleLTE,
+        if (praiseTitleContains != null)
+          r'praiseTitleContains': praiseTitleContains,
+        if (praiseTitleHasPrefix != null)
+          r'praiseTitleHasPrefix': praiseTitleHasPrefix,
+        if (praiseTitleHasSuffix != null)
+          r'praiseTitleHasSuffix': praiseTitleHasSuffix,
+        if (praiseTitleEqualFold != null)
+          r'praiseTitleEqualFold': praiseTitleEqualFold,
+        if (praiseTitleContainsFold != null)
+          r'praiseTitleContainsFold': praiseTitleContainsFold,
+        if (letterTitle != null) r'letterTitle': letterTitle,
+        if (letterTitleNEQ != null) r'letterTitleNEQ': letterTitleNEQ,
+        if (letterTitleIn != null) r'letterTitleIn': letterTitleIn,
+        if (letterTitleNotIn != null) r'letterTitleNotIn': letterTitleNotIn,
+        if (letterTitleGT != null) r'letterTitleGT': letterTitleGT,
+        if (letterTitleGTE != null) r'letterTitleGTE': letterTitleGTE,
+        if (letterTitleLT != null) r'letterTitleLT': letterTitleLT,
+        if (letterTitleLTE != null) r'letterTitleLTE': letterTitleLTE,
+        if (letterTitleContains != null)
+          r'letterTitleContains': letterTitleContains,
+        if (letterTitleHasPrefix != null)
+          r'letterTitleHasPrefix': letterTitleHasPrefix,
+        if (letterTitleHasSuffix != null)
+          r'letterTitleHasSuffix': letterTitleHasSuffix,
+        if (letterTitleEqualFold != null)
+          r'letterTitleEqualFold': letterTitleEqualFold,
+        if (letterTitleContainsFold != null)
+          r'letterTitleContainsFold': letterTitleContainsFold,
+        if (praiseContent != null) r'praiseContent': praiseContent,
+        if (praiseContentNEQ != null) r'praiseContentNEQ': praiseContentNEQ,
+        if (praiseContentIn != null) r'praiseContentIn': praiseContentIn,
+        if (praiseContentNotIn != null)
+          r'praiseContentNotIn': praiseContentNotIn,
+        if (praiseContentGT != null) r'praiseContentGT': praiseContentGT,
+        if (praiseContentGTE != null) r'praiseContentGTE': praiseContentGTE,
+        if (praiseContentLT != null) r'praiseContentLT': praiseContentLT,
+        if (praiseContentLTE != null) r'praiseContentLTE': praiseContentLTE,
+        if (praiseContentContains != null)
+          r'praiseContentContains': praiseContentContains,
+        if (praiseContentHasPrefix != null)
+          r'praiseContentHasPrefix': praiseContentHasPrefix,
+        if (praiseContentHasSuffix != null)
+          r'praiseContentHasSuffix': praiseContentHasSuffix,
+        if (praiseContentEqualFold != null)
+          r'praiseContentEqualFold': praiseContentEqualFold,
+        if (praiseContentContainsFold != null)
+          r'praiseContentContainsFold': praiseContentContainsFold,
+        if (letterContent != null) r'letterContent': letterContent,
+        if (letterContentNEQ != null) r'letterContentNEQ': letterContentNEQ,
+        if (letterContentIn != null) r'letterContentIn': letterContentIn,
+        if (letterContentNotIn != null)
+          r'letterContentNotIn': letterContentNotIn,
+        if (letterContentGT != null) r'letterContentGT': letterContentGT,
+        if (letterContentGTE != null) r'letterContentGTE': letterContentGTE,
+        if (letterContentLT != null) r'letterContentLT': letterContentLT,
+        if (letterContentLTE != null) r'letterContentLTE': letterContentLTE,
+        if (letterContentContains != null)
+          r'letterContentContains': letterContentContains,
+        if (letterContentHasPrefix != null)
+          r'letterContentHasPrefix': letterContentHasPrefix,
+        if (letterContentHasSuffix != null)
+          r'letterContentHasSuffix': letterContentHasSuffix,
+        if (letterContentEqualFold != null)
+          r'letterContentEqualFold': letterContentEqualFold,
+        if (letterContentContainsFold != null)
+          r'letterContentContainsFold': letterContentContainsFold,
+        if (praiseSpoiled != null) r'praiseSpoiled': praiseSpoiled,
+        if (praiseSpoiledNEQ != null) r'praiseSpoiledNEQ': praiseSpoiledNEQ,
+        if (letterSpoiled != null) r'letterSpoiled': letterSpoiled,
+        if (letterSpoiledNEQ != null) r'letterSpoiledNEQ': letterSpoiledNEQ,
+        if (thumbnail != null) r'thumbnail': thumbnail,
+        if (thumbnailNEQ != null) r'thumbnailNEQ': thumbnailNEQ,
+        if (thumbnailIn != null) r'thumbnailIn': thumbnailIn,
+        if (thumbnailNotIn != null) r'thumbnailNotIn': thumbnailNotIn,
+        if (thumbnailGT != null) r'thumbnailGT': thumbnailGT,
+        if (thumbnailGTE != null) r'thumbnailGTE': thumbnailGTE,
+        if (thumbnailLT != null) r'thumbnailLT': thumbnailLT,
+        if (thumbnailLTE != null) r'thumbnailLTE': thumbnailLTE,
+        if (thumbnailContains != null) r'thumbnailContains': thumbnailContains,
+        if (thumbnailHasPrefix != null)
+          r'thumbnailHasPrefix': thumbnailHasPrefix,
+        if (thumbnailHasSuffix != null)
+          r'thumbnailHasSuffix': thumbnailHasSuffix,
+        if (thumbnailIsNil != null) r'thumbnailIsNil': thumbnailIsNil,
+        if (thumbnailNotNil != null) r'thumbnailNotNil': thumbnailNotNil,
+        if (thumbnailEqualFold != null)
+          r'thumbnailEqualFold': thumbnailEqualFold,
+        if (thumbnailContainsFold != null)
+          r'thumbnailContainsFold': thumbnailContainsFold,
         if (hasOwner != null) r'hasOwner': hasOwner,
         if (hasOwnerWith != null) r'hasOwnerWith': hasOwnerWith,
-        if (hasPosts != null) r'hasPosts': hasPosts,
-        if (hasPostsWith != null) r'hasPostsWith': hasPostsWith,
+        if (hasHashtags != null) r'hasHashtags': hasHashtags,
+        if (hasHashtagsWith != null) r'hasHashtagsWith': hasHashtagsWith,
+        if (hasWork != null) r'hasWork': hasWork,
+        if (hasWorkWith != null) r'hasWorkWith': hasWorkWith,
+        if (hasCategory != null) r'hasCategory': hasCategory,
+        if (hasCategoryWith != null) r'hasCategoryWith': hasCategoryWith,
       });
 
   Input$DraftWhereInput._(this._$data);
@@ -2313,6 +3006,396 @@ class Input$DraftWhereInput {
       final l$idLTE = data['idLTE'];
       result$data['idLTE'] = (l$idLTE as String?);
     }
+    if (data.containsKey('createTime')) {
+      final l$createTime = data['createTime'];
+      result$data['createTime'] = (l$createTime as String?);
+    }
+    if (data.containsKey('createTimeNEQ')) {
+      final l$createTimeNEQ = data['createTimeNEQ'];
+      result$data['createTimeNEQ'] = (l$createTimeNEQ as String?);
+    }
+    if (data.containsKey('createTimeIn')) {
+      final l$createTimeIn = data['createTimeIn'];
+      result$data['createTimeIn'] = (l$createTimeIn as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('createTimeNotIn')) {
+      final l$createTimeNotIn = data['createTimeNotIn'];
+      result$data['createTimeNotIn'] = (l$createTimeNotIn as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('createTimeGT')) {
+      final l$createTimeGT = data['createTimeGT'];
+      result$data['createTimeGT'] = (l$createTimeGT as String?);
+    }
+    if (data.containsKey('createTimeGTE')) {
+      final l$createTimeGTE = data['createTimeGTE'];
+      result$data['createTimeGTE'] = (l$createTimeGTE as String?);
+    }
+    if (data.containsKey('createTimeLT')) {
+      final l$createTimeLT = data['createTimeLT'];
+      result$data['createTimeLT'] = (l$createTimeLT as String?);
+    }
+    if (data.containsKey('createTimeLTE')) {
+      final l$createTimeLTE = data['createTimeLTE'];
+      result$data['createTimeLTE'] = (l$createTimeLTE as String?);
+    }
+    if (data.containsKey('updateTime')) {
+      final l$updateTime = data['updateTime'];
+      result$data['updateTime'] = (l$updateTime as String?);
+    }
+    if (data.containsKey('updateTimeNEQ')) {
+      final l$updateTimeNEQ = data['updateTimeNEQ'];
+      result$data['updateTimeNEQ'] = (l$updateTimeNEQ as String?);
+    }
+    if (data.containsKey('updateTimeIn')) {
+      final l$updateTimeIn = data['updateTimeIn'];
+      result$data['updateTimeIn'] = (l$updateTimeIn as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('updateTimeNotIn')) {
+      final l$updateTimeNotIn = data['updateTimeNotIn'];
+      result$data['updateTimeNotIn'] = (l$updateTimeNotIn as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('updateTimeGT')) {
+      final l$updateTimeGT = data['updateTimeGT'];
+      result$data['updateTimeGT'] = (l$updateTimeGT as String?);
+    }
+    if (data.containsKey('updateTimeGTE')) {
+      final l$updateTimeGTE = data['updateTimeGTE'];
+      result$data['updateTimeGTE'] = (l$updateTimeGTE as String?);
+    }
+    if (data.containsKey('updateTimeLT')) {
+      final l$updateTimeLT = data['updateTimeLT'];
+      result$data['updateTimeLT'] = (l$updateTimeLT as String?);
+    }
+    if (data.containsKey('updateTimeLTE')) {
+      final l$updateTimeLTE = data['updateTimeLTE'];
+      result$data['updateTimeLTE'] = (l$updateTimeLTE as String?);
+    }
+    if (data.containsKey('praiseTitle')) {
+      final l$praiseTitle = data['praiseTitle'];
+      result$data['praiseTitle'] = (l$praiseTitle as String?);
+    }
+    if (data.containsKey('praiseTitleNEQ')) {
+      final l$praiseTitleNEQ = data['praiseTitleNEQ'];
+      result$data['praiseTitleNEQ'] = (l$praiseTitleNEQ as String?);
+    }
+    if (data.containsKey('praiseTitleIn')) {
+      final l$praiseTitleIn = data['praiseTitleIn'];
+      result$data['praiseTitleIn'] = (l$praiseTitleIn as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('praiseTitleNotIn')) {
+      final l$praiseTitleNotIn = data['praiseTitleNotIn'];
+      result$data['praiseTitleNotIn'] = (l$praiseTitleNotIn as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('praiseTitleGT')) {
+      final l$praiseTitleGT = data['praiseTitleGT'];
+      result$data['praiseTitleGT'] = (l$praiseTitleGT as String?);
+    }
+    if (data.containsKey('praiseTitleGTE')) {
+      final l$praiseTitleGTE = data['praiseTitleGTE'];
+      result$data['praiseTitleGTE'] = (l$praiseTitleGTE as String?);
+    }
+    if (data.containsKey('praiseTitleLT')) {
+      final l$praiseTitleLT = data['praiseTitleLT'];
+      result$data['praiseTitleLT'] = (l$praiseTitleLT as String?);
+    }
+    if (data.containsKey('praiseTitleLTE')) {
+      final l$praiseTitleLTE = data['praiseTitleLTE'];
+      result$data['praiseTitleLTE'] = (l$praiseTitleLTE as String?);
+    }
+    if (data.containsKey('praiseTitleContains')) {
+      final l$praiseTitleContains = data['praiseTitleContains'];
+      result$data['praiseTitleContains'] = (l$praiseTitleContains as String?);
+    }
+    if (data.containsKey('praiseTitleHasPrefix')) {
+      final l$praiseTitleHasPrefix = data['praiseTitleHasPrefix'];
+      result$data['praiseTitleHasPrefix'] = (l$praiseTitleHasPrefix as String?);
+    }
+    if (data.containsKey('praiseTitleHasSuffix')) {
+      final l$praiseTitleHasSuffix = data['praiseTitleHasSuffix'];
+      result$data['praiseTitleHasSuffix'] = (l$praiseTitleHasSuffix as String?);
+    }
+    if (data.containsKey('praiseTitleEqualFold')) {
+      final l$praiseTitleEqualFold = data['praiseTitleEqualFold'];
+      result$data['praiseTitleEqualFold'] = (l$praiseTitleEqualFold as String?);
+    }
+    if (data.containsKey('praiseTitleContainsFold')) {
+      final l$praiseTitleContainsFold = data['praiseTitleContainsFold'];
+      result$data['praiseTitleContainsFold'] =
+          (l$praiseTitleContainsFold as String?);
+    }
+    if (data.containsKey('letterTitle')) {
+      final l$letterTitle = data['letterTitle'];
+      result$data['letterTitle'] = (l$letterTitle as String?);
+    }
+    if (data.containsKey('letterTitleNEQ')) {
+      final l$letterTitleNEQ = data['letterTitleNEQ'];
+      result$data['letterTitleNEQ'] = (l$letterTitleNEQ as String?);
+    }
+    if (data.containsKey('letterTitleIn')) {
+      final l$letterTitleIn = data['letterTitleIn'];
+      result$data['letterTitleIn'] = (l$letterTitleIn as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('letterTitleNotIn')) {
+      final l$letterTitleNotIn = data['letterTitleNotIn'];
+      result$data['letterTitleNotIn'] = (l$letterTitleNotIn as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('letterTitleGT')) {
+      final l$letterTitleGT = data['letterTitleGT'];
+      result$data['letterTitleGT'] = (l$letterTitleGT as String?);
+    }
+    if (data.containsKey('letterTitleGTE')) {
+      final l$letterTitleGTE = data['letterTitleGTE'];
+      result$data['letterTitleGTE'] = (l$letterTitleGTE as String?);
+    }
+    if (data.containsKey('letterTitleLT')) {
+      final l$letterTitleLT = data['letterTitleLT'];
+      result$data['letterTitleLT'] = (l$letterTitleLT as String?);
+    }
+    if (data.containsKey('letterTitleLTE')) {
+      final l$letterTitleLTE = data['letterTitleLTE'];
+      result$data['letterTitleLTE'] = (l$letterTitleLTE as String?);
+    }
+    if (data.containsKey('letterTitleContains')) {
+      final l$letterTitleContains = data['letterTitleContains'];
+      result$data['letterTitleContains'] = (l$letterTitleContains as String?);
+    }
+    if (data.containsKey('letterTitleHasPrefix')) {
+      final l$letterTitleHasPrefix = data['letterTitleHasPrefix'];
+      result$data['letterTitleHasPrefix'] = (l$letterTitleHasPrefix as String?);
+    }
+    if (data.containsKey('letterTitleHasSuffix')) {
+      final l$letterTitleHasSuffix = data['letterTitleHasSuffix'];
+      result$data['letterTitleHasSuffix'] = (l$letterTitleHasSuffix as String?);
+    }
+    if (data.containsKey('letterTitleEqualFold')) {
+      final l$letterTitleEqualFold = data['letterTitleEqualFold'];
+      result$data['letterTitleEqualFold'] = (l$letterTitleEqualFold as String?);
+    }
+    if (data.containsKey('letterTitleContainsFold')) {
+      final l$letterTitleContainsFold = data['letterTitleContainsFold'];
+      result$data['letterTitleContainsFold'] =
+          (l$letterTitleContainsFold as String?);
+    }
+    if (data.containsKey('praiseContent')) {
+      final l$praiseContent = data['praiseContent'];
+      result$data['praiseContent'] = (l$praiseContent as String?);
+    }
+    if (data.containsKey('praiseContentNEQ')) {
+      final l$praiseContentNEQ = data['praiseContentNEQ'];
+      result$data['praiseContentNEQ'] = (l$praiseContentNEQ as String?);
+    }
+    if (data.containsKey('praiseContentIn')) {
+      final l$praiseContentIn = data['praiseContentIn'];
+      result$data['praiseContentIn'] = (l$praiseContentIn as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('praiseContentNotIn')) {
+      final l$praiseContentNotIn = data['praiseContentNotIn'];
+      result$data['praiseContentNotIn'] =
+          (l$praiseContentNotIn as List<dynamic>?)
+              ?.map((e) => (e as String))
+              .toList();
+    }
+    if (data.containsKey('praiseContentGT')) {
+      final l$praiseContentGT = data['praiseContentGT'];
+      result$data['praiseContentGT'] = (l$praiseContentGT as String?);
+    }
+    if (data.containsKey('praiseContentGTE')) {
+      final l$praiseContentGTE = data['praiseContentGTE'];
+      result$data['praiseContentGTE'] = (l$praiseContentGTE as String?);
+    }
+    if (data.containsKey('praiseContentLT')) {
+      final l$praiseContentLT = data['praiseContentLT'];
+      result$data['praiseContentLT'] = (l$praiseContentLT as String?);
+    }
+    if (data.containsKey('praiseContentLTE')) {
+      final l$praiseContentLTE = data['praiseContentLTE'];
+      result$data['praiseContentLTE'] = (l$praiseContentLTE as String?);
+    }
+    if (data.containsKey('praiseContentContains')) {
+      final l$praiseContentContains = data['praiseContentContains'];
+      result$data['praiseContentContains'] =
+          (l$praiseContentContains as String?);
+    }
+    if (data.containsKey('praiseContentHasPrefix')) {
+      final l$praiseContentHasPrefix = data['praiseContentHasPrefix'];
+      result$data['praiseContentHasPrefix'] =
+          (l$praiseContentHasPrefix as String?);
+    }
+    if (data.containsKey('praiseContentHasSuffix')) {
+      final l$praiseContentHasSuffix = data['praiseContentHasSuffix'];
+      result$data['praiseContentHasSuffix'] =
+          (l$praiseContentHasSuffix as String?);
+    }
+    if (data.containsKey('praiseContentEqualFold')) {
+      final l$praiseContentEqualFold = data['praiseContentEqualFold'];
+      result$data['praiseContentEqualFold'] =
+          (l$praiseContentEqualFold as String?);
+    }
+    if (data.containsKey('praiseContentContainsFold')) {
+      final l$praiseContentContainsFold = data['praiseContentContainsFold'];
+      result$data['praiseContentContainsFold'] =
+          (l$praiseContentContainsFold as String?);
+    }
+    if (data.containsKey('letterContent')) {
+      final l$letterContent = data['letterContent'];
+      result$data['letterContent'] = (l$letterContent as String?);
+    }
+    if (data.containsKey('letterContentNEQ')) {
+      final l$letterContentNEQ = data['letterContentNEQ'];
+      result$data['letterContentNEQ'] = (l$letterContentNEQ as String?);
+    }
+    if (data.containsKey('letterContentIn')) {
+      final l$letterContentIn = data['letterContentIn'];
+      result$data['letterContentIn'] = (l$letterContentIn as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('letterContentNotIn')) {
+      final l$letterContentNotIn = data['letterContentNotIn'];
+      result$data['letterContentNotIn'] =
+          (l$letterContentNotIn as List<dynamic>?)
+              ?.map((e) => (e as String))
+              .toList();
+    }
+    if (data.containsKey('letterContentGT')) {
+      final l$letterContentGT = data['letterContentGT'];
+      result$data['letterContentGT'] = (l$letterContentGT as String?);
+    }
+    if (data.containsKey('letterContentGTE')) {
+      final l$letterContentGTE = data['letterContentGTE'];
+      result$data['letterContentGTE'] = (l$letterContentGTE as String?);
+    }
+    if (data.containsKey('letterContentLT')) {
+      final l$letterContentLT = data['letterContentLT'];
+      result$data['letterContentLT'] = (l$letterContentLT as String?);
+    }
+    if (data.containsKey('letterContentLTE')) {
+      final l$letterContentLTE = data['letterContentLTE'];
+      result$data['letterContentLTE'] = (l$letterContentLTE as String?);
+    }
+    if (data.containsKey('letterContentContains')) {
+      final l$letterContentContains = data['letterContentContains'];
+      result$data['letterContentContains'] =
+          (l$letterContentContains as String?);
+    }
+    if (data.containsKey('letterContentHasPrefix')) {
+      final l$letterContentHasPrefix = data['letterContentHasPrefix'];
+      result$data['letterContentHasPrefix'] =
+          (l$letterContentHasPrefix as String?);
+    }
+    if (data.containsKey('letterContentHasSuffix')) {
+      final l$letterContentHasSuffix = data['letterContentHasSuffix'];
+      result$data['letterContentHasSuffix'] =
+          (l$letterContentHasSuffix as String?);
+    }
+    if (data.containsKey('letterContentEqualFold')) {
+      final l$letterContentEqualFold = data['letterContentEqualFold'];
+      result$data['letterContentEqualFold'] =
+          (l$letterContentEqualFold as String?);
+    }
+    if (data.containsKey('letterContentContainsFold')) {
+      final l$letterContentContainsFold = data['letterContentContainsFold'];
+      result$data['letterContentContainsFold'] =
+          (l$letterContentContainsFold as String?);
+    }
+    if (data.containsKey('praiseSpoiled')) {
+      final l$praiseSpoiled = data['praiseSpoiled'];
+      result$data['praiseSpoiled'] = (l$praiseSpoiled as bool?);
+    }
+    if (data.containsKey('praiseSpoiledNEQ')) {
+      final l$praiseSpoiledNEQ = data['praiseSpoiledNEQ'];
+      result$data['praiseSpoiledNEQ'] = (l$praiseSpoiledNEQ as bool?);
+    }
+    if (data.containsKey('letterSpoiled')) {
+      final l$letterSpoiled = data['letterSpoiled'];
+      result$data['letterSpoiled'] = (l$letterSpoiled as bool?);
+    }
+    if (data.containsKey('letterSpoiledNEQ')) {
+      final l$letterSpoiledNEQ = data['letterSpoiledNEQ'];
+      result$data['letterSpoiledNEQ'] = (l$letterSpoiledNEQ as bool?);
+    }
+    if (data.containsKey('thumbnail')) {
+      final l$thumbnail = data['thumbnail'];
+      result$data['thumbnail'] = (l$thumbnail as String?);
+    }
+    if (data.containsKey('thumbnailNEQ')) {
+      final l$thumbnailNEQ = data['thumbnailNEQ'];
+      result$data['thumbnailNEQ'] = (l$thumbnailNEQ as String?);
+    }
+    if (data.containsKey('thumbnailIn')) {
+      final l$thumbnailIn = data['thumbnailIn'];
+      result$data['thumbnailIn'] =
+          (l$thumbnailIn as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
+    if (data.containsKey('thumbnailNotIn')) {
+      final l$thumbnailNotIn = data['thumbnailNotIn'];
+      result$data['thumbnailNotIn'] = (l$thumbnailNotIn as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('thumbnailGT')) {
+      final l$thumbnailGT = data['thumbnailGT'];
+      result$data['thumbnailGT'] = (l$thumbnailGT as String?);
+    }
+    if (data.containsKey('thumbnailGTE')) {
+      final l$thumbnailGTE = data['thumbnailGTE'];
+      result$data['thumbnailGTE'] = (l$thumbnailGTE as String?);
+    }
+    if (data.containsKey('thumbnailLT')) {
+      final l$thumbnailLT = data['thumbnailLT'];
+      result$data['thumbnailLT'] = (l$thumbnailLT as String?);
+    }
+    if (data.containsKey('thumbnailLTE')) {
+      final l$thumbnailLTE = data['thumbnailLTE'];
+      result$data['thumbnailLTE'] = (l$thumbnailLTE as String?);
+    }
+    if (data.containsKey('thumbnailContains')) {
+      final l$thumbnailContains = data['thumbnailContains'];
+      result$data['thumbnailContains'] = (l$thumbnailContains as String?);
+    }
+    if (data.containsKey('thumbnailHasPrefix')) {
+      final l$thumbnailHasPrefix = data['thumbnailHasPrefix'];
+      result$data['thumbnailHasPrefix'] = (l$thumbnailHasPrefix as String?);
+    }
+    if (data.containsKey('thumbnailHasSuffix')) {
+      final l$thumbnailHasSuffix = data['thumbnailHasSuffix'];
+      result$data['thumbnailHasSuffix'] = (l$thumbnailHasSuffix as String?);
+    }
+    if (data.containsKey('thumbnailIsNil')) {
+      final l$thumbnailIsNil = data['thumbnailIsNil'];
+      result$data['thumbnailIsNil'] = (l$thumbnailIsNil as bool?);
+    }
+    if (data.containsKey('thumbnailNotNil')) {
+      final l$thumbnailNotNil = data['thumbnailNotNil'];
+      result$data['thumbnailNotNil'] = (l$thumbnailNotNil as bool?);
+    }
+    if (data.containsKey('thumbnailEqualFold')) {
+      final l$thumbnailEqualFold = data['thumbnailEqualFold'];
+      result$data['thumbnailEqualFold'] = (l$thumbnailEqualFold as String?);
+    }
+    if (data.containsKey('thumbnailContainsFold')) {
+      final l$thumbnailContainsFold = data['thumbnailContainsFold'];
+      result$data['thumbnailContainsFold'] =
+          (l$thumbnailContainsFold as String?);
+    }
     if (data.containsKey('hasOwner')) {
       final l$hasOwner = data['hasOwner'];
       result$data['hasOwner'] = (l$hasOwner as bool?);
@@ -2324,15 +3407,37 @@ class Input$DraftWhereInput {
               (e) => Input$UserWhereInput.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
-    if (data.containsKey('hasPosts')) {
-      final l$hasPosts = data['hasPosts'];
-      result$data['hasPosts'] = (l$hasPosts as bool?);
+    if (data.containsKey('hasHashtags')) {
+      final l$hasHashtags = data['hasHashtags'];
+      result$data['hasHashtags'] = (l$hasHashtags as bool?);
     }
-    if (data.containsKey('hasPostsWith')) {
-      final l$hasPostsWith = data['hasPostsWith'];
-      result$data['hasPostsWith'] = (l$hasPostsWith as List<dynamic>?)
+    if (data.containsKey('hasHashtagsWith')) {
+      final l$hasHashtagsWith = data['hasHashtagsWith'];
+      result$data['hasHashtagsWith'] = (l$hasHashtagsWith as List<dynamic>?)
+          ?.map((e) =>
+              Input$HashtagWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('hasWork')) {
+      final l$hasWork = data['hasWork'];
+      result$data['hasWork'] = (l$hasWork as bool?);
+    }
+    if (data.containsKey('hasWorkWith')) {
+      final l$hasWorkWith = data['hasWorkWith'];
+      result$data['hasWorkWith'] = (l$hasWorkWith as List<dynamic>?)
           ?.map(
-              (e) => Input$PostWhereInput.fromJson((e as Map<String, dynamic>)))
+              (e) => Input$WorkWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
+    if (data.containsKey('hasCategory')) {
+      final l$hasCategory = data['hasCategory'];
+      result$data['hasCategory'] = (l$hasCategory as bool?);
+    }
+    if (data.containsKey('hasCategoryWith')) {
+      final l$hasCategoryWith = data['hasCategoryWith'];
+      result$data['hasCategoryWith'] = (l$hasCategoryWith as List<dynamic>?)
+          ?.map((e) =>
+              Input$CategoryWhereInput.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
     return Input$DraftWhereInput._(result$data);
@@ -2353,12 +3458,133 @@ class Input$DraftWhereInput {
   String? get idGTE => (_$data['idGTE'] as String?);
   String? get idLT => (_$data['idLT'] as String?);
   String? get idLTE => (_$data['idLTE'] as String?);
+  String? get createTime => (_$data['createTime'] as String?);
+  String? get createTimeNEQ => (_$data['createTimeNEQ'] as String?);
+  List<String>? get createTimeIn => (_$data['createTimeIn'] as List<String>?);
+  List<String>? get createTimeNotIn =>
+      (_$data['createTimeNotIn'] as List<String>?);
+  String? get createTimeGT => (_$data['createTimeGT'] as String?);
+  String? get createTimeGTE => (_$data['createTimeGTE'] as String?);
+  String? get createTimeLT => (_$data['createTimeLT'] as String?);
+  String? get createTimeLTE => (_$data['createTimeLTE'] as String?);
+  String? get updateTime => (_$data['updateTime'] as String?);
+  String? get updateTimeNEQ => (_$data['updateTimeNEQ'] as String?);
+  List<String>? get updateTimeIn => (_$data['updateTimeIn'] as List<String>?);
+  List<String>? get updateTimeNotIn =>
+      (_$data['updateTimeNotIn'] as List<String>?);
+  String? get updateTimeGT => (_$data['updateTimeGT'] as String?);
+  String? get updateTimeGTE => (_$data['updateTimeGTE'] as String?);
+  String? get updateTimeLT => (_$data['updateTimeLT'] as String?);
+  String? get updateTimeLTE => (_$data['updateTimeLTE'] as String?);
+  String? get praiseTitle => (_$data['praiseTitle'] as String?);
+  String? get praiseTitleNEQ => (_$data['praiseTitleNEQ'] as String?);
+  List<String>? get praiseTitleIn => (_$data['praiseTitleIn'] as List<String>?);
+  List<String>? get praiseTitleNotIn =>
+      (_$data['praiseTitleNotIn'] as List<String>?);
+  String? get praiseTitleGT => (_$data['praiseTitleGT'] as String?);
+  String? get praiseTitleGTE => (_$data['praiseTitleGTE'] as String?);
+  String? get praiseTitleLT => (_$data['praiseTitleLT'] as String?);
+  String? get praiseTitleLTE => (_$data['praiseTitleLTE'] as String?);
+  String? get praiseTitleContains => (_$data['praiseTitleContains'] as String?);
+  String? get praiseTitleHasPrefix =>
+      (_$data['praiseTitleHasPrefix'] as String?);
+  String? get praiseTitleHasSuffix =>
+      (_$data['praiseTitleHasSuffix'] as String?);
+  String? get praiseTitleEqualFold =>
+      (_$data['praiseTitleEqualFold'] as String?);
+  String? get praiseTitleContainsFold =>
+      (_$data['praiseTitleContainsFold'] as String?);
+  String? get letterTitle => (_$data['letterTitle'] as String?);
+  String? get letterTitleNEQ => (_$data['letterTitleNEQ'] as String?);
+  List<String>? get letterTitleIn => (_$data['letterTitleIn'] as List<String>?);
+  List<String>? get letterTitleNotIn =>
+      (_$data['letterTitleNotIn'] as List<String>?);
+  String? get letterTitleGT => (_$data['letterTitleGT'] as String?);
+  String? get letterTitleGTE => (_$data['letterTitleGTE'] as String?);
+  String? get letterTitleLT => (_$data['letterTitleLT'] as String?);
+  String? get letterTitleLTE => (_$data['letterTitleLTE'] as String?);
+  String? get letterTitleContains => (_$data['letterTitleContains'] as String?);
+  String? get letterTitleHasPrefix =>
+      (_$data['letterTitleHasPrefix'] as String?);
+  String? get letterTitleHasSuffix =>
+      (_$data['letterTitleHasSuffix'] as String?);
+  String? get letterTitleEqualFold =>
+      (_$data['letterTitleEqualFold'] as String?);
+  String? get letterTitleContainsFold =>
+      (_$data['letterTitleContainsFold'] as String?);
+  String? get praiseContent => (_$data['praiseContent'] as String?);
+  String? get praiseContentNEQ => (_$data['praiseContentNEQ'] as String?);
+  List<String>? get praiseContentIn =>
+      (_$data['praiseContentIn'] as List<String>?);
+  List<String>? get praiseContentNotIn =>
+      (_$data['praiseContentNotIn'] as List<String>?);
+  String? get praiseContentGT => (_$data['praiseContentGT'] as String?);
+  String? get praiseContentGTE => (_$data['praiseContentGTE'] as String?);
+  String? get praiseContentLT => (_$data['praiseContentLT'] as String?);
+  String? get praiseContentLTE => (_$data['praiseContentLTE'] as String?);
+  String? get praiseContentContains =>
+      (_$data['praiseContentContains'] as String?);
+  String? get praiseContentHasPrefix =>
+      (_$data['praiseContentHasPrefix'] as String?);
+  String? get praiseContentHasSuffix =>
+      (_$data['praiseContentHasSuffix'] as String?);
+  String? get praiseContentEqualFold =>
+      (_$data['praiseContentEqualFold'] as String?);
+  String? get praiseContentContainsFold =>
+      (_$data['praiseContentContainsFold'] as String?);
+  String? get letterContent => (_$data['letterContent'] as String?);
+  String? get letterContentNEQ => (_$data['letterContentNEQ'] as String?);
+  List<String>? get letterContentIn =>
+      (_$data['letterContentIn'] as List<String>?);
+  List<String>? get letterContentNotIn =>
+      (_$data['letterContentNotIn'] as List<String>?);
+  String? get letterContentGT => (_$data['letterContentGT'] as String?);
+  String? get letterContentGTE => (_$data['letterContentGTE'] as String?);
+  String? get letterContentLT => (_$data['letterContentLT'] as String?);
+  String? get letterContentLTE => (_$data['letterContentLTE'] as String?);
+  String? get letterContentContains =>
+      (_$data['letterContentContains'] as String?);
+  String? get letterContentHasPrefix =>
+      (_$data['letterContentHasPrefix'] as String?);
+  String? get letterContentHasSuffix =>
+      (_$data['letterContentHasSuffix'] as String?);
+  String? get letterContentEqualFold =>
+      (_$data['letterContentEqualFold'] as String?);
+  String? get letterContentContainsFold =>
+      (_$data['letterContentContainsFold'] as String?);
+  bool? get praiseSpoiled => (_$data['praiseSpoiled'] as bool?);
+  bool? get praiseSpoiledNEQ => (_$data['praiseSpoiledNEQ'] as bool?);
+  bool? get letterSpoiled => (_$data['letterSpoiled'] as bool?);
+  bool? get letterSpoiledNEQ => (_$data['letterSpoiledNEQ'] as bool?);
+  String? get thumbnail => (_$data['thumbnail'] as String?);
+  String? get thumbnailNEQ => (_$data['thumbnailNEQ'] as String?);
+  List<String>? get thumbnailIn => (_$data['thumbnailIn'] as List<String>?);
+  List<String>? get thumbnailNotIn =>
+      (_$data['thumbnailNotIn'] as List<String>?);
+  String? get thumbnailGT => (_$data['thumbnailGT'] as String?);
+  String? get thumbnailGTE => (_$data['thumbnailGTE'] as String?);
+  String? get thumbnailLT => (_$data['thumbnailLT'] as String?);
+  String? get thumbnailLTE => (_$data['thumbnailLTE'] as String?);
+  String? get thumbnailContains => (_$data['thumbnailContains'] as String?);
+  String? get thumbnailHasPrefix => (_$data['thumbnailHasPrefix'] as String?);
+  String? get thumbnailHasSuffix => (_$data['thumbnailHasSuffix'] as String?);
+  bool? get thumbnailIsNil => (_$data['thumbnailIsNil'] as bool?);
+  bool? get thumbnailNotNil => (_$data['thumbnailNotNil'] as bool?);
+  String? get thumbnailEqualFold => (_$data['thumbnailEqualFold'] as String?);
+  String? get thumbnailContainsFold =>
+      (_$data['thumbnailContainsFold'] as String?);
   bool? get hasOwner => (_$data['hasOwner'] as bool?);
   List<Input$UserWhereInput>? get hasOwnerWith =>
       (_$data['hasOwnerWith'] as List<Input$UserWhereInput>?);
-  bool? get hasPosts => (_$data['hasPosts'] as bool?);
-  List<Input$PostWhereInput>? get hasPostsWith =>
-      (_$data['hasPostsWith'] as List<Input$PostWhereInput>?);
+  bool? get hasHashtags => (_$data['hasHashtags'] as bool?);
+  List<Input$HashtagWhereInput>? get hasHashtagsWith =>
+      (_$data['hasHashtagsWith'] as List<Input$HashtagWhereInput>?);
+  bool? get hasWork => (_$data['hasWork'] as bool?);
+  List<Input$WorkWhereInput>? get hasWorkWith =>
+      (_$data['hasWorkWith'] as List<Input$WorkWhereInput>?);
+  bool? get hasCategory => (_$data['hasCategory'] as bool?);
+  List<Input$CategoryWhereInput>? get hasCategoryWith =>
+      (_$data['hasCategoryWith'] as List<Input$CategoryWhereInput>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('not')) {
@@ -2405,6 +3631,362 @@ class Input$DraftWhereInput {
       final l$idLTE = idLTE;
       result$data['idLTE'] = l$idLTE;
     }
+    if (_$data.containsKey('createTime')) {
+      final l$createTime = createTime;
+      result$data['createTime'] = l$createTime;
+    }
+    if (_$data.containsKey('createTimeNEQ')) {
+      final l$createTimeNEQ = createTimeNEQ;
+      result$data['createTimeNEQ'] = l$createTimeNEQ;
+    }
+    if (_$data.containsKey('createTimeIn')) {
+      final l$createTimeIn = createTimeIn;
+      result$data['createTimeIn'] = l$createTimeIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('createTimeNotIn')) {
+      final l$createTimeNotIn = createTimeNotIn;
+      result$data['createTimeNotIn'] =
+          l$createTimeNotIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('createTimeGT')) {
+      final l$createTimeGT = createTimeGT;
+      result$data['createTimeGT'] = l$createTimeGT;
+    }
+    if (_$data.containsKey('createTimeGTE')) {
+      final l$createTimeGTE = createTimeGTE;
+      result$data['createTimeGTE'] = l$createTimeGTE;
+    }
+    if (_$data.containsKey('createTimeLT')) {
+      final l$createTimeLT = createTimeLT;
+      result$data['createTimeLT'] = l$createTimeLT;
+    }
+    if (_$data.containsKey('createTimeLTE')) {
+      final l$createTimeLTE = createTimeLTE;
+      result$data['createTimeLTE'] = l$createTimeLTE;
+    }
+    if (_$data.containsKey('updateTime')) {
+      final l$updateTime = updateTime;
+      result$data['updateTime'] = l$updateTime;
+    }
+    if (_$data.containsKey('updateTimeNEQ')) {
+      final l$updateTimeNEQ = updateTimeNEQ;
+      result$data['updateTimeNEQ'] = l$updateTimeNEQ;
+    }
+    if (_$data.containsKey('updateTimeIn')) {
+      final l$updateTimeIn = updateTimeIn;
+      result$data['updateTimeIn'] = l$updateTimeIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('updateTimeNotIn')) {
+      final l$updateTimeNotIn = updateTimeNotIn;
+      result$data['updateTimeNotIn'] =
+          l$updateTimeNotIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('updateTimeGT')) {
+      final l$updateTimeGT = updateTimeGT;
+      result$data['updateTimeGT'] = l$updateTimeGT;
+    }
+    if (_$data.containsKey('updateTimeGTE')) {
+      final l$updateTimeGTE = updateTimeGTE;
+      result$data['updateTimeGTE'] = l$updateTimeGTE;
+    }
+    if (_$data.containsKey('updateTimeLT')) {
+      final l$updateTimeLT = updateTimeLT;
+      result$data['updateTimeLT'] = l$updateTimeLT;
+    }
+    if (_$data.containsKey('updateTimeLTE')) {
+      final l$updateTimeLTE = updateTimeLTE;
+      result$data['updateTimeLTE'] = l$updateTimeLTE;
+    }
+    if (_$data.containsKey('praiseTitle')) {
+      final l$praiseTitle = praiseTitle;
+      result$data['praiseTitle'] = l$praiseTitle;
+    }
+    if (_$data.containsKey('praiseTitleNEQ')) {
+      final l$praiseTitleNEQ = praiseTitleNEQ;
+      result$data['praiseTitleNEQ'] = l$praiseTitleNEQ;
+    }
+    if (_$data.containsKey('praiseTitleIn')) {
+      final l$praiseTitleIn = praiseTitleIn;
+      result$data['praiseTitleIn'] = l$praiseTitleIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('praiseTitleNotIn')) {
+      final l$praiseTitleNotIn = praiseTitleNotIn;
+      result$data['praiseTitleNotIn'] =
+          l$praiseTitleNotIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('praiseTitleGT')) {
+      final l$praiseTitleGT = praiseTitleGT;
+      result$data['praiseTitleGT'] = l$praiseTitleGT;
+    }
+    if (_$data.containsKey('praiseTitleGTE')) {
+      final l$praiseTitleGTE = praiseTitleGTE;
+      result$data['praiseTitleGTE'] = l$praiseTitleGTE;
+    }
+    if (_$data.containsKey('praiseTitleLT')) {
+      final l$praiseTitleLT = praiseTitleLT;
+      result$data['praiseTitleLT'] = l$praiseTitleLT;
+    }
+    if (_$data.containsKey('praiseTitleLTE')) {
+      final l$praiseTitleLTE = praiseTitleLTE;
+      result$data['praiseTitleLTE'] = l$praiseTitleLTE;
+    }
+    if (_$data.containsKey('praiseTitleContains')) {
+      final l$praiseTitleContains = praiseTitleContains;
+      result$data['praiseTitleContains'] = l$praiseTitleContains;
+    }
+    if (_$data.containsKey('praiseTitleHasPrefix')) {
+      final l$praiseTitleHasPrefix = praiseTitleHasPrefix;
+      result$data['praiseTitleHasPrefix'] = l$praiseTitleHasPrefix;
+    }
+    if (_$data.containsKey('praiseTitleHasSuffix')) {
+      final l$praiseTitleHasSuffix = praiseTitleHasSuffix;
+      result$data['praiseTitleHasSuffix'] = l$praiseTitleHasSuffix;
+    }
+    if (_$data.containsKey('praiseTitleEqualFold')) {
+      final l$praiseTitleEqualFold = praiseTitleEqualFold;
+      result$data['praiseTitleEqualFold'] = l$praiseTitleEqualFold;
+    }
+    if (_$data.containsKey('praiseTitleContainsFold')) {
+      final l$praiseTitleContainsFold = praiseTitleContainsFold;
+      result$data['praiseTitleContainsFold'] = l$praiseTitleContainsFold;
+    }
+    if (_$data.containsKey('letterTitle')) {
+      final l$letterTitle = letterTitle;
+      result$data['letterTitle'] = l$letterTitle;
+    }
+    if (_$data.containsKey('letterTitleNEQ')) {
+      final l$letterTitleNEQ = letterTitleNEQ;
+      result$data['letterTitleNEQ'] = l$letterTitleNEQ;
+    }
+    if (_$data.containsKey('letterTitleIn')) {
+      final l$letterTitleIn = letterTitleIn;
+      result$data['letterTitleIn'] = l$letterTitleIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('letterTitleNotIn')) {
+      final l$letterTitleNotIn = letterTitleNotIn;
+      result$data['letterTitleNotIn'] =
+          l$letterTitleNotIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('letterTitleGT')) {
+      final l$letterTitleGT = letterTitleGT;
+      result$data['letterTitleGT'] = l$letterTitleGT;
+    }
+    if (_$data.containsKey('letterTitleGTE')) {
+      final l$letterTitleGTE = letterTitleGTE;
+      result$data['letterTitleGTE'] = l$letterTitleGTE;
+    }
+    if (_$data.containsKey('letterTitleLT')) {
+      final l$letterTitleLT = letterTitleLT;
+      result$data['letterTitleLT'] = l$letterTitleLT;
+    }
+    if (_$data.containsKey('letterTitleLTE')) {
+      final l$letterTitleLTE = letterTitleLTE;
+      result$data['letterTitleLTE'] = l$letterTitleLTE;
+    }
+    if (_$data.containsKey('letterTitleContains')) {
+      final l$letterTitleContains = letterTitleContains;
+      result$data['letterTitleContains'] = l$letterTitleContains;
+    }
+    if (_$data.containsKey('letterTitleHasPrefix')) {
+      final l$letterTitleHasPrefix = letterTitleHasPrefix;
+      result$data['letterTitleHasPrefix'] = l$letterTitleHasPrefix;
+    }
+    if (_$data.containsKey('letterTitleHasSuffix')) {
+      final l$letterTitleHasSuffix = letterTitleHasSuffix;
+      result$data['letterTitleHasSuffix'] = l$letterTitleHasSuffix;
+    }
+    if (_$data.containsKey('letterTitleEqualFold')) {
+      final l$letterTitleEqualFold = letterTitleEqualFold;
+      result$data['letterTitleEqualFold'] = l$letterTitleEqualFold;
+    }
+    if (_$data.containsKey('letterTitleContainsFold')) {
+      final l$letterTitleContainsFold = letterTitleContainsFold;
+      result$data['letterTitleContainsFold'] = l$letterTitleContainsFold;
+    }
+    if (_$data.containsKey('praiseContent')) {
+      final l$praiseContent = praiseContent;
+      result$data['praiseContent'] = l$praiseContent;
+    }
+    if (_$data.containsKey('praiseContentNEQ')) {
+      final l$praiseContentNEQ = praiseContentNEQ;
+      result$data['praiseContentNEQ'] = l$praiseContentNEQ;
+    }
+    if (_$data.containsKey('praiseContentIn')) {
+      final l$praiseContentIn = praiseContentIn;
+      result$data['praiseContentIn'] =
+          l$praiseContentIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('praiseContentNotIn')) {
+      final l$praiseContentNotIn = praiseContentNotIn;
+      result$data['praiseContentNotIn'] =
+          l$praiseContentNotIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('praiseContentGT')) {
+      final l$praiseContentGT = praiseContentGT;
+      result$data['praiseContentGT'] = l$praiseContentGT;
+    }
+    if (_$data.containsKey('praiseContentGTE')) {
+      final l$praiseContentGTE = praiseContentGTE;
+      result$data['praiseContentGTE'] = l$praiseContentGTE;
+    }
+    if (_$data.containsKey('praiseContentLT')) {
+      final l$praiseContentLT = praiseContentLT;
+      result$data['praiseContentLT'] = l$praiseContentLT;
+    }
+    if (_$data.containsKey('praiseContentLTE')) {
+      final l$praiseContentLTE = praiseContentLTE;
+      result$data['praiseContentLTE'] = l$praiseContentLTE;
+    }
+    if (_$data.containsKey('praiseContentContains')) {
+      final l$praiseContentContains = praiseContentContains;
+      result$data['praiseContentContains'] = l$praiseContentContains;
+    }
+    if (_$data.containsKey('praiseContentHasPrefix')) {
+      final l$praiseContentHasPrefix = praiseContentHasPrefix;
+      result$data['praiseContentHasPrefix'] = l$praiseContentHasPrefix;
+    }
+    if (_$data.containsKey('praiseContentHasSuffix')) {
+      final l$praiseContentHasSuffix = praiseContentHasSuffix;
+      result$data['praiseContentHasSuffix'] = l$praiseContentHasSuffix;
+    }
+    if (_$data.containsKey('praiseContentEqualFold')) {
+      final l$praiseContentEqualFold = praiseContentEqualFold;
+      result$data['praiseContentEqualFold'] = l$praiseContentEqualFold;
+    }
+    if (_$data.containsKey('praiseContentContainsFold')) {
+      final l$praiseContentContainsFold = praiseContentContainsFold;
+      result$data['praiseContentContainsFold'] = l$praiseContentContainsFold;
+    }
+    if (_$data.containsKey('letterContent')) {
+      final l$letterContent = letterContent;
+      result$data['letterContent'] = l$letterContent;
+    }
+    if (_$data.containsKey('letterContentNEQ')) {
+      final l$letterContentNEQ = letterContentNEQ;
+      result$data['letterContentNEQ'] = l$letterContentNEQ;
+    }
+    if (_$data.containsKey('letterContentIn')) {
+      final l$letterContentIn = letterContentIn;
+      result$data['letterContentIn'] =
+          l$letterContentIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('letterContentNotIn')) {
+      final l$letterContentNotIn = letterContentNotIn;
+      result$data['letterContentNotIn'] =
+          l$letterContentNotIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('letterContentGT')) {
+      final l$letterContentGT = letterContentGT;
+      result$data['letterContentGT'] = l$letterContentGT;
+    }
+    if (_$data.containsKey('letterContentGTE')) {
+      final l$letterContentGTE = letterContentGTE;
+      result$data['letterContentGTE'] = l$letterContentGTE;
+    }
+    if (_$data.containsKey('letterContentLT')) {
+      final l$letterContentLT = letterContentLT;
+      result$data['letterContentLT'] = l$letterContentLT;
+    }
+    if (_$data.containsKey('letterContentLTE')) {
+      final l$letterContentLTE = letterContentLTE;
+      result$data['letterContentLTE'] = l$letterContentLTE;
+    }
+    if (_$data.containsKey('letterContentContains')) {
+      final l$letterContentContains = letterContentContains;
+      result$data['letterContentContains'] = l$letterContentContains;
+    }
+    if (_$data.containsKey('letterContentHasPrefix')) {
+      final l$letterContentHasPrefix = letterContentHasPrefix;
+      result$data['letterContentHasPrefix'] = l$letterContentHasPrefix;
+    }
+    if (_$data.containsKey('letterContentHasSuffix')) {
+      final l$letterContentHasSuffix = letterContentHasSuffix;
+      result$data['letterContentHasSuffix'] = l$letterContentHasSuffix;
+    }
+    if (_$data.containsKey('letterContentEqualFold')) {
+      final l$letterContentEqualFold = letterContentEqualFold;
+      result$data['letterContentEqualFold'] = l$letterContentEqualFold;
+    }
+    if (_$data.containsKey('letterContentContainsFold')) {
+      final l$letterContentContainsFold = letterContentContainsFold;
+      result$data['letterContentContainsFold'] = l$letterContentContainsFold;
+    }
+    if (_$data.containsKey('praiseSpoiled')) {
+      final l$praiseSpoiled = praiseSpoiled;
+      result$data['praiseSpoiled'] = l$praiseSpoiled;
+    }
+    if (_$data.containsKey('praiseSpoiledNEQ')) {
+      final l$praiseSpoiledNEQ = praiseSpoiledNEQ;
+      result$data['praiseSpoiledNEQ'] = l$praiseSpoiledNEQ;
+    }
+    if (_$data.containsKey('letterSpoiled')) {
+      final l$letterSpoiled = letterSpoiled;
+      result$data['letterSpoiled'] = l$letterSpoiled;
+    }
+    if (_$data.containsKey('letterSpoiledNEQ')) {
+      final l$letterSpoiledNEQ = letterSpoiledNEQ;
+      result$data['letterSpoiledNEQ'] = l$letterSpoiledNEQ;
+    }
+    if (_$data.containsKey('thumbnail')) {
+      final l$thumbnail = thumbnail;
+      result$data['thumbnail'] = l$thumbnail;
+    }
+    if (_$data.containsKey('thumbnailNEQ')) {
+      final l$thumbnailNEQ = thumbnailNEQ;
+      result$data['thumbnailNEQ'] = l$thumbnailNEQ;
+    }
+    if (_$data.containsKey('thumbnailIn')) {
+      final l$thumbnailIn = thumbnailIn;
+      result$data['thumbnailIn'] = l$thumbnailIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('thumbnailNotIn')) {
+      final l$thumbnailNotIn = thumbnailNotIn;
+      result$data['thumbnailNotIn'] = l$thumbnailNotIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('thumbnailGT')) {
+      final l$thumbnailGT = thumbnailGT;
+      result$data['thumbnailGT'] = l$thumbnailGT;
+    }
+    if (_$data.containsKey('thumbnailGTE')) {
+      final l$thumbnailGTE = thumbnailGTE;
+      result$data['thumbnailGTE'] = l$thumbnailGTE;
+    }
+    if (_$data.containsKey('thumbnailLT')) {
+      final l$thumbnailLT = thumbnailLT;
+      result$data['thumbnailLT'] = l$thumbnailLT;
+    }
+    if (_$data.containsKey('thumbnailLTE')) {
+      final l$thumbnailLTE = thumbnailLTE;
+      result$data['thumbnailLTE'] = l$thumbnailLTE;
+    }
+    if (_$data.containsKey('thumbnailContains')) {
+      final l$thumbnailContains = thumbnailContains;
+      result$data['thumbnailContains'] = l$thumbnailContains;
+    }
+    if (_$data.containsKey('thumbnailHasPrefix')) {
+      final l$thumbnailHasPrefix = thumbnailHasPrefix;
+      result$data['thumbnailHasPrefix'] = l$thumbnailHasPrefix;
+    }
+    if (_$data.containsKey('thumbnailHasSuffix')) {
+      final l$thumbnailHasSuffix = thumbnailHasSuffix;
+      result$data['thumbnailHasSuffix'] = l$thumbnailHasSuffix;
+    }
+    if (_$data.containsKey('thumbnailIsNil')) {
+      final l$thumbnailIsNil = thumbnailIsNil;
+      result$data['thumbnailIsNil'] = l$thumbnailIsNil;
+    }
+    if (_$data.containsKey('thumbnailNotNil')) {
+      final l$thumbnailNotNil = thumbnailNotNil;
+      result$data['thumbnailNotNil'] = l$thumbnailNotNil;
+    }
+    if (_$data.containsKey('thumbnailEqualFold')) {
+      final l$thumbnailEqualFold = thumbnailEqualFold;
+      result$data['thumbnailEqualFold'] = l$thumbnailEqualFold;
+    }
+    if (_$data.containsKey('thumbnailContainsFold')) {
+      final l$thumbnailContainsFold = thumbnailContainsFold;
+      result$data['thumbnailContainsFold'] = l$thumbnailContainsFold;
+    }
     if (_$data.containsKey('hasOwner')) {
       final l$hasOwner = hasOwner;
       result$data['hasOwner'] = l$hasOwner;
@@ -2414,14 +3996,32 @@ class Input$DraftWhereInput {
       result$data['hasOwnerWith'] =
           l$hasOwnerWith?.map((e) => e.toJson()).toList();
     }
-    if (_$data.containsKey('hasPosts')) {
-      final l$hasPosts = hasPosts;
-      result$data['hasPosts'] = l$hasPosts;
+    if (_$data.containsKey('hasHashtags')) {
+      final l$hasHashtags = hasHashtags;
+      result$data['hasHashtags'] = l$hasHashtags;
     }
-    if (_$data.containsKey('hasPostsWith')) {
-      final l$hasPostsWith = hasPostsWith;
-      result$data['hasPostsWith'] =
-          l$hasPostsWith?.map((e) => e.toJson()).toList();
+    if (_$data.containsKey('hasHashtagsWith')) {
+      final l$hasHashtagsWith = hasHashtagsWith;
+      result$data['hasHashtagsWith'] =
+          l$hasHashtagsWith?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasWork')) {
+      final l$hasWork = hasWork;
+      result$data['hasWork'] = l$hasWork;
+    }
+    if (_$data.containsKey('hasWorkWith')) {
+      final l$hasWorkWith = hasWorkWith;
+      result$data['hasWorkWith'] =
+          l$hasWorkWith?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasCategory')) {
+      final l$hasCategory = hasCategory;
+      result$data['hasCategory'] = l$hasCategory;
+    }
+    if (_$data.containsKey('hasCategoryWith')) {
+      final l$hasCategoryWith = hasCategoryWith;
+      result$data['hasCategoryWith'] =
+          l$hasCategoryWith?.map((e) => e.toJson()).toList();
     }
     return result$data;
   }
@@ -2568,6 +4168,943 @@ class Input$DraftWhereInput {
     if (l$idLTE != lOther$idLTE) {
       return false;
     }
+    final l$createTime = createTime;
+    final lOther$createTime = other.createTime;
+    if (_$data.containsKey('createTime') !=
+        other._$data.containsKey('createTime')) {
+      return false;
+    }
+    if (l$createTime != lOther$createTime) {
+      return false;
+    }
+    final l$createTimeNEQ = createTimeNEQ;
+    final lOther$createTimeNEQ = other.createTimeNEQ;
+    if (_$data.containsKey('createTimeNEQ') !=
+        other._$data.containsKey('createTimeNEQ')) {
+      return false;
+    }
+    if (l$createTimeNEQ != lOther$createTimeNEQ) {
+      return false;
+    }
+    final l$createTimeIn = createTimeIn;
+    final lOther$createTimeIn = other.createTimeIn;
+    if (_$data.containsKey('createTimeIn') !=
+        other._$data.containsKey('createTimeIn')) {
+      return false;
+    }
+    if (l$createTimeIn != null && lOther$createTimeIn != null) {
+      if (l$createTimeIn.length != lOther$createTimeIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$createTimeIn.length; i++) {
+        final l$createTimeIn$entry = l$createTimeIn[i];
+        final lOther$createTimeIn$entry = lOther$createTimeIn[i];
+        if (l$createTimeIn$entry != lOther$createTimeIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$createTimeIn != lOther$createTimeIn) {
+      return false;
+    }
+    final l$createTimeNotIn = createTimeNotIn;
+    final lOther$createTimeNotIn = other.createTimeNotIn;
+    if (_$data.containsKey('createTimeNotIn') !=
+        other._$data.containsKey('createTimeNotIn')) {
+      return false;
+    }
+    if (l$createTimeNotIn != null && lOther$createTimeNotIn != null) {
+      if (l$createTimeNotIn.length != lOther$createTimeNotIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$createTimeNotIn.length; i++) {
+        final l$createTimeNotIn$entry = l$createTimeNotIn[i];
+        final lOther$createTimeNotIn$entry = lOther$createTimeNotIn[i];
+        if (l$createTimeNotIn$entry != lOther$createTimeNotIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$createTimeNotIn != lOther$createTimeNotIn) {
+      return false;
+    }
+    final l$createTimeGT = createTimeGT;
+    final lOther$createTimeGT = other.createTimeGT;
+    if (_$data.containsKey('createTimeGT') !=
+        other._$data.containsKey('createTimeGT')) {
+      return false;
+    }
+    if (l$createTimeGT != lOther$createTimeGT) {
+      return false;
+    }
+    final l$createTimeGTE = createTimeGTE;
+    final lOther$createTimeGTE = other.createTimeGTE;
+    if (_$data.containsKey('createTimeGTE') !=
+        other._$data.containsKey('createTimeGTE')) {
+      return false;
+    }
+    if (l$createTimeGTE != lOther$createTimeGTE) {
+      return false;
+    }
+    final l$createTimeLT = createTimeLT;
+    final lOther$createTimeLT = other.createTimeLT;
+    if (_$data.containsKey('createTimeLT') !=
+        other._$data.containsKey('createTimeLT')) {
+      return false;
+    }
+    if (l$createTimeLT != lOther$createTimeLT) {
+      return false;
+    }
+    final l$createTimeLTE = createTimeLTE;
+    final lOther$createTimeLTE = other.createTimeLTE;
+    if (_$data.containsKey('createTimeLTE') !=
+        other._$data.containsKey('createTimeLTE')) {
+      return false;
+    }
+    if (l$createTimeLTE != lOther$createTimeLTE) {
+      return false;
+    }
+    final l$updateTime = updateTime;
+    final lOther$updateTime = other.updateTime;
+    if (_$data.containsKey('updateTime') !=
+        other._$data.containsKey('updateTime')) {
+      return false;
+    }
+    if (l$updateTime != lOther$updateTime) {
+      return false;
+    }
+    final l$updateTimeNEQ = updateTimeNEQ;
+    final lOther$updateTimeNEQ = other.updateTimeNEQ;
+    if (_$data.containsKey('updateTimeNEQ') !=
+        other._$data.containsKey('updateTimeNEQ')) {
+      return false;
+    }
+    if (l$updateTimeNEQ != lOther$updateTimeNEQ) {
+      return false;
+    }
+    final l$updateTimeIn = updateTimeIn;
+    final lOther$updateTimeIn = other.updateTimeIn;
+    if (_$data.containsKey('updateTimeIn') !=
+        other._$data.containsKey('updateTimeIn')) {
+      return false;
+    }
+    if (l$updateTimeIn != null && lOther$updateTimeIn != null) {
+      if (l$updateTimeIn.length != lOther$updateTimeIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$updateTimeIn.length; i++) {
+        final l$updateTimeIn$entry = l$updateTimeIn[i];
+        final lOther$updateTimeIn$entry = lOther$updateTimeIn[i];
+        if (l$updateTimeIn$entry != lOther$updateTimeIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$updateTimeIn != lOther$updateTimeIn) {
+      return false;
+    }
+    final l$updateTimeNotIn = updateTimeNotIn;
+    final lOther$updateTimeNotIn = other.updateTimeNotIn;
+    if (_$data.containsKey('updateTimeNotIn') !=
+        other._$data.containsKey('updateTimeNotIn')) {
+      return false;
+    }
+    if (l$updateTimeNotIn != null && lOther$updateTimeNotIn != null) {
+      if (l$updateTimeNotIn.length != lOther$updateTimeNotIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$updateTimeNotIn.length; i++) {
+        final l$updateTimeNotIn$entry = l$updateTimeNotIn[i];
+        final lOther$updateTimeNotIn$entry = lOther$updateTimeNotIn[i];
+        if (l$updateTimeNotIn$entry != lOther$updateTimeNotIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$updateTimeNotIn != lOther$updateTimeNotIn) {
+      return false;
+    }
+    final l$updateTimeGT = updateTimeGT;
+    final lOther$updateTimeGT = other.updateTimeGT;
+    if (_$data.containsKey('updateTimeGT') !=
+        other._$data.containsKey('updateTimeGT')) {
+      return false;
+    }
+    if (l$updateTimeGT != lOther$updateTimeGT) {
+      return false;
+    }
+    final l$updateTimeGTE = updateTimeGTE;
+    final lOther$updateTimeGTE = other.updateTimeGTE;
+    if (_$data.containsKey('updateTimeGTE') !=
+        other._$data.containsKey('updateTimeGTE')) {
+      return false;
+    }
+    if (l$updateTimeGTE != lOther$updateTimeGTE) {
+      return false;
+    }
+    final l$updateTimeLT = updateTimeLT;
+    final lOther$updateTimeLT = other.updateTimeLT;
+    if (_$data.containsKey('updateTimeLT') !=
+        other._$data.containsKey('updateTimeLT')) {
+      return false;
+    }
+    if (l$updateTimeLT != lOther$updateTimeLT) {
+      return false;
+    }
+    final l$updateTimeLTE = updateTimeLTE;
+    final lOther$updateTimeLTE = other.updateTimeLTE;
+    if (_$data.containsKey('updateTimeLTE') !=
+        other._$data.containsKey('updateTimeLTE')) {
+      return false;
+    }
+    if (l$updateTimeLTE != lOther$updateTimeLTE) {
+      return false;
+    }
+    final l$praiseTitle = praiseTitle;
+    final lOther$praiseTitle = other.praiseTitle;
+    if (_$data.containsKey('praiseTitle') !=
+        other._$data.containsKey('praiseTitle')) {
+      return false;
+    }
+    if (l$praiseTitle != lOther$praiseTitle) {
+      return false;
+    }
+    final l$praiseTitleNEQ = praiseTitleNEQ;
+    final lOther$praiseTitleNEQ = other.praiseTitleNEQ;
+    if (_$data.containsKey('praiseTitleNEQ') !=
+        other._$data.containsKey('praiseTitleNEQ')) {
+      return false;
+    }
+    if (l$praiseTitleNEQ != lOther$praiseTitleNEQ) {
+      return false;
+    }
+    final l$praiseTitleIn = praiseTitleIn;
+    final lOther$praiseTitleIn = other.praiseTitleIn;
+    if (_$data.containsKey('praiseTitleIn') !=
+        other._$data.containsKey('praiseTitleIn')) {
+      return false;
+    }
+    if (l$praiseTitleIn != null && lOther$praiseTitleIn != null) {
+      if (l$praiseTitleIn.length != lOther$praiseTitleIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$praiseTitleIn.length; i++) {
+        final l$praiseTitleIn$entry = l$praiseTitleIn[i];
+        final lOther$praiseTitleIn$entry = lOther$praiseTitleIn[i];
+        if (l$praiseTitleIn$entry != lOther$praiseTitleIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$praiseTitleIn != lOther$praiseTitleIn) {
+      return false;
+    }
+    final l$praiseTitleNotIn = praiseTitleNotIn;
+    final lOther$praiseTitleNotIn = other.praiseTitleNotIn;
+    if (_$data.containsKey('praiseTitleNotIn') !=
+        other._$data.containsKey('praiseTitleNotIn')) {
+      return false;
+    }
+    if (l$praiseTitleNotIn != null && lOther$praiseTitleNotIn != null) {
+      if (l$praiseTitleNotIn.length != lOther$praiseTitleNotIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$praiseTitleNotIn.length; i++) {
+        final l$praiseTitleNotIn$entry = l$praiseTitleNotIn[i];
+        final lOther$praiseTitleNotIn$entry = lOther$praiseTitleNotIn[i];
+        if (l$praiseTitleNotIn$entry != lOther$praiseTitleNotIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$praiseTitleNotIn != lOther$praiseTitleNotIn) {
+      return false;
+    }
+    final l$praiseTitleGT = praiseTitleGT;
+    final lOther$praiseTitleGT = other.praiseTitleGT;
+    if (_$data.containsKey('praiseTitleGT') !=
+        other._$data.containsKey('praiseTitleGT')) {
+      return false;
+    }
+    if (l$praiseTitleGT != lOther$praiseTitleGT) {
+      return false;
+    }
+    final l$praiseTitleGTE = praiseTitleGTE;
+    final lOther$praiseTitleGTE = other.praiseTitleGTE;
+    if (_$data.containsKey('praiseTitleGTE') !=
+        other._$data.containsKey('praiseTitleGTE')) {
+      return false;
+    }
+    if (l$praiseTitleGTE != lOther$praiseTitleGTE) {
+      return false;
+    }
+    final l$praiseTitleLT = praiseTitleLT;
+    final lOther$praiseTitleLT = other.praiseTitleLT;
+    if (_$data.containsKey('praiseTitleLT') !=
+        other._$data.containsKey('praiseTitleLT')) {
+      return false;
+    }
+    if (l$praiseTitleLT != lOther$praiseTitleLT) {
+      return false;
+    }
+    final l$praiseTitleLTE = praiseTitleLTE;
+    final lOther$praiseTitleLTE = other.praiseTitleLTE;
+    if (_$data.containsKey('praiseTitleLTE') !=
+        other._$data.containsKey('praiseTitleLTE')) {
+      return false;
+    }
+    if (l$praiseTitleLTE != lOther$praiseTitleLTE) {
+      return false;
+    }
+    final l$praiseTitleContains = praiseTitleContains;
+    final lOther$praiseTitleContains = other.praiseTitleContains;
+    if (_$data.containsKey('praiseTitleContains') !=
+        other._$data.containsKey('praiseTitleContains')) {
+      return false;
+    }
+    if (l$praiseTitleContains != lOther$praiseTitleContains) {
+      return false;
+    }
+    final l$praiseTitleHasPrefix = praiseTitleHasPrefix;
+    final lOther$praiseTitleHasPrefix = other.praiseTitleHasPrefix;
+    if (_$data.containsKey('praiseTitleHasPrefix') !=
+        other._$data.containsKey('praiseTitleHasPrefix')) {
+      return false;
+    }
+    if (l$praiseTitleHasPrefix != lOther$praiseTitleHasPrefix) {
+      return false;
+    }
+    final l$praiseTitleHasSuffix = praiseTitleHasSuffix;
+    final lOther$praiseTitleHasSuffix = other.praiseTitleHasSuffix;
+    if (_$data.containsKey('praiseTitleHasSuffix') !=
+        other._$data.containsKey('praiseTitleHasSuffix')) {
+      return false;
+    }
+    if (l$praiseTitleHasSuffix != lOther$praiseTitleHasSuffix) {
+      return false;
+    }
+    final l$praiseTitleEqualFold = praiseTitleEqualFold;
+    final lOther$praiseTitleEqualFold = other.praiseTitleEqualFold;
+    if (_$data.containsKey('praiseTitleEqualFold') !=
+        other._$data.containsKey('praiseTitleEqualFold')) {
+      return false;
+    }
+    if (l$praiseTitleEqualFold != lOther$praiseTitleEqualFold) {
+      return false;
+    }
+    final l$praiseTitleContainsFold = praiseTitleContainsFold;
+    final lOther$praiseTitleContainsFold = other.praiseTitleContainsFold;
+    if (_$data.containsKey('praiseTitleContainsFold') !=
+        other._$data.containsKey('praiseTitleContainsFold')) {
+      return false;
+    }
+    if (l$praiseTitleContainsFold != lOther$praiseTitleContainsFold) {
+      return false;
+    }
+    final l$letterTitle = letterTitle;
+    final lOther$letterTitle = other.letterTitle;
+    if (_$data.containsKey('letterTitle') !=
+        other._$data.containsKey('letterTitle')) {
+      return false;
+    }
+    if (l$letterTitle != lOther$letterTitle) {
+      return false;
+    }
+    final l$letterTitleNEQ = letterTitleNEQ;
+    final lOther$letterTitleNEQ = other.letterTitleNEQ;
+    if (_$data.containsKey('letterTitleNEQ') !=
+        other._$data.containsKey('letterTitleNEQ')) {
+      return false;
+    }
+    if (l$letterTitleNEQ != lOther$letterTitleNEQ) {
+      return false;
+    }
+    final l$letterTitleIn = letterTitleIn;
+    final lOther$letterTitleIn = other.letterTitleIn;
+    if (_$data.containsKey('letterTitleIn') !=
+        other._$data.containsKey('letterTitleIn')) {
+      return false;
+    }
+    if (l$letterTitleIn != null && lOther$letterTitleIn != null) {
+      if (l$letterTitleIn.length != lOther$letterTitleIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$letterTitleIn.length; i++) {
+        final l$letterTitleIn$entry = l$letterTitleIn[i];
+        final lOther$letterTitleIn$entry = lOther$letterTitleIn[i];
+        if (l$letterTitleIn$entry != lOther$letterTitleIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$letterTitleIn != lOther$letterTitleIn) {
+      return false;
+    }
+    final l$letterTitleNotIn = letterTitleNotIn;
+    final lOther$letterTitleNotIn = other.letterTitleNotIn;
+    if (_$data.containsKey('letterTitleNotIn') !=
+        other._$data.containsKey('letterTitleNotIn')) {
+      return false;
+    }
+    if (l$letterTitleNotIn != null && lOther$letterTitleNotIn != null) {
+      if (l$letterTitleNotIn.length != lOther$letterTitleNotIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$letterTitleNotIn.length; i++) {
+        final l$letterTitleNotIn$entry = l$letterTitleNotIn[i];
+        final lOther$letterTitleNotIn$entry = lOther$letterTitleNotIn[i];
+        if (l$letterTitleNotIn$entry != lOther$letterTitleNotIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$letterTitleNotIn != lOther$letterTitleNotIn) {
+      return false;
+    }
+    final l$letterTitleGT = letterTitleGT;
+    final lOther$letterTitleGT = other.letterTitleGT;
+    if (_$data.containsKey('letterTitleGT') !=
+        other._$data.containsKey('letterTitleGT')) {
+      return false;
+    }
+    if (l$letterTitleGT != lOther$letterTitleGT) {
+      return false;
+    }
+    final l$letterTitleGTE = letterTitleGTE;
+    final lOther$letterTitleGTE = other.letterTitleGTE;
+    if (_$data.containsKey('letterTitleGTE') !=
+        other._$data.containsKey('letterTitleGTE')) {
+      return false;
+    }
+    if (l$letterTitleGTE != lOther$letterTitleGTE) {
+      return false;
+    }
+    final l$letterTitleLT = letterTitleLT;
+    final lOther$letterTitleLT = other.letterTitleLT;
+    if (_$data.containsKey('letterTitleLT') !=
+        other._$data.containsKey('letterTitleLT')) {
+      return false;
+    }
+    if (l$letterTitleLT != lOther$letterTitleLT) {
+      return false;
+    }
+    final l$letterTitleLTE = letterTitleLTE;
+    final lOther$letterTitleLTE = other.letterTitleLTE;
+    if (_$data.containsKey('letterTitleLTE') !=
+        other._$data.containsKey('letterTitleLTE')) {
+      return false;
+    }
+    if (l$letterTitleLTE != lOther$letterTitleLTE) {
+      return false;
+    }
+    final l$letterTitleContains = letterTitleContains;
+    final lOther$letterTitleContains = other.letterTitleContains;
+    if (_$data.containsKey('letterTitleContains') !=
+        other._$data.containsKey('letterTitleContains')) {
+      return false;
+    }
+    if (l$letterTitleContains != lOther$letterTitleContains) {
+      return false;
+    }
+    final l$letterTitleHasPrefix = letterTitleHasPrefix;
+    final lOther$letterTitleHasPrefix = other.letterTitleHasPrefix;
+    if (_$data.containsKey('letterTitleHasPrefix') !=
+        other._$data.containsKey('letterTitleHasPrefix')) {
+      return false;
+    }
+    if (l$letterTitleHasPrefix != lOther$letterTitleHasPrefix) {
+      return false;
+    }
+    final l$letterTitleHasSuffix = letterTitleHasSuffix;
+    final lOther$letterTitleHasSuffix = other.letterTitleHasSuffix;
+    if (_$data.containsKey('letterTitleHasSuffix') !=
+        other._$data.containsKey('letterTitleHasSuffix')) {
+      return false;
+    }
+    if (l$letterTitleHasSuffix != lOther$letterTitleHasSuffix) {
+      return false;
+    }
+    final l$letterTitleEqualFold = letterTitleEqualFold;
+    final lOther$letterTitleEqualFold = other.letterTitleEqualFold;
+    if (_$data.containsKey('letterTitleEqualFold') !=
+        other._$data.containsKey('letterTitleEqualFold')) {
+      return false;
+    }
+    if (l$letterTitleEqualFold != lOther$letterTitleEqualFold) {
+      return false;
+    }
+    final l$letterTitleContainsFold = letterTitleContainsFold;
+    final lOther$letterTitleContainsFold = other.letterTitleContainsFold;
+    if (_$data.containsKey('letterTitleContainsFold') !=
+        other._$data.containsKey('letterTitleContainsFold')) {
+      return false;
+    }
+    if (l$letterTitleContainsFold != lOther$letterTitleContainsFold) {
+      return false;
+    }
+    final l$praiseContent = praiseContent;
+    final lOther$praiseContent = other.praiseContent;
+    if (_$data.containsKey('praiseContent') !=
+        other._$data.containsKey('praiseContent')) {
+      return false;
+    }
+    if (l$praiseContent != lOther$praiseContent) {
+      return false;
+    }
+    final l$praiseContentNEQ = praiseContentNEQ;
+    final lOther$praiseContentNEQ = other.praiseContentNEQ;
+    if (_$data.containsKey('praiseContentNEQ') !=
+        other._$data.containsKey('praiseContentNEQ')) {
+      return false;
+    }
+    if (l$praiseContentNEQ != lOther$praiseContentNEQ) {
+      return false;
+    }
+    final l$praiseContentIn = praiseContentIn;
+    final lOther$praiseContentIn = other.praiseContentIn;
+    if (_$data.containsKey('praiseContentIn') !=
+        other._$data.containsKey('praiseContentIn')) {
+      return false;
+    }
+    if (l$praiseContentIn != null && lOther$praiseContentIn != null) {
+      if (l$praiseContentIn.length != lOther$praiseContentIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$praiseContentIn.length; i++) {
+        final l$praiseContentIn$entry = l$praiseContentIn[i];
+        final lOther$praiseContentIn$entry = lOther$praiseContentIn[i];
+        if (l$praiseContentIn$entry != lOther$praiseContentIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$praiseContentIn != lOther$praiseContentIn) {
+      return false;
+    }
+    final l$praiseContentNotIn = praiseContentNotIn;
+    final lOther$praiseContentNotIn = other.praiseContentNotIn;
+    if (_$data.containsKey('praiseContentNotIn') !=
+        other._$data.containsKey('praiseContentNotIn')) {
+      return false;
+    }
+    if (l$praiseContentNotIn != null && lOther$praiseContentNotIn != null) {
+      if (l$praiseContentNotIn.length != lOther$praiseContentNotIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$praiseContentNotIn.length; i++) {
+        final l$praiseContentNotIn$entry = l$praiseContentNotIn[i];
+        final lOther$praiseContentNotIn$entry = lOther$praiseContentNotIn[i];
+        if (l$praiseContentNotIn$entry != lOther$praiseContentNotIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$praiseContentNotIn != lOther$praiseContentNotIn) {
+      return false;
+    }
+    final l$praiseContentGT = praiseContentGT;
+    final lOther$praiseContentGT = other.praiseContentGT;
+    if (_$data.containsKey('praiseContentGT') !=
+        other._$data.containsKey('praiseContentGT')) {
+      return false;
+    }
+    if (l$praiseContentGT != lOther$praiseContentGT) {
+      return false;
+    }
+    final l$praiseContentGTE = praiseContentGTE;
+    final lOther$praiseContentGTE = other.praiseContentGTE;
+    if (_$data.containsKey('praiseContentGTE') !=
+        other._$data.containsKey('praiseContentGTE')) {
+      return false;
+    }
+    if (l$praiseContentGTE != lOther$praiseContentGTE) {
+      return false;
+    }
+    final l$praiseContentLT = praiseContentLT;
+    final lOther$praiseContentLT = other.praiseContentLT;
+    if (_$data.containsKey('praiseContentLT') !=
+        other._$data.containsKey('praiseContentLT')) {
+      return false;
+    }
+    if (l$praiseContentLT != lOther$praiseContentLT) {
+      return false;
+    }
+    final l$praiseContentLTE = praiseContentLTE;
+    final lOther$praiseContentLTE = other.praiseContentLTE;
+    if (_$data.containsKey('praiseContentLTE') !=
+        other._$data.containsKey('praiseContentLTE')) {
+      return false;
+    }
+    if (l$praiseContentLTE != lOther$praiseContentLTE) {
+      return false;
+    }
+    final l$praiseContentContains = praiseContentContains;
+    final lOther$praiseContentContains = other.praiseContentContains;
+    if (_$data.containsKey('praiseContentContains') !=
+        other._$data.containsKey('praiseContentContains')) {
+      return false;
+    }
+    if (l$praiseContentContains != lOther$praiseContentContains) {
+      return false;
+    }
+    final l$praiseContentHasPrefix = praiseContentHasPrefix;
+    final lOther$praiseContentHasPrefix = other.praiseContentHasPrefix;
+    if (_$data.containsKey('praiseContentHasPrefix') !=
+        other._$data.containsKey('praiseContentHasPrefix')) {
+      return false;
+    }
+    if (l$praiseContentHasPrefix != lOther$praiseContentHasPrefix) {
+      return false;
+    }
+    final l$praiseContentHasSuffix = praiseContentHasSuffix;
+    final lOther$praiseContentHasSuffix = other.praiseContentHasSuffix;
+    if (_$data.containsKey('praiseContentHasSuffix') !=
+        other._$data.containsKey('praiseContentHasSuffix')) {
+      return false;
+    }
+    if (l$praiseContentHasSuffix != lOther$praiseContentHasSuffix) {
+      return false;
+    }
+    final l$praiseContentEqualFold = praiseContentEqualFold;
+    final lOther$praiseContentEqualFold = other.praiseContentEqualFold;
+    if (_$data.containsKey('praiseContentEqualFold') !=
+        other._$data.containsKey('praiseContentEqualFold')) {
+      return false;
+    }
+    if (l$praiseContentEqualFold != lOther$praiseContentEqualFold) {
+      return false;
+    }
+    final l$praiseContentContainsFold = praiseContentContainsFold;
+    final lOther$praiseContentContainsFold = other.praiseContentContainsFold;
+    if (_$data.containsKey('praiseContentContainsFold') !=
+        other._$data.containsKey('praiseContentContainsFold')) {
+      return false;
+    }
+    if (l$praiseContentContainsFold != lOther$praiseContentContainsFold) {
+      return false;
+    }
+    final l$letterContent = letterContent;
+    final lOther$letterContent = other.letterContent;
+    if (_$data.containsKey('letterContent') !=
+        other._$data.containsKey('letterContent')) {
+      return false;
+    }
+    if (l$letterContent != lOther$letterContent) {
+      return false;
+    }
+    final l$letterContentNEQ = letterContentNEQ;
+    final lOther$letterContentNEQ = other.letterContentNEQ;
+    if (_$data.containsKey('letterContentNEQ') !=
+        other._$data.containsKey('letterContentNEQ')) {
+      return false;
+    }
+    if (l$letterContentNEQ != lOther$letterContentNEQ) {
+      return false;
+    }
+    final l$letterContentIn = letterContentIn;
+    final lOther$letterContentIn = other.letterContentIn;
+    if (_$data.containsKey('letterContentIn') !=
+        other._$data.containsKey('letterContentIn')) {
+      return false;
+    }
+    if (l$letterContentIn != null && lOther$letterContentIn != null) {
+      if (l$letterContentIn.length != lOther$letterContentIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$letterContentIn.length; i++) {
+        final l$letterContentIn$entry = l$letterContentIn[i];
+        final lOther$letterContentIn$entry = lOther$letterContentIn[i];
+        if (l$letterContentIn$entry != lOther$letterContentIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$letterContentIn != lOther$letterContentIn) {
+      return false;
+    }
+    final l$letterContentNotIn = letterContentNotIn;
+    final lOther$letterContentNotIn = other.letterContentNotIn;
+    if (_$data.containsKey('letterContentNotIn') !=
+        other._$data.containsKey('letterContentNotIn')) {
+      return false;
+    }
+    if (l$letterContentNotIn != null && lOther$letterContentNotIn != null) {
+      if (l$letterContentNotIn.length != lOther$letterContentNotIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$letterContentNotIn.length; i++) {
+        final l$letterContentNotIn$entry = l$letterContentNotIn[i];
+        final lOther$letterContentNotIn$entry = lOther$letterContentNotIn[i];
+        if (l$letterContentNotIn$entry != lOther$letterContentNotIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$letterContentNotIn != lOther$letterContentNotIn) {
+      return false;
+    }
+    final l$letterContentGT = letterContentGT;
+    final lOther$letterContentGT = other.letterContentGT;
+    if (_$data.containsKey('letterContentGT') !=
+        other._$data.containsKey('letterContentGT')) {
+      return false;
+    }
+    if (l$letterContentGT != lOther$letterContentGT) {
+      return false;
+    }
+    final l$letterContentGTE = letterContentGTE;
+    final lOther$letterContentGTE = other.letterContentGTE;
+    if (_$data.containsKey('letterContentGTE') !=
+        other._$data.containsKey('letterContentGTE')) {
+      return false;
+    }
+    if (l$letterContentGTE != lOther$letterContentGTE) {
+      return false;
+    }
+    final l$letterContentLT = letterContentLT;
+    final lOther$letterContentLT = other.letterContentLT;
+    if (_$data.containsKey('letterContentLT') !=
+        other._$data.containsKey('letterContentLT')) {
+      return false;
+    }
+    if (l$letterContentLT != lOther$letterContentLT) {
+      return false;
+    }
+    final l$letterContentLTE = letterContentLTE;
+    final lOther$letterContentLTE = other.letterContentLTE;
+    if (_$data.containsKey('letterContentLTE') !=
+        other._$data.containsKey('letterContentLTE')) {
+      return false;
+    }
+    if (l$letterContentLTE != lOther$letterContentLTE) {
+      return false;
+    }
+    final l$letterContentContains = letterContentContains;
+    final lOther$letterContentContains = other.letterContentContains;
+    if (_$data.containsKey('letterContentContains') !=
+        other._$data.containsKey('letterContentContains')) {
+      return false;
+    }
+    if (l$letterContentContains != lOther$letterContentContains) {
+      return false;
+    }
+    final l$letterContentHasPrefix = letterContentHasPrefix;
+    final lOther$letterContentHasPrefix = other.letterContentHasPrefix;
+    if (_$data.containsKey('letterContentHasPrefix') !=
+        other._$data.containsKey('letterContentHasPrefix')) {
+      return false;
+    }
+    if (l$letterContentHasPrefix != lOther$letterContentHasPrefix) {
+      return false;
+    }
+    final l$letterContentHasSuffix = letterContentHasSuffix;
+    final lOther$letterContentHasSuffix = other.letterContentHasSuffix;
+    if (_$data.containsKey('letterContentHasSuffix') !=
+        other._$data.containsKey('letterContentHasSuffix')) {
+      return false;
+    }
+    if (l$letterContentHasSuffix != lOther$letterContentHasSuffix) {
+      return false;
+    }
+    final l$letterContentEqualFold = letterContentEqualFold;
+    final lOther$letterContentEqualFold = other.letterContentEqualFold;
+    if (_$data.containsKey('letterContentEqualFold') !=
+        other._$data.containsKey('letterContentEqualFold')) {
+      return false;
+    }
+    if (l$letterContentEqualFold != lOther$letterContentEqualFold) {
+      return false;
+    }
+    final l$letterContentContainsFold = letterContentContainsFold;
+    final lOther$letterContentContainsFold = other.letterContentContainsFold;
+    if (_$data.containsKey('letterContentContainsFold') !=
+        other._$data.containsKey('letterContentContainsFold')) {
+      return false;
+    }
+    if (l$letterContentContainsFold != lOther$letterContentContainsFold) {
+      return false;
+    }
+    final l$praiseSpoiled = praiseSpoiled;
+    final lOther$praiseSpoiled = other.praiseSpoiled;
+    if (_$data.containsKey('praiseSpoiled') !=
+        other._$data.containsKey('praiseSpoiled')) {
+      return false;
+    }
+    if (l$praiseSpoiled != lOther$praiseSpoiled) {
+      return false;
+    }
+    final l$praiseSpoiledNEQ = praiseSpoiledNEQ;
+    final lOther$praiseSpoiledNEQ = other.praiseSpoiledNEQ;
+    if (_$data.containsKey('praiseSpoiledNEQ') !=
+        other._$data.containsKey('praiseSpoiledNEQ')) {
+      return false;
+    }
+    if (l$praiseSpoiledNEQ != lOther$praiseSpoiledNEQ) {
+      return false;
+    }
+    final l$letterSpoiled = letterSpoiled;
+    final lOther$letterSpoiled = other.letterSpoiled;
+    if (_$data.containsKey('letterSpoiled') !=
+        other._$data.containsKey('letterSpoiled')) {
+      return false;
+    }
+    if (l$letterSpoiled != lOther$letterSpoiled) {
+      return false;
+    }
+    final l$letterSpoiledNEQ = letterSpoiledNEQ;
+    final lOther$letterSpoiledNEQ = other.letterSpoiledNEQ;
+    if (_$data.containsKey('letterSpoiledNEQ') !=
+        other._$data.containsKey('letterSpoiledNEQ')) {
+      return false;
+    }
+    if (l$letterSpoiledNEQ != lOther$letterSpoiledNEQ) {
+      return false;
+    }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (_$data.containsKey('thumbnail') !=
+        other._$data.containsKey('thumbnail')) {
+      return false;
+    }
+    if (l$thumbnail != lOther$thumbnail) {
+      return false;
+    }
+    final l$thumbnailNEQ = thumbnailNEQ;
+    final lOther$thumbnailNEQ = other.thumbnailNEQ;
+    if (_$data.containsKey('thumbnailNEQ') !=
+        other._$data.containsKey('thumbnailNEQ')) {
+      return false;
+    }
+    if (l$thumbnailNEQ != lOther$thumbnailNEQ) {
+      return false;
+    }
+    final l$thumbnailIn = thumbnailIn;
+    final lOther$thumbnailIn = other.thumbnailIn;
+    if (_$data.containsKey('thumbnailIn') !=
+        other._$data.containsKey('thumbnailIn')) {
+      return false;
+    }
+    if (l$thumbnailIn != null && lOther$thumbnailIn != null) {
+      if (l$thumbnailIn.length != lOther$thumbnailIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$thumbnailIn.length; i++) {
+        final l$thumbnailIn$entry = l$thumbnailIn[i];
+        final lOther$thumbnailIn$entry = lOther$thumbnailIn[i];
+        if (l$thumbnailIn$entry != lOther$thumbnailIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$thumbnailIn != lOther$thumbnailIn) {
+      return false;
+    }
+    final l$thumbnailNotIn = thumbnailNotIn;
+    final lOther$thumbnailNotIn = other.thumbnailNotIn;
+    if (_$data.containsKey('thumbnailNotIn') !=
+        other._$data.containsKey('thumbnailNotIn')) {
+      return false;
+    }
+    if (l$thumbnailNotIn != null && lOther$thumbnailNotIn != null) {
+      if (l$thumbnailNotIn.length != lOther$thumbnailNotIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$thumbnailNotIn.length; i++) {
+        final l$thumbnailNotIn$entry = l$thumbnailNotIn[i];
+        final lOther$thumbnailNotIn$entry = lOther$thumbnailNotIn[i];
+        if (l$thumbnailNotIn$entry != lOther$thumbnailNotIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$thumbnailNotIn != lOther$thumbnailNotIn) {
+      return false;
+    }
+    final l$thumbnailGT = thumbnailGT;
+    final lOther$thumbnailGT = other.thumbnailGT;
+    if (_$data.containsKey('thumbnailGT') !=
+        other._$data.containsKey('thumbnailGT')) {
+      return false;
+    }
+    if (l$thumbnailGT != lOther$thumbnailGT) {
+      return false;
+    }
+    final l$thumbnailGTE = thumbnailGTE;
+    final lOther$thumbnailGTE = other.thumbnailGTE;
+    if (_$data.containsKey('thumbnailGTE') !=
+        other._$data.containsKey('thumbnailGTE')) {
+      return false;
+    }
+    if (l$thumbnailGTE != lOther$thumbnailGTE) {
+      return false;
+    }
+    final l$thumbnailLT = thumbnailLT;
+    final lOther$thumbnailLT = other.thumbnailLT;
+    if (_$data.containsKey('thumbnailLT') !=
+        other._$data.containsKey('thumbnailLT')) {
+      return false;
+    }
+    if (l$thumbnailLT != lOther$thumbnailLT) {
+      return false;
+    }
+    final l$thumbnailLTE = thumbnailLTE;
+    final lOther$thumbnailLTE = other.thumbnailLTE;
+    if (_$data.containsKey('thumbnailLTE') !=
+        other._$data.containsKey('thumbnailLTE')) {
+      return false;
+    }
+    if (l$thumbnailLTE != lOther$thumbnailLTE) {
+      return false;
+    }
+    final l$thumbnailContains = thumbnailContains;
+    final lOther$thumbnailContains = other.thumbnailContains;
+    if (_$data.containsKey('thumbnailContains') !=
+        other._$data.containsKey('thumbnailContains')) {
+      return false;
+    }
+    if (l$thumbnailContains != lOther$thumbnailContains) {
+      return false;
+    }
+    final l$thumbnailHasPrefix = thumbnailHasPrefix;
+    final lOther$thumbnailHasPrefix = other.thumbnailHasPrefix;
+    if (_$data.containsKey('thumbnailHasPrefix') !=
+        other._$data.containsKey('thumbnailHasPrefix')) {
+      return false;
+    }
+    if (l$thumbnailHasPrefix != lOther$thumbnailHasPrefix) {
+      return false;
+    }
+    final l$thumbnailHasSuffix = thumbnailHasSuffix;
+    final lOther$thumbnailHasSuffix = other.thumbnailHasSuffix;
+    if (_$data.containsKey('thumbnailHasSuffix') !=
+        other._$data.containsKey('thumbnailHasSuffix')) {
+      return false;
+    }
+    if (l$thumbnailHasSuffix != lOther$thumbnailHasSuffix) {
+      return false;
+    }
+    final l$thumbnailIsNil = thumbnailIsNil;
+    final lOther$thumbnailIsNil = other.thumbnailIsNil;
+    if (_$data.containsKey('thumbnailIsNil') !=
+        other._$data.containsKey('thumbnailIsNil')) {
+      return false;
+    }
+    if (l$thumbnailIsNil != lOther$thumbnailIsNil) {
+      return false;
+    }
+    final l$thumbnailNotNil = thumbnailNotNil;
+    final lOther$thumbnailNotNil = other.thumbnailNotNil;
+    if (_$data.containsKey('thumbnailNotNil') !=
+        other._$data.containsKey('thumbnailNotNil')) {
+      return false;
+    }
+    if (l$thumbnailNotNil != lOther$thumbnailNotNil) {
+      return false;
+    }
+    final l$thumbnailEqualFold = thumbnailEqualFold;
+    final lOther$thumbnailEqualFold = other.thumbnailEqualFold;
+    if (_$data.containsKey('thumbnailEqualFold') !=
+        other._$data.containsKey('thumbnailEqualFold')) {
+      return false;
+    }
+    if (l$thumbnailEqualFold != lOther$thumbnailEqualFold) {
+      return false;
+    }
+    final l$thumbnailContainsFold = thumbnailContainsFold;
+    final lOther$thumbnailContainsFold = other.thumbnailContainsFold;
+    if (_$data.containsKey('thumbnailContainsFold') !=
+        other._$data.containsKey('thumbnailContainsFold')) {
+      return false;
+    }
+    if (l$thumbnailContainsFold != lOther$thumbnailContainsFold) {
+      return false;
+    }
     final l$hasOwner = hasOwner;
     final lOther$hasOwner = other.hasOwner;
     if (_$data.containsKey('hasOwner') !=
@@ -2597,33 +5134,90 @@ class Input$DraftWhereInput {
     } else if (l$hasOwnerWith != lOther$hasOwnerWith) {
       return false;
     }
-    final l$hasPosts = hasPosts;
-    final lOther$hasPosts = other.hasPosts;
-    if (_$data.containsKey('hasPosts') !=
-        other._$data.containsKey('hasPosts')) {
+    final l$hasHashtags = hasHashtags;
+    final lOther$hasHashtags = other.hasHashtags;
+    if (_$data.containsKey('hasHashtags') !=
+        other._$data.containsKey('hasHashtags')) {
       return false;
     }
-    if (l$hasPosts != lOther$hasPosts) {
+    if (l$hasHashtags != lOther$hasHashtags) {
       return false;
     }
-    final l$hasPostsWith = hasPostsWith;
-    final lOther$hasPostsWith = other.hasPostsWith;
-    if (_$data.containsKey('hasPostsWith') !=
-        other._$data.containsKey('hasPostsWith')) {
+    final l$hasHashtagsWith = hasHashtagsWith;
+    final lOther$hasHashtagsWith = other.hasHashtagsWith;
+    if (_$data.containsKey('hasHashtagsWith') !=
+        other._$data.containsKey('hasHashtagsWith')) {
       return false;
     }
-    if (l$hasPostsWith != null && lOther$hasPostsWith != null) {
-      if (l$hasPostsWith.length != lOther$hasPostsWith.length) {
+    if (l$hasHashtagsWith != null && lOther$hasHashtagsWith != null) {
+      if (l$hasHashtagsWith.length != lOther$hasHashtagsWith.length) {
         return false;
       }
-      for (int i = 0; i < l$hasPostsWith.length; i++) {
-        final l$hasPostsWith$entry = l$hasPostsWith[i];
-        final lOther$hasPostsWith$entry = lOther$hasPostsWith[i];
-        if (l$hasPostsWith$entry != lOther$hasPostsWith$entry) {
+      for (int i = 0; i < l$hasHashtagsWith.length; i++) {
+        final l$hasHashtagsWith$entry = l$hasHashtagsWith[i];
+        final lOther$hasHashtagsWith$entry = lOther$hasHashtagsWith[i];
+        if (l$hasHashtagsWith$entry != lOther$hasHashtagsWith$entry) {
           return false;
         }
       }
-    } else if (l$hasPostsWith != lOther$hasPostsWith) {
+    } else if (l$hasHashtagsWith != lOther$hasHashtagsWith) {
+      return false;
+    }
+    final l$hasWork = hasWork;
+    final lOther$hasWork = other.hasWork;
+    if (_$data.containsKey('hasWork') != other._$data.containsKey('hasWork')) {
+      return false;
+    }
+    if (l$hasWork != lOther$hasWork) {
+      return false;
+    }
+    final l$hasWorkWith = hasWorkWith;
+    final lOther$hasWorkWith = other.hasWorkWith;
+    if (_$data.containsKey('hasWorkWith') !=
+        other._$data.containsKey('hasWorkWith')) {
+      return false;
+    }
+    if (l$hasWorkWith != null && lOther$hasWorkWith != null) {
+      if (l$hasWorkWith.length != lOther$hasWorkWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasWorkWith.length; i++) {
+        final l$hasWorkWith$entry = l$hasWorkWith[i];
+        final lOther$hasWorkWith$entry = lOther$hasWorkWith[i];
+        if (l$hasWorkWith$entry != lOther$hasWorkWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasWorkWith != lOther$hasWorkWith) {
+      return false;
+    }
+    final l$hasCategory = hasCategory;
+    final lOther$hasCategory = other.hasCategory;
+    if (_$data.containsKey('hasCategory') !=
+        other._$data.containsKey('hasCategory')) {
+      return false;
+    }
+    if (l$hasCategory != lOther$hasCategory) {
+      return false;
+    }
+    final l$hasCategoryWith = hasCategoryWith;
+    final lOther$hasCategoryWith = other.hasCategoryWith;
+    if (_$data.containsKey('hasCategoryWith') !=
+        other._$data.containsKey('hasCategoryWith')) {
+      return false;
+    }
+    if (l$hasCategoryWith != null && lOther$hasCategoryWith != null) {
+      if (l$hasCategoryWith.length != lOther$hasCategoryWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasCategoryWith.length; i++) {
+        final l$hasCategoryWith$entry = l$hasCategoryWith[i];
+        final lOther$hasCategoryWith$entry = lOther$hasCategoryWith[i];
+        if (l$hasCategoryWith$entry != lOther$hasCategoryWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasCategoryWith != lOther$hasCategoryWith) {
       return false;
     }
     return true;
@@ -2642,10 +5236,101 @@ class Input$DraftWhereInput {
     final l$idGTE = idGTE;
     final l$idLT = idLT;
     final l$idLTE = idLTE;
+    final l$createTime = createTime;
+    final l$createTimeNEQ = createTimeNEQ;
+    final l$createTimeIn = createTimeIn;
+    final l$createTimeNotIn = createTimeNotIn;
+    final l$createTimeGT = createTimeGT;
+    final l$createTimeGTE = createTimeGTE;
+    final l$createTimeLT = createTimeLT;
+    final l$createTimeLTE = createTimeLTE;
+    final l$updateTime = updateTime;
+    final l$updateTimeNEQ = updateTimeNEQ;
+    final l$updateTimeIn = updateTimeIn;
+    final l$updateTimeNotIn = updateTimeNotIn;
+    final l$updateTimeGT = updateTimeGT;
+    final l$updateTimeGTE = updateTimeGTE;
+    final l$updateTimeLT = updateTimeLT;
+    final l$updateTimeLTE = updateTimeLTE;
+    final l$praiseTitle = praiseTitle;
+    final l$praiseTitleNEQ = praiseTitleNEQ;
+    final l$praiseTitleIn = praiseTitleIn;
+    final l$praiseTitleNotIn = praiseTitleNotIn;
+    final l$praiseTitleGT = praiseTitleGT;
+    final l$praiseTitleGTE = praiseTitleGTE;
+    final l$praiseTitleLT = praiseTitleLT;
+    final l$praiseTitleLTE = praiseTitleLTE;
+    final l$praiseTitleContains = praiseTitleContains;
+    final l$praiseTitleHasPrefix = praiseTitleHasPrefix;
+    final l$praiseTitleHasSuffix = praiseTitleHasSuffix;
+    final l$praiseTitleEqualFold = praiseTitleEqualFold;
+    final l$praiseTitleContainsFold = praiseTitleContainsFold;
+    final l$letterTitle = letterTitle;
+    final l$letterTitleNEQ = letterTitleNEQ;
+    final l$letterTitleIn = letterTitleIn;
+    final l$letterTitleNotIn = letterTitleNotIn;
+    final l$letterTitleGT = letterTitleGT;
+    final l$letterTitleGTE = letterTitleGTE;
+    final l$letterTitleLT = letterTitleLT;
+    final l$letterTitleLTE = letterTitleLTE;
+    final l$letterTitleContains = letterTitleContains;
+    final l$letterTitleHasPrefix = letterTitleHasPrefix;
+    final l$letterTitleHasSuffix = letterTitleHasSuffix;
+    final l$letterTitleEqualFold = letterTitleEqualFold;
+    final l$letterTitleContainsFold = letterTitleContainsFold;
+    final l$praiseContent = praiseContent;
+    final l$praiseContentNEQ = praiseContentNEQ;
+    final l$praiseContentIn = praiseContentIn;
+    final l$praiseContentNotIn = praiseContentNotIn;
+    final l$praiseContentGT = praiseContentGT;
+    final l$praiseContentGTE = praiseContentGTE;
+    final l$praiseContentLT = praiseContentLT;
+    final l$praiseContentLTE = praiseContentLTE;
+    final l$praiseContentContains = praiseContentContains;
+    final l$praiseContentHasPrefix = praiseContentHasPrefix;
+    final l$praiseContentHasSuffix = praiseContentHasSuffix;
+    final l$praiseContentEqualFold = praiseContentEqualFold;
+    final l$praiseContentContainsFold = praiseContentContainsFold;
+    final l$letterContent = letterContent;
+    final l$letterContentNEQ = letterContentNEQ;
+    final l$letterContentIn = letterContentIn;
+    final l$letterContentNotIn = letterContentNotIn;
+    final l$letterContentGT = letterContentGT;
+    final l$letterContentGTE = letterContentGTE;
+    final l$letterContentLT = letterContentLT;
+    final l$letterContentLTE = letterContentLTE;
+    final l$letterContentContains = letterContentContains;
+    final l$letterContentHasPrefix = letterContentHasPrefix;
+    final l$letterContentHasSuffix = letterContentHasSuffix;
+    final l$letterContentEqualFold = letterContentEqualFold;
+    final l$letterContentContainsFold = letterContentContainsFold;
+    final l$praiseSpoiled = praiseSpoiled;
+    final l$praiseSpoiledNEQ = praiseSpoiledNEQ;
+    final l$letterSpoiled = letterSpoiled;
+    final l$letterSpoiledNEQ = letterSpoiledNEQ;
+    final l$thumbnail = thumbnail;
+    final l$thumbnailNEQ = thumbnailNEQ;
+    final l$thumbnailIn = thumbnailIn;
+    final l$thumbnailNotIn = thumbnailNotIn;
+    final l$thumbnailGT = thumbnailGT;
+    final l$thumbnailGTE = thumbnailGTE;
+    final l$thumbnailLT = thumbnailLT;
+    final l$thumbnailLTE = thumbnailLTE;
+    final l$thumbnailContains = thumbnailContains;
+    final l$thumbnailHasPrefix = thumbnailHasPrefix;
+    final l$thumbnailHasSuffix = thumbnailHasSuffix;
+    final l$thumbnailIsNil = thumbnailIsNil;
+    final l$thumbnailNotNil = thumbnailNotNil;
+    final l$thumbnailEqualFold = thumbnailEqualFold;
+    final l$thumbnailContainsFold = thumbnailContainsFold;
     final l$hasOwner = hasOwner;
     final l$hasOwnerWith = hasOwnerWith;
-    final l$hasPosts = hasPosts;
-    final l$hasPostsWith = hasPostsWith;
+    final l$hasHashtags = hasHashtags;
+    final l$hasHashtagsWith = hasHashtagsWith;
+    final l$hasWork = hasWork;
+    final l$hasWorkWith = hasWorkWith;
+    final l$hasCategory = hasCategory;
+    final l$hasCategoryWith = hasCategoryWith;
     return Object.hashAll([
       _$data.containsKey('not') ? l$not : const {},
       _$data.containsKey('and')
@@ -2674,17 +5359,220 @@ class Input$DraftWhereInput {
       _$data.containsKey('idGTE') ? l$idGTE : const {},
       _$data.containsKey('idLT') ? l$idLT : const {},
       _$data.containsKey('idLTE') ? l$idLTE : const {},
+      _$data.containsKey('createTime') ? l$createTime : const {},
+      _$data.containsKey('createTimeNEQ') ? l$createTimeNEQ : const {},
+      _$data.containsKey('createTimeIn')
+          ? l$createTimeIn == null
+              ? null
+              : Object.hashAll(l$createTimeIn.map((v) => v))
+          : const {},
+      _$data.containsKey('createTimeNotIn')
+          ? l$createTimeNotIn == null
+              ? null
+              : Object.hashAll(l$createTimeNotIn.map((v) => v))
+          : const {},
+      _$data.containsKey('createTimeGT') ? l$createTimeGT : const {},
+      _$data.containsKey('createTimeGTE') ? l$createTimeGTE : const {},
+      _$data.containsKey('createTimeLT') ? l$createTimeLT : const {},
+      _$data.containsKey('createTimeLTE') ? l$createTimeLTE : const {},
+      _$data.containsKey('updateTime') ? l$updateTime : const {},
+      _$data.containsKey('updateTimeNEQ') ? l$updateTimeNEQ : const {},
+      _$data.containsKey('updateTimeIn')
+          ? l$updateTimeIn == null
+              ? null
+              : Object.hashAll(l$updateTimeIn.map((v) => v))
+          : const {},
+      _$data.containsKey('updateTimeNotIn')
+          ? l$updateTimeNotIn == null
+              ? null
+              : Object.hashAll(l$updateTimeNotIn.map((v) => v))
+          : const {},
+      _$data.containsKey('updateTimeGT') ? l$updateTimeGT : const {},
+      _$data.containsKey('updateTimeGTE') ? l$updateTimeGTE : const {},
+      _$data.containsKey('updateTimeLT') ? l$updateTimeLT : const {},
+      _$data.containsKey('updateTimeLTE') ? l$updateTimeLTE : const {},
+      _$data.containsKey('praiseTitle') ? l$praiseTitle : const {},
+      _$data.containsKey('praiseTitleNEQ') ? l$praiseTitleNEQ : const {},
+      _$data.containsKey('praiseTitleIn')
+          ? l$praiseTitleIn == null
+              ? null
+              : Object.hashAll(l$praiseTitleIn.map((v) => v))
+          : const {},
+      _$data.containsKey('praiseTitleNotIn')
+          ? l$praiseTitleNotIn == null
+              ? null
+              : Object.hashAll(l$praiseTitleNotIn.map((v) => v))
+          : const {},
+      _$data.containsKey('praiseTitleGT') ? l$praiseTitleGT : const {},
+      _$data.containsKey('praiseTitleGTE') ? l$praiseTitleGTE : const {},
+      _$data.containsKey('praiseTitleLT') ? l$praiseTitleLT : const {},
+      _$data.containsKey('praiseTitleLTE') ? l$praiseTitleLTE : const {},
+      _$data.containsKey('praiseTitleContains')
+          ? l$praiseTitleContains
+          : const {},
+      _$data.containsKey('praiseTitleHasPrefix')
+          ? l$praiseTitleHasPrefix
+          : const {},
+      _$data.containsKey('praiseTitleHasSuffix')
+          ? l$praiseTitleHasSuffix
+          : const {},
+      _$data.containsKey('praiseTitleEqualFold')
+          ? l$praiseTitleEqualFold
+          : const {},
+      _$data.containsKey('praiseTitleContainsFold')
+          ? l$praiseTitleContainsFold
+          : const {},
+      _$data.containsKey('letterTitle') ? l$letterTitle : const {},
+      _$data.containsKey('letterTitleNEQ') ? l$letterTitleNEQ : const {},
+      _$data.containsKey('letterTitleIn')
+          ? l$letterTitleIn == null
+              ? null
+              : Object.hashAll(l$letterTitleIn.map((v) => v))
+          : const {},
+      _$data.containsKey('letterTitleNotIn')
+          ? l$letterTitleNotIn == null
+              ? null
+              : Object.hashAll(l$letterTitleNotIn.map((v) => v))
+          : const {},
+      _$data.containsKey('letterTitleGT') ? l$letterTitleGT : const {},
+      _$data.containsKey('letterTitleGTE') ? l$letterTitleGTE : const {},
+      _$data.containsKey('letterTitleLT') ? l$letterTitleLT : const {},
+      _$data.containsKey('letterTitleLTE') ? l$letterTitleLTE : const {},
+      _$data.containsKey('letterTitleContains')
+          ? l$letterTitleContains
+          : const {},
+      _$data.containsKey('letterTitleHasPrefix')
+          ? l$letterTitleHasPrefix
+          : const {},
+      _$data.containsKey('letterTitleHasSuffix')
+          ? l$letterTitleHasSuffix
+          : const {},
+      _$data.containsKey('letterTitleEqualFold')
+          ? l$letterTitleEqualFold
+          : const {},
+      _$data.containsKey('letterTitleContainsFold')
+          ? l$letterTitleContainsFold
+          : const {},
+      _$data.containsKey('praiseContent') ? l$praiseContent : const {},
+      _$data.containsKey('praiseContentNEQ') ? l$praiseContentNEQ : const {},
+      _$data.containsKey('praiseContentIn')
+          ? l$praiseContentIn == null
+              ? null
+              : Object.hashAll(l$praiseContentIn.map((v) => v))
+          : const {},
+      _$data.containsKey('praiseContentNotIn')
+          ? l$praiseContentNotIn == null
+              ? null
+              : Object.hashAll(l$praiseContentNotIn.map((v) => v))
+          : const {},
+      _$data.containsKey('praiseContentGT') ? l$praiseContentGT : const {},
+      _$data.containsKey('praiseContentGTE') ? l$praiseContentGTE : const {},
+      _$data.containsKey('praiseContentLT') ? l$praiseContentLT : const {},
+      _$data.containsKey('praiseContentLTE') ? l$praiseContentLTE : const {},
+      _$data.containsKey('praiseContentContains')
+          ? l$praiseContentContains
+          : const {},
+      _$data.containsKey('praiseContentHasPrefix')
+          ? l$praiseContentHasPrefix
+          : const {},
+      _$data.containsKey('praiseContentHasSuffix')
+          ? l$praiseContentHasSuffix
+          : const {},
+      _$data.containsKey('praiseContentEqualFold')
+          ? l$praiseContentEqualFold
+          : const {},
+      _$data.containsKey('praiseContentContainsFold')
+          ? l$praiseContentContainsFold
+          : const {},
+      _$data.containsKey('letterContent') ? l$letterContent : const {},
+      _$data.containsKey('letterContentNEQ') ? l$letterContentNEQ : const {},
+      _$data.containsKey('letterContentIn')
+          ? l$letterContentIn == null
+              ? null
+              : Object.hashAll(l$letterContentIn.map((v) => v))
+          : const {},
+      _$data.containsKey('letterContentNotIn')
+          ? l$letterContentNotIn == null
+              ? null
+              : Object.hashAll(l$letterContentNotIn.map((v) => v))
+          : const {},
+      _$data.containsKey('letterContentGT') ? l$letterContentGT : const {},
+      _$data.containsKey('letterContentGTE') ? l$letterContentGTE : const {},
+      _$data.containsKey('letterContentLT') ? l$letterContentLT : const {},
+      _$data.containsKey('letterContentLTE') ? l$letterContentLTE : const {},
+      _$data.containsKey('letterContentContains')
+          ? l$letterContentContains
+          : const {},
+      _$data.containsKey('letterContentHasPrefix')
+          ? l$letterContentHasPrefix
+          : const {},
+      _$data.containsKey('letterContentHasSuffix')
+          ? l$letterContentHasSuffix
+          : const {},
+      _$data.containsKey('letterContentEqualFold')
+          ? l$letterContentEqualFold
+          : const {},
+      _$data.containsKey('letterContentContainsFold')
+          ? l$letterContentContainsFold
+          : const {},
+      _$data.containsKey('praiseSpoiled') ? l$praiseSpoiled : const {},
+      _$data.containsKey('praiseSpoiledNEQ') ? l$praiseSpoiledNEQ : const {},
+      _$data.containsKey('letterSpoiled') ? l$letterSpoiled : const {},
+      _$data.containsKey('letterSpoiledNEQ') ? l$letterSpoiledNEQ : const {},
+      _$data.containsKey('thumbnail') ? l$thumbnail : const {},
+      _$data.containsKey('thumbnailNEQ') ? l$thumbnailNEQ : const {},
+      _$data.containsKey('thumbnailIn')
+          ? l$thumbnailIn == null
+              ? null
+              : Object.hashAll(l$thumbnailIn.map((v) => v))
+          : const {},
+      _$data.containsKey('thumbnailNotIn')
+          ? l$thumbnailNotIn == null
+              ? null
+              : Object.hashAll(l$thumbnailNotIn.map((v) => v))
+          : const {},
+      _$data.containsKey('thumbnailGT') ? l$thumbnailGT : const {},
+      _$data.containsKey('thumbnailGTE') ? l$thumbnailGTE : const {},
+      _$data.containsKey('thumbnailLT') ? l$thumbnailLT : const {},
+      _$data.containsKey('thumbnailLTE') ? l$thumbnailLTE : const {},
+      _$data.containsKey('thumbnailContains') ? l$thumbnailContains : const {},
+      _$data.containsKey('thumbnailHasPrefix')
+          ? l$thumbnailHasPrefix
+          : const {},
+      _$data.containsKey('thumbnailHasSuffix')
+          ? l$thumbnailHasSuffix
+          : const {},
+      _$data.containsKey('thumbnailIsNil') ? l$thumbnailIsNil : const {},
+      _$data.containsKey('thumbnailNotNil') ? l$thumbnailNotNil : const {},
+      _$data.containsKey('thumbnailEqualFold')
+          ? l$thumbnailEqualFold
+          : const {},
+      _$data.containsKey('thumbnailContainsFold')
+          ? l$thumbnailContainsFold
+          : const {},
       _$data.containsKey('hasOwner') ? l$hasOwner : const {},
       _$data.containsKey('hasOwnerWith')
           ? l$hasOwnerWith == null
               ? null
               : Object.hashAll(l$hasOwnerWith.map((v) => v))
           : const {},
-      _$data.containsKey('hasPosts') ? l$hasPosts : const {},
-      _$data.containsKey('hasPostsWith')
-          ? l$hasPostsWith == null
+      _$data.containsKey('hasHashtags') ? l$hasHashtags : const {},
+      _$data.containsKey('hasHashtagsWith')
+          ? l$hasHashtagsWith == null
               ? null
-              : Object.hashAll(l$hasPostsWith.map((v) => v))
+              : Object.hashAll(l$hasHashtagsWith.map((v) => v))
+          : const {},
+      _$data.containsKey('hasWork') ? l$hasWork : const {},
+      _$data.containsKey('hasWorkWith')
+          ? l$hasWorkWith == null
+              ? null
+              : Object.hashAll(l$hasWorkWith.map((v) => v))
+          : const {},
+      _$data.containsKey('hasCategory') ? l$hasCategory : const {},
+      _$data.containsKey('hasCategoryWith')
+          ? l$hasCategoryWith == null
+              ? null
+              : Object.hashAll(l$hasCategoryWith.map((v) => v))
           : const {}
     ]);
   }
@@ -2710,10 +5598,101 @@ abstract class CopyWith$Input$DraftWhereInput<TRes> {
       String? idGTE,
       String? idLT,
       String? idLTE,
+      String? createTime,
+      String? createTimeNEQ,
+      List<String>? createTimeIn,
+      List<String>? createTimeNotIn,
+      String? createTimeGT,
+      String? createTimeGTE,
+      String? createTimeLT,
+      String? createTimeLTE,
+      String? updateTime,
+      String? updateTimeNEQ,
+      List<String>? updateTimeIn,
+      List<String>? updateTimeNotIn,
+      String? updateTimeGT,
+      String? updateTimeGTE,
+      String? updateTimeLT,
+      String? updateTimeLTE,
+      String? praiseTitle,
+      String? praiseTitleNEQ,
+      List<String>? praiseTitleIn,
+      List<String>? praiseTitleNotIn,
+      String? praiseTitleGT,
+      String? praiseTitleGTE,
+      String? praiseTitleLT,
+      String? praiseTitleLTE,
+      String? praiseTitleContains,
+      String? praiseTitleHasPrefix,
+      String? praiseTitleHasSuffix,
+      String? praiseTitleEqualFold,
+      String? praiseTitleContainsFold,
+      String? letterTitle,
+      String? letterTitleNEQ,
+      List<String>? letterTitleIn,
+      List<String>? letterTitleNotIn,
+      String? letterTitleGT,
+      String? letterTitleGTE,
+      String? letterTitleLT,
+      String? letterTitleLTE,
+      String? letterTitleContains,
+      String? letterTitleHasPrefix,
+      String? letterTitleHasSuffix,
+      String? letterTitleEqualFold,
+      String? letterTitleContainsFold,
+      String? praiseContent,
+      String? praiseContentNEQ,
+      List<String>? praiseContentIn,
+      List<String>? praiseContentNotIn,
+      String? praiseContentGT,
+      String? praiseContentGTE,
+      String? praiseContentLT,
+      String? praiseContentLTE,
+      String? praiseContentContains,
+      String? praiseContentHasPrefix,
+      String? praiseContentHasSuffix,
+      String? praiseContentEqualFold,
+      String? praiseContentContainsFold,
+      String? letterContent,
+      String? letterContentNEQ,
+      List<String>? letterContentIn,
+      List<String>? letterContentNotIn,
+      String? letterContentGT,
+      String? letterContentGTE,
+      String? letterContentLT,
+      String? letterContentLTE,
+      String? letterContentContains,
+      String? letterContentHasPrefix,
+      String? letterContentHasSuffix,
+      String? letterContentEqualFold,
+      String? letterContentContainsFold,
+      bool? praiseSpoiled,
+      bool? praiseSpoiledNEQ,
+      bool? letterSpoiled,
+      bool? letterSpoiledNEQ,
+      String? thumbnail,
+      String? thumbnailNEQ,
+      List<String>? thumbnailIn,
+      List<String>? thumbnailNotIn,
+      String? thumbnailGT,
+      String? thumbnailGTE,
+      String? thumbnailLT,
+      String? thumbnailLTE,
+      String? thumbnailContains,
+      String? thumbnailHasPrefix,
+      String? thumbnailHasSuffix,
+      bool? thumbnailIsNil,
+      bool? thumbnailNotNil,
+      String? thumbnailEqualFold,
+      String? thumbnailContainsFold,
       bool? hasOwner,
       List<Input$UserWhereInput>? hasOwnerWith,
-      bool? hasPosts,
-      List<Input$PostWhereInput>? hasPostsWith});
+      bool? hasHashtags,
+      List<Input$HashtagWhereInput>? hasHashtagsWith,
+      bool? hasWork,
+      List<Input$WorkWhereInput>? hasWorkWith,
+      bool? hasCategory,
+      List<Input$CategoryWhereInput>? hasCategoryWith});
   CopyWith$Input$DraftWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$DraftWhereInput>? Function(
@@ -2727,9 +5706,19 @@ abstract class CopyWith$Input$DraftWhereInput<TRes> {
       Iterable<Input$UserWhereInput>? Function(
               Iterable<CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
           _fn);
-  TRes hasPostsWith(
-      Iterable<Input$PostWhereInput>? Function(
-              Iterable<CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+  TRes hasHashtagsWith(
+      Iterable<Input$HashtagWhereInput>? Function(
+              Iterable<
+                  CopyWith$Input$HashtagWhereInput<Input$HashtagWhereInput>>?)
+          _fn);
+  TRes hasWorkWith(
+      Iterable<Input$WorkWhereInput>? Function(
+              Iterable<CopyWith$Input$WorkWhereInput<Input$WorkWhereInput>>?)
+          _fn);
+  TRes hasCategoryWith(
+      Iterable<Input$CategoryWhereInput>? Function(
+              Iterable<
+                  CopyWith$Input$CategoryWhereInput<Input$CategoryWhereInput>>?)
           _fn);
 }
 
@@ -2755,10 +5744,101 @@ class _CopyWithImpl$Input$DraftWhereInput<TRes>
           Object? idGTE = _undefined,
           Object? idLT = _undefined,
           Object? idLTE = _undefined,
+          Object? createTime = _undefined,
+          Object? createTimeNEQ = _undefined,
+          Object? createTimeIn = _undefined,
+          Object? createTimeNotIn = _undefined,
+          Object? createTimeGT = _undefined,
+          Object? createTimeGTE = _undefined,
+          Object? createTimeLT = _undefined,
+          Object? createTimeLTE = _undefined,
+          Object? updateTime = _undefined,
+          Object? updateTimeNEQ = _undefined,
+          Object? updateTimeIn = _undefined,
+          Object? updateTimeNotIn = _undefined,
+          Object? updateTimeGT = _undefined,
+          Object? updateTimeGTE = _undefined,
+          Object? updateTimeLT = _undefined,
+          Object? updateTimeLTE = _undefined,
+          Object? praiseTitle = _undefined,
+          Object? praiseTitleNEQ = _undefined,
+          Object? praiseTitleIn = _undefined,
+          Object? praiseTitleNotIn = _undefined,
+          Object? praiseTitleGT = _undefined,
+          Object? praiseTitleGTE = _undefined,
+          Object? praiseTitleLT = _undefined,
+          Object? praiseTitleLTE = _undefined,
+          Object? praiseTitleContains = _undefined,
+          Object? praiseTitleHasPrefix = _undefined,
+          Object? praiseTitleHasSuffix = _undefined,
+          Object? praiseTitleEqualFold = _undefined,
+          Object? praiseTitleContainsFold = _undefined,
+          Object? letterTitle = _undefined,
+          Object? letterTitleNEQ = _undefined,
+          Object? letterTitleIn = _undefined,
+          Object? letterTitleNotIn = _undefined,
+          Object? letterTitleGT = _undefined,
+          Object? letterTitleGTE = _undefined,
+          Object? letterTitleLT = _undefined,
+          Object? letterTitleLTE = _undefined,
+          Object? letterTitleContains = _undefined,
+          Object? letterTitleHasPrefix = _undefined,
+          Object? letterTitleHasSuffix = _undefined,
+          Object? letterTitleEqualFold = _undefined,
+          Object? letterTitleContainsFold = _undefined,
+          Object? praiseContent = _undefined,
+          Object? praiseContentNEQ = _undefined,
+          Object? praiseContentIn = _undefined,
+          Object? praiseContentNotIn = _undefined,
+          Object? praiseContentGT = _undefined,
+          Object? praiseContentGTE = _undefined,
+          Object? praiseContentLT = _undefined,
+          Object? praiseContentLTE = _undefined,
+          Object? praiseContentContains = _undefined,
+          Object? praiseContentHasPrefix = _undefined,
+          Object? praiseContentHasSuffix = _undefined,
+          Object? praiseContentEqualFold = _undefined,
+          Object? praiseContentContainsFold = _undefined,
+          Object? letterContent = _undefined,
+          Object? letterContentNEQ = _undefined,
+          Object? letterContentIn = _undefined,
+          Object? letterContentNotIn = _undefined,
+          Object? letterContentGT = _undefined,
+          Object? letterContentGTE = _undefined,
+          Object? letterContentLT = _undefined,
+          Object? letterContentLTE = _undefined,
+          Object? letterContentContains = _undefined,
+          Object? letterContentHasPrefix = _undefined,
+          Object? letterContentHasSuffix = _undefined,
+          Object? letterContentEqualFold = _undefined,
+          Object? letterContentContainsFold = _undefined,
+          Object? praiseSpoiled = _undefined,
+          Object? praiseSpoiledNEQ = _undefined,
+          Object? letterSpoiled = _undefined,
+          Object? letterSpoiledNEQ = _undefined,
+          Object? thumbnail = _undefined,
+          Object? thumbnailNEQ = _undefined,
+          Object? thumbnailIn = _undefined,
+          Object? thumbnailNotIn = _undefined,
+          Object? thumbnailGT = _undefined,
+          Object? thumbnailGTE = _undefined,
+          Object? thumbnailLT = _undefined,
+          Object? thumbnailLTE = _undefined,
+          Object? thumbnailContains = _undefined,
+          Object? thumbnailHasPrefix = _undefined,
+          Object? thumbnailHasSuffix = _undefined,
+          Object? thumbnailIsNil = _undefined,
+          Object? thumbnailNotNil = _undefined,
+          Object? thumbnailEqualFold = _undefined,
+          Object? thumbnailContainsFold = _undefined,
           Object? hasOwner = _undefined,
           Object? hasOwnerWith = _undefined,
-          Object? hasPosts = _undefined,
-          Object? hasPostsWith = _undefined}) =>
+          Object? hasHashtags = _undefined,
+          Object? hasHashtagsWith = _undefined,
+          Object? hasWork = _undefined,
+          Object? hasWorkWith = _undefined,
+          Object? hasCategory = _undefined,
+          Object? hasCategoryWith = _undefined}) =>
       _then(Input$DraftWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$DraftWhereInput?),
@@ -2772,12 +5852,187 @@ class _CopyWithImpl$Input$DraftWhereInput<TRes>
         if (idGTE != _undefined) 'idGTE': (idGTE as String?),
         if (idLT != _undefined) 'idLT': (idLT as String?),
         if (idLTE != _undefined) 'idLTE': (idLTE as String?),
+        if (createTime != _undefined) 'createTime': (createTime as String?),
+        if (createTimeNEQ != _undefined)
+          'createTimeNEQ': (createTimeNEQ as String?),
+        if (createTimeIn != _undefined)
+          'createTimeIn': (createTimeIn as List<String>?),
+        if (createTimeNotIn != _undefined)
+          'createTimeNotIn': (createTimeNotIn as List<String>?),
+        if (createTimeGT != _undefined)
+          'createTimeGT': (createTimeGT as String?),
+        if (createTimeGTE != _undefined)
+          'createTimeGTE': (createTimeGTE as String?),
+        if (createTimeLT != _undefined)
+          'createTimeLT': (createTimeLT as String?),
+        if (createTimeLTE != _undefined)
+          'createTimeLTE': (createTimeLTE as String?),
+        if (updateTime != _undefined) 'updateTime': (updateTime as String?),
+        if (updateTimeNEQ != _undefined)
+          'updateTimeNEQ': (updateTimeNEQ as String?),
+        if (updateTimeIn != _undefined)
+          'updateTimeIn': (updateTimeIn as List<String>?),
+        if (updateTimeNotIn != _undefined)
+          'updateTimeNotIn': (updateTimeNotIn as List<String>?),
+        if (updateTimeGT != _undefined)
+          'updateTimeGT': (updateTimeGT as String?),
+        if (updateTimeGTE != _undefined)
+          'updateTimeGTE': (updateTimeGTE as String?),
+        if (updateTimeLT != _undefined)
+          'updateTimeLT': (updateTimeLT as String?),
+        if (updateTimeLTE != _undefined)
+          'updateTimeLTE': (updateTimeLTE as String?),
+        if (praiseTitle != _undefined) 'praiseTitle': (praiseTitle as String?),
+        if (praiseTitleNEQ != _undefined)
+          'praiseTitleNEQ': (praiseTitleNEQ as String?),
+        if (praiseTitleIn != _undefined)
+          'praiseTitleIn': (praiseTitleIn as List<String>?),
+        if (praiseTitleNotIn != _undefined)
+          'praiseTitleNotIn': (praiseTitleNotIn as List<String>?),
+        if (praiseTitleGT != _undefined)
+          'praiseTitleGT': (praiseTitleGT as String?),
+        if (praiseTitleGTE != _undefined)
+          'praiseTitleGTE': (praiseTitleGTE as String?),
+        if (praiseTitleLT != _undefined)
+          'praiseTitleLT': (praiseTitleLT as String?),
+        if (praiseTitleLTE != _undefined)
+          'praiseTitleLTE': (praiseTitleLTE as String?),
+        if (praiseTitleContains != _undefined)
+          'praiseTitleContains': (praiseTitleContains as String?),
+        if (praiseTitleHasPrefix != _undefined)
+          'praiseTitleHasPrefix': (praiseTitleHasPrefix as String?),
+        if (praiseTitleHasSuffix != _undefined)
+          'praiseTitleHasSuffix': (praiseTitleHasSuffix as String?),
+        if (praiseTitleEqualFold != _undefined)
+          'praiseTitleEqualFold': (praiseTitleEqualFold as String?),
+        if (praiseTitleContainsFold != _undefined)
+          'praiseTitleContainsFold': (praiseTitleContainsFold as String?),
+        if (letterTitle != _undefined) 'letterTitle': (letterTitle as String?),
+        if (letterTitleNEQ != _undefined)
+          'letterTitleNEQ': (letterTitleNEQ as String?),
+        if (letterTitleIn != _undefined)
+          'letterTitleIn': (letterTitleIn as List<String>?),
+        if (letterTitleNotIn != _undefined)
+          'letterTitleNotIn': (letterTitleNotIn as List<String>?),
+        if (letterTitleGT != _undefined)
+          'letterTitleGT': (letterTitleGT as String?),
+        if (letterTitleGTE != _undefined)
+          'letterTitleGTE': (letterTitleGTE as String?),
+        if (letterTitleLT != _undefined)
+          'letterTitleLT': (letterTitleLT as String?),
+        if (letterTitleLTE != _undefined)
+          'letterTitleLTE': (letterTitleLTE as String?),
+        if (letterTitleContains != _undefined)
+          'letterTitleContains': (letterTitleContains as String?),
+        if (letterTitleHasPrefix != _undefined)
+          'letterTitleHasPrefix': (letterTitleHasPrefix as String?),
+        if (letterTitleHasSuffix != _undefined)
+          'letterTitleHasSuffix': (letterTitleHasSuffix as String?),
+        if (letterTitleEqualFold != _undefined)
+          'letterTitleEqualFold': (letterTitleEqualFold as String?),
+        if (letterTitleContainsFold != _undefined)
+          'letterTitleContainsFold': (letterTitleContainsFold as String?),
+        if (praiseContent != _undefined)
+          'praiseContent': (praiseContent as String?),
+        if (praiseContentNEQ != _undefined)
+          'praiseContentNEQ': (praiseContentNEQ as String?),
+        if (praiseContentIn != _undefined)
+          'praiseContentIn': (praiseContentIn as List<String>?),
+        if (praiseContentNotIn != _undefined)
+          'praiseContentNotIn': (praiseContentNotIn as List<String>?),
+        if (praiseContentGT != _undefined)
+          'praiseContentGT': (praiseContentGT as String?),
+        if (praiseContentGTE != _undefined)
+          'praiseContentGTE': (praiseContentGTE as String?),
+        if (praiseContentLT != _undefined)
+          'praiseContentLT': (praiseContentLT as String?),
+        if (praiseContentLTE != _undefined)
+          'praiseContentLTE': (praiseContentLTE as String?),
+        if (praiseContentContains != _undefined)
+          'praiseContentContains': (praiseContentContains as String?),
+        if (praiseContentHasPrefix != _undefined)
+          'praiseContentHasPrefix': (praiseContentHasPrefix as String?),
+        if (praiseContentHasSuffix != _undefined)
+          'praiseContentHasSuffix': (praiseContentHasSuffix as String?),
+        if (praiseContentEqualFold != _undefined)
+          'praiseContentEqualFold': (praiseContentEqualFold as String?),
+        if (praiseContentContainsFold != _undefined)
+          'praiseContentContainsFold': (praiseContentContainsFold as String?),
+        if (letterContent != _undefined)
+          'letterContent': (letterContent as String?),
+        if (letterContentNEQ != _undefined)
+          'letterContentNEQ': (letterContentNEQ as String?),
+        if (letterContentIn != _undefined)
+          'letterContentIn': (letterContentIn as List<String>?),
+        if (letterContentNotIn != _undefined)
+          'letterContentNotIn': (letterContentNotIn as List<String>?),
+        if (letterContentGT != _undefined)
+          'letterContentGT': (letterContentGT as String?),
+        if (letterContentGTE != _undefined)
+          'letterContentGTE': (letterContentGTE as String?),
+        if (letterContentLT != _undefined)
+          'letterContentLT': (letterContentLT as String?),
+        if (letterContentLTE != _undefined)
+          'letterContentLTE': (letterContentLTE as String?),
+        if (letterContentContains != _undefined)
+          'letterContentContains': (letterContentContains as String?),
+        if (letterContentHasPrefix != _undefined)
+          'letterContentHasPrefix': (letterContentHasPrefix as String?),
+        if (letterContentHasSuffix != _undefined)
+          'letterContentHasSuffix': (letterContentHasSuffix as String?),
+        if (letterContentEqualFold != _undefined)
+          'letterContentEqualFold': (letterContentEqualFold as String?),
+        if (letterContentContainsFold != _undefined)
+          'letterContentContainsFold': (letterContentContainsFold as String?),
+        if (praiseSpoiled != _undefined)
+          'praiseSpoiled': (praiseSpoiled as bool?),
+        if (praiseSpoiledNEQ != _undefined)
+          'praiseSpoiledNEQ': (praiseSpoiledNEQ as bool?),
+        if (letterSpoiled != _undefined)
+          'letterSpoiled': (letterSpoiled as bool?),
+        if (letterSpoiledNEQ != _undefined)
+          'letterSpoiledNEQ': (letterSpoiledNEQ as bool?),
+        if (thumbnail != _undefined) 'thumbnail': (thumbnail as String?),
+        if (thumbnailNEQ != _undefined)
+          'thumbnailNEQ': (thumbnailNEQ as String?),
+        if (thumbnailIn != _undefined)
+          'thumbnailIn': (thumbnailIn as List<String>?),
+        if (thumbnailNotIn != _undefined)
+          'thumbnailNotIn': (thumbnailNotIn as List<String>?),
+        if (thumbnailGT != _undefined) 'thumbnailGT': (thumbnailGT as String?),
+        if (thumbnailGTE != _undefined)
+          'thumbnailGTE': (thumbnailGTE as String?),
+        if (thumbnailLT != _undefined) 'thumbnailLT': (thumbnailLT as String?),
+        if (thumbnailLTE != _undefined)
+          'thumbnailLTE': (thumbnailLTE as String?),
+        if (thumbnailContains != _undefined)
+          'thumbnailContains': (thumbnailContains as String?),
+        if (thumbnailHasPrefix != _undefined)
+          'thumbnailHasPrefix': (thumbnailHasPrefix as String?),
+        if (thumbnailHasSuffix != _undefined)
+          'thumbnailHasSuffix': (thumbnailHasSuffix as String?),
+        if (thumbnailIsNil != _undefined)
+          'thumbnailIsNil': (thumbnailIsNil as bool?),
+        if (thumbnailNotNil != _undefined)
+          'thumbnailNotNil': (thumbnailNotNil as bool?),
+        if (thumbnailEqualFold != _undefined)
+          'thumbnailEqualFold': (thumbnailEqualFold as String?),
+        if (thumbnailContainsFold != _undefined)
+          'thumbnailContainsFold': (thumbnailContainsFold as String?),
         if (hasOwner != _undefined) 'hasOwner': (hasOwner as bool?),
         if (hasOwnerWith != _undefined)
           'hasOwnerWith': (hasOwnerWith as List<Input$UserWhereInput>?),
-        if (hasPosts != _undefined) 'hasPosts': (hasPosts as bool?),
-        if (hasPostsWith != _undefined)
-          'hasPostsWith': (hasPostsWith as List<Input$PostWhereInput>?),
+        if (hasHashtags != _undefined) 'hasHashtags': (hasHashtags as bool?),
+        if (hasHashtagsWith != _undefined)
+          'hasHashtagsWith':
+              (hasHashtagsWith as List<Input$HashtagWhereInput>?),
+        if (hasWork != _undefined) 'hasWork': (hasWork as bool?),
+        if (hasWorkWith != _undefined)
+          'hasWorkWith': (hasWorkWith as List<Input$WorkWhereInput>?),
+        if (hasCategory != _undefined) 'hasCategory': (hasCategory as bool?),
+        if (hasCategoryWith != _undefined)
+          'hasCategoryWith':
+              (hasCategoryWith as List<Input$CategoryWhereInput>?),
       }));
   CopyWith$Input$DraftWhereInput<TRes> get not {
     final local$not = _instance.not;
@@ -2813,14 +6068,34 @@ class _CopyWithImpl$Input$DraftWhereInput<TRes>
           hasOwnerWith: _fn(_instance.hasOwnerWith
                   ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
               ?.toList());
-  TRes hasPostsWith(
-          Iterable<Input$PostWhereInput>? Function(
+  TRes hasHashtagsWith(
+          Iterable<Input$HashtagWhereInput>? Function(
                   Iterable<
-                      CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+                      CopyWith$Input$HashtagWhereInput<
+                          Input$HashtagWhereInput>>?)
               _fn) =>
       call(
-          hasPostsWith: _fn(_instance.hasPostsWith
-                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
+          hasHashtagsWith: _fn(_instance.hasHashtagsWith
+                  ?.map((e) => CopyWith$Input$HashtagWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasWorkWith(
+          Iterable<Input$WorkWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$WorkWhereInput<Input$WorkWhereInput>>?)
+              _fn) =>
+      call(
+          hasWorkWith: _fn(_instance.hasWorkWith
+                  ?.map((e) => CopyWith$Input$WorkWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasCategoryWith(
+          Iterable<Input$CategoryWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$CategoryWhereInput<
+                          Input$CategoryWhereInput>>?)
+              _fn) =>
+      call(
+          hasCategoryWith: _fn(_instance.hasCategoryWith
+                  ?.map((e) => CopyWith$Input$CategoryWhereInput(e, (i) => i)))
               ?.toList());
 }
 
@@ -2842,17 +6117,110 @@ class _CopyWithStubImpl$Input$DraftWhereInput<TRes>
           String? idGTE,
           String? idLT,
           String? idLTE,
+          String? createTime,
+          String? createTimeNEQ,
+          List<String>? createTimeIn,
+          List<String>? createTimeNotIn,
+          String? createTimeGT,
+          String? createTimeGTE,
+          String? createTimeLT,
+          String? createTimeLTE,
+          String? updateTime,
+          String? updateTimeNEQ,
+          List<String>? updateTimeIn,
+          List<String>? updateTimeNotIn,
+          String? updateTimeGT,
+          String? updateTimeGTE,
+          String? updateTimeLT,
+          String? updateTimeLTE,
+          String? praiseTitle,
+          String? praiseTitleNEQ,
+          List<String>? praiseTitleIn,
+          List<String>? praiseTitleNotIn,
+          String? praiseTitleGT,
+          String? praiseTitleGTE,
+          String? praiseTitleLT,
+          String? praiseTitleLTE,
+          String? praiseTitleContains,
+          String? praiseTitleHasPrefix,
+          String? praiseTitleHasSuffix,
+          String? praiseTitleEqualFold,
+          String? praiseTitleContainsFold,
+          String? letterTitle,
+          String? letterTitleNEQ,
+          List<String>? letterTitleIn,
+          List<String>? letterTitleNotIn,
+          String? letterTitleGT,
+          String? letterTitleGTE,
+          String? letterTitleLT,
+          String? letterTitleLTE,
+          String? letterTitleContains,
+          String? letterTitleHasPrefix,
+          String? letterTitleHasSuffix,
+          String? letterTitleEqualFold,
+          String? letterTitleContainsFold,
+          String? praiseContent,
+          String? praiseContentNEQ,
+          List<String>? praiseContentIn,
+          List<String>? praiseContentNotIn,
+          String? praiseContentGT,
+          String? praiseContentGTE,
+          String? praiseContentLT,
+          String? praiseContentLTE,
+          String? praiseContentContains,
+          String? praiseContentHasPrefix,
+          String? praiseContentHasSuffix,
+          String? praiseContentEqualFold,
+          String? praiseContentContainsFold,
+          String? letterContent,
+          String? letterContentNEQ,
+          List<String>? letterContentIn,
+          List<String>? letterContentNotIn,
+          String? letterContentGT,
+          String? letterContentGTE,
+          String? letterContentLT,
+          String? letterContentLTE,
+          String? letterContentContains,
+          String? letterContentHasPrefix,
+          String? letterContentHasSuffix,
+          String? letterContentEqualFold,
+          String? letterContentContainsFold,
+          bool? praiseSpoiled,
+          bool? praiseSpoiledNEQ,
+          bool? letterSpoiled,
+          bool? letterSpoiledNEQ,
+          String? thumbnail,
+          String? thumbnailNEQ,
+          List<String>? thumbnailIn,
+          List<String>? thumbnailNotIn,
+          String? thumbnailGT,
+          String? thumbnailGTE,
+          String? thumbnailLT,
+          String? thumbnailLTE,
+          String? thumbnailContains,
+          String? thumbnailHasPrefix,
+          String? thumbnailHasSuffix,
+          bool? thumbnailIsNil,
+          bool? thumbnailNotNil,
+          String? thumbnailEqualFold,
+          String? thumbnailContainsFold,
           bool? hasOwner,
           List<Input$UserWhereInput>? hasOwnerWith,
-          bool? hasPosts,
-          List<Input$PostWhereInput>? hasPostsWith}) =>
+          bool? hasHashtags,
+          List<Input$HashtagWhereInput>? hasHashtagsWith,
+          bool? hasWork,
+          List<Input$WorkWhereInput>? hasWorkWith,
+          bool? hasCategory,
+          List<Input$CategoryWhereInput>? hasCategoryWith}) =>
       _res;
   CopyWith$Input$DraftWhereInput<TRes> get not =>
       CopyWith$Input$DraftWhereInput.stub(_res);
   and(_fn) => _res;
   or(_fn) => _res;
   hasOwnerWith(_fn) => _res;
-  hasPostsWith(_fn) => _res;
+  hasHashtagsWith(_fn) => _res;
+  hasWorkWith(_fn) => _res;
+  hasCategoryWith(_fn) => _res;
 }
 
 class Input$HashtagWhereInput {
@@ -2882,7 +6250,9 @@ class Input$HashtagWhereInput {
           String? titleEqualFold,
           String? titleContainsFold,
           bool? hasPosts,
-          List<Input$PostWhereInput>? hasPostsWith}) =>
+          List<Input$PostWhereInput>? hasPostsWith,
+          bool? hasDrafts,
+          List<Input$DraftWhereInput>? hasDraftsWith}) =>
       Input$HashtagWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -2910,6 +6280,8 @@ class Input$HashtagWhereInput {
         if (titleContainsFold != null) r'titleContainsFold': titleContainsFold,
         if (hasPosts != null) r'hasPosts': hasPosts,
         if (hasPostsWith != null) r'hasPostsWith': hasPostsWith,
+        if (hasDrafts != null) r'hasDrafts': hasDrafts,
+        if (hasDraftsWith != null) r'hasDraftsWith': hasDraftsWith,
       });
 
   Input$HashtagWhereInput._(this._$data);
@@ -3035,6 +6407,17 @@ class Input$HashtagWhereInput {
               (e) => Input$PostWhereInput.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
+    if (data.containsKey('hasDrafts')) {
+      final l$hasDrafts = data['hasDrafts'];
+      result$data['hasDrafts'] = (l$hasDrafts as bool?);
+    }
+    if (data.containsKey('hasDraftsWith')) {
+      final l$hasDraftsWith = data['hasDraftsWith'];
+      result$data['hasDraftsWith'] = (l$hasDraftsWith as List<dynamic>?)
+          ?.map((e) =>
+              Input$DraftWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
     return Input$HashtagWhereInput._(result$data);
   }
 
@@ -3070,6 +6453,9 @@ class Input$HashtagWhereInput {
   bool? get hasPosts => (_$data['hasPosts'] as bool?);
   List<Input$PostWhereInput>? get hasPostsWith =>
       (_$data['hasPostsWith'] as List<Input$PostWhereInput>?);
+  bool? get hasDrafts => (_$data['hasDrafts'] as bool?);
+  List<Input$DraftWhereInput>? get hasDraftsWith =>
+      (_$data['hasDraftsWith'] as List<Input$DraftWhereInput>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('not')) {
@@ -3176,6 +6562,15 @@ class Input$HashtagWhereInput {
       final l$hasPostsWith = hasPostsWith;
       result$data['hasPostsWith'] =
           l$hasPostsWith?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasDrafts')) {
+      final l$hasDrafts = hasDrafts;
+      result$data['hasDrafts'] = l$hasDrafts;
+    }
+    if (_$data.containsKey('hasDraftsWith')) {
+      final l$hasDraftsWith = hasDraftsWith;
+      result$data['hasDraftsWith'] =
+          l$hasDraftsWith?.map((e) => e.toJson()).toList();
     }
     return result$data;
   }
@@ -3487,6 +6882,35 @@ class Input$HashtagWhereInput {
     } else if (l$hasPostsWith != lOther$hasPostsWith) {
       return false;
     }
+    final l$hasDrafts = hasDrafts;
+    final lOther$hasDrafts = other.hasDrafts;
+    if (_$data.containsKey('hasDrafts') !=
+        other._$data.containsKey('hasDrafts')) {
+      return false;
+    }
+    if (l$hasDrafts != lOther$hasDrafts) {
+      return false;
+    }
+    final l$hasDraftsWith = hasDraftsWith;
+    final lOther$hasDraftsWith = other.hasDraftsWith;
+    if (_$data.containsKey('hasDraftsWith') !=
+        other._$data.containsKey('hasDraftsWith')) {
+      return false;
+    }
+    if (l$hasDraftsWith != null && lOther$hasDraftsWith != null) {
+      if (l$hasDraftsWith.length != lOther$hasDraftsWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasDraftsWith.length; i++) {
+        final l$hasDraftsWith$entry = l$hasDraftsWith[i];
+        final lOther$hasDraftsWith$entry = lOther$hasDraftsWith[i];
+        if (l$hasDraftsWith$entry != lOther$hasDraftsWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasDraftsWith != lOther$hasDraftsWith) {
+      return false;
+    }
     return true;
   }
 
@@ -3518,6 +6942,8 @@ class Input$HashtagWhereInput {
     final l$titleContainsFold = titleContainsFold;
     final l$hasPosts = hasPosts;
     final l$hasPostsWith = hasPostsWith;
+    final l$hasDrafts = hasDrafts;
+    final l$hasDraftsWith = hasDraftsWith;
     return Object.hashAll([
       _$data.containsKey('not') ? l$not : const {},
       _$data.containsKey('and')
@@ -3572,6 +6998,12 @@ class Input$HashtagWhereInput {
           ? l$hasPostsWith == null
               ? null
               : Object.hashAll(l$hasPostsWith.map((v) => v))
+          : const {},
+      _$data.containsKey('hasDrafts') ? l$hasDrafts : const {},
+      _$data.containsKey('hasDraftsWith')
+          ? l$hasDraftsWith == null
+              ? null
+              : Object.hashAll(l$hasDraftsWith.map((v) => v))
           : const {}
     ]);
   }
@@ -3611,7 +7043,9 @@ abstract class CopyWith$Input$HashtagWhereInput<TRes> {
       String? titleEqualFold,
       String? titleContainsFold,
       bool? hasPosts,
-      List<Input$PostWhereInput>? hasPostsWith});
+      List<Input$PostWhereInput>? hasPostsWith,
+      bool? hasDrafts,
+      List<Input$DraftWhereInput>? hasDraftsWith});
   CopyWith$Input$HashtagWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$HashtagWhereInput>? Function(
@@ -3626,6 +7060,10 @@ abstract class CopyWith$Input$HashtagWhereInput<TRes> {
   TRes hasPostsWith(
       Iterable<Input$PostWhereInput>? Function(
               Iterable<CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+          _fn);
+  TRes hasDraftsWith(
+      Iterable<Input$DraftWhereInput>? Function(
+              Iterable<CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
           _fn);
 }
 
@@ -3665,7 +7103,9 @@ class _CopyWithImpl$Input$HashtagWhereInput<TRes>
           Object? titleEqualFold = _undefined,
           Object? titleContainsFold = _undefined,
           Object? hasPosts = _undefined,
-          Object? hasPostsWith = _undefined}) =>
+          Object? hasPostsWith = _undefined,
+          Object? hasDrafts = _undefined,
+          Object? hasDraftsWith = _undefined}) =>
       _then(Input$HashtagWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$HashtagWhereInput?),
@@ -3701,6 +7141,9 @@ class _CopyWithImpl$Input$HashtagWhereInput<TRes>
         if (hasPosts != _undefined) 'hasPosts': (hasPosts as bool?),
         if (hasPostsWith != _undefined)
           'hasPostsWith': (hasPostsWith as List<Input$PostWhereInput>?),
+        if (hasDrafts != _undefined) 'hasDrafts': (hasDrafts as bool?),
+        if (hasDraftsWith != _undefined)
+          'hasDraftsWith': (hasDraftsWith as List<Input$DraftWhereInput>?),
       }));
   CopyWith$Input$HashtagWhereInput<TRes> get not {
     final local$not = _instance.not;
@@ -3738,6 +7181,15 @@ class _CopyWithImpl$Input$HashtagWhereInput<TRes>
           hasPostsWith: _fn(_instance.hasPostsWith
                   ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
               ?.toList());
+  TRes hasDraftsWith(
+          Iterable<Input$DraftWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
+              _fn) =>
+      call(
+          hasDraftsWith: _fn(_instance.hasDraftsWith
+                  ?.map((e) => CopyWith$Input$DraftWhereInput(e, (i) => i)))
+              ?.toList());
 }
 
 class _CopyWithStubImpl$Input$HashtagWhereInput<TRes>
@@ -3772,13 +7224,16 @@ class _CopyWithStubImpl$Input$HashtagWhereInput<TRes>
           String? titleEqualFold,
           String? titleContainsFold,
           bool? hasPosts,
-          List<Input$PostWhereInput>? hasPostsWith}) =>
+          List<Input$PostWhereInput>? hasPostsWith,
+          bool? hasDrafts,
+          List<Input$DraftWhereInput>? hasDraftsWith}) =>
       _res;
   CopyWith$Input$HashtagWhereInput<TRes> get not =>
       CopyWith$Input$HashtagWhereInput.stub(_res);
   and(_fn) => _res;
   or(_fn) => _res;
   hasPostsWith(_fn) => _res;
+  hasDraftsWith(_fn) => _res;
 }
 
 class Input$PostOrder {
@@ -3974,9 +7429,7 @@ class Input$PostWhereInput {
           bool? hasLikedUsers,
           List<Input$UserWhereInput>? hasLikedUsersWith,
           bool? hasBookmarkedUsers,
-          List<Input$UserWhereInput>? hasBookmarkedUsersWith,
-          bool? hasDraft,
-          List<Input$DraftWhereInput>? hasDraftWith}) =>
+          List<Input$UserWhereInput>? hasBookmarkedUsersWith}) =>
       Input$PostWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -4071,8 +7524,6 @@ class Input$PostWhereInput {
           r'hasBookmarkedUsers': hasBookmarkedUsers,
         if (hasBookmarkedUsersWith != null)
           r'hasBookmarkedUsersWith': hasBookmarkedUsersWith,
-        if (hasDraft != null) r'hasDraft': hasDraft,
-        if (hasDraftWith != null) r'hasDraftWith': hasDraftWith,
       });
 
   Input$PostWhereInput._(this._$data);
@@ -4477,17 +7928,6 @@ class Input$PostWhereInput {
               (e) => Input$UserWhereInput.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
-    if (data.containsKey('hasDraft')) {
-      final l$hasDraft = data['hasDraft'];
-      result$data['hasDraft'] = (l$hasDraft as bool?);
-    }
-    if (data.containsKey('hasDraftWith')) {
-      final l$hasDraftWith = data['hasDraftWith'];
-      result$data['hasDraftWith'] = (l$hasDraftWith as List<dynamic>?)
-          ?.map((e) =>
-              Input$DraftWhereInput.fromJson((e as Map<String, dynamic>)))
-          .toList();
-    }
     return Input$PostWhereInput._(result$data);
   }
 
@@ -4593,9 +8033,6 @@ class Input$PostWhereInput {
   bool? get hasBookmarkedUsers => (_$data['hasBookmarkedUsers'] as bool?);
   List<Input$UserWhereInput>? get hasBookmarkedUsersWith =>
       (_$data['hasBookmarkedUsersWith'] as List<Input$UserWhereInput>?);
-  bool? get hasDraft => (_$data['hasDraft'] as bool?);
-  List<Input$DraftWhereInput>? get hasDraftWith =>
-      (_$data['hasDraftWith'] as List<Input$DraftWhereInput>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('not')) {
@@ -4953,15 +8390,6 @@ class Input$PostWhereInput {
       final l$hasBookmarkedUsersWith = hasBookmarkedUsersWith;
       result$data['hasBookmarkedUsersWith'] =
           l$hasBookmarkedUsersWith?.map((e) => e.toJson()).toList();
-    }
-    if (_$data.containsKey('hasDraft')) {
-      final l$hasDraft = hasDraft;
-      result$data['hasDraft'] = l$hasDraft;
-    }
-    if (_$data.containsKey('hasDraftWith')) {
-      final l$hasDraftWith = hasDraftWith;
-      result$data['hasDraftWith'] =
-          l$hasDraftWith?.map((e) => e.toJson()).toList();
     }
     return result$data;
   }
@@ -5975,35 +9403,6 @@ class Input$PostWhereInput {
     } else if (l$hasBookmarkedUsersWith != lOther$hasBookmarkedUsersWith) {
       return false;
     }
-    final l$hasDraft = hasDraft;
-    final lOther$hasDraft = other.hasDraft;
-    if (_$data.containsKey('hasDraft') !=
-        other._$data.containsKey('hasDraft')) {
-      return false;
-    }
-    if (l$hasDraft != lOther$hasDraft) {
-      return false;
-    }
-    final l$hasDraftWith = hasDraftWith;
-    final lOther$hasDraftWith = other.hasDraftWith;
-    if (_$data.containsKey('hasDraftWith') !=
-        other._$data.containsKey('hasDraftWith')) {
-      return false;
-    }
-    if (l$hasDraftWith != null && lOther$hasDraftWith != null) {
-      if (l$hasDraftWith.length != lOther$hasDraftWith.length) {
-        return false;
-      }
-      for (int i = 0; i < l$hasDraftWith.length; i++) {
-        final l$hasDraftWith$entry = l$hasDraftWith[i];
-        final lOther$hasDraftWith$entry = lOther$hasDraftWith[i];
-        if (l$hasDraftWith$entry != lOther$hasDraftWith$entry) {
-          return false;
-        }
-      }
-    } else if (l$hasDraftWith != lOther$hasDraftWith) {
-      return false;
-    }
     return true;
   }
 
@@ -6095,8 +9494,6 @@ class Input$PostWhereInput {
     final l$hasLikedUsersWith = hasLikedUsersWith;
     final l$hasBookmarkedUsers = hasBookmarkedUsers;
     final l$hasBookmarkedUsersWith = hasBookmarkedUsersWith;
-    final l$hasDraft = hasDraft;
-    final l$hasDraftWith = hasDraftWith;
     return Object.hashAll([
       _$data.containsKey('not') ? l$not : const {},
       _$data.containsKey('and')
@@ -6283,12 +9680,6 @@ class Input$PostWhereInput {
           ? l$hasBookmarkedUsersWith == null
               ? null
               : Object.hashAll(l$hasBookmarkedUsersWith.map((v) => v))
-          : const {},
-      _$data.containsKey('hasDraft') ? l$hasDraft : const {},
-      _$data.containsKey('hasDraftWith')
-          ? l$hasDraftWith == null
-              ? null
-              : Object.hashAll(l$hasDraftWith.map((v) => v))
           : const {}
     ]);
   }
@@ -6388,9 +9779,7 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
       bool? hasLikedUsers,
       List<Input$UserWhereInput>? hasLikedUsersWith,
       bool? hasBookmarkedUsers,
-      List<Input$UserWhereInput>? hasBookmarkedUsersWith,
-      bool? hasDraft,
-      List<Input$DraftWhereInput>? hasDraftWith});
+      List<Input$UserWhereInput>? hasBookmarkedUsersWith});
   CopyWith$Input$PostWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$PostWhereInput>? Function(
@@ -6425,10 +9814,6 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
   TRes hasBookmarkedUsersWith(
       Iterable<Input$UserWhereInput>? Function(
               Iterable<CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
-          _fn);
-  TRes hasDraftWith(
-      Iterable<Input$DraftWhereInput>? Function(
-              Iterable<CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
           _fn);
 }
 
@@ -6528,9 +9913,7 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
           Object? hasLikedUsers = _undefined,
           Object? hasLikedUsersWith = _undefined,
           Object? hasBookmarkedUsers = _undefined,
-          Object? hasBookmarkedUsersWith = _undefined,
-          Object? hasDraft = _undefined,
-          Object? hasDraftWith = _undefined}) =>
+          Object? hasBookmarkedUsersWith = _undefined}) =>
       _then(Input$PostWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$PostWhereInput?),
@@ -6671,9 +10054,6 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
         if (hasBookmarkedUsersWith != _undefined)
           'hasBookmarkedUsersWith':
               (hasBookmarkedUsersWith as List<Input$UserWhereInput>?),
-        if (hasDraft != _undefined) 'hasDraft': (hasDraft as bool?),
-        if (hasDraftWith != _undefined)
-          'hasDraftWith': (hasDraftWith as List<Input$DraftWhereInput>?),
       }));
   CopyWith$Input$PostWhereInput<TRes> get not {
     final local$not = _instance.not;
@@ -6755,15 +10135,6 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
       call(
           hasBookmarkedUsersWith: _fn(_instance.hasBookmarkedUsersWith
                   ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
-              ?.toList());
-  TRes hasDraftWith(
-          Iterable<Input$DraftWhereInput>? Function(
-                  Iterable<
-                      CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
-              _fn) =>
-      call(
-          hasDraftWith: _fn(_instance.hasDraftWith
-                  ?.map((e) => CopyWith$Input$DraftWhereInput(e, (i) => i)))
               ?.toList());
 }
 
@@ -6859,9 +10230,7 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
           bool? hasLikedUsers,
           List<Input$UserWhereInput>? hasLikedUsersWith,
           bool? hasBookmarkedUsers,
-          List<Input$UserWhereInput>? hasBookmarkedUsersWith,
-          bool? hasDraft,
-          List<Input$DraftWhereInput>? hasDraftWith}) =>
+          List<Input$UserWhereInput>? hasBookmarkedUsersWith}) =>
       _res;
   CopyWith$Input$PostWhereInput<TRes> get not =>
       CopyWith$Input$PostWhereInput.stub(_res);
@@ -6873,26 +10242,87 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
   hasCategoryWith(_fn) => _res;
   hasLikedUsersWith(_fn) => _res;
   hasBookmarkedUsersWith(_fn) => _res;
-  hasDraftWith(_fn) => _res;
 }
 
 class Input$UpdateDraftInput {
   factory Input$UpdateDraftInput(
-          {bool? clearOwner,
+          {String? updateTime,
+          String? praiseTitle,
+          String? letterTitle,
+          String? praiseContent,
+          String? letterContent,
+          bool? praiseSpoiled,
+          bool? letterSpoiled,
+          bool? clearThumbnail,
+          String? thumbnail,
+          bool? clearOwner,
           String? ownerID,
-          List<String>? addPostIDs,
-          List<String>? removePostIDs}) =>
+          List<String>? addHashtagIDs,
+          List<String>? removeHashtagIDs,
+          bool? clearWork,
+          String? workID,
+          bool? clearCategory,
+          String? categoryID}) =>
       Input$UpdateDraftInput._({
+        if (updateTime != null) r'updateTime': updateTime,
+        if (praiseTitle != null) r'praiseTitle': praiseTitle,
+        if (letterTitle != null) r'letterTitle': letterTitle,
+        if (praiseContent != null) r'praiseContent': praiseContent,
+        if (letterContent != null) r'letterContent': letterContent,
+        if (praiseSpoiled != null) r'praiseSpoiled': praiseSpoiled,
+        if (letterSpoiled != null) r'letterSpoiled': letterSpoiled,
+        if (clearThumbnail != null) r'clearThumbnail': clearThumbnail,
+        if (thumbnail != null) r'thumbnail': thumbnail,
         if (clearOwner != null) r'clearOwner': clearOwner,
         if (ownerID != null) r'ownerID': ownerID,
-        if (addPostIDs != null) r'addPostIDs': addPostIDs,
-        if (removePostIDs != null) r'removePostIDs': removePostIDs,
+        if (addHashtagIDs != null) r'addHashtagIDs': addHashtagIDs,
+        if (removeHashtagIDs != null) r'removeHashtagIDs': removeHashtagIDs,
+        if (clearWork != null) r'clearWork': clearWork,
+        if (workID != null) r'workID': workID,
+        if (clearCategory != null) r'clearCategory': clearCategory,
+        if (categoryID != null) r'categoryID': categoryID,
       });
 
   Input$UpdateDraftInput._(this._$data);
 
   factory Input$UpdateDraftInput.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
+    if (data.containsKey('updateTime')) {
+      final l$updateTime = data['updateTime'];
+      result$data['updateTime'] = (l$updateTime as String?);
+    }
+    if (data.containsKey('praiseTitle')) {
+      final l$praiseTitle = data['praiseTitle'];
+      result$data['praiseTitle'] = (l$praiseTitle as String?);
+    }
+    if (data.containsKey('letterTitle')) {
+      final l$letterTitle = data['letterTitle'];
+      result$data['letterTitle'] = (l$letterTitle as String?);
+    }
+    if (data.containsKey('praiseContent')) {
+      final l$praiseContent = data['praiseContent'];
+      result$data['praiseContent'] = (l$praiseContent as String?);
+    }
+    if (data.containsKey('letterContent')) {
+      final l$letterContent = data['letterContent'];
+      result$data['letterContent'] = (l$letterContent as String?);
+    }
+    if (data.containsKey('praiseSpoiled')) {
+      final l$praiseSpoiled = data['praiseSpoiled'];
+      result$data['praiseSpoiled'] = (l$praiseSpoiled as bool?);
+    }
+    if (data.containsKey('letterSpoiled')) {
+      final l$letterSpoiled = data['letterSpoiled'];
+      result$data['letterSpoiled'] = (l$letterSpoiled as bool?);
+    }
+    if (data.containsKey('clearThumbnail')) {
+      final l$clearThumbnail = data['clearThumbnail'];
+      result$data['clearThumbnail'] = (l$clearThumbnail as bool?);
+    }
+    if (data.containsKey('thumbnail')) {
+      final l$thumbnail = data['thumbnail'];
+      result$data['thumbnail'] = (l$thumbnail as String?);
+    }
     if (data.containsKey('clearOwner')) {
       final l$clearOwner = data['clearOwner'];
       result$data['clearOwner'] = (l$clearOwner as bool?);
@@ -6901,28 +10331,95 @@ class Input$UpdateDraftInput {
       final l$ownerID = data['ownerID'];
       result$data['ownerID'] = (l$ownerID as String?);
     }
-    if (data.containsKey('addPostIDs')) {
-      final l$addPostIDs = data['addPostIDs'];
-      result$data['addPostIDs'] =
-          (l$addPostIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
-    }
-    if (data.containsKey('removePostIDs')) {
-      final l$removePostIDs = data['removePostIDs'];
-      result$data['removePostIDs'] = (l$removePostIDs as List<dynamic>?)
+    if (data.containsKey('addHashtagIDs')) {
+      final l$addHashtagIDs = data['addHashtagIDs'];
+      result$data['addHashtagIDs'] = (l$addHashtagIDs as List<dynamic>?)
           ?.map((e) => (e as String))
           .toList();
+    }
+    if (data.containsKey('removeHashtagIDs')) {
+      final l$removeHashtagIDs = data['removeHashtagIDs'];
+      result$data['removeHashtagIDs'] = (l$removeHashtagIDs as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
+    if (data.containsKey('clearWork')) {
+      final l$clearWork = data['clearWork'];
+      result$data['clearWork'] = (l$clearWork as bool?);
+    }
+    if (data.containsKey('workID')) {
+      final l$workID = data['workID'];
+      result$data['workID'] = (l$workID as String?);
+    }
+    if (data.containsKey('clearCategory')) {
+      final l$clearCategory = data['clearCategory'];
+      result$data['clearCategory'] = (l$clearCategory as bool?);
+    }
+    if (data.containsKey('categoryID')) {
+      final l$categoryID = data['categoryID'];
+      result$data['categoryID'] = (l$categoryID as String?);
     }
     return Input$UpdateDraftInput._(result$data);
   }
 
   Map<String, dynamic> _$data;
 
+  String? get updateTime => (_$data['updateTime'] as String?);
+  String? get praiseTitle => (_$data['praiseTitle'] as String?);
+  String? get letterTitle => (_$data['letterTitle'] as String?);
+  String? get praiseContent => (_$data['praiseContent'] as String?);
+  String? get letterContent => (_$data['letterContent'] as String?);
+  bool? get praiseSpoiled => (_$data['praiseSpoiled'] as bool?);
+  bool? get letterSpoiled => (_$data['letterSpoiled'] as bool?);
+  bool? get clearThumbnail => (_$data['clearThumbnail'] as bool?);
+  String? get thumbnail => (_$data['thumbnail'] as String?);
   bool? get clearOwner => (_$data['clearOwner'] as bool?);
   String? get ownerID => (_$data['ownerID'] as String?);
-  List<String>? get addPostIDs => (_$data['addPostIDs'] as List<String>?);
-  List<String>? get removePostIDs => (_$data['removePostIDs'] as List<String>?);
+  List<String>? get addHashtagIDs => (_$data['addHashtagIDs'] as List<String>?);
+  List<String>? get removeHashtagIDs =>
+      (_$data['removeHashtagIDs'] as List<String>?);
+  bool? get clearWork => (_$data['clearWork'] as bool?);
+  String? get workID => (_$data['workID'] as String?);
+  bool? get clearCategory => (_$data['clearCategory'] as bool?);
+  String? get categoryID => (_$data['categoryID'] as String?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
+    if (_$data.containsKey('updateTime')) {
+      final l$updateTime = updateTime;
+      result$data['updateTime'] = l$updateTime;
+    }
+    if (_$data.containsKey('praiseTitle')) {
+      final l$praiseTitle = praiseTitle;
+      result$data['praiseTitle'] = l$praiseTitle;
+    }
+    if (_$data.containsKey('letterTitle')) {
+      final l$letterTitle = letterTitle;
+      result$data['letterTitle'] = l$letterTitle;
+    }
+    if (_$data.containsKey('praiseContent')) {
+      final l$praiseContent = praiseContent;
+      result$data['praiseContent'] = l$praiseContent;
+    }
+    if (_$data.containsKey('letterContent')) {
+      final l$letterContent = letterContent;
+      result$data['letterContent'] = l$letterContent;
+    }
+    if (_$data.containsKey('praiseSpoiled')) {
+      final l$praiseSpoiled = praiseSpoiled;
+      result$data['praiseSpoiled'] = l$praiseSpoiled;
+    }
+    if (_$data.containsKey('letterSpoiled')) {
+      final l$letterSpoiled = letterSpoiled;
+      result$data['letterSpoiled'] = l$letterSpoiled;
+    }
+    if (_$data.containsKey('clearThumbnail')) {
+      final l$clearThumbnail = clearThumbnail;
+      result$data['clearThumbnail'] = l$clearThumbnail;
+    }
+    if (_$data.containsKey('thumbnail')) {
+      final l$thumbnail = thumbnail;
+      result$data['thumbnail'] = l$thumbnail;
+    }
     if (_$data.containsKey('clearOwner')) {
       final l$clearOwner = clearOwner;
       result$data['clearOwner'] = l$clearOwner;
@@ -6931,13 +10428,30 @@ class Input$UpdateDraftInput {
       final l$ownerID = ownerID;
       result$data['ownerID'] = l$ownerID;
     }
-    if (_$data.containsKey('addPostIDs')) {
-      final l$addPostIDs = addPostIDs;
-      result$data['addPostIDs'] = l$addPostIDs?.map((e) => e).toList();
+    if (_$data.containsKey('addHashtagIDs')) {
+      final l$addHashtagIDs = addHashtagIDs;
+      result$data['addHashtagIDs'] = l$addHashtagIDs?.map((e) => e).toList();
     }
-    if (_$data.containsKey('removePostIDs')) {
-      final l$removePostIDs = removePostIDs;
-      result$data['removePostIDs'] = l$removePostIDs?.map((e) => e).toList();
+    if (_$data.containsKey('removeHashtagIDs')) {
+      final l$removeHashtagIDs = removeHashtagIDs;
+      result$data['removeHashtagIDs'] =
+          l$removeHashtagIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('clearWork')) {
+      final l$clearWork = clearWork;
+      result$data['clearWork'] = l$clearWork;
+    }
+    if (_$data.containsKey('workID')) {
+      final l$workID = workID;
+      result$data['workID'] = l$workID;
+    }
+    if (_$data.containsKey('clearCategory')) {
+      final l$clearCategory = clearCategory;
+      result$data['clearCategory'] = l$clearCategory;
+    }
+    if (_$data.containsKey('categoryID')) {
+      final l$categoryID = categoryID;
+      result$data['categoryID'] = l$categoryID;
     }
     return result$data;
   }
@@ -6951,6 +10465,87 @@ class Input$UpdateDraftInput {
     }
     if (!(other is Input$UpdateDraftInput) ||
         runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$updateTime = updateTime;
+    final lOther$updateTime = other.updateTime;
+    if (_$data.containsKey('updateTime') !=
+        other._$data.containsKey('updateTime')) {
+      return false;
+    }
+    if (l$updateTime != lOther$updateTime) {
+      return false;
+    }
+    final l$praiseTitle = praiseTitle;
+    final lOther$praiseTitle = other.praiseTitle;
+    if (_$data.containsKey('praiseTitle') !=
+        other._$data.containsKey('praiseTitle')) {
+      return false;
+    }
+    if (l$praiseTitle != lOther$praiseTitle) {
+      return false;
+    }
+    final l$letterTitle = letterTitle;
+    final lOther$letterTitle = other.letterTitle;
+    if (_$data.containsKey('letterTitle') !=
+        other._$data.containsKey('letterTitle')) {
+      return false;
+    }
+    if (l$letterTitle != lOther$letterTitle) {
+      return false;
+    }
+    final l$praiseContent = praiseContent;
+    final lOther$praiseContent = other.praiseContent;
+    if (_$data.containsKey('praiseContent') !=
+        other._$data.containsKey('praiseContent')) {
+      return false;
+    }
+    if (l$praiseContent != lOther$praiseContent) {
+      return false;
+    }
+    final l$letterContent = letterContent;
+    final lOther$letterContent = other.letterContent;
+    if (_$data.containsKey('letterContent') !=
+        other._$data.containsKey('letterContent')) {
+      return false;
+    }
+    if (l$letterContent != lOther$letterContent) {
+      return false;
+    }
+    final l$praiseSpoiled = praiseSpoiled;
+    final lOther$praiseSpoiled = other.praiseSpoiled;
+    if (_$data.containsKey('praiseSpoiled') !=
+        other._$data.containsKey('praiseSpoiled')) {
+      return false;
+    }
+    if (l$praiseSpoiled != lOther$praiseSpoiled) {
+      return false;
+    }
+    final l$letterSpoiled = letterSpoiled;
+    final lOther$letterSpoiled = other.letterSpoiled;
+    if (_$data.containsKey('letterSpoiled') !=
+        other._$data.containsKey('letterSpoiled')) {
+      return false;
+    }
+    if (l$letterSpoiled != lOther$letterSpoiled) {
+      return false;
+    }
+    final l$clearThumbnail = clearThumbnail;
+    final lOther$clearThumbnail = other.clearThumbnail;
+    if (_$data.containsKey('clearThumbnail') !=
+        other._$data.containsKey('clearThumbnail')) {
+      return false;
+    }
+    if (l$clearThumbnail != lOther$clearThumbnail) {
+      return false;
+    }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (_$data.containsKey('thumbnail') !=
+        other._$data.containsKey('thumbnail')) {
+      return false;
+    }
+    if (l$thumbnail != lOther$thumbnail) {
       return false;
     }
     final l$clearOwner = clearOwner;
@@ -6970,44 +10565,79 @@ class Input$UpdateDraftInput {
     if (l$ownerID != lOther$ownerID) {
       return false;
     }
-    final l$addPostIDs = addPostIDs;
-    final lOther$addPostIDs = other.addPostIDs;
-    if (_$data.containsKey('addPostIDs') !=
-        other._$data.containsKey('addPostIDs')) {
+    final l$addHashtagIDs = addHashtagIDs;
+    final lOther$addHashtagIDs = other.addHashtagIDs;
+    if (_$data.containsKey('addHashtagIDs') !=
+        other._$data.containsKey('addHashtagIDs')) {
       return false;
     }
-    if (l$addPostIDs != null && lOther$addPostIDs != null) {
-      if (l$addPostIDs.length != lOther$addPostIDs.length) {
+    if (l$addHashtagIDs != null && lOther$addHashtagIDs != null) {
+      if (l$addHashtagIDs.length != lOther$addHashtagIDs.length) {
         return false;
       }
-      for (int i = 0; i < l$addPostIDs.length; i++) {
-        final l$addPostIDs$entry = l$addPostIDs[i];
-        final lOther$addPostIDs$entry = lOther$addPostIDs[i];
-        if (l$addPostIDs$entry != lOther$addPostIDs$entry) {
+      for (int i = 0; i < l$addHashtagIDs.length; i++) {
+        final l$addHashtagIDs$entry = l$addHashtagIDs[i];
+        final lOther$addHashtagIDs$entry = lOther$addHashtagIDs[i];
+        if (l$addHashtagIDs$entry != lOther$addHashtagIDs$entry) {
           return false;
         }
       }
-    } else if (l$addPostIDs != lOther$addPostIDs) {
+    } else if (l$addHashtagIDs != lOther$addHashtagIDs) {
       return false;
     }
-    final l$removePostIDs = removePostIDs;
-    final lOther$removePostIDs = other.removePostIDs;
-    if (_$data.containsKey('removePostIDs') !=
-        other._$data.containsKey('removePostIDs')) {
+    final l$removeHashtagIDs = removeHashtagIDs;
+    final lOther$removeHashtagIDs = other.removeHashtagIDs;
+    if (_$data.containsKey('removeHashtagIDs') !=
+        other._$data.containsKey('removeHashtagIDs')) {
       return false;
     }
-    if (l$removePostIDs != null && lOther$removePostIDs != null) {
-      if (l$removePostIDs.length != lOther$removePostIDs.length) {
+    if (l$removeHashtagIDs != null && lOther$removeHashtagIDs != null) {
+      if (l$removeHashtagIDs.length != lOther$removeHashtagIDs.length) {
         return false;
       }
-      for (int i = 0; i < l$removePostIDs.length; i++) {
-        final l$removePostIDs$entry = l$removePostIDs[i];
-        final lOther$removePostIDs$entry = lOther$removePostIDs[i];
-        if (l$removePostIDs$entry != lOther$removePostIDs$entry) {
+      for (int i = 0; i < l$removeHashtagIDs.length; i++) {
+        final l$removeHashtagIDs$entry = l$removeHashtagIDs[i];
+        final lOther$removeHashtagIDs$entry = lOther$removeHashtagIDs[i];
+        if (l$removeHashtagIDs$entry != lOther$removeHashtagIDs$entry) {
           return false;
         }
       }
-    } else if (l$removePostIDs != lOther$removePostIDs) {
+    } else if (l$removeHashtagIDs != lOther$removeHashtagIDs) {
+      return false;
+    }
+    final l$clearWork = clearWork;
+    final lOther$clearWork = other.clearWork;
+    if (_$data.containsKey('clearWork') !=
+        other._$data.containsKey('clearWork')) {
+      return false;
+    }
+    if (l$clearWork != lOther$clearWork) {
+      return false;
+    }
+    final l$workID = workID;
+    final lOther$workID = other.workID;
+    if (_$data.containsKey('workID') != other._$data.containsKey('workID')) {
+      return false;
+    }
+    if (l$workID != lOther$workID) {
+      return false;
+    }
+    final l$clearCategory = clearCategory;
+    final lOther$clearCategory = other.clearCategory;
+    if (_$data.containsKey('clearCategory') !=
+        other._$data.containsKey('clearCategory')) {
+      return false;
+    }
+    if (l$clearCategory != lOther$clearCategory) {
+      return false;
+    }
+    final l$categoryID = categoryID;
+    final lOther$categoryID = other.categoryID;
+    if (_$data.containsKey('categoryID') !=
+        other._$data.containsKey('categoryID')) {
+      return false;
+    }
+    if (l$categoryID != lOther$categoryID) {
       return false;
     }
     return true;
@@ -7015,23 +10645,49 @@ class Input$UpdateDraftInput {
 
   @override
   int get hashCode {
+    final l$updateTime = updateTime;
+    final l$praiseTitle = praiseTitle;
+    final l$letterTitle = letterTitle;
+    final l$praiseContent = praiseContent;
+    final l$letterContent = letterContent;
+    final l$praiseSpoiled = praiseSpoiled;
+    final l$letterSpoiled = letterSpoiled;
+    final l$clearThumbnail = clearThumbnail;
+    final l$thumbnail = thumbnail;
     final l$clearOwner = clearOwner;
     final l$ownerID = ownerID;
-    final l$addPostIDs = addPostIDs;
-    final l$removePostIDs = removePostIDs;
+    final l$addHashtagIDs = addHashtagIDs;
+    final l$removeHashtagIDs = removeHashtagIDs;
+    final l$clearWork = clearWork;
+    final l$workID = workID;
+    final l$clearCategory = clearCategory;
+    final l$categoryID = categoryID;
     return Object.hashAll([
+      _$data.containsKey('updateTime') ? l$updateTime : const {},
+      _$data.containsKey('praiseTitle') ? l$praiseTitle : const {},
+      _$data.containsKey('letterTitle') ? l$letterTitle : const {},
+      _$data.containsKey('praiseContent') ? l$praiseContent : const {},
+      _$data.containsKey('letterContent') ? l$letterContent : const {},
+      _$data.containsKey('praiseSpoiled') ? l$praiseSpoiled : const {},
+      _$data.containsKey('letterSpoiled') ? l$letterSpoiled : const {},
+      _$data.containsKey('clearThumbnail') ? l$clearThumbnail : const {},
+      _$data.containsKey('thumbnail') ? l$thumbnail : const {},
       _$data.containsKey('clearOwner') ? l$clearOwner : const {},
       _$data.containsKey('ownerID') ? l$ownerID : const {},
-      _$data.containsKey('addPostIDs')
-          ? l$addPostIDs == null
+      _$data.containsKey('addHashtagIDs')
+          ? l$addHashtagIDs == null
               ? null
-              : Object.hashAll(l$addPostIDs.map((v) => v))
+              : Object.hashAll(l$addHashtagIDs.map((v) => v))
           : const {},
-      _$data.containsKey('removePostIDs')
-          ? l$removePostIDs == null
+      _$data.containsKey('removeHashtagIDs')
+          ? l$removeHashtagIDs == null
               ? null
-              : Object.hashAll(l$removePostIDs.map((v) => v))
-          : const {}
+              : Object.hashAll(l$removeHashtagIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('clearWork') ? l$clearWork : const {},
+      _$data.containsKey('workID') ? l$workID : const {},
+      _$data.containsKey('clearCategory') ? l$clearCategory : const {},
+      _$data.containsKey('categoryID') ? l$categoryID : const {}
     ]);
   }
 }
@@ -7045,10 +10701,23 @@ abstract class CopyWith$Input$UpdateDraftInput<TRes> {
       _CopyWithStubImpl$Input$UpdateDraftInput;
 
   TRes call(
-      {bool? clearOwner,
+      {String? updateTime,
+      String? praiseTitle,
+      String? letterTitle,
+      String? praiseContent,
+      String? letterContent,
+      bool? praiseSpoiled,
+      bool? letterSpoiled,
+      bool? clearThumbnail,
+      String? thumbnail,
+      bool? clearOwner,
       String? ownerID,
-      List<String>? addPostIDs,
-      List<String>? removePostIDs});
+      List<String>? addHashtagIDs,
+      List<String>? removeHashtagIDs,
+      bool? clearWork,
+      String? workID,
+      bool? clearCategory,
+      String? categoryID});
 }
 
 class _CopyWithImpl$Input$UpdateDraftInput<TRes>
@@ -7062,18 +10731,50 @@ class _CopyWithImpl$Input$UpdateDraftInput<TRes>
   static const _undefined = {};
 
   TRes call(
-          {Object? clearOwner = _undefined,
+          {Object? updateTime = _undefined,
+          Object? praiseTitle = _undefined,
+          Object? letterTitle = _undefined,
+          Object? praiseContent = _undefined,
+          Object? letterContent = _undefined,
+          Object? praiseSpoiled = _undefined,
+          Object? letterSpoiled = _undefined,
+          Object? clearThumbnail = _undefined,
+          Object? thumbnail = _undefined,
+          Object? clearOwner = _undefined,
           Object? ownerID = _undefined,
-          Object? addPostIDs = _undefined,
-          Object? removePostIDs = _undefined}) =>
+          Object? addHashtagIDs = _undefined,
+          Object? removeHashtagIDs = _undefined,
+          Object? clearWork = _undefined,
+          Object? workID = _undefined,
+          Object? clearCategory = _undefined,
+          Object? categoryID = _undefined}) =>
       _then(Input$UpdateDraftInput._({
         ..._instance._$data,
+        if (updateTime != _undefined) 'updateTime': (updateTime as String?),
+        if (praiseTitle != _undefined) 'praiseTitle': (praiseTitle as String?),
+        if (letterTitle != _undefined) 'letterTitle': (letterTitle as String?),
+        if (praiseContent != _undefined)
+          'praiseContent': (praiseContent as String?),
+        if (letterContent != _undefined)
+          'letterContent': (letterContent as String?),
+        if (praiseSpoiled != _undefined)
+          'praiseSpoiled': (praiseSpoiled as bool?),
+        if (letterSpoiled != _undefined)
+          'letterSpoiled': (letterSpoiled as bool?),
+        if (clearThumbnail != _undefined)
+          'clearThumbnail': (clearThumbnail as bool?),
+        if (thumbnail != _undefined) 'thumbnail': (thumbnail as String?),
         if (clearOwner != _undefined) 'clearOwner': (clearOwner as bool?),
         if (ownerID != _undefined) 'ownerID': (ownerID as String?),
-        if (addPostIDs != _undefined)
-          'addPostIDs': (addPostIDs as List<String>?),
-        if (removePostIDs != _undefined)
-          'removePostIDs': (removePostIDs as List<String>?),
+        if (addHashtagIDs != _undefined)
+          'addHashtagIDs': (addHashtagIDs as List<String>?),
+        if (removeHashtagIDs != _undefined)
+          'removeHashtagIDs': (removeHashtagIDs as List<String>?),
+        if (clearWork != _undefined) 'clearWork': (clearWork as bool?),
+        if (workID != _undefined) 'workID': (workID as String?),
+        if (clearCategory != _undefined)
+          'clearCategory': (clearCategory as bool?),
+        if (categoryID != _undefined) 'categoryID': (categoryID as String?),
       }));
 }
 
@@ -7084,10 +10785,23 @@ class _CopyWithStubImpl$Input$UpdateDraftInput<TRes>
   TRes _res;
 
   call(
-          {bool? clearOwner,
+          {String? updateTime,
+          String? praiseTitle,
+          String? letterTitle,
+          String? praiseContent,
+          String? letterContent,
+          bool? praiseSpoiled,
+          bool? letterSpoiled,
+          bool? clearThumbnail,
+          String? thumbnail,
+          bool? clearOwner,
           String? ownerID,
-          List<String>? addPostIDs,
-          List<String>? removePostIDs}) =>
+          List<String>? addHashtagIDs,
+          List<String>? removeHashtagIDs,
+          bool? clearWork,
+          String? workID,
+          bool? clearCategory,
+          String? categoryID}) =>
       _res;
 }
 
@@ -7095,11 +10809,15 @@ class Input$UpdateHashtagInput {
   factory Input$UpdateHashtagInput(
           {String? title,
           List<String>? addPostIDs,
-          List<String>? removePostIDs}) =>
+          List<String>? removePostIDs,
+          List<String>? addDraftIDs,
+          List<String>? removeDraftIDs}) =>
       Input$UpdateHashtagInput._({
         if (title != null) r'title': title,
         if (addPostIDs != null) r'addPostIDs': addPostIDs,
         if (removePostIDs != null) r'removePostIDs': removePostIDs,
+        if (addDraftIDs != null) r'addDraftIDs': addDraftIDs,
+        if (removeDraftIDs != null) r'removeDraftIDs': removeDraftIDs,
       });
 
   Input$UpdateHashtagInput._(this._$data);
@@ -7121,6 +10839,17 @@ class Input$UpdateHashtagInput {
           ?.map((e) => (e as String))
           .toList();
     }
+    if (data.containsKey('addDraftIDs')) {
+      final l$addDraftIDs = data['addDraftIDs'];
+      result$data['addDraftIDs'] =
+          (l$addDraftIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
+    if (data.containsKey('removeDraftIDs')) {
+      final l$removeDraftIDs = data['removeDraftIDs'];
+      result$data['removeDraftIDs'] = (l$removeDraftIDs as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
     return Input$UpdateHashtagInput._(result$data);
   }
 
@@ -7129,6 +10858,9 @@ class Input$UpdateHashtagInput {
   String? get title => (_$data['title'] as String?);
   List<String>? get addPostIDs => (_$data['addPostIDs'] as List<String>?);
   List<String>? get removePostIDs => (_$data['removePostIDs'] as List<String>?);
+  List<String>? get addDraftIDs => (_$data['addDraftIDs'] as List<String>?);
+  List<String>? get removeDraftIDs =>
+      (_$data['removeDraftIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('title')) {
@@ -7142,6 +10874,14 @@ class Input$UpdateHashtagInput {
     if (_$data.containsKey('removePostIDs')) {
       final l$removePostIDs = removePostIDs;
       result$data['removePostIDs'] = l$removePostIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('addDraftIDs')) {
+      final l$addDraftIDs = addDraftIDs;
+      result$data['addDraftIDs'] = l$addDraftIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('removeDraftIDs')) {
+      final l$removeDraftIDs = removeDraftIDs;
+      result$data['removeDraftIDs'] = l$removeDraftIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -7205,6 +10945,46 @@ class Input$UpdateHashtagInput {
     } else if (l$removePostIDs != lOther$removePostIDs) {
       return false;
     }
+    final l$addDraftIDs = addDraftIDs;
+    final lOther$addDraftIDs = other.addDraftIDs;
+    if (_$data.containsKey('addDraftIDs') !=
+        other._$data.containsKey('addDraftIDs')) {
+      return false;
+    }
+    if (l$addDraftIDs != null && lOther$addDraftIDs != null) {
+      if (l$addDraftIDs.length != lOther$addDraftIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$addDraftIDs.length; i++) {
+        final l$addDraftIDs$entry = l$addDraftIDs[i];
+        final lOther$addDraftIDs$entry = lOther$addDraftIDs[i];
+        if (l$addDraftIDs$entry != lOther$addDraftIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$addDraftIDs != lOther$addDraftIDs) {
+      return false;
+    }
+    final l$removeDraftIDs = removeDraftIDs;
+    final lOther$removeDraftIDs = other.removeDraftIDs;
+    if (_$data.containsKey('removeDraftIDs') !=
+        other._$data.containsKey('removeDraftIDs')) {
+      return false;
+    }
+    if (l$removeDraftIDs != null && lOther$removeDraftIDs != null) {
+      if (l$removeDraftIDs.length != lOther$removeDraftIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$removeDraftIDs.length; i++) {
+        final l$removeDraftIDs$entry = l$removeDraftIDs[i];
+        final lOther$removeDraftIDs$entry = lOther$removeDraftIDs[i];
+        if (l$removeDraftIDs$entry != lOther$removeDraftIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$removeDraftIDs != lOther$removeDraftIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -7213,6 +10993,8 @@ class Input$UpdateHashtagInput {
     final l$title = title;
     final l$addPostIDs = addPostIDs;
     final l$removePostIDs = removePostIDs;
+    final l$addDraftIDs = addDraftIDs;
+    final l$removeDraftIDs = removeDraftIDs;
     return Object.hashAll([
       _$data.containsKey('title') ? l$title : const {},
       _$data.containsKey('addPostIDs')
@@ -7224,6 +11006,16 @@ class Input$UpdateHashtagInput {
           ? l$removePostIDs == null
               ? null
               : Object.hashAll(l$removePostIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('addDraftIDs')
+          ? l$addDraftIDs == null
+              ? null
+              : Object.hashAll(l$addDraftIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('removeDraftIDs')
+          ? l$removeDraftIDs == null
+              ? null
+              : Object.hashAll(l$removeDraftIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -7238,7 +11030,11 @@ abstract class CopyWith$Input$UpdateHashtagInput<TRes> {
       _CopyWithStubImpl$Input$UpdateHashtagInput;
 
   TRes call(
-      {String? title, List<String>? addPostIDs, List<String>? removePostIDs});
+      {String? title,
+      List<String>? addPostIDs,
+      List<String>? removePostIDs,
+      List<String>? addDraftIDs,
+      List<String>? removeDraftIDs});
 }
 
 class _CopyWithImpl$Input$UpdateHashtagInput<TRes>
@@ -7254,7 +11050,9 @@ class _CopyWithImpl$Input$UpdateHashtagInput<TRes>
   TRes call(
           {Object? title = _undefined,
           Object? addPostIDs = _undefined,
-          Object? removePostIDs = _undefined}) =>
+          Object? removePostIDs = _undefined,
+          Object? addDraftIDs = _undefined,
+          Object? removeDraftIDs = _undefined}) =>
       _then(Input$UpdateHashtagInput._({
         ..._instance._$data,
         if (title != _undefined) 'title': (title as String?),
@@ -7262,6 +11060,10 @@ class _CopyWithImpl$Input$UpdateHashtagInput<TRes>
           'addPostIDs': (addPostIDs as List<String>?),
         if (removePostIDs != _undefined)
           'removePostIDs': (removePostIDs as List<String>?),
+        if (addDraftIDs != _undefined)
+          'addDraftIDs': (addDraftIDs as List<String>?),
+        if (removeDraftIDs != _undefined)
+          'removeDraftIDs': (removeDraftIDs as List<String>?),
       }));
 }
 
@@ -7274,7 +11076,9 @@ class _CopyWithStubImpl$Input$UpdateHashtagInput<TRes>
   call(
           {String? title,
           List<String>? addPostIDs,
-          List<String>? removePostIDs}) =>
+          List<String>? removePostIDs,
+          List<String>? addDraftIDs,
+          List<String>? removeDraftIDs}) =>
       _res;
 }
 
@@ -7298,9 +11102,7 @@ class Input$UpdatePostInput {
           List<String>? addLikedUserIDs,
           List<String>? removeLikedUserIDs,
           List<String>? addBookmarkedUserIDs,
-          List<String>? removeBookmarkedUserIDs,
-          List<String>? addDraftIDs,
-          List<String>? removeDraftIDs}) =>
+          List<String>? removeBookmarkedUserIDs}) =>
       Input$UpdatePostInput._({
         if (updateTime != null) r'updateTime': updateTime,
         if (title != null) r'title': title,
@@ -7324,8 +11126,6 @@ class Input$UpdatePostInput {
           r'addBookmarkedUserIDs': addBookmarkedUserIDs,
         if (removeBookmarkedUserIDs != null)
           r'removeBookmarkedUserIDs': removeBookmarkedUserIDs,
-        if (addDraftIDs != null) r'addDraftIDs': addDraftIDs,
-        if (removeDraftIDs != null) r'removeDraftIDs': removeDraftIDs,
       });
 
   Input$UpdatePostInput._(this._$data);
@@ -7425,17 +11225,6 @@ class Input$UpdatePostInput {
               ?.map((e) => (e as String))
               .toList();
     }
-    if (data.containsKey('addDraftIDs')) {
-      final l$addDraftIDs = data['addDraftIDs'];
-      result$data['addDraftIDs'] =
-          (l$addDraftIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
-    }
-    if (data.containsKey('removeDraftIDs')) {
-      final l$removeDraftIDs = data['removeDraftIDs'];
-      result$data['removeDraftIDs'] = (l$removeDraftIDs as List<dynamic>?)
-          ?.map((e) => (e as String))
-          .toList();
-    }
     return Input$UpdatePostInput._(result$data);
   }
 
@@ -7465,9 +11254,6 @@ class Input$UpdatePostInput {
       (_$data['addBookmarkedUserIDs'] as List<String>?);
   List<String>? get removeBookmarkedUserIDs =>
       (_$data['removeBookmarkedUserIDs'] as List<String>?);
-  List<String>? get addDraftIDs => (_$data['addDraftIDs'] as List<String>?);
-  List<String>? get removeDraftIDs =>
-      (_$data['removeDraftIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('updateTime')) {
@@ -7551,14 +11337,6 @@ class Input$UpdatePostInput {
       final l$removeBookmarkedUserIDs = removeBookmarkedUserIDs;
       result$data['removeBookmarkedUserIDs'] =
           l$removeBookmarkedUserIDs?.map((e) => e).toList();
-    }
-    if (_$data.containsKey('addDraftIDs')) {
-      final l$addDraftIDs = addDraftIDs;
-      result$data['addDraftIDs'] = l$addDraftIDs?.map((e) => e).toList();
-    }
-    if (_$data.containsKey('removeDraftIDs')) {
-      final l$removeDraftIDs = removeDraftIDs;
-      result$data['removeDraftIDs'] = l$removeDraftIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -7809,46 +11587,6 @@ class Input$UpdatePostInput {
     } else if (l$removeBookmarkedUserIDs != lOther$removeBookmarkedUserIDs) {
       return false;
     }
-    final l$addDraftIDs = addDraftIDs;
-    final lOther$addDraftIDs = other.addDraftIDs;
-    if (_$data.containsKey('addDraftIDs') !=
-        other._$data.containsKey('addDraftIDs')) {
-      return false;
-    }
-    if (l$addDraftIDs != null && lOther$addDraftIDs != null) {
-      if (l$addDraftIDs.length != lOther$addDraftIDs.length) {
-        return false;
-      }
-      for (int i = 0; i < l$addDraftIDs.length; i++) {
-        final l$addDraftIDs$entry = l$addDraftIDs[i];
-        final lOther$addDraftIDs$entry = lOther$addDraftIDs[i];
-        if (l$addDraftIDs$entry != lOther$addDraftIDs$entry) {
-          return false;
-        }
-      }
-    } else if (l$addDraftIDs != lOther$addDraftIDs) {
-      return false;
-    }
-    final l$removeDraftIDs = removeDraftIDs;
-    final lOther$removeDraftIDs = other.removeDraftIDs;
-    if (_$data.containsKey('removeDraftIDs') !=
-        other._$data.containsKey('removeDraftIDs')) {
-      return false;
-    }
-    if (l$removeDraftIDs != null && lOther$removeDraftIDs != null) {
-      if (l$removeDraftIDs.length != lOther$removeDraftIDs.length) {
-        return false;
-      }
-      for (int i = 0; i < l$removeDraftIDs.length; i++) {
-        final l$removeDraftIDs$entry = l$removeDraftIDs[i];
-        final lOther$removeDraftIDs$entry = lOther$removeDraftIDs[i];
-        if (l$removeDraftIDs$entry != lOther$removeDraftIDs$entry) {
-          return false;
-        }
-      }
-    } else if (l$removeDraftIDs != lOther$removeDraftIDs) {
-      return false;
-    }
     return true;
   }
 
@@ -7873,8 +11611,6 @@ class Input$UpdatePostInput {
     final l$removeLikedUserIDs = removeLikedUserIDs;
     final l$addBookmarkedUserIDs = addBookmarkedUserIDs;
     final l$removeBookmarkedUserIDs = removeBookmarkedUserIDs;
-    final l$addDraftIDs = addDraftIDs;
-    final l$removeDraftIDs = removeDraftIDs;
     return Object.hashAll([
       _$data.containsKey('updateTime') ? l$updateTime : const {},
       _$data.containsKey('title') ? l$title : const {},
@@ -7918,16 +11654,6 @@ class Input$UpdatePostInput {
           ? l$removeBookmarkedUserIDs == null
               ? null
               : Object.hashAll(l$removeBookmarkedUserIDs.map((v) => v))
-          : const {},
-      _$data.containsKey('addDraftIDs')
-          ? l$addDraftIDs == null
-              ? null
-              : Object.hashAll(l$addDraftIDs.map((v) => v))
-          : const {},
-      _$data.containsKey('removeDraftIDs')
-          ? l$removeDraftIDs == null
-              ? null
-              : Object.hashAll(l$removeDraftIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -7960,9 +11686,7 @@ abstract class CopyWith$Input$UpdatePostInput<TRes> {
       List<String>? addLikedUserIDs,
       List<String>? removeLikedUserIDs,
       List<String>? addBookmarkedUserIDs,
-      List<String>? removeBookmarkedUserIDs,
-      List<String>? addDraftIDs,
-      List<String>? removeDraftIDs});
+      List<String>? removeBookmarkedUserIDs});
 }
 
 class _CopyWithImpl$Input$UpdatePostInput<TRes>
@@ -7994,9 +11718,7 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           Object? addLikedUserIDs = _undefined,
           Object? removeLikedUserIDs = _undefined,
           Object? addBookmarkedUserIDs = _undefined,
-          Object? removeBookmarkedUserIDs = _undefined,
-          Object? addDraftIDs = _undefined,
-          Object? removeDraftIDs = _undefined}) =>
+          Object? removeBookmarkedUserIDs = _undefined}) =>
       _then(Input$UpdatePostInput._({
         ..._instance._$data,
         if (updateTime != _undefined) 'updateTime': (updateTime as String?),
@@ -8026,10 +11748,6 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
           'addBookmarkedUserIDs': (addBookmarkedUserIDs as List<String>?),
         if (removeBookmarkedUserIDs != _undefined)
           'removeBookmarkedUserIDs': (removeBookmarkedUserIDs as List<String>?),
-        if (addDraftIDs != _undefined)
-          'addDraftIDs': (addDraftIDs as List<String>?),
-        if (removeDraftIDs != _undefined)
-          'removeDraftIDs': (removeDraftIDs as List<String>?),
       }));
 }
 
@@ -8058,9 +11776,7 @@ class _CopyWithStubImpl$Input$UpdatePostInput<TRes>
           List<String>? addLikedUserIDs,
           List<String>? removeLikedUserIDs,
           List<String>? addBookmarkedUserIDs,
-          List<String>? removeBookmarkedUserIDs,
-          List<String>? addDraftIDs,
-          List<String>? removeDraftIDs}) =>
+          List<String>? removeBookmarkedUserIDs}) =>
       _res;
 }
 
@@ -8883,13 +12599,17 @@ class Input$UpdateWorkInput {
           bool? clearThumbnail,
           String? thumbnail,
           List<String>? addPostIDs,
-          List<String>? removePostIDs}) =>
+          List<String>? removePostIDs,
+          List<String>? addDraftIDs,
+          List<String>? removeDraftIDs}) =>
       Input$UpdateWorkInput._({
         if (title != null) r'title': title,
         if (clearThumbnail != null) r'clearThumbnail': clearThumbnail,
         if (thumbnail != null) r'thumbnail': thumbnail,
         if (addPostIDs != null) r'addPostIDs': addPostIDs,
         if (removePostIDs != null) r'removePostIDs': removePostIDs,
+        if (addDraftIDs != null) r'addDraftIDs': addDraftIDs,
+        if (removeDraftIDs != null) r'removeDraftIDs': removeDraftIDs,
       });
 
   Input$UpdateWorkInput._(this._$data);
@@ -8919,6 +12639,17 @@ class Input$UpdateWorkInput {
           ?.map((e) => (e as String))
           .toList();
     }
+    if (data.containsKey('addDraftIDs')) {
+      final l$addDraftIDs = data['addDraftIDs'];
+      result$data['addDraftIDs'] =
+          (l$addDraftIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
+    }
+    if (data.containsKey('removeDraftIDs')) {
+      final l$removeDraftIDs = data['removeDraftIDs'];
+      result$data['removeDraftIDs'] = (l$removeDraftIDs as List<dynamic>?)
+          ?.map((e) => (e as String))
+          .toList();
+    }
     return Input$UpdateWorkInput._(result$data);
   }
 
@@ -8929,6 +12660,9 @@ class Input$UpdateWorkInput {
   String? get thumbnail => (_$data['thumbnail'] as String?);
   List<String>? get addPostIDs => (_$data['addPostIDs'] as List<String>?);
   List<String>? get removePostIDs => (_$data['removePostIDs'] as List<String>?);
+  List<String>? get addDraftIDs => (_$data['addDraftIDs'] as List<String>?);
+  List<String>? get removeDraftIDs =>
+      (_$data['removeDraftIDs'] as List<String>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('title')) {
@@ -8950,6 +12684,14 @@ class Input$UpdateWorkInput {
     if (_$data.containsKey('removePostIDs')) {
       final l$removePostIDs = removePostIDs;
       result$data['removePostIDs'] = l$removePostIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('addDraftIDs')) {
+      final l$addDraftIDs = addDraftIDs;
+      result$data['addDraftIDs'] = l$addDraftIDs?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('removeDraftIDs')) {
+      final l$removeDraftIDs = removeDraftIDs;
+      result$data['removeDraftIDs'] = l$removeDraftIDs?.map((e) => e).toList();
     }
     return result$data;
   }
@@ -9030,6 +12772,46 @@ class Input$UpdateWorkInput {
     } else if (l$removePostIDs != lOther$removePostIDs) {
       return false;
     }
+    final l$addDraftIDs = addDraftIDs;
+    final lOther$addDraftIDs = other.addDraftIDs;
+    if (_$data.containsKey('addDraftIDs') !=
+        other._$data.containsKey('addDraftIDs')) {
+      return false;
+    }
+    if (l$addDraftIDs != null && lOther$addDraftIDs != null) {
+      if (l$addDraftIDs.length != lOther$addDraftIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$addDraftIDs.length; i++) {
+        final l$addDraftIDs$entry = l$addDraftIDs[i];
+        final lOther$addDraftIDs$entry = lOther$addDraftIDs[i];
+        if (l$addDraftIDs$entry != lOther$addDraftIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$addDraftIDs != lOther$addDraftIDs) {
+      return false;
+    }
+    final l$removeDraftIDs = removeDraftIDs;
+    final lOther$removeDraftIDs = other.removeDraftIDs;
+    if (_$data.containsKey('removeDraftIDs') !=
+        other._$data.containsKey('removeDraftIDs')) {
+      return false;
+    }
+    if (l$removeDraftIDs != null && lOther$removeDraftIDs != null) {
+      if (l$removeDraftIDs.length != lOther$removeDraftIDs.length) {
+        return false;
+      }
+      for (int i = 0; i < l$removeDraftIDs.length; i++) {
+        final l$removeDraftIDs$entry = l$removeDraftIDs[i];
+        final lOther$removeDraftIDs$entry = lOther$removeDraftIDs[i];
+        if (l$removeDraftIDs$entry != lOther$removeDraftIDs$entry) {
+          return false;
+        }
+      }
+    } else if (l$removeDraftIDs != lOther$removeDraftIDs) {
+      return false;
+    }
     return true;
   }
 
@@ -9040,6 +12822,8 @@ class Input$UpdateWorkInput {
     final l$thumbnail = thumbnail;
     final l$addPostIDs = addPostIDs;
     final l$removePostIDs = removePostIDs;
+    final l$addDraftIDs = addDraftIDs;
+    final l$removeDraftIDs = removeDraftIDs;
     return Object.hashAll([
       _$data.containsKey('title') ? l$title : const {},
       _$data.containsKey('clearThumbnail') ? l$clearThumbnail : const {},
@@ -9053,6 +12837,16 @@ class Input$UpdateWorkInput {
           ? l$removePostIDs == null
               ? null
               : Object.hashAll(l$removePostIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('addDraftIDs')
+          ? l$addDraftIDs == null
+              ? null
+              : Object.hashAll(l$addDraftIDs.map((v) => v))
+          : const {},
+      _$data.containsKey('removeDraftIDs')
+          ? l$removeDraftIDs == null
+              ? null
+              : Object.hashAll(l$removeDraftIDs.map((v) => v))
           : const {}
     ]);
   }
@@ -9071,7 +12865,9 @@ abstract class CopyWith$Input$UpdateWorkInput<TRes> {
       bool? clearThumbnail,
       String? thumbnail,
       List<String>? addPostIDs,
-      List<String>? removePostIDs});
+      List<String>? removePostIDs,
+      List<String>? addDraftIDs,
+      List<String>? removeDraftIDs});
 }
 
 class _CopyWithImpl$Input$UpdateWorkInput<TRes>
@@ -9089,7 +12885,9 @@ class _CopyWithImpl$Input$UpdateWorkInput<TRes>
           Object? clearThumbnail = _undefined,
           Object? thumbnail = _undefined,
           Object? addPostIDs = _undefined,
-          Object? removePostIDs = _undefined}) =>
+          Object? removePostIDs = _undefined,
+          Object? addDraftIDs = _undefined,
+          Object? removeDraftIDs = _undefined}) =>
       _then(Input$UpdateWorkInput._({
         ..._instance._$data,
         if (title != _undefined) 'title': (title as String?),
@@ -9100,6 +12898,10 @@ class _CopyWithImpl$Input$UpdateWorkInput<TRes>
           'addPostIDs': (addPostIDs as List<String>?),
         if (removePostIDs != _undefined)
           'removePostIDs': (removePostIDs as List<String>?),
+        if (addDraftIDs != _undefined)
+          'addDraftIDs': (addDraftIDs as List<String>?),
+        if (removeDraftIDs != _undefined)
+          'removeDraftIDs': (removeDraftIDs as List<String>?),
       }));
 }
 
@@ -9114,7 +12916,9 @@ class _CopyWithStubImpl$Input$UpdateWorkInput<TRes>
           bool? clearThumbnail,
           String? thumbnail,
           List<String>? addPostIDs,
-          List<String>? removePostIDs}) =>
+          List<String>? removePostIDs,
+          List<String>? addDraftIDs,
+          List<String>? removeDraftIDs}) =>
       _res;
 }
 
@@ -11842,7 +15646,9 @@ class Input$WorkWhereInput {
           String? thumbnailEqualFold,
           String? thumbnailContainsFold,
           bool? hasPosts,
-          List<Input$PostWhereInput>? hasPostsWith}) =>
+          List<Input$PostWhereInput>? hasPostsWith,
+          bool? hasDrafts,
+          List<Input$DraftWhereInput>? hasDraftsWith}) =>
       Input$WorkWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -11889,6 +15695,8 @@ class Input$WorkWhereInput {
           r'thumbnailContainsFold': thumbnailContainsFold,
         if (hasPosts != null) r'hasPosts': hasPosts,
         if (hasPostsWith != null) r'hasPostsWith': hasPostsWith,
+        if (hasDrafts != null) r'hasDrafts': hasDrafts,
+        if (hasDraftsWith != null) r'hasDraftsWith': hasDraftsWith,
       });
 
   Input$WorkWhereInput._(this._$data);
@@ -12078,6 +15886,17 @@ class Input$WorkWhereInput {
               (e) => Input$PostWhereInput.fromJson((e as Map<String, dynamic>)))
           .toList();
     }
+    if (data.containsKey('hasDrafts')) {
+      final l$hasDrafts = data['hasDrafts'];
+      result$data['hasDrafts'] = (l$hasDrafts as bool?);
+    }
+    if (data.containsKey('hasDraftsWith')) {
+      final l$hasDraftsWith = data['hasDraftsWith'];
+      result$data['hasDraftsWith'] = (l$hasDraftsWith as List<dynamic>?)
+          ?.map((e) =>
+              Input$DraftWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
     return Input$WorkWhereInput._(result$data);
   }
 
@@ -12129,6 +15948,9 @@ class Input$WorkWhereInput {
   bool? get hasPosts => (_$data['hasPosts'] as bool?);
   List<Input$PostWhereInput>? get hasPostsWith =>
       (_$data['hasPostsWith'] as List<Input$PostWhereInput>?);
+  bool? get hasDrafts => (_$data['hasDrafts'] as bool?);
+  List<Input$DraftWhereInput>? get hasDraftsWith =>
+      (_$data['hasDraftsWith'] as List<Input$DraftWhereInput>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('not')) {
@@ -12295,6 +16117,15 @@ class Input$WorkWhereInput {
       final l$hasPostsWith = hasPostsWith;
       result$data['hasPostsWith'] =
           l$hasPostsWith?.map((e) => e.toJson()).toList();
+    }
+    if (_$data.containsKey('hasDrafts')) {
+      final l$hasDrafts = hasDrafts;
+      result$data['hasDrafts'] = l$hasDrafts;
+    }
+    if (_$data.containsKey('hasDraftsWith')) {
+      final l$hasDraftsWith = hasDraftsWith;
+      result$data['hasDraftsWith'] =
+          l$hasDraftsWith?.map((e) => e.toJson()).toList();
     }
     return result$data;
   }
@@ -12762,6 +16593,35 @@ class Input$WorkWhereInput {
     } else if (l$hasPostsWith != lOther$hasPostsWith) {
       return false;
     }
+    final l$hasDrafts = hasDrafts;
+    final lOther$hasDrafts = other.hasDrafts;
+    if (_$data.containsKey('hasDrafts') !=
+        other._$data.containsKey('hasDrafts')) {
+      return false;
+    }
+    if (l$hasDrafts != lOther$hasDrafts) {
+      return false;
+    }
+    final l$hasDraftsWith = hasDraftsWith;
+    final lOther$hasDraftsWith = other.hasDraftsWith;
+    if (_$data.containsKey('hasDraftsWith') !=
+        other._$data.containsKey('hasDraftsWith')) {
+      return false;
+    }
+    if (l$hasDraftsWith != null && lOther$hasDraftsWith != null) {
+      if (l$hasDraftsWith.length != lOther$hasDraftsWith.length) {
+        return false;
+      }
+      for (int i = 0; i < l$hasDraftsWith.length; i++) {
+        final l$hasDraftsWith$entry = l$hasDraftsWith[i];
+        final lOther$hasDraftsWith$entry = lOther$hasDraftsWith[i];
+        if (l$hasDraftsWith$entry != lOther$hasDraftsWith$entry) {
+          return false;
+        }
+      }
+    } else if (l$hasDraftsWith != lOther$hasDraftsWith) {
+      return false;
+    }
     return true;
   }
 
@@ -12808,6 +16668,8 @@ class Input$WorkWhereInput {
     final l$thumbnailContainsFold = thumbnailContainsFold;
     final l$hasPosts = hasPosts;
     final l$hasPostsWith = hasPostsWith;
+    final l$hasDrafts = hasDrafts;
+    final l$hasDraftsWith = hasDraftsWith;
     return Object.hashAll([
       _$data.containsKey('not') ? l$not : const {},
       _$data.containsKey('and')
@@ -12893,6 +16755,12 @@ class Input$WorkWhereInput {
           ? l$hasPostsWith == null
               ? null
               : Object.hashAll(l$hasPostsWith.map((v) => v))
+          : const {},
+      _$data.containsKey('hasDrafts') ? l$hasDrafts : const {},
+      _$data.containsKey('hasDraftsWith')
+          ? l$hasDraftsWith == null
+              ? null
+              : Object.hashAll(l$hasDraftsWith.map((v) => v))
           : const {}
     ]);
   }
@@ -12947,7 +16815,9 @@ abstract class CopyWith$Input$WorkWhereInput<TRes> {
       String? thumbnailEqualFold,
       String? thumbnailContainsFold,
       bool? hasPosts,
-      List<Input$PostWhereInput>? hasPostsWith});
+      List<Input$PostWhereInput>? hasPostsWith,
+      bool? hasDrafts,
+      List<Input$DraftWhereInput>? hasDraftsWith});
   CopyWith$Input$WorkWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$WorkWhereInput>? Function(
@@ -12960,6 +16830,10 @@ abstract class CopyWith$Input$WorkWhereInput<TRes> {
   TRes hasPostsWith(
       Iterable<Input$PostWhereInput>? Function(
               Iterable<CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
+          _fn);
+  TRes hasDraftsWith(
+      Iterable<Input$DraftWhereInput>? Function(
+              Iterable<CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
           _fn);
 }
 
@@ -13014,7 +16888,9 @@ class _CopyWithImpl$Input$WorkWhereInput<TRes>
           Object? thumbnailEqualFold = _undefined,
           Object? thumbnailContainsFold = _undefined,
           Object? hasPosts = _undefined,
-          Object? hasPostsWith = _undefined}) =>
+          Object? hasPostsWith = _undefined,
+          Object? hasDrafts = _undefined,
+          Object? hasDraftsWith = _undefined}) =>
       _then(Input$WorkWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$WorkWhereInput?),
@@ -13077,6 +16953,9 @@ class _CopyWithImpl$Input$WorkWhereInput<TRes>
         if (hasPosts != _undefined) 'hasPosts': (hasPosts as bool?),
         if (hasPostsWith != _undefined)
           'hasPostsWith': (hasPostsWith as List<Input$PostWhereInput>?),
+        if (hasDrafts != _undefined) 'hasDrafts': (hasDrafts as bool?),
+        if (hasDraftsWith != _undefined)
+          'hasDraftsWith': (hasDraftsWith as List<Input$DraftWhereInput>?),
       }));
   CopyWith$Input$WorkWhereInput<TRes> get not {
     final local$not = _instance.not;
@@ -13111,6 +16990,15 @@ class _CopyWithImpl$Input$WorkWhereInput<TRes>
       call(
           hasPostsWith: _fn(_instance.hasPostsWith
                   ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
+              ?.toList());
+  TRes hasDraftsWith(
+          Iterable<Input$DraftWhereInput>? Function(
+                  Iterable<
+                      CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
+              _fn) =>
+      call(
+          hasDraftsWith: _fn(_instance.hasDraftsWith
+                  ?.map((e) => CopyWith$Input$DraftWhereInput(e, (i) => i)))
               ?.toList());
 }
 
@@ -13161,13 +17049,40 @@ class _CopyWithStubImpl$Input$WorkWhereInput<TRes>
           String? thumbnailEqualFold,
           String? thumbnailContainsFold,
           bool? hasPosts,
-          List<Input$PostWhereInput>? hasPostsWith}) =>
+          List<Input$PostWhereInput>? hasPostsWith,
+          bool? hasDrafts,
+          List<Input$DraftWhereInput>? hasDraftsWith}) =>
       _res;
   CopyWith$Input$WorkWhereInput<TRes> get not =>
       CopyWith$Input$WorkWhereInput.stub(_res);
   and(_fn) => _res;
   or(_fn) => _res;
   hasPostsWith(_fn) => _res;
+  hasDraftsWith(_fn) => _res;
+}
+
+enum Enum$DraftOrderField { CREATE_TIME, UPDATE_TIME, $unknown }
+
+String toJson$Enum$DraftOrderField(Enum$DraftOrderField e) {
+  switch (e) {
+    case Enum$DraftOrderField.CREATE_TIME:
+      return r'CREATE_TIME';
+    case Enum$DraftOrderField.UPDATE_TIME:
+      return r'UPDATE_TIME';
+    case Enum$DraftOrderField.$unknown:
+      return r'$unknown';
+  }
+}
+
+Enum$DraftOrderField fromJson$Enum$DraftOrderField(String value) {
+  switch (value) {
+    case r'CREATE_TIME':
+      return Enum$DraftOrderField.CREATE_TIME;
+    case r'UPDATE_TIME':
+      return Enum$DraftOrderField.UPDATE_TIME;
+    default:
+      return Enum$DraftOrderField.$unknown;
+  }
 }
 
 enum Enum$OrderDirection { ASC, DESC, $unknown }
