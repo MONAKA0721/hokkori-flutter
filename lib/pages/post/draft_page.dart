@@ -90,6 +90,7 @@ class DraftPage extends HookConsumerWidget {
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             )
                           : GestureDetector(
+                              behavior: HitTestBehavior.opaque,
                               onTap: () async {
                                 var queryResult = await client.query$GetDraft(
                                     Options$Query$GetDraft(
