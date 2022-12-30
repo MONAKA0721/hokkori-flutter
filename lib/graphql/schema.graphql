@@ -23,10 +23,19 @@ type Mutation {
   unbookmarkPost(input: UnbookmarkPostInput!): UnbookmarkPostPayload!
   followUser(input: FollowUserInput!): FollowUserPayload!
   unfollowUser(input: UnfollowUserInput!): UnfollowUserPayload!
+  createDraft(input: CreateDraftInput!, hashtagTitles: [String]!): Draft!
+  updateDraft(
+    id: ID!
+    input: UpdateDraftInput!
+    hashtagTitles: [String]!
+  ): Draft!
+  deleteDraft(input: DeleteDraftInput!): DeleteDraftPayload!
 }
 
 extend type Query {
   likedPosts(first: Int!, type: PostPostType!): [Post]!
+  topicWorks(first: Int!): [Work]!
+  workCategories(workID: ID!): [WorkCategory]!
 }
 
 input LikePostInput {
@@ -99,4 +108,16 @@ type WorkCategory {
   categoryID: ID!
   categoryName: String!
   postCount: Int!
+}
+
+input DeleteDraftInput {
+  clientMutationId: String
+  draftId: ID!
+  userID: ID!
+}
+
+type DeleteDraftPayload {
+  clientMutationId: String
+  draftId: ID
+  userID: ID
 }

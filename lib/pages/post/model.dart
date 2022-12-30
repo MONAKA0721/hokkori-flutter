@@ -3,14 +3,9 @@ import 'package:hokkori/pages/post/post_page.graphql.dart';
 class WorkModel {
   final String id;
   final String title;
-  final String? avatar;
-  final String thumbnail;
+  final String? thumbnail;
 
-  WorkModel(
-      {required this.id,
-      required this.title,
-      this.avatar,
-      required this.thumbnail});
+  WorkModel({required this.id, required this.title, required this.thumbnail});
 
   ///custom comparing function to check if two users are equal
   bool isEqual(WorkModel model) {

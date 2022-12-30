@@ -21,6 +21,25 @@ query SearchHashtags($searchText: String) {
   }
 }
 
+query Drafts($userID: ID!) {
+  drafts(where: { hasOwnerWith: { id: $userID } }) {
+    edges {
+      node {
+        id
+        work {
+          id
+          title
+        }
+        category {
+          id
+          name
+        }
+        praiseTitle
+      }
+    }
+  }
+}
+
 mutation CreatePosts(
   $createPostInput: CreatePostInput!
   $createPostInput2: CreatePostInput!
@@ -43,5 +62,34 @@ mutation CreatePost(
 ) {
   createPost(input: $createPostInput, hashtagTitles: $hashtagTitles) {
     id
+  }
+}
+
+mutation CreateDraft(
+  $createDraftInput: CreateDraftInput!
+  $hashtagTitles: [String]!
+) {
+  createDraft(input: $createDraftInput, hashtagTitles: $hashtagTitles) {
+    id
+  }
+}
+
+mutation UpdateDraft(
+  $id: ID!
+  $updateDraftInput: UpdateDraftInput!
+  $hashtagTitles: [String]!
+) {
+  updateDraft(
+    id: $id
+    input: $updateDraftInput
+    hashtagTitles: $hashtagTitles
+  ) {
+    id
+  }
+}
+
+mutation DeleteDraft($input: DeleteDraftInput!) {
+  deleteDraft(input: $input) {
+    clientMutationId
   }
 }

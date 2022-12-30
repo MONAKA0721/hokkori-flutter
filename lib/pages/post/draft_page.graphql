@@ -1,0 +1,25 @@
+query GetDraft($id: ID!) {
+  draft: node(id: $id) {
+    ... on Draft {
+      id
+      work {
+        id
+        title
+        thumbnail
+      }
+      category {
+        id
+      }
+      hashtags {
+        id
+        title
+      }
+      praiseTitle
+      praiseContent
+      praiseSpoiled
+      letterTitle
+      letterContent
+      letterSpoiled
+    }
+  }
+}

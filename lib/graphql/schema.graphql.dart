@@ -804,3 +804,138 @@ class _CopyWithStubImpl$Input$UnfollowUserInput<TRes>
 
   call({String? clientMutationId, String? userID, String? followerID}) => _res;
 }
+
+class Input$DeleteDraftInput {
+  factory Input$DeleteDraftInput(
+          {String? clientMutationId,
+          required String draftId,
+          required String userID}) =>
+      Input$DeleteDraftInput._({
+        if (clientMutationId != null) r'clientMutationId': clientMutationId,
+        r'draftId': draftId,
+        r'userID': userID,
+      });
+
+  Input$DeleteDraftInput._(this._$data);
+
+  factory Input$DeleteDraftInput.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    if (data.containsKey('clientMutationId')) {
+      final l$clientMutationId = data['clientMutationId'];
+      result$data['clientMutationId'] = (l$clientMutationId as String?);
+    }
+    final l$draftId = data['draftId'];
+    result$data['draftId'] = (l$draftId as String);
+    final l$userID = data['userID'];
+    result$data['userID'] = (l$userID as String);
+    return Input$DeleteDraftInput._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String? get clientMutationId => (_$data['clientMutationId'] as String?);
+  String get draftId => (_$data['draftId'] as String);
+  String get userID => (_$data['userID'] as String);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    if (_$data.containsKey('clientMutationId')) {
+      final l$clientMutationId = clientMutationId;
+      result$data['clientMutationId'] = l$clientMutationId;
+    }
+    final l$draftId = draftId;
+    result$data['draftId'] = l$draftId;
+    final l$userID = userID;
+    result$data['userID'] = l$userID;
+    return result$data;
+  }
+
+  CopyWith$Input$DeleteDraftInput<Input$DeleteDraftInput> get copyWith =>
+      CopyWith$Input$DeleteDraftInput(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Input$DeleteDraftInput) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$clientMutationId = clientMutationId;
+    final lOther$clientMutationId = other.clientMutationId;
+    if (_$data.containsKey('clientMutationId') !=
+        other._$data.containsKey('clientMutationId')) {
+      return false;
+    }
+    if (l$clientMutationId != lOther$clientMutationId) {
+      return false;
+    }
+    final l$draftId = draftId;
+    final lOther$draftId = other.draftId;
+    if (l$draftId != lOther$draftId) {
+      return false;
+    }
+    final l$userID = userID;
+    final lOther$userID = other.userID;
+    if (l$userID != lOther$userID) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$clientMutationId = clientMutationId;
+    final l$draftId = draftId;
+    final l$userID = userID;
+    return Object.hashAll([
+      _$data.containsKey('clientMutationId') ? l$clientMutationId : const {},
+      l$draftId,
+      l$userID
+    ]);
+  }
+}
+
+abstract class CopyWith$Input$DeleteDraftInput<TRes> {
+  factory CopyWith$Input$DeleteDraftInput(Input$DeleteDraftInput instance,
+          TRes Function(Input$DeleteDraftInput) then) =
+      _CopyWithImpl$Input$DeleteDraftInput;
+
+  factory CopyWith$Input$DeleteDraftInput.stub(TRes res) =
+      _CopyWithStubImpl$Input$DeleteDraftInput;
+
+  TRes call({String? clientMutationId, String? draftId, String? userID});
+}
+
+class _CopyWithImpl$Input$DeleteDraftInput<TRes>
+    implements CopyWith$Input$DeleteDraftInput<TRes> {
+  _CopyWithImpl$Input$DeleteDraftInput(this._instance, this._then);
+
+  final Input$DeleteDraftInput _instance;
+
+  final TRes Function(Input$DeleteDraftInput) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? clientMutationId = _undefined,
+          Object? draftId = _undefined,
+          Object? userID = _undefined}) =>
+      _then(Input$DeleteDraftInput._({
+        ..._instance._$data,
+        if (clientMutationId != _undefined)
+          'clientMutationId': (clientMutationId as String?),
+        if (draftId != _undefined && draftId != null)
+          'draftId': (draftId as String),
+        if (userID != _undefined && userID != null)
+          'userID': (userID as String),
+      }));
+}
+
+class _CopyWithStubImpl$Input$DeleteDraftInput<TRes>
+    implements CopyWith$Input$DeleteDraftInput<TRes> {
+  _CopyWithStubImpl$Input$DeleteDraftInput(this._res);
+
+  TRes _res;
+
+  call({String? clientMutationId, String? draftId, String? userID}) => _res;
+}
