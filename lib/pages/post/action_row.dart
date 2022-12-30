@@ -8,7 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart';
 
 class ActionRow extends StatelessWidget {
-  final Function? navigate;
+  final Function navigate;
 
   const ActionRow({
     Key? key,
@@ -53,7 +53,50 @@ class ActionRow extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            navigate!();
+            showModalBottomSheet(
+                isScrollControlled: true,
+                backgroundColor: Colors.black.withOpacity(0),
+                context: context,
+                builder: ((context) => Container(
+                    height: 330,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 20),
+                    child: Column(children: [
+                      Container(
+                          decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          child: Column(children: [
+                            const DiscardButton(),
+                            const Divider(),
+                            SaveButton(
+                              navigate: navigate,
+                            ),
+                          ])),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Container(
+                              width: double.infinity,
+                              height: 80,
+                              decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              child: const Center(
+                                  child: Text(
+                                "閉じる",
+                                style: TextStyle(
+                                    color: headingColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ))))
+                    ]))));
           },
         ),
         SubmitButton(navigate: navigate),
@@ -62,8 +105,167 @@ class ActionRow extends StatelessWidget {
   }
 }
 
+class DiscardButton extends ConsumerWidget {
+  const DiscardButton({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return GestureDetector(
+        onTap: () {
+          ref.watch(workErrorProvider.notifier).state = false;
+          ref.watch(categoryErrorProvider.notifier).state = false;
+          ref.watch(praiseTitleErrorProvider.notifier).state = false;
+          ref.watch(praiseContentErrorProvider.notifier).state = false;
+          ref.watch(letterTitleErrorProvider.notifier).state = false;
+          ref.watch(letterContentErrorProvider.notifier).state = false;
+
+          ref.watch(workProvider.notifier).state = null;
+          ref.watch(categoryProvider.notifier).state = null;
+          ref.watch(hashtagsProvider.notifier).state = List.empty();
+          ref.watch(praiseTitleProvider.notifier).state = "";
+          ref.watch(praiseContentProvider.notifier).state = "";
+          ref.watch(praiseSpoiledProvider.notifier).state = false;
+          ref.watch(letterTitleProvider.notifier).state = "";
+          ref.watch(letterContentProvider.notifier).state = "";
+          ref.watch(letterSpoiledProvider.notifier).state = false;
+
+          ref.watch(draftIDProvider.notifier).state = null;
+
+          Navigator.of(context).pop();
+        },
+        child: const SizedBox(
+            height: 80,
+            child: Center(
+                child: Text(
+              "破棄する",
+              style: TextStyle(
+                  color: redErrorColor,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ))));
+  }
+}
+
+class SaveButton extends HookConsumerWidget {
+  final Function navigate;
+  const SaveButton({super.key, required this.navigate});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    void resetForm() {
+      ref.watch(workErrorProvider.notifier).state = false;
+      ref.watch(categoryErrorProvider.notifier).state = false;
+      ref.watch(praiseTitleErrorProvider.notifier).state = false;
+      ref.watch(praiseContentErrorProvider.notifier).state = false;
+      ref.watch(letterTitleErrorProvider.notifier).state = false;
+      ref.watch(letterContentErrorProvider.notifier).state = false;
+
+      ref.watch(workProvider.notifier).state = null;
+      ref.watch(categoryProvider.notifier).state = null;
+      ref.watch(hashtagsProvider.notifier).state = List.empty();
+      ref.watch(praiseTitleProvider.notifier).state = "";
+      ref.watch(praiseContentProvider.notifier).state = "";
+      ref.watch(praiseSpoiledProvider.notifier).state = false;
+      ref.watch(letterTitleProvider.notifier).state = "";
+      ref.watch(letterContentProvider.notifier).state = "";
+      ref.watch(letterSpoiledProvider.notifier).state = false;
+    }
+
+    final createDraftMutation =
+        useMutation$CreateDraft(WidgetOptions$Mutation$CreateDraft());
+    final createDraftMutationResult = createDraftMutation.result;
+    final updateDraftMutation =
+        useMutation$UpdateDraft(WidgetOptions$Mutation$UpdateDraft());
+    final updateDraftMutationResult = updateDraftMutation.result;
+
+    return createDraftMutationResult.isLoading ||
+            updateDraftMutationResult.isLoading
+        ? const SizedBox(
+            height: 80,
+            child: Center(child: CircularProgressIndicator()),
+          )
+        : GestureDetector(
+            onTap: () async {
+              if (ref.watch(draftIDProvider) == null) {
+                final result = createDraftMutation.runMutation(
+                    Variables$Mutation$CreateDraft(
+                        createDraftInput: Input$CreateDraftInput(
+                            praiseTitle: ref.watch(praiseTitleProvider),
+                            praiseContent: ref.watch(praiseContentProvider),
+                            praiseSpoiled: ref.watch(praiseSpoiledProvider),
+                            letterTitle: ref.watch(letterTitleProvider),
+                            letterContent: ref.watch(letterContentProvider),
+                            letterSpoiled: ref.watch(letterSpoiledProvider),
+                            ownerID: ref.watch(userProvider).id,
+                            hashtagIDs: ref
+                                .watch(hashtagsProvider)
+                                .where((h) => h.id != "")
+                                .map((m) => m.id)
+                                .toList(),
+                            workID: ref.watch(workProvider) == null
+                                ? null
+                                : ref.watch(workProvider)!.id,
+                            categoryID:
+                                ref.watch(categoryProvider)?.toString()),
+                        hashtagTitles: ref
+                            .watch(hashtagsProvider)
+                            .where((h) => h.id == "")
+                            .map((h) => h.title)
+                            .toList()));
+                if ((await result.networkResult)!.hasException) {
+                  return;
+                }
+              } else {
+                final result = updateDraftMutation.runMutation(
+                    Variables$Mutation$UpdateDraft(
+                        id: ref.watch(draftIDProvider)!,
+                        updateDraftInput: Input$UpdateDraftInput(
+                            praiseTitle: ref.watch(praiseTitleProvider),
+                            praiseContent: ref.watch(praiseContentProvider),
+                            praiseSpoiled: ref.watch(praiseSpoiledProvider),
+                            letterTitle: ref.watch(letterTitleProvider),
+                            letterContent: ref.watch(letterContentProvider),
+                            letterSpoiled: ref.watch(letterSpoiledProvider),
+                            ownerID: ref.watch(userProvider).id,
+                            addHashtagIDs: ref
+                                .watch(hashtagsProvider)
+                                .where((h) => h.id != "")
+                                .map((m) => m.id)
+                                .toList(),
+                            workID: ref.watch(workProvider) == null
+                                ? null
+                                : ref.watch(workProvider)!.id,
+                            categoryID:
+                                ref.watch(categoryProvider)?.toString()),
+                        hashtagTitles: ref
+                            .watch(hashtagsProvider)
+                            .where((h) => h.id == "")
+                            .map((h) => h.title)
+                            .toList()));
+                if ((await result.networkResult)!.hasException) {
+                  return;
+                }
+              }
+              resetForm();
+              ref.watch(draftIDProvider.notifier).state = null;
+              navigate();
+            },
+            child: const SizedBox(
+                height: 80,
+                child: Center(
+                    child: Text(
+                  "下書きを保存",
+                  style: TextStyle(
+                      color: blueButtonColor,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ))),
+          );
+  }
+}
+
 class SubmitButton extends HookConsumerWidget {
-  final Function? navigate;
+  final Function navigate;
   const SubmitButton({Key? key, required this.navigate}) : super(key: key);
 
   @override
@@ -216,7 +418,8 @@ class SubmitButton extends HookConsumerWidget {
                 }
               }
               resetForm();
-              navigate!();
+              ref.watch(draftIDProvider.notifier).state = null;
+              navigate();
             },
           );
   }

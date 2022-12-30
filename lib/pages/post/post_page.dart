@@ -25,13 +25,17 @@ class PostPageNavigator extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final client = useGraphQLClient();
     return Navigator(
       initialRoute: '/',
       onGenerateRoute: (RouteSettings settings) {
         WidgetBuilder builder;
         switch (settings.name) {
           case '/':
-            builder = (BuildContext context) => PostPage(navigate: navigate);
+            builder = (BuildContext context) => PostPage(
+                  navigate: navigate,
+                  client: client,
+                );
             break;
           case '/draft':
             return CustomPopupRoute(
@@ -44,6 +48,8 @@ class PostPageNavigator extends HookWidget {
     );
   }
 }
+
+final draftIDProvider = StateProvider<String?>((ref) => null);
 
 final workErrorProvider = StateProvider<bool>((ref) => false);
 final categoryProvider = StateProvider<int?>((ref) => null);
@@ -69,14 +75,19 @@ final letterContentProvider = StateProvider<String>(
 final letterContentErrorProvider = StateProvider<bool>((ref) => false);
 final letterSpoiledProvider = StateProvider<bool>((ref) => false);
 
-class PostPage extends HookConsumerWidget {
+class PostPage extends ConsumerStatefulWidget {
+  final GraphQLClient client;
   final Function navigate;
-  const PostPage({super.key, required this.navigate});
+  const PostPage({super.key, required this.navigate, required this.client});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final client = useGraphQLClient();
+  ConsumerState<PostPage> createState() => _PostPageState();
+}
 
+class _PostPageState extends ConsumerState<PostPage> {
+  @override
+  void initState() {
+    super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (ref.watch(workProvider) == null &&
           ref.watch(categoryProvider) == null &&
@@ -86,7 +97,7 @@ class PostPage extends HookConsumerWidget {
           ref.watch(letterTitleProvider) == "" &&
           ref.watch(letterContentProvider) == "" &&
           ref.watch(thumbnailProvider) == null) {
-        var queryResult = await client.query$Drafts(Options$Query$Drafts(
+        var queryResult = await widget.client.query$Drafts(Options$Query$Drafts(
             fetchPolicy: FetchPolicy.networkOnly,
             variables:
                 Variables$Query$Drafts(userID: ref.watch(userProvider).id)));
@@ -99,7 +110,10 @@ class PostPage extends HookConsumerWidget {
         }
       }
     });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
           decoration: const BoxDecoration(color: backgroundColor),
@@ -109,7 +123,7 @@ class PostPage extends HookConsumerWidget {
               height: 40,
             ),
             ActionRow(
-              navigate: navigate,
+              navigate: widget.navigate,
             ),
             const SizedBox(
               height: 10,

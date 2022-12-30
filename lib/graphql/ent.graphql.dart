@@ -1016,11 +1016,10 @@ class Input$CreateDraftInput {
           required String letterContent,
           required bool praiseSpoiled,
           required bool letterSpoiled,
-          String? thumbnail,
           required String ownerID,
           List<String>? hashtagIDs,
-          required String workID,
-          required String categoryID}) =>
+          String? workID,
+          String? categoryID}) =>
       Input$CreateDraftInput._({
         if (createTime != null) r'createTime': createTime,
         if (updateTime != null) r'updateTime': updateTime,
@@ -1030,11 +1029,10 @@ class Input$CreateDraftInput {
         r'letterContent': letterContent,
         r'praiseSpoiled': praiseSpoiled,
         r'letterSpoiled': letterSpoiled,
-        if (thumbnail != null) r'thumbnail': thumbnail,
         r'ownerID': ownerID,
         if (hashtagIDs != null) r'hashtagIDs': hashtagIDs,
-        r'workID': workID,
-        r'categoryID': categoryID,
+        if (workID != null) r'workID': workID,
+        if (categoryID != null) r'categoryID': categoryID,
       });
 
   Input$CreateDraftInput._(this._$data);
@@ -1061,10 +1059,6 @@ class Input$CreateDraftInput {
     result$data['praiseSpoiled'] = (l$praiseSpoiled as bool);
     final l$letterSpoiled = data['letterSpoiled'];
     result$data['letterSpoiled'] = (l$letterSpoiled as bool);
-    if (data.containsKey('thumbnail')) {
-      final l$thumbnail = data['thumbnail'];
-      result$data['thumbnail'] = (l$thumbnail as String?);
-    }
     final l$ownerID = data['ownerID'];
     result$data['ownerID'] = (l$ownerID as String);
     if (data.containsKey('hashtagIDs')) {
@@ -1072,10 +1066,14 @@ class Input$CreateDraftInput {
       result$data['hashtagIDs'] =
           (l$hashtagIDs as List<dynamic>?)?.map((e) => (e as String)).toList();
     }
-    final l$workID = data['workID'];
-    result$data['workID'] = (l$workID as String);
-    final l$categoryID = data['categoryID'];
-    result$data['categoryID'] = (l$categoryID as String);
+    if (data.containsKey('workID')) {
+      final l$workID = data['workID'];
+      result$data['workID'] = (l$workID as String?);
+    }
+    if (data.containsKey('categoryID')) {
+      final l$categoryID = data['categoryID'];
+      result$data['categoryID'] = (l$categoryID as String?);
+    }
     return Input$CreateDraftInput._(result$data);
   }
 
@@ -1089,11 +1087,10 @@ class Input$CreateDraftInput {
   String get letterContent => (_$data['letterContent'] as String);
   bool get praiseSpoiled => (_$data['praiseSpoiled'] as bool);
   bool get letterSpoiled => (_$data['letterSpoiled'] as bool);
-  String? get thumbnail => (_$data['thumbnail'] as String?);
   String get ownerID => (_$data['ownerID'] as String);
   List<String>? get hashtagIDs => (_$data['hashtagIDs'] as List<String>?);
-  String get workID => (_$data['workID'] as String);
-  String get categoryID => (_$data['categoryID'] as String);
+  String? get workID => (_$data['workID'] as String?);
+  String? get categoryID => (_$data['categoryID'] as String?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     if (_$data.containsKey('createTime')) {
@@ -1116,20 +1113,20 @@ class Input$CreateDraftInput {
     result$data['praiseSpoiled'] = l$praiseSpoiled;
     final l$letterSpoiled = letterSpoiled;
     result$data['letterSpoiled'] = l$letterSpoiled;
-    if (_$data.containsKey('thumbnail')) {
-      final l$thumbnail = thumbnail;
-      result$data['thumbnail'] = l$thumbnail;
-    }
     final l$ownerID = ownerID;
     result$data['ownerID'] = l$ownerID;
     if (_$data.containsKey('hashtagIDs')) {
       final l$hashtagIDs = hashtagIDs;
       result$data['hashtagIDs'] = l$hashtagIDs?.map((e) => e).toList();
     }
-    final l$workID = workID;
-    result$data['workID'] = l$workID;
-    final l$categoryID = categoryID;
-    result$data['categoryID'] = l$categoryID;
+    if (_$data.containsKey('workID')) {
+      final l$workID = workID;
+      result$data['workID'] = l$workID;
+    }
+    if (_$data.containsKey('categoryID')) {
+      final l$categoryID = categoryID;
+      result$data['categoryID'] = l$categoryID;
+    }
     return result$data;
   }
 
@@ -1192,15 +1189,6 @@ class Input$CreateDraftInput {
     if (l$letterSpoiled != lOther$letterSpoiled) {
       return false;
     }
-    final l$thumbnail = thumbnail;
-    final lOther$thumbnail = other.thumbnail;
-    if (_$data.containsKey('thumbnail') !=
-        other._$data.containsKey('thumbnail')) {
-      return false;
-    }
-    if (l$thumbnail != lOther$thumbnail) {
-      return false;
-    }
     final l$ownerID = ownerID;
     final lOther$ownerID = other.ownerID;
     if (l$ownerID != lOther$ownerID) {
@@ -1228,11 +1216,18 @@ class Input$CreateDraftInput {
     }
     final l$workID = workID;
     final lOther$workID = other.workID;
+    if (_$data.containsKey('workID') != other._$data.containsKey('workID')) {
+      return false;
+    }
     if (l$workID != lOther$workID) {
       return false;
     }
     final l$categoryID = categoryID;
     final lOther$categoryID = other.categoryID;
+    if (_$data.containsKey('categoryID') !=
+        other._$data.containsKey('categoryID')) {
+      return false;
+    }
     if (l$categoryID != lOther$categoryID) {
       return false;
     }
@@ -1249,7 +1244,6 @@ class Input$CreateDraftInput {
     final l$letterContent = letterContent;
     final l$praiseSpoiled = praiseSpoiled;
     final l$letterSpoiled = letterSpoiled;
-    final l$thumbnail = thumbnail;
     final l$ownerID = ownerID;
     final l$hashtagIDs = hashtagIDs;
     final l$workID = workID;
@@ -1263,15 +1257,14 @@ class Input$CreateDraftInput {
       l$letterContent,
       l$praiseSpoiled,
       l$letterSpoiled,
-      _$data.containsKey('thumbnail') ? l$thumbnail : const {},
       l$ownerID,
       _$data.containsKey('hashtagIDs')
           ? l$hashtagIDs == null
               ? null
               : Object.hashAll(l$hashtagIDs.map((v) => v))
           : const {},
-      l$workID,
-      l$categoryID
+      _$data.containsKey('workID') ? l$workID : const {},
+      _$data.containsKey('categoryID') ? l$categoryID : const {}
     ]);
   }
 }
@@ -1293,7 +1286,6 @@ abstract class CopyWith$Input$CreateDraftInput<TRes> {
       String? letterContent,
       bool? praiseSpoiled,
       bool? letterSpoiled,
-      String? thumbnail,
       String? ownerID,
       List<String>? hashtagIDs,
       String? workID,
@@ -1319,7 +1311,6 @@ class _CopyWithImpl$Input$CreateDraftInput<TRes>
           Object? letterContent = _undefined,
           Object? praiseSpoiled = _undefined,
           Object? letterSpoiled = _undefined,
-          Object? thumbnail = _undefined,
           Object? ownerID = _undefined,
           Object? hashtagIDs = _undefined,
           Object? workID = _undefined,
@@ -1340,15 +1331,12 @@ class _CopyWithImpl$Input$CreateDraftInput<TRes>
           'praiseSpoiled': (praiseSpoiled as bool),
         if (letterSpoiled != _undefined && letterSpoiled != null)
           'letterSpoiled': (letterSpoiled as bool),
-        if (thumbnail != _undefined) 'thumbnail': (thumbnail as String?),
         if (ownerID != _undefined && ownerID != null)
           'ownerID': (ownerID as String),
         if (hashtagIDs != _undefined)
           'hashtagIDs': (hashtagIDs as List<String>?),
-        if (workID != _undefined && workID != null)
-          'workID': (workID as String),
-        if (categoryID != _undefined && categoryID != null)
-          'categoryID': (categoryID as String),
+        if (workID != _undefined) 'workID': (workID as String?),
+        if (categoryID != _undefined) 'categoryID': (categoryID as String?),
       }));
 }
 
@@ -1367,7 +1355,6 @@ class _CopyWithStubImpl$Input$CreateDraftInput<TRes>
           String? letterContent,
           bool? praiseSpoiled,
           bool? letterSpoiled,
-          String? thumbnail,
           String? ownerID,
           List<String>? hashtagIDs,
           String? workID,
@@ -2790,21 +2777,6 @@ class Input$DraftWhereInput {
           bool? praiseSpoiledNEQ,
           bool? letterSpoiled,
           bool? letterSpoiledNEQ,
-          String? thumbnail,
-          String? thumbnailNEQ,
-          List<String>? thumbnailIn,
-          List<String>? thumbnailNotIn,
-          String? thumbnailGT,
-          String? thumbnailGTE,
-          String? thumbnailLT,
-          String? thumbnailLTE,
-          String? thumbnailContains,
-          String? thumbnailHasPrefix,
-          String? thumbnailHasSuffix,
-          bool? thumbnailIsNil,
-          bool? thumbnailNotNil,
-          String? thumbnailEqualFold,
-          String? thumbnailContainsFold,
           bool? hasOwner,
           List<Input$UserWhereInput>? hasOwnerWith,
           bool? hasHashtags,
@@ -2919,25 +2891,6 @@ class Input$DraftWhereInput {
         if (praiseSpoiledNEQ != null) r'praiseSpoiledNEQ': praiseSpoiledNEQ,
         if (letterSpoiled != null) r'letterSpoiled': letterSpoiled,
         if (letterSpoiledNEQ != null) r'letterSpoiledNEQ': letterSpoiledNEQ,
-        if (thumbnail != null) r'thumbnail': thumbnail,
-        if (thumbnailNEQ != null) r'thumbnailNEQ': thumbnailNEQ,
-        if (thumbnailIn != null) r'thumbnailIn': thumbnailIn,
-        if (thumbnailNotIn != null) r'thumbnailNotIn': thumbnailNotIn,
-        if (thumbnailGT != null) r'thumbnailGT': thumbnailGT,
-        if (thumbnailGTE != null) r'thumbnailGTE': thumbnailGTE,
-        if (thumbnailLT != null) r'thumbnailLT': thumbnailLT,
-        if (thumbnailLTE != null) r'thumbnailLTE': thumbnailLTE,
-        if (thumbnailContains != null) r'thumbnailContains': thumbnailContains,
-        if (thumbnailHasPrefix != null)
-          r'thumbnailHasPrefix': thumbnailHasPrefix,
-        if (thumbnailHasSuffix != null)
-          r'thumbnailHasSuffix': thumbnailHasSuffix,
-        if (thumbnailIsNil != null) r'thumbnailIsNil': thumbnailIsNil,
-        if (thumbnailNotNil != null) r'thumbnailNotNil': thumbnailNotNil,
-        if (thumbnailEqualFold != null)
-          r'thumbnailEqualFold': thumbnailEqualFold,
-        if (thumbnailContainsFold != null)
-          r'thumbnailContainsFold': thumbnailContainsFold,
         if (hasOwner != null) r'hasOwner': hasOwner,
         if (hasOwnerWith != null) r'hasOwnerWith': hasOwnerWith,
         if (hasHashtags != null) r'hasHashtags': hasHashtags,
@@ -3332,70 +3285,6 @@ class Input$DraftWhereInput {
       final l$letterSpoiledNEQ = data['letterSpoiledNEQ'];
       result$data['letterSpoiledNEQ'] = (l$letterSpoiledNEQ as bool?);
     }
-    if (data.containsKey('thumbnail')) {
-      final l$thumbnail = data['thumbnail'];
-      result$data['thumbnail'] = (l$thumbnail as String?);
-    }
-    if (data.containsKey('thumbnailNEQ')) {
-      final l$thumbnailNEQ = data['thumbnailNEQ'];
-      result$data['thumbnailNEQ'] = (l$thumbnailNEQ as String?);
-    }
-    if (data.containsKey('thumbnailIn')) {
-      final l$thumbnailIn = data['thumbnailIn'];
-      result$data['thumbnailIn'] =
-          (l$thumbnailIn as List<dynamic>?)?.map((e) => (e as String)).toList();
-    }
-    if (data.containsKey('thumbnailNotIn')) {
-      final l$thumbnailNotIn = data['thumbnailNotIn'];
-      result$data['thumbnailNotIn'] = (l$thumbnailNotIn as List<dynamic>?)
-          ?.map((e) => (e as String))
-          .toList();
-    }
-    if (data.containsKey('thumbnailGT')) {
-      final l$thumbnailGT = data['thumbnailGT'];
-      result$data['thumbnailGT'] = (l$thumbnailGT as String?);
-    }
-    if (data.containsKey('thumbnailGTE')) {
-      final l$thumbnailGTE = data['thumbnailGTE'];
-      result$data['thumbnailGTE'] = (l$thumbnailGTE as String?);
-    }
-    if (data.containsKey('thumbnailLT')) {
-      final l$thumbnailLT = data['thumbnailLT'];
-      result$data['thumbnailLT'] = (l$thumbnailLT as String?);
-    }
-    if (data.containsKey('thumbnailLTE')) {
-      final l$thumbnailLTE = data['thumbnailLTE'];
-      result$data['thumbnailLTE'] = (l$thumbnailLTE as String?);
-    }
-    if (data.containsKey('thumbnailContains')) {
-      final l$thumbnailContains = data['thumbnailContains'];
-      result$data['thumbnailContains'] = (l$thumbnailContains as String?);
-    }
-    if (data.containsKey('thumbnailHasPrefix')) {
-      final l$thumbnailHasPrefix = data['thumbnailHasPrefix'];
-      result$data['thumbnailHasPrefix'] = (l$thumbnailHasPrefix as String?);
-    }
-    if (data.containsKey('thumbnailHasSuffix')) {
-      final l$thumbnailHasSuffix = data['thumbnailHasSuffix'];
-      result$data['thumbnailHasSuffix'] = (l$thumbnailHasSuffix as String?);
-    }
-    if (data.containsKey('thumbnailIsNil')) {
-      final l$thumbnailIsNil = data['thumbnailIsNil'];
-      result$data['thumbnailIsNil'] = (l$thumbnailIsNil as bool?);
-    }
-    if (data.containsKey('thumbnailNotNil')) {
-      final l$thumbnailNotNil = data['thumbnailNotNil'];
-      result$data['thumbnailNotNil'] = (l$thumbnailNotNil as bool?);
-    }
-    if (data.containsKey('thumbnailEqualFold')) {
-      final l$thumbnailEqualFold = data['thumbnailEqualFold'];
-      result$data['thumbnailEqualFold'] = (l$thumbnailEqualFold as String?);
-    }
-    if (data.containsKey('thumbnailContainsFold')) {
-      final l$thumbnailContainsFold = data['thumbnailContainsFold'];
-      result$data['thumbnailContainsFold'] =
-          (l$thumbnailContainsFold as String?);
-    }
     if (data.containsKey('hasOwner')) {
       final l$hasOwner = data['hasOwner'];
       result$data['hasOwner'] = (l$hasOwner as bool?);
@@ -3556,23 +3445,6 @@ class Input$DraftWhereInput {
   bool? get praiseSpoiledNEQ => (_$data['praiseSpoiledNEQ'] as bool?);
   bool? get letterSpoiled => (_$data['letterSpoiled'] as bool?);
   bool? get letterSpoiledNEQ => (_$data['letterSpoiledNEQ'] as bool?);
-  String? get thumbnail => (_$data['thumbnail'] as String?);
-  String? get thumbnailNEQ => (_$data['thumbnailNEQ'] as String?);
-  List<String>? get thumbnailIn => (_$data['thumbnailIn'] as List<String>?);
-  List<String>? get thumbnailNotIn =>
-      (_$data['thumbnailNotIn'] as List<String>?);
-  String? get thumbnailGT => (_$data['thumbnailGT'] as String?);
-  String? get thumbnailGTE => (_$data['thumbnailGTE'] as String?);
-  String? get thumbnailLT => (_$data['thumbnailLT'] as String?);
-  String? get thumbnailLTE => (_$data['thumbnailLTE'] as String?);
-  String? get thumbnailContains => (_$data['thumbnailContains'] as String?);
-  String? get thumbnailHasPrefix => (_$data['thumbnailHasPrefix'] as String?);
-  String? get thumbnailHasSuffix => (_$data['thumbnailHasSuffix'] as String?);
-  bool? get thumbnailIsNil => (_$data['thumbnailIsNil'] as bool?);
-  bool? get thumbnailNotNil => (_$data['thumbnailNotNil'] as bool?);
-  String? get thumbnailEqualFold => (_$data['thumbnailEqualFold'] as String?);
-  String? get thumbnailContainsFold =>
-      (_$data['thumbnailContainsFold'] as String?);
   bool? get hasOwner => (_$data['hasOwner'] as bool?);
   List<Input$UserWhereInput>? get hasOwnerWith =>
       (_$data['hasOwnerWith'] as List<Input$UserWhereInput>?);
@@ -3926,66 +3798,6 @@ class Input$DraftWhereInput {
     if (_$data.containsKey('letterSpoiledNEQ')) {
       final l$letterSpoiledNEQ = letterSpoiledNEQ;
       result$data['letterSpoiledNEQ'] = l$letterSpoiledNEQ;
-    }
-    if (_$data.containsKey('thumbnail')) {
-      final l$thumbnail = thumbnail;
-      result$data['thumbnail'] = l$thumbnail;
-    }
-    if (_$data.containsKey('thumbnailNEQ')) {
-      final l$thumbnailNEQ = thumbnailNEQ;
-      result$data['thumbnailNEQ'] = l$thumbnailNEQ;
-    }
-    if (_$data.containsKey('thumbnailIn')) {
-      final l$thumbnailIn = thumbnailIn;
-      result$data['thumbnailIn'] = l$thumbnailIn?.map((e) => e).toList();
-    }
-    if (_$data.containsKey('thumbnailNotIn')) {
-      final l$thumbnailNotIn = thumbnailNotIn;
-      result$data['thumbnailNotIn'] = l$thumbnailNotIn?.map((e) => e).toList();
-    }
-    if (_$data.containsKey('thumbnailGT')) {
-      final l$thumbnailGT = thumbnailGT;
-      result$data['thumbnailGT'] = l$thumbnailGT;
-    }
-    if (_$data.containsKey('thumbnailGTE')) {
-      final l$thumbnailGTE = thumbnailGTE;
-      result$data['thumbnailGTE'] = l$thumbnailGTE;
-    }
-    if (_$data.containsKey('thumbnailLT')) {
-      final l$thumbnailLT = thumbnailLT;
-      result$data['thumbnailLT'] = l$thumbnailLT;
-    }
-    if (_$data.containsKey('thumbnailLTE')) {
-      final l$thumbnailLTE = thumbnailLTE;
-      result$data['thumbnailLTE'] = l$thumbnailLTE;
-    }
-    if (_$data.containsKey('thumbnailContains')) {
-      final l$thumbnailContains = thumbnailContains;
-      result$data['thumbnailContains'] = l$thumbnailContains;
-    }
-    if (_$data.containsKey('thumbnailHasPrefix')) {
-      final l$thumbnailHasPrefix = thumbnailHasPrefix;
-      result$data['thumbnailHasPrefix'] = l$thumbnailHasPrefix;
-    }
-    if (_$data.containsKey('thumbnailHasSuffix')) {
-      final l$thumbnailHasSuffix = thumbnailHasSuffix;
-      result$data['thumbnailHasSuffix'] = l$thumbnailHasSuffix;
-    }
-    if (_$data.containsKey('thumbnailIsNil')) {
-      final l$thumbnailIsNil = thumbnailIsNil;
-      result$data['thumbnailIsNil'] = l$thumbnailIsNil;
-    }
-    if (_$data.containsKey('thumbnailNotNil')) {
-      final l$thumbnailNotNil = thumbnailNotNil;
-      result$data['thumbnailNotNil'] = l$thumbnailNotNil;
-    }
-    if (_$data.containsKey('thumbnailEqualFold')) {
-      final l$thumbnailEqualFold = thumbnailEqualFold;
-      result$data['thumbnailEqualFold'] = l$thumbnailEqualFold;
-    }
-    if (_$data.containsKey('thumbnailContainsFold')) {
-      final l$thumbnailContainsFold = thumbnailContainsFold;
-      result$data['thumbnailContainsFold'] = l$thumbnailContainsFold;
     }
     if (_$data.containsKey('hasOwner')) {
       final l$hasOwner = hasOwner;
@@ -4948,163 +4760,6 @@ class Input$DraftWhereInput {
     if (l$letterSpoiledNEQ != lOther$letterSpoiledNEQ) {
       return false;
     }
-    final l$thumbnail = thumbnail;
-    final lOther$thumbnail = other.thumbnail;
-    if (_$data.containsKey('thumbnail') !=
-        other._$data.containsKey('thumbnail')) {
-      return false;
-    }
-    if (l$thumbnail != lOther$thumbnail) {
-      return false;
-    }
-    final l$thumbnailNEQ = thumbnailNEQ;
-    final lOther$thumbnailNEQ = other.thumbnailNEQ;
-    if (_$data.containsKey('thumbnailNEQ') !=
-        other._$data.containsKey('thumbnailNEQ')) {
-      return false;
-    }
-    if (l$thumbnailNEQ != lOther$thumbnailNEQ) {
-      return false;
-    }
-    final l$thumbnailIn = thumbnailIn;
-    final lOther$thumbnailIn = other.thumbnailIn;
-    if (_$data.containsKey('thumbnailIn') !=
-        other._$data.containsKey('thumbnailIn')) {
-      return false;
-    }
-    if (l$thumbnailIn != null && lOther$thumbnailIn != null) {
-      if (l$thumbnailIn.length != lOther$thumbnailIn.length) {
-        return false;
-      }
-      for (int i = 0; i < l$thumbnailIn.length; i++) {
-        final l$thumbnailIn$entry = l$thumbnailIn[i];
-        final lOther$thumbnailIn$entry = lOther$thumbnailIn[i];
-        if (l$thumbnailIn$entry != lOther$thumbnailIn$entry) {
-          return false;
-        }
-      }
-    } else if (l$thumbnailIn != lOther$thumbnailIn) {
-      return false;
-    }
-    final l$thumbnailNotIn = thumbnailNotIn;
-    final lOther$thumbnailNotIn = other.thumbnailNotIn;
-    if (_$data.containsKey('thumbnailNotIn') !=
-        other._$data.containsKey('thumbnailNotIn')) {
-      return false;
-    }
-    if (l$thumbnailNotIn != null && lOther$thumbnailNotIn != null) {
-      if (l$thumbnailNotIn.length != lOther$thumbnailNotIn.length) {
-        return false;
-      }
-      for (int i = 0; i < l$thumbnailNotIn.length; i++) {
-        final l$thumbnailNotIn$entry = l$thumbnailNotIn[i];
-        final lOther$thumbnailNotIn$entry = lOther$thumbnailNotIn[i];
-        if (l$thumbnailNotIn$entry != lOther$thumbnailNotIn$entry) {
-          return false;
-        }
-      }
-    } else if (l$thumbnailNotIn != lOther$thumbnailNotIn) {
-      return false;
-    }
-    final l$thumbnailGT = thumbnailGT;
-    final lOther$thumbnailGT = other.thumbnailGT;
-    if (_$data.containsKey('thumbnailGT') !=
-        other._$data.containsKey('thumbnailGT')) {
-      return false;
-    }
-    if (l$thumbnailGT != lOther$thumbnailGT) {
-      return false;
-    }
-    final l$thumbnailGTE = thumbnailGTE;
-    final lOther$thumbnailGTE = other.thumbnailGTE;
-    if (_$data.containsKey('thumbnailGTE') !=
-        other._$data.containsKey('thumbnailGTE')) {
-      return false;
-    }
-    if (l$thumbnailGTE != lOther$thumbnailGTE) {
-      return false;
-    }
-    final l$thumbnailLT = thumbnailLT;
-    final lOther$thumbnailLT = other.thumbnailLT;
-    if (_$data.containsKey('thumbnailLT') !=
-        other._$data.containsKey('thumbnailLT')) {
-      return false;
-    }
-    if (l$thumbnailLT != lOther$thumbnailLT) {
-      return false;
-    }
-    final l$thumbnailLTE = thumbnailLTE;
-    final lOther$thumbnailLTE = other.thumbnailLTE;
-    if (_$data.containsKey('thumbnailLTE') !=
-        other._$data.containsKey('thumbnailLTE')) {
-      return false;
-    }
-    if (l$thumbnailLTE != lOther$thumbnailLTE) {
-      return false;
-    }
-    final l$thumbnailContains = thumbnailContains;
-    final lOther$thumbnailContains = other.thumbnailContains;
-    if (_$data.containsKey('thumbnailContains') !=
-        other._$data.containsKey('thumbnailContains')) {
-      return false;
-    }
-    if (l$thumbnailContains != lOther$thumbnailContains) {
-      return false;
-    }
-    final l$thumbnailHasPrefix = thumbnailHasPrefix;
-    final lOther$thumbnailHasPrefix = other.thumbnailHasPrefix;
-    if (_$data.containsKey('thumbnailHasPrefix') !=
-        other._$data.containsKey('thumbnailHasPrefix')) {
-      return false;
-    }
-    if (l$thumbnailHasPrefix != lOther$thumbnailHasPrefix) {
-      return false;
-    }
-    final l$thumbnailHasSuffix = thumbnailHasSuffix;
-    final lOther$thumbnailHasSuffix = other.thumbnailHasSuffix;
-    if (_$data.containsKey('thumbnailHasSuffix') !=
-        other._$data.containsKey('thumbnailHasSuffix')) {
-      return false;
-    }
-    if (l$thumbnailHasSuffix != lOther$thumbnailHasSuffix) {
-      return false;
-    }
-    final l$thumbnailIsNil = thumbnailIsNil;
-    final lOther$thumbnailIsNil = other.thumbnailIsNil;
-    if (_$data.containsKey('thumbnailIsNil') !=
-        other._$data.containsKey('thumbnailIsNil')) {
-      return false;
-    }
-    if (l$thumbnailIsNil != lOther$thumbnailIsNil) {
-      return false;
-    }
-    final l$thumbnailNotNil = thumbnailNotNil;
-    final lOther$thumbnailNotNil = other.thumbnailNotNil;
-    if (_$data.containsKey('thumbnailNotNil') !=
-        other._$data.containsKey('thumbnailNotNil')) {
-      return false;
-    }
-    if (l$thumbnailNotNil != lOther$thumbnailNotNil) {
-      return false;
-    }
-    final l$thumbnailEqualFold = thumbnailEqualFold;
-    final lOther$thumbnailEqualFold = other.thumbnailEqualFold;
-    if (_$data.containsKey('thumbnailEqualFold') !=
-        other._$data.containsKey('thumbnailEqualFold')) {
-      return false;
-    }
-    if (l$thumbnailEqualFold != lOther$thumbnailEqualFold) {
-      return false;
-    }
-    final l$thumbnailContainsFold = thumbnailContainsFold;
-    final lOther$thumbnailContainsFold = other.thumbnailContainsFold;
-    if (_$data.containsKey('thumbnailContainsFold') !=
-        other._$data.containsKey('thumbnailContainsFold')) {
-      return false;
-    }
-    if (l$thumbnailContainsFold != lOther$thumbnailContainsFold) {
-      return false;
-    }
     final l$hasOwner = hasOwner;
     final lOther$hasOwner = other.hasOwner;
     if (_$data.containsKey('hasOwner') !=
@@ -5308,21 +4963,6 @@ class Input$DraftWhereInput {
     final l$praiseSpoiledNEQ = praiseSpoiledNEQ;
     final l$letterSpoiled = letterSpoiled;
     final l$letterSpoiledNEQ = letterSpoiledNEQ;
-    final l$thumbnail = thumbnail;
-    final l$thumbnailNEQ = thumbnailNEQ;
-    final l$thumbnailIn = thumbnailIn;
-    final l$thumbnailNotIn = thumbnailNotIn;
-    final l$thumbnailGT = thumbnailGT;
-    final l$thumbnailGTE = thumbnailGTE;
-    final l$thumbnailLT = thumbnailLT;
-    final l$thumbnailLTE = thumbnailLTE;
-    final l$thumbnailContains = thumbnailContains;
-    final l$thumbnailHasPrefix = thumbnailHasPrefix;
-    final l$thumbnailHasSuffix = thumbnailHasSuffix;
-    final l$thumbnailIsNil = thumbnailIsNil;
-    final l$thumbnailNotNil = thumbnailNotNil;
-    final l$thumbnailEqualFold = thumbnailEqualFold;
-    final l$thumbnailContainsFold = thumbnailContainsFold;
     final l$hasOwner = hasOwner;
     final l$hasOwnerWith = hasOwnerWith;
     final l$hasHashtags = hasHashtags;
@@ -5519,37 +5159,6 @@ class Input$DraftWhereInput {
       _$data.containsKey('praiseSpoiledNEQ') ? l$praiseSpoiledNEQ : const {},
       _$data.containsKey('letterSpoiled') ? l$letterSpoiled : const {},
       _$data.containsKey('letterSpoiledNEQ') ? l$letterSpoiledNEQ : const {},
-      _$data.containsKey('thumbnail') ? l$thumbnail : const {},
-      _$data.containsKey('thumbnailNEQ') ? l$thumbnailNEQ : const {},
-      _$data.containsKey('thumbnailIn')
-          ? l$thumbnailIn == null
-              ? null
-              : Object.hashAll(l$thumbnailIn.map((v) => v))
-          : const {},
-      _$data.containsKey('thumbnailNotIn')
-          ? l$thumbnailNotIn == null
-              ? null
-              : Object.hashAll(l$thumbnailNotIn.map((v) => v))
-          : const {},
-      _$data.containsKey('thumbnailGT') ? l$thumbnailGT : const {},
-      _$data.containsKey('thumbnailGTE') ? l$thumbnailGTE : const {},
-      _$data.containsKey('thumbnailLT') ? l$thumbnailLT : const {},
-      _$data.containsKey('thumbnailLTE') ? l$thumbnailLTE : const {},
-      _$data.containsKey('thumbnailContains') ? l$thumbnailContains : const {},
-      _$data.containsKey('thumbnailHasPrefix')
-          ? l$thumbnailHasPrefix
-          : const {},
-      _$data.containsKey('thumbnailHasSuffix')
-          ? l$thumbnailHasSuffix
-          : const {},
-      _$data.containsKey('thumbnailIsNil') ? l$thumbnailIsNil : const {},
-      _$data.containsKey('thumbnailNotNil') ? l$thumbnailNotNil : const {},
-      _$data.containsKey('thumbnailEqualFold')
-          ? l$thumbnailEqualFold
-          : const {},
-      _$data.containsKey('thumbnailContainsFold')
-          ? l$thumbnailContainsFold
-          : const {},
       _$data.containsKey('hasOwner') ? l$hasOwner : const {},
       _$data.containsKey('hasOwnerWith')
           ? l$hasOwnerWith == null
@@ -5670,21 +5279,6 @@ abstract class CopyWith$Input$DraftWhereInput<TRes> {
       bool? praiseSpoiledNEQ,
       bool? letterSpoiled,
       bool? letterSpoiledNEQ,
-      String? thumbnail,
-      String? thumbnailNEQ,
-      List<String>? thumbnailIn,
-      List<String>? thumbnailNotIn,
-      String? thumbnailGT,
-      String? thumbnailGTE,
-      String? thumbnailLT,
-      String? thumbnailLTE,
-      String? thumbnailContains,
-      String? thumbnailHasPrefix,
-      String? thumbnailHasSuffix,
-      bool? thumbnailIsNil,
-      bool? thumbnailNotNil,
-      String? thumbnailEqualFold,
-      String? thumbnailContainsFold,
       bool? hasOwner,
       List<Input$UserWhereInput>? hasOwnerWith,
       bool? hasHashtags,
@@ -5816,21 +5410,6 @@ class _CopyWithImpl$Input$DraftWhereInput<TRes>
           Object? praiseSpoiledNEQ = _undefined,
           Object? letterSpoiled = _undefined,
           Object? letterSpoiledNEQ = _undefined,
-          Object? thumbnail = _undefined,
-          Object? thumbnailNEQ = _undefined,
-          Object? thumbnailIn = _undefined,
-          Object? thumbnailNotIn = _undefined,
-          Object? thumbnailGT = _undefined,
-          Object? thumbnailGTE = _undefined,
-          Object? thumbnailLT = _undefined,
-          Object? thumbnailLTE = _undefined,
-          Object? thumbnailContains = _undefined,
-          Object? thumbnailHasPrefix = _undefined,
-          Object? thumbnailHasSuffix = _undefined,
-          Object? thumbnailIsNil = _undefined,
-          Object? thumbnailNotNil = _undefined,
-          Object? thumbnailEqualFold = _undefined,
-          Object? thumbnailContainsFold = _undefined,
           Object? hasOwner = _undefined,
           Object? hasOwnerWith = _undefined,
           Object? hasHashtags = _undefined,
@@ -5992,33 +5571,6 @@ class _CopyWithImpl$Input$DraftWhereInput<TRes>
           'letterSpoiled': (letterSpoiled as bool?),
         if (letterSpoiledNEQ != _undefined)
           'letterSpoiledNEQ': (letterSpoiledNEQ as bool?),
-        if (thumbnail != _undefined) 'thumbnail': (thumbnail as String?),
-        if (thumbnailNEQ != _undefined)
-          'thumbnailNEQ': (thumbnailNEQ as String?),
-        if (thumbnailIn != _undefined)
-          'thumbnailIn': (thumbnailIn as List<String>?),
-        if (thumbnailNotIn != _undefined)
-          'thumbnailNotIn': (thumbnailNotIn as List<String>?),
-        if (thumbnailGT != _undefined) 'thumbnailGT': (thumbnailGT as String?),
-        if (thumbnailGTE != _undefined)
-          'thumbnailGTE': (thumbnailGTE as String?),
-        if (thumbnailLT != _undefined) 'thumbnailLT': (thumbnailLT as String?),
-        if (thumbnailLTE != _undefined)
-          'thumbnailLTE': (thumbnailLTE as String?),
-        if (thumbnailContains != _undefined)
-          'thumbnailContains': (thumbnailContains as String?),
-        if (thumbnailHasPrefix != _undefined)
-          'thumbnailHasPrefix': (thumbnailHasPrefix as String?),
-        if (thumbnailHasSuffix != _undefined)
-          'thumbnailHasSuffix': (thumbnailHasSuffix as String?),
-        if (thumbnailIsNil != _undefined)
-          'thumbnailIsNil': (thumbnailIsNil as bool?),
-        if (thumbnailNotNil != _undefined)
-          'thumbnailNotNil': (thumbnailNotNil as bool?),
-        if (thumbnailEqualFold != _undefined)
-          'thumbnailEqualFold': (thumbnailEqualFold as String?),
-        if (thumbnailContainsFold != _undefined)
-          'thumbnailContainsFold': (thumbnailContainsFold as String?),
         if (hasOwner != _undefined) 'hasOwner': (hasOwner as bool?),
         if (hasOwnerWith != _undefined)
           'hasOwnerWith': (hasOwnerWith as List<Input$UserWhereInput>?),
@@ -6189,21 +5741,6 @@ class _CopyWithStubImpl$Input$DraftWhereInput<TRes>
           bool? praiseSpoiledNEQ,
           bool? letterSpoiled,
           bool? letterSpoiledNEQ,
-          String? thumbnail,
-          String? thumbnailNEQ,
-          List<String>? thumbnailIn,
-          List<String>? thumbnailNotIn,
-          String? thumbnailGT,
-          String? thumbnailGTE,
-          String? thumbnailLT,
-          String? thumbnailLTE,
-          String? thumbnailContains,
-          String? thumbnailHasPrefix,
-          String? thumbnailHasSuffix,
-          bool? thumbnailIsNil,
-          bool? thumbnailNotNil,
-          String? thumbnailEqualFold,
-          String? thumbnailContainsFold,
           bool? hasOwner,
           List<Input$UserWhereInput>? hasOwnerWith,
           bool? hasHashtags,
@@ -10253,8 +9790,6 @@ class Input$UpdateDraftInput {
           String? letterContent,
           bool? praiseSpoiled,
           bool? letterSpoiled,
-          bool? clearThumbnail,
-          String? thumbnail,
           bool? clearOwner,
           String? ownerID,
           List<String>? addHashtagIDs,
@@ -10271,8 +9806,6 @@ class Input$UpdateDraftInput {
         if (letterContent != null) r'letterContent': letterContent,
         if (praiseSpoiled != null) r'praiseSpoiled': praiseSpoiled,
         if (letterSpoiled != null) r'letterSpoiled': letterSpoiled,
-        if (clearThumbnail != null) r'clearThumbnail': clearThumbnail,
-        if (thumbnail != null) r'thumbnail': thumbnail,
         if (clearOwner != null) r'clearOwner': clearOwner,
         if (ownerID != null) r'ownerID': ownerID,
         if (addHashtagIDs != null) r'addHashtagIDs': addHashtagIDs,
@@ -10314,14 +9847,6 @@ class Input$UpdateDraftInput {
     if (data.containsKey('letterSpoiled')) {
       final l$letterSpoiled = data['letterSpoiled'];
       result$data['letterSpoiled'] = (l$letterSpoiled as bool?);
-    }
-    if (data.containsKey('clearThumbnail')) {
-      final l$clearThumbnail = data['clearThumbnail'];
-      result$data['clearThumbnail'] = (l$clearThumbnail as bool?);
-    }
-    if (data.containsKey('thumbnail')) {
-      final l$thumbnail = data['thumbnail'];
-      result$data['thumbnail'] = (l$thumbnail as String?);
     }
     if (data.containsKey('clearOwner')) {
       final l$clearOwner = data['clearOwner'];
@@ -10371,8 +9896,6 @@ class Input$UpdateDraftInput {
   String? get letterContent => (_$data['letterContent'] as String?);
   bool? get praiseSpoiled => (_$data['praiseSpoiled'] as bool?);
   bool? get letterSpoiled => (_$data['letterSpoiled'] as bool?);
-  bool? get clearThumbnail => (_$data['clearThumbnail'] as bool?);
-  String? get thumbnail => (_$data['thumbnail'] as String?);
   bool? get clearOwner => (_$data['clearOwner'] as bool?);
   String? get ownerID => (_$data['ownerID'] as String?);
   List<String>? get addHashtagIDs => (_$data['addHashtagIDs'] as List<String>?);
@@ -10411,14 +9934,6 @@ class Input$UpdateDraftInput {
     if (_$data.containsKey('letterSpoiled')) {
       final l$letterSpoiled = letterSpoiled;
       result$data['letterSpoiled'] = l$letterSpoiled;
-    }
-    if (_$data.containsKey('clearThumbnail')) {
-      final l$clearThumbnail = clearThumbnail;
-      result$data['clearThumbnail'] = l$clearThumbnail;
-    }
-    if (_$data.containsKey('thumbnail')) {
-      final l$thumbnail = thumbnail;
-      result$data['thumbnail'] = l$thumbnail;
     }
     if (_$data.containsKey('clearOwner')) {
       final l$clearOwner = clearOwner;
@@ -10530,24 +10045,6 @@ class Input$UpdateDraftInput {
     if (l$letterSpoiled != lOther$letterSpoiled) {
       return false;
     }
-    final l$clearThumbnail = clearThumbnail;
-    final lOther$clearThumbnail = other.clearThumbnail;
-    if (_$data.containsKey('clearThumbnail') !=
-        other._$data.containsKey('clearThumbnail')) {
-      return false;
-    }
-    if (l$clearThumbnail != lOther$clearThumbnail) {
-      return false;
-    }
-    final l$thumbnail = thumbnail;
-    final lOther$thumbnail = other.thumbnail;
-    if (_$data.containsKey('thumbnail') !=
-        other._$data.containsKey('thumbnail')) {
-      return false;
-    }
-    if (l$thumbnail != lOther$thumbnail) {
-      return false;
-    }
     final l$clearOwner = clearOwner;
     final lOther$clearOwner = other.clearOwner;
     if (_$data.containsKey('clearOwner') !=
@@ -10652,8 +10149,6 @@ class Input$UpdateDraftInput {
     final l$letterContent = letterContent;
     final l$praiseSpoiled = praiseSpoiled;
     final l$letterSpoiled = letterSpoiled;
-    final l$clearThumbnail = clearThumbnail;
-    final l$thumbnail = thumbnail;
     final l$clearOwner = clearOwner;
     final l$ownerID = ownerID;
     final l$addHashtagIDs = addHashtagIDs;
@@ -10670,8 +10165,6 @@ class Input$UpdateDraftInput {
       _$data.containsKey('letterContent') ? l$letterContent : const {},
       _$data.containsKey('praiseSpoiled') ? l$praiseSpoiled : const {},
       _$data.containsKey('letterSpoiled') ? l$letterSpoiled : const {},
-      _$data.containsKey('clearThumbnail') ? l$clearThumbnail : const {},
-      _$data.containsKey('thumbnail') ? l$thumbnail : const {},
       _$data.containsKey('clearOwner') ? l$clearOwner : const {},
       _$data.containsKey('ownerID') ? l$ownerID : const {},
       _$data.containsKey('addHashtagIDs')
@@ -10708,8 +10201,6 @@ abstract class CopyWith$Input$UpdateDraftInput<TRes> {
       String? letterContent,
       bool? praiseSpoiled,
       bool? letterSpoiled,
-      bool? clearThumbnail,
-      String? thumbnail,
       bool? clearOwner,
       String? ownerID,
       List<String>? addHashtagIDs,
@@ -10738,8 +10229,6 @@ class _CopyWithImpl$Input$UpdateDraftInput<TRes>
           Object? letterContent = _undefined,
           Object? praiseSpoiled = _undefined,
           Object? letterSpoiled = _undefined,
-          Object? clearThumbnail = _undefined,
-          Object? thumbnail = _undefined,
           Object? clearOwner = _undefined,
           Object? ownerID = _undefined,
           Object? addHashtagIDs = _undefined,
@@ -10761,9 +10250,6 @@ class _CopyWithImpl$Input$UpdateDraftInput<TRes>
           'praiseSpoiled': (praiseSpoiled as bool?),
         if (letterSpoiled != _undefined)
           'letterSpoiled': (letterSpoiled as bool?),
-        if (clearThumbnail != _undefined)
-          'clearThumbnail': (clearThumbnail as bool?),
-        if (thumbnail != _undefined) 'thumbnail': (thumbnail as String?),
         if (clearOwner != _undefined) 'clearOwner': (clearOwner as bool?),
         if (ownerID != _undefined) 'ownerID': (ownerID as String?),
         if (addHashtagIDs != _undefined)
@@ -10792,8 +10278,6 @@ class _CopyWithStubImpl$Input$UpdateDraftInput<TRes>
           String? letterContent,
           bool? praiseSpoiled,
           bool? letterSpoiled,
-          bool? clearThumbnail,
-          String? thumbnail,
           bool? clearOwner,
           String? ownerID,
           List<String>? addHashtagIDs,

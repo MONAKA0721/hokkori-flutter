@@ -2283,8 +2283,8 @@ class _CopyWithStubImpl$Query$Drafts$drafts$edges<TRes>
 class Query$Drafts$drafts$edges$node {
   Query$Drafts$drafts$edges$node(
       {required this.id,
-      required this.work,
-      required this.category,
+      this.work,
+      this.category,
       required this.praiseTitle,
       required this.$__typename});
 
@@ -2296,19 +2296,23 @@ class Query$Drafts$drafts$edges$node {
     final l$$__typename = json['__typename'];
     return Query$Drafts$drafts$edges$node(
         id: (l$id as String),
-        work: Query$Drafts$drafts$edges$node$work.fromJson(
-            (l$work as Map<String, dynamic>)),
-        category: Query$Drafts$drafts$edges$node$category.fromJson(
-            (l$category as Map<String, dynamic>)),
+        work: l$work == null
+            ? null
+            : Query$Drafts$drafts$edges$node$work.fromJson(
+                (l$work as Map<String, dynamic>)),
+        category: l$category == null
+            ? null
+            : Query$Drafts$drafts$edges$node$category.fromJson(
+                (l$category as Map<String, dynamic>)),
         praiseTitle: (l$praiseTitle as String),
         $__typename: (l$$__typename as String));
   }
 
   final String id;
 
-  final Query$Drafts$drafts$edges$node$work work;
+  final Query$Drafts$drafts$edges$node$work? work;
 
-  final Query$Drafts$drafts$edges$node$category category;
+  final Query$Drafts$drafts$edges$node$category? category;
 
   final String praiseTitle;
 
@@ -2319,9 +2323,9 @@ class Query$Drafts$drafts$edges$node {
     final l$id = id;
     _resultData['id'] = l$id;
     final l$work = work;
-    _resultData['work'] = l$work.toJson();
+    _resultData['work'] = l$work?.toJson();
     final l$category = category;
-    _resultData['category'] = l$category.toJson();
+    _resultData['category'] = l$category?.toJson();
     final l$praiseTitle = praiseTitle;
     _resultData['praiseTitle'] = l$praiseTitle;
     final l$$__typename = $__typename;
@@ -2421,12 +2425,12 @@ class _CopyWithImpl$Query$Drafts$drafts$edges$node<TRes>
           Object? $__typename = _undefined}) =>
       _then(Query$Drafts$drafts$edges$node(
           id: id == _undefined || id == null ? _instance.id : (id as String),
-          work: work == _undefined || work == null
+          work: work == _undefined
               ? _instance.work
-              : (work as Query$Drafts$drafts$edges$node$work),
-          category: category == _undefined || category == null
+              : (work as Query$Drafts$drafts$edges$node$work?),
+          category: category == _undefined
               ? _instance.category
-              : (category as Query$Drafts$drafts$edges$node$category),
+              : (category as Query$Drafts$drafts$edges$node$category?),
           praiseTitle: praiseTitle == _undefined || praiseTitle == null
               ? _instance.praiseTitle
               : (praiseTitle as String),
@@ -2435,14 +2439,19 @@ class _CopyWithImpl$Query$Drafts$drafts$edges$node<TRes>
               : ($__typename as String)));
   CopyWith$Query$Drafts$drafts$edges$node$work<TRes> get work {
     final local$work = _instance.work;
-    return CopyWith$Query$Drafts$drafts$edges$node$work(
-        local$work, (e) => call(work: e));
+    return local$work == null
+        ? CopyWith$Query$Drafts$drafts$edges$node$work.stub(_then(_instance))
+        : CopyWith$Query$Drafts$drafts$edges$node$work(
+            local$work, (e) => call(work: e));
   }
 
   CopyWith$Query$Drafts$drafts$edges$node$category<TRes> get category {
     final local$category = _instance.category;
-    return CopyWith$Query$Drafts$drafts$edges$node$category(
-        local$category, (e) => call(category: e));
+    return local$category == null
+        ? CopyWith$Query$Drafts$drafts$edges$node$category.stub(
+            _then(_instance))
+        : CopyWith$Query$Drafts$drafts$edges$node$category(
+            local$category, (e) => call(category: e));
   }
 }
 
@@ -3894,6 +3903,1163 @@ class _CopyWithImpl$Mutation$CreatePost$createPost<TRes>
 class _CopyWithStubImpl$Mutation$CreatePost$createPost<TRes>
     implements CopyWith$Mutation$CreatePost$createPost<TRes> {
   _CopyWithStubImpl$Mutation$CreatePost$createPost(this._res);
+
+  TRes _res;
+
+  call({String? id, String? $__typename}) => _res;
+}
+
+class Variables$Mutation$CreateDraft {
+  factory Variables$Mutation$CreateDraft(
+          {required Input$CreateDraftInput createDraftInput,
+          required List<String?> hashtagTitles}) =>
+      Variables$Mutation$CreateDraft._({
+        r'createDraftInput': createDraftInput,
+        r'hashtagTitles': hashtagTitles,
+      });
+
+  Variables$Mutation$CreateDraft._(this._$data);
+
+  factory Variables$Mutation$CreateDraft.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$createDraftInput = data['createDraftInput'];
+    result$data['createDraftInput'] = Input$CreateDraftInput.fromJson(
+        (l$createDraftInput as Map<String, dynamic>));
+    final l$hashtagTitles = data['hashtagTitles'];
+    result$data['hashtagTitles'] =
+        (l$hashtagTitles as List<dynamic>).map((e) => (e as String?)).toList();
+    return Variables$Mutation$CreateDraft._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$CreateDraftInput get createDraftInput =>
+      (_$data['createDraftInput'] as Input$CreateDraftInput);
+  List<String?> get hashtagTitles => (_$data['hashtagTitles'] as List<String?>);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$createDraftInput = createDraftInput;
+    result$data['createDraftInput'] = l$createDraftInput.toJson();
+    final l$hashtagTitles = hashtagTitles;
+    result$data['hashtagTitles'] = l$hashtagTitles.map((e) => e).toList();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$CreateDraft<Variables$Mutation$CreateDraft>
+      get copyWith => CopyWith$Variables$Mutation$CreateDraft(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$CreateDraft) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$createDraftInput = createDraftInput;
+    final lOther$createDraftInput = other.createDraftInput;
+    if (l$createDraftInput != lOther$createDraftInput) {
+      return false;
+    }
+    final l$hashtagTitles = hashtagTitles;
+    final lOther$hashtagTitles = other.hashtagTitles;
+    if (l$hashtagTitles.length != lOther$hashtagTitles.length) {
+      return false;
+    }
+    for (int i = 0; i < l$hashtagTitles.length; i++) {
+      final l$hashtagTitles$entry = l$hashtagTitles[i];
+      final lOther$hashtagTitles$entry = lOther$hashtagTitles[i];
+      if (l$hashtagTitles$entry != lOther$hashtagTitles$entry) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$createDraftInput = createDraftInput;
+    final l$hashtagTitles = hashtagTitles;
+    return Object.hashAll(
+        [l$createDraftInput, Object.hashAll(l$hashtagTitles.map((v) => v))]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$CreateDraft<TRes> {
+  factory CopyWith$Variables$Mutation$CreateDraft(
+          Variables$Mutation$CreateDraft instance,
+          TRes Function(Variables$Mutation$CreateDraft) then) =
+      _CopyWithImpl$Variables$Mutation$CreateDraft;
+
+  factory CopyWith$Variables$Mutation$CreateDraft.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$CreateDraft;
+
+  TRes call(
+      {Input$CreateDraftInput? createDraftInput, List<String?>? hashtagTitles});
+}
+
+class _CopyWithImpl$Variables$Mutation$CreateDraft<TRes>
+    implements CopyWith$Variables$Mutation$CreateDraft<TRes> {
+  _CopyWithImpl$Variables$Mutation$CreateDraft(this._instance, this._then);
+
+  final Variables$Mutation$CreateDraft _instance;
+
+  final TRes Function(Variables$Mutation$CreateDraft) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? createDraftInput = _undefined,
+          Object? hashtagTitles = _undefined}) =>
+      _then(Variables$Mutation$CreateDraft._({
+        ..._instance._$data,
+        if (createDraftInput != _undefined && createDraftInput != null)
+          'createDraftInput': (createDraftInput as Input$CreateDraftInput),
+        if (hashtagTitles != _undefined && hashtagTitles != null)
+          'hashtagTitles': (hashtagTitles as List<String?>),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$CreateDraft<TRes>
+    implements CopyWith$Variables$Mutation$CreateDraft<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$CreateDraft(this._res);
+
+  TRes _res;
+
+  call(
+          {Input$CreateDraftInput? createDraftInput,
+          List<String?>? hashtagTitles}) =>
+      _res;
+}
+
+class Mutation$CreateDraft {
+  Mutation$CreateDraft({required this.createDraft, required this.$__typename});
+
+  factory Mutation$CreateDraft.fromJson(Map<String, dynamic> json) {
+    final l$createDraft = json['createDraft'];
+    final l$$__typename = json['__typename'];
+    return Mutation$CreateDraft(
+        createDraft: Mutation$CreateDraft$createDraft.fromJson(
+            (l$createDraft as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final Mutation$CreateDraft$createDraft createDraft;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$createDraft = createDraft;
+    _resultData['createDraft'] = l$createDraft.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$createDraft = createDraft;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$createDraft, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$CreateDraft) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$createDraft = createDraft;
+    final lOther$createDraft = other.createDraft;
+    if (l$createDraft != lOther$createDraft) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$CreateDraft on Mutation$CreateDraft {
+  CopyWith$Mutation$CreateDraft<Mutation$CreateDraft> get copyWith =>
+      CopyWith$Mutation$CreateDraft(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$CreateDraft<TRes> {
+  factory CopyWith$Mutation$CreateDraft(Mutation$CreateDraft instance,
+          TRes Function(Mutation$CreateDraft) then) =
+      _CopyWithImpl$Mutation$CreateDraft;
+
+  factory CopyWith$Mutation$CreateDraft.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$CreateDraft;
+
+  TRes call(
+      {Mutation$CreateDraft$createDraft? createDraft, String? $__typename});
+  CopyWith$Mutation$CreateDraft$createDraft<TRes> get createDraft;
+}
+
+class _CopyWithImpl$Mutation$CreateDraft<TRes>
+    implements CopyWith$Mutation$CreateDraft<TRes> {
+  _CopyWithImpl$Mutation$CreateDraft(this._instance, this._then);
+
+  final Mutation$CreateDraft _instance;
+
+  final TRes Function(Mutation$CreateDraft) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? createDraft = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Mutation$CreateDraft(
+          createDraft: createDraft == _undefined || createDraft == null
+              ? _instance.createDraft
+              : (createDraft as Mutation$CreateDraft$createDraft),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Mutation$CreateDraft$createDraft<TRes> get createDraft {
+    final local$createDraft = _instance.createDraft;
+    return CopyWith$Mutation$CreateDraft$createDraft(
+        local$createDraft, (e) => call(createDraft: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$CreateDraft<TRes>
+    implements CopyWith$Mutation$CreateDraft<TRes> {
+  _CopyWithStubImpl$Mutation$CreateDraft(this._res);
+
+  TRes _res;
+
+  call({Mutation$CreateDraft$createDraft? createDraft, String? $__typename}) =>
+      _res;
+  CopyWith$Mutation$CreateDraft$createDraft<TRes> get createDraft =>
+      CopyWith$Mutation$CreateDraft$createDraft.stub(_res);
+}
+
+const documentNodeMutationCreateDraft = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.mutation,
+      name: NameNode(value: 'CreateDraft'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'createDraftInput')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'CreateDraftInput'), isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'hashtagTitles')),
+            type: ListTypeNode(
+                type: NamedTypeNode(
+                    name: NameNode(value: 'String'), isNonNull: false),
+                isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'createDraft'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'input'),
+                  value:
+                      VariableNode(name: NameNode(value: 'createDraftInput'))),
+              ArgumentNode(
+                  name: NameNode(value: 'hashtagTitles'),
+                  value: VariableNode(name: NameNode(value: 'hashtagTitles')))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'id'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+]);
+Mutation$CreateDraft _parserFn$Mutation$CreateDraft(
+        Map<String, dynamic> data) =>
+    Mutation$CreateDraft.fromJson(data);
+typedef OnMutationCompleted$Mutation$CreateDraft = FutureOr<void> Function(
+    dynamic, Mutation$CreateDraft?);
+
+class Options$Mutation$CreateDraft
+    extends graphql.MutationOptions<Mutation$CreateDraft> {
+  Options$Mutation$CreateDraft(
+      {String? operationName,
+      required Variables$Mutation$CreateDraft variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$CreateDraft? onCompleted,
+      graphql.OnMutationUpdate<Mutation$CreateDraft>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(data,
+                    data == null ? null : _parserFn$Mutation$CreateDraft(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationCreateDraft,
+            parserFn: _parserFn$Mutation$CreateDraft);
+
+  final OnMutationCompleted$Mutation$CreateDraft? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+class WatchOptions$Mutation$CreateDraft
+    extends graphql.WatchQueryOptions<Mutation$CreateDraft> {
+  WatchOptions$Mutation$CreateDraft(
+      {String? operationName,
+      required Variables$Mutation$CreateDraft variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeMutationCreateDraft,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Mutation$CreateDraft);
+}
+
+extension ClientExtension$Mutation$CreateDraft on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$CreateDraft>> mutate$CreateDraft(
+          Options$Mutation$CreateDraft options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$CreateDraft> watchMutation$CreateDraft(
+          WatchOptions$Mutation$CreateDraft options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$CreateDraft$HookResult {
+  Mutation$CreateDraft$HookResult(this.runMutation, this.result);
+
+  final RunMutation$Mutation$CreateDraft runMutation;
+
+  final graphql.QueryResult<Mutation$CreateDraft> result;
+}
+
+Mutation$CreateDraft$HookResult useMutation$CreateDraft(
+    [WidgetOptions$Mutation$CreateDraft? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$CreateDraft());
+  return Mutation$CreateDraft$HookResult(
+    (variables, {optimisticResult}) => result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult,
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$CreateDraft> useWatchMutation$CreateDraft(
+        WatchOptions$Mutation$CreateDraft options) =>
+    graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$CreateDraft
+    extends graphql.MutationOptions<Mutation$CreateDraft> {
+  WidgetOptions$Mutation$CreateDraft(
+      {String? operationName,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$CreateDraft? onCompleted,
+      graphql.OnMutationUpdate<Mutation$CreateDraft>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(data,
+                    data == null ? null : _parserFn$Mutation$CreateDraft(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationCreateDraft,
+            parserFn: _parserFn$Mutation$CreateDraft);
+
+  final OnMutationCompleted$Mutation$CreateDraft? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+typedef RunMutation$Mutation$CreateDraft
+    = graphql.MultiSourceResult<Mutation$CreateDraft>
+        Function(Variables$Mutation$CreateDraft, {Object? optimisticResult});
+typedef Builder$Mutation$CreateDraft = widgets.Widget Function(
+    RunMutation$Mutation$CreateDraft,
+    graphql.QueryResult<Mutation$CreateDraft>?);
+
+class Mutation$CreateDraft$Widget
+    extends graphql_flutter.Mutation<Mutation$CreateDraft> {
+  Mutation$CreateDraft$Widget(
+      {widgets.Key? key,
+      WidgetOptions$Mutation$CreateDraft? options,
+      required Builder$Mutation$CreateDraft builder})
+      : super(
+            key: key,
+            options: options ?? WidgetOptions$Mutation$CreateDraft(),
+            builder: (run, result) => builder(
+                (variables, {optimisticResult}) =>
+                    run(variables.toJson(), optimisticResult: optimisticResult),
+                result));
+}
+
+class Mutation$CreateDraft$createDraft {
+  Mutation$CreateDraft$createDraft(
+      {required this.id, required this.$__typename});
+
+  factory Mutation$CreateDraft$createDraft.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Mutation$CreateDraft$createDraft(
+        id: (l$id as String), $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$CreateDraft$createDraft) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$CreateDraft$createDraft
+    on Mutation$CreateDraft$createDraft {
+  CopyWith$Mutation$CreateDraft$createDraft<Mutation$CreateDraft$createDraft>
+      get copyWith => CopyWith$Mutation$CreateDraft$createDraft(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$CreateDraft$createDraft<TRes> {
+  factory CopyWith$Mutation$CreateDraft$createDraft(
+          Mutation$CreateDraft$createDraft instance,
+          TRes Function(Mutation$CreateDraft$createDraft) then) =
+      _CopyWithImpl$Mutation$CreateDraft$createDraft;
+
+  factory CopyWith$Mutation$CreateDraft$createDraft.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$CreateDraft$createDraft;
+
+  TRes call({String? id, String? $__typename});
+}
+
+class _CopyWithImpl$Mutation$CreateDraft$createDraft<TRes>
+    implements CopyWith$Mutation$CreateDraft$createDraft<TRes> {
+  _CopyWithImpl$Mutation$CreateDraft$createDraft(this._instance, this._then);
+
+  final Mutation$CreateDraft$createDraft _instance;
+
+  final TRes Function(Mutation$CreateDraft$createDraft) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+      _then(Mutation$CreateDraft$createDraft(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Mutation$CreateDraft$createDraft<TRes>
+    implements CopyWith$Mutation$CreateDraft$createDraft<TRes> {
+  _CopyWithStubImpl$Mutation$CreateDraft$createDraft(this._res);
+
+  TRes _res;
+
+  call({String? id, String? $__typename}) => _res;
+}
+
+class Variables$Mutation$UpdateDraft {
+  factory Variables$Mutation$UpdateDraft(
+          {required String id,
+          required Input$UpdateDraftInput updateDraftInput,
+          required List<String?> hashtagTitles}) =>
+      Variables$Mutation$UpdateDraft._({
+        r'id': id,
+        r'updateDraftInput': updateDraftInput,
+        r'hashtagTitles': hashtagTitles,
+      });
+
+  Variables$Mutation$UpdateDraft._(this._$data);
+
+  factory Variables$Mutation$UpdateDraft.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$id = data['id'];
+    result$data['id'] = (l$id as String);
+    final l$updateDraftInput = data['updateDraftInput'];
+    result$data['updateDraftInput'] = Input$UpdateDraftInput.fromJson(
+        (l$updateDraftInput as Map<String, dynamic>));
+    final l$hashtagTitles = data['hashtagTitles'];
+    result$data['hashtagTitles'] =
+        (l$hashtagTitles as List<dynamic>).map((e) => (e as String?)).toList();
+    return Variables$Mutation$UpdateDraft._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  String get id => (_$data['id'] as String);
+  Input$UpdateDraftInput get updateDraftInput =>
+      (_$data['updateDraftInput'] as Input$UpdateDraftInput);
+  List<String?> get hashtagTitles => (_$data['hashtagTitles'] as List<String?>);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$id = id;
+    result$data['id'] = l$id;
+    final l$updateDraftInput = updateDraftInput;
+    result$data['updateDraftInput'] = l$updateDraftInput.toJson();
+    final l$hashtagTitles = hashtagTitles;
+    result$data['hashtagTitles'] = l$hashtagTitles.map((e) => e).toList();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$UpdateDraft<Variables$Mutation$UpdateDraft>
+      get copyWith => CopyWith$Variables$Mutation$UpdateDraft(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$UpdateDraft) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$updateDraftInput = updateDraftInput;
+    final lOther$updateDraftInput = other.updateDraftInput;
+    if (l$updateDraftInput != lOther$updateDraftInput) {
+      return false;
+    }
+    final l$hashtagTitles = hashtagTitles;
+    final lOther$hashtagTitles = other.hashtagTitles;
+    if (l$hashtagTitles.length != lOther$hashtagTitles.length) {
+      return false;
+    }
+    for (int i = 0; i < l$hashtagTitles.length; i++) {
+      final l$hashtagTitles$entry = l$hashtagTitles[i];
+      final lOther$hashtagTitles$entry = lOther$hashtagTitles[i];
+      if (l$hashtagTitles$entry != lOther$hashtagTitles$entry) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$updateDraftInput = updateDraftInput;
+    final l$hashtagTitles = hashtagTitles;
+    return Object.hashAll([
+      l$id,
+      l$updateDraftInput,
+      Object.hashAll(l$hashtagTitles.map((v) => v))
+    ]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$UpdateDraft<TRes> {
+  factory CopyWith$Variables$Mutation$UpdateDraft(
+          Variables$Mutation$UpdateDraft instance,
+          TRes Function(Variables$Mutation$UpdateDraft) then) =
+      _CopyWithImpl$Variables$Mutation$UpdateDraft;
+
+  factory CopyWith$Variables$Mutation$UpdateDraft.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$UpdateDraft;
+
+  TRes call(
+      {String? id,
+      Input$UpdateDraftInput? updateDraftInput,
+      List<String?>? hashtagTitles});
+}
+
+class _CopyWithImpl$Variables$Mutation$UpdateDraft<TRes>
+    implements CopyWith$Variables$Mutation$UpdateDraft<TRes> {
+  _CopyWithImpl$Variables$Mutation$UpdateDraft(this._instance, this._then);
+
+  final Variables$Mutation$UpdateDraft _instance;
+
+  final TRes Function(Variables$Mutation$UpdateDraft) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? id = _undefined,
+          Object? updateDraftInput = _undefined,
+          Object? hashtagTitles = _undefined}) =>
+      _then(Variables$Mutation$UpdateDraft._({
+        ..._instance._$data,
+        if (id != _undefined && id != null) 'id': (id as String),
+        if (updateDraftInput != _undefined && updateDraftInput != null)
+          'updateDraftInput': (updateDraftInput as Input$UpdateDraftInput),
+        if (hashtagTitles != _undefined && hashtagTitles != null)
+          'hashtagTitles': (hashtagTitles as List<String?>),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$UpdateDraft<TRes>
+    implements CopyWith$Variables$Mutation$UpdateDraft<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$UpdateDraft(this._res);
+
+  TRes _res;
+
+  call(
+          {String? id,
+          Input$UpdateDraftInput? updateDraftInput,
+          List<String?>? hashtagTitles}) =>
+      _res;
+}
+
+class Mutation$UpdateDraft {
+  Mutation$UpdateDraft({required this.updateDraft, required this.$__typename});
+
+  factory Mutation$UpdateDraft.fromJson(Map<String, dynamic> json) {
+    final l$updateDraft = json['updateDraft'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UpdateDraft(
+        updateDraft: Mutation$UpdateDraft$updateDraft.fromJson(
+            (l$updateDraft as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final Mutation$UpdateDraft$updateDraft updateDraft;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$updateDraft = updateDraft;
+    _resultData['updateDraft'] = l$updateDraft.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$updateDraft = updateDraft;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$updateDraft, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UpdateDraft) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$updateDraft = updateDraft;
+    final lOther$updateDraft = other.updateDraft;
+    if (l$updateDraft != lOther$updateDraft) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$UpdateDraft on Mutation$UpdateDraft {
+  CopyWith$Mutation$UpdateDraft<Mutation$UpdateDraft> get copyWith =>
+      CopyWith$Mutation$UpdateDraft(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$UpdateDraft<TRes> {
+  factory CopyWith$Mutation$UpdateDraft(Mutation$UpdateDraft instance,
+          TRes Function(Mutation$UpdateDraft) then) =
+      _CopyWithImpl$Mutation$UpdateDraft;
+
+  factory CopyWith$Mutation$UpdateDraft.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$UpdateDraft;
+
+  TRes call(
+      {Mutation$UpdateDraft$updateDraft? updateDraft, String? $__typename});
+  CopyWith$Mutation$UpdateDraft$updateDraft<TRes> get updateDraft;
+}
+
+class _CopyWithImpl$Mutation$UpdateDraft<TRes>
+    implements CopyWith$Mutation$UpdateDraft<TRes> {
+  _CopyWithImpl$Mutation$UpdateDraft(this._instance, this._then);
+
+  final Mutation$UpdateDraft _instance;
+
+  final TRes Function(Mutation$UpdateDraft) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? updateDraft = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Mutation$UpdateDraft(
+          updateDraft: updateDraft == _undefined || updateDraft == null
+              ? _instance.updateDraft
+              : (updateDraft as Mutation$UpdateDraft$updateDraft),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Mutation$UpdateDraft$updateDraft<TRes> get updateDraft {
+    final local$updateDraft = _instance.updateDraft;
+    return CopyWith$Mutation$UpdateDraft$updateDraft(
+        local$updateDraft, (e) => call(updateDraft: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$UpdateDraft<TRes>
+    implements CopyWith$Mutation$UpdateDraft<TRes> {
+  _CopyWithStubImpl$Mutation$UpdateDraft(this._res);
+
+  TRes _res;
+
+  call({Mutation$UpdateDraft$updateDraft? updateDraft, String? $__typename}) =>
+      _res;
+  CopyWith$Mutation$UpdateDraft$updateDraft<TRes> get updateDraft =>
+      CopyWith$Mutation$UpdateDraft$updateDraft.stub(_res);
+}
+
+const documentNodeMutationUpdateDraft = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.mutation,
+      name: NameNode(value: 'UpdateDraft'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'id')),
+            type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'updateDraftInput')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'UpdateDraftInput'), isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'hashtagTitles')),
+            type: ListTypeNode(
+                type: NamedTypeNode(
+                    name: NameNode(value: 'String'), isNonNull: false),
+                isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'updateDraft'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'id'),
+                  value: VariableNode(name: NameNode(value: 'id'))),
+              ArgumentNode(
+                  name: NameNode(value: 'input'),
+                  value:
+                      VariableNode(name: NameNode(value: 'updateDraftInput'))),
+              ArgumentNode(
+                  name: NameNode(value: 'hashtagTitles'),
+                  value: VariableNode(name: NameNode(value: 'hashtagTitles')))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'id'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+]);
+Mutation$UpdateDraft _parserFn$Mutation$UpdateDraft(
+        Map<String, dynamic> data) =>
+    Mutation$UpdateDraft.fromJson(data);
+typedef OnMutationCompleted$Mutation$UpdateDraft = FutureOr<void> Function(
+    dynamic, Mutation$UpdateDraft?);
+
+class Options$Mutation$UpdateDraft
+    extends graphql.MutationOptions<Mutation$UpdateDraft> {
+  Options$Mutation$UpdateDraft(
+      {String? operationName,
+      required Variables$Mutation$UpdateDraft variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$UpdateDraft? onCompleted,
+      graphql.OnMutationUpdate<Mutation$UpdateDraft>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(data,
+                    data == null ? null : _parserFn$Mutation$UpdateDraft(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationUpdateDraft,
+            parserFn: _parserFn$Mutation$UpdateDraft);
+
+  final OnMutationCompleted$Mutation$UpdateDraft? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+class WatchOptions$Mutation$UpdateDraft
+    extends graphql.WatchQueryOptions<Mutation$UpdateDraft> {
+  WatchOptions$Mutation$UpdateDraft(
+      {String? operationName,
+      required Variables$Mutation$UpdateDraft variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeMutationUpdateDraft,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Mutation$UpdateDraft);
+}
+
+extension ClientExtension$Mutation$UpdateDraft on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$UpdateDraft>> mutate$UpdateDraft(
+          Options$Mutation$UpdateDraft options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$UpdateDraft> watchMutation$UpdateDraft(
+          WatchOptions$Mutation$UpdateDraft options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$UpdateDraft$HookResult {
+  Mutation$UpdateDraft$HookResult(this.runMutation, this.result);
+
+  final RunMutation$Mutation$UpdateDraft runMutation;
+
+  final graphql.QueryResult<Mutation$UpdateDraft> result;
+}
+
+Mutation$UpdateDraft$HookResult useMutation$UpdateDraft(
+    [WidgetOptions$Mutation$UpdateDraft? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$UpdateDraft());
+  return Mutation$UpdateDraft$HookResult(
+    (variables, {optimisticResult}) => result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult,
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$UpdateDraft> useWatchMutation$UpdateDraft(
+        WatchOptions$Mutation$UpdateDraft options) =>
+    graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$UpdateDraft
+    extends graphql.MutationOptions<Mutation$UpdateDraft> {
+  WidgetOptions$Mutation$UpdateDraft(
+      {String? operationName,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$UpdateDraft? onCompleted,
+      graphql.OnMutationUpdate<Mutation$UpdateDraft>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(data,
+                    data == null ? null : _parserFn$Mutation$UpdateDraft(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationUpdateDraft,
+            parserFn: _parserFn$Mutation$UpdateDraft);
+
+  final OnMutationCompleted$Mutation$UpdateDraft? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+typedef RunMutation$Mutation$UpdateDraft
+    = graphql.MultiSourceResult<Mutation$UpdateDraft>
+        Function(Variables$Mutation$UpdateDraft, {Object? optimisticResult});
+typedef Builder$Mutation$UpdateDraft = widgets.Widget Function(
+    RunMutation$Mutation$UpdateDraft,
+    graphql.QueryResult<Mutation$UpdateDraft>?);
+
+class Mutation$UpdateDraft$Widget
+    extends graphql_flutter.Mutation<Mutation$UpdateDraft> {
+  Mutation$UpdateDraft$Widget(
+      {widgets.Key? key,
+      WidgetOptions$Mutation$UpdateDraft? options,
+      required Builder$Mutation$UpdateDraft builder})
+      : super(
+            key: key,
+            options: options ?? WidgetOptions$Mutation$UpdateDraft(),
+            builder: (run, result) => builder(
+                (variables, {optimisticResult}) =>
+                    run(variables.toJson(), optimisticResult: optimisticResult),
+                result));
+}
+
+class Mutation$UpdateDraft$updateDraft {
+  Mutation$UpdateDraft$updateDraft(
+      {required this.id, required this.$__typename});
+
+  factory Mutation$UpdateDraft$updateDraft.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$$__typename = json['__typename'];
+    return Mutation$UpdateDraft$updateDraft(
+        id: (l$id as String), $__typename: (l$$__typename as String));
+  }
+
+  final String id;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$id, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$UpdateDraft$updateDraft) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$UpdateDraft$updateDraft
+    on Mutation$UpdateDraft$updateDraft {
+  CopyWith$Mutation$UpdateDraft$updateDraft<Mutation$UpdateDraft$updateDraft>
+      get copyWith => CopyWith$Mutation$UpdateDraft$updateDraft(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$UpdateDraft$updateDraft<TRes> {
+  factory CopyWith$Mutation$UpdateDraft$updateDraft(
+          Mutation$UpdateDraft$updateDraft instance,
+          TRes Function(Mutation$UpdateDraft$updateDraft) then) =
+      _CopyWithImpl$Mutation$UpdateDraft$updateDraft;
+
+  factory CopyWith$Mutation$UpdateDraft$updateDraft.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$UpdateDraft$updateDraft;
+
+  TRes call({String? id, String? $__typename});
+}
+
+class _CopyWithImpl$Mutation$UpdateDraft$updateDraft<TRes>
+    implements CopyWith$Mutation$UpdateDraft$updateDraft<TRes> {
+  _CopyWithImpl$Mutation$UpdateDraft$updateDraft(this._instance, this._then);
+
+  final Mutation$UpdateDraft$updateDraft _instance;
+
+  final TRes Function(Mutation$UpdateDraft$updateDraft) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+      _then(Mutation$UpdateDraft$updateDraft(
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Mutation$UpdateDraft$updateDraft<TRes>
+    implements CopyWith$Mutation$UpdateDraft$updateDraft<TRes> {
+  _CopyWithStubImpl$Mutation$UpdateDraft$updateDraft(this._res);
 
   TRes _res;
 

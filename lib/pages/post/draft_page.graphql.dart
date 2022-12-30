@@ -328,12 +328,6 @@ const documentNodeQueryGetDraft = DocumentNode(definitions: [
                         directives: [],
                         selectionSet: null),
                     FieldNode(
-                        name: NameNode(value: 'thumbnail'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null),
-                    FieldNode(
                         name: NameNode(value: 'letterTitle'),
                         alias: null,
                         arguments: [],
@@ -573,13 +567,12 @@ class Query$GetDraft$draft$$Draft implements Query$GetDraft$draft {
   Query$GetDraft$draft$$Draft(
       {required this.$__typename,
       required this.id,
-      required this.work,
-      required this.category,
+      this.work,
+      this.category,
       this.hashtags,
       required this.praiseTitle,
       required this.praiseContent,
       required this.praiseSpoiled,
-      this.thumbnail,
       required this.letterTitle,
       required this.letterContent,
       required this.letterSpoiled});
@@ -593,17 +586,20 @@ class Query$GetDraft$draft$$Draft implements Query$GetDraft$draft {
     final l$praiseTitle = json['praiseTitle'];
     final l$praiseContent = json['praiseContent'];
     final l$praiseSpoiled = json['praiseSpoiled'];
-    final l$thumbnail = json['thumbnail'];
     final l$letterTitle = json['letterTitle'];
     final l$letterContent = json['letterContent'];
     final l$letterSpoiled = json['letterSpoiled'];
     return Query$GetDraft$draft$$Draft(
         $__typename: (l$$__typename as String),
         id: (l$id as String),
-        work: Query$GetDraft$draft$$Draft$work.fromJson(
-            (l$work as Map<String, dynamic>)),
-        category: Query$GetDraft$draft$$Draft$category.fromJson(
-            (l$category as Map<String, dynamic>)),
+        work: l$work == null
+            ? null
+            : Query$GetDraft$draft$$Draft$work.fromJson(
+                (l$work as Map<String, dynamic>)),
+        category: l$category == null
+            ? null
+            : Query$GetDraft$draft$$Draft$category.fromJson(
+                (l$category as Map<String, dynamic>)),
         hashtags: (l$hashtags as List<dynamic>?)
             ?.map((e) => Query$GetDraft$draft$$Draft$hashtags.fromJson(
                 (e as Map<String, dynamic>)))
@@ -611,7 +607,6 @@ class Query$GetDraft$draft$$Draft implements Query$GetDraft$draft {
         praiseTitle: (l$praiseTitle as String),
         praiseContent: (l$praiseContent as String),
         praiseSpoiled: (l$praiseSpoiled as bool),
-        thumbnail: (l$thumbnail as String?),
         letterTitle: (l$letterTitle as String),
         letterContent: (l$letterContent as String),
         letterSpoiled: (l$letterSpoiled as bool));
@@ -621,9 +616,9 @@ class Query$GetDraft$draft$$Draft implements Query$GetDraft$draft {
 
   final String id;
 
-  final Query$GetDraft$draft$$Draft$work work;
+  final Query$GetDraft$draft$$Draft$work? work;
 
-  final Query$GetDraft$draft$$Draft$category category;
+  final Query$GetDraft$draft$$Draft$category? category;
 
   final List<Query$GetDraft$draft$$Draft$hashtags>? hashtags;
 
@@ -632,8 +627,6 @@ class Query$GetDraft$draft$$Draft implements Query$GetDraft$draft {
   final String praiseContent;
 
   final bool praiseSpoiled;
-
-  final String? thumbnail;
 
   final String letterTitle;
 
@@ -648,9 +641,9 @@ class Query$GetDraft$draft$$Draft implements Query$GetDraft$draft {
     final l$id = id;
     _resultData['id'] = l$id;
     final l$work = work;
-    _resultData['work'] = l$work.toJson();
+    _resultData['work'] = l$work?.toJson();
     final l$category = category;
-    _resultData['category'] = l$category.toJson();
+    _resultData['category'] = l$category?.toJson();
     final l$hashtags = hashtags;
     _resultData['hashtags'] = l$hashtags?.map((e) => e.toJson()).toList();
     final l$praiseTitle = praiseTitle;
@@ -659,8 +652,6 @@ class Query$GetDraft$draft$$Draft implements Query$GetDraft$draft {
     _resultData['praiseContent'] = l$praiseContent;
     final l$praiseSpoiled = praiseSpoiled;
     _resultData['praiseSpoiled'] = l$praiseSpoiled;
-    final l$thumbnail = thumbnail;
-    _resultData['thumbnail'] = l$thumbnail;
     final l$letterTitle = letterTitle;
     _resultData['letterTitle'] = l$letterTitle;
     final l$letterContent = letterContent;
@@ -680,7 +671,6 @@ class Query$GetDraft$draft$$Draft implements Query$GetDraft$draft {
     final l$praiseTitle = praiseTitle;
     final l$praiseContent = praiseContent;
     final l$praiseSpoiled = praiseSpoiled;
-    final l$thumbnail = thumbnail;
     final l$letterTitle = letterTitle;
     final l$letterContent = letterContent;
     final l$letterSpoiled = letterSpoiled;
@@ -693,7 +683,6 @@ class Query$GetDraft$draft$$Draft implements Query$GetDraft$draft {
       l$praiseTitle,
       l$praiseContent,
       l$praiseSpoiled,
-      l$thumbnail,
       l$letterTitle,
       l$letterContent,
       l$letterSpoiled
@@ -760,11 +749,6 @@ class Query$GetDraft$draft$$Draft implements Query$GetDraft$draft {
     if (l$praiseSpoiled != lOther$praiseSpoiled) {
       return false;
     }
-    final l$thumbnail = thumbnail;
-    final lOther$thumbnail = other.thumbnail;
-    if (l$thumbnail != lOther$thumbnail) {
-      return false;
-    }
     final l$letterTitle = letterTitle;
     final lOther$letterTitle = other.letterTitle;
     if (l$letterTitle != lOther$letterTitle) {
@@ -808,7 +792,6 @@ abstract class CopyWith$Query$GetDraft$draft$$Draft<TRes> {
       String? praiseTitle,
       String? praiseContent,
       bool? praiseSpoiled,
-      String? thumbnail,
       String? letterTitle,
       String? letterContent,
       bool? letterSpoiled});
@@ -841,7 +824,6 @@ class _CopyWithImpl$Query$GetDraft$draft$$Draft<TRes>
           Object? praiseTitle = _undefined,
           Object? praiseContent = _undefined,
           Object? praiseSpoiled = _undefined,
-          Object? thumbnail = _undefined,
           Object? letterTitle = _undefined,
           Object? letterContent = _undefined,
           Object? letterSpoiled = _undefined}) =>
@@ -850,12 +832,12 @@ class _CopyWithImpl$Query$GetDraft$draft$$Draft<TRes>
               ? _instance.$__typename
               : ($__typename as String),
           id: id == _undefined || id == null ? _instance.id : (id as String),
-          work: work == _undefined || work == null
+          work: work == _undefined
               ? _instance.work
-              : (work as Query$GetDraft$draft$$Draft$work),
-          category: category == _undefined || category == null
+              : (work as Query$GetDraft$draft$$Draft$work?),
+          category: category == _undefined
               ? _instance.category
-              : (category as Query$GetDraft$draft$$Draft$category),
+              : (category as Query$GetDraft$draft$$Draft$category?),
           hashtags: hashtags == _undefined
               ? _instance.hashtags
               : (hashtags as List<Query$GetDraft$draft$$Draft$hashtags>?),
@@ -868,9 +850,6 @@ class _CopyWithImpl$Query$GetDraft$draft$$Draft<TRes>
           praiseSpoiled: praiseSpoiled == _undefined || praiseSpoiled == null
               ? _instance.praiseSpoiled
               : (praiseSpoiled as bool),
-          thumbnail: thumbnail == _undefined
-              ? _instance.thumbnail
-              : (thumbnail as String?),
           letterTitle: letterTitle == _undefined || letterTitle == null
               ? _instance.letterTitle
               : (letterTitle as String),
@@ -882,14 +861,18 @@ class _CopyWithImpl$Query$GetDraft$draft$$Draft<TRes>
               : (letterSpoiled as bool)));
   CopyWith$Query$GetDraft$draft$$Draft$work<TRes> get work {
     final local$work = _instance.work;
-    return CopyWith$Query$GetDraft$draft$$Draft$work(
-        local$work, (e) => call(work: e));
+    return local$work == null
+        ? CopyWith$Query$GetDraft$draft$$Draft$work.stub(_then(_instance))
+        : CopyWith$Query$GetDraft$draft$$Draft$work(
+            local$work, (e) => call(work: e));
   }
 
   CopyWith$Query$GetDraft$draft$$Draft$category<TRes> get category {
     final local$category = _instance.category;
-    return CopyWith$Query$GetDraft$draft$$Draft$category(
-        local$category, (e) => call(category: e));
+    return local$category == null
+        ? CopyWith$Query$GetDraft$draft$$Draft$category.stub(_then(_instance))
+        : CopyWith$Query$GetDraft$draft$$Draft$category(
+            local$category, (e) => call(category: e));
   }
 
   TRes hashtags(
@@ -919,7 +902,6 @@ class _CopyWithStubImpl$Query$GetDraft$draft$$Draft<TRes>
           String? praiseTitle,
           String? praiseContent,
           bool? praiseSpoiled,
-          String? thumbnail,
           String? letterTitle,
           String? letterContent,
           bool? letterSpoiled}) =>

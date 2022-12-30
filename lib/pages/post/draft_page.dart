@@ -83,13 +83,17 @@ class DraftPage extends HookConsumerWidget {
                   thumbVisibility: true,
                   child: ListView.separated(
                       itemCount: drafts.length + 1,
-                      itemBuilder: (context, index) => index == 0
-                          ? const Text(
-                              "書きかけの投稿",
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            )
-                          : GestureDetector(
+                      itemBuilder: (context, index) {
+                        if (index == 0) {
+                          return const Text(
+                            "書きかけの投稿",
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                          );
+                        } else {
+                          final draft = drafts[index - 1]!.node!;
+
+                          return GestureDetector(
                               behavior: HitTestBehavior.opaque,
                               onTap: () async {
                                 var queryResult = await client.query$GetDraft(
@@ -102,13 +106,18 @@ class DraftPage extends HookConsumerWidget {
 
                                 final work = draft.work;
                                 ref.watch(workProvider.notifier).state =
-                                    WorkModel(
-                                        id: work.id,
-                                        title: work.title,
-                                        thumbnail: work.thumbnail);
+                                    work == null
+                                        ? null
+                                        : WorkModel(
+                                            id: work.id,
+                                            title: work.title,
+                                            thumbnail: work.thumbnail);
 
+                                final category = draft.category;
                                 ref.watch(categoryProvider.notifier).state =
-                                    int.parse(draft.category.id);
+                                    category == null
+                                        ? null
+                                        : int.parse(category.id);
 
                                 ref.watch(hashtagsProvider.notifier).state =
                                     draft.hashtags!
@@ -139,17 +148,19 @@ class DraftPage extends HookConsumerWidget {
                                     .watch(letterSpoiledProvider.notifier)
                                     .state = draft.praiseSpoiled;
 
+                                ref.watch(draftIDProvider.notifier).state =
+                                    draft.id;
                                 Navigator.of(context).pop();
                               },
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "作品名:${drafts[index - 1]!.node!.work.title}",
+                                    "作品名:${draft.work == null ? "" : draft.work!.title}",
                                     style: const TextStyle(fontSize: 16),
                                   ),
                                   Text(
-                                    "カテゴリ:${drafts[index - 1]!.node!.category.name}",
+                                    "カテゴリ:${draft.category == null ? "" : draft.category!.name}",
                                     style: const TextStyle(fontSize: 16),
                                   ),
                                   Row(
@@ -165,7 +176,9 @@ class DraftPage extends HookConsumerWidget {
                                         const Icon(Icons.chevron_right)
                                       ])
                                 ],
-                              )),
+                              ));
+                        }
+                      },
                       separatorBuilder: (context, index) => const Divider(
                             color: Colors.black12,
                             thickness: 1,

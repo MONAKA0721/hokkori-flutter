@@ -101,11 +101,10 @@ input CreateDraftInput {
   letterContent: String!
   praiseSpoiled: Boolean!
   letterSpoiled: Boolean!
-  thumbnail: String
   ownerID: ID!
   hashtagIDs: [ID!]
-  workID: ID!
-  categoryID: ID!
+  workID: ID
+  categoryID: ID
 }
 """
 CreateHashtagInput is used for create Hashtag object.
@@ -176,11 +175,10 @@ type Draft implements Node {
   letterContent: String!
   praiseSpoiled: Boolean!
   letterSpoiled: Boolean!
-  thumbnail: String
   owner: User!
   hashtags: [Hashtag!]
-  work: Work!
-  category: Category!
+  work: Work
+  category: Category
 }
 """
 A connection to a list of items.
@@ -347,24 +345,6 @@ input DraftWhereInput {
   """
   letterSpoiled: Boolean
   letterSpoiledNEQ: Boolean
-  """
-  thumbnail field predicates
-  """
-  thumbnail: String
-  thumbnailNEQ: String
-  thumbnailIn: [String!]
-  thumbnailNotIn: [String!]
-  thumbnailGT: String
-  thumbnailGTE: String
-  thumbnailLT: String
-  thumbnailLTE: String
-  thumbnailContains: String
-  thumbnailHasPrefix: String
-  thumbnailHasSuffix: String
-  thumbnailIsNil: Boolean
-  thumbnailNotNil: Boolean
-  thumbnailEqualFold: String
-  thumbnailContainsFold: String
   """
   owner edge predicates
   """
@@ -896,8 +876,6 @@ input UpdateDraftInput {
   letterContent: String
   praiseSpoiled: Boolean
   letterSpoiled: Boolean
-  clearThumbnail: Boolean
-  thumbnail: String
   clearOwner: Boolean
   ownerID: ID
   addHashtagIDs: [ID!]

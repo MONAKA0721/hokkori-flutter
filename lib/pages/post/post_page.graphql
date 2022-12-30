@@ -64,3 +64,26 @@ mutation CreatePost(
     id
   }
 }
+
+mutation CreateDraft(
+  $createDraftInput: CreateDraftInput!
+  $hashtagTitles: [String]!
+) {
+  createDraft(input: $createDraftInput, hashtagTitles: $hashtagTitles) {
+    id
+  }
+}
+
+mutation UpdateDraft(
+  $id: ID!
+  $updateDraftInput: UpdateDraftInput!
+  $hashtagTitles: [String]!
+) {
+  updateDraft(
+    id: $id
+    input: $updateDraftInput
+    hashtagTitles: $hashtagTitles
+  ) {
+    id
+  }
+}

@@ -17,7 +17,6 @@ query GetDraft($id: ID!) {
       praiseTitle
       praiseContent
       praiseSpoiled
-      thumbnail
       letterTitle
       letterContent
       letterSpoiled
