@@ -1,4 +1,5 @@
 import '../../graphql/ent.graphql.dart';
+import '../../graphql/schema.graphql.dart';
 import 'dart:async';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
@@ -5064,4 +5065,531 @@ class _CopyWithStubImpl$Mutation$UpdateDraft$updateDraft<TRes>
   TRes _res;
 
   call({String? id, String? $__typename}) => _res;
+}
+
+class Variables$Mutation$DeleteDraft {
+  factory Variables$Mutation$DeleteDraft(
+          {required Input$DeleteDraftInput input}) =>
+      Variables$Mutation$DeleteDraft._({
+        r'input': input,
+      });
+
+  Variables$Mutation$DeleteDraft._(this._$data);
+
+  factory Variables$Mutation$DeleteDraft.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$input = data['input'];
+    result$data['input'] =
+        Input$DeleteDraftInput.fromJson((l$input as Map<String, dynamic>));
+    return Variables$Mutation$DeleteDraft._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Input$DeleteDraftInput get input =>
+      (_$data['input'] as Input$DeleteDraftInput);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$input = input;
+    result$data['input'] = l$input.toJson();
+    return result$data;
+  }
+
+  CopyWith$Variables$Mutation$DeleteDraft<Variables$Mutation$DeleteDraft>
+      get copyWith => CopyWith$Variables$Mutation$DeleteDraft(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Variables$Mutation$DeleteDraft) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$input = input;
+    final lOther$input = other.input;
+    if (l$input != lOther$input) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$input = input;
+    return Object.hashAll([l$input]);
+  }
+}
+
+abstract class CopyWith$Variables$Mutation$DeleteDraft<TRes> {
+  factory CopyWith$Variables$Mutation$DeleteDraft(
+          Variables$Mutation$DeleteDraft instance,
+          TRes Function(Variables$Mutation$DeleteDraft) then) =
+      _CopyWithImpl$Variables$Mutation$DeleteDraft;
+
+  factory CopyWith$Variables$Mutation$DeleteDraft.stub(TRes res) =
+      _CopyWithStubImpl$Variables$Mutation$DeleteDraft;
+
+  TRes call({Input$DeleteDraftInput? input});
+}
+
+class _CopyWithImpl$Variables$Mutation$DeleteDraft<TRes>
+    implements CopyWith$Variables$Mutation$DeleteDraft<TRes> {
+  _CopyWithImpl$Variables$Mutation$DeleteDraft(this._instance, this._then);
+
+  final Variables$Mutation$DeleteDraft _instance;
+
+  final TRes Function(Variables$Mutation$DeleteDraft) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? input = _undefined}) =>
+      _then(Variables$Mutation$DeleteDraft._({
+        ..._instance._$data,
+        if (input != _undefined && input != null)
+          'input': (input as Input$DeleteDraftInput),
+      }));
+}
+
+class _CopyWithStubImpl$Variables$Mutation$DeleteDraft<TRes>
+    implements CopyWith$Variables$Mutation$DeleteDraft<TRes> {
+  _CopyWithStubImpl$Variables$Mutation$DeleteDraft(this._res);
+
+  TRes _res;
+
+  call({Input$DeleteDraftInput? input}) => _res;
+}
+
+class Mutation$DeleteDraft {
+  Mutation$DeleteDraft({required this.deleteDraft, required this.$__typename});
+
+  factory Mutation$DeleteDraft.fromJson(Map<String, dynamic> json) {
+    final l$deleteDraft = json['deleteDraft'];
+    final l$$__typename = json['__typename'];
+    return Mutation$DeleteDraft(
+        deleteDraft: Mutation$DeleteDraft$deleteDraft.fromJson(
+            (l$deleteDraft as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final Mutation$DeleteDraft$deleteDraft deleteDraft;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$deleteDraft = deleteDraft;
+    _resultData['deleteDraft'] = l$deleteDraft.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$deleteDraft = deleteDraft;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$deleteDraft, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$DeleteDraft) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$deleteDraft = deleteDraft;
+    final lOther$deleteDraft = other.deleteDraft;
+    if (l$deleteDraft != lOther$deleteDraft) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$DeleteDraft on Mutation$DeleteDraft {
+  CopyWith$Mutation$DeleteDraft<Mutation$DeleteDraft> get copyWith =>
+      CopyWith$Mutation$DeleteDraft(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$DeleteDraft<TRes> {
+  factory CopyWith$Mutation$DeleteDraft(Mutation$DeleteDraft instance,
+          TRes Function(Mutation$DeleteDraft) then) =
+      _CopyWithImpl$Mutation$DeleteDraft;
+
+  factory CopyWith$Mutation$DeleteDraft.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$DeleteDraft;
+
+  TRes call(
+      {Mutation$DeleteDraft$deleteDraft? deleteDraft, String? $__typename});
+  CopyWith$Mutation$DeleteDraft$deleteDraft<TRes> get deleteDraft;
+}
+
+class _CopyWithImpl$Mutation$DeleteDraft<TRes>
+    implements CopyWith$Mutation$DeleteDraft<TRes> {
+  _CopyWithImpl$Mutation$DeleteDraft(this._instance, this._then);
+
+  final Mutation$DeleteDraft _instance;
+
+  final TRes Function(Mutation$DeleteDraft) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? deleteDraft = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Mutation$DeleteDraft(
+          deleteDraft: deleteDraft == _undefined || deleteDraft == null
+              ? _instance.deleteDraft
+              : (deleteDraft as Mutation$DeleteDraft$deleteDraft),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Mutation$DeleteDraft$deleteDraft<TRes> get deleteDraft {
+    final local$deleteDraft = _instance.deleteDraft;
+    return CopyWith$Mutation$DeleteDraft$deleteDraft(
+        local$deleteDraft, (e) => call(deleteDraft: e));
+  }
+}
+
+class _CopyWithStubImpl$Mutation$DeleteDraft<TRes>
+    implements CopyWith$Mutation$DeleteDraft<TRes> {
+  _CopyWithStubImpl$Mutation$DeleteDraft(this._res);
+
+  TRes _res;
+
+  call({Mutation$DeleteDraft$deleteDraft? deleteDraft, String? $__typename}) =>
+      _res;
+  CopyWith$Mutation$DeleteDraft$deleteDraft<TRes> get deleteDraft =>
+      CopyWith$Mutation$DeleteDraft$deleteDraft.stub(_res);
+}
+
+const documentNodeMutationDeleteDraft = DocumentNode(definitions: [
+  OperationDefinitionNode(
+      type: OperationType.mutation,
+      name: NameNode(value: 'DeleteDraft'),
+      variableDefinitions: [
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'input')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'DeleteDraftInput'), isNonNull: true),
+            defaultValue: DefaultValueNode(value: null),
+            directives: [])
+      ],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+            name: NameNode(value: 'deleteDraft'),
+            alias: null,
+            arguments: [
+              ArgumentNode(
+                  name: NameNode(value: 'input'),
+                  value: VariableNode(name: NameNode(value: 'input')))
+            ],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                  name: NameNode(value: 'clientMutationId'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null),
+              FieldNode(
+                  name: NameNode(value: '__typename'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: null)
+            ])),
+        FieldNode(
+            name: NameNode(value: '__typename'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null)
+      ])),
+]);
+Mutation$DeleteDraft _parserFn$Mutation$DeleteDraft(
+        Map<String, dynamic> data) =>
+    Mutation$DeleteDraft.fromJson(data);
+typedef OnMutationCompleted$Mutation$DeleteDraft = FutureOr<void> Function(
+    dynamic, Mutation$DeleteDraft?);
+
+class Options$Mutation$DeleteDraft
+    extends graphql.MutationOptions<Mutation$DeleteDraft> {
+  Options$Mutation$DeleteDraft(
+      {String? operationName,
+      required Variables$Mutation$DeleteDraft variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$DeleteDraft? onCompleted,
+      graphql.OnMutationUpdate<Mutation$DeleteDraft>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(data,
+                    data == null ? null : _parserFn$Mutation$DeleteDraft(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationDeleteDraft,
+            parserFn: _parserFn$Mutation$DeleteDraft);
+
+  final OnMutationCompleted$Mutation$DeleteDraft? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+class WatchOptions$Mutation$DeleteDraft
+    extends graphql.WatchQueryOptions<Mutation$DeleteDraft> {
+  WatchOptions$Mutation$DeleteDraft(
+      {String? operationName,
+      required Variables$Mutation$DeleteDraft variables,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      Duration? pollInterval,
+      bool? eagerlyFetchResults,
+      bool carryForwardDataOnException = true,
+      bool fetchResults = false})
+      : super(
+            variables: variables.toJson(),
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            document: documentNodeMutationDeleteDraft,
+            pollInterval: pollInterval,
+            eagerlyFetchResults: eagerlyFetchResults,
+            carryForwardDataOnException: carryForwardDataOnException,
+            fetchResults: fetchResults,
+            parserFn: _parserFn$Mutation$DeleteDraft);
+}
+
+extension ClientExtension$Mutation$DeleteDraft on graphql.GraphQLClient {
+  Future<graphql.QueryResult<Mutation$DeleteDraft>> mutate$DeleteDraft(
+          Options$Mutation$DeleteDraft options) async =>
+      await this.mutate(options);
+  graphql.ObservableQuery<Mutation$DeleteDraft> watchMutation$DeleteDraft(
+          WatchOptions$Mutation$DeleteDraft options) =>
+      this.watchMutation(options);
+}
+
+class Mutation$DeleteDraft$HookResult {
+  Mutation$DeleteDraft$HookResult(this.runMutation, this.result);
+
+  final RunMutation$Mutation$DeleteDraft runMutation;
+
+  final graphql.QueryResult<Mutation$DeleteDraft> result;
+}
+
+Mutation$DeleteDraft$HookResult useMutation$DeleteDraft(
+    [WidgetOptions$Mutation$DeleteDraft? options]) {
+  final result = graphql_flutter
+      .useMutation(options ?? WidgetOptions$Mutation$DeleteDraft());
+  return Mutation$DeleteDraft$HookResult(
+    (variables, {optimisticResult}) => result.runMutation(
+      variables.toJson(),
+      optimisticResult: optimisticResult,
+    ),
+    result.result,
+  );
+}
+
+graphql.ObservableQuery<Mutation$DeleteDraft> useWatchMutation$DeleteDraft(
+        WatchOptions$Mutation$DeleteDraft options) =>
+    graphql_flutter.useWatchMutation(options);
+
+class WidgetOptions$Mutation$DeleteDraft
+    extends graphql.MutationOptions<Mutation$DeleteDraft> {
+  WidgetOptions$Mutation$DeleteDraft(
+      {String? operationName,
+      graphql.FetchPolicy? fetchPolicy,
+      graphql.ErrorPolicy? errorPolicy,
+      graphql.CacheRereadPolicy? cacheRereadPolicy,
+      Object? optimisticResult,
+      graphql.Context? context,
+      OnMutationCompleted$Mutation$DeleteDraft? onCompleted,
+      graphql.OnMutationUpdate<Mutation$DeleteDraft>? update,
+      graphql.OnError? onError})
+      : onCompletedWithParsed = onCompleted,
+        super(
+            operationName: operationName,
+            fetchPolicy: fetchPolicy,
+            errorPolicy: errorPolicy,
+            cacheRereadPolicy: cacheRereadPolicy,
+            optimisticResult: optimisticResult,
+            context: context,
+            onCompleted: onCompleted == null
+                ? null
+                : (data) => onCompleted(data,
+                    data == null ? null : _parserFn$Mutation$DeleteDraft(data)),
+            update: update,
+            onError: onError,
+            document: documentNodeMutationDeleteDraft,
+            parserFn: _parserFn$Mutation$DeleteDraft);
+
+  final OnMutationCompleted$Mutation$DeleteDraft? onCompletedWithParsed;
+
+  @override
+  List<Object?> get properties => [
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed
+      ];
+}
+
+typedef RunMutation$Mutation$DeleteDraft
+    = graphql.MultiSourceResult<Mutation$DeleteDraft>
+        Function(Variables$Mutation$DeleteDraft, {Object? optimisticResult});
+typedef Builder$Mutation$DeleteDraft = widgets.Widget Function(
+    RunMutation$Mutation$DeleteDraft,
+    graphql.QueryResult<Mutation$DeleteDraft>?);
+
+class Mutation$DeleteDraft$Widget
+    extends graphql_flutter.Mutation<Mutation$DeleteDraft> {
+  Mutation$DeleteDraft$Widget(
+      {widgets.Key? key,
+      WidgetOptions$Mutation$DeleteDraft? options,
+      required Builder$Mutation$DeleteDraft builder})
+      : super(
+            key: key,
+            options: options ?? WidgetOptions$Mutation$DeleteDraft(),
+            builder: (run, result) => builder(
+                (variables, {optimisticResult}) =>
+                    run(variables.toJson(), optimisticResult: optimisticResult),
+                result));
+}
+
+class Mutation$DeleteDraft$deleteDraft {
+  Mutation$DeleteDraft$deleteDraft(
+      {this.clientMutationId, required this.$__typename});
+
+  factory Mutation$DeleteDraft$deleteDraft.fromJson(Map<String, dynamic> json) {
+    final l$clientMutationId = json['clientMutationId'];
+    final l$$__typename = json['__typename'];
+    return Mutation$DeleteDraft$deleteDraft(
+        clientMutationId: (l$clientMutationId as String?),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String? clientMutationId;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$clientMutationId = clientMutationId;
+    _resultData['clientMutationId'] = l$clientMutationId;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$clientMutationId = clientMutationId;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$clientMutationId, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Mutation$DeleteDraft$deleteDraft) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$clientMutationId = clientMutationId;
+    final lOther$clientMutationId = other.clientMutationId;
+    if (l$clientMutationId != lOther$clientMutationId) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Mutation$DeleteDraft$deleteDraft
+    on Mutation$DeleteDraft$deleteDraft {
+  CopyWith$Mutation$DeleteDraft$deleteDraft<Mutation$DeleteDraft$deleteDraft>
+      get copyWith => CopyWith$Mutation$DeleteDraft$deleteDraft(this, (i) => i);
+}
+
+abstract class CopyWith$Mutation$DeleteDraft$deleteDraft<TRes> {
+  factory CopyWith$Mutation$DeleteDraft$deleteDraft(
+          Mutation$DeleteDraft$deleteDraft instance,
+          TRes Function(Mutation$DeleteDraft$deleteDraft) then) =
+      _CopyWithImpl$Mutation$DeleteDraft$deleteDraft;
+
+  factory CopyWith$Mutation$DeleteDraft$deleteDraft.stub(TRes res) =
+      _CopyWithStubImpl$Mutation$DeleteDraft$deleteDraft;
+
+  TRes call({String? clientMutationId, String? $__typename});
+}
+
+class _CopyWithImpl$Mutation$DeleteDraft$deleteDraft<TRes>
+    implements CopyWith$Mutation$DeleteDraft$deleteDraft<TRes> {
+  _CopyWithImpl$Mutation$DeleteDraft$deleteDraft(this._instance, this._then);
+
+  final Mutation$DeleteDraft$deleteDraft _instance;
+
+  final TRes Function(Mutation$DeleteDraft$deleteDraft) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? clientMutationId = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Mutation$DeleteDraft$deleteDraft(
+          clientMutationId: clientMutationId == _undefined
+              ? _instance.clientMutationId
+              : (clientMutationId as String?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Mutation$DeleteDraft$deleteDraft<TRes>
+    implements CopyWith$Mutation$DeleteDraft$deleteDraft<TRes> {
+  _CopyWithStubImpl$Mutation$DeleteDraft$deleteDraft(this._res);
+
+  TRes _res;
+
+  call({String? clientMutationId, String? $__typename}) => _res;
 }

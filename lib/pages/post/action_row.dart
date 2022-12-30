@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hokkori/graphql/ent.graphql.dart';
+import 'package:hokkori/graphql/schema.graphql.dart';
 import 'package:hokkori/pages/post/post_page.dart';
 import 'package:hokkori/pages/post/post_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
@@ -311,9 +312,15 @@ class SubmitButton extends HookConsumerWidget {
         useMutation$CreatePost(WidgetOptions$Mutation$CreatePost());
     final createPostsMutation =
         useMutation$CreatePosts(WidgetOptions$Mutation$CreatePosts());
+    final deleteDraftMutation =
+        useMutation$DeleteDraft(WidgetOptions$Mutation$DeleteDraft());
     final postMutationResult = createPostMutation.result;
     final postsMutationResult = createPostsMutation.result;
-    return postMutationResult.isLoading || postsMutationResult.isLoading
+    final deleteDraftMutationResult = deleteDraftMutation.result;
+
+    return postMutationResult.isLoading ||
+            postsMutationResult.isLoading ||
+            deleteDraftMutationResult.isLoading
         ? const CircularProgressIndicator()
         : OutlinedButton(
             child: Row(children: [
@@ -418,6 +425,19 @@ class SubmitButton extends HookConsumerWidget {
                 }
               }
               resetForm();
+              {
+                final result = deleteDraftMutation
+                    .runMutation(Variables$Mutation$DeleteDraft(
+                        input: Input$DeleteDraftInput(
+                  draftId: ref.watch(draftIDProvider)!,
+                  userID: ref.watch(userProvider).id,
+                )));
+                if ((await result.networkResult)!.hasException) {
+                  ref.watch(draftIDProvider.notifier).state = null;
+                  navigate();
+                  return;
+                }
+              }
               ref.watch(draftIDProvider.notifier).state = null;
               navigate();
             },

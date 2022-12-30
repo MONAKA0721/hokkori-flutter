@@ -87,3 +87,9 @@ mutation UpdateDraft(
     id
   }
 }
+
+mutation DeleteDraft($input: DeleteDraftInput!) {
+  deleteDraft(input: $input) {
+    clientMutationId
+  }
+}

@@ -29,6 +29,7 @@ type Mutation {
     input: UpdateDraftInput!
     hashtagTitles: [String]!
   ): Draft!
+  deleteDraft(input: DeleteDraftInput!): DeleteDraftPayload!
 }
 
 extend type Query {
@@ -107,4 +108,16 @@ type WorkCategory {
   categoryID: ID!
   categoryName: String!
   postCount: Int!
+}
+
+input DeleteDraftInput {
+  clientMutationId: String
+  draftId: ID!
+  userID: ID!
+}
+
+type DeleteDraftPayload {
+  clientMutationId: String
+  draftId: ID
+  userID: ID
 }
