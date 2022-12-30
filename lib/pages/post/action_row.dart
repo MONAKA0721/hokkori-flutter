@@ -106,44 +106,68 @@ class ActionRow extends StatelessWidget {
   }
 }
 
-class DiscardButton extends ConsumerWidget {
+class DiscardButton extends HookConsumerWidget {
   const DiscardButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return GestureDetector(
-        onTap: () {
-          ref.watch(workErrorProvider.notifier).state = false;
-          ref.watch(categoryErrorProvider.notifier).state = false;
-          ref.watch(praiseTitleErrorProvider.notifier).state = false;
-          ref.watch(praiseContentErrorProvider.notifier).state = false;
-          ref.watch(letterTitleErrorProvider.notifier).state = false;
-          ref.watch(letterContentErrorProvider.notifier).state = false;
+    void resetForm() {
+      ref.watch(workErrorProvider.notifier).state = false;
+      ref.watch(categoryErrorProvider.notifier).state = false;
+      ref.watch(praiseTitleErrorProvider.notifier).state = false;
+      ref.watch(praiseContentErrorProvider.notifier).state = false;
+      ref.watch(letterTitleErrorProvider.notifier).state = false;
+      ref.watch(letterContentErrorProvider.notifier).state = false;
 
-          ref.watch(workProvider.notifier).state = null;
-          ref.watch(categoryProvider.notifier).state = null;
-          ref.watch(hashtagsProvider.notifier).state = List.empty();
-          ref.watch(praiseTitleProvider.notifier).state = "";
-          ref.watch(praiseContentProvider.notifier).state = "";
-          ref.watch(praiseSpoiledProvider.notifier).state = false;
-          ref.watch(letterTitleProvider.notifier).state = "";
-          ref.watch(letterContentProvider.notifier).state = "";
-          ref.watch(letterSpoiledProvider.notifier).state = false;
+      ref.watch(workProvider.notifier).state = null;
+      ref.watch(categoryProvider.notifier).state = null;
+      ref.watch(hashtagsProvider.notifier).state = List.empty();
+      ref.watch(praiseTitleProvider.notifier).state = "";
+      ref.watch(praiseContentProvider.notifier).state = "";
+      ref.watch(praiseSpoiledProvider.notifier).state = false;
+      ref.watch(letterTitleProvider.notifier).state = "";
+      ref.watch(letterContentProvider.notifier).state = "";
+      ref.watch(letterSpoiledProvider.notifier).state = false;
 
-          ref.watch(draftIDProvider.notifier).state = null;
+      ref.watch(draftIDProvider.notifier).state = null;
+    }
 
-          Navigator.of(context).pop();
-        },
-        child: const SizedBox(
+    final deleteDraftMutation =
+        useMutation$DeleteDraft(WidgetOptions$Mutation$DeleteDraft());
+
+    return deleteDraftMutation.result.isLoading
+        ? const SizedBox(
             height: 80,
-            child: Center(
-                child: Text(
-              "破棄する",
-              style: TextStyle(
-                  color: redErrorColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ))));
+            child: Center(child: CircularProgressIndicator()),
+          )
+        : GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () async {
+              if (ref.watch(draftIDProvider) != null) {
+                final result = deleteDraftMutation
+                    .runMutation(Variables$Mutation$DeleteDraft(
+                        input: Input$DeleteDraftInput(
+                  draftId: ref.watch(draftIDProvider)!,
+                  userID: ref.watch(userProvider).id,
+                )));
+                await result.networkResult;
+                ref.watch(draftIDProvider.notifier).state = null;
+                resetForm();
+              } else {
+                resetForm();
+              }
+              Navigator.of(context).pop();
+            },
+            child: const SizedBox(
+                height: 80,
+                child: Center(
+                    child: Text(
+                  "破棄する",
+                  style: TextStyle(
+                      color: redErrorColor,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ))));
   }
 }
 
@@ -186,6 +210,7 @@ class SaveButton extends HookConsumerWidget {
             child: Center(child: CircularProgressIndicator()),
           )
         : GestureDetector(
+            behavior: HitTestBehavior.opaque,
             onTap: () async {
               if (ref.watch(draftIDProvider) == null) {
                 final result = createDraftMutation.runMutation(
@@ -432,11 +457,7 @@ class SubmitButton extends HookConsumerWidget {
                   draftId: ref.watch(draftIDProvider)!,
                   userID: ref.watch(userProvider).id,
                 )));
-                if ((await result.networkResult)!.hasException) {
-                  ref.watch(draftIDProvider.notifier).state = null;
-                  navigate();
-                  return;
-                }
+                await result.networkResult;
               }
               ref.watch(draftIDProvider.notifier).state = null;
               navigate();
