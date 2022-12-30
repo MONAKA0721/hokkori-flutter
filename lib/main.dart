@@ -10,6 +10,7 @@ import 'package:hive/hive.dart';
 import 'package:hokkori/index.dart';
 import 'package:hokkori/login.dart';
 import 'package:hokkori/pages/tutorial/tutorial_navigator.dart';
+import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hokkori/utils/user.dart';
 import 'package:http/http.dart' as http;
@@ -282,15 +283,20 @@ class _MyAppState extends ConsumerState<MyApp> {
                 // is not restarted.
                 primarySwatch: Colors.blue,
                 fontFamily: 'Zen Kaku Gothic New'),
-            home: ref.watch(isBusyProvider)
-                ? const Center(child: CircularProgressIndicator())
-                : ref.watch(isLoggedInProvider)
-                    ? const Index(title: 'ほっこり')
-                    : doneTutorial
-                        ? Login(
-                            loginAction: loginAction,
-                            loginError: errorMessage,
-                          )
-                        : TutorialNavigator(loginAction: loginAction)));
+            home: Container(
+                color: backgroundColor,
+                child: SafeArea(
+                    bottom: false,
+                    child: ref.watch(isBusyProvider)
+                        ? const Center(child: CircularProgressIndicator())
+                        : ref.watch(isLoggedInProvider)
+                            ? const Index(title: 'ほっこり')
+                            : doneTutorial
+                                ? Login(
+                                    loginAction: loginAction,
+                                    loginError: errorMessage,
+                                  )
+                                : TutorialNavigator(
+                                    loginAction: loginAction)))));
   }
 }

@@ -119,9 +119,6 @@ class _PostPageState extends ConsumerState<PostPage> {
           decoration: const BoxDecoration(color: backgroundColor),
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Column(children: [
-            const SizedBox(
-              height: 40,
-            ),
             ActionRow(
               navigate: widget.navigate,
             ),
@@ -232,13 +229,13 @@ class _Step1State extends ConsumerState<Step1> {
       child: ListTile(
         selected: isSelected,
         title: Text(item?.title ?? ''),
-        leading: thumbnail != null
-            ? Image.network(
-                thumbnail,
+        leading: thumbnail == null || thumbnail.isEmpty
+            ? Image.asset(
+                "assets/noimage.png",
                 width: width,
               )
-            : Image.asset(
-                "assets/noimage.png",
+            : Image.network(
+                thumbnail,
                 width: width,
               ),
       ),
