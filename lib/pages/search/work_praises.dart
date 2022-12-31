@@ -24,6 +24,59 @@ class _WorkPraisesState extends State<WorkPraises> {
   Widget build(BuildContext context) {
     final allCount = widget.workCategories!.fold<int>(
         0, ((previousValue, element) => previousValue + element!.postCount));
+
+    List<DropdownMenuItem<String>> _addDividersAfterItems() {
+      List<DropdownMenuItem<String>> _menuItems = [];
+      _menuItems.add(DropdownMenuItem<String>(
+          value: "",
+          child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Text(
+                "全て（$allCount件）",
+              ))));
+      _menuItems.add(const DropdownMenuItem<String>(
+        enabled: false,
+        child: Divider(
+          color: blueButtonColor,
+          thickness: 0.5,
+        ),
+      ));
+      for (var workCategory in widget.workCategories!) {
+        _menuItems.addAll(
+          [
+            DropdownMenuItem<String>(
+              value: workCategory!.categoryID,
+              child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Text(
+                    "${workCategory.categoryName}（${workCategory.postCount}件）",
+                  )),
+            ),
+            if (workCategory != widget.workCategories!.last)
+              const DropdownMenuItem<String>(
+                enabled: false,
+                child: Divider(
+                  thickness: 0.5,
+                  color: blueButtonColor,
+                ),
+              ),
+          ],
+        );
+      }
+      return _menuItems;
+    }
+
+    List<int> _getDividersIndexes() {
+      List<int> _dividersIndexes = [];
+      for (var i = 0; i < ((widget.workCategories!.length + 1) * 2) - 1; i++) {
+        //Dividers indexes will be the odd indexes
+        if (i.isOdd) {
+          _dividersIndexes.add(i);
+        }
+      }
+      return _dividersIndexes;
+    }
+
     return Column(
       children: [
         Padding(
@@ -48,21 +101,9 @@ class _WorkPraisesState extends State<WorkPraises> {
         SizedBox(
             width: 300,
             child: DropdownButton2(
-              items: [
-                DropdownMenuItem<String>(
-                    value: "",
-                    child: Text(
-                      "全て（$allCount件）",
-                    )),
-                ...widget.workCategories!
-                    .map((workCategory) => DropdownMenuItem<String>(
-                          value: workCategory!.categoryID,
-                          child: Text(
-                            "${workCategory.categoryName}（${workCategory.postCount}件）",
-                          ),
-                        ))
-                    .toList()
-              ],
+              items: _addDividersAfterItems(),
+              customItemsIndexes: _getDividersIndexes(),
+              customItemsHeight: 1,
               value: categoryID,
               onChanged: (value) {
                 setState(() => {categoryID = value as String});
@@ -71,30 +112,33 @@ class _WorkPraisesState extends State<WorkPraises> {
                 decoration: BoxDecoration(
                     color: Colors.transparent,
                     shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white, width: 1)),
+                    border: Border.all(color: blueButtonColor, width: 1)),
                 child: const Icon(
                   Icons.expand_more,
-                  color: Colors.white,
+                  color: blueButtonColor,
                 ),
               ),
               iconOnClick: Container(
                 decoration: BoxDecoration(
                     color: Colors.transparent,
                     shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white, width: 1)),
+                    border: Border.all(color: blueButtonColor, width: 1)),
                 child: const Icon(
                   Icons.expand_less,
-                  color: Colors.white,
+                  color: blueButtonColor,
                 ),
               ),
               buttonDecoration: BoxDecoration(
+                  border: Border.all(color: blueButtonColor),
                   borderRadius: isOpen
                       ? const BorderRadius.vertical(top: Radius.circular(35))
                       : BorderRadius.circular(35),
-                  color: blueButtonColor),
+                  color: const Color(0xffEDF2F7)),
               underline: Container(),
               isExpanded: true,
-              buttonPadding: const EdgeInsets.only(right: 20, left: 30),
+              buttonPadding: const EdgeInsets.only(
+                right: 20,
+              ),
               buttonHeight: 70,
               onMenuStateChange: (bool open) {
                 setState(() {
@@ -102,11 +146,12 @@ class _WorkPraisesState extends State<WorkPraises> {
                 });
               },
               itemHeight: 70,
-              dropdownPadding: const EdgeInsets.only(left: 12),
-              dropdownDecoration: const BoxDecoration(
-                  color: Color(0xffEDF2F7),
+              itemPadding: const EdgeInsets.symmetric(horizontal: 0),
+              dropdownDecoration: BoxDecoration(
+                  border: Border.all(color: blueButtonColor),
+                  color: const Color(0xffEDF2F7),
                   borderRadius:
-                      BorderRadius.vertical(bottom: Radius.circular(35))),
+                      const BorderRadius.vertical(bottom: Radius.circular(35))),
             )),
         Padding(
             padding: const EdgeInsets.only(left: 16, right: 16, top: 12),
