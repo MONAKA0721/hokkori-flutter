@@ -143,6 +143,18 @@ input CreateUserInput {
   username: String
   profile: String
   avatarURL: String
+  """
+  1:10代 2:20代 3:30代 4:40代 5:50代 6:60代以上
+  """
+  age: Int
+  """
+  1:男 2:女 3:選択しない
+  """
+  gender: Int
+  """
+  1:ポケットモンスター 2:どうぶつの森 3:スーパーマリオ 4:スプラトゥーン 5:ゼルダの伝説 6:モンスターハンター 7:ドラゴンクエスト 8:ファイナルファンタジー 9:ニーア 10:桃太郎電鉄 11:パワプロ 12:メタルギア 13:マインクラフト 14:ソニック
+  """
+  interests: [Int!]
   postIDs: [ID!]
   likedPostIDs: [ID!]
   bookmarkedPostIDs: [ID!]
@@ -933,6 +945,21 @@ input UpdateUserInput {
   profile: String
   clearAvatarURL: Boolean
   avatarURL: String
+  clearAge: Boolean
+  """
+  1:10代 2:20代 3:30代 4:40代 5:50代 6:60代以上
+  """
+  age: Int
+  clearGender: Boolean
+  """
+  1:男 2:女 3:選択しない
+  """
+  gender: Int
+  clearInterests: Boolean
+  """
+  1:ポケットモンスター 2:どうぶつの森 3:スーパーマリオ 4:スプラトゥーン 5:ゼルダの伝説 6:モンスターハンター 7:ドラゴンクエスト 8:ファイナルファンタジー 9:ニーア 10:桃太郎電鉄 11:パワプロ 12:メタルギア 13:マインクラフト 14:ソニック
+  """
+  interests: [Int!]
   addPostIDs: [ID!]
   removePostIDs: [ID!]
   addLikedPostIDs: [ID!]
@@ -965,6 +992,18 @@ type User implements Node {
   username: String
   profile: String
   avatarURL: String
+  """
+  1:10代 2:20代 3:30代 4:40代 5:50代 6:60代以上
+  """
+  age: Int
+  """
+  1:男 2:女 3:選択しない
+  """
+  gender: Int
+  """
+  1:ポケットモンスター 2:どうぶつの森 3:スーパーマリオ 4:スプラトゥーン 5:ゼルダの伝説 6:モンスターハンター 7:ドラゴンクエスト 8:ファイナルファンタジー 9:ニーア 10:桃太郎電鉄 11:パワプロ 12:メタルギア 13:マインクラフト 14:ソニック
+  """
+  interests: [Int!]
   posts: [Post!]
   likedPosts: [Post!]
   bookmarkedPosts: [Post!]
@@ -1061,6 +1100,32 @@ input UserWhereInput {
   avatarURLNotNil: Boolean
   avatarURLEqualFold: String
   avatarURLContainsFold: String
+  """
+  age field predicates
+  """
+  age: Int
+  ageNEQ: Int
+  ageIn: [Int!]
+  ageNotIn: [Int!]
+  ageGT: Int
+  ageGTE: Int
+  ageLT: Int
+  ageLTE: Int
+  ageIsNil: Boolean
+  ageNotNil: Boolean
+  """
+  gender field predicates
+  """
+  gender: Int
+  genderNEQ: Int
+  genderIn: [Int!]
+  genderNotIn: [Int!]
+  genderGT: Int
+  genderGTE: Int
+  genderLT: Int
+  genderLTE: Int
+  genderIsNil: Boolean
+  genderNotNil: Boolean
   """
   posts edge predicates
   """

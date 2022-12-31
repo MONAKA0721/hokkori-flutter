@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:hokkori/pages/tutorial/indicator.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/interests.dart';
+import 'package:hokkori/utils/providers.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class Tutorial5 extends StatefulWidget {
+class Tutorial5 extends ConsumerStatefulWidget {
   final Function loginAction;
   const Tutorial5({Key? key, required this.loginAction}) : super(key: key);
 
   @override
-  State<Tutorial5> createState() => _Tutorial5State();
+  ConsumerState<Tutorial5> createState() => _Tutorial5State();
 }
 
-class _Tutorial5State extends State<Tutorial5> {
-  final checkedList = List.filled(10, false);
+class _Tutorial5State extends ConsumerState<Tutorial5> {
+  final checkedList = List.filled(masterInterests.length, false);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,7 @@ class _Tutorial5State extends State<Tutorial5> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              height: 463,
+              height: 610,
               padding: const EdgeInsets.symmetric(
                 vertical: 30,
               ),
@@ -56,14 +58,19 @@ class _Tutorial5State extends State<Tutorial5> {
                           .entries
                           .map((entry) =>
                               Row(mainAxisSize: MainAxisSize.min, children: [
-                                Checkbox(
-                                    value: checkedList[entry.key],
-                                    onChanged: (bool? e) => {
-                                          setState(() {
-                                            checkedList[entry.key] = e!;
-                                          })
-                                        }),
-                                Text(masterInterests[entry.key].name)
+                                SizedBox(
+                                    width: 30,
+                                    height: 48,
+                                    child: Checkbox(
+                                        value: checkedList[entry.key],
+                                        onChanged: (bool? e) => {
+                                              setState(() {
+                                                checkedList[entry.key] = e!;
+                                              })
+                                            })),
+                                Text(
+                                  masterInterests[entry.key].name,
+                                )
                               ]))
                           .toList(),
                     )),
@@ -92,6 +99,16 @@ class _Tutorial5State extends State<Tutorial5> {
                           ),
                         ),
                         onPressed: () async {
+                          List<int> interests = [];
+                          checkedList
+                              .asMap()
+                              .forEach((int index, bool checked) {
+                            if (checked) {
+                              interests.add(index + 1);
+                            }
+                          });
+                          ref.watch(tutorialInterestsProvider.notifier).state =
+                              interests;
                           await widget.loginAction();
                         },
                         child: Row(

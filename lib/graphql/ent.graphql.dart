@@ -1958,6 +1958,9 @@ class Input$CreateUserInput {
           String? username,
           String? profile,
           String? avatarURL,
+          int? age,
+          int? gender,
+          List<int>? interests,
           List<String>? postIDs,
           List<String>? likedPostIDs,
           List<String>? bookmarkedPostIDs,
@@ -1969,6 +1972,9 @@ class Input$CreateUserInput {
         if (username != null) r'username': username,
         if (profile != null) r'profile': profile,
         if (avatarURL != null) r'avatarURL': avatarURL,
+        if (age != null) r'age': age,
+        if (gender != null) r'gender': gender,
+        if (interests != null) r'interests': interests,
         if (postIDs != null) r'postIDs': postIDs,
         if (likedPostIDs != null) r'likedPostIDs': likedPostIDs,
         if (bookmarkedPostIDs != null) r'bookmarkedPostIDs': bookmarkedPostIDs,
@@ -1994,6 +2000,19 @@ class Input$CreateUserInput {
     if (data.containsKey('avatarURL')) {
       final l$avatarURL = data['avatarURL'];
       result$data['avatarURL'] = (l$avatarURL as String?);
+    }
+    if (data.containsKey('age')) {
+      final l$age = data['age'];
+      result$data['age'] = (l$age as int?);
+    }
+    if (data.containsKey('gender')) {
+      final l$gender = data['gender'];
+      result$data['gender'] = (l$gender as int?);
+    }
+    if (data.containsKey('interests')) {
+      final l$interests = data['interests'];
+      result$data['interests'] =
+          (l$interests as List<dynamic>?)?.map((e) => (e as int)).toList();
     }
     if (data.containsKey('postIDs')) {
       final l$postIDs = data['postIDs'];
@@ -2037,6 +2056,9 @@ class Input$CreateUserInput {
   String? get username => (_$data['username'] as String?);
   String? get profile => (_$data['profile'] as String?);
   String? get avatarURL => (_$data['avatarURL'] as String?);
+  int? get age => (_$data['age'] as int?);
+  int? get gender => (_$data['gender'] as int?);
+  List<int>? get interests => (_$data['interests'] as List<int>?);
   List<String>? get postIDs => (_$data['postIDs'] as List<String>?);
   List<String>? get likedPostIDs => (_$data['likedPostIDs'] as List<String>?);
   List<String>? get bookmarkedPostIDs =>
@@ -2059,6 +2081,18 @@ class Input$CreateUserInput {
     if (_$data.containsKey('avatarURL')) {
       final l$avatarURL = avatarURL;
       result$data['avatarURL'] = l$avatarURL;
+    }
+    if (_$data.containsKey('age')) {
+      final l$age = age;
+      result$data['age'] = l$age;
+    }
+    if (_$data.containsKey('gender')) {
+      final l$gender = gender;
+      result$data['gender'] = l$gender;
+    }
+    if (_$data.containsKey('interests')) {
+      final l$interests = interests;
+      result$data['interests'] = l$interests?.map((e) => e).toList();
     }
     if (_$data.containsKey('postIDs')) {
       final l$postIDs = postIDs;
@@ -2127,6 +2161,42 @@ class Input$CreateUserInput {
       return false;
     }
     if (l$avatarURL != lOther$avatarURL) {
+      return false;
+    }
+    final l$age = age;
+    final lOther$age = other.age;
+    if (_$data.containsKey('age') != other._$data.containsKey('age')) {
+      return false;
+    }
+    if (l$age != lOther$age) {
+      return false;
+    }
+    final l$gender = gender;
+    final lOther$gender = other.gender;
+    if (_$data.containsKey('gender') != other._$data.containsKey('gender')) {
+      return false;
+    }
+    if (l$gender != lOther$gender) {
+      return false;
+    }
+    final l$interests = interests;
+    final lOther$interests = other.interests;
+    if (_$data.containsKey('interests') !=
+        other._$data.containsKey('interests')) {
+      return false;
+    }
+    if (l$interests != null && lOther$interests != null) {
+      if (l$interests.length != lOther$interests.length) {
+        return false;
+      }
+      for (int i = 0; i < l$interests.length; i++) {
+        final l$interests$entry = l$interests[i];
+        final lOther$interests$entry = lOther$interests[i];
+        if (l$interests$entry != lOther$interests$entry) {
+          return false;
+        }
+      }
+    } else if (l$interests != lOther$interests) {
       return false;
     }
     final l$postIDs = postIDs;
@@ -2257,6 +2327,9 @@ class Input$CreateUserInput {
     final l$username = username;
     final l$profile = profile;
     final l$avatarURL = avatarURL;
+    final l$age = age;
+    final l$gender = gender;
+    final l$interests = interests;
     final l$postIDs = postIDs;
     final l$likedPostIDs = likedPostIDs;
     final l$bookmarkedPostIDs = bookmarkedPostIDs;
@@ -2268,6 +2341,13 @@ class Input$CreateUserInput {
       _$data.containsKey('username') ? l$username : const {},
       _$data.containsKey('profile') ? l$profile : const {},
       _$data.containsKey('avatarURL') ? l$avatarURL : const {},
+      _$data.containsKey('age') ? l$age : const {},
+      _$data.containsKey('gender') ? l$gender : const {},
+      _$data.containsKey('interests')
+          ? l$interests == null
+              ? null
+              : Object.hashAll(l$interests.map((v) => v))
+          : const {},
       _$data.containsKey('postIDs')
           ? l$postIDs == null
               ? null
@@ -2315,6 +2395,9 @@ abstract class CopyWith$Input$CreateUserInput<TRes> {
       String? username,
       String? profile,
       String? avatarURL,
+      int? age,
+      int? gender,
+      List<int>? interests,
       List<String>? postIDs,
       List<String>? likedPostIDs,
       List<String>? bookmarkedPostIDs,
@@ -2338,6 +2421,9 @@ class _CopyWithImpl$Input$CreateUserInput<TRes>
           Object? username = _undefined,
           Object? profile = _undefined,
           Object? avatarURL = _undefined,
+          Object? age = _undefined,
+          Object? gender = _undefined,
+          Object? interests = _undefined,
           Object? postIDs = _undefined,
           Object? likedPostIDs = _undefined,
           Object? bookmarkedPostIDs = _undefined,
@@ -2350,6 +2436,9 @@ class _CopyWithImpl$Input$CreateUserInput<TRes>
         if (username != _undefined) 'username': (username as String?),
         if (profile != _undefined) 'profile': (profile as String?),
         if (avatarURL != _undefined) 'avatarURL': (avatarURL as String?),
+        if (age != _undefined) 'age': (age as int?),
+        if (gender != _undefined) 'gender': (gender as int?),
+        if (interests != _undefined) 'interests': (interests as List<int>?),
         if (postIDs != _undefined) 'postIDs': (postIDs as List<String>?),
         if (likedPostIDs != _undefined)
           'likedPostIDs': (likedPostIDs as List<String>?),
@@ -2374,6 +2463,9 @@ class _CopyWithStubImpl$Input$CreateUserInput<TRes>
           String? username,
           String? profile,
           String? avatarURL,
+          int? age,
+          int? gender,
+          List<int>? interests,
           List<String>? postIDs,
           List<String>? likedPostIDs,
           List<String>? bookmarkedPostIDs,
@@ -11273,6 +11365,12 @@ class Input$UpdateUserInput {
           String? profile,
           bool? clearAvatarURL,
           String? avatarURL,
+          bool? clearAge,
+          int? age,
+          bool? clearGender,
+          int? gender,
+          bool? clearInterests,
+          List<int>? interests,
           List<String>? addPostIDs,
           List<String>? removePostIDs,
           List<String>? addLikedPostIDs,
@@ -11293,6 +11391,12 @@ class Input$UpdateUserInput {
         if (profile != null) r'profile': profile,
         if (clearAvatarURL != null) r'clearAvatarURL': clearAvatarURL,
         if (avatarURL != null) r'avatarURL': avatarURL,
+        if (clearAge != null) r'clearAge': clearAge,
+        if (age != null) r'age': age,
+        if (clearGender != null) r'clearGender': clearGender,
+        if (gender != null) r'gender': gender,
+        if (clearInterests != null) r'clearInterests': clearInterests,
+        if (interests != null) r'interests': interests,
         if (addPostIDs != null) r'addPostIDs': addPostIDs,
         if (removePostIDs != null) r'removePostIDs': removePostIDs,
         if (addLikedPostIDs != null) r'addLikedPostIDs': addLikedPostIDs,
@@ -11342,6 +11446,31 @@ class Input$UpdateUserInput {
     if (data.containsKey('avatarURL')) {
       final l$avatarURL = data['avatarURL'];
       result$data['avatarURL'] = (l$avatarURL as String?);
+    }
+    if (data.containsKey('clearAge')) {
+      final l$clearAge = data['clearAge'];
+      result$data['clearAge'] = (l$clearAge as bool?);
+    }
+    if (data.containsKey('age')) {
+      final l$age = data['age'];
+      result$data['age'] = (l$age as int?);
+    }
+    if (data.containsKey('clearGender')) {
+      final l$clearGender = data['clearGender'];
+      result$data['clearGender'] = (l$clearGender as bool?);
+    }
+    if (data.containsKey('gender')) {
+      final l$gender = data['gender'];
+      result$data['gender'] = (l$gender as int?);
+    }
+    if (data.containsKey('clearInterests')) {
+      final l$clearInterests = data['clearInterests'];
+      result$data['clearInterests'] = (l$clearInterests as bool?);
+    }
+    if (data.containsKey('interests')) {
+      final l$interests = data['interests'];
+      result$data['interests'] =
+          (l$interests as List<dynamic>?)?.map((e) => (e as int)).toList();
     }
     if (data.containsKey('addPostIDs')) {
       final l$addPostIDs = data['addPostIDs'];
@@ -11429,6 +11558,12 @@ class Input$UpdateUserInput {
   String? get profile => (_$data['profile'] as String?);
   bool? get clearAvatarURL => (_$data['clearAvatarURL'] as bool?);
   String? get avatarURL => (_$data['avatarURL'] as String?);
+  bool? get clearAge => (_$data['clearAge'] as bool?);
+  int? get age => (_$data['age'] as int?);
+  bool? get clearGender => (_$data['clearGender'] as bool?);
+  int? get gender => (_$data['gender'] as int?);
+  bool? get clearInterests => (_$data['clearInterests'] as bool?);
+  List<int>? get interests => (_$data['interests'] as List<int>?);
   List<String>? get addPostIDs => (_$data['addPostIDs'] as List<String>?);
   List<String>? get removePostIDs => (_$data['removePostIDs'] as List<String>?);
   List<String>? get addLikedPostIDs =>
@@ -11479,6 +11614,30 @@ class Input$UpdateUserInput {
     if (_$data.containsKey('avatarURL')) {
       final l$avatarURL = avatarURL;
       result$data['avatarURL'] = l$avatarURL;
+    }
+    if (_$data.containsKey('clearAge')) {
+      final l$clearAge = clearAge;
+      result$data['clearAge'] = l$clearAge;
+    }
+    if (_$data.containsKey('age')) {
+      final l$age = age;
+      result$data['age'] = l$age;
+    }
+    if (_$data.containsKey('clearGender')) {
+      final l$clearGender = clearGender;
+      result$data['clearGender'] = l$clearGender;
+    }
+    if (_$data.containsKey('gender')) {
+      final l$gender = gender;
+      result$data['gender'] = l$gender;
+    }
+    if (_$data.containsKey('clearInterests')) {
+      final l$clearInterests = clearInterests;
+      result$data['clearInterests'] = l$clearInterests;
+    }
+    if (_$data.containsKey('interests')) {
+      final l$interests = interests;
+      result$data['interests'] = l$interests?.map((e) => e).toList();
     }
     if (_$data.containsKey('addPostIDs')) {
       final l$addPostIDs = addPostIDs;
@@ -11607,6 +11766,69 @@ class Input$UpdateUserInput {
       return false;
     }
     if (l$avatarURL != lOther$avatarURL) {
+      return false;
+    }
+    final l$clearAge = clearAge;
+    final lOther$clearAge = other.clearAge;
+    if (_$data.containsKey('clearAge') !=
+        other._$data.containsKey('clearAge')) {
+      return false;
+    }
+    if (l$clearAge != lOther$clearAge) {
+      return false;
+    }
+    final l$age = age;
+    final lOther$age = other.age;
+    if (_$data.containsKey('age') != other._$data.containsKey('age')) {
+      return false;
+    }
+    if (l$age != lOther$age) {
+      return false;
+    }
+    final l$clearGender = clearGender;
+    final lOther$clearGender = other.clearGender;
+    if (_$data.containsKey('clearGender') !=
+        other._$data.containsKey('clearGender')) {
+      return false;
+    }
+    if (l$clearGender != lOther$clearGender) {
+      return false;
+    }
+    final l$gender = gender;
+    final lOther$gender = other.gender;
+    if (_$data.containsKey('gender') != other._$data.containsKey('gender')) {
+      return false;
+    }
+    if (l$gender != lOther$gender) {
+      return false;
+    }
+    final l$clearInterests = clearInterests;
+    final lOther$clearInterests = other.clearInterests;
+    if (_$data.containsKey('clearInterests') !=
+        other._$data.containsKey('clearInterests')) {
+      return false;
+    }
+    if (l$clearInterests != lOther$clearInterests) {
+      return false;
+    }
+    final l$interests = interests;
+    final lOther$interests = other.interests;
+    if (_$data.containsKey('interests') !=
+        other._$data.containsKey('interests')) {
+      return false;
+    }
+    if (l$interests != null && lOther$interests != null) {
+      if (l$interests.length != lOther$interests.length) {
+        return false;
+      }
+      for (int i = 0; i < l$interests.length; i++) {
+        final l$interests$entry = l$interests[i];
+        final lOther$interests$entry = lOther$interests[i];
+        if (l$interests$entry != lOther$interests$entry) {
+          return false;
+        }
+      }
+    } else if (l$interests != lOther$interests) {
       return false;
     }
     final l$addPostIDs = addPostIDs;
@@ -11866,6 +12088,12 @@ class Input$UpdateUserInput {
     final l$profile = profile;
     final l$clearAvatarURL = clearAvatarURL;
     final l$avatarURL = avatarURL;
+    final l$clearAge = clearAge;
+    final l$age = age;
+    final l$clearGender = clearGender;
+    final l$gender = gender;
+    final l$clearInterests = clearInterests;
+    final l$interests = interests;
     final l$addPostIDs = addPostIDs;
     final l$removePostIDs = removePostIDs;
     final l$addLikedPostIDs = addLikedPostIDs;
@@ -11886,6 +12114,16 @@ class Input$UpdateUserInput {
       _$data.containsKey('profile') ? l$profile : const {},
       _$data.containsKey('clearAvatarURL') ? l$clearAvatarURL : const {},
       _$data.containsKey('avatarURL') ? l$avatarURL : const {},
+      _$data.containsKey('clearAge') ? l$clearAge : const {},
+      _$data.containsKey('age') ? l$age : const {},
+      _$data.containsKey('clearGender') ? l$clearGender : const {},
+      _$data.containsKey('gender') ? l$gender : const {},
+      _$data.containsKey('clearInterests') ? l$clearInterests : const {},
+      _$data.containsKey('interests')
+          ? l$interests == null
+              ? null
+              : Object.hashAll(l$interests.map((v) => v))
+          : const {},
       _$data.containsKey('addPostIDs')
           ? l$addPostIDs == null
               ? null
@@ -11966,6 +12204,12 @@ abstract class CopyWith$Input$UpdateUserInput<TRes> {
       String? profile,
       bool? clearAvatarURL,
       String? avatarURL,
+      bool? clearAge,
+      int? age,
+      bool? clearGender,
+      int? gender,
+      bool? clearInterests,
+      List<int>? interests,
       List<String>? addPostIDs,
       List<String>? removePostIDs,
       List<String>? addLikedPostIDs,
@@ -11998,6 +12242,12 @@ class _CopyWithImpl$Input$UpdateUserInput<TRes>
           Object? profile = _undefined,
           Object? clearAvatarURL = _undefined,
           Object? avatarURL = _undefined,
+          Object? clearAge = _undefined,
+          Object? age = _undefined,
+          Object? clearGender = _undefined,
+          Object? gender = _undefined,
+          Object? clearInterests = _undefined,
+          Object? interests = _undefined,
           Object? addPostIDs = _undefined,
           Object? removePostIDs = _undefined,
           Object? addLikedPostIDs = _undefined,
@@ -12021,6 +12271,13 @@ class _CopyWithImpl$Input$UpdateUserInput<TRes>
         if (clearAvatarURL != _undefined)
           'clearAvatarURL': (clearAvatarURL as bool?),
         if (avatarURL != _undefined) 'avatarURL': (avatarURL as String?),
+        if (clearAge != _undefined) 'clearAge': (clearAge as bool?),
+        if (age != _undefined) 'age': (age as int?),
+        if (clearGender != _undefined) 'clearGender': (clearGender as bool?),
+        if (gender != _undefined) 'gender': (gender as int?),
+        if (clearInterests != _undefined)
+          'clearInterests': (clearInterests as bool?),
+        if (interests != _undefined) 'interests': (interests as List<int>?),
         if (addPostIDs != _undefined)
           'addPostIDs': (addPostIDs as List<String>?),
         if (removePostIDs != _undefined)
@@ -12062,6 +12319,12 @@ class _CopyWithStubImpl$Input$UpdateUserInput<TRes>
           String? profile,
           bool? clearAvatarURL,
           String? avatarURL,
+          bool? clearAge,
+          int? age,
+          bool? clearGender,
+          int? gender,
+          bool? clearInterests,
+          List<int>? interests,
           List<String>? addPostIDs,
           List<String>? removePostIDs,
           List<String>? addLikedPostIDs,
@@ -12477,6 +12740,26 @@ class Input$UserWhereInput {
           bool? avatarURLNotNil,
           String? avatarURLEqualFold,
           String? avatarURLContainsFold,
+          int? age,
+          int? ageNEQ,
+          List<int>? ageIn,
+          List<int>? ageNotIn,
+          int? ageGT,
+          int? ageGTE,
+          int? ageLT,
+          int? ageLTE,
+          bool? ageIsNil,
+          bool? ageNotNil,
+          int? gender,
+          int? genderNEQ,
+          List<int>? genderIn,
+          List<int>? genderNotIn,
+          int? genderGT,
+          int? genderGTE,
+          int? genderLT,
+          int? genderLTE,
+          bool? genderIsNil,
+          bool? genderNotNil,
           bool? hasPosts,
           List<Input$PostWhereInput>? hasPostsWith,
           bool? hasLikedPosts,
@@ -12565,6 +12848,26 @@ class Input$UserWhereInput {
           r'avatarURLEqualFold': avatarURLEqualFold,
         if (avatarURLContainsFold != null)
           r'avatarURLContainsFold': avatarURLContainsFold,
+        if (age != null) r'age': age,
+        if (ageNEQ != null) r'ageNEQ': ageNEQ,
+        if (ageIn != null) r'ageIn': ageIn,
+        if (ageNotIn != null) r'ageNotIn': ageNotIn,
+        if (ageGT != null) r'ageGT': ageGT,
+        if (ageGTE != null) r'ageGTE': ageGTE,
+        if (ageLT != null) r'ageLT': ageLT,
+        if (ageLTE != null) r'ageLTE': ageLTE,
+        if (ageIsNil != null) r'ageIsNil': ageIsNil,
+        if (ageNotNil != null) r'ageNotNil': ageNotNil,
+        if (gender != null) r'gender': gender,
+        if (genderNEQ != null) r'genderNEQ': genderNEQ,
+        if (genderIn != null) r'genderIn': genderIn,
+        if (genderNotIn != null) r'genderNotIn': genderNotIn,
+        if (genderGT != null) r'genderGT': genderGT,
+        if (genderGTE != null) r'genderGTE': genderGTE,
+        if (genderLT != null) r'genderLT': genderLT,
+        if (genderLTE != null) r'genderLTE': genderLTE,
+        if (genderIsNil != null) r'genderIsNil': genderIsNil,
+        if (genderNotNil != null) r'genderNotNil': genderNotNil,
         if (hasPosts != null) r'hasPosts': hasPosts,
         if (hasPostsWith != null) r'hasPostsWith': hasPostsWith,
         if (hasLikedPosts != null) r'hasLikedPosts': hasLikedPosts,
@@ -12883,6 +13186,90 @@ class Input$UserWhereInput {
       result$data['avatarURLContainsFold'] =
           (l$avatarURLContainsFold as String?);
     }
+    if (data.containsKey('age')) {
+      final l$age = data['age'];
+      result$data['age'] = (l$age as int?);
+    }
+    if (data.containsKey('ageNEQ')) {
+      final l$ageNEQ = data['ageNEQ'];
+      result$data['ageNEQ'] = (l$ageNEQ as int?);
+    }
+    if (data.containsKey('ageIn')) {
+      final l$ageIn = data['ageIn'];
+      result$data['ageIn'] =
+          (l$ageIn as List<dynamic>?)?.map((e) => (e as int)).toList();
+    }
+    if (data.containsKey('ageNotIn')) {
+      final l$ageNotIn = data['ageNotIn'];
+      result$data['ageNotIn'] =
+          (l$ageNotIn as List<dynamic>?)?.map((e) => (e as int)).toList();
+    }
+    if (data.containsKey('ageGT')) {
+      final l$ageGT = data['ageGT'];
+      result$data['ageGT'] = (l$ageGT as int?);
+    }
+    if (data.containsKey('ageGTE')) {
+      final l$ageGTE = data['ageGTE'];
+      result$data['ageGTE'] = (l$ageGTE as int?);
+    }
+    if (data.containsKey('ageLT')) {
+      final l$ageLT = data['ageLT'];
+      result$data['ageLT'] = (l$ageLT as int?);
+    }
+    if (data.containsKey('ageLTE')) {
+      final l$ageLTE = data['ageLTE'];
+      result$data['ageLTE'] = (l$ageLTE as int?);
+    }
+    if (data.containsKey('ageIsNil')) {
+      final l$ageIsNil = data['ageIsNil'];
+      result$data['ageIsNil'] = (l$ageIsNil as bool?);
+    }
+    if (data.containsKey('ageNotNil')) {
+      final l$ageNotNil = data['ageNotNil'];
+      result$data['ageNotNil'] = (l$ageNotNil as bool?);
+    }
+    if (data.containsKey('gender')) {
+      final l$gender = data['gender'];
+      result$data['gender'] = (l$gender as int?);
+    }
+    if (data.containsKey('genderNEQ')) {
+      final l$genderNEQ = data['genderNEQ'];
+      result$data['genderNEQ'] = (l$genderNEQ as int?);
+    }
+    if (data.containsKey('genderIn')) {
+      final l$genderIn = data['genderIn'];
+      result$data['genderIn'] =
+          (l$genderIn as List<dynamic>?)?.map((e) => (e as int)).toList();
+    }
+    if (data.containsKey('genderNotIn')) {
+      final l$genderNotIn = data['genderNotIn'];
+      result$data['genderNotIn'] =
+          (l$genderNotIn as List<dynamic>?)?.map((e) => (e as int)).toList();
+    }
+    if (data.containsKey('genderGT')) {
+      final l$genderGT = data['genderGT'];
+      result$data['genderGT'] = (l$genderGT as int?);
+    }
+    if (data.containsKey('genderGTE')) {
+      final l$genderGTE = data['genderGTE'];
+      result$data['genderGTE'] = (l$genderGTE as int?);
+    }
+    if (data.containsKey('genderLT')) {
+      final l$genderLT = data['genderLT'];
+      result$data['genderLT'] = (l$genderLT as int?);
+    }
+    if (data.containsKey('genderLTE')) {
+      final l$genderLTE = data['genderLTE'];
+      result$data['genderLTE'] = (l$genderLTE as int?);
+    }
+    if (data.containsKey('genderIsNil')) {
+      final l$genderIsNil = data['genderIsNil'];
+      result$data['genderIsNil'] = (l$genderIsNil as bool?);
+    }
+    if (data.containsKey('genderNotNil')) {
+      final l$genderNotNil = data['genderNotNil'];
+      result$data['genderNotNil'] = (l$genderNotNil as bool?);
+    }
     if (data.containsKey('hasPosts')) {
       final l$hasPosts = data['hasPosts'];
       result$data['hasPosts'] = (l$hasPosts as bool?);
@@ -13029,6 +13416,26 @@ class Input$UserWhereInput {
   String? get avatarURLEqualFold => (_$data['avatarURLEqualFold'] as String?);
   String? get avatarURLContainsFold =>
       (_$data['avatarURLContainsFold'] as String?);
+  int? get age => (_$data['age'] as int?);
+  int? get ageNEQ => (_$data['ageNEQ'] as int?);
+  List<int>? get ageIn => (_$data['ageIn'] as List<int>?);
+  List<int>? get ageNotIn => (_$data['ageNotIn'] as List<int>?);
+  int? get ageGT => (_$data['ageGT'] as int?);
+  int? get ageGTE => (_$data['ageGTE'] as int?);
+  int? get ageLT => (_$data['ageLT'] as int?);
+  int? get ageLTE => (_$data['ageLTE'] as int?);
+  bool? get ageIsNil => (_$data['ageIsNil'] as bool?);
+  bool? get ageNotNil => (_$data['ageNotNil'] as bool?);
+  int? get gender => (_$data['gender'] as int?);
+  int? get genderNEQ => (_$data['genderNEQ'] as int?);
+  List<int>? get genderIn => (_$data['genderIn'] as List<int>?);
+  List<int>? get genderNotIn => (_$data['genderNotIn'] as List<int>?);
+  int? get genderGT => (_$data['genderGT'] as int?);
+  int? get genderGTE => (_$data['genderGTE'] as int?);
+  int? get genderLT => (_$data['genderLT'] as int?);
+  int? get genderLTE => (_$data['genderLTE'] as int?);
+  bool? get genderIsNil => (_$data['genderIsNil'] as bool?);
+  bool? get genderNotNil => (_$data['genderNotNil'] as bool?);
   bool? get hasPosts => (_$data['hasPosts'] as bool?);
   List<Input$PostWhereInput>? get hasPostsWith =>
       (_$data['hasPostsWith'] as List<Input$PostWhereInput>?);
@@ -13324,6 +13731,86 @@ class Input$UserWhereInput {
     if (_$data.containsKey('avatarURLContainsFold')) {
       final l$avatarURLContainsFold = avatarURLContainsFold;
       result$data['avatarURLContainsFold'] = l$avatarURLContainsFold;
+    }
+    if (_$data.containsKey('age')) {
+      final l$age = age;
+      result$data['age'] = l$age;
+    }
+    if (_$data.containsKey('ageNEQ')) {
+      final l$ageNEQ = ageNEQ;
+      result$data['ageNEQ'] = l$ageNEQ;
+    }
+    if (_$data.containsKey('ageIn')) {
+      final l$ageIn = ageIn;
+      result$data['ageIn'] = l$ageIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('ageNotIn')) {
+      final l$ageNotIn = ageNotIn;
+      result$data['ageNotIn'] = l$ageNotIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('ageGT')) {
+      final l$ageGT = ageGT;
+      result$data['ageGT'] = l$ageGT;
+    }
+    if (_$data.containsKey('ageGTE')) {
+      final l$ageGTE = ageGTE;
+      result$data['ageGTE'] = l$ageGTE;
+    }
+    if (_$data.containsKey('ageLT')) {
+      final l$ageLT = ageLT;
+      result$data['ageLT'] = l$ageLT;
+    }
+    if (_$data.containsKey('ageLTE')) {
+      final l$ageLTE = ageLTE;
+      result$data['ageLTE'] = l$ageLTE;
+    }
+    if (_$data.containsKey('ageIsNil')) {
+      final l$ageIsNil = ageIsNil;
+      result$data['ageIsNil'] = l$ageIsNil;
+    }
+    if (_$data.containsKey('ageNotNil')) {
+      final l$ageNotNil = ageNotNil;
+      result$data['ageNotNil'] = l$ageNotNil;
+    }
+    if (_$data.containsKey('gender')) {
+      final l$gender = gender;
+      result$data['gender'] = l$gender;
+    }
+    if (_$data.containsKey('genderNEQ')) {
+      final l$genderNEQ = genderNEQ;
+      result$data['genderNEQ'] = l$genderNEQ;
+    }
+    if (_$data.containsKey('genderIn')) {
+      final l$genderIn = genderIn;
+      result$data['genderIn'] = l$genderIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('genderNotIn')) {
+      final l$genderNotIn = genderNotIn;
+      result$data['genderNotIn'] = l$genderNotIn?.map((e) => e).toList();
+    }
+    if (_$data.containsKey('genderGT')) {
+      final l$genderGT = genderGT;
+      result$data['genderGT'] = l$genderGT;
+    }
+    if (_$data.containsKey('genderGTE')) {
+      final l$genderGTE = genderGTE;
+      result$data['genderGTE'] = l$genderGTE;
+    }
+    if (_$data.containsKey('genderLT')) {
+      final l$genderLT = genderLT;
+      result$data['genderLT'] = l$genderLT;
+    }
+    if (_$data.containsKey('genderLTE')) {
+      final l$genderLTE = genderLTE;
+      result$data['genderLTE'] = l$genderLTE;
+    }
+    if (_$data.containsKey('genderIsNil')) {
+      final l$genderIsNil = genderIsNil;
+      result$data['genderIsNil'] = l$genderIsNil;
+    }
+    if (_$data.containsKey('genderNotNil')) {
+      final l$genderNotNil = genderNotNil;
+      result$data['genderNotNil'] = l$genderNotNil;
     }
     if (_$data.containsKey('hasPosts')) {
       final l$hasPosts = hasPosts;
@@ -14126,6 +14613,222 @@ class Input$UserWhereInput {
     if (l$avatarURLContainsFold != lOther$avatarURLContainsFold) {
       return false;
     }
+    final l$age = age;
+    final lOther$age = other.age;
+    if (_$data.containsKey('age') != other._$data.containsKey('age')) {
+      return false;
+    }
+    if (l$age != lOther$age) {
+      return false;
+    }
+    final l$ageNEQ = ageNEQ;
+    final lOther$ageNEQ = other.ageNEQ;
+    if (_$data.containsKey('ageNEQ') != other._$data.containsKey('ageNEQ')) {
+      return false;
+    }
+    if (l$ageNEQ != lOther$ageNEQ) {
+      return false;
+    }
+    final l$ageIn = ageIn;
+    final lOther$ageIn = other.ageIn;
+    if (_$data.containsKey('ageIn') != other._$data.containsKey('ageIn')) {
+      return false;
+    }
+    if (l$ageIn != null && lOther$ageIn != null) {
+      if (l$ageIn.length != lOther$ageIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$ageIn.length; i++) {
+        final l$ageIn$entry = l$ageIn[i];
+        final lOther$ageIn$entry = lOther$ageIn[i];
+        if (l$ageIn$entry != lOther$ageIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$ageIn != lOther$ageIn) {
+      return false;
+    }
+    final l$ageNotIn = ageNotIn;
+    final lOther$ageNotIn = other.ageNotIn;
+    if (_$data.containsKey('ageNotIn') !=
+        other._$data.containsKey('ageNotIn')) {
+      return false;
+    }
+    if (l$ageNotIn != null && lOther$ageNotIn != null) {
+      if (l$ageNotIn.length != lOther$ageNotIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$ageNotIn.length; i++) {
+        final l$ageNotIn$entry = l$ageNotIn[i];
+        final lOther$ageNotIn$entry = lOther$ageNotIn[i];
+        if (l$ageNotIn$entry != lOther$ageNotIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$ageNotIn != lOther$ageNotIn) {
+      return false;
+    }
+    final l$ageGT = ageGT;
+    final lOther$ageGT = other.ageGT;
+    if (_$data.containsKey('ageGT') != other._$data.containsKey('ageGT')) {
+      return false;
+    }
+    if (l$ageGT != lOther$ageGT) {
+      return false;
+    }
+    final l$ageGTE = ageGTE;
+    final lOther$ageGTE = other.ageGTE;
+    if (_$data.containsKey('ageGTE') != other._$data.containsKey('ageGTE')) {
+      return false;
+    }
+    if (l$ageGTE != lOther$ageGTE) {
+      return false;
+    }
+    final l$ageLT = ageLT;
+    final lOther$ageLT = other.ageLT;
+    if (_$data.containsKey('ageLT') != other._$data.containsKey('ageLT')) {
+      return false;
+    }
+    if (l$ageLT != lOther$ageLT) {
+      return false;
+    }
+    final l$ageLTE = ageLTE;
+    final lOther$ageLTE = other.ageLTE;
+    if (_$data.containsKey('ageLTE') != other._$data.containsKey('ageLTE')) {
+      return false;
+    }
+    if (l$ageLTE != lOther$ageLTE) {
+      return false;
+    }
+    final l$ageIsNil = ageIsNil;
+    final lOther$ageIsNil = other.ageIsNil;
+    if (_$data.containsKey('ageIsNil') !=
+        other._$data.containsKey('ageIsNil')) {
+      return false;
+    }
+    if (l$ageIsNil != lOther$ageIsNil) {
+      return false;
+    }
+    final l$ageNotNil = ageNotNil;
+    final lOther$ageNotNil = other.ageNotNil;
+    if (_$data.containsKey('ageNotNil') !=
+        other._$data.containsKey('ageNotNil')) {
+      return false;
+    }
+    if (l$ageNotNil != lOther$ageNotNil) {
+      return false;
+    }
+    final l$gender = gender;
+    final lOther$gender = other.gender;
+    if (_$data.containsKey('gender') != other._$data.containsKey('gender')) {
+      return false;
+    }
+    if (l$gender != lOther$gender) {
+      return false;
+    }
+    final l$genderNEQ = genderNEQ;
+    final lOther$genderNEQ = other.genderNEQ;
+    if (_$data.containsKey('genderNEQ') !=
+        other._$data.containsKey('genderNEQ')) {
+      return false;
+    }
+    if (l$genderNEQ != lOther$genderNEQ) {
+      return false;
+    }
+    final l$genderIn = genderIn;
+    final lOther$genderIn = other.genderIn;
+    if (_$data.containsKey('genderIn') !=
+        other._$data.containsKey('genderIn')) {
+      return false;
+    }
+    if (l$genderIn != null && lOther$genderIn != null) {
+      if (l$genderIn.length != lOther$genderIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$genderIn.length; i++) {
+        final l$genderIn$entry = l$genderIn[i];
+        final lOther$genderIn$entry = lOther$genderIn[i];
+        if (l$genderIn$entry != lOther$genderIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$genderIn != lOther$genderIn) {
+      return false;
+    }
+    final l$genderNotIn = genderNotIn;
+    final lOther$genderNotIn = other.genderNotIn;
+    if (_$data.containsKey('genderNotIn') !=
+        other._$data.containsKey('genderNotIn')) {
+      return false;
+    }
+    if (l$genderNotIn != null && lOther$genderNotIn != null) {
+      if (l$genderNotIn.length != lOther$genderNotIn.length) {
+        return false;
+      }
+      for (int i = 0; i < l$genderNotIn.length; i++) {
+        final l$genderNotIn$entry = l$genderNotIn[i];
+        final lOther$genderNotIn$entry = lOther$genderNotIn[i];
+        if (l$genderNotIn$entry != lOther$genderNotIn$entry) {
+          return false;
+        }
+      }
+    } else if (l$genderNotIn != lOther$genderNotIn) {
+      return false;
+    }
+    final l$genderGT = genderGT;
+    final lOther$genderGT = other.genderGT;
+    if (_$data.containsKey('genderGT') !=
+        other._$data.containsKey('genderGT')) {
+      return false;
+    }
+    if (l$genderGT != lOther$genderGT) {
+      return false;
+    }
+    final l$genderGTE = genderGTE;
+    final lOther$genderGTE = other.genderGTE;
+    if (_$data.containsKey('genderGTE') !=
+        other._$data.containsKey('genderGTE')) {
+      return false;
+    }
+    if (l$genderGTE != lOther$genderGTE) {
+      return false;
+    }
+    final l$genderLT = genderLT;
+    final lOther$genderLT = other.genderLT;
+    if (_$data.containsKey('genderLT') !=
+        other._$data.containsKey('genderLT')) {
+      return false;
+    }
+    if (l$genderLT != lOther$genderLT) {
+      return false;
+    }
+    final l$genderLTE = genderLTE;
+    final lOther$genderLTE = other.genderLTE;
+    if (_$data.containsKey('genderLTE') !=
+        other._$data.containsKey('genderLTE')) {
+      return false;
+    }
+    if (l$genderLTE != lOther$genderLTE) {
+      return false;
+    }
+    final l$genderIsNil = genderIsNil;
+    final lOther$genderIsNil = other.genderIsNil;
+    if (_$data.containsKey('genderIsNil') !=
+        other._$data.containsKey('genderIsNil')) {
+      return false;
+    }
+    if (l$genderIsNil != lOther$genderIsNil) {
+      return false;
+    }
+    final l$genderNotNil = genderNotNil;
+    final lOther$genderNotNil = other.genderNotNil;
+    if (_$data.containsKey('genderNotNil') !=
+        other._$data.containsKey('genderNotNil')) {
+      return false;
+    }
+    if (l$genderNotNil != lOther$genderNotNil) {
+      return false;
+    }
     final l$hasPosts = hasPosts;
     final lOther$hasPosts = other.hasPosts;
     if (_$data.containsKey('hasPosts') !=
@@ -14378,6 +15081,26 @@ class Input$UserWhereInput {
     final l$avatarURLNotNil = avatarURLNotNil;
     final l$avatarURLEqualFold = avatarURLEqualFold;
     final l$avatarURLContainsFold = avatarURLContainsFold;
+    final l$age = age;
+    final l$ageNEQ = ageNEQ;
+    final l$ageIn = ageIn;
+    final l$ageNotIn = ageNotIn;
+    final l$ageGT = ageGT;
+    final l$ageGTE = ageGTE;
+    final l$ageLT = ageLT;
+    final l$ageLTE = ageLTE;
+    final l$ageIsNil = ageIsNil;
+    final l$ageNotNil = ageNotNil;
+    final l$gender = gender;
+    final l$genderNEQ = genderNEQ;
+    final l$genderIn = genderIn;
+    final l$genderNotIn = genderNotIn;
+    final l$genderGT = genderGT;
+    final l$genderGTE = genderGTE;
+    final l$genderLT = genderLT;
+    final l$genderLTE = genderLTE;
+    final l$genderIsNil = genderIsNil;
+    final l$genderNotNil = genderNotNil;
     final l$hasPosts = hasPosts;
     final l$hasPostsWith = hasPostsWith;
     final l$hasLikedPosts = hasLikedPosts;
@@ -14520,6 +15243,42 @@ class Input$UserWhereInput {
       _$data.containsKey('avatarURLContainsFold')
           ? l$avatarURLContainsFold
           : const {},
+      _$data.containsKey('age') ? l$age : const {},
+      _$data.containsKey('ageNEQ') ? l$ageNEQ : const {},
+      _$data.containsKey('ageIn')
+          ? l$ageIn == null
+              ? null
+              : Object.hashAll(l$ageIn.map((v) => v))
+          : const {},
+      _$data.containsKey('ageNotIn')
+          ? l$ageNotIn == null
+              ? null
+              : Object.hashAll(l$ageNotIn.map((v) => v))
+          : const {},
+      _$data.containsKey('ageGT') ? l$ageGT : const {},
+      _$data.containsKey('ageGTE') ? l$ageGTE : const {},
+      _$data.containsKey('ageLT') ? l$ageLT : const {},
+      _$data.containsKey('ageLTE') ? l$ageLTE : const {},
+      _$data.containsKey('ageIsNil') ? l$ageIsNil : const {},
+      _$data.containsKey('ageNotNil') ? l$ageNotNil : const {},
+      _$data.containsKey('gender') ? l$gender : const {},
+      _$data.containsKey('genderNEQ') ? l$genderNEQ : const {},
+      _$data.containsKey('genderIn')
+          ? l$genderIn == null
+              ? null
+              : Object.hashAll(l$genderIn.map((v) => v))
+          : const {},
+      _$data.containsKey('genderNotIn')
+          ? l$genderNotIn == null
+              ? null
+              : Object.hashAll(l$genderNotIn.map((v) => v))
+          : const {},
+      _$data.containsKey('genderGT') ? l$genderGT : const {},
+      _$data.containsKey('genderGTE') ? l$genderGTE : const {},
+      _$data.containsKey('genderLT') ? l$genderLT : const {},
+      _$data.containsKey('genderLTE') ? l$genderLTE : const {},
+      _$data.containsKey('genderIsNil') ? l$genderIsNil : const {},
+      _$data.containsKey('genderNotNil') ? l$genderNotNil : const {},
       _$data.containsKey('hasPosts') ? l$hasPosts : const {},
       _$data.containsKey('hasPostsWith')
           ? l$hasPostsWith == null
@@ -14640,6 +15399,26 @@ abstract class CopyWith$Input$UserWhereInput<TRes> {
       bool? avatarURLNotNil,
       String? avatarURLEqualFold,
       String? avatarURLContainsFold,
+      int? age,
+      int? ageNEQ,
+      List<int>? ageIn,
+      List<int>? ageNotIn,
+      int? ageGT,
+      int? ageGTE,
+      int? ageLT,
+      int? ageLTE,
+      bool? ageIsNil,
+      bool? ageNotNil,
+      int? gender,
+      int? genderNEQ,
+      List<int>? genderIn,
+      List<int>? genderNotIn,
+      int? genderGT,
+      int? genderGTE,
+      int? genderLT,
+      int? genderLTE,
+      bool? genderIsNil,
+      bool? genderNotNil,
       bool? hasPosts,
       List<Input$PostWhereInput>? hasPostsWith,
       bool? hasLikedPosts,
@@ -14767,6 +15546,26 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
           Object? avatarURLNotNil = _undefined,
           Object? avatarURLEqualFold = _undefined,
           Object? avatarURLContainsFold = _undefined,
+          Object? age = _undefined,
+          Object? ageNEQ = _undefined,
+          Object? ageIn = _undefined,
+          Object? ageNotIn = _undefined,
+          Object? ageGT = _undefined,
+          Object? ageGTE = _undefined,
+          Object? ageLT = _undefined,
+          Object? ageLTE = _undefined,
+          Object? ageIsNil = _undefined,
+          Object? ageNotNil = _undefined,
+          Object? gender = _undefined,
+          Object? genderNEQ = _undefined,
+          Object? genderIn = _undefined,
+          Object? genderNotIn = _undefined,
+          Object? genderGT = _undefined,
+          Object? genderGTE = _undefined,
+          Object? genderLT = _undefined,
+          Object? genderLTE = _undefined,
+          Object? genderIsNil = _undefined,
+          Object? genderNotNil = _undefined,
           Object? hasPosts = _undefined,
           Object? hasPostsWith = _undefined,
           Object? hasLikedPosts = _undefined,
@@ -14883,6 +15682,27 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
           'avatarURLEqualFold': (avatarURLEqualFold as String?),
         if (avatarURLContainsFold != _undefined)
           'avatarURLContainsFold': (avatarURLContainsFold as String?),
+        if (age != _undefined) 'age': (age as int?),
+        if (ageNEQ != _undefined) 'ageNEQ': (ageNEQ as int?),
+        if (ageIn != _undefined) 'ageIn': (ageIn as List<int>?),
+        if (ageNotIn != _undefined) 'ageNotIn': (ageNotIn as List<int>?),
+        if (ageGT != _undefined) 'ageGT': (ageGT as int?),
+        if (ageGTE != _undefined) 'ageGTE': (ageGTE as int?),
+        if (ageLT != _undefined) 'ageLT': (ageLT as int?),
+        if (ageLTE != _undefined) 'ageLTE': (ageLTE as int?),
+        if (ageIsNil != _undefined) 'ageIsNil': (ageIsNil as bool?),
+        if (ageNotNil != _undefined) 'ageNotNil': (ageNotNil as bool?),
+        if (gender != _undefined) 'gender': (gender as int?),
+        if (genderNEQ != _undefined) 'genderNEQ': (genderNEQ as int?),
+        if (genderIn != _undefined) 'genderIn': (genderIn as List<int>?),
+        if (genderNotIn != _undefined)
+          'genderNotIn': (genderNotIn as List<int>?),
+        if (genderGT != _undefined) 'genderGT': (genderGT as int?),
+        if (genderGTE != _undefined) 'genderGTE': (genderGTE as int?),
+        if (genderLT != _undefined) 'genderLT': (genderLT as int?),
+        if (genderLTE != _undefined) 'genderLTE': (genderLTE as int?),
+        if (genderIsNil != _undefined) 'genderIsNil': (genderIsNil as bool?),
+        if (genderNotNil != _undefined) 'genderNotNil': (genderNotNil as bool?),
         if (hasPosts != _undefined) 'hasPosts': (hasPosts as bool?),
         if (hasPostsWith != _undefined)
           'hasPostsWith': (hasPostsWith as List<Input$PostWhereInput>?),
@@ -15063,6 +15883,26 @@ class _CopyWithStubImpl$Input$UserWhereInput<TRes>
           bool? avatarURLNotNil,
           String? avatarURLEqualFold,
           String? avatarURLContainsFold,
+          int? age,
+          int? ageNEQ,
+          List<int>? ageIn,
+          List<int>? ageNotIn,
+          int? ageGT,
+          int? ageGTE,
+          int? ageLT,
+          int? ageLTE,
+          bool? ageIsNil,
+          bool? ageNotNil,
+          int? gender,
+          int? genderNEQ,
+          List<int>? genderIn,
+          List<int>? genderNotIn,
+          int? genderGT,
+          int? genderGTE,
+          int? genderLT,
+          int? genderLTE,
+          bool? genderIsNil,
+          bool? genderNotNil,
           bool? hasPosts,
           List<Input$PostWhereInput>? hasPostsWith,
           bool? hasLikedPosts,
