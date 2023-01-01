@@ -20,20 +20,20 @@ query TopicWorks($first: Int!) {
 }
 
 query SearchCandidates($searchText: String) {
+  categories(first: 9, where: { nameContainsFold: $searchText }) {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+  }
   works(first: 9, where: { titleContainsFold: $searchText }) {
     edges {
       node {
         id
         title
         thumbnail
-      }
-    }
-  }
-  categories(first: 9, where: { nameContainsFold: $searchText }) {
-    edges {
-      node {
-        id
-        name
       }
     }
   }

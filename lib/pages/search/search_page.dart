@@ -129,22 +129,7 @@ class Candidates extends HookConsumerWidget {
 
     const width = 35.0;
     return Column(
-        children: works
-                .map((work) => ListTile(
-                      leading: work!.node!.thumbnail != ""
-                          ? Image.network(work.node!.thumbnail!, width: width)
-                          : Image.asset(
-                              "assets/noimage.png",
-                              width: width,
-                            ),
-                      onTap: () {
-                        Navigator.of(context).pushNamed('/work',
-                            arguments: WorkPageArguments(work.node!.id));
-                      },
-                      title: Text(work.node!.title),
-                    ))
-                .toList() +
-            categories
+        children: categories
                 .map((category) => ListTile(
                       leading: CircleAvatar(
                           backgroundColor: category.color,
@@ -158,6 +143,21 @@ class Candidates extends HookConsumerWidget {
                             arguments: CategoryPageArguments(category));
                       },
                       title: Text(category.name),
+                    ))
+                .toList() +
+            works
+                .map((work) => ListTile(
+                      leading: work!.node!.thumbnail != ""
+                          ? Image.network(work.node!.thumbnail!, width: width)
+                          : Image.asset(
+                              "assets/noimage.png",
+                              width: width,
+                            ),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/work',
+                            arguments: WorkPageArguments(work.node!.id));
+                      },
+                      title: Text(work.node!.title),
                     ))
                 .toList() +
             hashtags
