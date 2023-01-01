@@ -1,13 +1,21 @@
 query LikedPraises($first: Int!) {
-  likedPosts(first: $first, type: praise) {
-    id
-    title
+  likedPosts(first: $first, where: { type: praise }) {
+    edges {
+      node {
+        id
+        title
+      }
+    }
   }
 }
 
 query LikedLetters($first: Int!) {
-  likedPosts(first: $first, type: letter) {
-    ...LetterSummary
+  likedPosts(first: $first, where: { type: letter }) {
+    edges {
+      node {
+        ...LetterSummary
+      }
+    }
   }
 }
 

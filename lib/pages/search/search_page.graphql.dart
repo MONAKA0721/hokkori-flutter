@@ -100,23 +100,19 @@ class Query$LikedPraises {
     final l$likedPosts = json['likedPosts'];
     final l$$__typename = json['__typename'];
     return Query$LikedPraises(
-        likedPosts: (l$likedPosts as List<dynamic>)
-            .map((e) => e == null
-                ? null
-                : Query$LikedPraises$likedPosts.fromJson(
-                    (e as Map<String, dynamic>)))
-            .toList(),
+        likedPosts: Query$LikedPraises$likedPosts.fromJson(
+            (l$likedPosts as Map<String, dynamic>)),
         $__typename: (l$$__typename as String));
   }
 
-  final List<Query$LikedPraises$likedPosts?> likedPosts;
+  final Query$LikedPraises$likedPosts likedPosts;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
     final l$likedPosts = likedPosts;
-    _resultData['likedPosts'] = l$likedPosts.map((e) => e?.toJson()).toList();
+    _resultData['likedPosts'] = l$likedPosts.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -126,8 +122,7 @@ class Query$LikedPraises {
   int get hashCode {
     final l$likedPosts = likedPosts;
     final l$$__typename = $__typename;
-    return Object.hashAll(
-        [Object.hashAll(l$likedPosts.map((v) => v)), l$$__typename]);
+    return Object.hashAll([l$likedPosts, l$$__typename]);
   }
 
   @override
@@ -140,15 +135,8 @@ class Query$LikedPraises {
     }
     final l$likedPosts = likedPosts;
     final lOther$likedPosts = other.likedPosts;
-    if (l$likedPosts.length != lOther$likedPosts.length) {
+    if (l$likedPosts != lOther$likedPosts) {
       return false;
-    }
-    for (int i = 0; i < l$likedPosts.length; i++) {
-      final l$likedPosts$entry = l$likedPosts[i];
-      final lOther$likedPosts$entry = lOther$likedPosts[i];
-      if (l$likedPosts$entry != lOther$likedPosts$entry) {
-        return false;
-      }
     }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
@@ -172,14 +160,8 @@ abstract class CopyWith$Query$LikedPraises<TRes> {
   factory CopyWith$Query$LikedPraises.stub(TRes res) =
       _CopyWithStubImpl$Query$LikedPraises;
 
-  TRes call(
-      {List<Query$LikedPraises$likedPosts?>? likedPosts, String? $__typename});
-  TRes likedPosts(
-      Iterable<Query$LikedPraises$likedPosts?> Function(
-              Iterable<
-                  CopyWith$Query$LikedPraises$likedPosts<
-                      Query$LikedPraises$likedPosts>?>)
-          _fn);
+  TRes call({Query$LikedPraises$likedPosts? likedPosts, String? $__typename});
+  CopyWith$Query$LikedPraises$likedPosts<TRes> get likedPosts;
 }
 
 class _CopyWithImpl$Query$LikedPraises<TRes>
@@ -198,20 +180,15 @@ class _CopyWithImpl$Query$LikedPraises<TRes>
       _then(Query$LikedPraises(
           likedPosts: likedPosts == _undefined || likedPosts == null
               ? _instance.likedPosts
-              : (likedPosts as List<Query$LikedPraises$likedPosts?>),
+              : (likedPosts as Query$LikedPraises$likedPosts),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
-  TRes likedPosts(
-          Iterable<Query$LikedPraises$likedPosts?> Function(
-                  Iterable<
-                      CopyWith$Query$LikedPraises$likedPosts<
-                          Query$LikedPraises$likedPosts>?>)
-              _fn) =>
-      call(
-          likedPosts: _fn(_instance.likedPosts.map((e) => e == null
-              ? null
-              : CopyWith$Query$LikedPraises$likedPosts(e, (i) => i))).toList());
+  CopyWith$Query$LikedPraises$likedPosts<TRes> get likedPosts {
+    final local$likedPosts = _instance.likedPosts;
+    return CopyWith$Query$LikedPraises$likedPosts(
+        local$likedPosts, (e) => call(likedPosts: e));
+  }
 }
 
 class _CopyWithStubImpl$Query$LikedPraises<TRes>
@@ -220,11 +197,10 @@ class _CopyWithStubImpl$Query$LikedPraises<TRes>
 
   TRes _res;
 
-  call(
-          {List<Query$LikedPraises$likedPosts?>? likedPosts,
-          String? $__typename}) =>
+  call({Query$LikedPraises$likedPosts? likedPosts, String? $__typename}) =>
       _res;
-  likedPosts(_fn) => _res;
+  CopyWith$Query$LikedPraises$likedPosts<TRes> get likedPosts =>
+      CopyWith$Query$LikedPraises$likedPosts.stub(_res);
 }
 
 const documentNodeQueryLikedPraises = DocumentNode(definitions: [
@@ -248,23 +224,53 @@ const documentNodeQueryLikedPraises = DocumentNode(definitions: [
                   name: NameNode(value: 'first'),
                   value: VariableNode(name: NameNode(value: 'first'))),
               ArgumentNode(
-                  name: NameNode(value: 'type'),
-                  value: EnumValueNode(name: NameNode(value: 'praise')))
+                  name: NameNode(value: 'where'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'type'),
+                        value: EnumValueNode(name: NameNode(value: 'praise')))
+                  ]))
             ],
             directives: [],
             selectionSet: SelectionSetNode(selections: [
               FieldNode(
-                  name: NameNode(value: 'id'),
+                  name: NameNode(value: 'edges'),
                   alias: null,
                   arguments: [],
                   directives: [],
-                  selectionSet: null),
-              FieldNode(
-                  name: NameNode(value: 'title'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null),
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'node'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: SelectionSetNode(selections: [
+                          FieldNode(
+                              name: NameNode(value: 'id'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
+                              name: NameNode(value: 'title'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null),
+                          FieldNode(
+                              name: NameNode(value: '__typename'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null)
+                        ])),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
               FieldNode(
                   name: NameNode(value: '__typename'),
                   alias: null,
@@ -395,14 +401,277 @@ class Query$LikedPraises$Widget
 }
 
 class Query$LikedPraises$likedPosts {
-  Query$LikedPraises$likedPosts(
-      {required this.id, required this.title, required this.$__typename});
+  Query$LikedPraises$likedPosts({this.edges, required this.$__typename});
 
   factory Query$LikedPraises$likedPosts.fromJson(Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Query$LikedPraises$likedPosts(
+        edges: (l$edges as List<dynamic>?)
+            ?.map((e) => e == null
+                ? null
+                : Query$LikedPraises$likedPosts$edges.fromJson(
+                    (e as Map<String, dynamic>)))
+            .toList(),
+        $__typename: (l$$__typename as String));
+  }
+
+  final List<Query$LikedPraises$likedPosts$edges?>? edges;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges?.map((e) => e?.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$LikedPraises$likedPosts) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges != null && lOther$edges != null) {
+      if (l$edges.length != lOther$edges.length) {
+        return false;
+      }
+      for (int i = 0; i < l$edges.length; i++) {
+        final l$edges$entry = l$edges[i];
+        final lOther$edges$entry = lOther$edges[i];
+        if (l$edges$entry != lOther$edges$entry) {
+          return false;
+        }
+      }
+    } else if (l$edges != lOther$edges) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$LikedPraises$likedPosts
+    on Query$LikedPraises$likedPosts {
+  CopyWith$Query$LikedPraises$likedPosts<Query$LikedPraises$likedPosts>
+      get copyWith => CopyWith$Query$LikedPraises$likedPosts(this, (i) => i);
+}
+
+abstract class CopyWith$Query$LikedPraises$likedPosts<TRes> {
+  factory CopyWith$Query$LikedPraises$likedPosts(
+          Query$LikedPraises$likedPosts instance,
+          TRes Function(Query$LikedPraises$likedPosts) then) =
+      _CopyWithImpl$Query$LikedPraises$likedPosts;
+
+  factory CopyWith$Query$LikedPraises$likedPosts.stub(TRes res) =
+      _CopyWithStubImpl$Query$LikedPraises$likedPosts;
+
+  TRes call(
+      {List<Query$LikedPraises$likedPosts$edges?>? edges, String? $__typename});
+  TRes edges(
+      Iterable<Query$LikedPraises$likedPosts$edges?>? Function(
+              Iterable<
+                  CopyWith$Query$LikedPraises$likedPosts$edges<
+                      Query$LikedPraises$likedPosts$edges>?>?)
+          _fn);
+}
+
+class _CopyWithImpl$Query$LikedPraises$likedPosts<TRes>
+    implements CopyWith$Query$LikedPraises$likedPosts<TRes> {
+  _CopyWithImpl$Query$LikedPraises$likedPosts(this._instance, this._then);
+
+  final Query$LikedPraises$likedPosts _instance;
+
+  final TRes Function(Query$LikedPraises$likedPosts) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$LikedPraises$likedPosts(
+          edges: edges == _undefined
+              ? _instance.edges
+              : (edges as List<Query$LikedPraises$likedPosts$edges?>?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  TRes edges(
+          Iterable<Query$LikedPraises$likedPosts$edges?>? Function(
+                  Iterable<
+                      CopyWith$Query$LikedPraises$likedPosts$edges<
+                          Query$LikedPraises$likedPosts$edges>?>?)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges?.map((e) => e == null
+                  ? null
+                  : CopyWith$Query$LikedPraises$likedPosts$edges(e, (i) => i)))
+              ?.toList());
+}
+
+class _CopyWithStubImpl$Query$LikedPraises$likedPosts<TRes>
+    implements CopyWith$Query$LikedPraises$likedPosts<TRes> {
+  _CopyWithStubImpl$Query$LikedPraises$likedPosts(this._res);
+
+  TRes _res;
+
+  call(
+          {List<Query$LikedPraises$likedPosts$edges?>? edges,
+          String? $__typename}) =>
+      _res;
+  edges(_fn) => _res;
+}
+
+class Query$LikedPraises$likedPosts$edges {
+  Query$LikedPraises$likedPosts$edges({this.node, required this.$__typename});
+
+  factory Query$LikedPraises$likedPosts$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$LikedPraises$likedPosts$edges(
+        node: l$node == null
+            ? null
+            : Query$LikedPraises$likedPosts$edges$node.fromJson(
+                (l$node as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final Query$LikedPraises$likedPosts$edges$node? node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$node, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$LikedPraises$likedPosts$edges) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$LikedPraises$likedPosts$edges
+    on Query$LikedPraises$likedPosts$edges {
+  CopyWith$Query$LikedPraises$likedPosts$edges<
+          Query$LikedPraises$likedPosts$edges>
+      get copyWith =>
+          CopyWith$Query$LikedPraises$likedPosts$edges(this, (i) => i);
+}
+
+abstract class CopyWith$Query$LikedPraises$likedPosts$edges<TRes> {
+  factory CopyWith$Query$LikedPraises$likedPosts$edges(
+          Query$LikedPraises$likedPosts$edges instance,
+          TRes Function(Query$LikedPraises$likedPosts$edges) then) =
+      _CopyWithImpl$Query$LikedPraises$likedPosts$edges;
+
+  factory CopyWith$Query$LikedPraises$likedPosts$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$LikedPraises$likedPosts$edges;
+
+  TRes call(
+      {Query$LikedPraises$likedPosts$edges$node? node, String? $__typename});
+  CopyWith$Query$LikedPraises$likedPosts$edges$node<TRes> get node;
+}
+
+class _CopyWithImpl$Query$LikedPraises$likedPosts$edges<TRes>
+    implements CopyWith$Query$LikedPraises$likedPosts$edges<TRes> {
+  _CopyWithImpl$Query$LikedPraises$likedPosts$edges(this._instance, this._then);
+
+  final Query$LikedPraises$likedPosts$edges _instance;
+
+  final TRes Function(Query$LikedPraises$likedPosts$edges) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$LikedPraises$likedPosts$edges(
+          node: node == _undefined
+              ? _instance.node
+              : (node as Query$LikedPraises$likedPosts$edges$node?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Query$LikedPraises$likedPosts$edges$node<TRes> get node {
+    final local$node = _instance.node;
+    return local$node == null
+        ? CopyWith$Query$LikedPraises$likedPosts$edges$node.stub(
+            _then(_instance))
+        : CopyWith$Query$LikedPraises$likedPosts$edges$node(
+            local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$LikedPraises$likedPosts$edges<TRes>
+    implements CopyWith$Query$LikedPraises$likedPosts$edges<TRes> {
+  _CopyWithStubImpl$Query$LikedPraises$likedPosts$edges(this._res);
+
+  TRes _res;
+
+  call({Query$LikedPraises$likedPosts$edges$node? node, String? $__typename}) =>
+      _res;
+  CopyWith$Query$LikedPraises$likedPosts$edges$node<TRes> get node =>
+      CopyWith$Query$LikedPraises$likedPosts$edges$node.stub(_res);
+}
+
+class Query$LikedPraises$likedPosts$edges$node {
+  Query$LikedPraises$likedPosts$edges$node(
+      {required this.id, required this.title, required this.$__typename});
+
+  factory Query$LikedPraises$likedPosts$edges$node.fromJson(
+      Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$title = json['title'];
     final l$$__typename = json['__typename'];
-    return Query$LikedPraises$likedPosts(
+    return Query$LikedPraises$likedPosts$edges$node(
         id: (l$id as String),
         title: (l$title as String),
         $__typename: (l$$__typename as String));
@@ -438,7 +707,7 @@ class Query$LikedPraises$likedPosts {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$LikedPraises$likedPosts) ||
+    if (!(other is Query$LikedPraises$likedPosts$edges$node) ||
         runtimeType != other.runtimeType) {
       return false;
     }
@@ -461,31 +730,34 @@ class Query$LikedPraises$likedPosts {
   }
 }
 
-extension UtilityExtension$Query$LikedPraises$likedPosts
-    on Query$LikedPraises$likedPosts {
-  CopyWith$Query$LikedPraises$likedPosts<Query$LikedPraises$likedPosts>
-      get copyWith => CopyWith$Query$LikedPraises$likedPosts(this, (i) => i);
+extension UtilityExtension$Query$LikedPraises$likedPosts$edges$node
+    on Query$LikedPraises$likedPosts$edges$node {
+  CopyWith$Query$LikedPraises$likedPosts$edges$node<
+          Query$LikedPraises$likedPosts$edges$node>
+      get copyWith =>
+          CopyWith$Query$LikedPraises$likedPosts$edges$node(this, (i) => i);
 }
 
-abstract class CopyWith$Query$LikedPraises$likedPosts<TRes> {
-  factory CopyWith$Query$LikedPraises$likedPosts(
-          Query$LikedPraises$likedPosts instance,
-          TRes Function(Query$LikedPraises$likedPosts) then) =
-      _CopyWithImpl$Query$LikedPraises$likedPosts;
+abstract class CopyWith$Query$LikedPraises$likedPosts$edges$node<TRes> {
+  factory CopyWith$Query$LikedPraises$likedPosts$edges$node(
+          Query$LikedPraises$likedPosts$edges$node instance,
+          TRes Function(Query$LikedPraises$likedPosts$edges$node) then) =
+      _CopyWithImpl$Query$LikedPraises$likedPosts$edges$node;
 
-  factory CopyWith$Query$LikedPraises$likedPosts.stub(TRes res) =
-      _CopyWithStubImpl$Query$LikedPraises$likedPosts;
+  factory CopyWith$Query$LikedPraises$likedPosts$edges$node.stub(TRes res) =
+      _CopyWithStubImpl$Query$LikedPraises$likedPosts$edges$node;
 
   TRes call({String? id, String? title, String? $__typename});
 }
 
-class _CopyWithImpl$Query$LikedPraises$likedPosts<TRes>
-    implements CopyWith$Query$LikedPraises$likedPosts<TRes> {
-  _CopyWithImpl$Query$LikedPraises$likedPosts(this._instance, this._then);
+class _CopyWithImpl$Query$LikedPraises$likedPosts$edges$node<TRes>
+    implements CopyWith$Query$LikedPraises$likedPosts$edges$node<TRes> {
+  _CopyWithImpl$Query$LikedPraises$likedPosts$edges$node(
+      this._instance, this._then);
 
-  final Query$LikedPraises$likedPosts _instance;
+  final Query$LikedPraises$likedPosts$edges$node _instance;
 
-  final TRes Function(Query$LikedPraises$likedPosts) _then;
+  final TRes Function(Query$LikedPraises$likedPosts$edges$node) _then;
 
   static const _undefined = {};
 
@@ -493,7 +765,7 @@ class _CopyWithImpl$Query$LikedPraises$likedPosts<TRes>
           {Object? id = _undefined,
           Object? title = _undefined,
           Object? $__typename = _undefined}) =>
-      _then(Query$LikedPraises$likedPosts(
+      _then(Query$LikedPraises$likedPosts$edges$node(
           id: id == _undefined || id == null ? _instance.id : (id as String),
           title: title == _undefined || title == null
               ? _instance.title
@@ -503,9 +775,9 @@ class _CopyWithImpl$Query$LikedPraises$likedPosts<TRes>
               : ($__typename as String)));
 }
 
-class _CopyWithStubImpl$Query$LikedPraises$likedPosts<TRes>
-    implements CopyWith$Query$LikedPraises$likedPosts<TRes> {
-  _CopyWithStubImpl$Query$LikedPraises$likedPosts(this._res);
+class _CopyWithStubImpl$Query$LikedPraises$likedPosts$edges$node<TRes>
+    implements CopyWith$Query$LikedPraises$likedPosts$edges$node<TRes> {
+  _CopyWithStubImpl$Query$LikedPraises$likedPosts$edges$node(this._res);
 
   TRes _res;
 
@@ -608,22 +880,19 @@ class Query$LikedLetters {
     final l$likedPosts = json['likedPosts'];
     final l$$__typename = json['__typename'];
     return Query$LikedLetters(
-        likedPosts: (l$likedPosts as List<dynamic>)
-            .map((e) => e == null
-                ? null
-                : Fragment$LetterSummary.fromJson((e as Map<String, dynamic>)))
-            .toList(),
+        likedPosts: Query$LikedLetters$likedPosts.fromJson(
+            (l$likedPosts as Map<String, dynamic>)),
         $__typename: (l$$__typename as String));
   }
 
-  final List<Fragment$LetterSummary?> likedPosts;
+  final Query$LikedLetters$likedPosts likedPosts;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
     final l$likedPosts = likedPosts;
-    _resultData['likedPosts'] = l$likedPosts.map((e) => e?.toJson()).toList();
+    _resultData['likedPosts'] = l$likedPosts.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -633,8 +902,7 @@ class Query$LikedLetters {
   int get hashCode {
     final l$likedPosts = likedPosts;
     final l$$__typename = $__typename;
-    return Object.hashAll(
-        [Object.hashAll(l$likedPosts.map((v) => v)), l$$__typename]);
+    return Object.hashAll([l$likedPosts, l$$__typename]);
   }
 
   @override
@@ -647,15 +915,8 @@ class Query$LikedLetters {
     }
     final l$likedPosts = likedPosts;
     final lOther$likedPosts = other.likedPosts;
-    if (l$likedPosts.length != lOther$likedPosts.length) {
+    if (l$likedPosts != lOther$likedPosts) {
       return false;
-    }
-    for (int i = 0; i < l$likedPosts.length; i++) {
-      final l$likedPosts$entry = l$likedPosts[i];
-      final lOther$likedPosts$entry = lOther$likedPosts[i];
-      if (l$likedPosts$entry != lOther$likedPosts$entry) {
-        return false;
-      }
     }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
@@ -679,12 +940,8 @@ abstract class CopyWith$Query$LikedLetters<TRes> {
   factory CopyWith$Query$LikedLetters.stub(TRes res) =
       _CopyWithStubImpl$Query$LikedLetters;
 
-  TRes call({List<Fragment$LetterSummary?>? likedPosts, String? $__typename});
-  TRes likedPosts(
-      Iterable<Fragment$LetterSummary?> Function(
-              Iterable<
-                  CopyWith$Fragment$LetterSummary<Fragment$LetterSummary>?>)
-          _fn);
+  TRes call({Query$LikedLetters$likedPosts? likedPosts, String? $__typename});
+  CopyWith$Query$LikedLetters$likedPosts<TRes> get likedPosts;
 }
 
 class _CopyWithImpl$Query$LikedLetters<TRes>
@@ -703,19 +960,15 @@ class _CopyWithImpl$Query$LikedLetters<TRes>
       _then(Query$LikedLetters(
           likedPosts: likedPosts == _undefined || likedPosts == null
               ? _instance.likedPosts
-              : (likedPosts as List<Fragment$LetterSummary?>),
+              : (likedPosts as Query$LikedLetters$likedPosts),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
-  TRes likedPosts(
-          Iterable<Fragment$LetterSummary?> Function(
-                  Iterable<
-                      CopyWith$Fragment$LetterSummary<Fragment$LetterSummary>?>)
-              _fn) =>
-      call(
-          likedPosts: _fn(_instance.likedPosts.map((e) => e == null
-              ? null
-              : CopyWith$Fragment$LetterSummary(e, (i) => i))).toList());
+  CopyWith$Query$LikedLetters$likedPosts<TRes> get likedPosts {
+    final local$likedPosts = _instance.likedPosts;
+    return CopyWith$Query$LikedLetters$likedPosts(
+        local$likedPosts, (e) => call(likedPosts: e));
+  }
 }
 
 class _CopyWithStubImpl$Query$LikedLetters<TRes>
@@ -724,9 +977,10 @@ class _CopyWithStubImpl$Query$LikedLetters<TRes>
 
   TRes _res;
 
-  call({List<Fragment$LetterSummary?>? likedPosts, String? $__typename}) =>
+  call({Query$LikedLetters$likedPosts? likedPosts, String? $__typename}) =>
       _res;
-  likedPosts(_fn) => _res;
+  CopyWith$Query$LikedLetters$likedPosts<TRes> get likedPosts =>
+      CopyWith$Query$LikedLetters$likedPosts.stub(_res);
 }
 
 const documentNodeQueryLikedLetters = DocumentNode(definitions: [
@@ -750,13 +1004,44 @@ const documentNodeQueryLikedLetters = DocumentNode(definitions: [
                   name: NameNode(value: 'first'),
                   value: VariableNode(name: NameNode(value: 'first'))),
               ArgumentNode(
-                  name: NameNode(value: 'type'),
-                  value: EnumValueNode(name: NameNode(value: 'letter')))
+                  name: NameNode(value: 'where'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'type'),
+                        value: EnumValueNode(name: NameNode(value: 'letter')))
+                  ]))
             ],
             directives: [],
             selectionSet: SelectionSetNode(selections: [
-              FragmentSpreadNode(
-                  name: NameNode(value: 'LetterSummary'), directives: []),
+              FieldNode(
+                  name: NameNode(value: 'edges'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'node'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: SelectionSetNode(selections: [
+                          FragmentSpreadNode(
+                              name: NameNode(value: 'LetterSummary'),
+                              directives: []),
+                          FieldNode(
+                              name: NameNode(value: '__typename'),
+                              alias: null,
+                              arguments: [],
+                              directives: [],
+                              selectionSet: null)
+                        ])),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
               FieldNode(
                   name: NameNode(value: '__typename'),
                   alias: null,
@@ -885,6 +1170,263 @@ class Query$LikedLetters$Widget
       required Options$Query$LikedLetters options,
       required graphql_flutter.QueryBuilder<Query$LikedLetters> builder})
       : super(key: key, options: options, builder: builder);
+}
+
+class Query$LikedLetters$likedPosts {
+  Query$LikedLetters$likedPosts({this.edges, required this.$__typename});
+
+  factory Query$LikedLetters$likedPosts.fromJson(Map<String, dynamic> json) {
+    final l$edges = json['edges'];
+    final l$$__typename = json['__typename'];
+    return Query$LikedLetters$likedPosts(
+        edges: (l$edges as List<dynamic>?)
+            ?.map((e) => e == null
+                ? null
+                : Query$LikedLetters$likedPosts$edges.fromJson(
+                    (e as Map<String, dynamic>)))
+            .toList(),
+        $__typename: (l$$__typename as String));
+  }
+
+  final List<Query$LikedLetters$likedPosts$edges?>? edges;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$edges = edges;
+    _resultData['edges'] = l$edges?.map((e) => e?.toJson()).toList();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$edges = edges;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$$__typename
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$LikedLetters$likedPosts) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$edges = edges;
+    final lOther$edges = other.edges;
+    if (l$edges != null && lOther$edges != null) {
+      if (l$edges.length != lOther$edges.length) {
+        return false;
+      }
+      for (int i = 0; i < l$edges.length; i++) {
+        final l$edges$entry = l$edges[i];
+        final lOther$edges$entry = lOther$edges[i];
+        if (l$edges$entry != lOther$edges$entry) {
+          return false;
+        }
+      }
+    } else if (l$edges != lOther$edges) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$LikedLetters$likedPosts
+    on Query$LikedLetters$likedPosts {
+  CopyWith$Query$LikedLetters$likedPosts<Query$LikedLetters$likedPosts>
+      get copyWith => CopyWith$Query$LikedLetters$likedPosts(this, (i) => i);
+}
+
+abstract class CopyWith$Query$LikedLetters$likedPosts<TRes> {
+  factory CopyWith$Query$LikedLetters$likedPosts(
+          Query$LikedLetters$likedPosts instance,
+          TRes Function(Query$LikedLetters$likedPosts) then) =
+      _CopyWithImpl$Query$LikedLetters$likedPosts;
+
+  factory CopyWith$Query$LikedLetters$likedPosts.stub(TRes res) =
+      _CopyWithStubImpl$Query$LikedLetters$likedPosts;
+
+  TRes call(
+      {List<Query$LikedLetters$likedPosts$edges?>? edges, String? $__typename});
+  TRes edges(
+      Iterable<Query$LikedLetters$likedPosts$edges?>? Function(
+              Iterable<
+                  CopyWith$Query$LikedLetters$likedPosts$edges<
+                      Query$LikedLetters$likedPosts$edges>?>?)
+          _fn);
+}
+
+class _CopyWithImpl$Query$LikedLetters$likedPosts<TRes>
+    implements CopyWith$Query$LikedLetters$likedPosts<TRes> {
+  _CopyWithImpl$Query$LikedLetters$likedPosts(this._instance, this._then);
+
+  final Query$LikedLetters$likedPosts _instance;
+
+  final TRes Function(Query$LikedLetters$likedPosts) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$LikedLetters$likedPosts(
+          edges: edges == _undefined
+              ? _instance.edges
+              : (edges as List<Query$LikedLetters$likedPosts$edges?>?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  TRes edges(
+          Iterable<Query$LikedLetters$likedPosts$edges?>? Function(
+                  Iterable<
+                      CopyWith$Query$LikedLetters$likedPosts$edges<
+                          Query$LikedLetters$likedPosts$edges>?>?)
+              _fn) =>
+      call(
+          edges: _fn(_instance.edges?.map((e) => e == null
+                  ? null
+                  : CopyWith$Query$LikedLetters$likedPosts$edges(e, (i) => i)))
+              ?.toList());
+}
+
+class _CopyWithStubImpl$Query$LikedLetters$likedPosts<TRes>
+    implements CopyWith$Query$LikedLetters$likedPosts<TRes> {
+  _CopyWithStubImpl$Query$LikedLetters$likedPosts(this._res);
+
+  TRes _res;
+
+  call(
+          {List<Query$LikedLetters$likedPosts$edges?>? edges,
+          String? $__typename}) =>
+      _res;
+  edges(_fn) => _res;
+}
+
+class Query$LikedLetters$likedPosts$edges {
+  Query$LikedLetters$likedPosts$edges({this.node, required this.$__typename});
+
+  factory Query$LikedLetters$likedPosts$edges.fromJson(
+      Map<String, dynamic> json) {
+    final l$node = json['node'];
+    final l$$__typename = json['__typename'];
+    return Query$LikedLetters$likedPosts$edges(
+        node: l$node == null
+            ? null
+            : Fragment$LetterSummary.fromJson((l$node as Map<String, dynamic>)),
+        $__typename: (l$$__typename as String));
+  }
+
+  final Fragment$LetterSummary? node;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$node = node;
+    _resultData['node'] = l$node?.toJson();
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$node = node;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$node, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$LikedLetters$likedPosts$edges) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$node = node;
+    final lOther$node = other.node;
+    if (l$node != lOther$node) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$LikedLetters$likedPosts$edges
+    on Query$LikedLetters$likedPosts$edges {
+  CopyWith$Query$LikedLetters$likedPosts$edges<
+          Query$LikedLetters$likedPosts$edges>
+      get copyWith =>
+          CopyWith$Query$LikedLetters$likedPosts$edges(this, (i) => i);
+}
+
+abstract class CopyWith$Query$LikedLetters$likedPosts$edges<TRes> {
+  factory CopyWith$Query$LikedLetters$likedPosts$edges(
+          Query$LikedLetters$likedPosts$edges instance,
+          TRes Function(Query$LikedLetters$likedPosts$edges) then) =
+      _CopyWithImpl$Query$LikedLetters$likedPosts$edges;
+
+  factory CopyWith$Query$LikedLetters$likedPosts$edges.stub(TRes res) =
+      _CopyWithStubImpl$Query$LikedLetters$likedPosts$edges;
+
+  TRes call({Fragment$LetterSummary? node, String? $__typename});
+  CopyWith$Fragment$LetterSummary<TRes> get node;
+}
+
+class _CopyWithImpl$Query$LikedLetters$likedPosts$edges<TRes>
+    implements CopyWith$Query$LikedLetters$likedPosts$edges<TRes> {
+  _CopyWithImpl$Query$LikedLetters$likedPosts$edges(this._instance, this._then);
+
+  final Query$LikedLetters$likedPosts$edges _instance;
+
+  final TRes Function(Query$LikedLetters$likedPosts$edges) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
+      _then(Query$LikedLetters$likedPosts$edges(
+          node: node == _undefined
+              ? _instance.node
+              : (node as Fragment$LetterSummary?),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+  CopyWith$Fragment$LetterSummary<TRes> get node {
+    final local$node = _instance.node;
+    return local$node == null
+        ? CopyWith$Fragment$LetterSummary.stub(_then(_instance))
+        : CopyWith$Fragment$LetterSummary(local$node, (e) => call(node: e));
+  }
+}
+
+class _CopyWithStubImpl$Query$LikedLetters$likedPosts$edges<TRes>
+    implements CopyWith$Query$LikedLetters$likedPosts$edges<TRes> {
+  _CopyWithStubImpl$Query$LikedLetters$likedPosts$edges(this._res);
+
+  TRes _res;
+
+  call({Fragment$LetterSummary? node, String? $__typename}) => _res;
+  CopyWith$Fragment$LetterSummary<TRes> get node =>
+      CopyWith$Fragment$LetterSummary.stub(_res);
 }
 
 class Variables$Query$TopicWorks {

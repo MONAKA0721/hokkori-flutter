@@ -5,8 +5,8 @@ import 'package:hokkori/pages/common/letter.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 
-class TopLetters extends HookWidget {
-  const TopLetters({super.key});
+class LikedLetters extends HookWidget {
+  const LikedLetters({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class TopLetters extends HookWidget {
         ),
       );
     }
-    final letters = result.parsedData?.likedPosts ?? [];
+    final letters = result.parsedData?.likedPosts.edges ?? [];
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Row(
@@ -45,7 +45,7 @@ class TopLetters extends HookWidget {
       ),
       ...letters
           .map((letter) => Letter(
-              letter: letter!,
+              letter: letter!.node!,
               optimistic: result.source == QueryResultSource.optimisticResult))
           .toList(),
     ]);

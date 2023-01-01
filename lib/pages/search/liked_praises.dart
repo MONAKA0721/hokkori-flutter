@@ -3,8 +3,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 
-class TopPraises extends HookWidget {
-  const TopPraises({Key? key}) : super(key: key);
+class LikedPraises extends HookWidget {
+  const LikedPraises({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class TopPraises extends HookWidget {
         ),
       );
     }
-    final praises = result.parsedData?.likedPosts ?? [];
+    final praises = result.parsedData?.likedPosts.edges ?? [];
     final chunkedPraises = [];
     const chunkSize = 2;
     var count = 0;
@@ -51,7 +51,7 @@ class TopPraises extends HookWidget {
 }
 
 class ColumnPraises extends StatelessWidget {
-  final List<Query$LikedPraises$likedPosts?> praises;
+  final List<Query$LikedPraises$likedPosts$edges?> praises;
   final int index;
   const ColumnPraises({super.key, required this.praises, required this.index});
 
@@ -71,7 +71,7 @@ class ColumnPraises extends StatelessWidget {
 }
 
 class TopPraise extends StatelessWidget {
-  final Query$LikedPraises$likedPosts? praise;
+  final Query$LikedPraises$likedPosts$edges? praise;
   final int rank;
   const TopPraise({super.key, required this.praise, required this.rank});
 
@@ -90,7 +90,7 @@ class TopPraise extends StatelessWidget {
       Container(
         padding: const EdgeInsets.only(top: 4),
         width: 150,
-        child: Text(praise!.title + '\n',
+        child: Text(praise!.node!.title + '\n',
             overflow: TextOverflow.ellipsis, maxLines: 2),
       ),
     ]);

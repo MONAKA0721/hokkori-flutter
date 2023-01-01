@@ -872,7 +872,13 @@ type Query {
     """
     where: WorkWhereInput
   ): WorkConnection!
-  likedPosts(first: Int!, type: PostPostType!): [Post]!
+  likedPosts(
+    after: Cursor
+    first: Int
+    before: Cursor
+    last: Int
+    where: PostWhereInput
+  ): PostConnection!
   topicWorks(first: Int!): [Work]!
   workCategories(workID: ID!): [WorkCategory]!
 }

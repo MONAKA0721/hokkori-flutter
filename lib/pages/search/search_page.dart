@@ -4,10 +4,10 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/pages/search/category_page.dart';
 import 'package:hokkori/pages/search/custom_popup_route.dart';
 import 'package:hokkori/pages/search/hashtag_page.dart';
+import 'package:hokkori/pages/search/liked_letters.dart';
 import 'package:hokkori/pages/search/praise_page.dart';
 import 'package:hokkori/pages/search/search_input.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
-import 'package:hokkori/pages/search/top_letters.dart';
 import 'package:hokkori/pages/search/topic_contents.dart';
 import 'package:hokkori/pages/search/work_page.dart';
 import 'package:hokkori/utils/categories.dart';
@@ -92,7 +92,7 @@ class SearchPage extends ConsumerWidget {
                                       left: 20, right: 20, bottom: 50),
                                   decoration: const BoxDecoration(
                                       color: backgroundColor),
-                                  child: const TopLetters())
+                                  child: const LikedLetters())
                             ],
                           ))))
       ],

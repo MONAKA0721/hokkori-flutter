@@ -32,12 +32,6 @@ type Mutation {
   deleteDraft(input: DeleteDraftInput!): DeleteDraftPayload!
 }
 
-extend type Query {
-  likedPosts(first: Int!, type: PostPostType!): [Post]!
-  topicWorks(first: Int!): [Work]!
-  workCategories(workID: ID!): [WorkCategory]!
-}
-
 input LikePostInput {
   clientMutationId: String
   userID: ID!
