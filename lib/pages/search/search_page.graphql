@@ -1,20 +1,27 @@
-query LikedPraises($first: Int!) {
-  likedPosts(first: $first, where: { type: praise }) {
+query LikedPraises($after: Cursor, $first: Int, $or: [PostWhereInput!]) {
+  likedPosts(after: $after, first: $first, where: { type: praise, or: $or }) {
     edges {
       node {
-        id
-        title
+        ...PraiseSummary
       }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
     }
   }
 }
 
-query LikedLetters($first: Int!) {
-  likedPosts(first: $first, where: { type: letter }) {
+query LikedLetters($after: Cursor, $first: Int, $or: [PostWhereInput!]) {
+  likedPosts(after: $after, first: $first, where: { type: letter, or: $or }) {
     edges {
       node {
         ...LetterSummary
       }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
     }
   }
 }

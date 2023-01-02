@@ -5,8 +5,8 @@ import 'package:hokkori/pages/common/letter.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 
-class LikedLetters extends HookWidget {
-  const LikedLetters({super.key});
+class AttentionLetters extends HookWidget {
+  const AttentionLetters({super.key});
 
   @override
   Widget build(BuildContext context) {

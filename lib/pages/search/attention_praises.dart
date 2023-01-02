@@ -3,8 +3,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/utils/colors.dart';
 
-class LikedPraises extends HookWidget {
-  const LikedPraises({Key? key}) : super(key: key);
+class AttentionPraises extends HookWidget {
+  const AttentionPraises({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,20 +60,22 @@ class ColumnPraises extends StatelessWidget {
     final children = <Widget>[];
     for (var i = 0; i < praises.length; i++) {
       if (i != praises.length - 1) {
-        children.add(TopPraise(praise: praises[i], rank: 2 * index + i + 1));
+        children
+            .add(AttentionPraise(praise: praises[i], rank: 2 * index + i + 1));
         children.add(const SizedBox(width: 10));
       } else {
-        children.add(TopPraise(praise: praises[i], rank: 2 * index + i + 1));
+        children
+            .add(AttentionPraise(praise: praises[i], rank: 2 * index + i + 1));
       }
     }
     return Column(children: children);
   }
 }
 
-class TopPraise extends StatelessWidget {
+class AttentionPraise extends StatelessWidget {
   final Query$LikedPraises$likedPosts$edges? praise;
   final int rank;
-  const TopPraise({super.key, required this.praise, required this.rank});
+  const AttentionPraise({super.key, required this.praise, required this.rank});
 
   @override
   Widget build(BuildContext context) {

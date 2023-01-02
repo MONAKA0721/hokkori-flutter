@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hokkori/pages/search/liked_praises.dart';
+import 'package:hokkori/pages/search/attention_praises.dart';
 import 'package:hokkori/pages/search/top_works.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/content_type.dart';
@@ -15,7 +15,7 @@ class TopicContents extends StatelessWidget {
     final Widget icon;
     switch (type) {
       case ContentType.praise:
-        contents = const LikedPraises();
+        contents = const AttentionPraises();
         heading = "注目のほっこり";
         icon = const Icon(
           Icons.favorite_border,

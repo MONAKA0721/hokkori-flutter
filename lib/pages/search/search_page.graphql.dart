@@ -1,3 +1,4 @@
+import '../../graphql/ent.graphql.dart';
 import '../common/common.graphql.dart';
 import 'package:flutter/widgets.dart' as widgets;
 import 'package:gql/ast.dart';
@@ -5,27 +6,56 @@ import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
 
 class Variables$Query$LikedPraises {
-  factory Variables$Query$LikedPraises({required int first}) =>
+  factory Variables$Query$LikedPraises(
+          {String? after, int? first, List<Input$PostWhereInput>? or}) =>
       Variables$Query$LikedPraises._({
-        r'first': first,
+        if (after != null) r'after': after,
+        if (first != null) r'first': first,
+        if (or != null) r'or': or,
       });
 
   Variables$Query$LikedPraises._(this._$data);
 
   factory Variables$Query$LikedPraises.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
-    final l$first = data['first'];
-    result$data['first'] = (l$first as int);
+    if (data.containsKey('after')) {
+      final l$after = data['after'];
+      result$data['after'] = (l$after as String?);
+    }
+    if (data.containsKey('first')) {
+      final l$first = data['first'];
+      result$data['first'] = (l$first as int?);
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map(
+              (e) => Input$PostWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
     return Variables$Query$LikedPraises._(result$data);
   }
 
   Map<String, dynamic> _$data;
 
-  int get first => (_$data['first'] as int);
+  String? get after => (_$data['after'] as String?);
+  int? get first => (_$data['first'] as int?);
+  List<Input$PostWhereInput>? get or =>
+      (_$data['or'] as List<Input$PostWhereInput>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
-    final l$first = first;
-    result$data['first'] = l$first;
+    if (_$data.containsKey('after')) {
+      final l$after = after;
+      result$data['after'] = l$after;
+    }
+    if (_$data.containsKey('first')) {
+      final l$first = first;
+      result$data['first'] = l$first;
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
     return result$data;
   }
 
@@ -40,9 +70,39 @@ class Variables$Query$LikedPraises {
         runtimeType != other.runtimeType) {
       return false;
     }
+    final l$after = after;
+    final lOther$after = other.after;
+    if (_$data.containsKey('after') != other._$data.containsKey('after')) {
+      return false;
+    }
+    if (l$after != lOther$after) {
+      return false;
+    }
     final l$first = first;
     final lOther$first = other.first;
+    if (_$data.containsKey('first') != other._$data.containsKey('first')) {
+      return false;
+    }
     if (l$first != lOther$first) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
       return false;
     }
     return true;
@@ -50,8 +110,18 @@ class Variables$Query$LikedPraises {
 
   @override
   int get hashCode {
+    final l$after = after;
     final l$first = first;
-    return Object.hashAll([l$first]);
+    final l$or = or;
+    return Object.hashAll([
+      _$data.containsKey('after') ? l$after : const {},
+      _$data.containsKey('first') ? l$first : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {}
+    ]);
   }
 }
 
@@ -64,7 +134,7 @@ abstract class CopyWith$Variables$Query$LikedPraises<TRes> {
   factory CopyWith$Variables$Query$LikedPraises.stub(TRes res) =
       _CopyWithStubImpl$Variables$Query$LikedPraises;
 
-  TRes call({int? first});
+  TRes call({String? after, int? first, List<Input$PostWhereInput>? or});
 }
 
 class _CopyWithImpl$Variables$Query$LikedPraises<TRes>
@@ -77,10 +147,15 @@ class _CopyWithImpl$Variables$Query$LikedPraises<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? first = _undefined}) =>
+  TRes call(
+          {Object? after = _undefined,
+          Object? first = _undefined,
+          Object? or = _undefined}) =>
       _then(Variables$Query$LikedPraises._({
         ..._instance._$data,
-        if (first != _undefined && first != null) 'first': (first as int),
+        if (after != _undefined) 'after': (after as String?),
+        if (first != _undefined) 'first': (first as int?),
+        if (or != _undefined) 'or': (or as List<Input$PostWhereInput>?),
       }));
 }
 
@@ -90,7 +165,7 @@ class _CopyWithStubImpl$Variables$Query$LikedPraises<TRes>
 
   TRes _res;
 
-  call({int? first}) => _res;
+  call({String? after, int? first, List<Input$PostWhereInput>? or}) => _res;
 }
 
 class Query$LikedPraises {
@@ -209,8 +284,22 @@ const documentNodeQueryLikedPraises = DocumentNode(definitions: [
       name: NameNode(value: 'LikedPraises'),
       variableDefinitions: [
         VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'after')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'Cursor'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
             variable: VariableNode(name: NameNode(value: 'first')),
-            type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: true),
+            type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'or')),
+            type: ListTypeNode(
+                type: NamedTypeNode(
+                    name: NameNode(value: 'PostWhereInput'), isNonNull: true),
+                isNonNull: false),
             defaultValue: DefaultValueNode(value: null),
             directives: [])
       ],
@@ -221,6 +310,9 @@ const documentNodeQueryLikedPraises = DocumentNode(definitions: [
             alias: null,
             arguments: [
               ArgumentNode(
+                  name: NameNode(value: 'after'),
+                  value: VariableNode(name: NameNode(value: 'after'))),
+              ArgumentNode(
                   name: NameNode(value: 'first'),
                   value: VariableNode(name: NameNode(value: 'first'))),
               ArgumentNode(
@@ -228,7 +320,10 @@ const documentNodeQueryLikedPraises = DocumentNode(definitions: [
                   value: ObjectValueNode(fields: [
                     ObjectFieldNode(
                         name: NameNode(value: 'type'),
-                        value: EnumValueNode(name: NameNode(value: 'praise')))
+                        value: EnumValueNode(name: NameNode(value: 'praise'))),
+                    ObjectFieldNode(
+                        name: NameNode(value: 'or'),
+                        value: VariableNode(name: NameNode(value: 'or')))
                   ]))
             ],
             directives: [],
@@ -245,18 +340,9 @@ const documentNodeQueryLikedPraises = DocumentNode(definitions: [
                         arguments: [],
                         directives: [],
                         selectionSet: SelectionSetNode(selections: [
-                          FieldNode(
-                              name: NameNode(value: 'id'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: 'title'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
+                          FragmentSpreadNode(
+                              name: NameNode(value: 'PraiseSummary'),
+                              directives: []),
                           FieldNode(
                               name: NameNode(value: '__typename'),
                               alias: null,
@@ -264,6 +350,31 @@ const documentNodeQueryLikedPraises = DocumentNode(definitions: [
                               directives: [],
                               selectionSet: null)
                         ])),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
+                  name: NameNode(value: 'pageInfo'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'endCursor'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: 'hasNextPage'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
                     FieldNode(
                         name: NameNode(value: '__typename'),
                         alias: null,
@@ -285,6 +396,7 @@ const documentNodeQueryLikedPraises = DocumentNode(definitions: [
             directives: [],
             selectionSet: null)
       ])),
+  fragmentDefinitionPraiseSummary,
 ]);
 Query$LikedPraises _parserFn$Query$LikedPraises(Map<String, dynamic> data) =>
     Query$LikedPraises.fromJson(data);
@@ -293,7 +405,7 @@ class Options$Query$LikedPraises
     extends graphql.QueryOptions<Query$LikedPraises> {
   Options$Query$LikedPraises(
       {String? operationName,
-      required Variables$Query$LikedPraises variables,
+      Variables$Query$LikedPraises? variables,
       graphql.FetchPolicy? fetchPolicy,
       graphql.ErrorPolicy? errorPolicy,
       graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -301,7 +413,7 @@ class Options$Query$LikedPraises
       Duration? pollInterval,
       graphql.Context? context})
       : super(
-            variables: variables.toJson(),
+            variables: variables?.toJson() ?? {},
             operationName: operationName,
             fetchPolicy: fetchPolicy,
             errorPolicy: errorPolicy,
@@ -317,7 +429,7 @@ class WatchOptions$Query$LikedPraises
     extends graphql.WatchQueryOptions<Query$LikedPraises> {
   WatchOptions$Query$LikedPraises(
       {String? operationName,
-      required Variables$Query$LikedPraises variables,
+      Variables$Query$LikedPraises? variables,
       graphql.FetchPolicy? fetchPolicy,
       graphql.ErrorPolicy? errorPolicy,
       graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -328,7 +440,7 @@ class WatchOptions$Query$LikedPraises
       bool carryForwardDataOnException = true,
       bool fetchResults = false})
       : super(
-            variables: variables.toJson(),
+            variables: variables?.toJson() ?? {},
             operationName: operationName,
             fetchPolicy: fetchPolicy,
             errorPolicy: errorPolicy,
@@ -346,65 +458,69 @@ class WatchOptions$Query$LikedPraises
 class FetchMoreOptions$Query$LikedPraises extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$LikedPraises(
       {required graphql.UpdateQuery updateQuery,
-      required Variables$Query$LikedPraises variables})
+      Variables$Query$LikedPraises? variables})
       : super(
             updateQuery: updateQuery,
-            variables: variables.toJson(),
+            variables: variables?.toJson() ?? {},
             document: documentNodeQueryLikedPraises);
 }
 
 extension ClientExtension$Query$LikedPraises on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$LikedPraises>> query$LikedPraises(
-          Options$Query$LikedPraises options) async =>
-      await this.query(options);
+          [Options$Query$LikedPraises? options]) async =>
+      await this.query(options ?? Options$Query$LikedPraises());
   graphql.ObservableQuery<Query$LikedPraises> watchQuery$LikedPraises(
-          WatchOptions$Query$LikedPraises options) =>
-      this.watchQuery(options);
+          [WatchOptions$Query$LikedPraises? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$LikedPraises());
   void writeQuery$LikedPraises(
           {required Query$LikedPraises data,
-          required Variables$Query$LikedPraises variables,
+          Variables$Query$LikedPraises? variables,
           bool broadcast = true}) =>
       this.writeQuery(
           graphql.Request(
               operation:
                   graphql.Operation(document: documentNodeQueryLikedPraises),
-              variables: variables.toJson()),
+              variables: variables?.toJson() ?? const {}),
           data: data.toJson(),
           broadcast: broadcast);
   Query$LikedPraises? readQuery$LikedPraises(
-      {required Variables$Query$LikedPraises variables,
-      bool optimistic = true}) {
+      {Variables$Query$LikedPraises? variables, bool optimistic = true}) {
     final result = this.readQuery(
         graphql.Request(
             operation:
                 graphql.Operation(document: documentNodeQueryLikedPraises),
-            variables: variables.toJson()),
+            variables: variables?.toJson() ?? const {}),
         optimistic: optimistic);
     return result == null ? null : Query$LikedPraises.fromJson(result);
   }
 }
 
 graphql_flutter.QueryHookResult<Query$LikedPraises> useQuery$LikedPraises(
-        Options$Query$LikedPraises options) =>
-    graphql_flutter.useQuery(options);
+        [Options$Query$LikedPraises? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$LikedPraises());
 graphql.ObservableQuery<Query$LikedPraises> useWatchQuery$LikedPraises(
-        WatchOptions$Query$LikedPraises options) =>
-    graphql_flutter.useWatchQuery(options);
+        [WatchOptions$Query$LikedPraises? options]) =>
+    graphql_flutter.useWatchQuery(options ?? WatchOptions$Query$LikedPraises());
 
 class Query$LikedPraises$Widget
     extends graphql_flutter.Query<Query$LikedPraises> {
   Query$LikedPraises$Widget(
       {widgets.Key? key,
-      required Options$Query$LikedPraises options,
+      Options$Query$LikedPraises? options,
       required graphql_flutter.QueryBuilder<Query$LikedPraises> builder})
-      : super(key: key, options: options, builder: builder);
+      : super(
+            key: key,
+            options: options ?? Options$Query$LikedPraises(),
+            builder: builder);
 }
 
 class Query$LikedPraises$likedPosts {
-  Query$LikedPraises$likedPosts({this.edges, required this.$__typename});
+  Query$LikedPraises$likedPosts(
+      {this.edges, required this.pageInfo, required this.$__typename});
 
   factory Query$LikedPraises$likedPosts.fromJson(Map<String, dynamic> json) {
     final l$edges = json['edges'];
+    final l$pageInfo = json['pageInfo'];
     final l$$__typename = json['__typename'];
     return Query$LikedPraises$likedPosts(
         edges: (l$edges as List<dynamic>?)
@@ -413,10 +529,14 @@ class Query$LikedPraises$likedPosts {
                 : Query$LikedPraises$likedPosts$edges.fromJson(
                     (e as Map<String, dynamic>)))
             .toList(),
+        pageInfo: Query$LikedPraises$likedPosts$pageInfo.fromJson(
+            (l$pageInfo as Map<String, dynamic>)),
         $__typename: (l$$__typename as String));
   }
 
   final List<Query$LikedPraises$likedPosts$edges?>? edges;
+
+  final Query$LikedPraises$likedPosts$pageInfo pageInfo;
 
   final String $__typename;
 
@@ -424,6 +544,8 @@ class Query$LikedPraises$likedPosts {
     final _resultData = <String, dynamic>{};
     final l$edges = edges;
     _resultData['edges'] = l$edges?.map((e) => e?.toJson()).toList();
+    final l$pageInfo = pageInfo;
+    _resultData['pageInfo'] = l$pageInfo.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -432,9 +554,11 @@ class Query$LikedPraises$likedPosts {
   @override
   int get hashCode {
     final l$edges = edges;
+    final l$pageInfo = pageInfo;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
       l$$__typename
     ]);
   }
@@ -464,6 +588,11 @@ class Query$LikedPraises$likedPosts {
     } else if (l$edges != lOther$edges) {
       return false;
     }
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -489,13 +618,16 @@ abstract class CopyWith$Query$LikedPraises$likedPosts<TRes> {
       _CopyWithStubImpl$Query$LikedPraises$likedPosts;
 
   TRes call(
-      {List<Query$LikedPraises$likedPosts$edges?>? edges, String? $__typename});
+      {List<Query$LikedPraises$likedPosts$edges?>? edges,
+      Query$LikedPraises$likedPosts$pageInfo? pageInfo,
+      String? $__typename});
   TRes edges(
       Iterable<Query$LikedPraises$likedPosts$edges?>? Function(
               Iterable<
                   CopyWith$Query$LikedPraises$likedPosts$edges<
                       Query$LikedPraises$likedPosts$edges>?>?)
           _fn);
+  CopyWith$Query$LikedPraises$likedPosts$pageInfo<TRes> get pageInfo;
 }
 
 class _CopyWithImpl$Query$LikedPraises$likedPosts<TRes>
@@ -508,11 +640,17 @@ class _CopyWithImpl$Query$LikedPraises$likedPosts<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
+  TRes call(
+          {Object? edges = _undefined,
+          Object? pageInfo = _undefined,
+          Object? $__typename = _undefined}) =>
       _then(Query$LikedPraises$likedPosts(
           edges: edges == _undefined
               ? _instance.edges
               : (edges as List<Query$LikedPraises$likedPosts$edges?>?),
+          pageInfo: pageInfo == _undefined || pageInfo == null
+              ? _instance.pageInfo
+              : (pageInfo as Query$LikedPraises$likedPosts$pageInfo),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
@@ -527,6 +665,11 @@ class _CopyWithImpl$Query$LikedPraises$likedPosts<TRes>
                   ? null
                   : CopyWith$Query$LikedPraises$likedPosts$edges(e, (i) => i)))
               ?.toList());
+  CopyWith$Query$LikedPraises$likedPosts$pageInfo<TRes> get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Query$LikedPraises$likedPosts$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
 }
 
 class _CopyWithStubImpl$Query$LikedPraises$likedPosts<TRes>
@@ -537,9 +680,12 @@ class _CopyWithStubImpl$Query$LikedPraises$likedPosts<TRes>
 
   call(
           {List<Query$LikedPraises$likedPosts$edges?>? edges,
+          Query$LikedPraises$likedPosts$pageInfo? pageInfo,
           String? $__typename}) =>
       _res;
   edges(_fn) => _res;
+  CopyWith$Query$LikedPraises$likedPosts$pageInfo<TRes> get pageInfo =>
+      CopyWith$Query$LikedPraises$likedPosts$pageInfo.stub(_res);
 }
 
 class Query$LikedPraises$likedPosts$edges {
@@ -552,12 +698,11 @@ class Query$LikedPraises$likedPosts$edges {
     return Query$LikedPraises$likedPosts$edges(
         node: l$node == null
             ? null
-            : Query$LikedPraises$likedPosts$edges$node.fromJson(
-                (l$node as Map<String, dynamic>)),
+            : Fragment$PraiseSummary.fromJson((l$node as Map<String, dynamic>)),
         $__typename: (l$$__typename as String));
   }
 
-  final Query$LikedPraises$likedPosts$edges$node? node;
+  final Fragment$PraiseSummary? node;
 
   final String $__typename;
 
@@ -617,9 +762,8 @@ abstract class CopyWith$Query$LikedPraises$likedPosts$edges<TRes> {
   factory CopyWith$Query$LikedPraises$likedPosts$edges.stub(TRes res) =
       _CopyWithStubImpl$Query$LikedPraises$likedPosts$edges;
 
-  TRes call(
-      {Query$LikedPraises$likedPosts$edges$node? node, String? $__typename});
-  CopyWith$Query$LikedPraises$likedPosts$edges$node<TRes> get node;
+  TRes call({Fragment$PraiseSummary? node, String? $__typename});
+  CopyWith$Fragment$PraiseSummary<TRes> get node;
 }
 
 class _CopyWithImpl$Query$LikedPraises$likedPosts$edges<TRes>
@@ -636,17 +780,15 @@ class _CopyWithImpl$Query$LikedPraises$likedPosts$edges<TRes>
       _then(Query$LikedPraises$likedPosts$edges(
           node: node == _undefined
               ? _instance.node
-              : (node as Query$LikedPraises$likedPosts$edges$node?),
+              : (node as Fragment$PraiseSummary?),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
-  CopyWith$Query$LikedPraises$likedPosts$edges$node<TRes> get node {
+  CopyWith$Fragment$PraiseSummary<TRes> get node {
     final local$node = _instance.node;
     return local$node == null
-        ? CopyWith$Query$LikedPraises$likedPosts$edges$node.stub(
-            _then(_instance))
-        : CopyWith$Query$LikedPraises$likedPosts$edges$node(
-            local$node, (e) => call(node: e));
+        ? CopyWith$Fragment$PraiseSummary.stub(_then(_instance))
+        : CopyWith$Fragment$PraiseSummary(local$node, (e) => call(node: e));
   }
 }
 
@@ -656,39 +798,38 @@ class _CopyWithStubImpl$Query$LikedPraises$likedPosts$edges<TRes>
 
   TRes _res;
 
-  call({Query$LikedPraises$likedPosts$edges$node? node, String? $__typename}) =>
-      _res;
-  CopyWith$Query$LikedPraises$likedPosts$edges$node<TRes> get node =>
-      CopyWith$Query$LikedPraises$likedPosts$edges$node.stub(_res);
+  call({Fragment$PraiseSummary? node, String? $__typename}) => _res;
+  CopyWith$Fragment$PraiseSummary<TRes> get node =>
+      CopyWith$Fragment$PraiseSummary.stub(_res);
 }
 
-class Query$LikedPraises$likedPosts$edges$node {
-  Query$LikedPraises$likedPosts$edges$node(
-      {required this.id, required this.title, required this.$__typename});
+class Query$LikedPraises$likedPosts$pageInfo {
+  Query$LikedPraises$likedPosts$pageInfo(
+      {this.endCursor, required this.hasNextPage, required this.$__typename});
 
-  factory Query$LikedPraises$likedPosts$edges$node.fromJson(
+  factory Query$LikedPraises$likedPosts$pageInfo.fromJson(
       Map<String, dynamic> json) {
-    final l$id = json['id'];
-    final l$title = json['title'];
+    final l$endCursor = json['endCursor'];
+    final l$hasNextPage = json['hasNextPage'];
     final l$$__typename = json['__typename'];
-    return Query$LikedPraises$likedPosts$edges$node(
-        id: (l$id as String),
-        title: (l$title as String),
+    return Query$LikedPraises$likedPosts$pageInfo(
+        endCursor: (l$endCursor as String?),
+        hasNextPage: (l$hasNextPage as bool),
         $__typename: (l$$__typename as String));
   }
 
-  final String id;
+  final String? endCursor;
 
-  final String title;
+  final bool hasNextPage;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$id = id;
-    _resultData['id'] = l$id;
-    final l$title = title;
-    _resultData['title'] = l$title;
+    final l$endCursor = endCursor;
+    _resultData['endCursor'] = l$endCursor;
+    final l$hasNextPage = hasNextPage;
+    _resultData['hasNextPage'] = l$hasNextPage;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -696,10 +837,10 @@ class Query$LikedPraises$likedPosts$edges$node {
 
   @override
   int get hashCode {
-    final l$id = id;
-    final l$title = title;
+    final l$endCursor = endCursor;
+    final l$hasNextPage = hasNextPage;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$title, l$$__typename]);
+    return Object.hashAll([l$endCursor, l$hasNextPage, l$$__typename]);
   }
 
   @override
@@ -707,18 +848,18 @@ class Query$LikedPraises$likedPosts$edges$node {
     if (identical(this, other)) {
       return true;
     }
-    if (!(other is Query$LikedPraises$likedPosts$edges$node) ||
+    if (!(other is Query$LikedPraises$likedPosts$pageInfo) ||
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) {
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) {
       return false;
     }
-    final l$title = title;
-    final lOther$title = other.title;
-    if (l$title != lOther$title) {
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -730,82 +871,113 @@ class Query$LikedPraises$likedPosts$edges$node {
   }
 }
 
-extension UtilityExtension$Query$LikedPraises$likedPosts$edges$node
-    on Query$LikedPraises$likedPosts$edges$node {
-  CopyWith$Query$LikedPraises$likedPosts$edges$node<
-          Query$LikedPraises$likedPosts$edges$node>
+extension UtilityExtension$Query$LikedPraises$likedPosts$pageInfo
+    on Query$LikedPraises$likedPosts$pageInfo {
+  CopyWith$Query$LikedPraises$likedPosts$pageInfo<
+          Query$LikedPraises$likedPosts$pageInfo>
       get copyWith =>
-          CopyWith$Query$LikedPraises$likedPosts$edges$node(this, (i) => i);
+          CopyWith$Query$LikedPraises$likedPosts$pageInfo(this, (i) => i);
 }
 
-abstract class CopyWith$Query$LikedPraises$likedPosts$edges$node<TRes> {
-  factory CopyWith$Query$LikedPraises$likedPosts$edges$node(
-          Query$LikedPraises$likedPosts$edges$node instance,
-          TRes Function(Query$LikedPraises$likedPosts$edges$node) then) =
-      _CopyWithImpl$Query$LikedPraises$likedPosts$edges$node;
+abstract class CopyWith$Query$LikedPraises$likedPosts$pageInfo<TRes> {
+  factory CopyWith$Query$LikedPraises$likedPosts$pageInfo(
+          Query$LikedPraises$likedPosts$pageInfo instance,
+          TRes Function(Query$LikedPraises$likedPosts$pageInfo) then) =
+      _CopyWithImpl$Query$LikedPraises$likedPosts$pageInfo;
 
-  factory CopyWith$Query$LikedPraises$likedPosts$edges$node.stub(TRes res) =
-      _CopyWithStubImpl$Query$LikedPraises$likedPosts$edges$node;
+  factory CopyWith$Query$LikedPraises$likedPosts$pageInfo.stub(TRes res) =
+      _CopyWithStubImpl$Query$LikedPraises$likedPosts$pageInfo;
 
-  TRes call({String? id, String? title, String? $__typename});
+  TRes call({String? endCursor, bool? hasNextPage, String? $__typename});
 }
 
-class _CopyWithImpl$Query$LikedPraises$likedPosts$edges$node<TRes>
-    implements CopyWith$Query$LikedPraises$likedPosts$edges$node<TRes> {
-  _CopyWithImpl$Query$LikedPraises$likedPosts$edges$node(
+class _CopyWithImpl$Query$LikedPraises$likedPosts$pageInfo<TRes>
+    implements CopyWith$Query$LikedPraises$likedPosts$pageInfo<TRes> {
+  _CopyWithImpl$Query$LikedPraises$likedPosts$pageInfo(
       this._instance, this._then);
 
-  final Query$LikedPraises$likedPosts$edges$node _instance;
+  final Query$LikedPraises$likedPosts$pageInfo _instance;
 
-  final TRes Function(Query$LikedPraises$likedPosts$edges$node) _then;
+  final TRes Function(Query$LikedPraises$likedPosts$pageInfo) _then;
 
   static const _undefined = {};
 
   TRes call(
-          {Object? id = _undefined,
-          Object? title = _undefined,
+          {Object? endCursor = _undefined,
+          Object? hasNextPage = _undefined,
           Object? $__typename = _undefined}) =>
-      _then(Query$LikedPraises$likedPosts$edges$node(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          title: title == _undefined || title == null
-              ? _instance.title
-              : (title as String),
+      _then(Query$LikedPraises$likedPosts$pageInfo(
+          endCursor: endCursor == _undefined
+              ? _instance.endCursor
+              : (endCursor as String?),
+          hasNextPage: hasNextPage == _undefined || hasNextPage == null
+              ? _instance.hasNextPage
+              : (hasNextPage as bool),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
 }
 
-class _CopyWithStubImpl$Query$LikedPraises$likedPosts$edges$node<TRes>
-    implements CopyWith$Query$LikedPraises$likedPosts$edges$node<TRes> {
-  _CopyWithStubImpl$Query$LikedPraises$likedPosts$edges$node(this._res);
+class _CopyWithStubImpl$Query$LikedPraises$likedPosts$pageInfo<TRes>
+    implements CopyWith$Query$LikedPraises$likedPosts$pageInfo<TRes> {
+  _CopyWithStubImpl$Query$LikedPraises$likedPosts$pageInfo(this._res);
 
   TRes _res;
 
-  call({String? id, String? title, String? $__typename}) => _res;
+  call({String? endCursor, bool? hasNextPage, String? $__typename}) => _res;
 }
 
 class Variables$Query$LikedLetters {
-  factory Variables$Query$LikedLetters({required int first}) =>
+  factory Variables$Query$LikedLetters(
+          {String? after, int? first, List<Input$PostWhereInput>? or}) =>
       Variables$Query$LikedLetters._({
-        r'first': first,
+        if (after != null) r'after': after,
+        if (first != null) r'first': first,
+        if (or != null) r'or': or,
       });
 
   Variables$Query$LikedLetters._(this._$data);
 
   factory Variables$Query$LikedLetters.fromJson(Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
-    final l$first = data['first'];
-    result$data['first'] = (l$first as int);
+    if (data.containsKey('after')) {
+      final l$after = data['after'];
+      result$data['after'] = (l$after as String?);
+    }
+    if (data.containsKey('first')) {
+      final l$first = data['first'];
+      result$data['first'] = (l$first as int?);
+    }
+    if (data.containsKey('or')) {
+      final l$or = data['or'];
+      result$data['or'] = (l$or as List<dynamic>?)
+          ?.map(
+              (e) => Input$PostWhereInput.fromJson((e as Map<String, dynamic>)))
+          .toList();
+    }
     return Variables$Query$LikedLetters._(result$data);
   }
 
   Map<String, dynamic> _$data;
 
-  int get first => (_$data['first'] as int);
+  String? get after => (_$data['after'] as String?);
+  int? get first => (_$data['first'] as int?);
+  List<Input$PostWhereInput>? get or =>
+      (_$data['or'] as List<Input$PostWhereInput>?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
-    final l$first = first;
-    result$data['first'] = l$first;
+    if (_$data.containsKey('after')) {
+      final l$after = after;
+      result$data['after'] = l$after;
+    }
+    if (_$data.containsKey('first')) {
+      final l$first = first;
+      result$data['first'] = l$first;
+    }
+    if (_$data.containsKey('or')) {
+      final l$or = or;
+      result$data['or'] = l$or?.map((e) => e.toJson()).toList();
+    }
     return result$data;
   }
 
@@ -820,9 +992,39 @@ class Variables$Query$LikedLetters {
         runtimeType != other.runtimeType) {
       return false;
     }
+    final l$after = after;
+    final lOther$after = other.after;
+    if (_$data.containsKey('after') != other._$data.containsKey('after')) {
+      return false;
+    }
+    if (l$after != lOther$after) {
+      return false;
+    }
     final l$first = first;
     final lOther$first = other.first;
+    if (_$data.containsKey('first') != other._$data.containsKey('first')) {
+      return false;
+    }
     if (l$first != lOther$first) {
+      return false;
+    }
+    final l$or = or;
+    final lOther$or = other.or;
+    if (_$data.containsKey('or') != other._$data.containsKey('or')) {
+      return false;
+    }
+    if (l$or != null && lOther$or != null) {
+      if (l$or.length != lOther$or.length) {
+        return false;
+      }
+      for (int i = 0; i < l$or.length; i++) {
+        final l$or$entry = l$or[i];
+        final lOther$or$entry = lOther$or[i];
+        if (l$or$entry != lOther$or$entry) {
+          return false;
+        }
+      }
+    } else if (l$or != lOther$or) {
       return false;
     }
     return true;
@@ -830,8 +1032,18 @@ class Variables$Query$LikedLetters {
 
   @override
   int get hashCode {
+    final l$after = after;
     final l$first = first;
-    return Object.hashAll([l$first]);
+    final l$or = or;
+    return Object.hashAll([
+      _$data.containsKey('after') ? l$after : const {},
+      _$data.containsKey('first') ? l$first : const {},
+      _$data.containsKey('or')
+          ? l$or == null
+              ? null
+              : Object.hashAll(l$or.map((v) => v))
+          : const {}
+    ]);
   }
 }
 
@@ -844,7 +1056,7 @@ abstract class CopyWith$Variables$Query$LikedLetters<TRes> {
   factory CopyWith$Variables$Query$LikedLetters.stub(TRes res) =
       _CopyWithStubImpl$Variables$Query$LikedLetters;
 
-  TRes call({int? first});
+  TRes call({String? after, int? first, List<Input$PostWhereInput>? or});
 }
 
 class _CopyWithImpl$Variables$Query$LikedLetters<TRes>
@@ -857,10 +1069,15 @@ class _CopyWithImpl$Variables$Query$LikedLetters<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? first = _undefined}) =>
+  TRes call(
+          {Object? after = _undefined,
+          Object? first = _undefined,
+          Object? or = _undefined}) =>
       _then(Variables$Query$LikedLetters._({
         ..._instance._$data,
-        if (first != _undefined && first != null) 'first': (first as int),
+        if (after != _undefined) 'after': (after as String?),
+        if (first != _undefined) 'first': (first as int?),
+        if (or != _undefined) 'or': (or as List<Input$PostWhereInput>?),
       }));
 }
 
@@ -870,7 +1087,7 @@ class _CopyWithStubImpl$Variables$Query$LikedLetters<TRes>
 
   TRes _res;
 
-  call({int? first}) => _res;
+  call({String? after, int? first, List<Input$PostWhereInput>? or}) => _res;
 }
 
 class Query$LikedLetters {
@@ -989,8 +1206,22 @@ const documentNodeQueryLikedLetters = DocumentNode(definitions: [
       name: NameNode(value: 'LikedLetters'),
       variableDefinitions: [
         VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'after')),
+            type: NamedTypeNode(
+                name: NameNode(value: 'Cursor'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
             variable: VariableNode(name: NameNode(value: 'first')),
-            type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: true),
+            type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: false),
+            defaultValue: DefaultValueNode(value: null),
+            directives: []),
+        VariableDefinitionNode(
+            variable: VariableNode(name: NameNode(value: 'or')),
+            type: ListTypeNode(
+                type: NamedTypeNode(
+                    name: NameNode(value: 'PostWhereInput'), isNonNull: true),
+                isNonNull: false),
             defaultValue: DefaultValueNode(value: null),
             directives: [])
       ],
@@ -1001,6 +1232,9 @@ const documentNodeQueryLikedLetters = DocumentNode(definitions: [
             alias: null,
             arguments: [
               ArgumentNode(
+                  name: NameNode(value: 'after'),
+                  value: VariableNode(name: NameNode(value: 'after'))),
+              ArgumentNode(
                   name: NameNode(value: 'first'),
                   value: VariableNode(name: NameNode(value: 'first'))),
               ArgumentNode(
@@ -1008,7 +1242,10 @@ const documentNodeQueryLikedLetters = DocumentNode(definitions: [
                   value: ObjectValueNode(fields: [
                     ObjectFieldNode(
                         name: NameNode(value: 'type'),
-                        value: EnumValueNode(name: NameNode(value: 'letter')))
+                        value: EnumValueNode(name: NameNode(value: 'letter'))),
+                    ObjectFieldNode(
+                        name: NameNode(value: 'or'),
+                        value: VariableNode(name: NameNode(value: 'or')))
                   ]))
             ],
             directives: [],
@@ -1043,6 +1280,31 @@ const documentNodeQueryLikedLetters = DocumentNode(definitions: [
                         selectionSet: null)
                   ])),
               FieldNode(
+                  name: NameNode(value: 'pageInfo'),
+                  alias: null,
+                  arguments: [],
+                  directives: [],
+                  selectionSet: SelectionSetNode(selections: [
+                    FieldNode(
+                        name: NameNode(value: 'endCursor'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: 'hasNextPage'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null),
+                    FieldNode(
+                        name: NameNode(value: '__typename'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null)
+                  ])),
+              FieldNode(
                   name: NameNode(value: '__typename'),
                   alias: null,
                   arguments: [],
@@ -1065,7 +1327,7 @@ class Options$Query$LikedLetters
     extends graphql.QueryOptions<Query$LikedLetters> {
   Options$Query$LikedLetters(
       {String? operationName,
-      required Variables$Query$LikedLetters variables,
+      Variables$Query$LikedLetters? variables,
       graphql.FetchPolicy? fetchPolicy,
       graphql.ErrorPolicy? errorPolicy,
       graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -1073,7 +1335,7 @@ class Options$Query$LikedLetters
       Duration? pollInterval,
       graphql.Context? context})
       : super(
-            variables: variables.toJson(),
+            variables: variables?.toJson() ?? {},
             operationName: operationName,
             fetchPolicy: fetchPolicy,
             errorPolicy: errorPolicy,
@@ -1089,7 +1351,7 @@ class WatchOptions$Query$LikedLetters
     extends graphql.WatchQueryOptions<Query$LikedLetters> {
   WatchOptions$Query$LikedLetters(
       {String? operationName,
-      required Variables$Query$LikedLetters variables,
+      Variables$Query$LikedLetters? variables,
       graphql.FetchPolicy? fetchPolicy,
       graphql.ErrorPolicy? errorPolicy,
       graphql.CacheRereadPolicy? cacheRereadPolicy,
@@ -1100,7 +1362,7 @@ class WatchOptions$Query$LikedLetters
       bool carryForwardDataOnException = true,
       bool fetchResults = false})
       : super(
-            variables: variables.toJson(),
+            variables: variables?.toJson() ?? {},
             operationName: operationName,
             fetchPolicy: fetchPolicy,
             errorPolicy: errorPolicy,
@@ -1118,65 +1380,69 @@ class WatchOptions$Query$LikedLetters
 class FetchMoreOptions$Query$LikedLetters extends graphql.FetchMoreOptions {
   FetchMoreOptions$Query$LikedLetters(
       {required graphql.UpdateQuery updateQuery,
-      required Variables$Query$LikedLetters variables})
+      Variables$Query$LikedLetters? variables})
       : super(
             updateQuery: updateQuery,
-            variables: variables.toJson(),
+            variables: variables?.toJson() ?? {},
             document: documentNodeQueryLikedLetters);
 }
 
 extension ClientExtension$Query$LikedLetters on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$LikedLetters>> query$LikedLetters(
-          Options$Query$LikedLetters options) async =>
-      await this.query(options);
+          [Options$Query$LikedLetters? options]) async =>
+      await this.query(options ?? Options$Query$LikedLetters());
   graphql.ObservableQuery<Query$LikedLetters> watchQuery$LikedLetters(
-          WatchOptions$Query$LikedLetters options) =>
-      this.watchQuery(options);
+          [WatchOptions$Query$LikedLetters? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$LikedLetters());
   void writeQuery$LikedLetters(
           {required Query$LikedLetters data,
-          required Variables$Query$LikedLetters variables,
+          Variables$Query$LikedLetters? variables,
           bool broadcast = true}) =>
       this.writeQuery(
           graphql.Request(
               operation:
                   graphql.Operation(document: documentNodeQueryLikedLetters),
-              variables: variables.toJson()),
+              variables: variables?.toJson() ?? const {}),
           data: data.toJson(),
           broadcast: broadcast);
   Query$LikedLetters? readQuery$LikedLetters(
-      {required Variables$Query$LikedLetters variables,
-      bool optimistic = true}) {
+      {Variables$Query$LikedLetters? variables, bool optimistic = true}) {
     final result = this.readQuery(
         graphql.Request(
             operation:
                 graphql.Operation(document: documentNodeQueryLikedLetters),
-            variables: variables.toJson()),
+            variables: variables?.toJson() ?? const {}),
         optimistic: optimistic);
     return result == null ? null : Query$LikedLetters.fromJson(result);
   }
 }
 
 graphql_flutter.QueryHookResult<Query$LikedLetters> useQuery$LikedLetters(
-        Options$Query$LikedLetters options) =>
-    graphql_flutter.useQuery(options);
+        [Options$Query$LikedLetters? options]) =>
+    graphql_flutter.useQuery(options ?? Options$Query$LikedLetters());
 graphql.ObservableQuery<Query$LikedLetters> useWatchQuery$LikedLetters(
-        WatchOptions$Query$LikedLetters options) =>
-    graphql_flutter.useWatchQuery(options);
+        [WatchOptions$Query$LikedLetters? options]) =>
+    graphql_flutter.useWatchQuery(options ?? WatchOptions$Query$LikedLetters());
 
 class Query$LikedLetters$Widget
     extends graphql_flutter.Query<Query$LikedLetters> {
   Query$LikedLetters$Widget(
       {widgets.Key? key,
-      required Options$Query$LikedLetters options,
+      Options$Query$LikedLetters? options,
       required graphql_flutter.QueryBuilder<Query$LikedLetters> builder})
-      : super(key: key, options: options, builder: builder);
+      : super(
+            key: key,
+            options: options ?? Options$Query$LikedLetters(),
+            builder: builder);
 }
 
 class Query$LikedLetters$likedPosts {
-  Query$LikedLetters$likedPosts({this.edges, required this.$__typename});
+  Query$LikedLetters$likedPosts(
+      {this.edges, required this.pageInfo, required this.$__typename});
 
   factory Query$LikedLetters$likedPosts.fromJson(Map<String, dynamic> json) {
     final l$edges = json['edges'];
+    final l$pageInfo = json['pageInfo'];
     final l$$__typename = json['__typename'];
     return Query$LikedLetters$likedPosts(
         edges: (l$edges as List<dynamic>?)
@@ -1185,10 +1451,14 @@ class Query$LikedLetters$likedPosts {
                 : Query$LikedLetters$likedPosts$edges.fromJson(
                     (e as Map<String, dynamic>)))
             .toList(),
+        pageInfo: Query$LikedLetters$likedPosts$pageInfo.fromJson(
+            (l$pageInfo as Map<String, dynamic>)),
         $__typename: (l$$__typename as String));
   }
 
   final List<Query$LikedLetters$likedPosts$edges?>? edges;
+
+  final Query$LikedLetters$likedPosts$pageInfo pageInfo;
 
   final String $__typename;
 
@@ -1196,6 +1466,8 @@ class Query$LikedLetters$likedPosts {
     final _resultData = <String, dynamic>{};
     final l$edges = edges;
     _resultData['edges'] = l$edges?.map((e) => e?.toJson()).toList();
+    final l$pageInfo = pageInfo;
+    _resultData['pageInfo'] = l$pageInfo.toJson();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -1204,9 +1476,11 @@ class Query$LikedLetters$likedPosts {
   @override
   int get hashCode {
     final l$edges = edges;
+    final l$pageInfo = pageInfo;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
+      l$pageInfo,
       l$$__typename
     ]);
   }
@@ -1236,6 +1510,11 @@ class Query$LikedLetters$likedPosts {
     } else if (l$edges != lOther$edges) {
       return false;
     }
+    final l$pageInfo = pageInfo;
+    final lOther$pageInfo = other.pageInfo;
+    if (l$pageInfo != lOther$pageInfo) {
+      return false;
+    }
     final l$$__typename = $__typename;
     final lOther$$__typename = other.$__typename;
     if (l$$__typename != lOther$$__typename) {
@@ -1261,13 +1540,16 @@ abstract class CopyWith$Query$LikedLetters$likedPosts<TRes> {
       _CopyWithStubImpl$Query$LikedLetters$likedPosts;
 
   TRes call(
-      {List<Query$LikedLetters$likedPosts$edges?>? edges, String? $__typename});
+      {List<Query$LikedLetters$likedPosts$edges?>? edges,
+      Query$LikedLetters$likedPosts$pageInfo? pageInfo,
+      String? $__typename});
   TRes edges(
       Iterable<Query$LikedLetters$likedPosts$edges?>? Function(
               Iterable<
                   CopyWith$Query$LikedLetters$likedPosts$edges<
                       Query$LikedLetters$likedPosts$edges>?>?)
           _fn);
+  CopyWith$Query$LikedLetters$likedPosts$pageInfo<TRes> get pageInfo;
 }
 
 class _CopyWithImpl$Query$LikedLetters$likedPosts<TRes>
@@ -1280,11 +1562,17 @@ class _CopyWithImpl$Query$LikedLetters$likedPosts<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
+  TRes call(
+          {Object? edges = _undefined,
+          Object? pageInfo = _undefined,
+          Object? $__typename = _undefined}) =>
       _then(Query$LikedLetters$likedPosts(
           edges: edges == _undefined
               ? _instance.edges
               : (edges as List<Query$LikedLetters$likedPosts$edges?>?),
+          pageInfo: pageInfo == _undefined || pageInfo == null
+              ? _instance.pageInfo
+              : (pageInfo as Query$LikedLetters$likedPosts$pageInfo),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
@@ -1299,6 +1587,11 @@ class _CopyWithImpl$Query$LikedLetters$likedPosts<TRes>
                   ? null
                   : CopyWith$Query$LikedLetters$likedPosts$edges(e, (i) => i)))
               ?.toList());
+  CopyWith$Query$LikedLetters$likedPosts$pageInfo<TRes> get pageInfo {
+    final local$pageInfo = _instance.pageInfo;
+    return CopyWith$Query$LikedLetters$likedPosts$pageInfo(
+        local$pageInfo, (e) => call(pageInfo: e));
+  }
 }
 
 class _CopyWithStubImpl$Query$LikedLetters$likedPosts<TRes>
@@ -1309,9 +1602,12 @@ class _CopyWithStubImpl$Query$LikedLetters$likedPosts<TRes>
 
   call(
           {List<Query$LikedLetters$likedPosts$edges?>? edges,
+          Query$LikedLetters$likedPosts$pageInfo? pageInfo,
           String? $__typename}) =>
       _res;
   edges(_fn) => _res;
+  CopyWith$Query$LikedLetters$likedPosts$pageInfo<TRes> get pageInfo =>
+      CopyWith$Query$LikedLetters$likedPosts$pageInfo.stub(_res);
 }
 
 class Query$LikedLetters$likedPosts$edges {
@@ -1427,6 +1723,130 @@ class _CopyWithStubImpl$Query$LikedLetters$likedPosts$edges<TRes>
   call({Fragment$LetterSummary? node, String? $__typename}) => _res;
   CopyWith$Fragment$LetterSummary<TRes> get node =>
       CopyWith$Fragment$LetterSummary.stub(_res);
+}
+
+class Query$LikedLetters$likedPosts$pageInfo {
+  Query$LikedLetters$likedPosts$pageInfo(
+      {this.endCursor, required this.hasNextPage, required this.$__typename});
+
+  factory Query$LikedLetters$likedPosts$pageInfo.fromJson(
+      Map<String, dynamic> json) {
+    final l$endCursor = json['endCursor'];
+    final l$hasNextPage = json['hasNextPage'];
+    final l$$__typename = json['__typename'];
+    return Query$LikedLetters$likedPosts$pageInfo(
+        endCursor: (l$endCursor as String?),
+        hasNextPage: (l$hasNextPage as bool),
+        $__typename: (l$$__typename as String));
+  }
+
+  final String? endCursor;
+
+  final bool hasNextPage;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$endCursor = endCursor;
+    _resultData['endCursor'] = l$endCursor;
+    final l$hasNextPage = hasNextPage;
+    _resultData['hasNextPage'] = l$hasNextPage;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$endCursor = endCursor;
+    final l$hasNextPage = hasNextPage;
+    final l$$__typename = $__typename;
+    return Object.hashAll([l$endCursor, l$hasNextPage, l$$__typename]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$LikedLetters$likedPosts$pageInfo) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$endCursor = endCursor;
+    final lOther$endCursor = other.endCursor;
+    if (l$endCursor != lOther$endCursor) {
+      return false;
+    }
+    final l$hasNextPage = hasNextPage;
+    final lOther$hasNextPage = other.hasNextPage;
+    if (l$hasNextPage != lOther$hasNextPage) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$LikedLetters$likedPosts$pageInfo
+    on Query$LikedLetters$likedPosts$pageInfo {
+  CopyWith$Query$LikedLetters$likedPosts$pageInfo<
+          Query$LikedLetters$likedPosts$pageInfo>
+      get copyWith =>
+          CopyWith$Query$LikedLetters$likedPosts$pageInfo(this, (i) => i);
+}
+
+abstract class CopyWith$Query$LikedLetters$likedPosts$pageInfo<TRes> {
+  factory CopyWith$Query$LikedLetters$likedPosts$pageInfo(
+          Query$LikedLetters$likedPosts$pageInfo instance,
+          TRes Function(Query$LikedLetters$likedPosts$pageInfo) then) =
+      _CopyWithImpl$Query$LikedLetters$likedPosts$pageInfo;
+
+  factory CopyWith$Query$LikedLetters$likedPosts$pageInfo.stub(TRes res) =
+      _CopyWithStubImpl$Query$LikedLetters$likedPosts$pageInfo;
+
+  TRes call({String? endCursor, bool? hasNextPage, String? $__typename});
+}
+
+class _CopyWithImpl$Query$LikedLetters$likedPosts$pageInfo<TRes>
+    implements CopyWith$Query$LikedLetters$likedPosts$pageInfo<TRes> {
+  _CopyWithImpl$Query$LikedLetters$likedPosts$pageInfo(
+      this._instance, this._then);
+
+  final Query$LikedLetters$likedPosts$pageInfo _instance;
+
+  final TRes Function(Query$LikedLetters$likedPosts$pageInfo) _then;
+
+  static const _undefined = {};
+
+  TRes call(
+          {Object? endCursor = _undefined,
+          Object? hasNextPage = _undefined,
+          Object? $__typename = _undefined}) =>
+      _then(Query$LikedLetters$likedPosts$pageInfo(
+          endCursor: endCursor == _undefined
+              ? _instance.endCursor
+              : (endCursor as String?),
+          hasNextPage: hasNextPage == _undefined || hasNextPage == null
+              ? _instance.hasNextPage
+              : (hasNextPage as bool),
+          $__typename: $__typename == _undefined || $__typename == null
+              ? _instance.$__typename
+              : ($__typename as String)));
+}
+
+class _CopyWithStubImpl$Query$LikedLetters$likedPosts$pageInfo<TRes>
+    implements CopyWith$Query$LikedLetters$likedPosts$pageInfo<TRes> {
+  _CopyWithStubImpl$Query$LikedLetters$likedPosts$pageInfo(this._res);
+
+  TRes _res;
+
+  call({String? endCursor, bool? hasNextPage, String? $__typename}) => _res;
 }
 
 class Variables$Query$TopicWorks {
