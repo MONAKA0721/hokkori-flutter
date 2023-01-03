@@ -99,9 +99,9 @@ type UnfollowUserPayload {
 }
 
 type WorkCategory {
-  categoryID: ID!
-  categoryName: String!
-  postCount: Int!
+  id: ID!
+  name: String!
+  count: Int!
 }
 
 input DeleteDraftInput {

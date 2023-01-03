@@ -25,7 +25,7 @@ class _WorkPraisesState extends State<WorkPraises> {
   @override
   Widget build(BuildContext context) {
     final allCount = widget.workCategories!.fold<int>(
-        0, ((previousValue, element) => previousValue + element!.postCount));
+        0, ((previousValue, element) => previousValue + element!.count));
 
     List<DropdownMenuItem<String>> _addDividersAfterItems() {
       List<DropdownMenuItem<String>> _menuItems = [];
@@ -47,11 +47,11 @@ class _WorkPraisesState extends State<WorkPraises> {
         _menuItems.addAll(
           [
             DropdownMenuItem<String>(
-              value: workCategory!.categoryID,
+              value: workCategory!.id,
               child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Text(
-                    "${workCategory.categoryName}（${workCategory.postCount}件）",
+                    "${workCategory.name}（${workCategory.count}件）",
                   )),
             ),
             if (workCategory != widget.workCategories!.last)

@@ -78,8 +78,8 @@ query Work($workID: ID!) {
     }
   }
   workCategories(workID: $workID) {
-    categoryID
-    categoryName
-    postCount
+    id
+    name
+    count
   }
 }

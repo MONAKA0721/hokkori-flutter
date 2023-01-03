@@ -4802,19 +4802,19 @@ const documentNodeQueryWork = DocumentNode(definitions: [
             directives: [],
             selectionSet: SelectionSetNode(selections: [
               FieldNode(
-                  name: NameNode(value: 'categoryID'),
+                  name: NameNode(value: 'id'),
                   alias: null,
                   arguments: [],
                   directives: [],
                   selectionSet: null),
               FieldNode(
-                  name: NameNode(value: 'categoryName'),
+                  name: NameNode(value: 'name'),
                   alias: null,
                   arguments: [],
                   directives: [],
                   selectionSet: null),
               FieldNode(
-                  name: NameNode(value: 'postCount'),
+                  name: NameNode(value: 'count'),
                   alias: null,
                   arguments: [],
                   directives: [],
@@ -5229,39 +5229,39 @@ class _CopyWithStubImpl$Query$Work$work$$Work<TRes>
 
 class Query$Work$workCategories {
   Query$Work$workCategories(
-      {required this.categoryID,
-      required this.categoryName,
-      required this.postCount,
+      {required this.id,
+      required this.name,
+      required this.count,
       required this.$__typename});
 
   factory Query$Work$workCategories.fromJson(Map<String, dynamic> json) {
-    final l$categoryID = json['categoryID'];
-    final l$categoryName = json['categoryName'];
-    final l$postCount = json['postCount'];
+    final l$id = json['id'];
+    final l$name = json['name'];
+    final l$count = json['count'];
     final l$$__typename = json['__typename'];
     return Query$Work$workCategories(
-        categoryID: (l$categoryID as String),
-        categoryName: (l$categoryName as String),
-        postCount: (l$postCount as int),
+        id: (l$id as String),
+        name: (l$name as String),
+        count: (l$count as int),
         $__typename: (l$$__typename as String));
   }
 
-  final String categoryID;
+  final String id;
 
-  final String categoryName;
+  final String name;
 
-  final int postCount;
+  final int count;
 
   final String $__typename;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
-    final l$categoryID = categoryID;
-    _resultData['categoryID'] = l$categoryID;
-    final l$categoryName = categoryName;
-    _resultData['categoryName'] = l$categoryName;
-    final l$postCount = postCount;
-    _resultData['postCount'] = l$postCount;
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$name = name;
+    _resultData['name'] = l$name;
+    final l$count = count;
+    _resultData['count'] = l$count;
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -5269,12 +5269,11 @@ class Query$Work$workCategories {
 
   @override
   int get hashCode {
-    final l$categoryID = categoryID;
-    final l$categoryName = categoryName;
-    final l$postCount = postCount;
+    final l$id = id;
+    final l$name = name;
+    final l$count = count;
     final l$$__typename = $__typename;
-    return Object.hashAll(
-        [l$categoryID, l$categoryName, l$postCount, l$$__typename]);
+    return Object.hashAll([l$id, l$name, l$count, l$$__typename]);
   }
 
   @override
@@ -5286,19 +5285,19 @@ class Query$Work$workCategories {
         runtimeType != other.runtimeType) {
       return false;
     }
-    final l$categoryID = categoryID;
-    final lOther$categoryID = other.categoryID;
-    if (l$categoryID != lOther$categoryID) {
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
       return false;
     }
-    final l$categoryName = categoryName;
-    final lOther$categoryName = other.categoryName;
-    if (l$categoryName != lOther$categoryName) {
+    final l$name = name;
+    final lOther$name = other.name;
+    if (l$name != lOther$name) {
       return false;
     }
-    final l$postCount = postCount;
-    final lOther$postCount = other.postCount;
-    if (l$postCount != lOther$postCount) {
+    final l$count = count;
+    final lOther$count = other.count;
+    if (l$count != lOther$count) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -5324,11 +5323,7 @@ abstract class CopyWith$Query$Work$workCategories<TRes> {
   factory CopyWith$Query$Work$workCategories.stub(TRes res) =
       _CopyWithStubImpl$Query$Work$workCategories;
 
-  TRes call(
-      {String? categoryID,
-      String? categoryName,
-      int? postCount,
-      String? $__typename});
+  TRes call({String? id, String? name, int? count, String? $__typename});
 }
 
 class _CopyWithImpl$Query$Work$workCategories<TRes>
@@ -5342,20 +5337,18 @@ class _CopyWithImpl$Query$Work$workCategories<TRes>
   static const _undefined = {};
 
   TRes call(
-          {Object? categoryID = _undefined,
-          Object? categoryName = _undefined,
-          Object? postCount = _undefined,
+          {Object? id = _undefined,
+          Object? name = _undefined,
+          Object? count = _undefined,
           Object? $__typename = _undefined}) =>
       _then(Query$Work$workCategories(
-          categoryID: categoryID == _undefined || categoryID == null
-              ? _instance.categoryID
-              : (categoryID as String),
-          categoryName: categoryName == _undefined || categoryName == null
-              ? _instance.categoryName
-              : (categoryName as String),
-          postCount: postCount == _undefined || postCount == null
-              ? _instance.postCount
-              : (postCount as int),
+          id: id == _undefined || id == null ? _instance.id : (id as String),
+          name: name == _undefined || name == null
+              ? _instance.name
+              : (name as String),
+          count: count == _undefined || count == null
+              ? _instance.count
+              : (count as int),
           $__typename: $__typename == _undefined || $__typename == null
               ? _instance.$__typename
               : ($__typename as String)));
@@ -5367,10 +5360,5 @@ class _CopyWithStubImpl$Query$Work$workCategories<TRes>
 
   TRes _res;
 
-  call(
-          {String? categoryID,
-          String? categoryName,
-          int? postCount,
-          String? $__typename}) =>
-      _res;
+  call({String? id, String? name, int? count, String? $__typename}) => _res;
 }
