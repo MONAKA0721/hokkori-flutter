@@ -13,8 +13,13 @@ type Mutation {
     input2: CreatePostInput!
     hashtagTitles: [String]!
     image: Upload
+    workImage: Upload
   ): Post!
-  createPost(input: CreatePostInput!, hashtagTitles: [String]!): Post!
+  createPost(
+    input: CreatePostInput!
+    hashtagTitles: [String]!
+    workImage: Upload
+  ): Post!
   createHashtag(input: CreateHashtagInput!): Hashtag!
   createWork(input: CreateWorkInput!): Work!
   likePost(input: LikePostInput!): LikePostPayload!

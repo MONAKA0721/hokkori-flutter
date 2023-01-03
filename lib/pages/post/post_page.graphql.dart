@@ -3146,12 +3146,14 @@ class Variables$Mutation$CreatePosts {
     required Input$CreatePostInput createPostInput,
     required Input$CreatePostInput createPostInput2,
     required List<String?> hashtagTitles,
+    MultipartFile? workImage,
     MultipartFile? image,
   }) =>
       Variables$Mutation$CreatePosts._({
         r'createPostInput': createPostInput,
         r'createPostInput2': createPostInput2,
         r'hashtagTitles': hashtagTitles,
+        if (workImage != null) r'workImage': workImage,
         if (image != null) r'image': image,
       });
 
@@ -3168,6 +3170,10 @@ class Variables$Mutation$CreatePosts {
     final l$hashtagTitles = data['hashtagTitles'];
     result$data['hashtagTitles'] =
         (l$hashtagTitles as List<dynamic>).map((e) => (e as String?)).toList();
+    if (data.containsKey('workImage')) {
+      final l$workImage = data['workImage'];
+      result$data['workImage'] = (l$workImage as MultipartFile?);
+    }
     if (data.containsKey('image')) {
       final l$image = data['image'];
       result$data['image'] = (l$image as MultipartFile?);
@@ -3182,6 +3188,7 @@ class Variables$Mutation$CreatePosts {
   Input$CreatePostInput get createPostInput2 =>
       (_$data['createPostInput2'] as Input$CreatePostInput);
   List<String?> get hashtagTitles => (_$data['hashtagTitles'] as List<String?>);
+  MultipartFile? get workImage => (_$data['workImage'] as MultipartFile?);
   MultipartFile? get image => (_$data['image'] as MultipartFile?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
@@ -3191,6 +3198,10 @@ class Variables$Mutation$CreatePosts {
     result$data['createPostInput2'] = l$createPostInput2.toJson();
     final l$hashtagTitles = hashtagTitles;
     result$data['hashtagTitles'] = l$hashtagTitles.map((e) => e).toList();
+    if (_$data.containsKey('workImage')) {
+      final l$workImage = workImage;
+      result$data['workImage'] = l$workImage;
+    }
     if (_$data.containsKey('image')) {
       final l$image = image;
       result$data['image'] = l$image;
@@ -3234,6 +3245,15 @@ class Variables$Mutation$CreatePosts {
         return false;
       }
     }
+    final l$workImage = workImage;
+    final lOther$workImage = other.workImage;
+    if (_$data.containsKey('workImage') !=
+        other._$data.containsKey('workImage')) {
+      return false;
+    }
+    if (l$workImage != lOther$workImage) {
+      return false;
+    }
     final l$image = image;
     final lOther$image = other.image;
     if (_$data.containsKey('image') != other._$data.containsKey('image')) {
@@ -3250,11 +3270,13 @@ class Variables$Mutation$CreatePosts {
     final l$createPostInput = createPostInput;
     final l$createPostInput2 = createPostInput2;
     final l$hashtagTitles = hashtagTitles;
+    final l$workImage = workImage;
     final l$image = image;
     return Object.hashAll([
       l$createPostInput,
       l$createPostInput2,
       Object.hashAll(l$hashtagTitles.map((v) => v)),
+      _$data.containsKey('workImage') ? l$workImage : const {},
       _$data.containsKey('image') ? l$image : const {},
     ]);
   }
@@ -3273,6 +3295,7 @@ abstract class CopyWith$Variables$Mutation$CreatePosts<TRes> {
     Input$CreatePostInput? createPostInput,
     Input$CreatePostInput? createPostInput2,
     List<String?>? hashtagTitles,
+    MultipartFile? workImage,
     MultipartFile? image,
   });
 }
@@ -3294,6 +3317,7 @@ class _CopyWithImpl$Variables$Mutation$CreatePosts<TRes>
     Object? createPostInput = _undefined,
     Object? createPostInput2 = _undefined,
     Object? hashtagTitles = _undefined,
+    Object? workImage = _undefined,
     Object? image = _undefined,
   }) =>
       _then(Variables$Mutation$CreatePosts._({
@@ -3304,6 +3328,7 @@ class _CopyWithImpl$Variables$Mutation$CreatePosts<TRes>
           'createPostInput2': (createPostInput2 as Input$CreatePostInput),
         if (hashtagTitles != _undefined && hashtagTitles != null)
           'hashtagTitles': (hashtagTitles as List<String?>),
+        if (workImage != _undefined) 'workImage': (workImage as MultipartFile?),
         if (image != _undefined) 'image': (image as MultipartFile?),
       }));
 }
@@ -3318,6 +3343,7 @@ class _CopyWithStubImpl$Variables$Mutation$CreatePosts<TRes>
     Input$CreatePostInput? createPostInput,
     Input$CreatePostInput? createPostInput2,
     List<String?>? hashtagTitles,
+    MultipartFile? workImage,
     MultipartFile? image,
   }) =>
       _res;
@@ -3491,6 +3517,15 @@ const documentNodeMutationCreatePosts = DocumentNode(definitions: [
         directives: [],
       ),
       VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'workImage')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Upload'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
         variable: VariableNode(name: NameNode(value: 'image')),
         type: NamedTypeNode(
           name: NameNode(value: 'Upload'),
@@ -3517,6 +3552,10 @@ const documentNodeMutationCreatePosts = DocumentNode(definitions: [
           ArgumentNode(
             name: NameNode(value: 'hashtagTitles'),
             value: VariableNode(name: NameNode(value: 'hashtagTitles')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'workImage'),
+            value: VariableNode(name: NameNode(value: 'workImage')),
           ),
           ArgumentNode(
             name: NameNode(value: 'image'),
@@ -3879,10 +3918,12 @@ class Variables$Mutation$CreatePost {
   factory Variables$Mutation$CreatePost({
     required Input$CreatePostInput createPostInput,
     required List<String?> hashtagTitles,
+    MultipartFile? workImage,
   }) =>
       Variables$Mutation$CreatePost._({
         r'createPostInput': createPostInput,
         r'hashtagTitles': hashtagTitles,
+        if (workImage != null) r'workImage': workImage,
       });
 
   Variables$Mutation$CreatePost._(this._$data);
@@ -3895,6 +3936,10 @@ class Variables$Mutation$CreatePost {
     final l$hashtagTitles = data['hashtagTitles'];
     result$data['hashtagTitles'] =
         (l$hashtagTitles as List<dynamic>).map((e) => (e as String?)).toList();
+    if (data.containsKey('workImage')) {
+      final l$workImage = data['workImage'];
+      result$data['workImage'] = (l$workImage as MultipartFile?);
+    }
     return Variables$Mutation$CreatePost._(result$data);
   }
 
@@ -3903,12 +3948,17 @@ class Variables$Mutation$CreatePost {
   Input$CreatePostInput get createPostInput =>
       (_$data['createPostInput'] as Input$CreatePostInput);
   List<String?> get hashtagTitles => (_$data['hashtagTitles'] as List<String?>);
+  MultipartFile? get workImage => (_$data['workImage'] as MultipartFile?);
   Map<String, dynamic> toJson() {
     final result$data = <String, dynamic>{};
     final l$createPostInput = createPostInput;
     result$data['createPostInput'] = l$createPostInput.toJson();
     final l$hashtagTitles = hashtagTitles;
     result$data['hashtagTitles'] = l$hashtagTitles.map((e) => e).toList();
+    if (_$data.containsKey('workImage')) {
+      final l$workImage = workImage;
+      result$data['workImage'] = l$workImage;
+    }
     return result$data;
   }
 
@@ -3943,6 +3993,15 @@ class Variables$Mutation$CreatePost {
         return false;
       }
     }
+    final l$workImage = workImage;
+    final lOther$workImage = other.workImage;
+    if (_$data.containsKey('workImage') !=
+        other._$data.containsKey('workImage')) {
+      return false;
+    }
+    if (l$workImage != lOther$workImage) {
+      return false;
+    }
     return true;
   }
 
@@ -3950,9 +4009,11 @@ class Variables$Mutation$CreatePost {
   int get hashCode {
     final l$createPostInput = createPostInput;
     final l$hashtagTitles = hashtagTitles;
+    final l$workImage = workImage;
     return Object.hashAll([
       l$createPostInput,
       Object.hashAll(l$hashtagTitles.map((v) => v)),
+      _$data.containsKey('workImage') ? l$workImage : const {},
     ]);
   }
 }
@@ -3969,6 +4030,7 @@ abstract class CopyWith$Variables$Mutation$CreatePost<TRes> {
   TRes call({
     Input$CreatePostInput? createPostInput,
     List<String?>? hashtagTitles,
+    MultipartFile? workImage,
   });
 }
 
@@ -3988,6 +4050,7 @@ class _CopyWithImpl$Variables$Mutation$CreatePost<TRes>
   TRes call({
     Object? createPostInput = _undefined,
     Object? hashtagTitles = _undefined,
+    Object? workImage = _undefined,
   }) =>
       _then(Variables$Mutation$CreatePost._({
         ..._instance._$data,
@@ -3995,6 +4058,7 @@ class _CopyWithImpl$Variables$Mutation$CreatePost<TRes>
           'createPostInput': (createPostInput as Input$CreatePostInput),
         if (hashtagTitles != _undefined && hashtagTitles != null)
           'hashtagTitles': (hashtagTitles as List<String?>),
+        if (workImage != _undefined) 'workImage': (workImage as MultipartFile?),
       }));
 }
 
@@ -4007,6 +4071,7 @@ class _CopyWithStubImpl$Variables$Mutation$CreatePost<TRes>
   call({
     Input$CreatePostInput? createPostInput,
     List<String?>? hashtagTitles,
+    MultipartFile? workImage,
   }) =>
       _res;
 }
@@ -4169,6 +4234,15 @@ const documentNodeMutationCreatePost = DocumentNode(definitions: [
         defaultValue: DefaultValueNode(value: null),
         directives: [],
       ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'workImage')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Upload'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
     ],
     directives: [],
     selectionSet: SelectionSetNode(selections: [
@@ -4183,6 +4257,10 @@ const documentNodeMutationCreatePost = DocumentNode(definitions: [
           ArgumentNode(
             name: NameNode(value: 'hashtagTitles'),
             value: VariableNode(name: NameNode(value: 'hashtagTitles')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'workImage'),
+            value: VariableNode(name: NameNode(value: 'workImage')),
           ),
         ],
         directives: [],
