@@ -24,8 +24,8 @@ class TopWorks extends HookWidget {
         ),
       );
     }
-    final works = result.parsedData?.topicWorks ?? [];
-    final chunkedWorks = [];
+    final works = result.parsedData?.topicWorks.edges ?? [];
+    final List<List<Query$TopicWorks$topicWorks$edges?>> chunkedWorks = [];
     const chunkSize = 2;
     var count = 0;
 
@@ -52,7 +52,7 @@ class TopWorks extends HookWidget {
 }
 
 class ColumnWorks extends StatelessWidget {
-  final List<Query$TopicWorks$topicWorks?> works;
+  final List<Query$TopicWorks$topicWorks$edges?> works;
   final int index;
   const ColumnWorks({super.key, required this.works, required this.index});
 
@@ -61,12 +61,12 @@ class ColumnWorks extends StatelessWidget {
     final children = <Widget>[];
     for (var i = 0; i < works.length; i++) {
       if (i != works.length - 1) {
-        children.add(TopWork(work: works[i], rank: 2 * index + i + 1));
+        children.add(TopWork(work: works[i]!.node, rank: 2 * index + i + 1));
         children.add(const SizedBox(
           height: 10,
         ));
       } else {
-        children.add(TopWork(work: works[i], rank: 2 * index + i + 1));
+        children.add(TopWork(work: works[i]!.node, rank: 2 * index + i + 1));
       }
     }
     return Column(children: children);
@@ -74,7 +74,7 @@ class ColumnWorks extends StatelessWidget {
 }
 
 class TopWork extends StatelessWidget {
-  final Query$TopicWorks$topicWorks? work;
+  final Query$TopicWorks$topicWorks$edges$node? work;
   final int rank;
   const TopWork({super.key, required this.work, required this.rank});
 

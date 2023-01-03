@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:hokkori/pages/search/attention_letters.dart';
 import 'package:hokkori/pages/search/category_page.dart';
 import 'package:hokkori/pages/search/custom_popup_route.dart';
 import 'package:hokkori/pages/search/hashtag_page.dart';
 import 'package:hokkori/pages/search/praise_page.dart';
 import 'package:hokkori/pages/search/search_input.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
-import 'package:hokkori/pages/search/top_letters.dart';
 import 'package:hokkori/pages/search/topic_contents.dart';
 import 'package:hokkori/pages/search/work_page.dart';
 import 'package:hokkori/utils/categories.dart';
@@ -92,7 +92,7 @@ class SearchPage extends ConsumerWidget {
                                       left: 20, right: 20, bottom: 50),
                                   decoration: const BoxDecoration(
                                       color: backgroundColor),
-                                  child: const TopLetters())
+                                  child: const AttentionLetters())
                             ],
                           ))))
       ],
@@ -124,27 +124,12 @@ class Candidates extends HookConsumerWidget {
     }
     final categories = masterCategories.where((masterCategory) =>
         masterCategory.name.contains(ref.watch(searchTextProvider)));
-    final hashtags = result.parsedData?.hashtags.edges ?? [];
-    final works = result.parsedData?.works.edges ?? [];
+    final hashtags = result.parsedData?.topicHashtags.edges ?? [];
+    final works = result.parsedData?.topicWorks.edges ?? [];
 
     const width = 35.0;
     return Column(
-        children: works
-                .map((work) => ListTile(
-                      leading: work!.node!.thumbnail != ""
-                          ? Image.network(work.node!.thumbnail!, width: width)
-                          : Image.asset(
-                              "assets/noimage.png",
-                              width: width,
-                            ),
-                      onTap: () {
-                        Navigator.of(context).pushNamed('/work',
-                            arguments: WorkPageArguments(work.node!.id));
-                      },
-                      title: Text(work.node!.title),
-                    ))
-                .toList() +
-            categories
+        children: categories
                 .map((category) => ListTile(
                       leading: CircleAvatar(
                           backgroundColor: category.color,
@@ -158,6 +143,21 @@ class Candidates extends HookConsumerWidget {
                             arguments: CategoryPageArguments(category));
                       },
                       title: Text(category.name),
+                    ))
+                .toList() +
+            works
+                .map((work) => ListTile(
+                      leading: work!.node!.thumbnail != ""
+                          ? Image.network(work.node!.thumbnail!, width: width)
+                          : Image.asset(
+                              "assets/noimage.png",
+                              width: width,
+                            ),
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/work',
+                            arguments: WorkPageArguments(work.node!.id));
+                      },
+                      title: Text(work.node!.title),
                     ))
                 .toList() +
             hashtags

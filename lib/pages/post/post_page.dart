@@ -51,6 +51,8 @@ class PostPageNavigator extends HookWidget {
 
 final draftIDProvider = StateProvider<String?>((ref) => null);
 
+final workImageProvider = StateProvider<File?>((ref) => null);
+final workImageErrorProvider = StateProvider<bool>((ref) => false);
 final workErrorProvider = StateProvider<bool>((ref) => false);
 final categoryProvider = StateProvider<int?>((ref) => null);
 final categoryErrorProvider = StateProvider<bool>((ref) => false);
@@ -90,6 +92,7 @@ class _PostPageState extends ConsumerState<PostPage> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (ref.watch(workProvider) == null &&
+          ref.watch(workImageProvider) == null &&
           ref.watch(categoryProvider) == null &&
           ref.watch(hashtagsProvider).isEmpty &&
           ref.watch(praiseTitleProvider) == "" &&
@@ -119,9 +122,6 @@ class _PostPageState extends ConsumerState<PostPage> {
           decoration: const BoxDecoration(color: backgroundColor),
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           child: Column(children: [
-            const SizedBox(
-              height: 40,
-            ),
             ActionRow(
               navigate: widget.navigate,
             ),
@@ -213,6 +213,8 @@ class Step1 extends ConsumerStatefulWidget {
 }
 
 class _Step1State extends ConsumerState<Step1> {
+  final _picker = ImagePicker();
+
   Widget _workPopupItemBuilder(
     BuildContext context,
     WorkModel? item,
@@ -232,13 +234,13 @@ class _Step1State extends ConsumerState<Step1> {
       child: ListTile(
         selected: isSelected,
         title: Text(item?.title ?? ''),
-        leading: thumbnail != null
-            ? Image.network(
-                thumbnail,
+        leading: thumbnail == null || thumbnail.isEmpty
+            ? Image.asset(
+                "assets/noimage.png",
                 width: width,
               )
-            : Image.asset(
-                "assets/noimage.png",
+            : Image.network(
+                thumbnail,
                 width: width,
               ),
       ),
@@ -329,13 +331,39 @@ class _Step1State extends ConsumerState<Step1> {
             Row(
               children: [
                 work == null || work.thumbnail == ""
-                    ? Image.asset(
-                        "assets/noimage.png",
-                        width: 100,
-                      )
+                    ? GestureDetector(
+                        onTap: () async {
+                          final _image = await _picker.pickImage(
+                              source: ImageSource.gallery,
+                              requestFullMetadata: false);
+                          if (_image == null) return;
+                          ref.watch(workImageProvider.notifier).state =
+                              File(_image.path);
+                        },
+                        child: ref.watch(workImageProvider) != null
+                            ? Image.file(
+                                ref.watch(workImageProvider)!,
+                                width: 100,
+                                height: 100,
+                              )
+                            : ref.watch(workImageErrorProvider) == true
+                                ? Container(
+                                    decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.red)),
+                                    child: Image.asset(
+                                      "assets/noimage.png",
+                                      width: 100,
+                                      height: 100,
+                                    ))
+                                : Image.asset(
+                                    "assets/noimage.png",
+                                    width: 100,
+                                    height: 100,
+                                  ))
                     : Image.network(
                         work.thumbnail!,
                         width: 100,
+                        height: 100,
                       ),
                 const SizedBox(
                   width: 20,
@@ -407,8 +435,7 @@ class _Step1State extends ConsumerState<Step1> {
                           buttonHeight: 60,
                           itemPadding: const EdgeInsets.all(0),
                           items: _addDividersAfterCategories(masterCategories),
-                          customItemsIndexes: _getDividersIndexes(),
-                          customItemsHeight: 4,
+                          customItemsHeights: _getCustomItemsHeights(),
                           value: ref.watch(categoryProvider),
                           onChanged: (value) {
                             setState(() => {
@@ -486,15 +513,18 @@ List<DropdownMenuItem<int>> _addDividersAfterCategories(
   return _menuItems;
 }
 
-List<int> _getDividersIndexes() {
-  List<int> _dividersIndexes = [];
+List<double> _getCustomItemsHeights() {
+  List<double> _heights = [];
   for (var i = 0; i < (masterCategories.length * 2) - 1; i++) {
+    if (i.isEven) {
+      _heights.add(60);
+    }
     //Dividers indexes will be the odd indexes
     if (i.isOdd) {
-      _dividersIndexes.add(i);
+      _heights.add(4);
     }
   }
-  return _dividersIndexes;
+  return _heights;
 }
 
 class Step2 extends ConsumerWidget {

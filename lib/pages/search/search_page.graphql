@@ -1,26 +1,33 @@
-query LikedPraises($first: Int!) {
-  likedPosts(first: $first, type: praise) {
-    id
-    title
+query LikedPraises($after: Cursor, $first: Int, $or: [PostWhereInput!]) {
+  likedPosts(after: $after, first: $first, where: { type: praise, or: $or }) {
+    edges {
+      node {
+        ...PraiseSummary
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
   }
 }
 
-query LikedLetters($first: Int!) {
-  likedPosts(first: $first, type: letter) {
-    ...LetterSummary
+query LikedLetters($after: Cursor, $first: Int, $or: [PostWhereInput!]) {
+  likedPosts(after: $after, first: $first, where: { type: letter, or: $or }) {
+    edges {
+      node {
+        ...LetterSummary
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
   }
 }
 
-query TopicWorks($first: Int!) {
+query TopicWorks($first: Int) {
   topicWorks(first: $first) {
-    id
-    title
-    thumbnail
-  }
-}
-
-query SearchCandidates($searchText: String) {
-  works(first: 9, where: { titleContainsFold: $searchText }) {
     edges {
       node {
         id
@@ -29,7 +36,14 @@ query SearchCandidates($searchText: String) {
       }
     }
   }
-  categories(first: 9, where: { nameContainsFold: $searchText }) {
+}
+
+query SearchCandidates($searchText: String) {
+  categories(
+    first: 9
+    where: { nameContainsFold: $searchText }
+    orderBy: { direction: ASC, field: NAME }
+  ) {
     edges {
       node {
         id
@@ -37,7 +51,16 @@ query SearchCandidates($searchText: String) {
       }
     }
   }
-  hashtags(first: 9, where: { titleContainsFold: $searchText }) {
+  topicWorks(first: 9, where: { titleContainsFold: $searchText }) {
+    edges {
+      node {
+        id
+        title
+        thumbnail
+      }
+    }
+  }
+  topicHashtags(first: 9, where: { titleContainsFold: $searchText }) {
     edges {
       node {
         id
@@ -59,8 +82,8 @@ query Work($workID: ID!) {
     }
   }
   workCategories(workID: $workID) {
-    categoryID
-    categoryName
-    postCount
+    id
+    name
+    count
   }
 }

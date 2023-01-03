@@ -44,12 +44,14 @@ mutation CreatePosts(
   $createPostInput: CreatePostInput!
   $createPostInput2: CreatePostInput!
   $hashtagTitles: [String]!
+  $workImage: Upload
   $image: Upload
 ) {
   createPosts(
     input: $createPostInput
     input2: $createPostInput2
     hashtagTitles: $hashtagTitles
+    workImage: $workImage
     image: $image
   ) {
     id
@@ -59,8 +61,13 @@ mutation CreatePosts(
 mutation CreatePost(
   $createPostInput: CreatePostInput!
   $hashtagTitles: [String]!
+  $workImage: Upload
 ) {
-  createPost(input: $createPostInput, hashtagTitles: $hashtagTitles) {
+  createPost(
+    input: $createPostInput
+    hashtagTitles: $hashtagTitles
+    workImage: $workImage
+  ) {
     id
   }
 }

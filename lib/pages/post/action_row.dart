@@ -113,6 +113,7 @@ class DiscardButton extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     void resetForm() {
       ref.watch(workErrorProvider.notifier).state = false;
+      ref.watch(workImageErrorProvider.notifier).state = false;
       ref.watch(categoryErrorProvider.notifier).state = false;
       ref.watch(praiseTitleErrorProvider.notifier).state = false;
       ref.watch(praiseContentErrorProvider.notifier).state = false;
@@ -120,6 +121,7 @@ class DiscardButton extends HookConsumerWidget {
       ref.watch(letterContentErrorProvider.notifier).state = false;
 
       ref.watch(workProvider.notifier).state = null;
+      ref.watch(workImageProvider.notifier).state = null;
       ref.watch(categoryProvider.notifier).state = null;
       ref.watch(hashtagsProvider.notifier).state = List.empty();
       ref.watch(praiseTitleProvider.notifier).state = "";
@@ -179,6 +181,7 @@ class SaveButton extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     void resetForm() {
       ref.watch(workErrorProvider.notifier).state = false;
+      ref.watch(workImageErrorProvider.notifier).state = false;
       ref.watch(categoryErrorProvider.notifier).state = false;
       ref.watch(praiseTitleErrorProvider.notifier).state = false;
       ref.watch(praiseContentErrorProvider.notifier).state = false;
@@ -186,6 +189,7 @@ class SaveButton extends HookConsumerWidget {
       ref.watch(letterContentErrorProvider.notifier).state = false;
 
       ref.watch(workProvider.notifier).state = null;
+      ref.watch(workImageProvider.notifier).state = null;
       ref.watch(categoryProvider.notifier).state = null;
       ref.watch(hashtagsProvider.notifier).state = List.empty();
       ref.watch(praiseTitleProvider.notifier).state = "";
@@ -299,6 +303,10 @@ class SubmitButton extends HookConsumerWidget {
     bool validate() {
       ref.watch(workErrorProvider.notifier).state =
           ref.watch(workProvider) == null;
+      ref.watch(workImageErrorProvider.notifier).state =
+          ref.watch(workProvider) != null &&
+              ref.watch(workProvider)!.thumbnail == "" &&
+              ref.watch(workImageProvider) == null;
       ref.watch(categoryErrorProvider.notifier).state =
           ref.watch(categoryProvider) == null;
       ref.watch(praiseTitleErrorProvider.notifier).state =
@@ -323,6 +331,7 @@ class SubmitButton extends HookConsumerWidget {
 
     void resetForm() {
       ref.watch(workProvider.notifier).state = null;
+      ref.watch(workImageProvider.notifier).state = null;
       ref.watch(categoryProvider.notifier).state = null;
       ref.watch(hashtagsProvider.notifier).state = List.empty();
       ref.watch(praiseTitleProvider.notifier).state = "";
@@ -330,6 +339,7 @@ class SubmitButton extends HookConsumerWidget {
       ref.watch(praiseSpoiledProvider.notifier).state = false;
       ref.watch(letterTitleProvider.notifier).state = "";
       ref.watch(letterContentProvider.notifier).state = "";
+      ref.watch(thumbnailProvider.notifier).state = null;
       ref.watch(letterSpoiledProvider.notifier).state = false;
     }
 
@@ -384,18 +394,25 @@ class SubmitButton extends HookConsumerWidget {
                 final result = createPostMutation.runMutation(
                     Variables$Mutation$CreatePost(
                         createPostInput: Input$CreatePostInput(
-                            title: ref.watch(praiseTitleProvider),
-                            content: ref.watch(praiseContentProvider),
-                            type: Enum$PostPostType.praise,
-                            ownerID: ref.watch(userProvider).id,
-                            workID: ref.watch(workProvider)!.id,
-                            spoiled: ref.watch(praiseSpoiledProvider),
-                            categoryID: ref.watch(categoryProvider).toString(),
-                            hashtagIDs: ref
-                                .watch(hashtagsProvider)
-                                .where((h) => h.id != "")
-                                .map((m) => m.id)
-                                .toList()),
+                          title: ref.watch(praiseTitleProvider),
+                          content: ref.watch(praiseContentProvider),
+                          type: Enum$PostPostType.praise,
+                          ownerID: ref.watch(userProvider).id,
+                          workID: ref.watch(workProvider)!.id,
+                          spoiled: ref.watch(praiseSpoiledProvider),
+                          categoryID: ref.watch(categoryProvider).toString(),
+                          hashtagIDs: ref
+                              .watch(hashtagsProvider)
+                              .where((h) => h.id != "")
+                              .map((m) => m.id)
+                              .toList(),
+                        ),
+                        workImage: ref.watch(workImageProvider) == null
+                            ? null
+                            : MultipartFile.fromBytes(
+                                '',
+                                ref.watch(workImageProvider)!.readAsBytesSync(),
+                              ),
                         hashtagTitles: ref
                             .watch(hashtagsProvider)
                             .where((h) => h.id == "")
@@ -438,6 +455,12 @@ class SubmitButton extends HookConsumerWidget {
                           .where((h) => h.id == "")
                           .map((h) => h.title)
                           .toList(),
+                      workImage: ref.watch(workImageProvider) == null
+                          ? null
+                          : MultipartFile.fromBytes(
+                              '',
+                              ref.watch(workImageProvider)!.readAsBytesSync(),
+                            ),
                       image: ref.watch(thumbnailProvider) == null
                           ? null
                           : MultipartFile.fromBytes(
@@ -450,7 +473,7 @@ class SubmitButton extends HookConsumerWidget {
                 }
               }
               resetForm();
-              {
+              if (ref.watch(draftIDProvider) != null) {
                 final result = deleteDraftMutation
                     .runMutation(Variables$Mutation$DeleteDraft(
                         input: Input$DeleteDraftInput(

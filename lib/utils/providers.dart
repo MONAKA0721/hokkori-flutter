@@ -19,4 +19,6 @@ final tutorialUsernameProvider = StateProvider<String>((ref) => "");
 final tutorialUsernameErrorProvider = StateProvider<bool>((ref) => false);
 final tutorialAgeIDProvider = StateProvider<int?>(((ref) => null));
 final tutorialAgeIDErrorProvider = StateProvider<bool>(((ref) => false));
-final tutorialGenderProvider = StateProvider<int?>((ref) => 0);
+final tutorialGenderProvider = StateProvider<int?>((ref) => 1);
+final tutorialInterestsProvider =
+    StateProvider<List<int>>((ref) => List.empty());

@@ -7,14 +7,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hive/hive.dart';
+import 'package:hokkori/graphql/ent.graphql.dart';
 import 'package:hokkori/index.dart';
 import 'package:hokkori/login.dart';
+import 'package:hokkori/main.graphql.dart';
 import 'package:hokkori/pages/tutorial/tutorial_navigator.dart';
+import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hokkori/utils/user.dart';
 import 'package:http/http.dart' as http;
 
-final FlutterAppAuth appAuth = FlutterAppAuth();
+const FlutterAppAuth appAuth = FlutterAppAuth();
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
 const auth0Domain =
@@ -44,21 +47,6 @@ query User(
 }
 ''';
 
-const String updateUser = r'''
-mutation updateUser(
-  $userID: ID!
-  $input: UpdateUserInput!
-) {
-  updateUser(id: $userID, input: $input) {
-    id
-    name
-    username
-    profile
-    avatarURL  
-  }
-}
-''';
-
 void main() async {
   // We're using HiveStore for persistence,
   // so we need to initialize Hive.
@@ -70,7 +58,7 @@ void main() async {
 const bool isProduction = bool.fromEnvironment('dart.vm.product');
 const apiQueryURL = isProduction
     ? 'http://13.231.110.200:8080/query'
-    : 'https://cb89-240f-7a-db47-1-2c8c-c3d9-96ff-435d.ngrok.io/query';
+    : 'https://e588-39-2-132-128.ngrok.io/query';
 final HttpLink httpLink = HttpLink(
   apiQueryURL,
 );
@@ -188,21 +176,26 @@ class _MyAppState extends ConsumerState<MyApp> {
       final idToken = parseIdToken(result.idToken!);
 
       if (!doneTutorial) {
-        final QueryResult mutationResult = await client.value
-            .mutate(MutationOptions(document: gql(updateUser), variables: {
-          'userID': idToken["https://hokkori.com/app_metadata"]["hokkoriID"],
-          'input': {
-            'name': ref.watch(tutorialNameProvider),
-            'username': ref.watch(tutorialUsernameProvider),
-          }
-        }));
+        final mutationResult = await client.value.mutate$UpdateUser(
+            Options$Mutation$UpdateUser(
+                variables: Variables$Mutation$UpdateUser(
+                    userID: idToken["https://hokkori.com/app_metadata"]
+                        ["hokkoriID"],
+                    input: Input$UpdateUserInput(
+                        name: ref.watch(tutorialNameProvider),
+                        username: ref.watch(tutorialUsernameProvider),
+                        age: ref.watch(tutorialAgeIDProvider),
+                        gender: ref.watch(tutorialGenderProvider),
+                        interests: ref.watch(tutorialInterestsProvider)))));
+
+        final updatedUser = mutationResult.parsedData?.updateUser;
 
         ref.watch(userProvider.notifier).state = User(
-          mutationResult.data?['updateUser']['id'],
-          mutationResult.data?['updateUser']['name'],
-          mutationResult.data?['updateUser']['username'],
-          mutationResult.data?['updateUser']['profile'],
-          mutationResult.data?['updateUser']['avatarURL'],
+          updatedUser!.id,
+          updatedUser.name,
+          updatedUser.username!,
+          updatedUser.profile!,
+          updatedUser.avatarURL!,
         );
         box.put('doneTutorial', true);
         return;
@@ -282,15 +275,20 @@ class _MyAppState extends ConsumerState<MyApp> {
                 // is not restarted.
                 primarySwatch: Colors.blue,
                 fontFamily: 'Zen Kaku Gothic New'),
-            home: ref.watch(isBusyProvider)
-                ? const Center(child: CircularProgressIndicator())
-                : ref.watch(isLoggedInProvider)
-                    ? const Index(title: 'ほっこり')
-                    : doneTutorial
-                        ? Login(
-                            loginAction: loginAction,
-                            loginError: errorMessage,
-                          )
-                        : TutorialNavigator(loginAction: loginAction)));
+            home: Container(
+                color: backgroundColor,
+                child: SafeArea(
+                    bottom: false,
+                    child: ref.watch(isBusyProvider)
+                        ? const Center(child: CircularProgressIndicator())
+                        : ref.watch(isLoggedInProvider)
+                            ? const Index(title: 'ほっこり')
+                            : doneTutorial
+                                ? Login(
+                                    loginAction: loginAction,
+                                    loginError: errorMessage,
+                                  )
+                                : TutorialNavigator(
+                                    loginAction: loginAction)))));
   }
 }

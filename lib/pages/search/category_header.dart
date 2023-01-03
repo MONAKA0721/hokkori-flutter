@@ -11,7 +11,7 @@ class CategoryHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(color: backgroundColor),
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 40, bottom: 10),
+      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
       child: Row(children: [
         IconButton(
           onPressed: () {

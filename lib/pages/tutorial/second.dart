@@ -131,7 +131,7 @@ class Tutorial2 extends ConsumerWidget {
                         Row(
                           children: [
                             Radio(
-                                value: 0,
+                                value: 1,
                                 groupValue: ref.watch(tutorialGenderProvider),
                                 onChanged: (int? value) {
                                   ref
@@ -140,7 +140,7 @@ class Tutorial2 extends ConsumerWidget {
                                 }),
                             const Text("男"),
                             Radio(
-                                value: 1,
+                                value: 2,
                                 groupValue: ref.watch(tutorialGenderProvider),
                                 onChanged: (int? value) {
                                   ref
@@ -149,7 +149,7 @@ class Tutorial2 extends ConsumerWidget {
                                 }),
                             const Text("女"),
                             Radio(
-                                value: 2,
+                                value: 3,
                                 groupValue: ref.watch(tutorialGenderProvider),
                                 onChanged: (int? value) {
                                   ref

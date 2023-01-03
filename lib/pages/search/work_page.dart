@@ -250,6 +250,7 @@ class PositionedPraise extends StatelessWidget {
               Flexible(
                   child: Text(
                 entry.value.title,
+                maxLines: 3,
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               )),

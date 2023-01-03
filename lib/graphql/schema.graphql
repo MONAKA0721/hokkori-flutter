@@ -13,8 +13,13 @@ type Mutation {
     input2: CreatePostInput!
     hashtagTitles: [String]!
     image: Upload
+    workImage: Upload
   ): Post!
-  createPost(input: CreatePostInput!, hashtagTitles: [String]!): Post!
+  createPost(
+    input: CreatePostInput!
+    hashtagTitles: [String]!
+    workImage: Upload
+  ): Post!
   createHashtag(input: CreateHashtagInput!): Hashtag!
   createWork(input: CreateWorkInput!): Work!
   likePost(input: LikePostInput!): LikePostPayload!
@@ -30,12 +35,6 @@ type Mutation {
     hashtagTitles: [String]!
   ): Draft!
   deleteDraft(input: DeleteDraftInput!): DeleteDraftPayload!
-}
-
-extend type Query {
-  likedPosts(first: Int!, type: PostPostType!): [Post]!
-  topicWorks(first: Int!): [Work]!
-  workCategories(workID: ID!): [WorkCategory]!
 }
 
 input LikePostInput {
@@ -105,9 +104,9 @@ type UnfollowUserPayload {
 }
 
 type WorkCategory {
-  categoryID: ID!
-  categoryName: String!
-  postCount: Int!
+  id: ID!
+  name: String!
+  count: Int!
 }
 
 input DeleteDraftInput {

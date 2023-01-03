@@ -34,7 +34,10 @@ class Variables$Query$Profile {
   }
 
   CopyWith$Variables$Query$Profile<Variables$Query$Profile> get copyWith =>
-      CopyWith$Variables$Query$Profile(this, (i) => i);
+      CopyWith$Variables$Query$Profile(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -60,9 +63,10 @@ class Variables$Query$Profile {
 }
 
 abstract class CopyWith$Variables$Query$Profile<TRes> {
-  factory CopyWith$Variables$Query$Profile(Variables$Query$Profile instance,
-          TRes Function(Variables$Query$Profile) then) =
-      _CopyWithImpl$Variables$Query$Profile;
+  factory CopyWith$Variables$Query$Profile(
+    Variables$Query$Profile instance,
+    TRes Function(Variables$Query$Profile) then,
+  ) = _CopyWithImpl$Variables$Query$Profile;
 
   factory CopyWith$Variables$Query$Profile.stub(TRes res) =
       _CopyWithStubImpl$Variables$Query$Profile;
@@ -72,7 +76,10 @@ abstract class CopyWith$Variables$Query$Profile<TRes> {
 
 class _CopyWithImpl$Variables$Query$Profile<TRes>
     implements CopyWith$Variables$Query$Profile<TRes> {
-  _CopyWithImpl$Variables$Query$Profile(this._instance, this._then);
+  _CopyWithImpl$Variables$Query$Profile(
+    this._instance,
+    this._then,
+  );
 
   final Variables$Query$Profile _instance;
 
@@ -97,16 +104,20 @@ class _CopyWithStubImpl$Variables$Query$Profile<TRes>
 }
 
 class Query$Profile {
-  Query$Profile({this.user, required this.$__typename});
+  Query$Profile({
+    this.user,
+    required this.$__typename,
+  });
 
   factory Query$Profile.fromJson(Map<String, dynamic> json) {
     final l$user = json['user'];
     final l$$__typename = json['__typename'];
     return Query$Profile(
-        user: l$user == null
-            ? null
-            : Query$Profile$user.fromJson((l$user as Map<String, dynamic>)),
-        $__typename: (l$$__typename as String));
+      user: l$user == null
+          ? null
+          : Query$Profile$user.fromJson((l$user as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final Query$Profile$user? user;
@@ -126,7 +137,10 @@ class Query$Profile {
   int get hashCode {
     final l$user = user;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$user, l$$__typename]);
+    return Object.hashAll([
+      l$user,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -152,25 +166,34 @@ class Query$Profile {
 }
 
 extension UtilityExtension$Query$Profile on Query$Profile {
-  CopyWith$Query$Profile<Query$Profile> get copyWith =>
-      CopyWith$Query$Profile(this, (i) => i);
+  CopyWith$Query$Profile<Query$Profile> get copyWith => CopyWith$Query$Profile(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Query$Profile<TRes> {
   factory CopyWith$Query$Profile(
-          Query$Profile instance, TRes Function(Query$Profile) then) =
-      _CopyWithImpl$Query$Profile;
+    Query$Profile instance,
+    TRes Function(Query$Profile) then,
+  ) = _CopyWithImpl$Query$Profile;
 
   factory CopyWith$Query$Profile.stub(TRes res) =
       _CopyWithStubImpl$Query$Profile;
 
-  TRes call({Query$Profile$user? user, String? $__typename});
+  TRes call({
+    Query$Profile$user? user,
+    String? $__typename,
+  });
   CopyWith$Query$Profile$user<TRes> get user;
 }
 
 class _CopyWithImpl$Query$Profile<TRes>
     implements CopyWith$Query$Profile<TRes> {
-  _CopyWithImpl$Query$Profile(this._instance, this._then);
+  _CopyWithImpl$Query$Profile(
+    this._instance,
+    this._then,
+  );
 
   final Query$Profile _instance;
 
@@ -178,14 +201,17 @@ class _CopyWithImpl$Query$Profile<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? user = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? user = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$Profile(
-          user: user == _undefined
-              ? _instance.user
-              : (user as Query$Profile$user?),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        user:
+            user == _undefined ? _instance.user : (user as Query$Profile$user?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
   CopyWith$Query$Profile$user<TRes> get user {
     final local$user = _instance.user;
     return local$user == null
@@ -200,213 +226,247 @@ class _CopyWithStubImpl$Query$Profile<TRes>
 
   TRes _res;
 
-  call({Query$Profile$user? user, String? $__typename}) => _res;
+  call({
+    Query$Profile$user? user,
+    String? $__typename,
+  }) =>
+      _res;
   CopyWith$Query$Profile$user<TRes> get user =>
       CopyWith$Query$Profile$user.stub(_res);
 }
 
 const documentNodeQueryProfile = DocumentNode(definitions: [
   OperationDefinitionNode(
-      type: OperationType.query,
-      name: NameNode(value: 'Profile'),
-      variableDefinitions: [
-        VariableDefinitionNode(
-            variable: VariableNode(name: NameNode(value: 'userID')),
-            type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
-            defaultValue: DefaultValueNode(value: null),
-            directives: [])
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-            name: NameNode(value: 'node'),
-            alias: NameNode(value: 'user'),
-            arguments: [
-              ArgumentNode(
-                  name: NameNode(value: 'id'),
-                  value: VariableNode(name: NameNode(value: 'userID')))
-            ],
+    type: OperationType.query,
+    name: NameNode(value: 'Profile'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'userID')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'ID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'node'),
+        alias: NameNode(value: 'user'),
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'id'),
+            value: VariableNode(name: NameNode(value: 'userID')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          InlineFragmentNode(
+            typeCondition: TypeConditionNode(
+                on: NamedTypeNode(
+              name: NameNode(value: 'User'),
+              isNonNull: false,
+            )),
             directives: [],
             selectionSet: SelectionSetNode(selections: [
-              InlineFragmentNode(
-                  typeCondition: TypeConditionNode(
-                      on: NamedTypeNode(
-                          name: NameNode(value: 'User'), isNonNull: false)),
-                  directives: [],
-                  selectionSet: SelectionSetNode(selections: [
-                    FieldNode(
-                        name: NameNode(value: 'id'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null),
-                    FieldNode(
-                        name: NameNode(value: 'name'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null),
-                    FieldNode(
-                        name: NameNode(value: 'username'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null),
-                    FieldNode(
-                        name: NameNode(value: 'profile'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null),
-                    FieldNode(
-                        name: NameNode(value: 'avatarURL'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null),
-                    FieldNode(
-                        name: NameNode(value: 'posts'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: SelectionSetNode(selections: [
-                          FieldNode(
-                              name: NameNode(value: 'id'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: '__typename'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null)
-                        ])),
-                    FieldNode(
-                        name: NameNode(value: 'followers'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: SelectionSetNode(selections: [
-                          FieldNode(
-                              name: NameNode(value: 'id'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: '__typename'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null)
-                        ])),
-                    FieldNode(
-                        name: NameNode(value: 'following'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: SelectionSetNode(selections: [
-                          FieldNode(
-                              name: NameNode(value: 'id'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FieldNode(
-                              name: NameNode(value: '__typename'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null)
-                        ])),
-                    FieldNode(
-                        name: NameNode(value: '__typename'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null)
-                  ])),
               FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null)
-            ])),
-        FieldNode(
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'name'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'username'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'profile'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'avatarURL'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'posts'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: 'followers'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: 'following'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
             directives: [],
-            selectionSet: null)
-      ])),
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
 ]);
 Query$Profile _parserFn$Query$Profile(Map<String, dynamic> data) =>
     Query$Profile.fromJson(data);
 
 class Options$Query$Profile extends graphql.QueryOptions<Query$Profile> {
-  Options$Query$Profile(
-      {String? operationName,
-      required Variables$Query$Profile variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      Duration? pollInterval,
-      graphql.Context? context})
-      : super(
-            variables: variables.toJson(),
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            pollInterval: pollInterval,
-            context: context,
-            document: documentNodeQueryProfile,
-            parserFn: _parserFn$Query$Profile);
+  Options$Query$Profile({
+    String? operationName,
+    required Variables$Query$Profile variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          pollInterval: pollInterval,
+          context: context,
+          document: documentNodeQueryProfile,
+          parserFn: _parserFn$Query$Profile,
+        );
 }
 
 class WatchOptions$Query$Profile
     extends graphql.WatchQueryOptions<Query$Profile> {
-  WatchOptions$Query$Profile(
-      {String? operationName,
-      required Variables$Query$Profile variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      Duration? pollInterval,
-      bool? eagerlyFetchResults,
-      bool carryForwardDataOnException = true,
-      bool fetchResults = false})
-      : super(
-            variables: variables.toJson(),
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            document: documentNodeQueryProfile,
-            pollInterval: pollInterval,
-            eagerlyFetchResults: eagerlyFetchResults,
-            carryForwardDataOnException: carryForwardDataOnException,
-            fetchResults: fetchResults,
-            parserFn: _parserFn$Query$Profile);
+  WatchOptions$Query$Profile({
+    String? operationName,
+    required Variables$Query$Profile variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          document: documentNodeQueryProfile,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$Profile,
+        );
 }
 
 class FetchMoreOptions$Query$Profile extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$Profile(
-      {required graphql.UpdateQuery updateQuery,
-      required Variables$Query$Profile variables})
-      : super(
-            updateQuery: updateQuery,
-            variables: variables.toJson(),
-            document: documentNodeQueryProfile);
+  FetchMoreOptions$Query$Profile({
+    required graphql.UpdateQuery updateQuery,
+    required Variables$Query$Profile variables,
+  }) : super(
+          updateQuery: updateQuery,
+          variables: variables.toJson(),
+          document: documentNodeQueryProfile,
+        );
 }
 
 extension ClientExtension$Query$Profile on graphql.GraphQLClient {
@@ -416,23 +476,30 @@ extension ClientExtension$Query$Profile on graphql.GraphQLClient {
   graphql.ObservableQuery<Query$Profile> watchQuery$Profile(
           WatchOptions$Query$Profile options) =>
       this.watchQuery(options);
-  void writeQuery$Profile(
-          {required Query$Profile data,
-          required Variables$Query$Profile variables,
-          bool broadcast = true}) =>
+  void writeQuery$Profile({
+    required Query$Profile data,
+    required Variables$Query$Profile variables,
+    bool broadcast = true,
+  }) =>
       this.writeQuery(
-          graphql.Request(
-              operation: graphql.Operation(document: documentNodeQueryProfile),
-              variables: variables.toJson()),
-          data: data.toJson(),
-          broadcast: broadcast);
-  Query$Profile? readQuery$Profile(
-      {required Variables$Query$Profile variables, bool optimistic = true}) {
-    final result = this.readQuery(
         graphql.Request(
-            operation: graphql.Operation(document: documentNodeQueryProfile),
-            variables: variables.toJson()),
-        optimistic: optimistic);
+          operation: graphql.Operation(document: documentNodeQueryProfile),
+          variables: variables.toJson(),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$Profile? readQuery$Profile({
+    required Variables$Query$Profile variables,
+    bool optimistic = true,
+  }) {
+    final result = this.readQuery(
+      graphql.Request(
+        operation: graphql.Operation(document: documentNodeQueryProfile),
+        variables: variables.toJson(),
+      ),
+      optimistic: optimistic,
+    );
     return result == null ? null : Query$Profile.fromJson(result);
   }
 }
@@ -445,11 +512,15 @@ graphql.ObservableQuery<Query$Profile> useWatchQuery$Profile(
     graphql_flutter.useWatchQuery(options);
 
 class Query$Profile$Widget extends graphql_flutter.Query<Query$Profile> {
-  Query$Profile$Widget(
-      {widgets.Key? key,
-      required Options$Query$Profile options,
-      required graphql_flutter.QueryBuilder<Query$Profile> builder})
-      : super(key: key, options: options, builder: builder);
+  Query$Profile$Widget({
+    widgets.Key? key,
+    required Options$Query$Profile options,
+    required graphql_flutter.QueryBuilder<Query$Profile> builder,
+  }) : super(
+          key: key,
+          options: options,
+          builder: builder,
+        );
 }
 
 class Query$Profile$user {
@@ -500,13 +571,17 @@ class Query$Profile$user {
 
 extension UtilityExtension$Query$Profile$user on Query$Profile$user {
   CopyWith$Query$Profile$user<Query$Profile$user> get copyWith =>
-      CopyWith$Query$Profile$user(this, (i) => i);
+      CopyWith$Query$Profile$user(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Query$Profile$user<TRes> {
   factory CopyWith$Query$Profile$user(
-          Query$Profile$user instance, TRes Function(Query$Profile$user) then) =
-      _CopyWithImpl$Query$Profile$user;
+    Query$Profile$user instance,
+    TRes Function(Query$Profile$user) then,
+  ) = _CopyWithImpl$Query$Profile$user;
 
   factory CopyWith$Query$Profile$user.stub(TRes res) =
       _CopyWithStubImpl$Query$Profile$user;
@@ -516,7 +591,10 @@ abstract class CopyWith$Query$Profile$user<TRes> {
 
 class _CopyWithImpl$Query$Profile$user<TRes>
     implements CopyWith$Query$Profile$user<TRes> {
-  _CopyWithImpl$Query$Profile$user(this._instance, this._then);
+  _CopyWithImpl$Query$Profile$user(
+    this._instance,
+    this._then,
+  );
 
   final Query$Profile$user _instance;
 
@@ -540,16 +618,17 @@ class _CopyWithStubImpl$Query$Profile$user<TRes>
 }
 
 class Query$Profile$user$$User implements Query$Profile$user {
-  Query$Profile$user$$User(
-      {required this.$__typename,
-      required this.id,
-      required this.name,
-      this.username,
-      this.profile,
-      this.avatarURL,
-      this.posts,
-      this.followers,
-      this.following});
+  Query$Profile$user$$User({
+    required this.$__typename,
+    required this.id,
+    required this.name,
+    this.username,
+    this.profile,
+    this.avatarURL,
+    this.posts,
+    this.followers,
+    this.following,
+  });
 
   factory Query$Profile$user$$User.fromJson(Map<String, dynamic> json) {
     final l$$__typename = json['__typename'];
@@ -562,24 +641,25 @@ class Query$Profile$user$$User implements Query$Profile$user {
     final l$followers = json['followers'];
     final l$following = json['following'];
     return Query$Profile$user$$User(
-        $__typename: (l$$__typename as String),
-        id: (l$id as String),
-        name: (l$name as String),
-        username: (l$username as String?),
-        profile: (l$profile as String?),
-        avatarURL: (l$avatarURL as String?),
-        posts: (l$posts as List<dynamic>?)
-            ?.map((e) => Query$Profile$user$$User$posts.fromJson(
-                (e as Map<String, dynamic>)))
-            .toList(),
-        followers: (l$followers as List<dynamic>?)
-            ?.map((e) => Query$Profile$user$$User$followers.fromJson(
-                (e as Map<String, dynamic>)))
-            .toList(),
-        following: (l$following as List<dynamic>?)
-            ?.map((e) => Query$Profile$user$$User$following.fromJson(
-                (e as Map<String, dynamic>)))
-            .toList());
+      $__typename: (l$$__typename as String),
+      id: (l$id as String),
+      name: (l$name as String),
+      username: (l$username as String?),
+      profile: (l$profile as String?),
+      avatarURL: (l$avatarURL as String?),
+      posts: (l$posts as List<dynamic>?)
+          ?.map((e) => Query$Profile$user$$User$posts.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList(),
+      followers: (l$followers as List<dynamic>?)
+          ?.map((e) => Query$Profile$user$$User$followers.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList(),
+      following: (l$following as List<dynamic>?)
+          ?.map((e) => Query$Profile$user$$User$following.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList(),
+    );
   }
 
   final String $__typename;
@@ -643,7 +723,7 @@ class Query$Profile$user$$User implements Query$Profile$user {
       l$avatarURL,
       l$posts == null ? null : Object.hashAll(l$posts.map((v) => v)),
       l$followers == null ? null : Object.hashAll(l$followers.map((v) => v)),
-      l$following == null ? null : Object.hashAll(l$following.map((v) => v))
+      l$following == null ? null : Object.hashAll(l$following.map((v) => v)),
     ]);
   }
 
@@ -741,27 +821,32 @@ class Query$Profile$user$$User implements Query$Profile$user {
 extension UtilityExtension$Query$Profile$user$$User
     on Query$Profile$user$$User {
   CopyWith$Query$Profile$user$$User<Query$Profile$user$$User> get copyWith =>
-      CopyWith$Query$Profile$user$$User(this, (i) => i);
+      CopyWith$Query$Profile$user$$User(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Query$Profile$user$$User<TRes> {
-  factory CopyWith$Query$Profile$user$$User(Query$Profile$user$$User instance,
-          TRes Function(Query$Profile$user$$User) then) =
-      _CopyWithImpl$Query$Profile$user$$User;
+  factory CopyWith$Query$Profile$user$$User(
+    Query$Profile$user$$User instance,
+    TRes Function(Query$Profile$user$$User) then,
+  ) = _CopyWithImpl$Query$Profile$user$$User;
 
   factory CopyWith$Query$Profile$user$$User.stub(TRes res) =
       _CopyWithStubImpl$Query$Profile$user$$User;
 
-  TRes call(
-      {String? $__typename,
-      String? id,
-      String? name,
-      String? username,
-      String? profile,
-      String? avatarURL,
-      List<Query$Profile$user$$User$posts>? posts,
-      List<Query$Profile$user$$User$followers>? followers,
-      List<Query$Profile$user$$User$following>? following});
+  TRes call({
+    String? $__typename,
+    String? id,
+    String? name,
+    String? username,
+    String? profile,
+    String? avatarURL,
+    List<Query$Profile$user$$User$posts>? posts,
+    List<Query$Profile$user$$User$followers>? followers,
+    List<Query$Profile$user$$User$following>? following,
+  });
   TRes posts(
       Iterable<Query$Profile$user$$User$posts>? Function(
               Iterable<
@@ -784,7 +869,10 @@ abstract class CopyWith$Query$Profile$user$$User<TRes> {
 
 class _CopyWithImpl$Query$Profile$user$$User<TRes>
     implements CopyWith$Query$Profile$user$$User<TRes> {
-  _CopyWithImpl$Query$Profile$user$$User(this._instance, this._then);
+  _CopyWithImpl$Query$Profile$user$$User(
+    this._instance,
+    this._then,
+  );
 
   final Query$Profile$user$$User _instance;
 
@@ -792,41 +880,42 @@ class _CopyWithImpl$Query$Profile$user$$User<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? $__typename = _undefined,
-          Object? id = _undefined,
-          Object? name = _undefined,
-          Object? username = _undefined,
-          Object? profile = _undefined,
-          Object? avatarURL = _undefined,
-          Object? posts = _undefined,
-          Object? followers = _undefined,
-          Object? following = _undefined}) =>
+  TRes call({
+    Object? $__typename = _undefined,
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? username = _undefined,
+    Object? profile = _undefined,
+    Object? avatarURL = _undefined,
+    Object? posts = _undefined,
+    Object? followers = _undefined,
+    Object? following = _undefined,
+  }) =>
       _then(Query$Profile$user$$User(
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          name: name == _undefined || name == null
-              ? _instance.name
-              : (name as String),
-          username: username == _undefined
-              ? _instance.username
-              : (username as String?),
-          profile:
-              profile == _undefined ? _instance.profile : (profile as String?),
-          avatarURL: avatarURL == _undefined
-              ? _instance.avatarURL
-              : (avatarURL as String?),
-          posts: posts == _undefined
-              ? _instance.posts
-              : (posts as List<Query$Profile$user$$User$posts>?),
-          followers: followers == _undefined
-              ? _instance.followers
-              : (followers as List<Query$Profile$user$$User$followers>?),
-          following: following == _undefined
-              ? _instance.following
-              : (following as List<Query$Profile$user$$User$following>?)));
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        name: name == _undefined || name == null
+            ? _instance.name
+            : (name as String),
+        username:
+            username == _undefined ? _instance.username : (username as String?),
+        profile:
+            profile == _undefined ? _instance.profile : (profile as String?),
+        avatarURL: avatarURL == _undefined
+            ? _instance.avatarURL
+            : (avatarURL as String?),
+        posts: posts == _undefined
+            ? _instance.posts
+            : (posts as List<Query$Profile$user$$User$posts>?),
+        followers: followers == _undefined
+            ? _instance.followers
+            : (followers as List<Query$Profile$user$$User$followers>?),
+        following: following == _undefined
+            ? _instance.following
+            : (following as List<Query$Profile$user$$User$following>?),
+      ));
   TRes posts(
           Iterable<Query$Profile$user$$User$posts>? Function(
                   Iterable<
@@ -834,9 +923,11 @@ class _CopyWithImpl$Query$Profile$user$$User<TRes>
                           Query$Profile$user$$User$posts>>?)
               _fn) =>
       call(
-          posts: _fn(_instance.posts?.map(
-                  (e) => CopyWith$Query$Profile$user$$User$posts(e, (i) => i)))
-              ?.toList());
+          posts: _fn(_instance.posts
+              ?.map((e) => CopyWith$Query$Profile$user$$User$posts(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes followers(
           Iterable<Query$Profile$user$$User$followers>? Function(
                   Iterable<
@@ -844,9 +935,11 @@ class _CopyWithImpl$Query$Profile$user$$User<TRes>
                           Query$Profile$user$$User$followers>>?)
               _fn) =>
       call(
-          followers: _fn(_instance.followers?.map((e) =>
-                  CopyWith$Query$Profile$user$$User$followers(e, (i) => i)))
-              ?.toList());
+          followers: _fn(_instance.followers
+              ?.map((e) => CopyWith$Query$Profile$user$$User$followers(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes following(
           Iterable<Query$Profile$user$$User$following>? Function(
                   Iterable<
@@ -854,9 +947,11 @@ class _CopyWithImpl$Query$Profile$user$$User<TRes>
                           Query$Profile$user$$User$following>>?)
               _fn) =>
       call(
-          following: _fn(_instance.following?.map((e) =>
-                  CopyWith$Query$Profile$user$$User$following(e, (i) => i)))
-              ?.toList());
+          following: _fn(_instance.following
+              ?.map((e) => CopyWith$Query$Profile$user$$User$following(
+                    e,
+                    (i) => i,
+                  )))?.toList());
 }
 
 class _CopyWithStubImpl$Query$Profile$user$$User<TRes>
@@ -865,16 +960,17 @@ class _CopyWithStubImpl$Query$Profile$user$$User<TRes>
 
   TRes _res;
 
-  call(
-          {String? $__typename,
-          String? id,
-          String? name,
-          String? username,
-          String? profile,
-          String? avatarURL,
-          List<Query$Profile$user$$User$posts>? posts,
-          List<Query$Profile$user$$User$followers>? followers,
-          List<Query$Profile$user$$User$following>? following}) =>
+  call({
+    String? $__typename,
+    String? id,
+    String? name,
+    String? username,
+    String? profile,
+    String? avatarURL,
+    List<Query$Profile$user$$User$posts>? posts,
+    List<Query$Profile$user$$User$followers>? followers,
+    List<Query$Profile$user$$User$following>? following,
+  }) =>
       _res;
   posts(_fn) => _res;
   followers(_fn) => _res;
@@ -882,13 +978,18 @@ class _CopyWithStubImpl$Query$Profile$user$$User<TRes>
 }
 
 class Query$Profile$user$$User$posts {
-  Query$Profile$user$$User$posts({required this.id, required this.$__typename});
+  Query$Profile$user$$User$posts({
+    required this.id,
+    required this.$__typename,
+  });
 
   factory Query$Profile$user$$User$posts.fromJson(Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$$__typename = json['__typename'];
     return Query$Profile$user$$User$posts(
-        id: (l$id as String), $__typename: (l$$__typename as String));
+      id: (l$id as String),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String id;
@@ -908,7 +1009,10 @@ class Query$Profile$user$$User$posts {
   int get hashCode {
     final l$id = id;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$$__typename]);
+    return Object.hashAll([
+      l$id,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -937,24 +1041,33 @@ class Query$Profile$user$$User$posts {
 extension UtilityExtension$Query$Profile$user$$User$posts
     on Query$Profile$user$$User$posts {
   CopyWith$Query$Profile$user$$User$posts<Query$Profile$user$$User$posts>
-      get copyWith => CopyWith$Query$Profile$user$$User$posts(this, (i) => i);
+      get copyWith => CopyWith$Query$Profile$user$$User$posts(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$Profile$user$$User$posts<TRes> {
   factory CopyWith$Query$Profile$user$$User$posts(
-          Query$Profile$user$$User$posts instance,
-          TRes Function(Query$Profile$user$$User$posts) then) =
-      _CopyWithImpl$Query$Profile$user$$User$posts;
+    Query$Profile$user$$User$posts instance,
+    TRes Function(Query$Profile$user$$User$posts) then,
+  ) = _CopyWithImpl$Query$Profile$user$$User$posts;
 
   factory CopyWith$Query$Profile$user$$User$posts.stub(TRes res) =
       _CopyWithStubImpl$Query$Profile$user$$User$posts;
 
-  TRes call({String? id, String? $__typename});
+  TRes call({
+    String? id,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Query$Profile$user$$User$posts<TRes>
     implements CopyWith$Query$Profile$user$$User$posts<TRes> {
-  _CopyWithImpl$Query$Profile$user$$User$posts(this._instance, this._then);
+  _CopyWithImpl$Query$Profile$user$$User$posts(
+    this._instance,
+    this._then,
+  );
 
   final Query$Profile$user$$User$posts _instance;
 
@@ -962,12 +1075,16 @@ class _CopyWithImpl$Query$Profile$user$$User$posts<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? id = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$Profile$user$$User$posts(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Query$Profile$user$$User$posts<TRes>
@@ -976,19 +1093,27 @@ class _CopyWithStubImpl$Query$Profile$user$$User$posts<TRes>
 
   TRes _res;
 
-  call({String? id, String? $__typename}) => _res;
+  call({
+    String? id,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Query$Profile$user$$User$followers {
-  Query$Profile$user$$User$followers(
-      {required this.id, required this.$__typename});
+  Query$Profile$user$$User$followers({
+    required this.id,
+    required this.$__typename,
+  });
 
   factory Query$Profile$user$$User$followers.fromJson(
       Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$$__typename = json['__typename'];
     return Query$Profile$user$$User$followers(
-        id: (l$id as String), $__typename: (l$$__typename as String));
+      id: (l$id as String),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String id;
@@ -1008,7 +1133,10 @@ class Query$Profile$user$$User$followers {
   int get hashCode {
     final l$id = id;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$$__typename]);
+    return Object.hashAll([
+      l$id,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -1038,25 +1166,33 @@ extension UtilityExtension$Query$Profile$user$$User$followers
     on Query$Profile$user$$User$followers {
   CopyWith$Query$Profile$user$$User$followers<
           Query$Profile$user$$User$followers>
-      get copyWith =>
-          CopyWith$Query$Profile$user$$User$followers(this, (i) => i);
+      get copyWith => CopyWith$Query$Profile$user$$User$followers(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$Profile$user$$User$followers<TRes> {
   factory CopyWith$Query$Profile$user$$User$followers(
-          Query$Profile$user$$User$followers instance,
-          TRes Function(Query$Profile$user$$User$followers) then) =
-      _CopyWithImpl$Query$Profile$user$$User$followers;
+    Query$Profile$user$$User$followers instance,
+    TRes Function(Query$Profile$user$$User$followers) then,
+  ) = _CopyWithImpl$Query$Profile$user$$User$followers;
 
   factory CopyWith$Query$Profile$user$$User$followers.stub(TRes res) =
       _CopyWithStubImpl$Query$Profile$user$$User$followers;
 
-  TRes call({String? id, String? $__typename});
+  TRes call({
+    String? id,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Query$Profile$user$$User$followers<TRes>
     implements CopyWith$Query$Profile$user$$User$followers<TRes> {
-  _CopyWithImpl$Query$Profile$user$$User$followers(this._instance, this._then);
+  _CopyWithImpl$Query$Profile$user$$User$followers(
+    this._instance,
+    this._then,
+  );
 
   final Query$Profile$user$$User$followers _instance;
 
@@ -1064,12 +1200,16 @@ class _CopyWithImpl$Query$Profile$user$$User$followers<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? id = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$Profile$user$$User$followers(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Query$Profile$user$$User$followers<TRes>
@@ -1078,19 +1218,27 @@ class _CopyWithStubImpl$Query$Profile$user$$User$followers<TRes>
 
   TRes _res;
 
-  call({String? id, String? $__typename}) => _res;
+  call({
+    String? id,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Query$Profile$user$$User$following {
-  Query$Profile$user$$User$following(
-      {required this.id, required this.$__typename});
+  Query$Profile$user$$User$following({
+    required this.id,
+    required this.$__typename,
+  });
 
   factory Query$Profile$user$$User$following.fromJson(
       Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$$__typename = json['__typename'];
     return Query$Profile$user$$User$following(
-        id: (l$id as String), $__typename: (l$$__typename as String));
+      id: (l$id as String),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String id;
@@ -1110,7 +1258,10 @@ class Query$Profile$user$$User$following {
   int get hashCode {
     final l$id = id;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$$__typename]);
+    return Object.hashAll([
+      l$id,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -1140,25 +1291,33 @@ extension UtilityExtension$Query$Profile$user$$User$following
     on Query$Profile$user$$User$following {
   CopyWith$Query$Profile$user$$User$following<
           Query$Profile$user$$User$following>
-      get copyWith =>
-          CopyWith$Query$Profile$user$$User$following(this, (i) => i);
+      get copyWith => CopyWith$Query$Profile$user$$User$following(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$Profile$user$$User$following<TRes> {
   factory CopyWith$Query$Profile$user$$User$following(
-          Query$Profile$user$$User$following instance,
-          TRes Function(Query$Profile$user$$User$following) then) =
-      _CopyWithImpl$Query$Profile$user$$User$following;
+    Query$Profile$user$$User$following instance,
+    TRes Function(Query$Profile$user$$User$following) then,
+  ) = _CopyWithImpl$Query$Profile$user$$User$following;
 
   factory CopyWith$Query$Profile$user$$User$following.stub(TRes res) =
       _CopyWithStubImpl$Query$Profile$user$$User$following;
 
-  TRes call({String? id, String? $__typename});
+  TRes call({
+    String? id,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Query$Profile$user$$User$following<TRes>
     implements CopyWith$Query$Profile$user$$User$following<TRes> {
-  _CopyWithImpl$Query$Profile$user$$User$following(this._instance, this._then);
+  _CopyWithImpl$Query$Profile$user$$User$following(
+    this._instance,
+    this._then,
+  );
 
   final Query$Profile$user$$User$following _instance;
 
@@ -1166,12 +1325,16 @@ class _CopyWithImpl$Query$Profile$user$$User$following<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? id = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$Profile$user$$User$following(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Query$Profile$user$$User$following<TRes>
@@ -1180,14 +1343,19 @@ class _CopyWithStubImpl$Query$Profile$user$$User$following<TRes>
 
   TRes _res;
 
-  call({String? id, String? $__typename}) => _res;
+  call({
+    String? id,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Variables$Mutation$UpdateUser {
-  factory Variables$Mutation$UpdateUser(
-          {required String userID,
-          required Input$UpdateUserInput input,
-          MultipartFile? image}) =>
+  factory Variables$Mutation$UpdateUser({
+    required String userID,
+    required Input$UpdateUserInput input,
+    MultipartFile? image,
+  }) =>
       Variables$Mutation$UpdateUser._({
         r'userID': userID,
         r'input': input,
@@ -1229,7 +1397,10 @@ class Variables$Mutation$UpdateUser {
   }
 
   CopyWith$Variables$Mutation$UpdateUser<Variables$Mutation$UpdateUser>
-      get copyWith => CopyWith$Variables$Mutation$UpdateUser(this, (i) => i);
+      get copyWith => CopyWith$Variables$Mutation$UpdateUser(
+            this,
+            (i) => i,
+          );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -1265,27 +1436,36 @@ class Variables$Mutation$UpdateUser {
     final l$userID = userID;
     final l$input = input;
     final l$image = image;
-    return Object.hashAll(
-        [l$userID, l$input, _$data.containsKey('image') ? l$image : const {}]);
+    return Object.hashAll([
+      l$userID,
+      l$input,
+      _$data.containsKey('image') ? l$image : const {},
+    ]);
   }
 }
 
 abstract class CopyWith$Variables$Mutation$UpdateUser<TRes> {
   factory CopyWith$Variables$Mutation$UpdateUser(
-          Variables$Mutation$UpdateUser instance,
-          TRes Function(Variables$Mutation$UpdateUser) then) =
-      _CopyWithImpl$Variables$Mutation$UpdateUser;
+    Variables$Mutation$UpdateUser instance,
+    TRes Function(Variables$Mutation$UpdateUser) then,
+  ) = _CopyWithImpl$Variables$Mutation$UpdateUser;
 
   factory CopyWith$Variables$Mutation$UpdateUser.stub(TRes res) =
       _CopyWithStubImpl$Variables$Mutation$UpdateUser;
 
-  TRes call(
-      {String? userID, Input$UpdateUserInput? input, MultipartFile? image});
+  TRes call({
+    String? userID,
+    Input$UpdateUserInput? input,
+    MultipartFile? image,
+  });
 }
 
 class _CopyWithImpl$Variables$Mutation$UpdateUser<TRes>
     implements CopyWith$Variables$Mutation$UpdateUser<TRes> {
-  _CopyWithImpl$Variables$Mutation$UpdateUser(this._instance, this._then);
+  _CopyWithImpl$Variables$Mutation$UpdateUser(
+    this._instance,
+    this._then,
+  );
 
   final Variables$Mutation$UpdateUser _instance;
 
@@ -1293,10 +1473,11 @@ class _CopyWithImpl$Variables$Mutation$UpdateUser<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? userID = _undefined,
-          Object? input = _undefined,
-          Object? image = _undefined}) =>
+  TRes call({
+    Object? userID = _undefined,
+    Object? input = _undefined,
+    Object? image = _undefined,
+  }) =>
       _then(Variables$Mutation$UpdateUser._({
         ..._instance._$data,
         if (userID != _undefined && userID != null)
@@ -1313,20 +1494,28 @@ class _CopyWithStubImpl$Variables$Mutation$UpdateUser<TRes>
 
   TRes _res;
 
-  call({String? userID, Input$UpdateUserInput? input, MultipartFile? image}) =>
+  call({
+    String? userID,
+    Input$UpdateUserInput? input,
+    MultipartFile? image,
+  }) =>
       _res;
 }
 
 class Mutation$UpdateUser {
-  Mutation$UpdateUser({required this.updateUser, required this.$__typename});
+  Mutation$UpdateUser({
+    required this.updateUser,
+    required this.$__typename,
+  });
 
   factory Mutation$UpdateUser.fromJson(Map<String, dynamic> json) {
     final l$updateUser = json['updateUser'];
     final l$$__typename = json['__typename'];
     return Mutation$UpdateUser(
-        updateUser: Mutation$UpdateUser$updateUser.fromJson(
-            (l$updateUser as Map<String, dynamic>)),
-        $__typename: (l$$__typename as String));
+      updateUser: Mutation$UpdateUser$updateUser.fromJson(
+          (l$updateUser as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final Mutation$UpdateUser$updateUser updateUser;
@@ -1346,7 +1535,10 @@ class Mutation$UpdateUser {
   int get hashCode {
     final l$updateUser = updateUser;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$updateUser, l$$__typename]);
+    return Object.hashAll([
+      l$updateUser,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -1373,24 +1565,34 @@ class Mutation$UpdateUser {
 
 extension UtilityExtension$Mutation$UpdateUser on Mutation$UpdateUser {
   CopyWith$Mutation$UpdateUser<Mutation$UpdateUser> get copyWith =>
-      CopyWith$Mutation$UpdateUser(this, (i) => i);
+      CopyWith$Mutation$UpdateUser(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Mutation$UpdateUser<TRes> {
-  factory CopyWith$Mutation$UpdateUser(Mutation$UpdateUser instance,
-          TRes Function(Mutation$UpdateUser) then) =
-      _CopyWithImpl$Mutation$UpdateUser;
+  factory CopyWith$Mutation$UpdateUser(
+    Mutation$UpdateUser instance,
+    TRes Function(Mutation$UpdateUser) then,
+  ) = _CopyWithImpl$Mutation$UpdateUser;
 
   factory CopyWith$Mutation$UpdateUser.stub(TRes res) =
       _CopyWithStubImpl$Mutation$UpdateUser;
 
-  TRes call({Mutation$UpdateUser$updateUser? updateUser, String? $__typename});
+  TRes call({
+    Mutation$UpdateUser$updateUser? updateUser,
+    String? $__typename,
+  });
   CopyWith$Mutation$UpdateUser$updateUser<TRes> get updateUser;
 }
 
 class _CopyWithImpl$Mutation$UpdateUser<TRes>
     implements CopyWith$Mutation$UpdateUser<TRes> {
-  _CopyWithImpl$Mutation$UpdateUser(this._instance, this._then);
+  _CopyWithImpl$Mutation$UpdateUser(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$UpdateUser _instance;
 
@@ -1398,16 +1600,18 @@ class _CopyWithImpl$Mutation$UpdateUser<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? updateUser = _undefined,
-          Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? updateUser = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Mutation$UpdateUser(
-          updateUser: updateUser == _undefined || updateUser == null
-              ? _instance.updateUser
-              : (updateUser as Mutation$UpdateUser$updateUser),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        updateUser: updateUser == _undefined || updateUser == null
+            ? _instance.updateUser
+            : (updateUser as Mutation$UpdateUser$updateUser),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
   CopyWith$Mutation$UpdateUser$updateUser<TRes> get updateUser {
     final local$updateUser = _instance.updateUser;
     return CopyWith$Mutation$UpdateUser$updateUser(
@@ -1421,7 +1625,10 @@ class _CopyWithStubImpl$Mutation$UpdateUser<TRes>
 
   TRes _res;
 
-  call({Mutation$UpdateUser$updateUser? updateUser, String? $__typename}) =>
+  call({
+    Mutation$UpdateUser$updateUser? updateUser,
+    String? $__typename,
+  }) =>
       _res;
   CopyWith$Mutation$UpdateUser$updateUser<TRes> get updateUser =>
       CopyWith$Mutation$UpdateUser$updateUser.stub(_res);
@@ -1429,125 +1636,152 @@ class _CopyWithStubImpl$Mutation$UpdateUser<TRes>
 
 const documentNodeMutationUpdateUser = DocumentNode(definitions: [
   OperationDefinitionNode(
-      type: OperationType.mutation,
-      name: NameNode(value: 'UpdateUser'),
-      variableDefinitions: [
-        VariableDefinitionNode(
-            variable: VariableNode(name: NameNode(value: 'userID')),
-            type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
-            defaultValue: DefaultValueNode(value: null),
-            directives: []),
-        VariableDefinitionNode(
-            variable: VariableNode(name: NameNode(value: 'input')),
-            type: NamedTypeNode(
-                name: NameNode(value: 'UpdateUserInput'), isNonNull: true),
-            defaultValue: DefaultValueNode(value: null),
-            directives: []),
-        VariableDefinitionNode(
-            variable: VariableNode(name: NameNode(value: 'image')),
-            type: NamedTypeNode(
-                name: NameNode(value: 'Upload'), isNonNull: false),
-            defaultValue: DefaultValueNode(value: null),
-            directives: [])
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-            name: NameNode(value: 'updateUser'),
+    type: OperationType.mutation,
+    name: NameNode(value: 'UpdateUser'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'userID')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'ID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'input')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UpdateUserInput'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'image')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Upload'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'updateUser'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'id'),
+            value: VariableNode(name: NameNode(value: 'userID')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'input'),
+            value: VariableNode(name: NameNode(value: 'input')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'image'),
+            value: VariableNode(name: NameNode(value: 'image')),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'id'),
             alias: null,
-            arguments: [
-              ArgumentNode(
-                  name: NameNode(value: 'id'),
-                  value: VariableNode(name: NameNode(value: 'userID'))),
-              ArgumentNode(
-                  name: NameNode(value: 'input'),
-                  value: VariableNode(name: NameNode(value: 'input'))),
-              ArgumentNode(
-                  name: NameNode(value: 'image'),
-                  value: VariableNode(name: NameNode(value: 'image')))
-            ],
+            arguments: [],
             directives: [],
-            selectionSet: SelectionSetNode(selections: [
-              FieldNode(
-                  name: NameNode(value: 'id'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null),
-              FieldNode(
-                  name: NameNode(value: 'name'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null),
-              FieldNode(
-                  name: NameNode(value: 'username'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null),
-              FieldNode(
-                  name: NameNode(value: 'profile'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null),
-              FieldNode(
-                  name: NameNode(value: 'avatarURL'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null),
-              FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null)
-            ])),
-        FieldNode(
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'name'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'username'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'profile'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'avatarURL'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
             directives: [],
-            selectionSet: null)
-      ])),
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
 ]);
 Mutation$UpdateUser _parserFn$Mutation$UpdateUser(Map<String, dynamic> data) =>
     Mutation$UpdateUser.fromJson(data);
 typedef OnMutationCompleted$Mutation$UpdateUser = FutureOr<void> Function(
-    dynamic, Mutation$UpdateUser?);
+  dynamic,
+  Mutation$UpdateUser?,
+);
 
 class Options$Mutation$UpdateUser
     extends graphql.MutationOptions<Mutation$UpdateUser> {
-  Options$Mutation$UpdateUser(
-      {String? operationName,
-      required Variables$Mutation$UpdateUser variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      OnMutationCompleted$Mutation$UpdateUser? onCompleted,
-      graphql.OnMutationUpdate<Mutation$UpdateUser>? update,
-      graphql.OnError? onError})
-      : onCompletedWithParsed = onCompleted,
+  Options$Mutation$UpdateUser({
+    String? operationName,
+    required Variables$Mutation$UpdateUser variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$UpdateUser? onCompleted,
+    graphql.OnMutationUpdate<Mutation$UpdateUser>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
         super(
-            variables: variables.toJson(),
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            onCompleted: onCompleted == null
-                ? null
-                : (data) => onCompleted(data,
-                    data == null ? null : _parserFn$Mutation$UpdateUser(data)),
-            update: update,
-            onError: onError,
-            document: documentNodeMutationUpdateUser,
-            parserFn: _parserFn$Mutation$UpdateUser);
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$UpdateUser(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationUpdateUser,
+          parserFn: _parserFn$Mutation$UpdateUser,
+        );
 
   final OnMutationCompleted$Mutation$UpdateUser? onCompletedWithParsed;
 
@@ -1556,38 +1790,39 @@ class Options$Mutation$UpdateUser
         ...super.onCompleted == null
             ? super.properties
             : super.properties.where((property) => property != onCompleted),
-        onCompletedWithParsed
+        onCompletedWithParsed,
       ];
 }
 
 class WatchOptions$Mutation$UpdateUser
     extends graphql.WatchQueryOptions<Mutation$UpdateUser> {
-  WatchOptions$Mutation$UpdateUser(
-      {String? operationName,
-      required Variables$Mutation$UpdateUser variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      Duration? pollInterval,
-      bool? eagerlyFetchResults,
-      bool carryForwardDataOnException = true,
-      bool fetchResults = false})
-      : super(
-            variables: variables.toJson(),
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            document: documentNodeMutationUpdateUser,
-            pollInterval: pollInterval,
-            eagerlyFetchResults: eagerlyFetchResults,
-            carryForwardDataOnException: carryForwardDataOnException,
-            fetchResults: fetchResults,
-            parserFn: _parserFn$Mutation$UpdateUser);
+  WatchOptions$Mutation$UpdateUser({
+    String? operationName,
+    required Variables$Mutation$UpdateUser variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          document: documentNodeMutationUpdateUser,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$UpdateUser,
+        );
 }
 
 extension ClientExtension$Mutation$UpdateUser on graphql.GraphQLClient {
@@ -1600,7 +1835,10 @@ extension ClientExtension$Mutation$UpdateUser on graphql.GraphQLClient {
 }
 
 class Mutation$UpdateUser$HookResult {
-  Mutation$UpdateUser$HookResult(this.runMutation, this.result);
+  Mutation$UpdateUser$HookResult(
+    this.runMutation,
+    this.result,
+  );
 
   final RunMutation$Mutation$UpdateUser runMutation;
 
@@ -1626,32 +1864,35 @@ graphql.ObservableQuery<Mutation$UpdateUser> useWatchMutation$UpdateUser(
 
 class WidgetOptions$Mutation$UpdateUser
     extends graphql.MutationOptions<Mutation$UpdateUser> {
-  WidgetOptions$Mutation$UpdateUser(
-      {String? operationName,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      OnMutationCompleted$Mutation$UpdateUser? onCompleted,
-      graphql.OnMutationUpdate<Mutation$UpdateUser>? update,
-      graphql.OnError? onError})
-      : onCompletedWithParsed = onCompleted,
+  WidgetOptions$Mutation$UpdateUser({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$UpdateUser? onCompleted,
+    graphql.OnMutationUpdate<Mutation$UpdateUser>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
         super(
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            onCompleted: onCompleted == null
-                ? null
-                : (data) => onCompleted(data,
-                    data == null ? null : _parserFn$Mutation$UpdateUser(data)),
-            update: update,
-            onError: onError,
-            document: documentNodeMutationUpdateUser,
-            parserFn: _parserFn$Mutation$UpdateUser);
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$UpdateUser(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationUpdateUser,
+          parserFn: _parserFn$Mutation$UpdateUser,
+        );
 
   final OnMutationCompleted$Mutation$UpdateUser? onCompletedWithParsed;
 
@@ -1660,39 +1901,56 @@ class WidgetOptions$Mutation$UpdateUser
         ...super.onCompleted == null
             ? super.properties
             : super.properties.where((property) => property != onCompleted),
-        onCompletedWithParsed
+        onCompletedWithParsed,
       ];
 }
 
 typedef RunMutation$Mutation$UpdateUser
-    = graphql.MultiSourceResult<Mutation$UpdateUser>
-        Function(Variables$Mutation$UpdateUser, {Object? optimisticResult});
+    = graphql.MultiSourceResult<Mutation$UpdateUser> Function(
+  Variables$Mutation$UpdateUser, {
+  Object? optimisticResult,
+});
 typedef Builder$Mutation$UpdateUser = widgets.Widget Function(
-    RunMutation$Mutation$UpdateUser, graphql.QueryResult<Mutation$UpdateUser>?);
+  RunMutation$Mutation$UpdateUser,
+  graphql.QueryResult<Mutation$UpdateUser>?,
+);
 
 class Mutation$UpdateUser$Widget
     extends graphql_flutter.Mutation<Mutation$UpdateUser> {
-  Mutation$UpdateUser$Widget(
-      {widgets.Key? key,
-      WidgetOptions$Mutation$UpdateUser? options,
-      required Builder$Mutation$UpdateUser builder})
-      : super(
-            key: key,
-            options: options ?? WidgetOptions$Mutation$UpdateUser(),
-            builder: (run, result) => builder(
-                (variables, {optimisticResult}) =>
-                    run(variables.toJson(), optimisticResult: optimisticResult),
-                result));
+  Mutation$UpdateUser$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$UpdateUser? options,
+    required Builder$Mutation$UpdateUser builder,
+  }) : super(
+          key: key,
+          options: options ?? WidgetOptions$Mutation$UpdateUser(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult: optimisticResult,
+            ),
+            result,
+          ),
+        );
 }
 
 class Mutation$UpdateUser$updateUser {
-  Mutation$UpdateUser$updateUser(
-      {required this.id,
-      required this.name,
-      this.username,
-      this.profile,
-      this.avatarURL,
-      required this.$__typename});
+  Mutation$UpdateUser$updateUser({
+    required this.id,
+    required this.name,
+    this.username,
+    this.profile,
+    this.avatarURL,
+    required this.$__typename,
+  });
 
   factory Mutation$UpdateUser$updateUser.fromJson(Map<String, dynamic> json) {
     final l$id = json['id'];
@@ -1702,12 +1960,13 @@ class Mutation$UpdateUser$updateUser {
     final l$avatarURL = json['avatarURL'];
     final l$$__typename = json['__typename'];
     return Mutation$UpdateUser$updateUser(
-        id: (l$id as String),
-        name: (l$name as String),
-        username: (l$username as String?),
-        profile: (l$profile as String?),
-        avatarURL: (l$avatarURL as String?),
-        $__typename: (l$$__typename as String));
+      id: (l$id as String),
+      name: (l$name as String),
+      username: (l$username as String?),
+      profile: (l$profile as String?),
+      avatarURL: (l$avatarURL as String?),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String id;
@@ -1747,8 +2006,14 @@ class Mutation$UpdateUser$updateUser {
     final l$profile = profile;
     final l$avatarURL = avatarURL;
     final l$$__typename = $__typename;
-    return Object.hashAll(
-        [l$id, l$name, l$username, l$profile, l$avatarURL, l$$__typename]);
+    return Object.hashAll([
+      l$id,
+      l$name,
+      l$username,
+      l$profile,
+      l$avatarURL,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -1797,30 +2062,37 @@ class Mutation$UpdateUser$updateUser {
 extension UtilityExtension$Mutation$UpdateUser$updateUser
     on Mutation$UpdateUser$updateUser {
   CopyWith$Mutation$UpdateUser$updateUser<Mutation$UpdateUser$updateUser>
-      get copyWith => CopyWith$Mutation$UpdateUser$updateUser(this, (i) => i);
+      get copyWith => CopyWith$Mutation$UpdateUser$updateUser(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Mutation$UpdateUser$updateUser<TRes> {
   factory CopyWith$Mutation$UpdateUser$updateUser(
-          Mutation$UpdateUser$updateUser instance,
-          TRes Function(Mutation$UpdateUser$updateUser) then) =
-      _CopyWithImpl$Mutation$UpdateUser$updateUser;
+    Mutation$UpdateUser$updateUser instance,
+    TRes Function(Mutation$UpdateUser$updateUser) then,
+  ) = _CopyWithImpl$Mutation$UpdateUser$updateUser;
 
   factory CopyWith$Mutation$UpdateUser$updateUser.stub(TRes res) =
       _CopyWithStubImpl$Mutation$UpdateUser$updateUser;
 
-  TRes call(
-      {String? id,
-      String? name,
-      String? username,
-      String? profile,
-      String? avatarURL,
-      String? $__typename});
+  TRes call({
+    String? id,
+    String? name,
+    String? username,
+    String? profile,
+    String? avatarURL,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Mutation$UpdateUser$updateUser<TRes>
     implements CopyWith$Mutation$UpdateUser$updateUser<TRes> {
-  _CopyWithImpl$Mutation$UpdateUser$updateUser(this._instance, this._then);
+  _CopyWithImpl$Mutation$UpdateUser$updateUser(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$UpdateUser$updateUser _instance;
 
@@ -1828,29 +2100,30 @@ class _CopyWithImpl$Mutation$UpdateUser$updateUser<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? id = _undefined,
-          Object? name = _undefined,
-          Object? username = _undefined,
-          Object? profile = _undefined,
-          Object? avatarURL = _undefined,
-          Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? username = _undefined,
+    Object? profile = _undefined,
+    Object? avatarURL = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Mutation$UpdateUser$updateUser(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          name: name == _undefined || name == null
-              ? _instance.name
-              : (name as String),
-          username: username == _undefined
-              ? _instance.username
-              : (username as String?),
-          profile:
-              profile == _undefined ? _instance.profile : (profile as String?),
-          avatarURL: avatarURL == _undefined
-              ? _instance.avatarURL
-              : (avatarURL as String?),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        name: name == _undefined || name == null
+            ? _instance.name
+            : (name as String),
+        username:
+            username == _undefined ? _instance.username : (username as String?),
+        profile:
+            profile == _undefined ? _instance.profile : (profile as String?),
+        avatarURL: avatarURL == _undefined
+            ? _instance.avatarURL
+            : (avatarURL as String?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Mutation$UpdateUser$updateUser<TRes>
@@ -1859,13 +2132,14 @@ class _CopyWithStubImpl$Mutation$UpdateUser$updateUser<TRes>
 
   TRes _res;
 
-  call(
-          {String? id,
-          String? name,
-          String? username,
-          String? profile,
-          String? avatarURL,
-          String? $__typename}) =>
+  call({
+    String? id,
+    String? name,
+    String? username,
+    String? profile,
+    String? avatarURL,
+    String? $__typename,
+  }) =>
       _res;
 }
 
@@ -1897,7 +2171,10 @@ class Variables$Mutation$FollowUser {
   }
 
   CopyWith$Variables$Mutation$FollowUser<Variables$Mutation$FollowUser>
-      get copyWith => CopyWith$Variables$Mutation$FollowUser(this, (i) => i);
+      get copyWith => CopyWith$Variables$Mutation$FollowUser(
+            this,
+            (i) => i,
+          );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -1924,9 +2201,9 @@ class Variables$Mutation$FollowUser {
 
 abstract class CopyWith$Variables$Mutation$FollowUser<TRes> {
   factory CopyWith$Variables$Mutation$FollowUser(
-          Variables$Mutation$FollowUser instance,
-          TRes Function(Variables$Mutation$FollowUser) then) =
-      _CopyWithImpl$Variables$Mutation$FollowUser;
+    Variables$Mutation$FollowUser instance,
+    TRes Function(Variables$Mutation$FollowUser) then,
+  ) = _CopyWithImpl$Variables$Mutation$FollowUser;
 
   factory CopyWith$Variables$Mutation$FollowUser.stub(TRes res) =
       _CopyWithStubImpl$Variables$Mutation$FollowUser;
@@ -1936,7 +2213,10 @@ abstract class CopyWith$Variables$Mutation$FollowUser<TRes> {
 
 class _CopyWithImpl$Variables$Mutation$FollowUser<TRes>
     implements CopyWith$Variables$Mutation$FollowUser<TRes> {
-  _CopyWithImpl$Variables$Mutation$FollowUser(this._instance, this._then);
+  _CopyWithImpl$Variables$Mutation$FollowUser(
+    this._instance,
+    this._then,
+  );
 
   final Variables$Mutation$FollowUser _instance;
 
@@ -1962,15 +2242,19 @@ class _CopyWithStubImpl$Variables$Mutation$FollowUser<TRes>
 }
 
 class Mutation$FollowUser {
-  Mutation$FollowUser({required this.action, required this.$__typename});
+  Mutation$FollowUser({
+    required this.action,
+    required this.$__typename,
+  });
 
   factory Mutation$FollowUser.fromJson(Map<String, dynamic> json) {
     final l$action = json['action'];
     final l$$__typename = json['__typename'];
     return Mutation$FollowUser(
-        action: Mutation$FollowUser$action.fromJson(
-            (l$action as Map<String, dynamic>)),
-        $__typename: (l$$__typename as String));
+      action: Mutation$FollowUser$action.fromJson(
+          (l$action as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final Mutation$FollowUser$action action;
@@ -1990,7 +2274,10 @@ class Mutation$FollowUser {
   int get hashCode {
     final l$action = action;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$action, l$$__typename]);
+    return Object.hashAll([
+      l$action,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -2017,24 +2304,34 @@ class Mutation$FollowUser {
 
 extension UtilityExtension$Mutation$FollowUser on Mutation$FollowUser {
   CopyWith$Mutation$FollowUser<Mutation$FollowUser> get copyWith =>
-      CopyWith$Mutation$FollowUser(this, (i) => i);
+      CopyWith$Mutation$FollowUser(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Mutation$FollowUser<TRes> {
-  factory CopyWith$Mutation$FollowUser(Mutation$FollowUser instance,
-          TRes Function(Mutation$FollowUser) then) =
-      _CopyWithImpl$Mutation$FollowUser;
+  factory CopyWith$Mutation$FollowUser(
+    Mutation$FollowUser instance,
+    TRes Function(Mutation$FollowUser) then,
+  ) = _CopyWithImpl$Mutation$FollowUser;
 
   factory CopyWith$Mutation$FollowUser.stub(TRes res) =
       _CopyWithStubImpl$Mutation$FollowUser;
 
-  TRes call({Mutation$FollowUser$action? action, String? $__typename});
+  TRes call({
+    Mutation$FollowUser$action? action,
+    String? $__typename,
+  });
   CopyWith$Mutation$FollowUser$action<TRes> get action;
 }
 
 class _CopyWithImpl$Mutation$FollowUser<TRes>
     implements CopyWith$Mutation$FollowUser<TRes> {
-  _CopyWithImpl$Mutation$FollowUser(this._instance, this._then);
+  _CopyWithImpl$Mutation$FollowUser(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$FollowUser _instance;
 
@@ -2042,14 +2339,18 @@ class _CopyWithImpl$Mutation$FollowUser<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? action = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? action = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Mutation$FollowUser(
-          action: action == _undefined || action == null
-              ? _instance.action
-              : (action as Mutation$FollowUser$action),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        action: action == _undefined || action == null
+            ? _instance.action
+            : (action as Mutation$FollowUser$action),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
   CopyWith$Mutation$FollowUser$action<TRes> get action {
     final local$action = _instance.action;
     return CopyWith$Mutation$FollowUser$action(
@@ -2063,110 +2364,131 @@ class _CopyWithStubImpl$Mutation$FollowUser<TRes>
 
   TRes _res;
 
-  call({Mutation$FollowUser$action? action, String? $__typename}) => _res;
+  call({
+    Mutation$FollowUser$action? action,
+    String? $__typename,
+  }) =>
+      _res;
   CopyWith$Mutation$FollowUser$action<TRes> get action =>
       CopyWith$Mutation$FollowUser$action.stub(_res);
 }
 
 const documentNodeMutationFollowUser = DocumentNode(definitions: [
   OperationDefinitionNode(
-      type: OperationType.mutation,
-      name: NameNode(value: 'FollowUser'),
-      variableDefinitions: [
-        VariableDefinitionNode(
-            variable: VariableNode(name: NameNode(value: 'input')),
-            type: NamedTypeNode(
-                name: NameNode(value: 'FollowUserInput'), isNonNull: true),
-            defaultValue: DefaultValueNode(value: null),
-            directives: [])
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-            name: NameNode(value: 'followUser'),
-            alias: NameNode(value: 'action'),
-            arguments: [
-              ArgumentNode(
-                  name: NameNode(value: 'input'),
-                  value: VariableNode(name: NameNode(value: 'input')))
-            ],
+    type: OperationType.mutation,
+    name: NameNode(value: 'FollowUser'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'input')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'FollowUserInput'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'followUser'),
+        alias: NameNode(value: 'action'),
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'input'),
+            value: VariableNode(name: NameNode(value: 'input')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'clientMutationId'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'user'),
+            alias: null,
+            arguments: [],
             directives: [],
             selectionSet: SelectionSetNode(selections: [
               FieldNode(
-                  name: NameNode(value: 'clientMutationId'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null),
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
               FieldNode(
-                  name: NameNode(value: 'user'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: SelectionSetNode(selections: [
-                    FieldNode(
-                        name: NameNode(value: 'id'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null),
-                    FieldNode(
-                        name: NameNode(value: '__typename'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null)
-                  ])),
-              FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null)
-            ])),
-        FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
             directives: [],
-            selectionSet: null)
-      ])),
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
 ]);
 Mutation$FollowUser _parserFn$Mutation$FollowUser(Map<String, dynamic> data) =>
     Mutation$FollowUser.fromJson(data);
 typedef OnMutationCompleted$Mutation$FollowUser = FutureOr<void> Function(
-    dynamic, Mutation$FollowUser?);
+  dynamic,
+  Mutation$FollowUser?,
+);
 
 class Options$Mutation$FollowUser
     extends graphql.MutationOptions<Mutation$FollowUser> {
-  Options$Mutation$FollowUser(
-      {String? operationName,
-      required Variables$Mutation$FollowUser variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      OnMutationCompleted$Mutation$FollowUser? onCompleted,
-      graphql.OnMutationUpdate<Mutation$FollowUser>? update,
-      graphql.OnError? onError})
-      : onCompletedWithParsed = onCompleted,
+  Options$Mutation$FollowUser({
+    String? operationName,
+    required Variables$Mutation$FollowUser variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$FollowUser? onCompleted,
+    graphql.OnMutationUpdate<Mutation$FollowUser>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
         super(
-            variables: variables.toJson(),
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            onCompleted: onCompleted == null
-                ? null
-                : (data) => onCompleted(data,
-                    data == null ? null : _parserFn$Mutation$FollowUser(data)),
-            update: update,
-            onError: onError,
-            document: documentNodeMutationFollowUser,
-            parserFn: _parserFn$Mutation$FollowUser);
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$FollowUser(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationFollowUser,
+          parserFn: _parserFn$Mutation$FollowUser,
+        );
 
   final OnMutationCompleted$Mutation$FollowUser? onCompletedWithParsed;
 
@@ -2175,38 +2497,39 @@ class Options$Mutation$FollowUser
         ...super.onCompleted == null
             ? super.properties
             : super.properties.where((property) => property != onCompleted),
-        onCompletedWithParsed
+        onCompletedWithParsed,
       ];
 }
 
 class WatchOptions$Mutation$FollowUser
     extends graphql.WatchQueryOptions<Mutation$FollowUser> {
-  WatchOptions$Mutation$FollowUser(
-      {String? operationName,
-      required Variables$Mutation$FollowUser variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      Duration? pollInterval,
-      bool? eagerlyFetchResults,
-      bool carryForwardDataOnException = true,
-      bool fetchResults = false})
-      : super(
-            variables: variables.toJson(),
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            document: documentNodeMutationFollowUser,
-            pollInterval: pollInterval,
-            eagerlyFetchResults: eagerlyFetchResults,
-            carryForwardDataOnException: carryForwardDataOnException,
-            fetchResults: fetchResults,
-            parserFn: _parserFn$Mutation$FollowUser);
+  WatchOptions$Mutation$FollowUser({
+    String? operationName,
+    required Variables$Mutation$FollowUser variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          document: documentNodeMutationFollowUser,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$FollowUser,
+        );
 }
 
 extension ClientExtension$Mutation$FollowUser on graphql.GraphQLClient {
@@ -2219,7 +2542,10 @@ extension ClientExtension$Mutation$FollowUser on graphql.GraphQLClient {
 }
 
 class Mutation$FollowUser$HookResult {
-  Mutation$FollowUser$HookResult(this.runMutation, this.result);
+  Mutation$FollowUser$HookResult(
+    this.runMutation,
+    this.result,
+  );
 
   final RunMutation$Mutation$FollowUser runMutation;
 
@@ -2245,32 +2571,35 @@ graphql.ObservableQuery<Mutation$FollowUser> useWatchMutation$FollowUser(
 
 class WidgetOptions$Mutation$FollowUser
     extends graphql.MutationOptions<Mutation$FollowUser> {
-  WidgetOptions$Mutation$FollowUser(
-      {String? operationName,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      OnMutationCompleted$Mutation$FollowUser? onCompleted,
-      graphql.OnMutationUpdate<Mutation$FollowUser>? update,
-      graphql.OnError? onError})
-      : onCompletedWithParsed = onCompleted,
+  WidgetOptions$Mutation$FollowUser({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$FollowUser? onCompleted,
+    graphql.OnMutationUpdate<Mutation$FollowUser>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
         super(
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            onCompleted: onCompleted == null
-                ? null
-                : (data) => onCompleted(data,
-                    data == null ? null : _parserFn$Mutation$FollowUser(data)),
-            update: update,
-            onError: onError,
-            document: documentNodeMutationFollowUser,
-            parserFn: _parserFn$Mutation$FollowUser);
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$FollowUser(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationFollowUser,
+          parserFn: _parserFn$Mutation$FollowUser,
+        );
 
   final OnMutationCompleted$Mutation$FollowUser? onCompletedWithParsed;
 
@@ -2279,46 +2608,66 @@ class WidgetOptions$Mutation$FollowUser
         ...super.onCompleted == null
             ? super.properties
             : super.properties.where((property) => property != onCompleted),
-        onCompletedWithParsed
+        onCompletedWithParsed,
       ];
 }
 
 typedef RunMutation$Mutation$FollowUser
-    = graphql.MultiSourceResult<Mutation$FollowUser>
-        Function(Variables$Mutation$FollowUser, {Object? optimisticResult});
+    = graphql.MultiSourceResult<Mutation$FollowUser> Function(
+  Variables$Mutation$FollowUser, {
+  Object? optimisticResult,
+});
 typedef Builder$Mutation$FollowUser = widgets.Widget Function(
-    RunMutation$Mutation$FollowUser, graphql.QueryResult<Mutation$FollowUser>?);
+  RunMutation$Mutation$FollowUser,
+  graphql.QueryResult<Mutation$FollowUser>?,
+);
 
 class Mutation$FollowUser$Widget
     extends graphql_flutter.Mutation<Mutation$FollowUser> {
-  Mutation$FollowUser$Widget(
-      {widgets.Key? key,
-      WidgetOptions$Mutation$FollowUser? options,
-      required Builder$Mutation$FollowUser builder})
-      : super(
-            key: key,
-            options: options ?? WidgetOptions$Mutation$FollowUser(),
-            builder: (run, result) => builder(
-                (variables, {optimisticResult}) =>
-                    run(variables.toJson(), optimisticResult: optimisticResult),
-                result));
+  Mutation$FollowUser$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$FollowUser? options,
+    required Builder$Mutation$FollowUser builder,
+  }) : super(
+          key: key,
+          options: options ?? WidgetOptions$Mutation$FollowUser(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult: optimisticResult,
+            ),
+            result,
+          ),
+        );
 }
 
 class Mutation$FollowUser$action {
-  Mutation$FollowUser$action(
-      {this.clientMutationId, this.user, required this.$__typename});
+  Mutation$FollowUser$action({
+    this.clientMutationId,
+    this.user,
+    required this.$__typename,
+  });
 
   factory Mutation$FollowUser$action.fromJson(Map<String, dynamic> json) {
     final l$clientMutationId = json['clientMutationId'];
     final l$user = json['user'];
     final l$$__typename = json['__typename'];
     return Mutation$FollowUser$action(
-        clientMutationId: (l$clientMutationId as String?),
-        user: l$user == null
-            ? null
-            : Mutation$FollowUser$action$user.fromJson(
-                (l$user as Map<String, dynamic>)),
-        $__typename: (l$$__typename as String));
+      clientMutationId: (l$clientMutationId as String?),
+      user: l$user == null
+          ? null
+          : Mutation$FollowUser$action$user.fromJson(
+              (l$user as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String? clientMutationId;
@@ -2343,7 +2692,11 @@ class Mutation$FollowUser$action {
     final l$clientMutationId = clientMutationId;
     final l$user = user;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$clientMutationId, l$user, l$$__typename]);
+    return Object.hashAll([
+      l$clientMutationId,
+      l$user,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -2377,28 +2730,35 @@ class Mutation$FollowUser$action {
 extension UtilityExtension$Mutation$FollowUser$action
     on Mutation$FollowUser$action {
   CopyWith$Mutation$FollowUser$action<Mutation$FollowUser$action>
-      get copyWith => CopyWith$Mutation$FollowUser$action(this, (i) => i);
+      get copyWith => CopyWith$Mutation$FollowUser$action(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Mutation$FollowUser$action<TRes> {
   factory CopyWith$Mutation$FollowUser$action(
-          Mutation$FollowUser$action instance,
-          TRes Function(Mutation$FollowUser$action) then) =
-      _CopyWithImpl$Mutation$FollowUser$action;
+    Mutation$FollowUser$action instance,
+    TRes Function(Mutation$FollowUser$action) then,
+  ) = _CopyWithImpl$Mutation$FollowUser$action;
 
   factory CopyWith$Mutation$FollowUser$action.stub(TRes res) =
       _CopyWithStubImpl$Mutation$FollowUser$action;
 
-  TRes call(
-      {String? clientMutationId,
-      Mutation$FollowUser$action$user? user,
-      String? $__typename});
+  TRes call({
+    String? clientMutationId,
+    Mutation$FollowUser$action$user? user,
+    String? $__typename,
+  });
   CopyWith$Mutation$FollowUser$action$user<TRes> get user;
 }
 
 class _CopyWithImpl$Mutation$FollowUser$action<TRes>
     implements CopyWith$Mutation$FollowUser$action<TRes> {
-  _CopyWithImpl$Mutation$FollowUser$action(this._instance, this._then);
+  _CopyWithImpl$Mutation$FollowUser$action(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$FollowUser$action _instance;
 
@@ -2406,20 +2766,22 @@ class _CopyWithImpl$Mutation$FollowUser$action<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? clientMutationId = _undefined,
-          Object? user = _undefined,
-          Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? clientMutationId = _undefined,
+    Object? user = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Mutation$FollowUser$action(
-          clientMutationId: clientMutationId == _undefined
-              ? _instance.clientMutationId
-              : (clientMutationId as String?),
-          user: user == _undefined
-              ? _instance.user
-              : (user as Mutation$FollowUser$action$user?),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        clientMutationId: clientMutationId == _undefined
+            ? _instance.clientMutationId
+            : (clientMutationId as String?),
+        user: user == _undefined
+            ? _instance.user
+            : (user as Mutation$FollowUser$action$user?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
   CopyWith$Mutation$FollowUser$action$user<TRes> get user {
     final local$user = _instance.user;
     return local$user == null
@@ -2435,24 +2797,29 @@ class _CopyWithStubImpl$Mutation$FollowUser$action<TRes>
 
   TRes _res;
 
-  call(
-          {String? clientMutationId,
-          Mutation$FollowUser$action$user? user,
-          String? $__typename}) =>
+  call({
+    String? clientMutationId,
+    Mutation$FollowUser$action$user? user,
+    String? $__typename,
+  }) =>
       _res;
   CopyWith$Mutation$FollowUser$action$user<TRes> get user =>
       CopyWith$Mutation$FollowUser$action$user.stub(_res);
 }
 
 class Mutation$FollowUser$action$user {
-  Mutation$FollowUser$action$user(
-      {required this.id, required this.$__typename});
+  Mutation$FollowUser$action$user({
+    required this.id,
+    required this.$__typename,
+  });
 
   factory Mutation$FollowUser$action$user.fromJson(Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$$__typename = json['__typename'];
     return Mutation$FollowUser$action$user(
-        id: (l$id as String), $__typename: (l$$__typename as String));
+      id: (l$id as String),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String id;
@@ -2472,7 +2839,10 @@ class Mutation$FollowUser$action$user {
   int get hashCode {
     final l$id = id;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$$__typename]);
+    return Object.hashAll([
+      l$id,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -2501,24 +2871,33 @@ class Mutation$FollowUser$action$user {
 extension UtilityExtension$Mutation$FollowUser$action$user
     on Mutation$FollowUser$action$user {
   CopyWith$Mutation$FollowUser$action$user<Mutation$FollowUser$action$user>
-      get copyWith => CopyWith$Mutation$FollowUser$action$user(this, (i) => i);
+      get copyWith => CopyWith$Mutation$FollowUser$action$user(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Mutation$FollowUser$action$user<TRes> {
   factory CopyWith$Mutation$FollowUser$action$user(
-          Mutation$FollowUser$action$user instance,
-          TRes Function(Mutation$FollowUser$action$user) then) =
-      _CopyWithImpl$Mutation$FollowUser$action$user;
+    Mutation$FollowUser$action$user instance,
+    TRes Function(Mutation$FollowUser$action$user) then,
+  ) = _CopyWithImpl$Mutation$FollowUser$action$user;
 
   factory CopyWith$Mutation$FollowUser$action$user.stub(TRes res) =
       _CopyWithStubImpl$Mutation$FollowUser$action$user;
 
-  TRes call({String? id, String? $__typename});
+  TRes call({
+    String? id,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Mutation$FollowUser$action$user<TRes>
     implements CopyWith$Mutation$FollowUser$action$user<TRes> {
-  _CopyWithImpl$Mutation$FollowUser$action$user(this._instance, this._then);
+  _CopyWithImpl$Mutation$FollowUser$action$user(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$FollowUser$action$user _instance;
 
@@ -2526,12 +2905,16 @@ class _CopyWithImpl$Mutation$FollowUser$action$user<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? id = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Mutation$FollowUser$action$user(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Mutation$FollowUser$action$user<TRes>
@@ -2540,7 +2923,11 @@ class _CopyWithStubImpl$Mutation$FollowUser$action$user<TRes>
 
   TRes _res;
 
-  call({String? id, String? $__typename}) => _res;
+  call({
+    String? id,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Variables$Mutation$UnfollowUser {
@@ -2572,7 +2959,10 @@ class Variables$Mutation$UnfollowUser {
   }
 
   CopyWith$Variables$Mutation$UnfollowUser<Variables$Mutation$UnfollowUser>
-      get copyWith => CopyWith$Variables$Mutation$UnfollowUser(this, (i) => i);
+      get copyWith => CopyWith$Variables$Mutation$UnfollowUser(
+            this,
+            (i) => i,
+          );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -2599,9 +2989,9 @@ class Variables$Mutation$UnfollowUser {
 
 abstract class CopyWith$Variables$Mutation$UnfollowUser<TRes> {
   factory CopyWith$Variables$Mutation$UnfollowUser(
-          Variables$Mutation$UnfollowUser instance,
-          TRes Function(Variables$Mutation$UnfollowUser) then) =
-      _CopyWithImpl$Variables$Mutation$UnfollowUser;
+    Variables$Mutation$UnfollowUser instance,
+    TRes Function(Variables$Mutation$UnfollowUser) then,
+  ) = _CopyWithImpl$Variables$Mutation$UnfollowUser;
 
   factory CopyWith$Variables$Mutation$UnfollowUser.stub(TRes res) =
       _CopyWithStubImpl$Variables$Mutation$UnfollowUser;
@@ -2611,7 +3001,10 @@ abstract class CopyWith$Variables$Mutation$UnfollowUser<TRes> {
 
 class _CopyWithImpl$Variables$Mutation$UnfollowUser<TRes>
     implements CopyWith$Variables$Mutation$UnfollowUser<TRes> {
-  _CopyWithImpl$Variables$Mutation$UnfollowUser(this._instance, this._then);
+  _CopyWithImpl$Variables$Mutation$UnfollowUser(
+    this._instance,
+    this._then,
+  );
 
   final Variables$Mutation$UnfollowUser _instance;
 
@@ -2637,15 +3030,19 @@ class _CopyWithStubImpl$Variables$Mutation$UnfollowUser<TRes>
 }
 
 class Mutation$UnfollowUser {
-  Mutation$UnfollowUser({required this.action, required this.$__typename});
+  Mutation$UnfollowUser({
+    required this.action,
+    required this.$__typename,
+  });
 
   factory Mutation$UnfollowUser.fromJson(Map<String, dynamic> json) {
     final l$action = json['action'];
     final l$$__typename = json['__typename'];
     return Mutation$UnfollowUser(
-        action: Mutation$UnfollowUser$action.fromJson(
-            (l$action as Map<String, dynamic>)),
-        $__typename: (l$$__typename as String));
+      action: Mutation$UnfollowUser$action.fromJson(
+          (l$action as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final Mutation$UnfollowUser$action action;
@@ -2665,7 +3062,10 @@ class Mutation$UnfollowUser {
   int get hashCode {
     final l$action = action;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$action, l$$__typename]);
+    return Object.hashAll([
+      l$action,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -2692,24 +3092,34 @@ class Mutation$UnfollowUser {
 
 extension UtilityExtension$Mutation$UnfollowUser on Mutation$UnfollowUser {
   CopyWith$Mutation$UnfollowUser<Mutation$UnfollowUser> get copyWith =>
-      CopyWith$Mutation$UnfollowUser(this, (i) => i);
+      CopyWith$Mutation$UnfollowUser(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Mutation$UnfollowUser<TRes> {
-  factory CopyWith$Mutation$UnfollowUser(Mutation$UnfollowUser instance,
-          TRes Function(Mutation$UnfollowUser) then) =
-      _CopyWithImpl$Mutation$UnfollowUser;
+  factory CopyWith$Mutation$UnfollowUser(
+    Mutation$UnfollowUser instance,
+    TRes Function(Mutation$UnfollowUser) then,
+  ) = _CopyWithImpl$Mutation$UnfollowUser;
 
   factory CopyWith$Mutation$UnfollowUser.stub(TRes res) =
       _CopyWithStubImpl$Mutation$UnfollowUser;
 
-  TRes call({Mutation$UnfollowUser$action? action, String? $__typename});
+  TRes call({
+    Mutation$UnfollowUser$action? action,
+    String? $__typename,
+  });
   CopyWith$Mutation$UnfollowUser$action<TRes> get action;
 }
 
 class _CopyWithImpl$Mutation$UnfollowUser<TRes>
     implements CopyWith$Mutation$UnfollowUser<TRes> {
-  _CopyWithImpl$Mutation$UnfollowUser(this._instance, this._then);
+  _CopyWithImpl$Mutation$UnfollowUser(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$UnfollowUser _instance;
 
@@ -2717,14 +3127,18 @@ class _CopyWithImpl$Mutation$UnfollowUser<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? action = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? action = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Mutation$UnfollowUser(
-          action: action == _undefined || action == null
-              ? _instance.action
-              : (action as Mutation$UnfollowUser$action),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        action: action == _undefined || action == null
+            ? _instance.action
+            : (action as Mutation$UnfollowUser$action),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
   CopyWith$Mutation$UnfollowUser$action<TRes> get action {
     final local$action = _instance.action;
     return CopyWith$Mutation$UnfollowUser$action(
@@ -2738,114 +3152,132 @@ class _CopyWithStubImpl$Mutation$UnfollowUser<TRes>
 
   TRes _res;
 
-  call({Mutation$UnfollowUser$action? action, String? $__typename}) => _res;
+  call({
+    Mutation$UnfollowUser$action? action,
+    String? $__typename,
+  }) =>
+      _res;
   CopyWith$Mutation$UnfollowUser$action<TRes> get action =>
       CopyWith$Mutation$UnfollowUser$action.stub(_res);
 }
 
 const documentNodeMutationUnfollowUser = DocumentNode(definitions: [
   OperationDefinitionNode(
-      type: OperationType.mutation,
-      name: NameNode(value: 'UnfollowUser'),
-      variableDefinitions: [
-        VariableDefinitionNode(
-            variable: VariableNode(name: NameNode(value: 'input')),
-            type: NamedTypeNode(
-                name: NameNode(value: 'UnfollowUserInput'), isNonNull: true),
-            defaultValue: DefaultValueNode(value: null),
-            directives: [])
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-            name: NameNode(value: 'unfollowUser'),
-            alias: NameNode(value: 'action'),
-            arguments: [
-              ArgumentNode(
-                  name: NameNode(value: 'input'),
-                  value: VariableNode(name: NameNode(value: 'input')))
-            ],
+    type: OperationType.mutation,
+    name: NameNode(value: 'UnfollowUser'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'input')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UnfollowUserInput'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'unfollowUser'),
+        alias: NameNode(value: 'action'),
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'input'),
+            value: VariableNode(name: NameNode(value: 'input')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'clientMutationId'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'user'),
+            alias: null,
+            arguments: [],
             directives: [],
             selectionSet: SelectionSetNode(selections: [
               FieldNode(
-                  name: NameNode(value: 'clientMutationId'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null),
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
               FieldNode(
-                  name: NameNode(value: 'user'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: SelectionSetNode(selections: [
-                    FieldNode(
-                        name: NameNode(value: 'id'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null),
-                    FieldNode(
-                        name: NameNode(value: '__typename'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null)
-                  ])),
-              FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null)
-            ])),
-        FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
             directives: [],
-            selectionSet: null)
-      ])),
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
 ]);
 Mutation$UnfollowUser _parserFn$Mutation$UnfollowUser(
         Map<String, dynamic> data) =>
     Mutation$UnfollowUser.fromJson(data);
 typedef OnMutationCompleted$Mutation$UnfollowUser = FutureOr<void> Function(
-    dynamic, Mutation$UnfollowUser?);
+  dynamic,
+  Mutation$UnfollowUser?,
+);
 
 class Options$Mutation$UnfollowUser
     extends graphql.MutationOptions<Mutation$UnfollowUser> {
-  Options$Mutation$UnfollowUser(
-      {String? operationName,
-      required Variables$Mutation$UnfollowUser variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      OnMutationCompleted$Mutation$UnfollowUser? onCompleted,
-      graphql.OnMutationUpdate<Mutation$UnfollowUser>? update,
-      graphql.OnError? onError})
-      : onCompletedWithParsed = onCompleted,
+  Options$Mutation$UnfollowUser({
+    String? operationName,
+    required Variables$Mutation$UnfollowUser variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$UnfollowUser? onCompleted,
+    graphql.OnMutationUpdate<Mutation$UnfollowUser>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
         super(
-            variables: variables.toJson(),
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            onCompleted: onCompleted == null
-                ? null
-                : (data) => onCompleted(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
                     data,
-                    data == null
-                        ? null
-                        : _parserFn$Mutation$UnfollowUser(data)),
-            update: update,
-            onError: onError,
-            document: documentNodeMutationUnfollowUser,
-            parserFn: _parserFn$Mutation$UnfollowUser);
+                    data == null ? null : _parserFn$Mutation$UnfollowUser(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationUnfollowUser,
+          parserFn: _parserFn$Mutation$UnfollowUser,
+        );
 
   final OnMutationCompleted$Mutation$UnfollowUser? onCompletedWithParsed;
 
@@ -2854,38 +3286,39 @@ class Options$Mutation$UnfollowUser
         ...super.onCompleted == null
             ? super.properties
             : super.properties.where((property) => property != onCompleted),
-        onCompletedWithParsed
+        onCompletedWithParsed,
       ];
 }
 
 class WatchOptions$Mutation$UnfollowUser
     extends graphql.WatchQueryOptions<Mutation$UnfollowUser> {
-  WatchOptions$Mutation$UnfollowUser(
-      {String? operationName,
-      required Variables$Mutation$UnfollowUser variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      Duration? pollInterval,
-      bool? eagerlyFetchResults,
-      bool carryForwardDataOnException = true,
-      bool fetchResults = false})
-      : super(
-            variables: variables.toJson(),
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            document: documentNodeMutationUnfollowUser,
-            pollInterval: pollInterval,
-            eagerlyFetchResults: eagerlyFetchResults,
-            carryForwardDataOnException: carryForwardDataOnException,
-            fetchResults: fetchResults,
-            parserFn: _parserFn$Mutation$UnfollowUser);
+  WatchOptions$Mutation$UnfollowUser({
+    String? operationName,
+    required Variables$Mutation$UnfollowUser variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          document: documentNodeMutationUnfollowUser,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$UnfollowUser,
+        );
 }
 
 extension ClientExtension$Mutation$UnfollowUser on graphql.GraphQLClient {
@@ -2898,7 +3331,10 @@ extension ClientExtension$Mutation$UnfollowUser on graphql.GraphQLClient {
 }
 
 class Mutation$UnfollowUser$HookResult {
-  Mutation$UnfollowUser$HookResult(this.runMutation, this.result);
+  Mutation$UnfollowUser$HookResult(
+    this.runMutation,
+    this.result,
+  );
 
   final RunMutation$Mutation$UnfollowUser runMutation;
 
@@ -2924,35 +3360,35 @@ graphql.ObservableQuery<Mutation$UnfollowUser> useWatchMutation$UnfollowUser(
 
 class WidgetOptions$Mutation$UnfollowUser
     extends graphql.MutationOptions<Mutation$UnfollowUser> {
-  WidgetOptions$Mutation$UnfollowUser(
-      {String? operationName,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      OnMutationCompleted$Mutation$UnfollowUser? onCompleted,
-      graphql.OnMutationUpdate<Mutation$UnfollowUser>? update,
-      graphql.OnError? onError})
-      : onCompletedWithParsed = onCompleted,
+  WidgetOptions$Mutation$UnfollowUser({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$UnfollowUser? onCompleted,
+    graphql.OnMutationUpdate<Mutation$UnfollowUser>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
         super(
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            onCompleted: onCompleted == null
-                ? null
-                : (data) => onCompleted(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
                     data,
-                    data == null
-                        ? null
-                        : _parserFn$Mutation$UnfollowUser(data)),
-            update: update,
-            onError: onError,
-            document: documentNodeMutationUnfollowUser,
-            parserFn: _parserFn$Mutation$UnfollowUser);
+                    data == null ? null : _parserFn$Mutation$UnfollowUser(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationUnfollowUser,
+          parserFn: _parserFn$Mutation$UnfollowUser,
+        );
 
   final OnMutationCompleted$Mutation$UnfollowUser? onCompletedWithParsed;
 
@@ -2961,47 +3397,66 @@ class WidgetOptions$Mutation$UnfollowUser
         ...super.onCompleted == null
             ? super.properties
             : super.properties.where((property) => property != onCompleted),
-        onCompletedWithParsed
+        onCompletedWithParsed,
       ];
 }
 
 typedef RunMutation$Mutation$UnfollowUser
-    = graphql.MultiSourceResult<Mutation$UnfollowUser>
-        Function(Variables$Mutation$UnfollowUser, {Object? optimisticResult});
+    = graphql.MultiSourceResult<Mutation$UnfollowUser> Function(
+  Variables$Mutation$UnfollowUser, {
+  Object? optimisticResult,
+});
 typedef Builder$Mutation$UnfollowUser = widgets.Widget Function(
-    RunMutation$Mutation$UnfollowUser,
-    graphql.QueryResult<Mutation$UnfollowUser>?);
+  RunMutation$Mutation$UnfollowUser,
+  graphql.QueryResult<Mutation$UnfollowUser>?,
+);
 
 class Mutation$UnfollowUser$Widget
     extends graphql_flutter.Mutation<Mutation$UnfollowUser> {
-  Mutation$UnfollowUser$Widget(
-      {widgets.Key? key,
-      WidgetOptions$Mutation$UnfollowUser? options,
-      required Builder$Mutation$UnfollowUser builder})
-      : super(
-            key: key,
-            options: options ?? WidgetOptions$Mutation$UnfollowUser(),
-            builder: (run, result) => builder(
-                (variables, {optimisticResult}) =>
-                    run(variables.toJson(), optimisticResult: optimisticResult),
-                result));
+  Mutation$UnfollowUser$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$UnfollowUser? options,
+    required Builder$Mutation$UnfollowUser builder,
+  }) : super(
+          key: key,
+          options: options ?? WidgetOptions$Mutation$UnfollowUser(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult: optimisticResult,
+            ),
+            result,
+          ),
+        );
 }
 
 class Mutation$UnfollowUser$action {
-  Mutation$UnfollowUser$action(
-      {this.clientMutationId, this.user, required this.$__typename});
+  Mutation$UnfollowUser$action({
+    this.clientMutationId,
+    this.user,
+    required this.$__typename,
+  });
 
   factory Mutation$UnfollowUser$action.fromJson(Map<String, dynamic> json) {
     final l$clientMutationId = json['clientMutationId'];
     final l$user = json['user'];
     final l$$__typename = json['__typename'];
     return Mutation$UnfollowUser$action(
-        clientMutationId: (l$clientMutationId as String?),
-        user: l$user == null
-            ? null
-            : Mutation$UnfollowUser$action$user.fromJson(
-                (l$user as Map<String, dynamic>)),
-        $__typename: (l$$__typename as String));
+      clientMutationId: (l$clientMutationId as String?),
+      user: l$user == null
+          ? null
+          : Mutation$UnfollowUser$action$user.fromJson(
+              (l$user as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String? clientMutationId;
@@ -3026,7 +3481,11 @@ class Mutation$UnfollowUser$action {
     final l$clientMutationId = clientMutationId;
     final l$user = user;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$clientMutationId, l$user, l$$__typename]);
+    return Object.hashAll([
+      l$clientMutationId,
+      l$user,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -3060,28 +3519,35 @@ class Mutation$UnfollowUser$action {
 extension UtilityExtension$Mutation$UnfollowUser$action
     on Mutation$UnfollowUser$action {
   CopyWith$Mutation$UnfollowUser$action<Mutation$UnfollowUser$action>
-      get copyWith => CopyWith$Mutation$UnfollowUser$action(this, (i) => i);
+      get copyWith => CopyWith$Mutation$UnfollowUser$action(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Mutation$UnfollowUser$action<TRes> {
   factory CopyWith$Mutation$UnfollowUser$action(
-          Mutation$UnfollowUser$action instance,
-          TRes Function(Mutation$UnfollowUser$action) then) =
-      _CopyWithImpl$Mutation$UnfollowUser$action;
+    Mutation$UnfollowUser$action instance,
+    TRes Function(Mutation$UnfollowUser$action) then,
+  ) = _CopyWithImpl$Mutation$UnfollowUser$action;
 
   factory CopyWith$Mutation$UnfollowUser$action.stub(TRes res) =
       _CopyWithStubImpl$Mutation$UnfollowUser$action;
 
-  TRes call(
-      {String? clientMutationId,
-      Mutation$UnfollowUser$action$user? user,
-      String? $__typename});
+  TRes call({
+    String? clientMutationId,
+    Mutation$UnfollowUser$action$user? user,
+    String? $__typename,
+  });
   CopyWith$Mutation$UnfollowUser$action$user<TRes> get user;
 }
 
 class _CopyWithImpl$Mutation$UnfollowUser$action<TRes>
     implements CopyWith$Mutation$UnfollowUser$action<TRes> {
-  _CopyWithImpl$Mutation$UnfollowUser$action(this._instance, this._then);
+  _CopyWithImpl$Mutation$UnfollowUser$action(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$UnfollowUser$action _instance;
 
@@ -3089,20 +3555,22 @@ class _CopyWithImpl$Mutation$UnfollowUser$action<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? clientMutationId = _undefined,
-          Object? user = _undefined,
-          Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? clientMutationId = _undefined,
+    Object? user = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Mutation$UnfollowUser$action(
-          clientMutationId: clientMutationId == _undefined
-              ? _instance.clientMutationId
-              : (clientMutationId as String?),
-          user: user == _undefined
-              ? _instance.user
-              : (user as Mutation$UnfollowUser$action$user?),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        clientMutationId: clientMutationId == _undefined
+            ? _instance.clientMutationId
+            : (clientMutationId as String?),
+        user: user == _undefined
+            ? _instance.user
+            : (user as Mutation$UnfollowUser$action$user?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
   CopyWith$Mutation$UnfollowUser$action$user<TRes> get user {
     final local$user = _instance.user;
     return local$user == null
@@ -3118,25 +3586,30 @@ class _CopyWithStubImpl$Mutation$UnfollowUser$action<TRes>
 
   TRes _res;
 
-  call(
-          {String? clientMutationId,
-          Mutation$UnfollowUser$action$user? user,
-          String? $__typename}) =>
+  call({
+    String? clientMutationId,
+    Mutation$UnfollowUser$action$user? user,
+    String? $__typename,
+  }) =>
       _res;
   CopyWith$Mutation$UnfollowUser$action$user<TRes> get user =>
       CopyWith$Mutation$UnfollowUser$action$user.stub(_res);
 }
 
 class Mutation$UnfollowUser$action$user {
-  Mutation$UnfollowUser$action$user(
-      {required this.id, required this.$__typename});
+  Mutation$UnfollowUser$action$user({
+    required this.id,
+    required this.$__typename,
+  });
 
   factory Mutation$UnfollowUser$action$user.fromJson(
       Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$$__typename = json['__typename'];
     return Mutation$UnfollowUser$action$user(
-        id: (l$id as String), $__typename: (l$$__typename as String));
+      id: (l$id as String),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String id;
@@ -3156,7 +3629,10 @@ class Mutation$UnfollowUser$action$user {
   int get hashCode {
     final l$id = id;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$$__typename]);
+    return Object.hashAll([
+      l$id,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -3185,25 +3661,33 @@ class Mutation$UnfollowUser$action$user {
 extension UtilityExtension$Mutation$UnfollowUser$action$user
     on Mutation$UnfollowUser$action$user {
   CopyWith$Mutation$UnfollowUser$action$user<Mutation$UnfollowUser$action$user>
-      get copyWith =>
-          CopyWith$Mutation$UnfollowUser$action$user(this, (i) => i);
+      get copyWith => CopyWith$Mutation$UnfollowUser$action$user(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Mutation$UnfollowUser$action$user<TRes> {
   factory CopyWith$Mutation$UnfollowUser$action$user(
-          Mutation$UnfollowUser$action$user instance,
-          TRes Function(Mutation$UnfollowUser$action$user) then) =
-      _CopyWithImpl$Mutation$UnfollowUser$action$user;
+    Mutation$UnfollowUser$action$user instance,
+    TRes Function(Mutation$UnfollowUser$action$user) then,
+  ) = _CopyWithImpl$Mutation$UnfollowUser$action$user;
 
   factory CopyWith$Mutation$UnfollowUser$action$user.stub(TRes res) =
       _CopyWithStubImpl$Mutation$UnfollowUser$action$user;
 
-  TRes call({String? id, String? $__typename});
+  TRes call({
+    String? id,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Mutation$UnfollowUser$action$user<TRes>
     implements CopyWith$Mutation$UnfollowUser$action$user<TRes> {
-  _CopyWithImpl$Mutation$UnfollowUser$action$user(this._instance, this._then);
+  _CopyWithImpl$Mutation$UnfollowUser$action$user(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$UnfollowUser$action$user _instance;
 
@@ -3211,12 +3695,16 @@ class _CopyWithImpl$Mutation$UnfollowUser$action$user<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? id = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Mutation$UnfollowUser$action$user(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Mutation$UnfollowUser$action$user<TRes>
@@ -3225,7 +3713,11 @@ class _CopyWithStubImpl$Mutation$UnfollowUser$action$user<TRes>
 
   TRes _res;
 
-  call({String? id, String? $__typename}) => _res;
+  call({
+    String? id,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Variables$Query$PostedWorks {
@@ -3260,7 +3752,10 @@ class Variables$Query$PostedWorks {
   }
 
   CopyWith$Variables$Query$PostedWorks<Variables$Query$PostedWorks>
-      get copyWith => CopyWith$Variables$Query$PostedWorks(this, (i) => i);
+      get copyWith => CopyWith$Variables$Query$PostedWorks(
+            this,
+            (i) => i,
+          );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -3290,9 +3785,9 @@ class Variables$Query$PostedWorks {
 
 abstract class CopyWith$Variables$Query$PostedWorks<TRes> {
   factory CopyWith$Variables$Query$PostedWorks(
-          Variables$Query$PostedWorks instance,
-          TRes Function(Variables$Query$PostedWorks) then) =
-      _CopyWithImpl$Variables$Query$PostedWorks;
+    Variables$Query$PostedWorks instance,
+    TRes Function(Variables$Query$PostedWorks) then,
+  ) = _CopyWithImpl$Variables$Query$PostedWorks;
 
   factory CopyWith$Variables$Query$PostedWorks.stub(TRes res) =
       _CopyWithStubImpl$Variables$Query$PostedWorks;
@@ -3302,7 +3797,10 @@ abstract class CopyWith$Variables$Query$PostedWorks<TRes> {
 
 class _CopyWithImpl$Variables$Query$PostedWorks<TRes>
     implements CopyWith$Variables$Query$PostedWorks<TRes> {
-  _CopyWithImpl$Variables$Query$PostedWorks(this._instance, this._then);
+  _CopyWithImpl$Variables$Query$PostedWorks(
+    this._instance,
+    this._then,
+  );
 
   final Variables$Query$PostedWorks _instance;
 
@@ -3327,15 +3825,19 @@ class _CopyWithStubImpl$Variables$Query$PostedWorks<TRes>
 }
 
 class Query$PostedWorks {
-  Query$PostedWorks({required this.works, required this.$__typename});
+  Query$PostedWorks({
+    required this.works,
+    required this.$__typename,
+  });
 
   factory Query$PostedWorks.fromJson(Map<String, dynamic> json) {
     final l$works = json['works'];
     final l$$__typename = json['__typename'];
     return Query$PostedWorks(
-        works:
-            Query$PostedWorks$works.fromJson((l$works as Map<String, dynamic>)),
-        $__typename: (l$$__typename as String));
+      works:
+          Query$PostedWorks$works.fromJson((l$works as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final Query$PostedWorks$works works;
@@ -3355,7 +3857,10 @@ class Query$PostedWorks {
   int get hashCode {
     final l$works = works;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$works, l$$__typename]);
+    return Object.hashAll([
+      l$works,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -3382,24 +3887,34 @@ class Query$PostedWorks {
 
 extension UtilityExtension$Query$PostedWorks on Query$PostedWorks {
   CopyWith$Query$PostedWorks<Query$PostedWorks> get copyWith =>
-      CopyWith$Query$PostedWorks(this, (i) => i);
+      CopyWith$Query$PostedWorks(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Query$PostedWorks<TRes> {
   factory CopyWith$Query$PostedWorks(
-          Query$PostedWorks instance, TRes Function(Query$PostedWorks) then) =
-      _CopyWithImpl$Query$PostedWorks;
+    Query$PostedWorks instance,
+    TRes Function(Query$PostedWorks) then,
+  ) = _CopyWithImpl$Query$PostedWorks;
 
   factory CopyWith$Query$PostedWorks.stub(TRes res) =
       _CopyWithStubImpl$Query$PostedWorks;
 
-  TRes call({Query$PostedWorks$works? works, String? $__typename});
+  TRes call({
+    Query$PostedWorks$works? works,
+    String? $__typename,
+  });
   CopyWith$Query$PostedWorks$works<TRes> get works;
 }
 
 class _CopyWithImpl$Query$PostedWorks<TRes>
     implements CopyWith$Query$PostedWorks<TRes> {
-  _CopyWithImpl$Query$PostedWorks(this._instance, this._then);
+  _CopyWithImpl$Query$PostedWorks(
+    this._instance,
+    this._then,
+  );
 
   final Query$PostedWorks _instance;
 
@@ -3407,14 +3922,18 @@ class _CopyWithImpl$Query$PostedWorks<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? works = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? works = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$PostedWorks(
-          works: works == _undefined || works == null
-              ? _instance.works
-              : (works as Query$PostedWorks$works),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        works: works == _undefined || works == null
+            ? _instance.works
+            : (works as Query$PostedWorks$works),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
   CopyWith$Query$PostedWorks$works<TRes> get works {
     final local$works = _instance.works;
     return CopyWith$Query$PostedWorks$works(local$works, (e) => call(works: e));
@@ -3427,78 +3946,95 @@ class _CopyWithStubImpl$Query$PostedWorks<TRes>
 
   TRes _res;
 
-  call({Query$PostedWorks$works? works, String? $__typename}) => _res;
+  call({
+    Query$PostedWorks$works? works,
+    String? $__typename,
+  }) =>
+      _res;
   CopyWith$Query$PostedWorks$works<TRes> get works =>
       CopyWith$Query$PostedWorks$works.stub(_res);
 }
 
 const documentNodeQueryPostedWorks = DocumentNode(definitions: [
   OperationDefinitionNode(
-      type: OperationType.query,
-      name: NameNode(value: 'PostedWorks'),
-      variableDefinitions: [
-        VariableDefinitionNode(
-            variable: VariableNode(name: NameNode(value: 'where')),
-            type: NamedTypeNode(
-                name: NameNode(value: 'WorkWhereInput'), isNonNull: false),
-            defaultValue: DefaultValueNode(value: null),
-            directives: [])
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-            name: NameNode(value: 'works'),
+    type: OperationType.query,
+    name: NameNode(value: 'PostedWorks'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'where')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'WorkWhereInput'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'works'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'where'),
+            value: VariableNode(name: NameNode(value: 'where')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'edges'),
             alias: null,
-            arguments: [
-              ArgumentNode(
-                  name: NameNode(value: 'where'),
-                  value: VariableNode(name: NameNode(value: 'where')))
-            ],
+            arguments: [],
             directives: [],
             selectionSet: SelectionSetNode(selections: [
               FieldNode(
-                  name: NameNode(value: 'edges'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: SelectionSetNode(selections: [
-                    FieldNode(
-                        name: NameNode(value: 'node'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: SelectionSetNode(selections: [
-                          FragmentSpreadNode(
-                              name: NameNode(value: 'WorkSummary'),
-                              directives: []),
-                          FieldNode(
-                              name: NameNode(value: '__typename'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null)
-                        ])),
-                    FieldNode(
-                        name: NameNode(value: '__typename'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null)
-                  ])),
+                name: NameNode(value: 'node'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FragmentSpreadNode(
+                    name: NameNode(value: 'WorkSummary'),
+                    directives: [],
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
               FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null)
-            ])),
-        FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
             directives: [],
-            selectionSet: null)
-      ])),
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
   fragmentDefinitionWorkSummary,
 ]);
 Query$PostedWorks _parserFn$Query$PostedWorks(Map<String, dynamic> data) =>
@@ -3506,66 +4042,69 @@ Query$PostedWorks _parserFn$Query$PostedWorks(Map<String, dynamic> data) =>
 
 class Options$Query$PostedWorks
     extends graphql.QueryOptions<Query$PostedWorks> {
-  Options$Query$PostedWorks(
-      {String? operationName,
-      Variables$Query$PostedWorks? variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      Duration? pollInterval,
-      graphql.Context? context})
-      : super(
-            variables: variables?.toJson() ?? {},
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            pollInterval: pollInterval,
-            context: context,
-            document: documentNodeQueryPostedWorks,
-            parserFn: _parserFn$Query$PostedWorks);
+  Options$Query$PostedWorks({
+    String? operationName,
+    Variables$Query$PostedWorks? variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+  }) : super(
+          variables: variables?.toJson() ?? {},
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          pollInterval: pollInterval,
+          context: context,
+          document: documentNodeQueryPostedWorks,
+          parserFn: _parserFn$Query$PostedWorks,
+        );
 }
 
 class WatchOptions$Query$PostedWorks
     extends graphql.WatchQueryOptions<Query$PostedWorks> {
-  WatchOptions$Query$PostedWorks(
-      {String? operationName,
-      Variables$Query$PostedWorks? variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      Duration? pollInterval,
-      bool? eagerlyFetchResults,
-      bool carryForwardDataOnException = true,
-      bool fetchResults = false})
-      : super(
-            variables: variables?.toJson() ?? {},
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            document: documentNodeQueryPostedWorks,
-            pollInterval: pollInterval,
-            eagerlyFetchResults: eagerlyFetchResults,
-            carryForwardDataOnException: carryForwardDataOnException,
-            fetchResults: fetchResults,
-            parserFn: _parserFn$Query$PostedWorks);
+  WatchOptions$Query$PostedWorks({
+    String? operationName,
+    Variables$Query$PostedWorks? variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables?.toJson() ?? {},
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          document: documentNodeQueryPostedWorks,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$PostedWorks,
+        );
 }
 
 class FetchMoreOptions$Query$PostedWorks extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$PostedWorks(
-      {required graphql.UpdateQuery updateQuery,
-      Variables$Query$PostedWorks? variables})
-      : super(
-            updateQuery: updateQuery,
-            variables: variables?.toJson() ?? {},
-            document: documentNodeQueryPostedWorks);
+  FetchMoreOptions$Query$PostedWorks({
+    required graphql.UpdateQuery updateQuery,
+    Variables$Query$PostedWorks? variables,
+  }) : super(
+          updateQuery: updateQuery,
+          variables: variables?.toJson() ?? {},
+          document: documentNodeQueryPostedWorks,
+        );
 }
 
 extension ClientExtension$Query$PostedWorks on graphql.GraphQLClient {
@@ -3575,25 +4114,30 @@ extension ClientExtension$Query$PostedWorks on graphql.GraphQLClient {
   graphql.ObservableQuery<Query$PostedWorks> watchQuery$PostedWorks(
           [WatchOptions$Query$PostedWorks? options]) =>
       this.watchQuery(options ?? WatchOptions$Query$PostedWorks());
-  void writeQuery$PostedWorks(
-          {required Query$PostedWorks data,
-          Variables$Query$PostedWorks? variables,
-          bool broadcast = true}) =>
+  void writeQuery$PostedWorks({
+    required Query$PostedWorks data,
+    Variables$Query$PostedWorks? variables,
+    bool broadcast = true,
+  }) =>
       this.writeQuery(
-          graphql.Request(
-              operation:
-                  graphql.Operation(document: documentNodeQueryPostedWorks),
-              variables: variables?.toJson() ?? const {}),
-          data: data.toJson(),
-          broadcast: broadcast);
-  Query$PostedWorks? readQuery$PostedWorks(
-      {Variables$Query$PostedWorks? variables, bool optimistic = true}) {
-    final result = this.readQuery(
         graphql.Request(
-            operation:
-                graphql.Operation(document: documentNodeQueryPostedWorks),
-            variables: variables?.toJson() ?? const {}),
-        optimistic: optimistic);
+          operation: graphql.Operation(document: documentNodeQueryPostedWorks),
+          variables: variables?.toJson() ?? const {},
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$PostedWorks? readQuery$PostedWorks({
+    Variables$Query$PostedWorks? variables,
+    bool optimistic = true,
+  }) {
+    final result = this.readQuery(
+      graphql.Request(
+        operation: graphql.Operation(document: documentNodeQueryPostedWorks),
+        variables: variables?.toJson() ?? const {},
+      ),
+      optimistic: optimistic,
+    );
     return result == null ? null : Query$PostedWorks.fromJson(result);
   }
 }
@@ -3607,30 +4151,35 @@ graphql.ObservableQuery<Query$PostedWorks> useWatchQuery$PostedWorks(
 
 class Query$PostedWorks$Widget
     extends graphql_flutter.Query<Query$PostedWorks> {
-  Query$PostedWorks$Widget(
-      {widgets.Key? key,
-      Options$Query$PostedWorks? options,
-      required graphql_flutter.QueryBuilder<Query$PostedWorks> builder})
-      : super(
-            key: key,
-            options: options ?? Options$Query$PostedWorks(),
-            builder: builder);
+  Query$PostedWorks$Widget({
+    widgets.Key? key,
+    Options$Query$PostedWorks? options,
+    required graphql_flutter.QueryBuilder<Query$PostedWorks> builder,
+  }) : super(
+          key: key,
+          options: options ?? Options$Query$PostedWorks(),
+          builder: builder,
+        );
 }
 
 class Query$PostedWorks$works {
-  Query$PostedWorks$works({this.edges, required this.$__typename});
+  Query$PostedWorks$works({
+    this.edges,
+    required this.$__typename,
+  });
 
   factory Query$PostedWorks$works.fromJson(Map<String, dynamic> json) {
     final l$edges = json['edges'];
     final l$$__typename = json['__typename'];
     return Query$PostedWorks$works(
-        edges: (l$edges as List<dynamic>?)
-            ?.map((e) => e == null
-                ? null
-                : Query$PostedWorks$works$edges.fromJson(
-                    (e as Map<String, dynamic>)))
-            .toList(),
-        $__typename: (l$$__typename as String));
+      edges: (l$edges as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : Query$PostedWorks$works$edges.fromJson(
+                  (e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final List<Query$PostedWorks$works$edges?>? edges;
@@ -3652,7 +4201,7 @@ class Query$PostedWorks$works {
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
-      l$$__typename
+      l$$__typename,
     ]);
   }
 
@@ -3692,18 +4241,25 @@ class Query$PostedWorks$works {
 
 extension UtilityExtension$Query$PostedWorks$works on Query$PostedWorks$works {
   CopyWith$Query$PostedWorks$works<Query$PostedWorks$works> get copyWith =>
-      CopyWith$Query$PostedWorks$works(this, (i) => i);
+      CopyWith$Query$PostedWorks$works(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Query$PostedWorks$works<TRes> {
-  factory CopyWith$Query$PostedWorks$works(Query$PostedWorks$works instance,
-          TRes Function(Query$PostedWorks$works) then) =
-      _CopyWithImpl$Query$PostedWorks$works;
+  factory CopyWith$Query$PostedWorks$works(
+    Query$PostedWorks$works instance,
+    TRes Function(Query$PostedWorks$works) then,
+  ) = _CopyWithImpl$Query$PostedWorks$works;
 
   factory CopyWith$Query$PostedWorks$works.stub(TRes res) =
       _CopyWithStubImpl$Query$PostedWorks$works;
 
-  TRes call({List<Query$PostedWorks$works$edges?>? edges, String? $__typename});
+  TRes call({
+    List<Query$PostedWorks$works$edges?>? edges,
+    String? $__typename,
+  });
   TRes edges(
       Iterable<Query$PostedWorks$works$edges?>? Function(
               Iterable<
@@ -3714,7 +4270,10 @@ abstract class CopyWith$Query$PostedWorks$works<TRes> {
 
 class _CopyWithImpl$Query$PostedWorks$works<TRes>
     implements CopyWith$Query$PostedWorks$works<TRes> {
-  _CopyWithImpl$Query$PostedWorks$works(this._instance, this._then);
+  _CopyWithImpl$Query$PostedWorks$works(
+    this._instance,
+    this._then,
+  );
 
   final Query$PostedWorks$works _instance;
 
@@ -3722,14 +4281,18 @@ class _CopyWithImpl$Query$PostedWorks$works<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? edges = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? edges = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$PostedWorks$works(
-          edges: edges == _undefined
-              ? _instance.edges
-              : (edges as List<Query$PostedWorks$works$edges?>?),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        edges: edges == _undefined
+            ? _instance.edges
+            : (edges as List<Query$PostedWorks$works$edges?>?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
   TRes edges(
           Iterable<Query$PostedWorks$works$edges?>? Function(
                   Iterable<
@@ -3738,9 +4301,11 @@ class _CopyWithImpl$Query$PostedWorks$works<TRes>
               _fn) =>
       call(
           edges: _fn(_instance.edges?.map((e) => e == null
-                  ? null
-                  : CopyWith$Query$PostedWorks$works$edges(e, (i) => i)))
-              ?.toList());
+              ? null
+              : CopyWith$Query$PostedWorks$works$edges(
+                  e,
+                  (i) => i,
+                )))?.toList());
 }
 
 class _CopyWithStubImpl$Query$PostedWorks$works<TRes>
@@ -3749,22 +4314,29 @@ class _CopyWithStubImpl$Query$PostedWorks$works<TRes>
 
   TRes _res;
 
-  call({List<Query$PostedWorks$works$edges?>? edges, String? $__typename}) =>
+  call({
+    List<Query$PostedWorks$works$edges?>? edges,
+    String? $__typename,
+  }) =>
       _res;
   edges(_fn) => _res;
 }
 
 class Query$PostedWorks$works$edges {
-  Query$PostedWorks$works$edges({this.node, required this.$__typename});
+  Query$PostedWorks$works$edges({
+    this.node,
+    required this.$__typename,
+  });
 
   factory Query$PostedWorks$works$edges.fromJson(Map<String, dynamic> json) {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
     return Query$PostedWorks$works$edges(
-        node: l$node == null
-            ? null
-            : Fragment$WorkSummary.fromJson((l$node as Map<String, dynamic>)),
-        $__typename: (l$$__typename as String));
+      node: l$node == null
+          ? null
+          : Fragment$WorkSummary.fromJson((l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final Fragment$WorkSummary? node;
@@ -3784,7 +4356,10 @@ class Query$PostedWorks$works$edges {
   int get hashCode {
     final l$node = node;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$node, l$$__typename]);
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -3813,25 +4388,34 @@ class Query$PostedWorks$works$edges {
 extension UtilityExtension$Query$PostedWorks$works$edges
     on Query$PostedWorks$works$edges {
   CopyWith$Query$PostedWorks$works$edges<Query$PostedWorks$works$edges>
-      get copyWith => CopyWith$Query$PostedWorks$works$edges(this, (i) => i);
+      get copyWith => CopyWith$Query$PostedWorks$works$edges(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$PostedWorks$works$edges<TRes> {
   factory CopyWith$Query$PostedWorks$works$edges(
-          Query$PostedWorks$works$edges instance,
-          TRes Function(Query$PostedWorks$works$edges) then) =
-      _CopyWithImpl$Query$PostedWorks$works$edges;
+    Query$PostedWorks$works$edges instance,
+    TRes Function(Query$PostedWorks$works$edges) then,
+  ) = _CopyWithImpl$Query$PostedWorks$works$edges;
 
   factory CopyWith$Query$PostedWorks$works$edges.stub(TRes res) =
       _CopyWithStubImpl$Query$PostedWorks$works$edges;
 
-  TRes call({Fragment$WorkSummary? node, String? $__typename});
+  TRes call({
+    Fragment$WorkSummary? node,
+    String? $__typename,
+  });
   CopyWith$Fragment$WorkSummary<TRes> get node;
 }
 
 class _CopyWithImpl$Query$PostedWorks$works$edges<TRes>
     implements CopyWith$Query$PostedWorks$works$edges<TRes> {
-  _CopyWithImpl$Query$PostedWorks$works$edges(this._instance, this._then);
+  _CopyWithImpl$Query$PostedWorks$works$edges(
+    this._instance,
+    this._then,
+  );
 
   final Query$PostedWorks$works$edges _instance;
 
@@ -3839,14 +4423,18 @@ class _CopyWithImpl$Query$PostedWorks$works$edges<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$PostedWorks$works$edges(
-          node: node == _undefined
-              ? _instance.node
-              : (node as Fragment$WorkSummary?),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        node: node == _undefined
+            ? _instance.node
+            : (node as Fragment$WorkSummary?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
   CopyWith$Fragment$WorkSummary<TRes> get node {
     final local$node = _instance.node;
     return local$node == null
@@ -3861,14 +4449,21 @@ class _CopyWithStubImpl$Query$PostedWorks$works$edges<TRes>
 
   TRes _res;
 
-  call({Fragment$WorkSummary? node, String? $__typename}) => _res;
+  call({
+    Fragment$WorkSummary? node,
+    String? $__typename,
+  }) =>
+      _res;
   CopyWith$Fragment$WorkSummary<TRes> get node =>
       CopyWith$Fragment$WorkSummary.stub(_res);
 }
 
 class Variables$Query$BookmarkedPosts {
-  factory Variables$Query$BookmarkedPosts(
-          {required int first, String? after, required String userID}) =>
+  factory Variables$Query$BookmarkedPosts({
+    required int first,
+    String? after,
+    required String userID,
+  }) =>
       Variables$Query$BookmarkedPosts._({
         r'first': first,
         if (after != null) r'after': after,
@@ -3909,7 +4504,10 @@ class Variables$Query$BookmarkedPosts {
   }
 
   CopyWith$Variables$Query$BookmarkedPosts<Variables$Query$BookmarkedPosts>
-      get copyWith => CopyWith$Variables$Query$BookmarkedPosts(this, (i) => i);
+      get copyWith => CopyWith$Variables$Query$BookmarkedPosts(
+            this,
+            (i) => i,
+          );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -3945,26 +4543,36 @@ class Variables$Query$BookmarkedPosts {
     final l$first = first;
     final l$after = after;
     final l$userID = userID;
-    return Object.hashAll(
-        [l$first, _$data.containsKey('after') ? l$after : const {}, l$userID]);
+    return Object.hashAll([
+      l$first,
+      _$data.containsKey('after') ? l$after : const {},
+      l$userID,
+    ]);
   }
 }
 
 abstract class CopyWith$Variables$Query$BookmarkedPosts<TRes> {
   factory CopyWith$Variables$Query$BookmarkedPosts(
-          Variables$Query$BookmarkedPosts instance,
-          TRes Function(Variables$Query$BookmarkedPosts) then) =
-      _CopyWithImpl$Variables$Query$BookmarkedPosts;
+    Variables$Query$BookmarkedPosts instance,
+    TRes Function(Variables$Query$BookmarkedPosts) then,
+  ) = _CopyWithImpl$Variables$Query$BookmarkedPosts;
 
   factory CopyWith$Variables$Query$BookmarkedPosts.stub(TRes res) =
       _CopyWithStubImpl$Variables$Query$BookmarkedPosts;
 
-  TRes call({int? first, String? after, String? userID});
+  TRes call({
+    int? first,
+    String? after,
+    String? userID,
+  });
 }
 
 class _CopyWithImpl$Variables$Query$BookmarkedPosts<TRes>
     implements CopyWith$Variables$Query$BookmarkedPosts<TRes> {
-  _CopyWithImpl$Variables$Query$BookmarkedPosts(this._instance, this._then);
+  _CopyWithImpl$Variables$Query$BookmarkedPosts(
+    this._instance,
+    this._then,
+  );
 
   final Variables$Query$BookmarkedPosts _instance;
 
@@ -3972,10 +4580,11 @@ class _CopyWithImpl$Variables$Query$BookmarkedPosts<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? first = _undefined,
-          Object? after = _undefined,
-          Object? userID = _undefined}) =>
+  TRes call({
+    Object? first = _undefined,
+    Object? after = _undefined,
+    Object? userID = _undefined,
+  }) =>
       _then(Variables$Query$BookmarkedPosts._({
         ..._instance._$data,
         if (first != _undefined && first != null) 'first': (first as int),
@@ -3991,19 +4600,28 @@ class _CopyWithStubImpl$Variables$Query$BookmarkedPosts<TRes>
 
   TRes _res;
 
-  call({int? first, String? after, String? userID}) => _res;
+  call({
+    int? first,
+    String? after,
+    String? userID,
+  }) =>
+      _res;
 }
 
 class Query$BookmarkedPosts {
-  Query$BookmarkedPosts({required this.posts, required this.$__typename});
+  Query$BookmarkedPosts({
+    required this.posts,
+    required this.$__typename,
+  });
 
   factory Query$BookmarkedPosts.fromJson(Map<String, dynamic> json) {
     final l$posts = json['posts'];
     final l$$__typename = json['__typename'];
     return Query$BookmarkedPosts(
-        posts: Query$BookmarkedPosts$posts.fromJson(
-            (l$posts as Map<String, dynamic>)),
-        $__typename: (l$$__typename as String));
+      posts: Query$BookmarkedPosts$posts.fromJson(
+          (l$posts as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final Query$BookmarkedPosts$posts posts;
@@ -4023,7 +4641,10 @@ class Query$BookmarkedPosts {
   int get hashCode {
     final l$posts = posts;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$posts, l$$__typename]);
+    return Object.hashAll([
+      l$posts,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -4050,24 +4671,34 @@ class Query$BookmarkedPosts {
 
 extension UtilityExtension$Query$BookmarkedPosts on Query$BookmarkedPosts {
   CopyWith$Query$BookmarkedPosts<Query$BookmarkedPosts> get copyWith =>
-      CopyWith$Query$BookmarkedPosts(this, (i) => i);
+      CopyWith$Query$BookmarkedPosts(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Query$BookmarkedPosts<TRes> {
-  factory CopyWith$Query$BookmarkedPosts(Query$BookmarkedPosts instance,
-          TRes Function(Query$BookmarkedPosts) then) =
-      _CopyWithImpl$Query$BookmarkedPosts;
+  factory CopyWith$Query$BookmarkedPosts(
+    Query$BookmarkedPosts instance,
+    TRes Function(Query$BookmarkedPosts) then,
+  ) = _CopyWithImpl$Query$BookmarkedPosts;
 
   factory CopyWith$Query$BookmarkedPosts.stub(TRes res) =
       _CopyWithStubImpl$Query$BookmarkedPosts;
 
-  TRes call({Query$BookmarkedPosts$posts? posts, String? $__typename});
+  TRes call({
+    Query$BookmarkedPosts$posts? posts,
+    String? $__typename,
+  });
   CopyWith$Query$BookmarkedPosts$posts<TRes> get posts;
 }
 
 class _CopyWithImpl$Query$BookmarkedPosts<TRes>
     implements CopyWith$Query$BookmarkedPosts<TRes> {
-  _CopyWithImpl$Query$BookmarkedPosts(this._instance, this._then);
+  _CopyWithImpl$Query$BookmarkedPosts(
+    this._instance,
+    this._then,
+  );
 
   final Query$BookmarkedPosts _instance;
 
@@ -4075,14 +4706,18 @@ class _CopyWithImpl$Query$BookmarkedPosts<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? posts = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? posts = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$BookmarkedPosts(
-          posts: posts == _undefined || posts == null
-              ? _instance.posts
-              : (posts as Query$BookmarkedPosts$posts),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        posts: posts == _undefined || posts == null
+            ? _instance.posts
+            : (posts as Query$BookmarkedPosts$posts),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
   CopyWith$Query$BookmarkedPosts$posts<TRes> get posts {
     final local$posts = _instance.posts;
     return CopyWith$Query$BookmarkedPosts$posts(
@@ -4096,148 +4731,184 @@ class _CopyWithStubImpl$Query$BookmarkedPosts<TRes>
 
   TRes _res;
 
-  call({Query$BookmarkedPosts$posts? posts, String? $__typename}) => _res;
+  call({
+    Query$BookmarkedPosts$posts? posts,
+    String? $__typename,
+  }) =>
+      _res;
   CopyWith$Query$BookmarkedPosts$posts<TRes> get posts =>
       CopyWith$Query$BookmarkedPosts$posts.stub(_res);
 }
 
 const documentNodeQueryBookmarkedPosts = DocumentNode(definitions: [
   OperationDefinitionNode(
-      type: OperationType.query,
-      name: NameNode(value: 'BookmarkedPosts'),
-      variableDefinitions: [
-        VariableDefinitionNode(
-            variable: VariableNode(name: NameNode(value: 'first')),
-            type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: true),
-            defaultValue: DefaultValueNode(value: null),
-            directives: []),
-        VariableDefinitionNode(
-            variable: VariableNode(name: NameNode(value: 'after')),
-            type: NamedTypeNode(
-                name: NameNode(value: 'Cursor'), isNonNull: false),
-            defaultValue: DefaultValueNode(value: null),
-            directives: []),
-        VariableDefinitionNode(
-            variable: VariableNode(name: NameNode(value: 'userID')),
-            type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
-            defaultValue: DefaultValueNode(value: null),
-            directives: [])
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-            name: NameNode(value: 'posts'),
+    type: OperationType.query,
+    name: NameNode(value: 'BookmarkedPosts'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'first')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Int'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'after')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Cursor'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'userID')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'ID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'posts'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'first'),
+            value: VariableNode(name: NameNode(value: 'first')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'after'),
+            value: VariableNode(name: NameNode(value: 'after')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'orderBy'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'direction'),
+                value: EnumValueNode(name: NameNode(value: 'DESC')),
+              ),
+              ObjectFieldNode(
+                name: NameNode(value: 'field'),
+                value: EnumValueNode(name: NameNode(value: 'CREATE_TIME')),
+              ),
+            ]),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'where'),
+            value: ObjectValueNode(fields: [
+              ObjectFieldNode(
+                name: NameNode(value: 'hasBookmarkedUsersWith'),
+                value: ObjectValueNode(fields: [
+                  ObjectFieldNode(
+                    name: NameNode(value: 'id'),
+                    value: VariableNode(name: NameNode(value: 'userID')),
+                  )
+                ]),
+              )
+            ]),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'edges'),
             alias: null,
-            arguments: [
-              ArgumentNode(
-                  name: NameNode(value: 'first'),
-                  value: VariableNode(name: NameNode(value: 'first'))),
-              ArgumentNode(
-                  name: NameNode(value: 'after'),
-                  value: VariableNode(name: NameNode(value: 'after'))),
-              ArgumentNode(
-                  name: NameNode(value: 'orderBy'),
-                  value: ObjectValueNode(fields: [
-                    ObjectFieldNode(
-                        name: NameNode(value: 'direction'),
-                        value: EnumValueNode(name: NameNode(value: 'DESC'))),
-                    ObjectFieldNode(
-                        name: NameNode(value: 'field'),
-                        value:
-                            EnumValueNode(name: NameNode(value: 'CREATE_TIME')))
-                  ])),
-              ArgumentNode(
-                  name: NameNode(value: 'where'),
-                  value: ObjectValueNode(fields: [
-                    ObjectFieldNode(
-                        name: NameNode(value: 'hasBookmarkedUsersWith'),
-                        value: ObjectValueNode(fields: [
-                          ObjectFieldNode(
-                              name: NameNode(value: 'id'),
-                              value:
-                                  VariableNode(name: NameNode(value: 'userID')))
-                        ]))
-                  ]))
-            ],
+            arguments: [],
             directives: [],
             selectionSet: SelectionSetNode(selections: [
               FieldNode(
-                  name: NameNode(value: 'edges'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: SelectionSetNode(selections: [
-                    FieldNode(
-                        name: NameNode(value: 'node'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: SelectionSetNode(selections: [
-                          FieldNode(
-                              name: NameNode(value: 'type'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null),
-                          FragmentSpreadNode(
-                              name: NameNode(value: 'PraiseSummary'),
-                              directives: []),
-                          FragmentSpreadNode(
-                              name: NameNode(value: 'LetterSummary'),
-                              directives: []),
-                          FieldNode(
-                              name: NameNode(value: '__typename'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null)
-                        ])),
-                    FieldNode(
-                        name: NameNode(value: '__typename'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null)
-                  ])),
+                name: NameNode(value: 'node'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'type'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FragmentSpreadNode(
+                    name: NameNode(value: 'PraiseSummary'),
+                    directives: [],
+                  ),
+                  FragmentSpreadNode(
+                    name: NameNode(value: 'LetterSummary'),
+                    directives: [],
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
               FieldNode(
-                  name: NameNode(value: 'pageInfo'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: SelectionSetNode(selections: [
-                    FieldNode(
-                        name: NameNode(value: 'endCursor'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null),
-                    FieldNode(
-                        name: NameNode(value: 'hasNextPage'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null),
-                    FieldNode(
-                        name: NameNode(value: '__typename'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null)
-                  ])),
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: 'pageInfo'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
               FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null)
-            ])),
-        FieldNode(
+                name: NameNode(value: 'endCursor'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'hasNextPage'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
+          ),
+          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
             directives: [],
-            selectionSet: null)
-      ])),
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
   fragmentDefinitionPraiseSummary,
   fragmentDefinitionLetterSummary,
 ]);
@@ -4247,66 +4918,69 @@ Query$BookmarkedPosts _parserFn$Query$BookmarkedPosts(
 
 class Options$Query$BookmarkedPosts
     extends graphql.QueryOptions<Query$BookmarkedPosts> {
-  Options$Query$BookmarkedPosts(
-      {String? operationName,
-      required Variables$Query$BookmarkedPosts variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      Duration? pollInterval,
-      graphql.Context? context})
-      : super(
-            variables: variables.toJson(),
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            pollInterval: pollInterval,
-            context: context,
-            document: documentNodeQueryBookmarkedPosts,
-            parserFn: _parserFn$Query$BookmarkedPosts);
+  Options$Query$BookmarkedPosts({
+    String? operationName,
+    required Variables$Query$BookmarkedPosts variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    Duration? pollInterval,
+    graphql.Context? context,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          pollInterval: pollInterval,
+          context: context,
+          document: documentNodeQueryBookmarkedPosts,
+          parserFn: _parserFn$Query$BookmarkedPosts,
+        );
 }
 
 class WatchOptions$Query$BookmarkedPosts
     extends graphql.WatchQueryOptions<Query$BookmarkedPosts> {
-  WatchOptions$Query$BookmarkedPosts(
-      {String? operationName,
-      required Variables$Query$BookmarkedPosts variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      Duration? pollInterval,
-      bool? eagerlyFetchResults,
-      bool carryForwardDataOnException = true,
-      bool fetchResults = false})
-      : super(
-            variables: variables.toJson(),
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            document: documentNodeQueryBookmarkedPosts,
-            pollInterval: pollInterval,
-            eagerlyFetchResults: eagerlyFetchResults,
-            carryForwardDataOnException: carryForwardDataOnException,
-            fetchResults: fetchResults,
-            parserFn: _parserFn$Query$BookmarkedPosts);
+  WatchOptions$Query$BookmarkedPosts({
+    String? operationName,
+    required Variables$Query$BookmarkedPosts variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          document: documentNodeQueryBookmarkedPosts,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$BookmarkedPosts,
+        );
 }
 
 class FetchMoreOptions$Query$BookmarkedPosts extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$BookmarkedPosts(
-      {required graphql.UpdateQuery updateQuery,
-      required Variables$Query$BookmarkedPosts variables})
-      : super(
-            updateQuery: updateQuery,
-            variables: variables.toJson(),
-            document: documentNodeQueryBookmarkedPosts);
+  FetchMoreOptions$Query$BookmarkedPosts({
+    required graphql.UpdateQuery updateQuery,
+    required Variables$Query$BookmarkedPosts variables,
+  }) : super(
+          updateQuery: updateQuery,
+          variables: variables.toJson(),
+          document: documentNodeQueryBookmarkedPosts,
+        );
 }
 
 extension ClientExtension$Query$BookmarkedPosts on graphql.GraphQLClient {
@@ -4316,26 +4990,32 @@ extension ClientExtension$Query$BookmarkedPosts on graphql.GraphQLClient {
   graphql.ObservableQuery<Query$BookmarkedPosts> watchQuery$BookmarkedPosts(
           WatchOptions$Query$BookmarkedPosts options) =>
       this.watchQuery(options);
-  void writeQuery$BookmarkedPosts(
-          {required Query$BookmarkedPosts data,
-          required Variables$Query$BookmarkedPosts variables,
-          bool broadcast = true}) =>
+  void writeQuery$BookmarkedPosts({
+    required Query$BookmarkedPosts data,
+    required Variables$Query$BookmarkedPosts variables,
+    bool broadcast = true,
+  }) =>
       this.writeQuery(
-          graphql.Request(
-              operation:
-                  graphql.Operation(document: documentNodeQueryBookmarkedPosts),
-              variables: variables.toJson()),
-          data: data.toJson(),
-          broadcast: broadcast);
-  Query$BookmarkedPosts? readQuery$BookmarkedPosts(
-      {required Variables$Query$BookmarkedPosts variables,
-      bool optimistic = true}) {
-    final result = this.readQuery(
         graphql.Request(
-            operation:
-                graphql.Operation(document: documentNodeQueryBookmarkedPosts),
-            variables: variables.toJson()),
-        optimistic: optimistic);
+          operation:
+              graphql.Operation(document: documentNodeQueryBookmarkedPosts),
+          variables: variables.toJson(),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$BookmarkedPosts? readQuery$BookmarkedPosts({
+    required Variables$Query$BookmarkedPosts variables,
+    bool optimistic = true,
+  }) {
+    final result = this.readQuery(
+      graphql.Request(
+        operation:
+            graphql.Operation(document: documentNodeQueryBookmarkedPosts),
+        variables: variables.toJson(),
+      ),
+      optimistic: optimistic,
+    );
     return result == null ? null : Query$BookmarkedPosts.fromJson(result);
   }
 }
@@ -4349,31 +5029,39 @@ graphql.ObservableQuery<Query$BookmarkedPosts> useWatchQuery$BookmarkedPosts(
 
 class Query$BookmarkedPosts$Widget
     extends graphql_flutter.Query<Query$BookmarkedPosts> {
-  Query$BookmarkedPosts$Widget(
-      {widgets.Key? key,
-      required Options$Query$BookmarkedPosts options,
-      required graphql_flutter.QueryBuilder<Query$BookmarkedPosts> builder})
-      : super(key: key, options: options, builder: builder);
+  Query$BookmarkedPosts$Widget({
+    widgets.Key? key,
+    required Options$Query$BookmarkedPosts options,
+    required graphql_flutter.QueryBuilder<Query$BookmarkedPosts> builder,
+  }) : super(
+          key: key,
+          options: options,
+          builder: builder,
+        );
 }
 
 class Query$BookmarkedPosts$posts {
-  Query$BookmarkedPosts$posts(
-      {this.edges, required this.pageInfo, required this.$__typename});
+  Query$BookmarkedPosts$posts({
+    this.edges,
+    required this.pageInfo,
+    required this.$__typename,
+  });
 
   factory Query$BookmarkedPosts$posts.fromJson(Map<String, dynamic> json) {
     final l$edges = json['edges'];
     final l$pageInfo = json['pageInfo'];
     final l$$__typename = json['__typename'];
     return Query$BookmarkedPosts$posts(
-        edges: (l$edges as List<dynamic>?)
-            ?.map((e) => e == null
-                ? null
-                : Query$BookmarkedPosts$posts$edges.fromJson(
-                    (e as Map<String, dynamic>)))
-            .toList(),
-        pageInfo: Query$BookmarkedPosts$posts$pageInfo.fromJson(
-            (l$pageInfo as Map<String, dynamic>)),
-        $__typename: (l$$__typename as String));
+      edges: (l$edges as List<dynamic>?)
+          ?.map((e) => e == null
+              ? null
+              : Query$BookmarkedPosts$posts$edges.fromJson(
+                  (e as Map<String, dynamic>)))
+          .toList(),
+      pageInfo: Query$BookmarkedPosts$posts$pageInfo.fromJson(
+          (l$pageInfo as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final List<Query$BookmarkedPosts$posts$edges?>? edges;
@@ -4401,7 +5089,7 @@ class Query$BookmarkedPosts$posts {
     return Object.hashAll([
       l$edges == null ? null : Object.hashAll(l$edges.map((v) => v)),
       l$pageInfo,
-      l$$__typename
+      l$$__typename,
     ]);
   }
 
@@ -4447,22 +5135,26 @@ class Query$BookmarkedPosts$posts {
 extension UtilityExtension$Query$BookmarkedPosts$posts
     on Query$BookmarkedPosts$posts {
   CopyWith$Query$BookmarkedPosts$posts<Query$BookmarkedPosts$posts>
-      get copyWith => CopyWith$Query$BookmarkedPosts$posts(this, (i) => i);
+      get copyWith => CopyWith$Query$BookmarkedPosts$posts(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$BookmarkedPosts$posts<TRes> {
   factory CopyWith$Query$BookmarkedPosts$posts(
-          Query$BookmarkedPosts$posts instance,
-          TRes Function(Query$BookmarkedPosts$posts) then) =
-      _CopyWithImpl$Query$BookmarkedPosts$posts;
+    Query$BookmarkedPosts$posts instance,
+    TRes Function(Query$BookmarkedPosts$posts) then,
+  ) = _CopyWithImpl$Query$BookmarkedPosts$posts;
 
   factory CopyWith$Query$BookmarkedPosts$posts.stub(TRes res) =
       _CopyWithStubImpl$Query$BookmarkedPosts$posts;
 
-  TRes call(
-      {List<Query$BookmarkedPosts$posts$edges?>? edges,
-      Query$BookmarkedPosts$posts$pageInfo? pageInfo,
-      String? $__typename});
+  TRes call({
+    List<Query$BookmarkedPosts$posts$edges?>? edges,
+    Query$BookmarkedPosts$posts$pageInfo? pageInfo,
+    String? $__typename,
+  });
   TRes edges(
       Iterable<Query$BookmarkedPosts$posts$edges?>? Function(
               Iterable<
@@ -4474,7 +5166,10 @@ abstract class CopyWith$Query$BookmarkedPosts$posts<TRes> {
 
 class _CopyWithImpl$Query$BookmarkedPosts$posts<TRes>
     implements CopyWith$Query$BookmarkedPosts$posts<TRes> {
-  _CopyWithImpl$Query$BookmarkedPosts$posts(this._instance, this._then);
+  _CopyWithImpl$Query$BookmarkedPosts$posts(
+    this._instance,
+    this._then,
+  );
 
   final Query$BookmarkedPosts$posts _instance;
 
@@ -4482,20 +5177,22 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? edges = _undefined,
-          Object? pageInfo = _undefined,
-          Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? edges = _undefined,
+    Object? pageInfo = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$BookmarkedPosts$posts(
-          edges: edges == _undefined
-              ? _instance.edges
-              : (edges as List<Query$BookmarkedPosts$posts$edges?>?),
-          pageInfo: pageInfo == _undefined || pageInfo == null
-              ? _instance.pageInfo
-              : (pageInfo as Query$BookmarkedPosts$posts$pageInfo),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        edges: edges == _undefined
+            ? _instance.edges
+            : (edges as List<Query$BookmarkedPosts$posts$edges?>?),
+        pageInfo: pageInfo == _undefined || pageInfo == null
+            ? _instance.pageInfo
+            : (pageInfo as Query$BookmarkedPosts$posts$pageInfo),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
   TRes edges(
           Iterable<Query$BookmarkedPosts$posts$edges?>? Function(
                   Iterable<
@@ -4504,9 +5201,11 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts<TRes>
               _fn) =>
       call(
           edges: _fn(_instance.edges?.map((e) => e == null
-                  ? null
-                  : CopyWith$Query$BookmarkedPosts$posts$edges(e, (i) => i)))
-              ?.toList());
+              ? null
+              : CopyWith$Query$BookmarkedPosts$posts$edges(
+                  e,
+                  (i) => i,
+                )))?.toList());
   CopyWith$Query$BookmarkedPosts$posts$pageInfo<TRes> get pageInfo {
     final local$pageInfo = _instance.pageInfo;
     return CopyWith$Query$BookmarkedPosts$posts$pageInfo(
@@ -4520,10 +5219,11 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts<TRes>
 
   TRes _res;
 
-  call(
-          {List<Query$BookmarkedPosts$posts$edges?>? edges,
-          Query$BookmarkedPosts$posts$pageInfo? pageInfo,
-          String? $__typename}) =>
+  call({
+    List<Query$BookmarkedPosts$posts$edges?>? edges,
+    Query$BookmarkedPosts$posts$pageInfo? pageInfo,
+    String? $__typename,
+  }) =>
       _res;
   edges(_fn) => _res;
   CopyWith$Query$BookmarkedPosts$posts$pageInfo<TRes> get pageInfo =>
@@ -4531,18 +5231,22 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts<TRes>
 }
 
 class Query$BookmarkedPosts$posts$edges {
-  Query$BookmarkedPosts$posts$edges({this.node, required this.$__typename});
+  Query$BookmarkedPosts$posts$edges({
+    this.node,
+    required this.$__typename,
+  });
 
   factory Query$BookmarkedPosts$posts$edges.fromJson(
       Map<String, dynamic> json) {
     final l$node = json['node'];
     final l$$__typename = json['__typename'];
     return Query$BookmarkedPosts$posts$edges(
-        node: l$node == null
-            ? null
-            : Query$BookmarkedPosts$posts$edges$node.fromJson(
-                (l$node as Map<String, dynamic>)),
-        $__typename: (l$$__typename as String));
+      node: l$node == null
+          ? null
+          : Query$BookmarkedPosts$posts$edges$node.fromJson(
+              (l$node as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final Query$BookmarkedPosts$posts$edges$node? node;
@@ -4562,7 +5266,10 @@ class Query$BookmarkedPosts$posts$edges {
   int get hashCode {
     final l$node = node;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$node, l$$__typename]);
+    return Object.hashAll([
+      l$node,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -4591,27 +5298,34 @@ class Query$BookmarkedPosts$posts$edges {
 extension UtilityExtension$Query$BookmarkedPosts$posts$edges
     on Query$BookmarkedPosts$posts$edges {
   CopyWith$Query$BookmarkedPosts$posts$edges<Query$BookmarkedPosts$posts$edges>
-      get copyWith =>
-          CopyWith$Query$BookmarkedPosts$posts$edges(this, (i) => i);
+      get copyWith => CopyWith$Query$BookmarkedPosts$posts$edges(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$BookmarkedPosts$posts$edges<TRes> {
   factory CopyWith$Query$BookmarkedPosts$posts$edges(
-          Query$BookmarkedPosts$posts$edges instance,
-          TRes Function(Query$BookmarkedPosts$posts$edges) then) =
-      _CopyWithImpl$Query$BookmarkedPosts$posts$edges;
+    Query$BookmarkedPosts$posts$edges instance,
+    TRes Function(Query$BookmarkedPosts$posts$edges) then,
+  ) = _CopyWithImpl$Query$BookmarkedPosts$posts$edges;
 
   factory CopyWith$Query$BookmarkedPosts$posts$edges.stub(TRes res) =
       _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges;
 
-  TRes call(
-      {Query$BookmarkedPosts$posts$edges$node? node, String? $__typename});
+  TRes call({
+    Query$BookmarkedPosts$posts$edges$node? node,
+    String? $__typename,
+  });
   CopyWith$Query$BookmarkedPosts$posts$edges$node<TRes> get node;
 }
 
 class _CopyWithImpl$Query$BookmarkedPosts$posts$edges<TRes>
     implements CopyWith$Query$BookmarkedPosts$posts$edges<TRes> {
-  _CopyWithImpl$Query$BookmarkedPosts$posts$edges(this._instance, this._then);
+  _CopyWithImpl$Query$BookmarkedPosts$posts$edges(
+    this._instance,
+    this._then,
+  );
 
   final Query$BookmarkedPosts$posts$edges _instance;
 
@@ -4619,14 +5333,18 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? node = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? node = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$BookmarkedPosts$posts$edges(
-          node: node == _undefined
-              ? _instance.node
-              : (node as Query$BookmarkedPosts$posts$edges$node?),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        node: node == _undefined
+            ? _instance.node
+            : (node as Query$BookmarkedPosts$posts$edges$node?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
   CopyWith$Query$BookmarkedPosts$posts$edges$node<TRes> get node {
     final local$node = _instance.node;
     return local$node == null
@@ -4642,7 +5360,10 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges<TRes>
 
   TRes _res;
 
-  call({Query$BookmarkedPosts$posts$edges$node? node, String? $__typename}) =>
+  call({
+    Query$BookmarkedPosts$posts$edges$node? node,
+    String? $__typename,
+  }) =>
       _res;
   CopyWith$Query$BookmarkedPosts$posts$edges$node<TRes> get node =>
       CopyWith$Query$BookmarkedPosts$posts$edges$node.stub(_res);
@@ -4650,21 +5371,22 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges<TRes>
 
 class Query$BookmarkedPosts$posts$edges$node
     implements Fragment$PraiseSummary, Fragment$LetterSummary {
-  Query$BookmarkedPosts$posts$edges$node(
-      {required this.type,
-      required this.id,
-      required this.title,
-      required this.createTime,
-      required this.content,
-      required this.spoiled,
-      this.hashtags,
-      required this.owner,
-      required this.category,
-      this.likedUsers,
-      this.bookmarkedUsers,
-      required this.$__typename,
-      this.thumbnail,
-      required this.work});
+  Query$BookmarkedPosts$posts$edges$node({
+    required this.type,
+    required this.id,
+    required this.title,
+    required this.createTime,
+    required this.content,
+    required this.spoiled,
+    this.hashtags,
+    required this.owner,
+    required this.category,
+    this.likedUsers,
+    this.bookmarkedUsers,
+    required this.$__typename,
+    this.thumbnail,
+    required this.work,
+  });
 
   factory Query$BookmarkedPosts$posts$edges$node.fromJson(
       Map<String, dynamic> json) {
@@ -4683,33 +5405,35 @@ class Query$BookmarkedPosts$posts$edges$node
     final l$thumbnail = json['thumbnail'];
     final l$work = json['work'];
     return Query$BookmarkedPosts$posts$edges$node(
-        type: fromJson$Enum$PostPostType((l$type as String)),
-        id: (l$id as String),
-        title: (l$title as String),
-        createTime: (l$createTime as String),
-        content: (l$content as String),
-        spoiled: (l$spoiled as bool),
-        hashtags: (l$hashtags as List<dynamic>?)
-            ?.map((e) =>
-                Query$BookmarkedPosts$posts$edges$node$hashtags.fromJson(
-                    (e as Map<String, dynamic>)))
-            .toList(),
-        owner: Query$BookmarkedPosts$posts$edges$node$owner.fromJson(
-            (l$owner as Map<String, dynamic>)),
-        category: Query$BookmarkedPosts$posts$edges$node$category.fromJson(
-            (l$category as Map<String, dynamic>)),
-        likedUsers: (l$likedUsers as List<dynamic>?)
-            ?.map((e) =>
-                Query$BookmarkedPosts$posts$edges$node$likedUsers.fromJson(
-                    (e as Map<String, dynamic>)))
-            .toList(),
-        bookmarkedUsers: (l$bookmarkedUsers as List<dynamic>?)
-            ?.map((e) =>
-                Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers.fromJson((e as Map<String, dynamic>)))
-            .toList(),
-        $__typename: (l$$__typename as String),
-        thumbnail: (l$thumbnail as String?),
-        work: Query$BookmarkedPosts$posts$edges$node$work.fromJson((l$work as Map<String, dynamic>)));
+      type: fromJson$Enum$PostPostType((l$type as String)),
+      id: (l$id as String),
+      title: (l$title as String),
+      createTime: (l$createTime as String),
+      content: (l$content as String),
+      spoiled: (l$spoiled as bool),
+      hashtags: (l$hashtags as List<dynamic>?)
+          ?.map((e) => Query$BookmarkedPosts$posts$edges$node$hashtags.fromJson(
+              (e as Map<String, dynamic>)))
+          .toList(),
+      owner: Query$BookmarkedPosts$posts$edges$node$owner.fromJson(
+          (l$owner as Map<String, dynamic>)),
+      category: Query$BookmarkedPosts$posts$edges$node$category.fromJson(
+          (l$category as Map<String, dynamic>)),
+      likedUsers: (l$likedUsers as List<dynamic>?)
+          ?.map((e) =>
+              Query$BookmarkedPosts$posts$edges$node$likedUsers.fromJson(
+                  (e as Map<String, dynamic>)))
+          .toList(),
+      bookmarkedUsers: (l$bookmarkedUsers as List<dynamic>?)
+          ?.map((e) =>
+              Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers.fromJson(
+                  (e as Map<String, dynamic>)))
+          .toList(),
+      $__typename: (l$$__typename as String),
+      thumbnail: (l$thumbnail as String?),
+      work: Query$BookmarkedPosts$posts$edges$node$work.fromJson(
+          (l$work as Map<String, dynamic>)),
+    );
   }
 
   final Enum$PostPostType type;
@@ -4807,7 +5531,7 @@ class Query$BookmarkedPosts$posts$edges$node
           : Object.hashAll(l$bookmarkedUsers.map((v) => v)),
       l$$__typename,
       l$thumbnail,
-      l$work
+      l$work,
     ]);
   }
 
@@ -4931,35 +5655,38 @@ extension UtilityExtension$Query$BookmarkedPosts$posts$edges$node
     on Query$BookmarkedPosts$posts$edges$node {
   CopyWith$Query$BookmarkedPosts$posts$edges$node<
           Query$BookmarkedPosts$posts$edges$node>
-      get copyWith =>
-          CopyWith$Query$BookmarkedPosts$posts$edges$node(this, (i) => i);
+      get copyWith => CopyWith$Query$BookmarkedPosts$posts$edges$node(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node<TRes> {
   factory CopyWith$Query$BookmarkedPosts$posts$edges$node(
-          Query$BookmarkedPosts$posts$edges$node instance,
-          TRes Function(Query$BookmarkedPosts$posts$edges$node) then) =
-      _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node;
+    Query$BookmarkedPosts$posts$edges$node instance,
+    TRes Function(Query$BookmarkedPosts$posts$edges$node) then,
+  ) = _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node;
 
   factory CopyWith$Query$BookmarkedPosts$posts$edges$node.stub(TRes res) =
       _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node;
 
-  TRes call(
-      {Enum$PostPostType? type,
-      String? id,
-      String? title,
-      String? createTime,
-      String? content,
-      bool? spoiled,
-      List<Query$BookmarkedPosts$posts$edges$node$hashtags>? hashtags,
-      Query$BookmarkedPosts$posts$edges$node$owner? owner,
-      Query$BookmarkedPosts$posts$edges$node$category? category,
-      List<Query$BookmarkedPosts$posts$edges$node$likedUsers>? likedUsers,
-      List<Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers>?
-          bookmarkedUsers,
-      String? $__typename,
-      String? thumbnail,
-      Query$BookmarkedPosts$posts$edges$node$work? work});
+  TRes call({
+    Enum$PostPostType? type,
+    String? id,
+    String? title,
+    String? createTime,
+    String? content,
+    bool? spoiled,
+    List<Query$BookmarkedPosts$posts$edges$node$hashtags>? hashtags,
+    Query$BookmarkedPosts$posts$edges$node$owner? owner,
+    Query$BookmarkedPosts$posts$edges$node$category? category,
+    List<Query$BookmarkedPosts$posts$edges$node$likedUsers>? likedUsers,
+    List<Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers>?
+        bookmarkedUsers,
+    String? $__typename,
+    String? thumbnail,
+    Query$BookmarkedPosts$posts$edges$node$work? work,
+  });
   TRes hashtags(
       Iterable<Query$BookmarkedPosts$posts$edges$node$hashtags>? Function(
               Iterable<
@@ -4986,7 +5713,9 @@ abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node<TRes> {
 class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
     implements CopyWith$Query$BookmarkedPosts$posts$edges$node<TRes> {
   _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node(
-      this._instance, this._then);
+    this._instance,
+    this._then,
+  );
 
   final Query$BookmarkedPosts$posts$edges$node _instance;
 
@@ -4994,59 +5723,67 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? type = _undefined,
-          Object? id = _undefined,
-          Object? title = _undefined,
-          Object? createTime = _undefined,
-          Object? content = _undefined,
-          Object? spoiled = _undefined,
-          Object? hashtags = _undefined,
-          Object? owner = _undefined,
-          Object? category = _undefined,
-          Object? likedUsers = _undefined,
-          Object? bookmarkedUsers = _undefined,
-          Object? $__typename = _undefined,
-          Object? thumbnail = _undefined,
-          Object? work = _undefined}) =>
+  TRes call({
+    Object? type = _undefined,
+    Object? id = _undefined,
+    Object? title = _undefined,
+    Object? createTime = _undefined,
+    Object? content = _undefined,
+    Object? spoiled = _undefined,
+    Object? hashtags = _undefined,
+    Object? owner = _undefined,
+    Object? category = _undefined,
+    Object? likedUsers = _undefined,
+    Object? bookmarkedUsers = _undefined,
+    Object? $__typename = _undefined,
+    Object? thumbnail = _undefined,
+    Object? work = _undefined,
+  }) =>
       _then(Query$BookmarkedPosts$posts$edges$node(
-          type: type == _undefined || type == null
-              ? _instance.type
-              : (type as Enum$PostPostType),
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          title: title == _undefined || title == null
-              ? _instance.title
-              : (title as String),
-          createTime: createTime == _undefined || createTime == null
-              ? _instance.createTime
-              : (createTime as String),
-          content: content == _undefined || content == null
-              ? _instance.content
-              : (content as String),
-          spoiled: spoiled == _undefined || spoiled == null
-              ? _instance.spoiled
-              : (spoiled as bool),
-          hashtags: hashtags == _undefined
-              ? _instance.hashtags
-              : (hashtags
-                  as List<Query$BookmarkedPosts$posts$edges$node$hashtags>?),
-          owner: owner == _undefined || owner == null
-              ? _instance.owner
-              : (owner as Query$BookmarkedPosts$posts$edges$node$owner),
-          category: category == _undefined || category == null
-              ? _instance.category
-              : (category as Query$BookmarkedPosts$posts$edges$node$category),
-          likedUsers: likedUsers == _undefined
-              ? _instance.likedUsers
-              : (likedUsers
-                  as List<Query$BookmarkedPosts$posts$edges$node$likedUsers>?),
-          bookmarkedUsers: bookmarkedUsers == _undefined
-              ? _instance.bookmarkedUsers
-              : (bookmarkedUsers
-                  as List<Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers>?),
-          $__typename: $__typename == _undefined || $__typename == null ? _instance.$__typename : ($__typename as String),
-          thumbnail: thumbnail == _undefined ? _instance.thumbnail : (thumbnail as String?),
-          work: work == _undefined || work == null ? _instance.work : (work as Query$BookmarkedPosts$posts$edges$node$work)));
+        type: type == _undefined || type == null
+            ? _instance.type
+            : (type as Enum$PostPostType),
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        title: title == _undefined || title == null
+            ? _instance.title
+            : (title as String),
+        createTime: createTime == _undefined || createTime == null
+            ? _instance.createTime
+            : (createTime as String),
+        content: content == _undefined || content == null
+            ? _instance.content
+            : (content as String),
+        spoiled: spoiled == _undefined || spoiled == null
+            ? _instance.spoiled
+            : (spoiled as bool),
+        hashtags: hashtags == _undefined
+            ? _instance.hashtags
+            : (hashtags
+                as List<Query$BookmarkedPosts$posts$edges$node$hashtags>?),
+        owner: owner == _undefined || owner == null
+            ? _instance.owner
+            : (owner as Query$BookmarkedPosts$posts$edges$node$owner),
+        category: category == _undefined || category == null
+            ? _instance.category
+            : (category as Query$BookmarkedPosts$posts$edges$node$category),
+        likedUsers: likedUsers == _undefined
+            ? _instance.likedUsers
+            : (likedUsers
+                as List<Query$BookmarkedPosts$posts$edges$node$likedUsers>?),
+        bookmarkedUsers: bookmarkedUsers == _undefined
+            ? _instance.bookmarkedUsers
+            : (bookmarkedUsers as List<
+                Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers>?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+        thumbnail: thumbnail == _undefined
+            ? _instance.thumbnail
+            : (thumbnail as String?),
+        work: work == _undefined || work == null
+            ? _instance.work
+            : (work as Query$BookmarkedPosts$posts$edges$node$work),
+      ));
   TRes hashtags(
           Iterable<Query$BookmarkedPosts$posts$edges$node$hashtags>? Function(
                   Iterable<
@@ -5054,9 +5791,11 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
                           Query$BookmarkedPosts$posts$edges$node$hashtags>>?)
               _fn) =>
       call(
-          hashtags: _fn(_instance.hashtags?.map((e) =>
-              CopyWith$Query$BookmarkedPosts$posts$edges$node$hashtags(
-                  e, (i) => i)))?.toList());
+          hashtags: _fn(_instance.hashtags?.map(
+              (e) => CopyWith$Query$BookmarkedPosts$posts$edges$node$hashtags(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   CopyWith$Query$BookmarkedPosts$posts$edges$node$owner<TRes> get owner {
     final local$owner = _instance.owner;
     return CopyWith$Query$BookmarkedPosts$posts$edges$node$owner(
@@ -5076,9 +5815,11 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
                           Query$BookmarkedPosts$posts$edges$node$likedUsers>>?)
               _fn) =>
       call(
-          likedUsers: _fn(_instance.likedUsers?.map((e) =>
-              CopyWith$Query$BookmarkedPosts$posts$edges$node$likedUsers(
-                  e, (i) => i)))?.toList());
+          likedUsers: _fn(_instance.likedUsers?.map(
+              (e) => CopyWith$Query$BookmarkedPosts$posts$edges$node$likedUsers(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes bookmarkedUsers(
           Iterable<Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers>? Function(
                   Iterable<
@@ -5088,7 +5829,9 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
       call(
           bookmarkedUsers: _fn(_instance.bookmarkedUsers?.map((e) =>
               CopyWith$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers(
-                  e, (i) => i)))?.toList());
+                e,
+                (i) => i,
+              )))?.toList());
   CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> get work {
     final local$work = _instance.work;
     return CopyWith$Query$BookmarkedPosts$posts$edges$node$work(
@@ -5102,22 +5845,23 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
 
   TRes _res;
 
-  call(
-          {Enum$PostPostType? type,
-          String? id,
-          String? title,
-          String? createTime,
-          String? content,
-          bool? spoiled,
-          List<Query$BookmarkedPosts$posts$edges$node$hashtags>? hashtags,
-          Query$BookmarkedPosts$posts$edges$node$owner? owner,
-          Query$BookmarkedPosts$posts$edges$node$category? category,
-          List<Query$BookmarkedPosts$posts$edges$node$likedUsers>? likedUsers,
-          List<Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers>?
-              bookmarkedUsers,
-          String? $__typename,
-          String? thumbnail,
-          Query$BookmarkedPosts$posts$edges$node$work? work}) =>
+  call({
+    Enum$PostPostType? type,
+    String? id,
+    String? title,
+    String? createTime,
+    String? content,
+    bool? spoiled,
+    List<Query$BookmarkedPosts$posts$edges$node$hashtags>? hashtags,
+    Query$BookmarkedPosts$posts$edges$node$owner? owner,
+    Query$BookmarkedPosts$posts$edges$node$category? category,
+    List<Query$BookmarkedPosts$posts$edges$node$likedUsers>? likedUsers,
+    List<Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers>?
+        bookmarkedUsers,
+    String? $__typename,
+    String? thumbnail,
+    Query$BookmarkedPosts$posts$edges$node$work? work,
+  }) =>
       _res;
   hashtags(_fn) => _res;
   CopyWith$Query$BookmarkedPosts$posts$edges$node$owner<TRes> get owner =>
@@ -5134,8 +5878,11 @@ class Query$BookmarkedPosts$posts$edges$node$hashtags
     implements
         Fragment$PraiseSummary$hashtags,
         Fragment$LetterSummary$hashtags {
-  Query$BookmarkedPosts$posts$edges$node$hashtags(
-      {required this.id, required this.title, required this.$__typename});
+  Query$BookmarkedPosts$posts$edges$node$hashtags({
+    required this.id,
+    required this.title,
+    required this.$__typename,
+  });
 
   factory Query$BookmarkedPosts$posts$edges$node$hashtags.fromJson(
       Map<String, dynamic> json) {
@@ -5143,9 +5890,10 @@ class Query$BookmarkedPosts$posts$edges$node$hashtags
     final l$title = json['title'];
     final l$$__typename = json['__typename'];
     return Query$BookmarkedPosts$posts$edges$node$hashtags(
-        id: (l$id as String),
-        title: (l$title as String),
-        $__typename: (l$$__typename as String));
+      id: (l$id as String),
+      title: (l$title as String),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String id;
@@ -5170,7 +5918,11 @@ class Query$BookmarkedPosts$posts$edges$node$hashtags
     final l$id = id;
     final l$title = title;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$title, l$$__typename]);
+    return Object.hashAll([
+      l$id,
+      l$title,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -5206,26 +5958,34 @@ extension UtilityExtension$Query$BookmarkedPosts$posts$edges$node$hashtags
   CopyWith$Query$BookmarkedPosts$posts$edges$node$hashtags<
           Query$BookmarkedPosts$posts$edges$node$hashtags>
       get copyWith => CopyWith$Query$BookmarkedPosts$posts$edges$node$hashtags(
-          this, (i) => i);
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node$hashtags<TRes> {
   factory CopyWith$Query$BookmarkedPosts$posts$edges$node$hashtags(
-          Query$BookmarkedPosts$posts$edges$node$hashtags instance,
-          TRes Function(Query$BookmarkedPosts$posts$edges$node$hashtags) then) =
-      _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$hashtags;
+    Query$BookmarkedPosts$posts$edges$node$hashtags instance,
+    TRes Function(Query$BookmarkedPosts$posts$edges$node$hashtags) then,
+  ) = _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$hashtags;
 
   factory CopyWith$Query$BookmarkedPosts$posts$edges$node$hashtags.stub(
           TRes res) =
       _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$hashtags;
 
-  TRes call({String? id, String? title, String? $__typename});
+  TRes call({
+    String? id,
+    String? title,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$hashtags<TRes>
     implements CopyWith$Query$BookmarkedPosts$posts$edges$node$hashtags<TRes> {
   _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$hashtags(
-      this._instance, this._then);
+    this._instance,
+    this._then,
+  );
 
   final Query$BookmarkedPosts$posts$edges$node$hashtags _instance;
 
@@ -5233,18 +5993,20 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$hashtags<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? id = _undefined,
-          Object? title = _undefined,
-          Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? id = _undefined,
+    Object? title = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$BookmarkedPosts$posts$edges$node$hashtags(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          title: title == _undefined || title == null
-              ? _instance.title
-              : (title as String),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        title: title == _undefined || title == null
+            ? _instance.title
+            : (title as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$hashtags<TRes>
@@ -5253,16 +6015,22 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$hashtags<TRes>
 
   TRes _res;
 
-  call({String? id, String? title, String? $__typename}) => _res;
+  call({
+    String? id,
+    String? title,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Query$BookmarkedPosts$posts$edges$node$owner
     implements Fragment$PraiseSummary$owner, Fragment$LetterSummary$owner {
-  Query$BookmarkedPosts$posts$edges$node$owner(
-      {required this.id,
-      required this.name,
-      this.avatarURL,
-      required this.$__typename});
+  Query$BookmarkedPosts$posts$edges$node$owner({
+    required this.id,
+    required this.name,
+    this.avatarURL,
+    required this.$__typename,
+  });
 
   factory Query$BookmarkedPosts$posts$edges$node$owner.fromJson(
       Map<String, dynamic> json) {
@@ -5271,10 +6039,11 @@ class Query$BookmarkedPosts$posts$edges$node$owner
     final l$avatarURL = json['avatarURL'];
     final l$$__typename = json['__typename'];
     return Query$BookmarkedPosts$posts$edges$node$owner(
-        id: (l$id as String),
-        name: (l$name as String),
-        avatarURL: (l$avatarURL as String?),
-        $__typename: (l$$__typename as String));
+      id: (l$id as String),
+      name: (l$name as String),
+      avatarURL: (l$avatarURL as String?),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String id;
@@ -5304,7 +6073,12 @@ class Query$BookmarkedPosts$posts$edges$node$owner
     final l$name = name;
     final l$avatarURL = avatarURL;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$name, l$avatarURL, l$$__typename]);
+    return Object.hashAll([
+      l$id,
+      l$name,
+      l$avatarURL,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -5344,26 +6118,35 @@ extension UtilityExtension$Query$BookmarkedPosts$posts$edges$node$owner
     on Query$BookmarkedPosts$posts$edges$node$owner {
   CopyWith$Query$BookmarkedPosts$posts$edges$node$owner<
           Query$BookmarkedPosts$posts$edges$node$owner>
-      get copyWith =>
-          CopyWith$Query$BookmarkedPosts$posts$edges$node$owner(this, (i) => i);
+      get copyWith => CopyWith$Query$BookmarkedPosts$posts$edges$node$owner(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node$owner<TRes> {
   factory CopyWith$Query$BookmarkedPosts$posts$edges$node$owner(
-          Query$BookmarkedPosts$posts$edges$node$owner instance,
-          TRes Function(Query$BookmarkedPosts$posts$edges$node$owner) then) =
-      _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$owner;
+    Query$BookmarkedPosts$posts$edges$node$owner instance,
+    TRes Function(Query$BookmarkedPosts$posts$edges$node$owner) then,
+  ) = _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$owner;
 
   factory CopyWith$Query$BookmarkedPosts$posts$edges$node$owner.stub(TRes res) =
       _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$owner;
 
-  TRes call({String? id, String? name, String? avatarURL, String? $__typename});
+  TRes call({
+    String? id,
+    String? name,
+    String? avatarURL,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$owner<TRes>
     implements CopyWith$Query$BookmarkedPosts$posts$edges$node$owner<TRes> {
   _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$owner(
-      this._instance, this._then);
+    this._instance,
+    this._then,
+  );
 
   final Query$BookmarkedPosts$posts$edges$node$owner _instance;
 
@@ -5371,22 +6154,24 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$owner<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? id = _undefined,
-          Object? name = _undefined,
-          Object? avatarURL = _undefined,
-          Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? avatarURL = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$BookmarkedPosts$posts$edges$node$owner(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          name: name == _undefined || name == null
-              ? _instance.name
-              : (name as String),
-          avatarURL: avatarURL == _undefined
-              ? _instance.avatarURL
-              : (avatarURL as String?),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        name: name == _undefined || name == null
+            ? _instance.name
+            : (name as String),
+        avatarURL: avatarURL == _undefined
+            ? _instance.avatarURL
+            : (avatarURL as String?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$owner<TRes>
@@ -5395,7 +6180,12 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$owner<TRes>
 
   TRes _res;
 
-  call({String? id, String? name, String? avatarURL, String? $__typename}) =>
+  call({
+    String? id,
+    String? name,
+    String? avatarURL,
+    String? $__typename,
+  }) =>
       _res;
 }
 
@@ -5403,8 +6193,11 @@ class Query$BookmarkedPosts$posts$edges$node$category
     implements
         Fragment$PraiseSummary$category,
         Fragment$LetterSummary$category {
-  Query$BookmarkedPosts$posts$edges$node$category(
-      {required this.id, required this.name, required this.$__typename});
+  Query$BookmarkedPosts$posts$edges$node$category({
+    required this.id,
+    required this.name,
+    required this.$__typename,
+  });
 
   factory Query$BookmarkedPosts$posts$edges$node$category.fromJson(
       Map<String, dynamic> json) {
@@ -5412,9 +6205,10 @@ class Query$BookmarkedPosts$posts$edges$node$category
     final l$name = json['name'];
     final l$$__typename = json['__typename'];
     return Query$BookmarkedPosts$posts$edges$node$category(
-        id: (l$id as String),
-        name: (l$name as String),
-        $__typename: (l$$__typename as String));
+      id: (l$id as String),
+      name: (l$name as String),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String id;
@@ -5439,7 +6233,11 @@ class Query$BookmarkedPosts$posts$edges$node$category
     final l$id = id;
     final l$name = name;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$name, l$$__typename]);
+    return Object.hashAll([
+      l$id,
+      l$name,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -5475,26 +6273,34 @@ extension UtilityExtension$Query$BookmarkedPosts$posts$edges$node$category
   CopyWith$Query$BookmarkedPosts$posts$edges$node$category<
           Query$BookmarkedPosts$posts$edges$node$category>
       get copyWith => CopyWith$Query$BookmarkedPosts$posts$edges$node$category(
-          this, (i) => i);
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node$category<TRes> {
   factory CopyWith$Query$BookmarkedPosts$posts$edges$node$category(
-          Query$BookmarkedPosts$posts$edges$node$category instance,
-          TRes Function(Query$BookmarkedPosts$posts$edges$node$category) then) =
-      _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$category;
+    Query$BookmarkedPosts$posts$edges$node$category instance,
+    TRes Function(Query$BookmarkedPosts$posts$edges$node$category) then,
+  ) = _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$category;
 
   factory CopyWith$Query$BookmarkedPosts$posts$edges$node$category.stub(
           TRes res) =
       _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$category;
 
-  TRes call({String? id, String? name, String? $__typename});
+  TRes call({
+    String? id,
+    String? name,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$category<TRes>
     implements CopyWith$Query$BookmarkedPosts$posts$edges$node$category<TRes> {
   _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$category(
-      this._instance, this._then);
+    this._instance,
+    this._then,
+  );
 
   final Query$BookmarkedPosts$posts$edges$node$category _instance;
 
@@ -5502,18 +6308,20 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$category<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? id = _undefined,
-          Object? name = _undefined,
-          Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$BookmarkedPosts$posts$edges$node$category(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          name: name == _undefined || name == null
-              ? _instance.name
-              : (name as String),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        name: name == _undefined || name == null
+            ? _instance.name
+            : (name as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$category<TRes>
@@ -5522,22 +6330,31 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$category<TRes>
 
   TRes _res;
 
-  call({String? id, String? name, String? $__typename}) => _res;
+  call({
+    String? id,
+    String? name,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Query$BookmarkedPosts$posts$edges$node$likedUsers
     implements
         Fragment$PraiseSummary$likedUsers,
         Fragment$LetterSummary$likedUsers {
-  Query$BookmarkedPosts$posts$edges$node$likedUsers(
-      {required this.id, required this.$__typename});
+  Query$BookmarkedPosts$posts$edges$node$likedUsers({
+    required this.id,
+    required this.$__typename,
+  });
 
   factory Query$BookmarkedPosts$posts$edges$node$likedUsers.fromJson(
       Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$$__typename = json['__typename'];
     return Query$BookmarkedPosts$posts$edges$node$likedUsers(
-        id: (l$id as String), $__typename: (l$$__typename as String));
+      id: (l$id as String),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String id;
@@ -5557,7 +6374,10 @@ class Query$BookmarkedPosts$posts$edges$node$likedUsers
   int get hashCode {
     final l$id = id;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$$__typename]);
+    return Object.hashAll([
+      l$id,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -5589,29 +6409,35 @@ extension UtilityExtension$Query$BookmarkedPosts$posts$edges$node$likedUsers
           Query$BookmarkedPosts$posts$edges$node$likedUsers>
       get copyWith =>
           CopyWith$Query$BookmarkedPosts$posts$edges$node$likedUsers(
-              this, (i) => i);
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node$likedUsers<
     TRes> {
   factory CopyWith$Query$BookmarkedPosts$posts$edges$node$likedUsers(
-          Query$BookmarkedPosts$posts$edges$node$likedUsers instance,
-          TRes Function(Query$BookmarkedPosts$posts$edges$node$likedUsers)
-              then) =
-      _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$likedUsers;
+    Query$BookmarkedPosts$posts$edges$node$likedUsers instance,
+    TRes Function(Query$BookmarkedPosts$posts$edges$node$likedUsers) then,
+  ) = _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$likedUsers;
 
   factory CopyWith$Query$BookmarkedPosts$posts$edges$node$likedUsers.stub(
           TRes res) =
       _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$likedUsers;
 
-  TRes call({String? id, String? $__typename});
+  TRes call({
+    String? id,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$likedUsers<TRes>
     implements
         CopyWith$Query$BookmarkedPosts$posts$edges$node$likedUsers<TRes> {
   _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$likedUsers(
-      this._instance, this._then);
+    this._instance,
+    this._then,
+  );
 
   final Query$BookmarkedPosts$posts$edges$node$likedUsers _instance;
 
@@ -5619,12 +6445,16 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$likedUsers<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? id = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$BookmarkedPosts$posts$edges$node$likedUsers(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$likedUsers<TRes>
@@ -5635,22 +6465,30 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$likedUsers<TRes>
 
   TRes _res;
 
-  call({String? id, String? $__typename}) => _res;
+  call({
+    String? id,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers
     implements
         Fragment$PraiseSummary$bookmarkedUsers,
         Fragment$LetterSummary$bookmarkedUsers {
-  Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers(
-      {required this.id, required this.$__typename});
+  Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers({
+    required this.id,
+    required this.$__typename,
+  });
 
   factory Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers.fromJson(
       Map<String, dynamic> json) {
     final l$id = json['id'];
     final l$$__typename = json['__typename'];
     return Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers(
-        id: (l$id as String), $__typename: (l$$__typename as String));
+      id: (l$id as String),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String id;
@@ -5670,7 +6508,10 @@ class Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers
   int get hashCode {
     final l$id = id;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$$__typename]);
+    return Object.hashAll([
+      l$id,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -5702,29 +6543,35 @@ extension UtilityExtension$Query$BookmarkedPosts$posts$edges$node$bookmarkedUser
           Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers>
       get copyWith =>
           CopyWith$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers(
-              this, (i) => i);
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers<
     TRes> {
   factory CopyWith$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers(
-          Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers instance,
-          TRes Function(Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers)
-              then) =
-      _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers;
+    Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers instance,
+    TRes Function(Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers) then,
+  ) = _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers;
 
   factory CopyWith$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers.stub(
           TRes res) =
       _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers;
 
-  TRes call({String? id, String? $__typename});
+  TRes call({
+    String? id,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers<TRes>
     implements
         CopyWith$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers<TRes> {
   _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers(
-      this._instance, this._then);
+    this._instance,
+    this._then,
+  );
 
   final Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers _instance;
 
@@ -5733,12 +6580,16 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? id = _undefined, Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? id = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers<
@@ -5750,13 +6601,20 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers<
 
   TRes _res;
 
-  call({String? id, String? $__typename}) => _res;
+  call({
+    String? id,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Query$BookmarkedPosts$posts$edges$node$work
     implements Fragment$LetterSummary$work {
-  Query$BookmarkedPosts$posts$edges$node$work(
-      {required this.id, this.thumbnail, required this.$__typename});
+  Query$BookmarkedPosts$posts$edges$node$work({
+    required this.id,
+    this.thumbnail,
+    required this.$__typename,
+  });
 
   factory Query$BookmarkedPosts$posts$edges$node$work.fromJson(
       Map<String, dynamic> json) {
@@ -5764,9 +6622,10 @@ class Query$BookmarkedPosts$posts$edges$node$work
     final l$thumbnail = json['thumbnail'];
     final l$$__typename = json['__typename'];
     return Query$BookmarkedPosts$posts$edges$node$work(
-        id: (l$id as String),
-        thumbnail: (l$thumbnail as String?),
-        $__typename: (l$$__typename as String));
+      id: (l$id as String),
+      thumbnail: (l$thumbnail as String?),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String id;
@@ -5791,7 +6650,11 @@ class Query$BookmarkedPosts$posts$edges$node$work
     final l$id = id;
     final l$thumbnail = thumbnail;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$id, l$thumbnail, l$$__typename]);
+    return Object.hashAll([
+      l$id,
+      l$thumbnail,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -5826,26 +6689,34 @@ extension UtilityExtension$Query$BookmarkedPosts$posts$edges$node$work
     on Query$BookmarkedPosts$posts$edges$node$work {
   CopyWith$Query$BookmarkedPosts$posts$edges$node$work<
           Query$BookmarkedPosts$posts$edges$node$work>
-      get copyWith =>
-          CopyWith$Query$BookmarkedPosts$posts$edges$node$work(this, (i) => i);
+      get copyWith => CopyWith$Query$BookmarkedPosts$posts$edges$node$work(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> {
   factory CopyWith$Query$BookmarkedPosts$posts$edges$node$work(
-          Query$BookmarkedPosts$posts$edges$node$work instance,
-          TRes Function(Query$BookmarkedPosts$posts$edges$node$work) then) =
-      _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$work;
+    Query$BookmarkedPosts$posts$edges$node$work instance,
+    TRes Function(Query$BookmarkedPosts$posts$edges$node$work) then,
+  ) = _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$work;
 
   factory CopyWith$Query$BookmarkedPosts$posts$edges$node$work.stub(TRes res) =
       _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$work;
 
-  TRes call({String? id, String? thumbnail, String? $__typename});
+  TRes call({
+    String? id,
+    String? thumbnail,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$work<TRes>
     implements CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> {
   _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$work(
-      this._instance, this._then);
+    this._instance,
+    this._then,
+  );
 
   final Query$BookmarkedPosts$posts$edges$node$work _instance;
 
@@ -5853,18 +6724,20 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$work<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? id = _undefined,
-          Object? thumbnail = _undefined,
-          Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? id = _undefined,
+    Object? thumbnail = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$BookmarkedPosts$posts$edges$node$work(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          thumbnail: thumbnail == _undefined
-              ? _instance.thumbnail
-              : (thumbnail as String?),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        thumbnail: thumbnail == _undefined
+            ? _instance.thumbnail
+            : (thumbnail as String?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$work<TRes>
@@ -5873,12 +6746,20 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$work<TRes>
 
   TRes _res;
 
-  call({String? id, String? thumbnail, String? $__typename}) => _res;
+  call({
+    String? id,
+    String? thumbnail,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Query$BookmarkedPosts$posts$pageInfo {
-  Query$BookmarkedPosts$posts$pageInfo(
-      {this.endCursor, required this.hasNextPage, required this.$__typename});
+  Query$BookmarkedPosts$posts$pageInfo({
+    this.endCursor,
+    required this.hasNextPage,
+    required this.$__typename,
+  });
 
   factory Query$BookmarkedPosts$posts$pageInfo.fromJson(
       Map<String, dynamic> json) {
@@ -5886,9 +6767,10 @@ class Query$BookmarkedPosts$posts$pageInfo {
     final l$hasNextPage = json['hasNextPage'];
     final l$$__typename = json['__typename'];
     return Query$BookmarkedPosts$posts$pageInfo(
-        endCursor: (l$endCursor as String?),
-        hasNextPage: (l$hasNextPage as bool),
-        $__typename: (l$$__typename as String));
+      endCursor: (l$endCursor as String?),
+      hasNextPage: (l$hasNextPage as bool),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String? endCursor;
@@ -5913,7 +6795,11 @@ class Query$BookmarkedPosts$posts$pageInfo {
     final l$endCursor = endCursor;
     final l$hasNextPage = hasNextPage;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$endCursor, l$hasNextPage, l$$__typename]);
+    return Object.hashAll([
+      l$endCursor,
+      l$hasNextPage,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -5948,26 +6834,34 @@ extension UtilityExtension$Query$BookmarkedPosts$posts$pageInfo
     on Query$BookmarkedPosts$posts$pageInfo {
   CopyWith$Query$BookmarkedPosts$posts$pageInfo<
           Query$BookmarkedPosts$posts$pageInfo>
-      get copyWith =>
-          CopyWith$Query$BookmarkedPosts$posts$pageInfo(this, (i) => i);
+      get copyWith => CopyWith$Query$BookmarkedPosts$posts$pageInfo(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$BookmarkedPosts$posts$pageInfo<TRes> {
   factory CopyWith$Query$BookmarkedPosts$posts$pageInfo(
-          Query$BookmarkedPosts$posts$pageInfo instance,
-          TRes Function(Query$BookmarkedPosts$posts$pageInfo) then) =
-      _CopyWithImpl$Query$BookmarkedPosts$posts$pageInfo;
+    Query$BookmarkedPosts$posts$pageInfo instance,
+    TRes Function(Query$BookmarkedPosts$posts$pageInfo) then,
+  ) = _CopyWithImpl$Query$BookmarkedPosts$posts$pageInfo;
 
   factory CopyWith$Query$BookmarkedPosts$posts$pageInfo.stub(TRes res) =
       _CopyWithStubImpl$Query$BookmarkedPosts$posts$pageInfo;
 
-  TRes call({String? endCursor, bool? hasNextPage, String? $__typename});
+  TRes call({
+    String? endCursor,
+    bool? hasNextPage,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Query$BookmarkedPosts$posts$pageInfo<TRes>
     implements CopyWith$Query$BookmarkedPosts$posts$pageInfo<TRes> {
   _CopyWithImpl$Query$BookmarkedPosts$posts$pageInfo(
-      this._instance, this._then);
+    this._instance,
+    this._then,
+  );
 
   final Query$BookmarkedPosts$posts$pageInfo _instance;
 
@@ -5975,20 +6869,22 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$pageInfo<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? endCursor = _undefined,
-          Object? hasNextPage = _undefined,
-          Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? endCursor = _undefined,
+    Object? hasNextPage = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Query$BookmarkedPosts$posts$pageInfo(
-          endCursor: endCursor == _undefined
-              ? _instance.endCursor
-              : (endCursor as String?),
-          hasNextPage: hasNextPage == _undefined || hasNextPage == null
-              ? _instance.hasNextPage
-              : (hasNextPage as bool),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        endCursor: endCursor == _undefined
+            ? _instance.endCursor
+            : (endCursor as String?),
+        hasNextPage: hasNextPage == _undefined || hasNextPage == null
+            ? _instance.hasNextPage
+            : (hasNextPage as bool),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Query$BookmarkedPosts$posts$pageInfo<TRes>
@@ -5997,5 +6893,10 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$pageInfo<TRes>
 
   TRes _res;
 
-  call({String? endCursor, bool? hasNextPage, String? $__typename}) => _res;
+  call({
+    String? endCursor,
+    bool? hasNextPage,
+    String? $__typename,
+  }) =>
+      _res;
 }
