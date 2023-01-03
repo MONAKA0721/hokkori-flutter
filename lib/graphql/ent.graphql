@@ -886,6 +886,13 @@ type Query {
     last: Int
     where: WorkWhereInput
   ): WorkConnection!
+  topicHashtags(
+    after: Cursor
+    first: Int
+    before: Cursor
+    last: Int
+    where: HashtagWhereInput
+  ): HashtagConnection!
   workCategories(workID: ID!): [WorkCategory]!
 }
 """

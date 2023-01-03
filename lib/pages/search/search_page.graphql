@@ -56,7 +56,7 @@ query SearchCandidates($searchText: String) {
       }
     }
   }
-  hashtags(first: 9, where: { titleContainsFold: $searchText }) {
+  topicHashtags(first: 9, where: { titleContainsFold: $searchText }) {
     edges {
       node {
         id

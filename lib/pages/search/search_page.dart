@@ -124,7 +124,7 @@ class Candidates extends HookConsumerWidget {
     }
     final categories = masterCategories.where((masterCategory) =>
         masterCategory.name.contains(ref.watch(searchTextProvider)));
-    final hashtags = result.parsedData?.hashtags.edges ?? [];
+    final hashtags = result.parsedData?.topicHashtags.edges ?? [];
     final works = result.parsedData?.topicWorks.edges ?? [];
 
     const width = 35.0;
