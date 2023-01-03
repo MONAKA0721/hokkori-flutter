@@ -563,9 +563,8 @@ class Step2 extends ConsumerWidget {
                 ],
               )
             ]),
-            TextField(
-              controller:
-                  TextEditingController(text: ref.watch(praiseTitleProvider)),
+            TextFormField(
+              initialValue: ref.watch(praiseTitleProvider),
               cursorColor: blueButtonColor,
               decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
@@ -586,9 +585,8 @@ class Step2 extends ConsumerWidget {
                 ref.watch(praiseTitleProvider.notifier).state = value;
               },
             ),
-            TextField(
-              controller:
-                  TextEditingController(text: ref.watch(praiseContentProvider)),
+            TextFormField(
+              initialValue: ref.watch(praiseContentProvider),
               keyboardType: TextInputType.multiline,
               maxLines: null,
               cursorColor: blueButtonColor,
@@ -685,7 +683,7 @@ class Step3 extends ConsumerWidget {
                   ref.watch(thumbnailProvider.notifier).state =
                       File(_image.path);
                 }),
-            TextField(
+            TextFormField(
               cursorColor: blueButtonColor,
               decoration: InputDecoration(
                   enabledBorder: UnderlineInputBorder(
@@ -702,13 +700,12 @@ class Step3 extends ConsumerWidget {
                       color: ref.watch(letterTitleErrorProvider)
                           ? redErrorColor
                           : null)),
-              controller:
-                  TextEditingController(text: ref.watch(letterTitleProvider)),
+              initialValue: ref.watch(letterTitleProvider),
               onChanged: (value) {
                 ref.watch(letterTitleProvider.notifier).state = value;
               },
             ),
-            TextField(
+            TextFormField(
               keyboardType: TextInputType.multiline,
               maxLines: null,
               cursorColor: blueButtonColor,
@@ -727,8 +724,7 @@ class Step3 extends ConsumerWidget {
                       color: ref.watch(letterContentErrorProvider)
                           ? redErrorColor
                           : null)),
-              controller:
-                  TextEditingController(text: ref.watch(letterContentProvider)),
+              initialValue: ref.watch(letterContentProvider),
               onChanged: (value) {
                 ref.watch(letterContentProvider.notifier).state = value;
               },

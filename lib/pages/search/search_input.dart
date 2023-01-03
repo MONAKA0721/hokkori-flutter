@@ -22,9 +22,8 @@ class SearchInput extends ConsumerWidget {
             ],
             color: Colors.white,
             borderRadius: const BorderRadius.all(Radius.circular(20))),
-        child: TextField(
-            controller:
-                TextEditingController(text: ref.watch(searchTextProvider)),
+        child: TextFormField(
+            initialValue: ref.watch(searchTextProvider),
             onChanged: (value) {
               ref.watch(searchTextProvider.notifier).state = value;
             },
