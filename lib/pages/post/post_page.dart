@@ -51,6 +51,8 @@ class PostPageNavigator extends HookWidget {
 
 final draftIDProvider = StateProvider<String?>((ref) => null);
 
+final workImageProvider = StateProvider<File?>((ref) => null);
+final workImageErrorProvider = StateProvider<bool>((ref) => false);
 final workErrorProvider = StateProvider<bool>((ref) => false);
 final categoryProvider = StateProvider<int?>((ref) => null);
 final categoryErrorProvider = StateProvider<bool>((ref) => false);
@@ -90,6 +92,7 @@ class _PostPageState extends ConsumerState<PostPage> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (ref.watch(workProvider) == null &&
+          ref.watch(workImageProvider) == null &&
           ref.watch(categoryProvider) == null &&
           ref.watch(hashtagsProvider).isEmpty &&
           ref.watch(praiseTitleProvider) == "" &&
@@ -210,6 +213,8 @@ class Step1 extends ConsumerStatefulWidget {
 }
 
 class _Step1State extends ConsumerState<Step1> {
+  final _picker = ImagePicker();
+
   Widget _workPopupItemBuilder(
     BuildContext context,
     WorkModel? item,
@@ -326,13 +331,39 @@ class _Step1State extends ConsumerState<Step1> {
             Row(
               children: [
                 work == null || work.thumbnail == ""
-                    ? Image.asset(
-                        "assets/noimage.png",
-                        width: 100,
-                      )
+                    ? GestureDetector(
+                        onTap: () async {
+                          final _image = await _picker.pickImage(
+                              source: ImageSource.gallery,
+                              requestFullMetadata: false);
+                          if (_image == null) return;
+                          ref.watch(workImageProvider.notifier).state =
+                              File(_image.path);
+                        },
+                        child: ref.watch(workImageProvider) != null
+                            ? Image.file(
+                                ref.watch(workImageProvider)!,
+                                width: 100,
+                                height: 100,
+                              )
+                            : ref.watch(workImageErrorProvider) == true
+                                ? Container(
+                                    decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.red)),
+                                    child: Image.asset(
+                                      "assets/noimage.png",
+                                      width: 100,
+                                      height: 100,
+                                    ))
+                                : Image.asset(
+                                    "assets/noimage.png",
+                                    width: 100,
+                                    height: 100,
+                                  ))
                     : Image.network(
                         work.thumbnail!,
                         width: 100,
+                        height: 100,
                       ),
                 const SizedBox(
                   width: 20,
