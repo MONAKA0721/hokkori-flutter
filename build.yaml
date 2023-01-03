@@ -10,3 +10,7 @@ targets:
             Upload:
               type: MultipartFile
               import: package:http/http.dart
+            Time:
+              type: String
+            Cursor:
+              type: String
