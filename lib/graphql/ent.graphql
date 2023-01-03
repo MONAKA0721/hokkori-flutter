@@ -879,7 +879,13 @@ type Query {
     last: Int
     where: PostWhereInput
   ): PostConnection!
-  topicWorks(first: Int!): [Work]!
+  topicWorks(
+    after: Cursor
+    first: Int
+    before: Cursor
+    last: Int
+    where: WorkWhereInput
+  ): WorkConnection!
   workCategories(workID: ID!): [WorkCategory]!
 }
 """

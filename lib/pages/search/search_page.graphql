@@ -26,11 +26,15 @@ query LikedLetters($after: Cursor, $first: Int, $or: [PostWhereInput!]) {
   }
 }
 
-query TopicWorks($first: Int!) {
+query TopicWorks($first: Int) {
   topicWorks(first: $first) {
-    id
-    title
-    thumbnail
+    edges {
+      node {
+        id
+        title
+        thumbnail
+      }
+    }
   }
 }
 
@@ -43,7 +47,7 @@ query SearchCandidates($searchText: String) {
       }
     }
   }
-  works(first: 9, where: { titleContainsFold: $searchText }) {
+  topicWorks(first: 9, where: { titleContainsFold: $searchText }) {
     edges {
       node {
         id
