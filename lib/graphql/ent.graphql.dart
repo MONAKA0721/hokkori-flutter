@@ -1,3 +1,112 @@
+class Input$CategoryOrder {
+  factory Input$CategoryOrder(
+          {required Enum$OrderDirection direction,
+          required Enum$CategoryOrderField field}) =>
+      Input$CategoryOrder._({
+        r'direction': direction,
+        r'field': field,
+      });
+
+  Input$CategoryOrder._(this._$data);
+
+  factory Input$CategoryOrder.fromJson(Map<String, dynamic> data) {
+    final result$data = <String, dynamic>{};
+    final l$direction = data['direction'];
+    result$data['direction'] =
+        fromJson$Enum$OrderDirection((l$direction as String));
+    final l$field = data['field'];
+    result$data['field'] =
+        fromJson$Enum$CategoryOrderField((l$field as String));
+    return Input$CategoryOrder._(result$data);
+  }
+
+  Map<String, dynamic> _$data;
+
+  Enum$OrderDirection get direction =>
+      (_$data['direction'] as Enum$OrderDirection);
+  Enum$CategoryOrderField get field =>
+      (_$data['field'] as Enum$CategoryOrderField);
+  Map<String, dynamic> toJson() {
+    final result$data = <String, dynamic>{};
+    final l$direction = direction;
+    result$data['direction'] = toJson$Enum$OrderDirection(l$direction);
+    final l$field = field;
+    result$data['field'] = toJson$Enum$CategoryOrderField(l$field);
+    return result$data;
+  }
+
+  CopyWith$Input$CategoryOrder<Input$CategoryOrder> get copyWith =>
+      CopyWith$Input$CategoryOrder(this, (i) => i);
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Input$CategoryOrder) || runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$direction = direction;
+    final lOther$direction = other.direction;
+    if (l$direction != lOther$direction) {
+      return false;
+    }
+    final l$field = field;
+    final lOther$field = other.field;
+    if (l$field != lOther$field) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    final l$direction = direction;
+    final l$field = field;
+    return Object.hashAll([l$direction, l$field]);
+  }
+}
+
+abstract class CopyWith$Input$CategoryOrder<TRes> {
+  factory CopyWith$Input$CategoryOrder(Input$CategoryOrder instance,
+          TRes Function(Input$CategoryOrder) then) =
+      _CopyWithImpl$Input$CategoryOrder;
+
+  factory CopyWith$Input$CategoryOrder.stub(TRes res) =
+      _CopyWithStubImpl$Input$CategoryOrder;
+
+  TRes call({Enum$OrderDirection? direction, Enum$CategoryOrderField? field});
+}
+
+class _CopyWithImpl$Input$CategoryOrder<TRes>
+    implements CopyWith$Input$CategoryOrder<TRes> {
+  _CopyWithImpl$Input$CategoryOrder(this._instance, this._then);
+
+  final Input$CategoryOrder _instance;
+
+  final TRes Function(Input$CategoryOrder) _then;
+
+  static const _undefined = {};
+
+  TRes call({Object? direction = _undefined, Object? field = _undefined}) =>
+      _then(Input$CategoryOrder._({
+        ..._instance._$data,
+        if (direction != _undefined && direction != null)
+          'direction': (direction as Enum$OrderDirection),
+        if (field != _undefined && field != null)
+          'field': (field as Enum$CategoryOrderField),
+      }));
+}
+
+class _CopyWithStubImpl$Input$CategoryOrder<TRes>
+    implements CopyWith$Input$CategoryOrder<TRes> {
+  _CopyWithStubImpl$Input$CategoryOrder(this._res);
+
+  TRes _res;
+
+  call({Enum$OrderDirection? direction, Enum$CategoryOrderField? field}) =>
+      _res;
+}
+
 class Input$CategoryWhereInput {
   factory Input$CategoryWhereInput(
           {Input$CategoryWhereInput? not,
@@ -17383,6 +17492,26 @@ class _CopyWithStubImpl$Input$WorkWhereInput<TRes>
   or(_fn) => _res;
   hasPostsWith(_fn) => _res;
   hasDraftsWith(_fn) => _res;
+}
+
+enum Enum$CategoryOrderField { NAME, $unknown }
+
+String toJson$Enum$CategoryOrderField(Enum$CategoryOrderField e) {
+  switch (e) {
+    case Enum$CategoryOrderField.NAME:
+      return r'NAME';
+    case Enum$CategoryOrderField.$unknown:
+      return r'$unknown';
+  }
+}
+
+Enum$CategoryOrderField fromJson$Enum$CategoryOrderField(String value) {
+  switch (value) {
+    case r'NAME':
+      return Enum$CategoryOrderField.NAME;
+    default:
+      return Enum$CategoryOrderField.$unknown;
+  }
 }
 
 enum Enum$DraftOrderField { CREATE_TIME, UPDATE_TIME, $unknown }

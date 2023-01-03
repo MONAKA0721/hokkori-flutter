@@ -2954,6 +2954,16 @@ const documentNodeQuerySearchCandidates = DocumentNode(definitions: [
                         name: NameNode(value: 'nameContainsFold'),
                         value:
                             VariableNode(name: NameNode(value: 'searchText')))
+                  ])),
+              ArgumentNode(
+                  name: NameNode(value: 'orderBy'),
+                  value: ObjectValueNode(fields: [
+                    ObjectFieldNode(
+                        name: NameNode(value: 'direction'),
+                        value: EnumValueNode(name: NameNode(value: 'ASC'))),
+                    ObjectFieldNode(
+                        name: NameNode(value: 'field'),
+                        value: EnumValueNode(name: NameNode(value: 'NAME')))
                   ]))
             ],
             directives: [],

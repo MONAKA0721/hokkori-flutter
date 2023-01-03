@@ -39,7 +39,11 @@ query TopicWorks($first: Int) {
 }
 
 query SearchCandidates($searchText: String) {
-  categories(first: 9, where: { nameContainsFold: $searchText }) {
+  categories(
+    first: 9
+    where: { nameContainsFold: $searchText }
+    orderBy: { direction: ASC, field: NAME }
+  ) {
     edges {
       node {
         id
