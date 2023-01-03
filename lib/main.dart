@@ -17,7 +17,7 @@ import 'package:hokkori/utils/providers.dart';
 import 'package:hokkori/utils/user.dart';
 import 'package:http/http.dart' as http;
 
-final FlutterAppAuth appAuth = FlutterAppAuth();
+const FlutterAppAuth appAuth = FlutterAppAuth();
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
 const auth0Domain =

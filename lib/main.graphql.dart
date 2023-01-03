@@ -6,8 +6,10 @@ import 'package:graphql/client.dart' as graphql;
 import 'package:graphql_flutter/graphql_flutter.dart' as graphql_flutter;
 
 class Variables$Mutation$UpdateUser {
-  factory Variables$Mutation$UpdateUser(
-          {required String userID, required Input$UpdateUserInput input}) =>
+  factory Variables$Mutation$UpdateUser({
+    required String userID,
+    required Input$UpdateUserInput input,
+  }) =>
       Variables$Mutation$UpdateUser._({
         r'userID': userID,
         r'input': input,
@@ -39,7 +41,10 @@ class Variables$Mutation$UpdateUser {
   }
 
   CopyWith$Variables$Mutation$UpdateUser<Variables$Mutation$UpdateUser>
-      get copyWith => CopyWith$Variables$Mutation$UpdateUser(this, (i) => i);
+      get copyWith => CopyWith$Variables$Mutation$UpdateUser(
+            this,
+            (i) => i,
+          );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -66,25 +71,34 @@ class Variables$Mutation$UpdateUser {
   int get hashCode {
     final l$userID = userID;
     final l$input = input;
-    return Object.hashAll([l$userID, l$input]);
+    return Object.hashAll([
+      l$userID,
+      l$input,
+    ]);
   }
 }
 
 abstract class CopyWith$Variables$Mutation$UpdateUser<TRes> {
   factory CopyWith$Variables$Mutation$UpdateUser(
-          Variables$Mutation$UpdateUser instance,
-          TRes Function(Variables$Mutation$UpdateUser) then) =
-      _CopyWithImpl$Variables$Mutation$UpdateUser;
+    Variables$Mutation$UpdateUser instance,
+    TRes Function(Variables$Mutation$UpdateUser) then,
+  ) = _CopyWithImpl$Variables$Mutation$UpdateUser;
 
   factory CopyWith$Variables$Mutation$UpdateUser.stub(TRes res) =
       _CopyWithStubImpl$Variables$Mutation$UpdateUser;
 
-  TRes call({String? userID, Input$UpdateUserInput? input});
+  TRes call({
+    String? userID,
+    Input$UpdateUserInput? input,
+  });
 }
 
 class _CopyWithImpl$Variables$Mutation$UpdateUser<TRes>
     implements CopyWith$Variables$Mutation$UpdateUser<TRes> {
-  _CopyWithImpl$Variables$Mutation$UpdateUser(this._instance, this._then);
+  _CopyWithImpl$Variables$Mutation$UpdateUser(
+    this._instance,
+    this._then,
+  );
 
   final Variables$Mutation$UpdateUser _instance;
 
@@ -92,7 +106,10 @@ class _CopyWithImpl$Variables$Mutation$UpdateUser<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? userID = _undefined, Object? input = _undefined}) =>
+  TRes call({
+    Object? userID = _undefined,
+    Object? input = _undefined,
+  }) =>
       _then(Variables$Mutation$UpdateUser._({
         ..._instance._$data,
         if (userID != _undefined && userID != null)
@@ -108,19 +125,27 @@ class _CopyWithStubImpl$Variables$Mutation$UpdateUser<TRes>
 
   TRes _res;
 
-  call({String? userID, Input$UpdateUserInput? input}) => _res;
+  call({
+    String? userID,
+    Input$UpdateUserInput? input,
+  }) =>
+      _res;
 }
 
 class Mutation$UpdateUser {
-  Mutation$UpdateUser({required this.updateUser, required this.$__typename});
+  Mutation$UpdateUser({
+    required this.updateUser,
+    required this.$__typename,
+  });
 
   factory Mutation$UpdateUser.fromJson(Map<String, dynamic> json) {
     final l$updateUser = json['updateUser'];
     final l$$__typename = json['__typename'];
     return Mutation$UpdateUser(
-        updateUser: Mutation$UpdateUser$updateUser.fromJson(
-            (l$updateUser as Map<String, dynamic>)),
-        $__typename: (l$$__typename as String));
+      updateUser: Mutation$UpdateUser$updateUser.fromJson(
+          (l$updateUser as Map<String, dynamic>)),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final Mutation$UpdateUser$updateUser updateUser;
@@ -140,7 +165,10 @@ class Mutation$UpdateUser {
   int get hashCode {
     final l$updateUser = updateUser;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$updateUser, l$$__typename]);
+    return Object.hashAll([
+      l$updateUser,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -167,24 +195,34 @@ class Mutation$UpdateUser {
 
 extension UtilityExtension$Mutation$UpdateUser on Mutation$UpdateUser {
   CopyWith$Mutation$UpdateUser<Mutation$UpdateUser> get copyWith =>
-      CopyWith$Mutation$UpdateUser(this, (i) => i);
+      CopyWith$Mutation$UpdateUser(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Mutation$UpdateUser<TRes> {
-  factory CopyWith$Mutation$UpdateUser(Mutation$UpdateUser instance,
-          TRes Function(Mutation$UpdateUser) then) =
-      _CopyWithImpl$Mutation$UpdateUser;
+  factory CopyWith$Mutation$UpdateUser(
+    Mutation$UpdateUser instance,
+    TRes Function(Mutation$UpdateUser) then,
+  ) = _CopyWithImpl$Mutation$UpdateUser;
 
   factory CopyWith$Mutation$UpdateUser.stub(TRes res) =
       _CopyWithStubImpl$Mutation$UpdateUser;
 
-  TRes call({Mutation$UpdateUser$updateUser? updateUser, String? $__typename});
+  TRes call({
+    Mutation$UpdateUser$updateUser? updateUser,
+    String? $__typename,
+  });
   CopyWith$Mutation$UpdateUser$updateUser<TRes> get updateUser;
 }
 
 class _CopyWithImpl$Mutation$UpdateUser<TRes>
     implements CopyWith$Mutation$UpdateUser<TRes> {
-  _CopyWithImpl$Mutation$UpdateUser(this._instance, this._then);
+  _CopyWithImpl$Mutation$UpdateUser(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$UpdateUser _instance;
 
@@ -192,16 +230,18 @@ class _CopyWithImpl$Mutation$UpdateUser<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? updateUser = _undefined,
-          Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? updateUser = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Mutation$UpdateUser(
-          updateUser: updateUser == _undefined || updateUser == null
-              ? _instance.updateUser
-              : (updateUser as Mutation$UpdateUser$updateUser),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        updateUser: updateUser == _undefined || updateUser == null
+            ? _instance.updateUser
+            : (updateUser as Mutation$UpdateUser$updateUser),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
   CopyWith$Mutation$UpdateUser$updateUser<TRes> get updateUser {
     final local$updateUser = _instance.updateUser;
     return CopyWith$Mutation$UpdateUser$updateUser(
@@ -215,7 +255,10 @@ class _CopyWithStubImpl$Mutation$UpdateUser<TRes>
 
   TRes _res;
 
-  call({Mutation$UpdateUser$updateUser? updateUser, String? $__typename}) =>
+  call({
+    Mutation$UpdateUser$updateUser? updateUser,
+    String? $__typename,
+  }) =>
       _res;
   CopyWith$Mutation$UpdateUser$updateUser<TRes> get updateUser =>
       CopyWith$Mutation$UpdateUser$updateUser.stub(_res);
@@ -223,116 +266,139 @@ class _CopyWithStubImpl$Mutation$UpdateUser<TRes>
 
 const documentNodeMutationUpdateUser = DocumentNode(definitions: [
   OperationDefinitionNode(
-      type: OperationType.mutation,
-      name: NameNode(value: 'UpdateUser'),
-      variableDefinitions: [
-        VariableDefinitionNode(
-            variable: VariableNode(name: NameNode(value: 'userID')),
-            type: NamedTypeNode(name: NameNode(value: 'ID'), isNonNull: true),
-            defaultValue: DefaultValueNode(value: null),
-            directives: []),
-        VariableDefinitionNode(
-            variable: VariableNode(name: NameNode(value: 'input')),
-            type: NamedTypeNode(
-                name: NameNode(value: 'UpdateUserInput'), isNonNull: true),
-            defaultValue: DefaultValueNode(value: null),
-            directives: [])
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(selections: [
-        FieldNode(
-            name: NameNode(value: 'updateUser'),
+    type: OperationType.mutation,
+    name: NameNode(value: 'UpdateUser'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'userID')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'ID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'input')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'UpdateUserInput'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'updateUser'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'id'),
+            value: VariableNode(name: NameNode(value: 'userID')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'input'),
+            value: VariableNode(name: NameNode(value: 'input')),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'id'),
             alias: null,
-            arguments: [
-              ArgumentNode(
-                  name: NameNode(value: 'id'),
-                  value: VariableNode(name: NameNode(value: 'userID'))),
-              ArgumentNode(
-                  name: NameNode(value: 'input'),
-                  value: VariableNode(name: NameNode(value: 'input')))
-            ],
+            arguments: [],
             directives: [],
-            selectionSet: SelectionSetNode(selections: [
-              FieldNode(
-                  name: NameNode(value: 'id'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null),
-              FieldNode(
-                  name: NameNode(value: 'name'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null),
-              FieldNode(
-                  name: NameNode(value: 'username'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null),
-              FieldNode(
-                  name: NameNode(value: 'profile'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null),
-              FieldNode(
-                  name: NameNode(value: 'avatarURL'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null),
-              FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null)
-            ])),
-        FieldNode(
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'name'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'username'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'profile'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'avatarURL'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
             name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
             directives: [],
-            selectionSet: null)
-      ])),
+            selectionSet: null,
+          ),
+        ]),
+      ),
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
 ]);
 Mutation$UpdateUser _parserFn$Mutation$UpdateUser(Map<String, dynamic> data) =>
     Mutation$UpdateUser.fromJson(data);
 typedef OnMutationCompleted$Mutation$UpdateUser = FutureOr<void> Function(
-    dynamic, Mutation$UpdateUser?);
+  dynamic,
+  Mutation$UpdateUser?,
+);
 
 class Options$Mutation$UpdateUser
     extends graphql.MutationOptions<Mutation$UpdateUser> {
-  Options$Mutation$UpdateUser(
-      {String? operationName,
-      required Variables$Mutation$UpdateUser variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      OnMutationCompleted$Mutation$UpdateUser? onCompleted,
-      graphql.OnMutationUpdate<Mutation$UpdateUser>? update,
-      graphql.OnError? onError})
-      : onCompletedWithParsed = onCompleted,
+  Options$Mutation$UpdateUser({
+    String? operationName,
+    required Variables$Mutation$UpdateUser variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$UpdateUser? onCompleted,
+    graphql.OnMutationUpdate<Mutation$UpdateUser>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
         super(
-            variables: variables.toJson(),
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            onCompleted: onCompleted == null
-                ? null
-                : (data) => onCompleted(data,
-                    data == null ? null : _parserFn$Mutation$UpdateUser(data)),
-            update: update,
-            onError: onError,
-            document: documentNodeMutationUpdateUser,
-            parserFn: _parserFn$Mutation$UpdateUser);
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$UpdateUser(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationUpdateUser,
+          parserFn: _parserFn$Mutation$UpdateUser,
+        );
 
   final OnMutationCompleted$Mutation$UpdateUser? onCompletedWithParsed;
 
@@ -341,38 +407,39 @@ class Options$Mutation$UpdateUser
         ...super.onCompleted == null
             ? super.properties
             : super.properties.where((property) => property != onCompleted),
-        onCompletedWithParsed
+        onCompletedWithParsed,
       ];
 }
 
 class WatchOptions$Mutation$UpdateUser
     extends graphql.WatchQueryOptions<Mutation$UpdateUser> {
-  WatchOptions$Mutation$UpdateUser(
-      {String? operationName,
-      required Variables$Mutation$UpdateUser variables,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      Duration? pollInterval,
-      bool? eagerlyFetchResults,
-      bool carryForwardDataOnException = true,
-      bool fetchResults = false})
-      : super(
-            variables: variables.toJson(),
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            document: documentNodeMutationUpdateUser,
-            pollInterval: pollInterval,
-            eagerlyFetchResults: eagerlyFetchResults,
-            carryForwardDataOnException: carryForwardDataOnException,
-            fetchResults: fetchResults,
-            parserFn: _parserFn$Mutation$UpdateUser);
+  WatchOptions$Mutation$UpdateUser({
+    String? operationName,
+    required Variables$Mutation$UpdateUser variables,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    Duration? pollInterval,
+    bool? eagerlyFetchResults,
+    bool carryForwardDataOnException = true,
+    bool fetchResults = false,
+  }) : super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          document: documentNodeMutationUpdateUser,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$UpdateUser,
+        );
 }
 
 extension ClientExtension$Mutation$UpdateUser on graphql.GraphQLClient {
@@ -385,7 +452,10 @@ extension ClientExtension$Mutation$UpdateUser on graphql.GraphQLClient {
 }
 
 class Mutation$UpdateUser$HookResult {
-  Mutation$UpdateUser$HookResult(this.runMutation, this.result);
+  Mutation$UpdateUser$HookResult(
+    this.runMutation,
+    this.result,
+  );
 
   final RunMutation$Mutation$UpdateUser runMutation;
 
@@ -411,32 +481,35 @@ graphql.ObservableQuery<Mutation$UpdateUser> useWatchMutation$UpdateUser(
 
 class WidgetOptions$Mutation$UpdateUser
     extends graphql.MutationOptions<Mutation$UpdateUser> {
-  WidgetOptions$Mutation$UpdateUser(
-      {String? operationName,
-      graphql.FetchPolicy? fetchPolicy,
-      graphql.ErrorPolicy? errorPolicy,
-      graphql.CacheRereadPolicy? cacheRereadPolicy,
-      Object? optimisticResult,
-      graphql.Context? context,
-      OnMutationCompleted$Mutation$UpdateUser? onCompleted,
-      graphql.OnMutationUpdate<Mutation$UpdateUser>? update,
-      graphql.OnError? onError})
-      : onCompletedWithParsed = onCompleted,
+  WidgetOptions$Mutation$UpdateUser({
+    String? operationName,
+    graphql.FetchPolicy? fetchPolicy,
+    graphql.ErrorPolicy? errorPolicy,
+    graphql.CacheRereadPolicy? cacheRereadPolicy,
+    Object? optimisticResult,
+    graphql.Context? context,
+    OnMutationCompleted$Mutation$UpdateUser? onCompleted,
+    graphql.OnMutationUpdate<Mutation$UpdateUser>? update,
+    graphql.OnError? onError,
+  })  : onCompletedWithParsed = onCompleted,
         super(
-            operationName: operationName,
-            fetchPolicy: fetchPolicy,
-            errorPolicy: errorPolicy,
-            cacheRereadPolicy: cacheRereadPolicy,
-            optimisticResult: optimisticResult,
-            context: context,
-            onCompleted: onCompleted == null
-                ? null
-                : (data) => onCompleted(data,
-                    data == null ? null : _parserFn$Mutation$UpdateUser(data)),
-            update: update,
-            onError: onError,
-            document: documentNodeMutationUpdateUser,
-            parserFn: _parserFn$Mutation$UpdateUser);
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult,
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null ? null : _parserFn$Mutation$UpdateUser(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationUpdateUser,
+          parserFn: _parserFn$Mutation$UpdateUser,
+        );
 
   final OnMutationCompleted$Mutation$UpdateUser? onCompletedWithParsed;
 
@@ -445,39 +518,56 @@ class WidgetOptions$Mutation$UpdateUser
         ...super.onCompleted == null
             ? super.properties
             : super.properties.where((property) => property != onCompleted),
-        onCompletedWithParsed
+        onCompletedWithParsed,
       ];
 }
 
 typedef RunMutation$Mutation$UpdateUser
-    = graphql.MultiSourceResult<Mutation$UpdateUser>
-        Function(Variables$Mutation$UpdateUser, {Object? optimisticResult});
+    = graphql.MultiSourceResult<Mutation$UpdateUser> Function(
+  Variables$Mutation$UpdateUser, {
+  Object? optimisticResult,
+});
 typedef Builder$Mutation$UpdateUser = widgets.Widget Function(
-    RunMutation$Mutation$UpdateUser, graphql.QueryResult<Mutation$UpdateUser>?);
+  RunMutation$Mutation$UpdateUser,
+  graphql.QueryResult<Mutation$UpdateUser>?,
+);
 
 class Mutation$UpdateUser$Widget
     extends graphql_flutter.Mutation<Mutation$UpdateUser> {
-  Mutation$UpdateUser$Widget(
-      {widgets.Key? key,
-      WidgetOptions$Mutation$UpdateUser? options,
-      required Builder$Mutation$UpdateUser builder})
-      : super(
-            key: key,
-            options: options ?? WidgetOptions$Mutation$UpdateUser(),
-            builder: (run, result) => builder(
-                (variables, {optimisticResult}) =>
-                    run(variables.toJson(), optimisticResult: optimisticResult),
-                result));
+  Mutation$UpdateUser$Widget({
+    widgets.Key? key,
+    WidgetOptions$Mutation$UpdateUser? options,
+    required Builder$Mutation$UpdateUser builder,
+  }) : super(
+          key: key,
+          options: options ?? WidgetOptions$Mutation$UpdateUser(),
+          builder: (
+            run,
+            result,
+          ) =>
+              builder(
+            (
+              variables, {
+              optimisticResult,
+            }) =>
+                run(
+              variables.toJson(),
+              optimisticResult: optimisticResult,
+            ),
+            result,
+          ),
+        );
 }
 
 class Mutation$UpdateUser$updateUser {
-  Mutation$UpdateUser$updateUser(
-      {required this.id,
-      required this.name,
-      this.username,
-      this.profile,
-      this.avatarURL,
-      required this.$__typename});
+  Mutation$UpdateUser$updateUser({
+    required this.id,
+    required this.name,
+    this.username,
+    this.profile,
+    this.avatarURL,
+    required this.$__typename,
+  });
 
   factory Mutation$UpdateUser$updateUser.fromJson(Map<String, dynamic> json) {
     final l$id = json['id'];
@@ -487,12 +577,13 @@ class Mutation$UpdateUser$updateUser {
     final l$avatarURL = json['avatarURL'];
     final l$$__typename = json['__typename'];
     return Mutation$UpdateUser$updateUser(
-        id: (l$id as String),
-        name: (l$name as String),
-        username: (l$username as String?),
-        profile: (l$profile as String?),
-        avatarURL: (l$avatarURL as String?),
-        $__typename: (l$$__typename as String));
+      id: (l$id as String),
+      name: (l$name as String),
+      username: (l$username as String?),
+      profile: (l$profile as String?),
+      avatarURL: (l$avatarURL as String?),
+      $__typename: (l$$__typename as String),
+    );
   }
 
   final String id;
@@ -532,8 +623,14 @@ class Mutation$UpdateUser$updateUser {
     final l$profile = profile;
     final l$avatarURL = avatarURL;
     final l$$__typename = $__typename;
-    return Object.hashAll(
-        [l$id, l$name, l$username, l$profile, l$avatarURL, l$$__typename]);
+    return Object.hashAll([
+      l$id,
+      l$name,
+      l$username,
+      l$profile,
+      l$avatarURL,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -582,30 +679,37 @@ class Mutation$UpdateUser$updateUser {
 extension UtilityExtension$Mutation$UpdateUser$updateUser
     on Mutation$UpdateUser$updateUser {
   CopyWith$Mutation$UpdateUser$updateUser<Mutation$UpdateUser$updateUser>
-      get copyWith => CopyWith$Mutation$UpdateUser$updateUser(this, (i) => i);
+      get copyWith => CopyWith$Mutation$UpdateUser$updateUser(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Mutation$UpdateUser$updateUser<TRes> {
   factory CopyWith$Mutation$UpdateUser$updateUser(
-          Mutation$UpdateUser$updateUser instance,
-          TRes Function(Mutation$UpdateUser$updateUser) then) =
-      _CopyWithImpl$Mutation$UpdateUser$updateUser;
+    Mutation$UpdateUser$updateUser instance,
+    TRes Function(Mutation$UpdateUser$updateUser) then,
+  ) = _CopyWithImpl$Mutation$UpdateUser$updateUser;
 
   factory CopyWith$Mutation$UpdateUser$updateUser.stub(TRes res) =
       _CopyWithStubImpl$Mutation$UpdateUser$updateUser;
 
-  TRes call(
-      {String? id,
-      String? name,
-      String? username,
-      String? profile,
-      String? avatarURL,
-      String? $__typename});
+  TRes call({
+    String? id,
+    String? name,
+    String? username,
+    String? profile,
+    String? avatarURL,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Mutation$UpdateUser$updateUser<TRes>
     implements CopyWith$Mutation$UpdateUser$updateUser<TRes> {
-  _CopyWithImpl$Mutation$UpdateUser$updateUser(this._instance, this._then);
+  _CopyWithImpl$Mutation$UpdateUser$updateUser(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$UpdateUser$updateUser _instance;
 
@@ -613,29 +717,30 @@ class _CopyWithImpl$Mutation$UpdateUser$updateUser<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? id = _undefined,
-          Object? name = _undefined,
-          Object? username = _undefined,
-          Object? profile = _undefined,
-          Object? avatarURL = _undefined,
-          Object? $__typename = _undefined}) =>
+  TRes call({
+    Object? id = _undefined,
+    Object? name = _undefined,
+    Object? username = _undefined,
+    Object? profile = _undefined,
+    Object? avatarURL = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
       _then(Mutation$UpdateUser$updateUser(
-          id: id == _undefined || id == null ? _instance.id : (id as String),
-          name: name == _undefined || name == null
-              ? _instance.name
-              : (name as String),
-          username: username == _undefined
-              ? _instance.username
-              : (username as String?),
-          profile:
-              profile == _undefined ? _instance.profile : (profile as String?),
-          avatarURL: avatarURL == _undefined
-              ? _instance.avatarURL
-              : (avatarURL as String?),
-          $__typename: $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String)));
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        name: name == _undefined || name == null
+            ? _instance.name
+            : (name as String),
+        username:
+            username == _undefined ? _instance.username : (username as String?),
+        profile:
+            profile == _undefined ? _instance.profile : (profile as String?),
+        avatarURL: avatarURL == _undefined
+            ? _instance.avatarURL
+            : (avatarURL as String?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Mutation$UpdateUser$updateUser<TRes>
@@ -644,12 +749,13 @@ class _CopyWithStubImpl$Mutation$UpdateUser$updateUser<TRes>
 
   TRes _res;
 
-  call(
-          {String? id,
-          String? name,
-          String? username,
-          String? profile,
-          String? avatarURL,
-          String? $__typename}) =>
+  call({
+    String? id,
+    String? name,
+    String? username,
+    String? profile,
+    String? avatarURL,
+    String? $__typename,
+  }) =>
       _res;
 }

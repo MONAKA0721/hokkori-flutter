@@ -435,8 +435,7 @@ class _Step1State extends ConsumerState<Step1> {
                           buttonHeight: 60,
                           itemPadding: const EdgeInsets.all(0),
                           items: _addDividersAfterCategories(masterCategories),
-                          customItemsIndexes: _getDividersIndexes(),
-                          customItemsHeight: 4,
+                          customItemsHeights: _getCustomItemsHeights(),
                           value: ref.watch(categoryProvider),
                           onChanged: (value) {
                             setState(() => {
@@ -514,15 +513,18 @@ List<DropdownMenuItem<int>> _addDividersAfterCategories(
   return _menuItems;
 }
 
-List<int> _getDividersIndexes() {
-  List<int> _dividersIndexes = [];
+List<double> _getCustomItemsHeights() {
+  List<double> _heights = [];
   for (var i = 0; i < (masterCategories.length * 2) - 1; i++) {
+    if (i.isEven) {
+      _heights.add(60);
+    }
     //Dividers indexes will be the odd indexes
     if (i.isOdd) {
-      _dividersIndexes.add(i);
+      _heights.add(4);
     }
   }
-  return _dividersIndexes;
+  return _heights;
 }
 
 class Step2 extends ConsumerWidget {

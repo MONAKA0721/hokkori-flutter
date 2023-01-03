@@ -1,7 +1,8 @@
 class Input$CategoryOrder {
-  factory Input$CategoryOrder(
-          {required Enum$OrderDirection direction,
-          required Enum$CategoryOrderField field}) =>
+  factory Input$CategoryOrder({
+    required Enum$OrderDirection direction,
+    required Enum$CategoryOrderField field,
+  }) =>
       Input$CategoryOrder._({
         r'direction': direction,
         r'field': field,
@@ -36,7 +37,10 @@ class Input$CategoryOrder {
   }
 
   CopyWith$Input$CategoryOrder<Input$CategoryOrder> get copyWith =>
-      CopyWith$Input$CategoryOrder(this, (i) => i);
+      CopyWith$Input$CategoryOrder(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -62,24 +66,34 @@ class Input$CategoryOrder {
   int get hashCode {
     final l$direction = direction;
     final l$field = field;
-    return Object.hashAll([l$direction, l$field]);
+    return Object.hashAll([
+      l$direction,
+      l$field,
+    ]);
   }
 }
 
 abstract class CopyWith$Input$CategoryOrder<TRes> {
-  factory CopyWith$Input$CategoryOrder(Input$CategoryOrder instance,
-          TRes Function(Input$CategoryOrder) then) =
-      _CopyWithImpl$Input$CategoryOrder;
+  factory CopyWith$Input$CategoryOrder(
+    Input$CategoryOrder instance,
+    TRes Function(Input$CategoryOrder) then,
+  ) = _CopyWithImpl$Input$CategoryOrder;
 
   factory CopyWith$Input$CategoryOrder.stub(TRes res) =
       _CopyWithStubImpl$Input$CategoryOrder;
 
-  TRes call({Enum$OrderDirection? direction, Enum$CategoryOrderField? field});
+  TRes call({
+    Enum$OrderDirection? direction,
+    Enum$CategoryOrderField? field,
+  });
 }
 
 class _CopyWithImpl$Input$CategoryOrder<TRes>
     implements CopyWith$Input$CategoryOrder<TRes> {
-  _CopyWithImpl$Input$CategoryOrder(this._instance, this._then);
+  _CopyWithImpl$Input$CategoryOrder(
+    this._instance,
+    this._then,
+  );
 
   final Input$CategoryOrder _instance;
 
@@ -87,7 +101,10 @@ class _CopyWithImpl$Input$CategoryOrder<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? direction = _undefined, Object? field = _undefined}) =>
+  TRes call({
+    Object? direction = _undefined,
+    Object? field = _undefined,
+  }) =>
       _then(Input$CategoryOrder._({
         ..._instance._$data,
         if (direction != _undefined && direction != null)
@@ -103,40 +120,44 @@ class _CopyWithStubImpl$Input$CategoryOrder<TRes>
 
   TRes _res;
 
-  call({Enum$OrderDirection? direction, Enum$CategoryOrderField? field}) =>
+  call({
+    Enum$OrderDirection? direction,
+    Enum$CategoryOrderField? field,
+  }) =>
       _res;
 }
 
 class Input$CategoryWhereInput {
-  factory Input$CategoryWhereInput(
-          {Input$CategoryWhereInput? not,
-          List<Input$CategoryWhereInput>? and,
-          List<Input$CategoryWhereInput>? or,
-          String? id,
-          String? idNEQ,
-          List<String>? idIn,
-          List<String>? idNotIn,
-          String? idGT,
-          String? idGTE,
-          String? idLT,
-          String? idLTE,
-          String? name,
-          String? nameNEQ,
-          List<String>? nameIn,
-          List<String>? nameNotIn,
-          String? nameGT,
-          String? nameGTE,
-          String? nameLT,
-          String? nameLTE,
-          String? nameContains,
-          String? nameHasPrefix,
-          String? nameHasSuffix,
-          String? nameEqualFold,
-          String? nameContainsFold,
-          bool? hasPost,
-          List<Input$PostWhereInput>? hasPostWith,
-          bool? hasDraft,
-          List<Input$DraftWhereInput>? hasDraftWith}) =>
+  factory Input$CategoryWhereInput({
+    Input$CategoryWhereInput? not,
+    List<Input$CategoryWhereInput>? and,
+    List<Input$CategoryWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? name,
+    String? nameNEQ,
+    List<String>? nameIn,
+    List<String>? nameNotIn,
+    String? nameGT,
+    String? nameGTE,
+    String? nameLT,
+    String? nameLTE,
+    String? nameContains,
+    String? nameHasPrefix,
+    String? nameHasSuffix,
+    String? nameEqualFold,
+    String? nameContainsFold,
+    bool? hasPost,
+    List<Input$PostWhereInput>? hasPostWith,
+    bool? hasDraft,
+    List<Input$DraftWhereInput>? hasDraftWith,
+  }) =>
       Input$CategoryWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -460,7 +481,10 @@ class Input$CategoryWhereInput {
   }
 
   CopyWith$Input$CategoryWhereInput<Input$CategoryWhereInput> get copyWith =>
-      CopyWith$Input$CategoryWhereInput(this, (i) => i);
+      CopyWith$Input$CategoryWhereInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -884,48 +908,50 @@ class Input$CategoryWhereInput {
           ? l$hasDraftWith == null
               ? null
               : Object.hashAll(l$hasDraftWith.map((v) => v))
-          : const {}
+          : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$CategoryWhereInput<TRes> {
-  factory CopyWith$Input$CategoryWhereInput(Input$CategoryWhereInput instance,
-          TRes Function(Input$CategoryWhereInput) then) =
-      _CopyWithImpl$Input$CategoryWhereInput;
+  factory CopyWith$Input$CategoryWhereInput(
+    Input$CategoryWhereInput instance,
+    TRes Function(Input$CategoryWhereInput) then,
+  ) = _CopyWithImpl$Input$CategoryWhereInput;
 
   factory CopyWith$Input$CategoryWhereInput.stub(TRes res) =
       _CopyWithStubImpl$Input$CategoryWhereInput;
 
-  TRes call(
-      {Input$CategoryWhereInput? not,
-      List<Input$CategoryWhereInput>? and,
-      List<Input$CategoryWhereInput>? or,
-      String? id,
-      String? idNEQ,
-      List<String>? idIn,
-      List<String>? idNotIn,
-      String? idGT,
-      String? idGTE,
-      String? idLT,
-      String? idLTE,
-      String? name,
-      String? nameNEQ,
-      List<String>? nameIn,
-      List<String>? nameNotIn,
-      String? nameGT,
-      String? nameGTE,
-      String? nameLT,
-      String? nameLTE,
-      String? nameContains,
-      String? nameHasPrefix,
-      String? nameHasSuffix,
-      String? nameEqualFold,
-      String? nameContainsFold,
-      bool? hasPost,
-      List<Input$PostWhereInput>? hasPostWith,
-      bool? hasDraft,
-      List<Input$DraftWhereInput>? hasDraftWith});
+  TRes call({
+    Input$CategoryWhereInput? not,
+    List<Input$CategoryWhereInput>? and,
+    List<Input$CategoryWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? name,
+    String? nameNEQ,
+    List<String>? nameIn,
+    List<String>? nameNotIn,
+    String? nameGT,
+    String? nameGTE,
+    String? nameLT,
+    String? nameLTE,
+    String? nameContains,
+    String? nameHasPrefix,
+    String? nameHasSuffix,
+    String? nameEqualFold,
+    String? nameContainsFold,
+    bool? hasPost,
+    List<Input$PostWhereInput>? hasPostWith,
+    bool? hasDraft,
+    List<Input$DraftWhereInput>? hasDraftWith,
+  });
   CopyWith$Input$CategoryWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$CategoryWhereInput>? Function(
@@ -949,7 +975,10 @@ abstract class CopyWith$Input$CategoryWhereInput<TRes> {
 
 class _CopyWithImpl$Input$CategoryWhereInput<TRes>
     implements CopyWith$Input$CategoryWhereInput<TRes> {
-  _CopyWithImpl$Input$CategoryWhereInput(this._instance, this._then);
+  _CopyWithImpl$Input$CategoryWhereInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$CategoryWhereInput _instance;
 
@@ -957,35 +986,36 @@ class _CopyWithImpl$Input$CategoryWhereInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? not = _undefined,
-          Object? and = _undefined,
-          Object? or = _undefined,
-          Object? id = _undefined,
-          Object? idNEQ = _undefined,
-          Object? idIn = _undefined,
-          Object? idNotIn = _undefined,
-          Object? idGT = _undefined,
-          Object? idGTE = _undefined,
-          Object? idLT = _undefined,
-          Object? idLTE = _undefined,
-          Object? name = _undefined,
-          Object? nameNEQ = _undefined,
-          Object? nameIn = _undefined,
-          Object? nameNotIn = _undefined,
-          Object? nameGT = _undefined,
-          Object? nameGTE = _undefined,
-          Object? nameLT = _undefined,
-          Object? nameLTE = _undefined,
-          Object? nameContains = _undefined,
-          Object? nameHasPrefix = _undefined,
-          Object? nameHasSuffix = _undefined,
-          Object? nameEqualFold = _undefined,
-          Object? nameContainsFold = _undefined,
-          Object? hasPost = _undefined,
-          Object? hasPostWith = _undefined,
-          Object? hasDraft = _undefined,
-          Object? hasDraftWith = _undefined}) =>
+  TRes call({
+    Object? not = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? id = _undefined,
+    Object? idNEQ = _undefined,
+    Object? idIn = _undefined,
+    Object? idNotIn = _undefined,
+    Object? idGT = _undefined,
+    Object? idGTE = _undefined,
+    Object? idLT = _undefined,
+    Object? idLTE = _undefined,
+    Object? name = _undefined,
+    Object? nameNEQ = _undefined,
+    Object? nameIn = _undefined,
+    Object? nameNotIn = _undefined,
+    Object? nameGT = _undefined,
+    Object? nameGTE = _undefined,
+    Object? nameLT = _undefined,
+    Object? nameLTE = _undefined,
+    Object? nameContains = _undefined,
+    Object? nameHasPrefix = _undefined,
+    Object? nameHasSuffix = _undefined,
+    Object? nameEqualFold = _undefined,
+    Object? nameContainsFold = _undefined,
+    Object? hasPost = _undefined,
+    Object? hasPostWith = _undefined,
+    Object? hasDraft = _undefined,
+    Object? hasDraftWith = _undefined,
+  }) =>
       _then(Input$CategoryWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$CategoryWhereInput?),
@@ -1038,9 +1068,10 @@ class _CopyWithImpl$Input$CategoryWhereInput<TRes>
                           Input$CategoryWhereInput>>?)
               _fn) =>
       call(
-          and: _fn(_instance.and
-                  ?.map((e) => CopyWith$Input$CategoryWhereInput(e, (i) => i)))
-              ?.toList());
+          and: _fn(_instance.and?.map((e) => CopyWith$Input$CategoryWhereInput(
+                e,
+                (i) => i,
+              )))?.toList());
   TRes or(
           Iterable<Input$CategoryWhereInput>? Function(
                   Iterable<
@@ -1048,27 +1079,32 @@ class _CopyWithImpl$Input$CategoryWhereInput<TRes>
                           Input$CategoryWhereInput>>?)
               _fn) =>
       call(
-          or: _fn(_instance.or
-                  ?.map((e) => CopyWith$Input$CategoryWhereInput(e, (i) => i)))
-              ?.toList());
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$CategoryWhereInput(
+                e,
+                (i) => i,
+              )))?.toList());
   TRes hasPostWith(
           Iterable<Input$PostWhereInput>? Function(
                   Iterable<
                       CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
               _fn) =>
       call(
-          hasPostWith: _fn(_instance.hasPostWith
-                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
-              ?.toList());
+          hasPostWith: _fn(
+              _instance.hasPostWith?.map((e) => CopyWith$Input$PostWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasDraftWith(
           Iterable<Input$DraftWhereInput>? Function(
                   Iterable<
                       CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
               _fn) =>
       call(
-          hasDraftWith: _fn(_instance.hasDraftWith
-                  ?.map((e) => CopyWith$Input$DraftWhereInput(e, (i) => i)))
-              ?.toList());
+          hasDraftWith: _fn(
+              _instance.hasDraftWith?.map((e) => CopyWith$Input$DraftWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
 }
 
 class _CopyWithStubImpl$Input$CategoryWhereInput<TRes>
@@ -1077,35 +1113,36 @@ class _CopyWithStubImpl$Input$CategoryWhereInput<TRes>
 
   TRes _res;
 
-  call(
-          {Input$CategoryWhereInput? not,
-          List<Input$CategoryWhereInput>? and,
-          List<Input$CategoryWhereInput>? or,
-          String? id,
-          String? idNEQ,
-          List<String>? idIn,
-          List<String>? idNotIn,
-          String? idGT,
-          String? idGTE,
-          String? idLT,
-          String? idLTE,
-          String? name,
-          String? nameNEQ,
-          List<String>? nameIn,
-          List<String>? nameNotIn,
-          String? nameGT,
-          String? nameGTE,
-          String? nameLT,
-          String? nameLTE,
-          String? nameContains,
-          String? nameHasPrefix,
-          String? nameHasSuffix,
-          String? nameEqualFold,
-          String? nameContainsFold,
-          bool? hasPost,
-          List<Input$PostWhereInput>? hasPostWith,
-          bool? hasDraft,
-          List<Input$DraftWhereInput>? hasDraftWith}) =>
+  call({
+    Input$CategoryWhereInput? not,
+    List<Input$CategoryWhereInput>? and,
+    List<Input$CategoryWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? name,
+    String? nameNEQ,
+    List<String>? nameIn,
+    List<String>? nameNotIn,
+    String? nameGT,
+    String? nameGTE,
+    String? nameLT,
+    String? nameLTE,
+    String? nameContains,
+    String? nameHasPrefix,
+    String? nameHasSuffix,
+    String? nameEqualFold,
+    String? nameContainsFold,
+    bool? hasPost,
+    List<Input$PostWhereInput>? hasPostWith,
+    bool? hasDraft,
+    List<Input$DraftWhereInput>? hasDraftWith,
+  }) =>
       _res;
   CopyWith$Input$CategoryWhereInput<TRes> get not =>
       CopyWith$Input$CategoryWhereInput.stub(_res);
@@ -1116,19 +1153,20 @@ class _CopyWithStubImpl$Input$CategoryWhereInput<TRes>
 }
 
 class Input$CreateDraftInput {
-  factory Input$CreateDraftInput(
-          {String? createTime,
-          String? updateTime,
-          required String praiseTitle,
-          required String letterTitle,
-          required String praiseContent,
-          required String letterContent,
-          required bool praiseSpoiled,
-          required bool letterSpoiled,
-          required String ownerID,
-          List<String>? hashtagIDs,
-          String? workID,
-          String? categoryID}) =>
+  factory Input$CreateDraftInput({
+    String? createTime,
+    String? updateTime,
+    required String praiseTitle,
+    required String letterTitle,
+    required String praiseContent,
+    required String letterContent,
+    required bool praiseSpoiled,
+    required bool letterSpoiled,
+    required String ownerID,
+    List<String>? hashtagIDs,
+    String? workID,
+    String? categoryID,
+  }) =>
       Input$CreateDraftInput._({
         if (createTime != null) r'createTime': createTime,
         if (updateTime != null) r'updateTime': updateTime,
@@ -1240,7 +1278,10 @@ class Input$CreateDraftInput {
   }
 
   CopyWith$Input$CreateDraftInput<Input$CreateDraftInput> get copyWith =>
-      CopyWith$Input$CreateDraftInput(this, (i) => i);
+      CopyWith$Input$CreateDraftInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -1373,37 +1414,42 @@ class Input$CreateDraftInput {
               : Object.hashAll(l$hashtagIDs.map((v) => v))
           : const {},
       _$data.containsKey('workID') ? l$workID : const {},
-      _$data.containsKey('categoryID') ? l$categoryID : const {}
+      _$data.containsKey('categoryID') ? l$categoryID : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$CreateDraftInput<TRes> {
-  factory CopyWith$Input$CreateDraftInput(Input$CreateDraftInput instance,
-          TRes Function(Input$CreateDraftInput) then) =
-      _CopyWithImpl$Input$CreateDraftInput;
+  factory CopyWith$Input$CreateDraftInput(
+    Input$CreateDraftInput instance,
+    TRes Function(Input$CreateDraftInput) then,
+  ) = _CopyWithImpl$Input$CreateDraftInput;
 
   factory CopyWith$Input$CreateDraftInput.stub(TRes res) =
       _CopyWithStubImpl$Input$CreateDraftInput;
 
-  TRes call(
-      {String? createTime,
-      String? updateTime,
-      String? praiseTitle,
-      String? letterTitle,
-      String? praiseContent,
-      String? letterContent,
-      bool? praiseSpoiled,
-      bool? letterSpoiled,
-      String? ownerID,
-      List<String>? hashtagIDs,
-      String? workID,
-      String? categoryID});
+  TRes call({
+    String? createTime,
+    String? updateTime,
+    String? praiseTitle,
+    String? letterTitle,
+    String? praiseContent,
+    String? letterContent,
+    bool? praiseSpoiled,
+    bool? letterSpoiled,
+    String? ownerID,
+    List<String>? hashtagIDs,
+    String? workID,
+    String? categoryID,
+  });
 }
 
 class _CopyWithImpl$Input$CreateDraftInput<TRes>
     implements CopyWith$Input$CreateDraftInput<TRes> {
-  _CopyWithImpl$Input$CreateDraftInput(this._instance, this._then);
+  _CopyWithImpl$Input$CreateDraftInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$CreateDraftInput _instance;
 
@@ -1411,19 +1457,20 @@ class _CopyWithImpl$Input$CreateDraftInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? createTime = _undefined,
-          Object? updateTime = _undefined,
-          Object? praiseTitle = _undefined,
-          Object? letterTitle = _undefined,
-          Object? praiseContent = _undefined,
-          Object? letterContent = _undefined,
-          Object? praiseSpoiled = _undefined,
-          Object? letterSpoiled = _undefined,
-          Object? ownerID = _undefined,
-          Object? hashtagIDs = _undefined,
-          Object? workID = _undefined,
-          Object? categoryID = _undefined}) =>
+  TRes call({
+    Object? createTime = _undefined,
+    Object? updateTime = _undefined,
+    Object? praiseTitle = _undefined,
+    Object? letterTitle = _undefined,
+    Object? praiseContent = _undefined,
+    Object? letterContent = _undefined,
+    Object? praiseSpoiled = _undefined,
+    Object? letterSpoiled = _undefined,
+    Object? ownerID = _undefined,
+    Object? hashtagIDs = _undefined,
+    Object? workID = _undefined,
+    Object? categoryID = _undefined,
+  }) =>
       _then(Input$CreateDraftInput._({
         ..._instance._$data,
         if (createTime != _undefined) 'createTime': (createTime as String?),
@@ -1455,27 +1502,29 @@ class _CopyWithStubImpl$Input$CreateDraftInput<TRes>
 
   TRes _res;
 
-  call(
-          {String? createTime,
-          String? updateTime,
-          String? praiseTitle,
-          String? letterTitle,
-          String? praiseContent,
-          String? letterContent,
-          bool? praiseSpoiled,
-          bool? letterSpoiled,
-          String? ownerID,
-          List<String>? hashtagIDs,
-          String? workID,
-          String? categoryID}) =>
+  call({
+    String? createTime,
+    String? updateTime,
+    String? praiseTitle,
+    String? letterTitle,
+    String? praiseContent,
+    String? letterContent,
+    bool? praiseSpoiled,
+    bool? letterSpoiled,
+    String? ownerID,
+    List<String>? hashtagIDs,
+    String? workID,
+    String? categoryID,
+  }) =>
       _res;
 }
 
 class Input$CreateHashtagInput {
-  factory Input$CreateHashtagInput(
-          {required String title,
-          List<String>? postIDs,
-          List<String>? draftIDs}) =>
+  factory Input$CreateHashtagInput({
+    required String title,
+    List<String>? postIDs,
+    List<String>? draftIDs,
+  }) =>
       Input$CreateHashtagInput._({
         r'title': title,
         if (postIDs != null) r'postIDs': postIDs,
@@ -1522,7 +1571,10 @@ class Input$CreateHashtagInput {
   }
 
   CopyWith$Input$CreateHashtagInput<Input$CreateHashtagInput> get copyWith =>
-      CopyWith$Input$CreateHashtagInput(this, (i) => i);
+      CopyWith$Input$CreateHashtagInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -1595,25 +1647,33 @@ class Input$CreateHashtagInput {
           ? l$draftIDs == null
               ? null
               : Object.hashAll(l$draftIDs.map((v) => v))
-          : const {}
+          : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$CreateHashtagInput<TRes> {
-  factory CopyWith$Input$CreateHashtagInput(Input$CreateHashtagInput instance,
-          TRes Function(Input$CreateHashtagInput) then) =
-      _CopyWithImpl$Input$CreateHashtagInput;
+  factory CopyWith$Input$CreateHashtagInput(
+    Input$CreateHashtagInput instance,
+    TRes Function(Input$CreateHashtagInput) then,
+  ) = _CopyWithImpl$Input$CreateHashtagInput;
 
   factory CopyWith$Input$CreateHashtagInput.stub(TRes res) =
       _CopyWithStubImpl$Input$CreateHashtagInput;
 
-  TRes call({String? title, List<String>? postIDs, List<String>? draftIDs});
+  TRes call({
+    String? title,
+    List<String>? postIDs,
+    List<String>? draftIDs,
+  });
 }
 
 class _CopyWithImpl$Input$CreateHashtagInput<TRes>
     implements CopyWith$Input$CreateHashtagInput<TRes> {
-  _CopyWithImpl$Input$CreateHashtagInput(this._instance, this._then);
+  _CopyWithImpl$Input$CreateHashtagInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$CreateHashtagInput _instance;
 
@@ -1621,10 +1681,11 @@ class _CopyWithImpl$Input$CreateHashtagInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? title = _undefined,
-          Object? postIDs = _undefined,
-          Object? draftIDs = _undefined}) =>
+  TRes call({
+    Object? title = _undefined,
+    Object? postIDs = _undefined,
+    Object? draftIDs = _undefined,
+  }) =>
       _then(Input$CreateHashtagInput._({
         ..._instance._$data,
         if (title != _undefined && title != null) 'title': (title as String),
@@ -1639,24 +1700,30 @@ class _CopyWithStubImpl$Input$CreateHashtagInput<TRes>
 
   TRes _res;
 
-  call({String? title, List<String>? postIDs, List<String>? draftIDs}) => _res;
+  call({
+    String? title,
+    List<String>? postIDs,
+    List<String>? draftIDs,
+  }) =>
+      _res;
 }
 
 class Input$CreatePostInput {
-  factory Input$CreatePostInput(
-          {String? createTime,
-          String? updateTime,
-          required String title,
-          required String content,
-          required Enum$PostPostType type,
-          required bool spoiled,
-          String? thumbnail,
-          required String ownerID,
-          List<String>? hashtagIDs,
-          required String workID,
-          required String categoryID,
-          List<String>? likedUserIDs,
-          List<String>? bookmarkedUserIDs}) =>
+  factory Input$CreatePostInput({
+    String? createTime,
+    String? updateTime,
+    required String title,
+    required String content,
+    required Enum$PostPostType type,
+    required bool spoiled,
+    String? thumbnail,
+    required String ownerID,
+    List<String>? hashtagIDs,
+    required String workID,
+    required String categoryID,
+    List<String>? likedUserIDs,
+    List<String>? bookmarkedUserIDs,
+  }) =>
       Input$CreatePostInput._({
         if (createTime != null) r'createTime': createTime,
         if (updateTime != null) r'updateTime': updateTime,
@@ -1784,7 +1851,10 @@ class Input$CreatePostInput {
   }
 
   CopyWith$Input$CreatePostInput<Input$CreatePostInput> get copyWith =>
-      CopyWith$Input$CreatePostInput(this, (i) => i);
+      CopyWith$Input$CreatePostInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -1958,38 +2028,43 @@ class Input$CreatePostInput {
           ? l$bookmarkedUserIDs == null
               ? null
               : Object.hashAll(l$bookmarkedUserIDs.map((v) => v))
-          : const {}
+          : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$CreatePostInput<TRes> {
-  factory CopyWith$Input$CreatePostInput(Input$CreatePostInput instance,
-          TRes Function(Input$CreatePostInput) then) =
-      _CopyWithImpl$Input$CreatePostInput;
+  factory CopyWith$Input$CreatePostInput(
+    Input$CreatePostInput instance,
+    TRes Function(Input$CreatePostInput) then,
+  ) = _CopyWithImpl$Input$CreatePostInput;
 
   factory CopyWith$Input$CreatePostInput.stub(TRes res) =
       _CopyWithStubImpl$Input$CreatePostInput;
 
-  TRes call(
-      {String? createTime,
-      String? updateTime,
-      String? title,
-      String? content,
-      Enum$PostPostType? type,
-      bool? spoiled,
-      String? thumbnail,
-      String? ownerID,
-      List<String>? hashtagIDs,
-      String? workID,
-      String? categoryID,
-      List<String>? likedUserIDs,
-      List<String>? bookmarkedUserIDs});
+  TRes call({
+    String? createTime,
+    String? updateTime,
+    String? title,
+    String? content,
+    Enum$PostPostType? type,
+    bool? spoiled,
+    String? thumbnail,
+    String? ownerID,
+    List<String>? hashtagIDs,
+    String? workID,
+    String? categoryID,
+    List<String>? likedUserIDs,
+    List<String>? bookmarkedUserIDs,
+  });
 }
 
 class _CopyWithImpl$Input$CreatePostInput<TRes>
     implements CopyWith$Input$CreatePostInput<TRes> {
-  _CopyWithImpl$Input$CreatePostInput(this._instance, this._then);
+  _CopyWithImpl$Input$CreatePostInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$CreatePostInput _instance;
 
@@ -1997,20 +2072,21 @@ class _CopyWithImpl$Input$CreatePostInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? createTime = _undefined,
-          Object? updateTime = _undefined,
-          Object? title = _undefined,
-          Object? content = _undefined,
-          Object? type = _undefined,
-          Object? spoiled = _undefined,
-          Object? thumbnail = _undefined,
-          Object? ownerID = _undefined,
-          Object? hashtagIDs = _undefined,
-          Object? workID = _undefined,
-          Object? categoryID = _undefined,
-          Object? likedUserIDs = _undefined,
-          Object? bookmarkedUserIDs = _undefined}) =>
+  TRes call({
+    Object? createTime = _undefined,
+    Object? updateTime = _undefined,
+    Object? title = _undefined,
+    Object? content = _undefined,
+    Object? type = _undefined,
+    Object? spoiled = _undefined,
+    Object? thumbnail = _undefined,
+    Object? ownerID = _undefined,
+    Object? hashtagIDs = _undefined,
+    Object? workID = _undefined,
+    Object? categoryID = _undefined,
+    Object? likedUserIDs = _undefined,
+    Object? bookmarkedUserIDs = _undefined,
+  }) =>
       _then(Input$CreatePostInput._({
         ..._instance._$data,
         if (createTime != _undefined) 'createTime': (createTime as String?),
@@ -2044,38 +2120,40 @@ class _CopyWithStubImpl$Input$CreatePostInput<TRes>
 
   TRes _res;
 
-  call(
-          {String? createTime,
-          String? updateTime,
-          String? title,
-          String? content,
-          Enum$PostPostType? type,
-          bool? spoiled,
-          String? thumbnail,
-          String? ownerID,
-          List<String>? hashtagIDs,
-          String? workID,
-          String? categoryID,
-          List<String>? likedUserIDs,
-          List<String>? bookmarkedUserIDs}) =>
+  call({
+    String? createTime,
+    String? updateTime,
+    String? title,
+    String? content,
+    Enum$PostPostType? type,
+    bool? spoiled,
+    String? thumbnail,
+    String? ownerID,
+    List<String>? hashtagIDs,
+    String? workID,
+    String? categoryID,
+    List<String>? likedUserIDs,
+    List<String>? bookmarkedUserIDs,
+  }) =>
       _res;
 }
 
 class Input$CreateUserInput {
-  factory Input$CreateUserInput(
-          {required String name,
-          String? username,
-          String? profile,
-          String? avatarURL,
-          int? age,
-          int? gender,
-          List<int>? interests,
-          List<String>? postIDs,
-          List<String>? likedPostIDs,
-          List<String>? bookmarkedPostIDs,
-          List<String>? followerIDs,
-          List<String>? followingIDs,
-          List<String>? draftIDs}) =>
+  factory Input$CreateUserInput({
+    required String name,
+    String? username,
+    String? profile,
+    String? avatarURL,
+    int? age,
+    int? gender,
+    List<int>? interests,
+    List<String>? postIDs,
+    List<String>? likedPostIDs,
+    List<String>? bookmarkedPostIDs,
+    List<String>? followerIDs,
+    List<String>? followingIDs,
+    List<String>? draftIDs,
+  }) =>
       Input$CreateUserInput._({
         r'name': name,
         if (username != null) r'username': username,
@@ -2232,7 +2310,10 @@ class Input$CreateUserInput {
   }
 
   CopyWith$Input$CreateUserInput<Input$CreateUserInput> get copyWith =>
-      CopyWith$Input$CreateUserInput(this, (i) => i);
+      CopyWith$Input$CreateUserInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -2486,38 +2567,43 @@ class Input$CreateUserInput {
           ? l$draftIDs == null
               ? null
               : Object.hashAll(l$draftIDs.map((v) => v))
-          : const {}
+          : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$CreateUserInput<TRes> {
-  factory CopyWith$Input$CreateUserInput(Input$CreateUserInput instance,
-          TRes Function(Input$CreateUserInput) then) =
-      _CopyWithImpl$Input$CreateUserInput;
+  factory CopyWith$Input$CreateUserInput(
+    Input$CreateUserInput instance,
+    TRes Function(Input$CreateUserInput) then,
+  ) = _CopyWithImpl$Input$CreateUserInput;
 
   factory CopyWith$Input$CreateUserInput.stub(TRes res) =
       _CopyWithStubImpl$Input$CreateUserInput;
 
-  TRes call(
-      {String? name,
-      String? username,
-      String? profile,
-      String? avatarURL,
-      int? age,
-      int? gender,
-      List<int>? interests,
-      List<String>? postIDs,
-      List<String>? likedPostIDs,
-      List<String>? bookmarkedPostIDs,
-      List<String>? followerIDs,
-      List<String>? followingIDs,
-      List<String>? draftIDs});
+  TRes call({
+    String? name,
+    String? username,
+    String? profile,
+    String? avatarURL,
+    int? age,
+    int? gender,
+    List<int>? interests,
+    List<String>? postIDs,
+    List<String>? likedPostIDs,
+    List<String>? bookmarkedPostIDs,
+    List<String>? followerIDs,
+    List<String>? followingIDs,
+    List<String>? draftIDs,
+  });
 }
 
 class _CopyWithImpl$Input$CreateUserInput<TRes>
     implements CopyWith$Input$CreateUserInput<TRes> {
-  _CopyWithImpl$Input$CreateUserInput(this._instance, this._then);
+  _CopyWithImpl$Input$CreateUserInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$CreateUserInput _instance;
 
@@ -2525,20 +2611,21 @@ class _CopyWithImpl$Input$CreateUserInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? name = _undefined,
-          Object? username = _undefined,
-          Object? profile = _undefined,
-          Object? avatarURL = _undefined,
-          Object? age = _undefined,
-          Object? gender = _undefined,
-          Object? interests = _undefined,
-          Object? postIDs = _undefined,
-          Object? likedPostIDs = _undefined,
-          Object? bookmarkedPostIDs = _undefined,
-          Object? followerIDs = _undefined,
-          Object? followingIDs = _undefined,
-          Object? draftIDs = _undefined}) =>
+  TRes call({
+    Object? name = _undefined,
+    Object? username = _undefined,
+    Object? profile = _undefined,
+    Object? avatarURL = _undefined,
+    Object? age = _undefined,
+    Object? gender = _undefined,
+    Object? interests = _undefined,
+    Object? postIDs = _undefined,
+    Object? likedPostIDs = _undefined,
+    Object? bookmarkedPostIDs = _undefined,
+    Object? followerIDs = _undefined,
+    Object? followingIDs = _undefined,
+    Object? draftIDs = _undefined,
+  }) =>
       _then(Input$CreateUserInput._({
         ..._instance._$data,
         if (name != _undefined && name != null) 'name': (name as String),
@@ -2567,29 +2654,31 @@ class _CopyWithStubImpl$Input$CreateUserInput<TRes>
 
   TRes _res;
 
-  call(
-          {String? name,
-          String? username,
-          String? profile,
-          String? avatarURL,
-          int? age,
-          int? gender,
-          List<int>? interests,
-          List<String>? postIDs,
-          List<String>? likedPostIDs,
-          List<String>? bookmarkedPostIDs,
-          List<String>? followerIDs,
-          List<String>? followingIDs,
-          List<String>? draftIDs}) =>
+  call({
+    String? name,
+    String? username,
+    String? profile,
+    String? avatarURL,
+    int? age,
+    int? gender,
+    List<int>? interests,
+    List<String>? postIDs,
+    List<String>? likedPostIDs,
+    List<String>? bookmarkedPostIDs,
+    List<String>? followerIDs,
+    List<String>? followingIDs,
+    List<String>? draftIDs,
+  }) =>
       _res;
 }
 
 class Input$CreateWorkInput {
-  factory Input$CreateWorkInput(
-          {required String title,
-          String? thumbnail,
-          List<String>? postIDs,
-          List<String>? draftIDs}) =>
+  factory Input$CreateWorkInput({
+    required String title,
+    String? thumbnail,
+    List<String>? postIDs,
+    List<String>? draftIDs,
+  }) =>
       Input$CreateWorkInput._({
         r'title': title,
         if (thumbnail != null) r'thumbnail': thumbnail,
@@ -2646,7 +2735,10 @@ class Input$CreateWorkInput {
   }
 
   CopyWith$Input$CreateWorkInput<Input$CreateWorkInput> get copyWith =>
-      CopyWith$Input$CreateWorkInput(this, (i) => i);
+      CopyWith$Input$CreateWorkInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -2729,29 +2821,34 @@ class Input$CreateWorkInput {
           ? l$draftIDs == null
               ? null
               : Object.hashAll(l$draftIDs.map((v) => v))
-          : const {}
+          : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$CreateWorkInput<TRes> {
-  factory CopyWith$Input$CreateWorkInput(Input$CreateWorkInput instance,
-          TRes Function(Input$CreateWorkInput) then) =
-      _CopyWithImpl$Input$CreateWorkInput;
+  factory CopyWith$Input$CreateWorkInput(
+    Input$CreateWorkInput instance,
+    TRes Function(Input$CreateWorkInput) then,
+  ) = _CopyWithImpl$Input$CreateWorkInput;
 
   factory CopyWith$Input$CreateWorkInput.stub(TRes res) =
       _CopyWithStubImpl$Input$CreateWorkInput;
 
-  TRes call(
-      {String? title,
-      String? thumbnail,
-      List<String>? postIDs,
-      List<String>? draftIDs});
+  TRes call({
+    String? title,
+    String? thumbnail,
+    List<String>? postIDs,
+    List<String>? draftIDs,
+  });
 }
 
 class _CopyWithImpl$Input$CreateWorkInput<TRes>
     implements CopyWith$Input$CreateWorkInput<TRes> {
-  _CopyWithImpl$Input$CreateWorkInput(this._instance, this._then);
+  _CopyWithImpl$Input$CreateWorkInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$CreateWorkInput _instance;
 
@@ -2759,11 +2856,12 @@ class _CopyWithImpl$Input$CreateWorkInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? title = _undefined,
-          Object? thumbnail = _undefined,
-          Object? postIDs = _undefined,
-          Object? draftIDs = _undefined}) =>
+  TRes call({
+    Object? title = _undefined,
+    Object? thumbnail = _undefined,
+    Object? postIDs = _undefined,
+    Object? draftIDs = _undefined,
+  }) =>
       _then(Input$CreateWorkInput._({
         ..._instance._$data,
         if (title != _undefined && title != null) 'title': (title as String),
@@ -2779,18 +2877,20 @@ class _CopyWithStubImpl$Input$CreateWorkInput<TRes>
 
   TRes _res;
 
-  call(
-          {String? title,
-          String? thumbnail,
-          List<String>? postIDs,
-          List<String>? draftIDs}) =>
+  call({
+    String? title,
+    String? thumbnail,
+    List<String>? postIDs,
+    List<String>? draftIDs,
+  }) =>
       _res;
 }
 
 class Input$DraftOrder {
-  factory Input$DraftOrder(
-          {required Enum$OrderDirection direction,
-          required Enum$DraftOrderField field}) =>
+  factory Input$DraftOrder({
+    required Enum$OrderDirection direction,
+    required Enum$DraftOrderField field,
+  }) =>
       Input$DraftOrder._({
         r'direction': direction,
         r'field': field,
@@ -2823,7 +2923,10 @@ class Input$DraftOrder {
   }
 
   CopyWith$Input$DraftOrder<Input$DraftOrder> get copyWith =>
-      CopyWith$Input$DraftOrder(this, (i) => i);
+      CopyWith$Input$DraftOrder(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -2849,24 +2952,34 @@ class Input$DraftOrder {
   int get hashCode {
     final l$direction = direction;
     final l$field = field;
-    return Object.hashAll([l$direction, l$field]);
+    return Object.hashAll([
+      l$direction,
+      l$field,
+    ]);
   }
 }
 
 abstract class CopyWith$Input$DraftOrder<TRes> {
   factory CopyWith$Input$DraftOrder(
-          Input$DraftOrder instance, TRes Function(Input$DraftOrder) then) =
-      _CopyWithImpl$Input$DraftOrder;
+    Input$DraftOrder instance,
+    TRes Function(Input$DraftOrder) then,
+  ) = _CopyWithImpl$Input$DraftOrder;
 
   factory CopyWith$Input$DraftOrder.stub(TRes res) =
       _CopyWithStubImpl$Input$DraftOrder;
 
-  TRes call({Enum$OrderDirection? direction, Enum$DraftOrderField? field});
+  TRes call({
+    Enum$OrderDirection? direction,
+    Enum$DraftOrderField? field,
+  });
 }
 
 class _CopyWithImpl$Input$DraftOrder<TRes>
     implements CopyWith$Input$DraftOrder<TRes> {
-  _CopyWithImpl$Input$DraftOrder(this._instance, this._then);
+  _CopyWithImpl$Input$DraftOrder(
+    this._instance,
+    this._then,
+  );
 
   final Input$DraftOrder _instance;
 
@@ -2874,7 +2987,10 @@ class _CopyWithImpl$Input$DraftOrder<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? direction = _undefined, Object? field = _undefined}) =>
+  TRes call({
+    Object? direction = _undefined,
+    Object? field = _undefined,
+  }) =>
       _then(Input$DraftOrder._({
         ..._instance._$data,
         if (direction != _undefined && direction != null)
@@ -2890,102 +3006,107 @@ class _CopyWithStubImpl$Input$DraftOrder<TRes>
 
   TRes _res;
 
-  call({Enum$OrderDirection? direction, Enum$DraftOrderField? field}) => _res;
+  call({
+    Enum$OrderDirection? direction,
+    Enum$DraftOrderField? field,
+  }) =>
+      _res;
 }
 
 class Input$DraftWhereInput {
-  factory Input$DraftWhereInput(
-          {Input$DraftWhereInput? not,
-          List<Input$DraftWhereInput>? and,
-          List<Input$DraftWhereInput>? or,
-          String? id,
-          String? idNEQ,
-          List<String>? idIn,
-          List<String>? idNotIn,
-          String? idGT,
-          String? idGTE,
-          String? idLT,
-          String? idLTE,
-          String? createTime,
-          String? createTimeNEQ,
-          List<String>? createTimeIn,
-          List<String>? createTimeNotIn,
-          String? createTimeGT,
-          String? createTimeGTE,
-          String? createTimeLT,
-          String? createTimeLTE,
-          String? updateTime,
-          String? updateTimeNEQ,
-          List<String>? updateTimeIn,
-          List<String>? updateTimeNotIn,
-          String? updateTimeGT,
-          String? updateTimeGTE,
-          String? updateTimeLT,
-          String? updateTimeLTE,
-          String? praiseTitle,
-          String? praiseTitleNEQ,
-          List<String>? praiseTitleIn,
-          List<String>? praiseTitleNotIn,
-          String? praiseTitleGT,
-          String? praiseTitleGTE,
-          String? praiseTitleLT,
-          String? praiseTitleLTE,
-          String? praiseTitleContains,
-          String? praiseTitleHasPrefix,
-          String? praiseTitleHasSuffix,
-          String? praiseTitleEqualFold,
-          String? praiseTitleContainsFold,
-          String? letterTitle,
-          String? letterTitleNEQ,
-          List<String>? letterTitleIn,
-          List<String>? letterTitleNotIn,
-          String? letterTitleGT,
-          String? letterTitleGTE,
-          String? letterTitleLT,
-          String? letterTitleLTE,
-          String? letterTitleContains,
-          String? letterTitleHasPrefix,
-          String? letterTitleHasSuffix,
-          String? letterTitleEqualFold,
-          String? letterTitleContainsFold,
-          String? praiseContent,
-          String? praiseContentNEQ,
-          List<String>? praiseContentIn,
-          List<String>? praiseContentNotIn,
-          String? praiseContentGT,
-          String? praiseContentGTE,
-          String? praiseContentLT,
-          String? praiseContentLTE,
-          String? praiseContentContains,
-          String? praiseContentHasPrefix,
-          String? praiseContentHasSuffix,
-          String? praiseContentEqualFold,
-          String? praiseContentContainsFold,
-          String? letterContent,
-          String? letterContentNEQ,
-          List<String>? letterContentIn,
-          List<String>? letterContentNotIn,
-          String? letterContentGT,
-          String? letterContentGTE,
-          String? letterContentLT,
-          String? letterContentLTE,
-          String? letterContentContains,
-          String? letterContentHasPrefix,
-          String? letterContentHasSuffix,
-          String? letterContentEqualFold,
-          String? letterContentContainsFold,
-          bool? praiseSpoiled,
-          bool? praiseSpoiledNEQ,
-          bool? letterSpoiled,
-          bool? letterSpoiledNEQ,
-          bool? hasOwner,
-          List<Input$UserWhereInput>? hasOwnerWith,
-          bool? hasHashtags,
-          List<Input$HashtagWhereInput>? hasHashtagsWith,
-          bool? hasWork,
-          List<Input$WorkWhereInput>? hasWorkWith,
-          bool? hasCategory,
-          List<Input$CategoryWhereInput>? hasCategoryWith}) =>
+  factory Input$DraftWhereInput({
+    Input$DraftWhereInput? not,
+    List<Input$DraftWhereInput>? and,
+    List<Input$DraftWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? createTime,
+    String? createTimeNEQ,
+    List<String>? createTimeIn,
+    List<String>? createTimeNotIn,
+    String? createTimeGT,
+    String? createTimeGTE,
+    String? createTimeLT,
+    String? createTimeLTE,
+    String? updateTime,
+    String? updateTimeNEQ,
+    List<String>? updateTimeIn,
+    List<String>? updateTimeNotIn,
+    String? updateTimeGT,
+    String? updateTimeGTE,
+    String? updateTimeLT,
+    String? updateTimeLTE,
+    String? praiseTitle,
+    String? praiseTitleNEQ,
+    List<String>? praiseTitleIn,
+    List<String>? praiseTitleNotIn,
+    String? praiseTitleGT,
+    String? praiseTitleGTE,
+    String? praiseTitleLT,
+    String? praiseTitleLTE,
+    String? praiseTitleContains,
+    String? praiseTitleHasPrefix,
+    String? praiseTitleHasSuffix,
+    String? praiseTitleEqualFold,
+    String? praiseTitleContainsFold,
+    String? letterTitle,
+    String? letterTitleNEQ,
+    List<String>? letterTitleIn,
+    List<String>? letterTitleNotIn,
+    String? letterTitleGT,
+    String? letterTitleGTE,
+    String? letterTitleLT,
+    String? letterTitleLTE,
+    String? letterTitleContains,
+    String? letterTitleHasPrefix,
+    String? letterTitleHasSuffix,
+    String? letterTitleEqualFold,
+    String? letterTitleContainsFold,
+    String? praiseContent,
+    String? praiseContentNEQ,
+    List<String>? praiseContentIn,
+    List<String>? praiseContentNotIn,
+    String? praiseContentGT,
+    String? praiseContentGTE,
+    String? praiseContentLT,
+    String? praiseContentLTE,
+    String? praiseContentContains,
+    String? praiseContentHasPrefix,
+    String? praiseContentHasSuffix,
+    String? praiseContentEqualFold,
+    String? praiseContentContainsFold,
+    String? letterContent,
+    String? letterContentNEQ,
+    List<String>? letterContentIn,
+    List<String>? letterContentNotIn,
+    String? letterContentGT,
+    String? letterContentGTE,
+    String? letterContentLT,
+    String? letterContentLTE,
+    String? letterContentContains,
+    String? letterContentHasPrefix,
+    String? letterContentHasSuffix,
+    String? letterContentEqualFold,
+    String? letterContentContainsFold,
+    bool? praiseSpoiled,
+    bool? praiseSpoiledNEQ,
+    bool? letterSpoiled,
+    bool? letterSpoiledNEQ,
+    bool? hasOwner,
+    List<Input$UserWhereInput>? hasOwnerWith,
+    bool? hasHashtags,
+    List<Input$HashtagWhereInput>? hasHashtagsWith,
+    bool? hasWork,
+    List<Input$WorkWhereInput>? hasWorkWith,
+    bool? hasCategory,
+    List<Input$CategoryWhereInput>? hasCategoryWith,
+  }) =>
       Input$DraftWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -4040,7 +4161,10 @@ class Input$DraftWhereInput {
   }
 
   CopyWith$Input$DraftWhereInput<Input$DraftWhereInput> get copyWith =>
-      CopyWith$Input$DraftWhereInput(this, (i) => i);
+      CopyWith$Input$DraftWhereInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -5383,111 +5507,113 @@ class Input$DraftWhereInput {
           ? l$hasCategoryWith == null
               ? null
               : Object.hashAll(l$hasCategoryWith.map((v) => v))
-          : const {}
+          : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$DraftWhereInput<TRes> {
-  factory CopyWith$Input$DraftWhereInput(Input$DraftWhereInput instance,
-          TRes Function(Input$DraftWhereInput) then) =
-      _CopyWithImpl$Input$DraftWhereInput;
+  factory CopyWith$Input$DraftWhereInput(
+    Input$DraftWhereInput instance,
+    TRes Function(Input$DraftWhereInput) then,
+  ) = _CopyWithImpl$Input$DraftWhereInput;
 
   factory CopyWith$Input$DraftWhereInput.stub(TRes res) =
       _CopyWithStubImpl$Input$DraftWhereInput;
 
-  TRes call(
-      {Input$DraftWhereInput? not,
-      List<Input$DraftWhereInput>? and,
-      List<Input$DraftWhereInput>? or,
-      String? id,
-      String? idNEQ,
-      List<String>? idIn,
-      List<String>? idNotIn,
-      String? idGT,
-      String? idGTE,
-      String? idLT,
-      String? idLTE,
-      String? createTime,
-      String? createTimeNEQ,
-      List<String>? createTimeIn,
-      List<String>? createTimeNotIn,
-      String? createTimeGT,
-      String? createTimeGTE,
-      String? createTimeLT,
-      String? createTimeLTE,
-      String? updateTime,
-      String? updateTimeNEQ,
-      List<String>? updateTimeIn,
-      List<String>? updateTimeNotIn,
-      String? updateTimeGT,
-      String? updateTimeGTE,
-      String? updateTimeLT,
-      String? updateTimeLTE,
-      String? praiseTitle,
-      String? praiseTitleNEQ,
-      List<String>? praiseTitleIn,
-      List<String>? praiseTitleNotIn,
-      String? praiseTitleGT,
-      String? praiseTitleGTE,
-      String? praiseTitleLT,
-      String? praiseTitleLTE,
-      String? praiseTitleContains,
-      String? praiseTitleHasPrefix,
-      String? praiseTitleHasSuffix,
-      String? praiseTitleEqualFold,
-      String? praiseTitleContainsFold,
-      String? letterTitle,
-      String? letterTitleNEQ,
-      List<String>? letterTitleIn,
-      List<String>? letterTitleNotIn,
-      String? letterTitleGT,
-      String? letterTitleGTE,
-      String? letterTitleLT,
-      String? letterTitleLTE,
-      String? letterTitleContains,
-      String? letterTitleHasPrefix,
-      String? letterTitleHasSuffix,
-      String? letterTitleEqualFold,
-      String? letterTitleContainsFold,
-      String? praiseContent,
-      String? praiseContentNEQ,
-      List<String>? praiseContentIn,
-      List<String>? praiseContentNotIn,
-      String? praiseContentGT,
-      String? praiseContentGTE,
-      String? praiseContentLT,
-      String? praiseContentLTE,
-      String? praiseContentContains,
-      String? praiseContentHasPrefix,
-      String? praiseContentHasSuffix,
-      String? praiseContentEqualFold,
-      String? praiseContentContainsFold,
-      String? letterContent,
-      String? letterContentNEQ,
-      List<String>? letterContentIn,
-      List<String>? letterContentNotIn,
-      String? letterContentGT,
-      String? letterContentGTE,
-      String? letterContentLT,
-      String? letterContentLTE,
-      String? letterContentContains,
-      String? letterContentHasPrefix,
-      String? letterContentHasSuffix,
-      String? letterContentEqualFold,
-      String? letterContentContainsFold,
-      bool? praiseSpoiled,
-      bool? praiseSpoiledNEQ,
-      bool? letterSpoiled,
-      bool? letterSpoiledNEQ,
-      bool? hasOwner,
-      List<Input$UserWhereInput>? hasOwnerWith,
-      bool? hasHashtags,
-      List<Input$HashtagWhereInput>? hasHashtagsWith,
-      bool? hasWork,
-      List<Input$WorkWhereInput>? hasWorkWith,
-      bool? hasCategory,
-      List<Input$CategoryWhereInput>? hasCategoryWith});
+  TRes call({
+    Input$DraftWhereInput? not,
+    List<Input$DraftWhereInput>? and,
+    List<Input$DraftWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? createTime,
+    String? createTimeNEQ,
+    List<String>? createTimeIn,
+    List<String>? createTimeNotIn,
+    String? createTimeGT,
+    String? createTimeGTE,
+    String? createTimeLT,
+    String? createTimeLTE,
+    String? updateTime,
+    String? updateTimeNEQ,
+    List<String>? updateTimeIn,
+    List<String>? updateTimeNotIn,
+    String? updateTimeGT,
+    String? updateTimeGTE,
+    String? updateTimeLT,
+    String? updateTimeLTE,
+    String? praiseTitle,
+    String? praiseTitleNEQ,
+    List<String>? praiseTitleIn,
+    List<String>? praiseTitleNotIn,
+    String? praiseTitleGT,
+    String? praiseTitleGTE,
+    String? praiseTitleLT,
+    String? praiseTitleLTE,
+    String? praiseTitleContains,
+    String? praiseTitleHasPrefix,
+    String? praiseTitleHasSuffix,
+    String? praiseTitleEqualFold,
+    String? praiseTitleContainsFold,
+    String? letterTitle,
+    String? letterTitleNEQ,
+    List<String>? letterTitleIn,
+    List<String>? letterTitleNotIn,
+    String? letterTitleGT,
+    String? letterTitleGTE,
+    String? letterTitleLT,
+    String? letterTitleLTE,
+    String? letterTitleContains,
+    String? letterTitleHasPrefix,
+    String? letterTitleHasSuffix,
+    String? letterTitleEqualFold,
+    String? letterTitleContainsFold,
+    String? praiseContent,
+    String? praiseContentNEQ,
+    List<String>? praiseContentIn,
+    List<String>? praiseContentNotIn,
+    String? praiseContentGT,
+    String? praiseContentGTE,
+    String? praiseContentLT,
+    String? praiseContentLTE,
+    String? praiseContentContains,
+    String? praiseContentHasPrefix,
+    String? praiseContentHasSuffix,
+    String? praiseContentEqualFold,
+    String? praiseContentContainsFold,
+    String? letterContent,
+    String? letterContentNEQ,
+    List<String>? letterContentIn,
+    List<String>? letterContentNotIn,
+    String? letterContentGT,
+    String? letterContentGTE,
+    String? letterContentLT,
+    String? letterContentLTE,
+    String? letterContentContains,
+    String? letterContentHasPrefix,
+    String? letterContentHasSuffix,
+    String? letterContentEqualFold,
+    String? letterContentContainsFold,
+    bool? praiseSpoiled,
+    bool? praiseSpoiledNEQ,
+    bool? letterSpoiled,
+    bool? letterSpoiledNEQ,
+    bool? hasOwner,
+    List<Input$UserWhereInput>? hasOwnerWith,
+    bool? hasHashtags,
+    List<Input$HashtagWhereInput>? hasHashtagsWith,
+    bool? hasWork,
+    List<Input$WorkWhereInput>? hasWorkWith,
+    bool? hasCategory,
+    List<Input$CategoryWhereInput>? hasCategoryWith,
+  });
   CopyWith$Input$DraftWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$DraftWhereInput>? Function(
@@ -5519,7 +5645,10 @@ abstract class CopyWith$Input$DraftWhereInput<TRes> {
 
 class _CopyWithImpl$Input$DraftWhereInput<TRes>
     implements CopyWith$Input$DraftWhereInput<TRes> {
-  _CopyWithImpl$Input$DraftWhereInput(this._instance, this._then);
+  _CopyWithImpl$Input$DraftWhereInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$DraftWhereInput _instance;
 
@@ -5527,98 +5656,99 @@ class _CopyWithImpl$Input$DraftWhereInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? not = _undefined,
-          Object? and = _undefined,
-          Object? or = _undefined,
-          Object? id = _undefined,
-          Object? idNEQ = _undefined,
-          Object? idIn = _undefined,
-          Object? idNotIn = _undefined,
-          Object? idGT = _undefined,
-          Object? idGTE = _undefined,
-          Object? idLT = _undefined,
-          Object? idLTE = _undefined,
-          Object? createTime = _undefined,
-          Object? createTimeNEQ = _undefined,
-          Object? createTimeIn = _undefined,
-          Object? createTimeNotIn = _undefined,
-          Object? createTimeGT = _undefined,
-          Object? createTimeGTE = _undefined,
-          Object? createTimeLT = _undefined,
-          Object? createTimeLTE = _undefined,
-          Object? updateTime = _undefined,
-          Object? updateTimeNEQ = _undefined,
-          Object? updateTimeIn = _undefined,
-          Object? updateTimeNotIn = _undefined,
-          Object? updateTimeGT = _undefined,
-          Object? updateTimeGTE = _undefined,
-          Object? updateTimeLT = _undefined,
-          Object? updateTimeLTE = _undefined,
-          Object? praiseTitle = _undefined,
-          Object? praiseTitleNEQ = _undefined,
-          Object? praiseTitleIn = _undefined,
-          Object? praiseTitleNotIn = _undefined,
-          Object? praiseTitleGT = _undefined,
-          Object? praiseTitleGTE = _undefined,
-          Object? praiseTitleLT = _undefined,
-          Object? praiseTitleLTE = _undefined,
-          Object? praiseTitleContains = _undefined,
-          Object? praiseTitleHasPrefix = _undefined,
-          Object? praiseTitleHasSuffix = _undefined,
-          Object? praiseTitleEqualFold = _undefined,
-          Object? praiseTitleContainsFold = _undefined,
-          Object? letterTitle = _undefined,
-          Object? letterTitleNEQ = _undefined,
-          Object? letterTitleIn = _undefined,
-          Object? letterTitleNotIn = _undefined,
-          Object? letterTitleGT = _undefined,
-          Object? letterTitleGTE = _undefined,
-          Object? letterTitleLT = _undefined,
-          Object? letterTitleLTE = _undefined,
-          Object? letterTitleContains = _undefined,
-          Object? letterTitleHasPrefix = _undefined,
-          Object? letterTitleHasSuffix = _undefined,
-          Object? letterTitleEqualFold = _undefined,
-          Object? letterTitleContainsFold = _undefined,
-          Object? praiseContent = _undefined,
-          Object? praiseContentNEQ = _undefined,
-          Object? praiseContentIn = _undefined,
-          Object? praiseContentNotIn = _undefined,
-          Object? praiseContentGT = _undefined,
-          Object? praiseContentGTE = _undefined,
-          Object? praiseContentLT = _undefined,
-          Object? praiseContentLTE = _undefined,
-          Object? praiseContentContains = _undefined,
-          Object? praiseContentHasPrefix = _undefined,
-          Object? praiseContentHasSuffix = _undefined,
-          Object? praiseContentEqualFold = _undefined,
-          Object? praiseContentContainsFold = _undefined,
-          Object? letterContent = _undefined,
-          Object? letterContentNEQ = _undefined,
-          Object? letterContentIn = _undefined,
-          Object? letterContentNotIn = _undefined,
-          Object? letterContentGT = _undefined,
-          Object? letterContentGTE = _undefined,
-          Object? letterContentLT = _undefined,
-          Object? letterContentLTE = _undefined,
-          Object? letterContentContains = _undefined,
-          Object? letterContentHasPrefix = _undefined,
-          Object? letterContentHasSuffix = _undefined,
-          Object? letterContentEqualFold = _undefined,
-          Object? letterContentContainsFold = _undefined,
-          Object? praiseSpoiled = _undefined,
-          Object? praiseSpoiledNEQ = _undefined,
-          Object? letterSpoiled = _undefined,
-          Object? letterSpoiledNEQ = _undefined,
-          Object? hasOwner = _undefined,
-          Object? hasOwnerWith = _undefined,
-          Object? hasHashtags = _undefined,
-          Object? hasHashtagsWith = _undefined,
-          Object? hasWork = _undefined,
-          Object? hasWorkWith = _undefined,
-          Object? hasCategory = _undefined,
-          Object? hasCategoryWith = _undefined}) =>
+  TRes call({
+    Object? not = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? id = _undefined,
+    Object? idNEQ = _undefined,
+    Object? idIn = _undefined,
+    Object? idNotIn = _undefined,
+    Object? idGT = _undefined,
+    Object? idGTE = _undefined,
+    Object? idLT = _undefined,
+    Object? idLTE = _undefined,
+    Object? createTime = _undefined,
+    Object? createTimeNEQ = _undefined,
+    Object? createTimeIn = _undefined,
+    Object? createTimeNotIn = _undefined,
+    Object? createTimeGT = _undefined,
+    Object? createTimeGTE = _undefined,
+    Object? createTimeLT = _undefined,
+    Object? createTimeLTE = _undefined,
+    Object? updateTime = _undefined,
+    Object? updateTimeNEQ = _undefined,
+    Object? updateTimeIn = _undefined,
+    Object? updateTimeNotIn = _undefined,
+    Object? updateTimeGT = _undefined,
+    Object? updateTimeGTE = _undefined,
+    Object? updateTimeLT = _undefined,
+    Object? updateTimeLTE = _undefined,
+    Object? praiseTitle = _undefined,
+    Object? praiseTitleNEQ = _undefined,
+    Object? praiseTitleIn = _undefined,
+    Object? praiseTitleNotIn = _undefined,
+    Object? praiseTitleGT = _undefined,
+    Object? praiseTitleGTE = _undefined,
+    Object? praiseTitleLT = _undefined,
+    Object? praiseTitleLTE = _undefined,
+    Object? praiseTitleContains = _undefined,
+    Object? praiseTitleHasPrefix = _undefined,
+    Object? praiseTitleHasSuffix = _undefined,
+    Object? praiseTitleEqualFold = _undefined,
+    Object? praiseTitleContainsFold = _undefined,
+    Object? letterTitle = _undefined,
+    Object? letterTitleNEQ = _undefined,
+    Object? letterTitleIn = _undefined,
+    Object? letterTitleNotIn = _undefined,
+    Object? letterTitleGT = _undefined,
+    Object? letterTitleGTE = _undefined,
+    Object? letterTitleLT = _undefined,
+    Object? letterTitleLTE = _undefined,
+    Object? letterTitleContains = _undefined,
+    Object? letterTitleHasPrefix = _undefined,
+    Object? letterTitleHasSuffix = _undefined,
+    Object? letterTitleEqualFold = _undefined,
+    Object? letterTitleContainsFold = _undefined,
+    Object? praiseContent = _undefined,
+    Object? praiseContentNEQ = _undefined,
+    Object? praiseContentIn = _undefined,
+    Object? praiseContentNotIn = _undefined,
+    Object? praiseContentGT = _undefined,
+    Object? praiseContentGTE = _undefined,
+    Object? praiseContentLT = _undefined,
+    Object? praiseContentLTE = _undefined,
+    Object? praiseContentContains = _undefined,
+    Object? praiseContentHasPrefix = _undefined,
+    Object? praiseContentHasSuffix = _undefined,
+    Object? praiseContentEqualFold = _undefined,
+    Object? praiseContentContainsFold = _undefined,
+    Object? letterContent = _undefined,
+    Object? letterContentNEQ = _undefined,
+    Object? letterContentIn = _undefined,
+    Object? letterContentNotIn = _undefined,
+    Object? letterContentGT = _undefined,
+    Object? letterContentGTE = _undefined,
+    Object? letterContentLT = _undefined,
+    Object? letterContentLTE = _undefined,
+    Object? letterContentContains = _undefined,
+    Object? letterContentHasPrefix = _undefined,
+    Object? letterContentHasSuffix = _undefined,
+    Object? letterContentEqualFold = _undefined,
+    Object? letterContentContainsFold = _undefined,
+    Object? praiseSpoiled = _undefined,
+    Object? praiseSpoiledNEQ = _undefined,
+    Object? letterSpoiled = _undefined,
+    Object? letterSpoiledNEQ = _undefined,
+    Object? hasOwner = _undefined,
+    Object? hasOwnerWith = _undefined,
+    Object? hasHashtags = _undefined,
+    Object? hasHashtagsWith = _undefined,
+    Object? hasWork = _undefined,
+    Object? hasWorkWith = _undefined,
+    Object? hasCategory = _undefined,
+    Object? hasCategoryWith = _undefined,
+  }) =>
       _then(Input$DraftWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$DraftWhereInput?),
@@ -5800,27 +5930,31 @@ class _CopyWithImpl$Input$DraftWhereInput<TRes>
                       CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
               _fn) =>
       call(
-          and: _fn(_instance.and
-                  ?.map((e) => CopyWith$Input$DraftWhereInput(e, (i) => i)))
-              ?.toList());
+          and: _fn(_instance.and?.map((e) => CopyWith$Input$DraftWhereInput(
+                e,
+                (i) => i,
+              )))?.toList());
   TRes or(
           Iterable<Input$DraftWhereInput>? Function(
                   Iterable<
                       CopyWith$Input$DraftWhereInput<Input$DraftWhereInput>>?)
               _fn) =>
       call(
-          or: _fn(_instance.or
-                  ?.map((e) => CopyWith$Input$DraftWhereInput(e, (i) => i)))
-              ?.toList());
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$DraftWhereInput(
+                e,
+                (i) => i,
+              )))?.toList());
   TRes hasOwnerWith(
           Iterable<Input$UserWhereInput>? Function(
                   Iterable<
                       CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
               _fn) =>
       call(
-          hasOwnerWith: _fn(_instance.hasOwnerWith
-                  ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
-              ?.toList());
+          hasOwnerWith: _fn(
+              _instance.hasOwnerWith?.map((e) => CopyWith$Input$UserWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasHashtagsWith(
           Iterable<Input$HashtagWhereInput>? Function(
                   Iterable<
@@ -5829,17 +5963,21 @@ class _CopyWithImpl$Input$DraftWhereInput<TRes>
               _fn) =>
       call(
           hasHashtagsWith: _fn(_instance.hasHashtagsWith
-                  ?.map((e) => CopyWith$Input$HashtagWhereInput(e, (i) => i)))
-              ?.toList());
+              ?.map((e) => CopyWith$Input$HashtagWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasWorkWith(
           Iterable<Input$WorkWhereInput>? Function(
                   Iterable<
                       CopyWith$Input$WorkWhereInput<Input$WorkWhereInput>>?)
               _fn) =>
       call(
-          hasWorkWith: _fn(_instance.hasWorkWith
-                  ?.map((e) => CopyWith$Input$WorkWhereInput(e, (i) => i)))
-              ?.toList());
+          hasWorkWith: _fn(
+              _instance.hasWorkWith?.map((e) => CopyWith$Input$WorkWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasCategoryWith(
           Iterable<Input$CategoryWhereInput>? Function(
                   Iterable<
@@ -5848,8 +5986,10 @@ class _CopyWithImpl$Input$DraftWhereInput<TRes>
               _fn) =>
       call(
           hasCategoryWith: _fn(_instance.hasCategoryWith
-                  ?.map((e) => CopyWith$Input$CategoryWhereInput(e, (i) => i)))
-              ?.toList());
+              ?.map((e) => CopyWith$Input$CategoryWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
 }
 
 class _CopyWithStubImpl$Input$DraftWhereInput<TRes>
@@ -5858,98 +5998,99 @@ class _CopyWithStubImpl$Input$DraftWhereInput<TRes>
 
   TRes _res;
 
-  call(
-          {Input$DraftWhereInput? not,
-          List<Input$DraftWhereInput>? and,
-          List<Input$DraftWhereInput>? or,
-          String? id,
-          String? idNEQ,
-          List<String>? idIn,
-          List<String>? idNotIn,
-          String? idGT,
-          String? idGTE,
-          String? idLT,
-          String? idLTE,
-          String? createTime,
-          String? createTimeNEQ,
-          List<String>? createTimeIn,
-          List<String>? createTimeNotIn,
-          String? createTimeGT,
-          String? createTimeGTE,
-          String? createTimeLT,
-          String? createTimeLTE,
-          String? updateTime,
-          String? updateTimeNEQ,
-          List<String>? updateTimeIn,
-          List<String>? updateTimeNotIn,
-          String? updateTimeGT,
-          String? updateTimeGTE,
-          String? updateTimeLT,
-          String? updateTimeLTE,
-          String? praiseTitle,
-          String? praiseTitleNEQ,
-          List<String>? praiseTitleIn,
-          List<String>? praiseTitleNotIn,
-          String? praiseTitleGT,
-          String? praiseTitleGTE,
-          String? praiseTitleLT,
-          String? praiseTitleLTE,
-          String? praiseTitleContains,
-          String? praiseTitleHasPrefix,
-          String? praiseTitleHasSuffix,
-          String? praiseTitleEqualFold,
-          String? praiseTitleContainsFold,
-          String? letterTitle,
-          String? letterTitleNEQ,
-          List<String>? letterTitleIn,
-          List<String>? letterTitleNotIn,
-          String? letterTitleGT,
-          String? letterTitleGTE,
-          String? letterTitleLT,
-          String? letterTitleLTE,
-          String? letterTitleContains,
-          String? letterTitleHasPrefix,
-          String? letterTitleHasSuffix,
-          String? letterTitleEqualFold,
-          String? letterTitleContainsFold,
-          String? praiseContent,
-          String? praiseContentNEQ,
-          List<String>? praiseContentIn,
-          List<String>? praiseContentNotIn,
-          String? praiseContentGT,
-          String? praiseContentGTE,
-          String? praiseContentLT,
-          String? praiseContentLTE,
-          String? praiseContentContains,
-          String? praiseContentHasPrefix,
-          String? praiseContentHasSuffix,
-          String? praiseContentEqualFold,
-          String? praiseContentContainsFold,
-          String? letterContent,
-          String? letterContentNEQ,
-          List<String>? letterContentIn,
-          List<String>? letterContentNotIn,
-          String? letterContentGT,
-          String? letterContentGTE,
-          String? letterContentLT,
-          String? letterContentLTE,
-          String? letterContentContains,
-          String? letterContentHasPrefix,
-          String? letterContentHasSuffix,
-          String? letterContentEqualFold,
-          String? letterContentContainsFold,
-          bool? praiseSpoiled,
-          bool? praiseSpoiledNEQ,
-          bool? letterSpoiled,
-          bool? letterSpoiledNEQ,
-          bool? hasOwner,
-          List<Input$UserWhereInput>? hasOwnerWith,
-          bool? hasHashtags,
-          List<Input$HashtagWhereInput>? hasHashtagsWith,
-          bool? hasWork,
-          List<Input$WorkWhereInput>? hasWorkWith,
-          bool? hasCategory,
-          List<Input$CategoryWhereInput>? hasCategoryWith}) =>
+  call({
+    Input$DraftWhereInput? not,
+    List<Input$DraftWhereInput>? and,
+    List<Input$DraftWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? createTime,
+    String? createTimeNEQ,
+    List<String>? createTimeIn,
+    List<String>? createTimeNotIn,
+    String? createTimeGT,
+    String? createTimeGTE,
+    String? createTimeLT,
+    String? createTimeLTE,
+    String? updateTime,
+    String? updateTimeNEQ,
+    List<String>? updateTimeIn,
+    List<String>? updateTimeNotIn,
+    String? updateTimeGT,
+    String? updateTimeGTE,
+    String? updateTimeLT,
+    String? updateTimeLTE,
+    String? praiseTitle,
+    String? praiseTitleNEQ,
+    List<String>? praiseTitleIn,
+    List<String>? praiseTitleNotIn,
+    String? praiseTitleGT,
+    String? praiseTitleGTE,
+    String? praiseTitleLT,
+    String? praiseTitleLTE,
+    String? praiseTitleContains,
+    String? praiseTitleHasPrefix,
+    String? praiseTitleHasSuffix,
+    String? praiseTitleEqualFold,
+    String? praiseTitleContainsFold,
+    String? letterTitle,
+    String? letterTitleNEQ,
+    List<String>? letterTitleIn,
+    List<String>? letterTitleNotIn,
+    String? letterTitleGT,
+    String? letterTitleGTE,
+    String? letterTitleLT,
+    String? letterTitleLTE,
+    String? letterTitleContains,
+    String? letterTitleHasPrefix,
+    String? letterTitleHasSuffix,
+    String? letterTitleEqualFold,
+    String? letterTitleContainsFold,
+    String? praiseContent,
+    String? praiseContentNEQ,
+    List<String>? praiseContentIn,
+    List<String>? praiseContentNotIn,
+    String? praiseContentGT,
+    String? praiseContentGTE,
+    String? praiseContentLT,
+    String? praiseContentLTE,
+    String? praiseContentContains,
+    String? praiseContentHasPrefix,
+    String? praiseContentHasSuffix,
+    String? praiseContentEqualFold,
+    String? praiseContentContainsFold,
+    String? letterContent,
+    String? letterContentNEQ,
+    List<String>? letterContentIn,
+    List<String>? letterContentNotIn,
+    String? letterContentGT,
+    String? letterContentGTE,
+    String? letterContentLT,
+    String? letterContentLTE,
+    String? letterContentContains,
+    String? letterContentHasPrefix,
+    String? letterContentHasSuffix,
+    String? letterContentEqualFold,
+    String? letterContentContainsFold,
+    bool? praiseSpoiled,
+    bool? praiseSpoiledNEQ,
+    bool? letterSpoiled,
+    bool? letterSpoiledNEQ,
+    bool? hasOwner,
+    List<Input$UserWhereInput>? hasOwnerWith,
+    bool? hasHashtags,
+    List<Input$HashtagWhereInput>? hasHashtagsWith,
+    bool? hasWork,
+    List<Input$WorkWhereInput>? hasWorkWith,
+    bool? hasCategory,
+    List<Input$CategoryWhereInput>? hasCategoryWith,
+  }) =>
       _res;
   CopyWith$Input$DraftWhereInput<TRes> get not =>
       CopyWith$Input$DraftWhereInput.stub(_res);
@@ -5962,35 +6103,36 @@ class _CopyWithStubImpl$Input$DraftWhereInput<TRes>
 }
 
 class Input$HashtagWhereInput {
-  factory Input$HashtagWhereInput(
-          {Input$HashtagWhereInput? not,
-          List<Input$HashtagWhereInput>? and,
-          List<Input$HashtagWhereInput>? or,
-          String? id,
-          String? idNEQ,
-          List<String>? idIn,
-          List<String>? idNotIn,
-          String? idGT,
-          String? idGTE,
-          String? idLT,
-          String? idLTE,
-          String? title,
-          String? titleNEQ,
-          List<String>? titleIn,
-          List<String>? titleNotIn,
-          String? titleGT,
-          String? titleGTE,
-          String? titleLT,
-          String? titleLTE,
-          String? titleContains,
-          String? titleHasPrefix,
-          String? titleHasSuffix,
-          String? titleEqualFold,
-          String? titleContainsFold,
-          bool? hasPosts,
-          List<Input$PostWhereInput>? hasPostsWith,
-          bool? hasDrafts,
-          List<Input$DraftWhereInput>? hasDraftsWith}) =>
+  factory Input$HashtagWhereInput({
+    Input$HashtagWhereInput? not,
+    List<Input$HashtagWhereInput>? and,
+    List<Input$HashtagWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? title,
+    String? titleNEQ,
+    List<String>? titleIn,
+    List<String>? titleNotIn,
+    String? titleGT,
+    String? titleGTE,
+    String? titleLT,
+    String? titleLTE,
+    String? titleContains,
+    String? titleHasPrefix,
+    String? titleHasSuffix,
+    String? titleEqualFold,
+    String? titleContainsFold,
+    bool? hasPosts,
+    List<Input$PostWhereInput>? hasPostsWith,
+    bool? hasDrafts,
+    List<Input$DraftWhereInput>? hasDraftsWith,
+  }) =>
       Input$HashtagWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -6314,7 +6456,10 @@ class Input$HashtagWhereInput {
   }
 
   CopyWith$Input$HashtagWhereInput<Input$HashtagWhereInput> get copyWith =>
-      CopyWith$Input$HashtagWhereInput(this, (i) => i);
+      CopyWith$Input$HashtagWhereInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -6742,48 +6887,50 @@ class Input$HashtagWhereInput {
           ? l$hasDraftsWith == null
               ? null
               : Object.hashAll(l$hasDraftsWith.map((v) => v))
-          : const {}
+          : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$HashtagWhereInput<TRes> {
-  factory CopyWith$Input$HashtagWhereInput(Input$HashtagWhereInput instance,
-          TRes Function(Input$HashtagWhereInput) then) =
-      _CopyWithImpl$Input$HashtagWhereInput;
+  factory CopyWith$Input$HashtagWhereInput(
+    Input$HashtagWhereInput instance,
+    TRes Function(Input$HashtagWhereInput) then,
+  ) = _CopyWithImpl$Input$HashtagWhereInput;
 
   factory CopyWith$Input$HashtagWhereInput.stub(TRes res) =
       _CopyWithStubImpl$Input$HashtagWhereInput;
 
-  TRes call(
-      {Input$HashtagWhereInput? not,
-      List<Input$HashtagWhereInput>? and,
-      List<Input$HashtagWhereInput>? or,
-      String? id,
-      String? idNEQ,
-      List<String>? idIn,
-      List<String>? idNotIn,
-      String? idGT,
-      String? idGTE,
-      String? idLT,
-      String? idLTE,
-      String? title,
-      String? titleNEQ,
-      List<String>? titleIn,
-      List<String>? titleNotIn,
-      String? titleGT,
-      String? titleGTE,
-      String? titleLT,
-      String? titleLTE,
-      String? titleContains,
-      String? titleHasPrefix,
-      String? titleHasSuffix,
-      String? titleEqualFold,
-      String? titleContainsFold,
-      bool? hasPosts,
-      List<Input$PostWhereInput>? hasPostsWith,
-      bool? hasDrafts,
-      List<Input$DraftWhereInput>? hasDraftsWith});
+  TRes call({
+    Input$HashtagWhereInput? not,
+    List<Input$HashtagWhereInput>? and,
+    List<Input$HashtagWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? title,
+    String? titleNEQ,
+    List<String>? titleIn,
+    List<String>? titleNotIn,
+    String? titleGT,
+    String? titleGTE,
+    String? titleLT,
+    String? titleLTE,
+    String? titleContains,
+    String? titleHasPrefix,
+    String? titleHasSuffix,
+    String? titleEqualFold,
+    String? titleContainsFold,
+    bool? hasPosts,
+    List<Input$PostWhereInput>? hasPostsWith,
+    bool? hasDrafts,
+    List<Input$DraftWhereInput>? hasDraftsWith,
+  });
   CopyWith$Input$HashtagWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$HashtagWhereInput>? Function(
@@ -6807,7 +6954,10 @@ abstract class CopyWith$Input$HashtagWhereInput<TRes> {
 
 class _CopyWithImpl$Input$HashtagWhereInput<TRes>
     implements CopyWith$Input$HashtagWhereInput<TRes> {
-  _CopyWithImpl$Input$HashtagWhereInput(this._instance, this._then);
+  _CopyWithImpl$Input$HashtagWhereInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$HashtagWhereInput _instance;
 
@@ -6815,35 +6965,36 @@ class _CopyWithImpl$Input$HashtagWhereInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? not = _undefined,
-          Object? and = _undefined,
-          Object? or = _undefined,
-          Object? id = _undefined,
-          Object? idNEQ = _undefined,
-          Object? idIn = _undefined,
-          Object? idNotIn = _undefined,
-          Object? idGT = _undefined,
-          Object? idGTE = _undefined,
-          Object? idLT = _undefined,
-          Object? idLTE = _undefined,
-          Object? title = _undefined,
-          Object? titleNEQ = _undefined,
-          Object? titleIn = _undefined,
-          Object? titleNotIn = _undefined,
-          Object? titleGT = _undefined,
-          Object? titleGTE = _undefined,
-          Object? titleLT = _undefined,
-          Object? titleLTE = _undefined,
-          Object? titleContains = _undefined,
-          Object? titleHasPrefix = _undefined,
-          Object? titleHasSuffix = _undefined,
-          Object? titleEqualFold = _undefined,
-          Object? titleContainsFold = _undefined,
-          Object? hasPosts = _undefined,
-          Object? hasPostsWith = _undefined,
-          Object? hasDrafts = _undefined,
-          Object? hasDraftsWith = _undefined}) =>
+  TRes call({
+    Object? not = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? id = _undefined,
+    Object? idNEQ = _undefined,
+    Object? idIn = _undefined,
+    Object? idNotIn = _undefined,
+    Object? idGT = _undefined,
+    Object? idGTE = _undefined,
+    Object? idLT = _undefined,
+    Object? idLTE = _undefined,
+    Object? title = _undefined,
+    Object? titleNEQ = _undefined,
+    Object? titleIn = _undefined,
+    Object? titleNotIn = _undefined,
+    Object? titleGT = _undefined,
+    Object? titleGTE = _undefined,
+    Object? titleLT = _undefined,
+    Object? titleLTE = _undefined,
+    Object? titleContains = _undefined,
+    Object? titleHasPrefix = _undefined,
+    Object? titleHasSuffix = _undefined,
+    Object? titleEqualFold = _undefined,
+    Object? titleContainsFold = _undefined,
+    Object? hasPosts = _undefined,
+    Object? hasPostsWith = _undefined,
+    Object? hasDrafts = _undefined,
+    Object? hasDraftsWith = _undefined,
+  }) =>
       _then(Input$HashtagWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$HashtagWhereInput?),
@@ -6897,9 +7048,10 @@ class _CopyWithImpl$Input$HashtagWhereInput<TRes>
                           Input$HashtagWhereInput>>?)
               _fn) =>
       call(
-          and: _fn(_instance.and
-                  ?.map((e) => CopyWith$Input$HashtagWhereInput(e, (i) => i)))
-              ?.toList());
+          and: _fn(_instance.and?.map((e) => CopyWith$Input$HashtagWhereInput(
+                e,
+                (i) => i,
+              )))?.toList());
   TRes or(
           Iterable<Input$HashtagWhereInput>? Function(
                   Iterable<
@@ -6907,18 +7059,21 @@ class _CopyWithImpl$Input$HashtagWhereInput<TRes>
                           Input$HashtagWhereInput>>?)
               _fn) =>
       call(
-          or: _fn(_instance.or
-                  ?.map((e) => CopyWith$Input$HashtagWhereInput(e, (i) => i)))
-              ?.toList());
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$HashtagWhereInput(
+                e,
+                (i) => i,
+              )))?.toList());
   TRes hasPostsWith(
           Iterable<Input$PostWhereInput>? Function(
                   Iterable<
                       CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
               _fn) =>
       call(
-          hasPostsWith: _fn(_instance.hasPostsWith
-                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
-              ?.toList());
+          hasPostsWith: _fn(
+              _instance.hasPostsWith?.map((e) => CopyWith$Input$PostWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasDraftsWith(
           Iterable<Input$DraftWhereInput>? Function(
                   Iterable<
@@ -6926,8 +7081,10 @@ class _CopyWithImpl$Input$HashtagWhereInput<TRes>
               _fn) =>
       call(
           hasDraftsWith: _fn(_instance.hasDraftsWith
-                  ?.map((e) => CopyWith$Input$DraftWhereInput(e, (i) => i)))
-              ?.toList());
+              ?.map((e) => CopyWith$Input$DraftWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
 }
 
 class _CopyWithStubImpl$Input$HashtagWhereInput<TRes>
@@ -6936,35 +7093,36 @@ class _CopyWithStubImpl$Input$HashtagWhereInput<TRes>
 
   TRes _res;
 
-  call(
-          {Input$HashtagWhereInput? not,
-          List<Input$HashtagWhereInput>? and,
-          List<Input$HashtagWhereInput>? or,
-          String? id,
-          String? idNEQ,
-          List<String>? idIn,
-          List<String>? idNotIn,
-          String? idGT,
-          String? idGTE,
-          String? idLT,
-          String? idLTE,
-          String? title,
-          String? titleNEQ,
-          List<String>? titleIn,
-          List<String>? titleNotIn,
-          String? titleGT,
-          String? titleGTE,
-          String? titleLT,
-          String? titleLTE,
-          String? titleContains,
-          String? titleHasPrefix,
-          String? titleHasSuffix,
-          String? titleEqualFold,
-          String? titleContainsFold,
-          bool? hasPosts,
-          List<Input$PostWhereInput>? hasPostsWith,
-          bool? hasDrafts,
-          List<Input$DraftWhereInput>? hasDraftsWith}) =>
+  call({
+    Input$HashtagWhereInput? not,
+    List<Input$HashtagWhereInput>? and,
+    List<Input$HashtagWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? title,
+    String? titleNEQ,
+    List<String>? titleIn,
+    List<String>? titleNotIn,
+    String? titleGT,
+    String? titleGTE,
+    String? titleLT,
+    String? titleLTE,
+    String? titleContains,
+    String? titleHasPrefix,
+    String? titleHasSuffix,
+    String? titleEqualFold,
+    String? titleContainsFold,
+    bool? hasPosts,
+    List<Input$PostWhereInput>? hasPostsWith,
+    bool? hasDrafts,
+    List<Input$DraftWhereInput>? hasDraftsWith,
+  }) =>
       _res;
   CopyWith$Input$HashtagWhereInput<TRes> get not =>
       CopyWith$Input$HashtagWhereInput.stub(_res);
@@ -6975,9 +7133,10 @@ class _CopyWithStubImpl$Input$HashtagWhereInput<TRes>
 }
 
 class Input$PostOrder {
-  factory Input$PostOrder(
-          {required Enum$OrderDirection direction,
-          required Enum$PostOrderField field}) =>
+  factory Input$PostOrder({
+    required Enum$OrderDirection direction,
+    required Enum$PostOrderField field,
+  }) =>
       Input$PostOrder._({
         r'direction': direction,
         r'field': field,
@@ -7010,7 +7169,10 @@ class Input$PostOrder {
   }
 
   CopyWith$Input$PostOrder<Input$PostOrder> get copyWith =>
-      CopyWith$Input$PostOrder(this, (i) => i);
+      CopyWith$Input$PostOrder(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -7036,24 +7198,34 @@ class Input$PostOrder {
   int get hashCode {
     final l$direction = direction;
     final l$field = field;
-    return Object.hashAll([l$direction, l$field]);
+    return Object.hashAll([
+      l$direction,
+      l$field,
+    ]);
   }
 }
 
 abstract class CopyWith$Input$PostOrder<TRes> {
   factory CopyWith$Input$PostOrder(
-          Input$PostOrder instance, TRes Function(Input$PostOrder) then) =
-      _CopyWithImpl$Input$PostOrder;
+    Input$PostOrder instance,
+    TRes Function(Input$PostOrder) then,
+  ) = _CopyWithImpl$Input$PostOrder;
 
   factory CopyWith$Input$PostOrder.stub(TRes res) =
       _CopyWithStubImpl$Input$PostOrder;
 
-  TRes call({Enum$OrderDirection? direction, Enum$PostOrderField? field});
+  TRes call({
+    Enum$OrderDirection? direction,
+    Enum$PostOrderField? field,
+  });
 }
 
 class _CopyWithImpl$Input$PostOrder<TRes>
     implements CopyWith$Input$PostOrder<TRes> {
-  _CopyWithImpl$Input$PostOrder(this._instance, this._then);
+  _CopyWithImpl$Input$PostOrder(
+    this._instance,
+    this._then,
+  );
 
   final Input$PostOrder _instance;
 
@@ -7061,7 +7233,10 @@ class _CopyWithImpl$Input$PostOrder<TRes>
 
   static const _undefined = {};
 
-  TRes call({Object? direction = _undefined, Object? field = _undefined}) =>
+  TRes call({
+    Object? direction = _undefined,
+    Object? field = _undefined,
+  }) =>
       _then(Input$PostOrder._({
         ..._instance._$data,
         if (direction != _undefined && direction != null)
@@ -7077,97 +7252,102 @@ class _CopyWithStubImpl$Input$PostOrder<TRes>
 
   TRes _res;
 
-  call({Enum$OrderDirection? direction, Enum$PostOrderField? field}) => _res;
+  call({
+    Enum$OrderDirection? direction,
+    Enum$PostOrderField? field,
+  }) =>
+      _res;
 }
 
 class Input$PostWhereInput {
-  factory Input$PostWhereInput(
-          {Input$PostWhereInput? not,
-          List<Input$PostWhereInput>? and,
-          List<Input$PostWhereInput>? or,
-          String? id,
-          String? idNEQ,
-          List<String>? idIn,
-          List<String>? idNotIn,
-          String? idGT,
-          String? idGTE,
-          String? idLT,
-          String? idLTE,
-          String? createTime,
-          String? createTimeNEQ,
-          List<String>? createTimeIn,
-          List<String>? createTimeNotIn,
-          String? createTimeGT,
-          String? createTimeGTE,
-          String? createTimeLT,
-          String? createTimeLTE,
-          String? updateTime,
-          String? updateTimeNEQ,
-          List<String>? updateTimeIn,
-          List<String>? updateTimeNotIn,
-          String? updateTimeGT,
-          String? updateTimeGTE,
-          String? updateTimeLT,
-          String? updateTimeLTE,
-          String? title,
-          String? titleNEQ,
-          List<String>? titleIn,
-          List<String>? titleNotIn,
-          String? titleGT,
-          String? titleGTE,
-          String? titleLT,
-          String? titleLTE,
-          String? titleContains,
-          String? titleHasPrefix,
-          String? titleHasSuffix,
-          String? titleEqualFold,
-          String? titleContainsFold,
-          String? content,
-          String? contentNEQ,
-          List<String>? contentIn,
-          List<String>? contentNotIn,
-          String? contentGT,
-          String? contentGTE,
-          String? contentLT,
-          String? contentLTE,
-          String? contentContains,
-          String? contentHasPrefix,
-          String? contentHasSuffix,
-          String? contentEqualFold,
-          String? contentContainsFold,
-          Enum$PostPostType? type,
-          Enum$PostPostType? typeNEQ,
-          List<Enum$PostPostType>? typeIn,
-          List<Enum$PostPostType>? typeNotIn,
-          bool? spoiled,
-          bool? spoiledNEQ,
-          String? thumbnail,
-          String? thumbnailNEQ,
-          List<String>? thumbnailIn,
-          List<String>? thumbnailNotIn,
-          String? thumbnailGT,
-          String? thumbnailGTE,
-          String? thumbnailLT,
-          String? thumbnailLTE,
-          String? thumbnailContains,
-          String? thumbnailHasPrefix,
-          String? thumbnailHasSuffix,
-          bool? thumbnailIsNil,
-          bool? thumbnailNotNil,
-          String? thumbnailEqualFold,
-          String? thumbnailContainsFold,
-          bool? hasOwner,
-          List<Input$UserWhereInput>? hasOwnerWith,
-          bool? hasHashtags,
-          List<Input$HashtagWhereInput>? hasHashtagsWith,
-          bool? hasWork,
-          List<Input$WorkWhereInput>? hasWorkWith,
-          bool? hasCategory,
-          List<Input$CategoryWhereInput>? hasCategoryWith,
-          bool? hasLikedUsers,
-          List<Input$UserWhereInput>? hasLikedUsersWith,
-          bool? hasBookmarkedUsers,
-          List<Input$UserWhereInput>? hasBookmarkedUsersWith}) =>
+  factory Input$PostWhereInput({
+    Input$PostWhereInput? not,
+    List<Input$PostWhereInput>? and,
+    List<Input$PostWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? createTime,
+    String? createTimeNEQ,
+    List<String>? createTimeIn,
+    List<String>? createTimeNotIn,
+    String? createTimeGT,
+    String? createTimeGTE,
+    String? createTimeLT,
+    String? createTimeLTE,
+    String? updateTime,
+    String? updateTimeNEQ,
+    List<String>? updateTimeIn,
+    List<String>? updateTimeNotIn,
+    String? updateTimeGT,
+    String? updateTimeGTE,
+    String? updateTimeLT,
+    String? updateTimeLTE,
+    String? title,
+    String? titleNEQ,
+    List<String>? titleIn,
+    List<String>? titleNotIn,
+    String? titleGT,
+    String? titleGTE,
+    String? titleLT,
+    String? titleLTE,
+    String? titleContains,
+    String? titleHasPrefix,
+    String? titleHasSuffix,
+    String? titleEqualFold,
+    String? titleContainsFold,
+    String? content,
+    String? contentNEQ,
+    List<String>? contentIn,
+    List<String>? contentNotIn,
+    String? contentGT,
+    String? contentGTE,
+    String? contentLT,
+    String? contentLTE,
+    String? contentContains,
+    String? contentHasPrefix,
+    String? contentHasSuffix,
+    String? contentEqualFold,
+    String? contentContainsFold,
+    Enum$PostPostType? type,
+    Enum$PostPostType? typeNEQ,
+    List<Enum$PostPostType>? typeIn,
+    List<Enum$PostPostType>? typeNotIn,
+    bool? spoiled,
+    bool? spoiledNEQ,
+    String? thumbnail,
+    String? thumbnailNEQ,
+    List<String>? thumbnailIn,
+    List<String>? thumbnailNotIn,
+    String? thumbnailGT,
+    String? thumbnailGTE,
+    String? thumbnailLT,
+    String? thumbnailLTE,
+    String? thumbnailContains,
+    String? thumbnailHasPrefix,
+    String? thumbnailHasSuffix,
+    bool? thumbnailIsNil,
+    bool? thumbnailNotNil,
+    String? thumbnailEqualFold,
+    String? thumbnailContainsFold,
+    bool? hasOwner,
+    List<Input$UserWhereInput>? hasOwnerWith,
+    bool? hasHashtags,
+    List<Input$HashtagWhereInput>? hasHashtagsWith,
+    bool? hasWork,
+    List<Input$WorkWhereInput>? hasWorkWith,
+    bool? hasCategory,
+    List<Input$CategoryWhereInput>? hasCategoryWith,
+    bool? hasLikedUsers,
+    List<Input$UserWhereInput>? hasLikedUsersWith,
+    bool? hasBookmarkedUsers,
+    List<Input$UserWhereInput>? hasBookmarkedUsersWith,
+  }) =>
       Input$PostWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -8133,7 +8313,10 @@ class Input$PostWhereInput {
   }
 
   CopyWith$Input$PostWhereInput<Input$PostWhereInput> get copyWith =>
-      CopyWith$Input$PostWhereInput(this, (i) => i);
+      CopyWith$Input$PostWhereInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -9418,106 +9601,108 @@ class Input$PostWhereInput {
           ? l$hasBookmarkedUsersWith == null
               ? null
               : Object.hashAll(l$hasBookmarkedUsersWith.map((v) => v))
-          : const {}
+          : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$PostWhereInput<TRes> {
-  factory CopyWith$Input$PostWhereInput(Input$PostWhereInput instance,
-          TRes Function(Input$PostWhereInput) then) =
-      _CopyWithImpl$Input$PostWhereInput;
+  factory CopyWith$Input$PostWhereInput(
+    Input$PostWhereInput instance,
+    TRes Function(Input$PostWhereInput) then,
+  ) = _CopyWithImpl$Input$PostWhereInput;
 
   factory CopyWith$Input$PostWhereInput.stub(TRes res) =
       _CopyWithStubImpl$Input$PostWhereInput;
 
-  TRes call(
-      {Input$PostWhereInput? not,
-      List<Input$PostWhereInput>? and,
-      List<Input$PostWhereInput>? or,
-      String? id,
-      String? idNEQ,
-      List<String>? idIn,
-      List<String>? idNotIn,
-      String? idGT,
-      String? idGTE,
-      String? idLT,
-      String? idLTE,
-      String? createTime,
-      String? createTimeNEQ,
-      List<String>? createTimeIn,
-      List<String>? createTimeNotIn,
-      String? createTimeGT,
-      String? createTimeGTE,
-      String? createTimeLT,
-      String? createTimeLTE,
-      String? updateTime,
-      String? updateTimeNEQ,
-      List<String>? updateTimeIn,
-      List<String>? updateTimeNotIn,
-      String? updateTimeGT,
-      String? updateTimeGTE,
-      String? updateTimeLT,
-      String? updateTimeLTE,
-      String? title,
-      String? titleNEQ,
-      List<String>? titleIn,
-      List<String>? titleNotIn,
-      String? titleGT,
-      String? titleGTE,
-      String? titleLT,
-      String? titleLTE,
-      String? titleContains,
-      String? titleHasPrefix,
-      String? titleHasSuffix,
-      String? titleEqualFold,
-      String? titleContainsFold,
-      String? content,
-      String? contentNEQ,
-      List<String>? contentIn,
-      List<String>? contentNotIn,
-      String? contentGT,
-      String? contentGTE,
-      String? contentLT,
-      String? contentLTE,
-      String? contentContains,
-      String? contentHasPrefix,
-      String? contentHasSuffix,
-      String? contentEqualFold,
-      String? contentContainsFold,
-      Enum$PostPostType? type,
-      Enum$PostPostType? typeNEQ,
-      List<Enum$PostPostType>? typeIn,
-      List<Enum$PostPostType>? typeNotIn,
-      bool? spoiled,
-      bool? spoiledNEQ,
-      String? thumbnail,
-      String? thumbnailNEQ,
-      List<String>? thumbnailIn,
-      List<String>? thumbnailNotIn,
-      String? thumbnailGT,
-      String? thumbnailGTE,
-      String? thumbnailLT,
-      String? thumbnailLTE,
-      String? thumbnailContains,
-      String? thumbnailHasPrefix,
-      String? thumbnailHasSuffix,
-      bool? thumbnailIsNil,
-      bool? thumbnailNotNil,
-      String? thumbnailEqualFold,
-      String? thumbnailContainsFold,
-      bool? hasOwner,
-      List<Input$UserWhereInput>? hasOwnerWith,
-      bool? hasHashtags,
-      List<Input$HashtagWhereInput>? hasHashtagsWith,
-      bool? hasWork,
-      List<Input$WorkWhereInput>? hasWorkWith,
-      bool? hasCategory,
-      List<Input$CategoryWhereInput>? hasCategoryWith,
-      bool? hasLikedUsers,
-      List<Input$UserWhereInput>? hasLikedUsersWith,
-      bool? hasBookmarkedUsers,
-      List<Input$UserWhereInput>? hasBookmarkedUsersWith});
+  TRes call({
+    Input$PostWhereInput? not,
+    List<Input$PostWhereInput>? and,
+    List<Input$PostWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? createTime,
+    String? createTimeNEQ,
+    List<String>? createTimeIn,
+    List<String>? createTimeNotIn,
+    String? createTimeGT,
+    String? createTimeGTE,
+    String? createTimeLT,
+    String? createTimeLTE,
+    String? updateTime,
+    String? updateTimeNEQ,
+    List<String>? updateTimeIn,
+    List<String>? updateTimeNotIn,
+    String? updateTimeGT,
+    String? updateTimeGTE,
+    String? updateTimeLT,
+    String? updateTimeLTE,
+    String? title,
+    String? titleNEQ,
+    List<String>? titleIn,
+    List<String>? titleNotIn,
+    String? titleGT,
+    String? titleGTE,
+    String? titleLT,
+    String? titleLTE,
+    String? titleContains,
+    String? titleHasPrefix,
+    String? titleHasSuffix,
+    String? titleEqualFold,
+    String? titleContainsFold,
+    String? content,
+    String? contentNEQ,
+    List<String>? contentIn,
+    List<String>? contentNotIn,
+    String? contentGT,
+    String? contentGTE,
+    String? contentLT,
+    String? contentLTE,
+    String? contentContains,
+    String? contentHasPrefix,
+    String? contentHasSuffix,
+    String? contentEqualFold,
+    String? contentContainsFold,
+    Enum$PostPostType? type,
+    Enum$PostPostType? typeNEQ,
+    List<Enum$PostPostType>? typeIn,
+    List<Enum$PostPostType>? typeNotIn,
+    bool? spoiled,
+    bool? spoiledNEQ,
+    String? thumbnail,
+    String? thumbnailNEQ,
+    List<String>? thumbnailIn,
+    List<String>? thumbnailNotIn,
+    String? thumbnailGT,
+    String? thumbnailGTE,
+    String? thumbnailLT,
+    String? thumbnailLTE,
+    String? thumbnailContains,
+    String? thumbnailHasPrefix,
+    String? thumbnailHasSuffix,
+    bool? thumbnailIsNil,
+    bool? thumbnailNotNil,
+    String? thumbnailEqualFold,
+    String? thumbnailContainsFold,
+    bool? hasOwner,
+    List<Input$UserWhereInput>? hasOwnerWith,
+    bool? hasHashtags,
+    List<Input$HashtagWhereInput>? hasHashtagsWith,
+    bool? hasWork,
+    List<Input$WorkWhereInput>? hasWorkWith,
+    bool? hasCategory,
+    List<Input$CategoryWhereInput>? hasCategoryWith,
+    bool? hasLikedUsers,
+    List<Input$UserWhereInput>? hasLikedUsersWith,
+    bool? hasBookmarkedUsers,
+    List<Input$UserWhereInput>? hasBookmarkedUsersWith,
+  });
   CopyWith$Input$PostWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$PostWhereInput>? Function(
@@ -9557,7 +9742,10 @@ abstract class CopyWith$Input$PostWhereInput<TRes> {
 
 class _CopyWithImpl$Input$PostWhereInput<TRes>
     implements CopyWith$Input$PostWhereInput<TRes> {
-  _CopyWithImpl$Input$PostWhereInput(this._instance, this._then);
+  _CopyWithImpl$Input$PostWhereInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$PostWhereInput _instance;
 
@@ -9565,93 +9753,94 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? not = _undefined,
-          Object? and = _undefined,
-          Object? or = _undefined,
-          Object? id = _undefined,
-          Object? idNEQ = _undefined,
-          Object? idIn = _undefined,
-          Object? idNotIn = _undefined,
-          Object? idGT = _undefined,
-          Object? idGTE = _undefined,
-          Object? idLT = _undefined,
-          Object? idLTE = _undefined,
-          Object? createTime = _undefined,
-          Object? createTimeNEQ = _undefined,
-          Object? createTimeIn = _undefined,
-          Object? createTimeNotIn = _undefined,
-          Object? createTimeGT = _undefined,
-          Object? createTimeGTE = _undefined,
-          Object? createTimeLT = _undefined,
-          Object? createTimeLTE = _undefined,
-          Object? updateTime = _undefined,
-          Object? updateTimeNEQ = _undefined,
-          Object? updateTimeIn = _undefined,
-          Object? updateTimeNotIn = _undefined,
-          Object? updateTimeGT = _undefined,
-          Object? updateTimeGTE = _undefined,
-          Object? updateTimeLT = _undefined,
-          Object? updateTimeLTE = _undefined,
-          Object? title = _undefined,
-          Object? titleNEQ = _undefined,
-          Object? titleIn = _undefined,
-          Object? titleNotIn = _undefined,
-          Object? titleGT = _undefined,
-          Object? titleGTE = _undefined,
-          Object? titleLT = _undefined,
-          Object? titleLTE = _undefined,
-          Object? titleContains = _undefined,
-          Object? titleHasPrefix = _undefined,
-          Object? titleHasSuffix = _undefined,
-          Object? titleEqualFold = _undefined,
-          Object? titleContainsFold = _undefined,
-          Object? content = _undefined,
-          Object? contentNEQ = _undefined,
-          Object? contentIn = _undefined,
-          Object? contentNotIn = _undefined,
-          Object? contentGT = _undefined,
-          Object? contentGTE = _undefined,
-          Object? contentLT = _undefined,
-          Object? contentLTE = _undefined,
-          Object? contentContains = _undefined,
-          Object? contentHasPrefix = _undefined,
-          Object? contentHasSuffix = _undefined,
-          Object? contentEqualFold = _undefined,
-          Object? contentContainsFold = _undefined,
-          Object? type = _undefined,
-          Object? typeNEQ = _undefined,
-          Object? typeIn = _undefined,
-          Object? typeNotIn = _undefined,
-          Object? spoiled = _undefined,
-          Object? spoiledNEQ = _undefined,
-          Object? thumbnail = _undefined,
-          Object? thumbnailNEQ = _undefined,
-          Object? thumbnailIn = _undefined,
-          Object? thumbnailNotIn = _undefined,
-          Object? thumbnailGT = _undefined,
-          Object? thumbnailGTE = _undefined,
-          Object? thumbnailLT = _undefined,
-          Object? thumbnailLTE = _undefined,
-          Object? thumbnailContains = _undefined,
-          Object? thumbnailHasPrefix = _undefined,
-          Object? thumbnailHasSuffix = _undefined,
-          Object? thumbnailIsNil = _undefined,
-          Object? thumbnailNotNil = _undefined,
-          Object? thumbnailEqualFold = _undefined,
-          Object? thumbnailContainsFold = _undefined,
-          Object? hasOwner = _undefined,
-          Object? hasOwnerWith = _undefined,
-          Object? hasHashtags = _undefined,
-          Object? hasHashtagsWith = _undefined,
-          Object? hasWork = _undefined,
-          Object? hasWorkWith = _undefined,
-          Object? hasCategory = _undefined,
-          Object? hasCategoryWith = _undefined,
-          Object? hasLikedUsers = _undefined,
-          Object? hasLikedUsersWith = _undefined,
-          Object? hasBookmarkedUsers = _undefined,
-          Object? hasBookmarkedUsersWith = _undefined}) =>
+  TRes call({
+    Object? not = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? id = _undefined,
+    Object? idNEQ = _undefined,
+    Object? idIn = _undefined,
+    Object? idNotIn = _undefined,
+    Object? idGT = _undefined,
+    Object? idGTE = _undefined,
+    Object? idLT = _undefined,
+    Object? idLTE = _undefined,
+    Object? createTime = _undefined,
+    Object? createTimeNEQ = _undefined,
+    Object? createTimeIn = _undefined,
+    Object? createTimeNotIn = _undefined,
+    Object? createTimeGT = _undefined,
+    Object? createTimeGTE = _undefined,
+    Object? createTimeLT = _undefined,
+    Object? createTimeLTE = _undefined,
+    Object? updateTime = _undefined,
+    Object? updateTimeNEQ = _undefined,
+    Object? updateTimeIn = _undefined,
+    Object? updateTimeNotIn = _undefined,
+    Object? updateTimeGT = _undefined,
+    Object? updateTimeGTE = _undefined,
+    Object? updateTimeLT = _undefined,
+    Object? updateTimeLTE = _undefined,
+    Object? title = _undefined,
+    Object? titleNEQ = _undefined,
+    Object? titleIn = _undefined,
+    Object? titleNotIn = _undefined,
+    Object? titleGT = _undefined,
+    Object? titleGTE = _undefined,
+    Object? titleLT = _undefined,
+    Object? titleLTE = _undefined,
+    Object? titleContains = _undefined,
+    Object? titleHasPrefix = _undefined,
+    Object? titleHasSuffix = _undefined,
+    Object? titleEqualFold = _undefined,
+    Object? titleContainsFold = _undefined,
+    Object? content = _undefined,
+    Object? contentNEQ = _undefined,
+    Object? contentIn = _undefined,
+    Object? contentNotIn = _undefined,
+    Object? contentGT = _undefined,
+    Object? contentGTE = _undefined,
+    Object? contentLT = _undefined,
+    Object? contentLTE = _undefined,
+    Object? contentContains = _undefined,
+    Object? contentHasPrefix = _undefined,
+    Object? contentHasSuffix = _undefined,
+    Object? contentEqualFold = _undefined,
+    Object? contentContainsFold = _undefined,
+    Object? type = _undefined,
+    Object? typeNEQ = _undefined,
+    Object? typeIn = _undefined,
+    Object? typeNotIn = _undefined,
+    Object? spoiled = _undefined,
+    Object? spoiledNEQ = _undefined,
+    Object? thumbnail = _undefined,
+    Object? thumbnailNEQ = _undefined,
+    Object? thumbnailIn = _undefined,
+    Object? thumbnailNotIn = _undefined,
+    Object? thumbnailGT = _undefined,
+    Object? thumbnailGTE = _undefined,
+    Object? thumbnailLT = _undefined,
+    Object? thumbnailLTE = _undefined,
+    Object? thumbnailContains = _undefined,
+    Object? thumbnailHasPrefix = _undefined,
+    Object? thumbnailHasSuffix = _undefined,
+    Object? thumbnailIsNil = _undefined,
+    Object? thumbnailNotNil = _undefined,
+    Object? thumbnailEqualFold = _undefined,
+    Object? thumbnailContainsFold = _undefined,
+    Object? hasOwner = _undefined,
+    Object? hasOwnerWith = _undefined,
+    Object? hasHashtags = _undefined,
+    Object? hasHashtagsWith = _undefined,
+    Object? hasWork = _undefined,
+    Object? hasWorkWith = _undefined,
+    Object? hasCategory = _undefined,
+    Object? hasCategoryWith = _undefined,
+    Object? hasLikedUsers = _undefined,
+    Object? hasLikedUsersWith = _undefined,
+    Object? hasBookmarkedUsers = _undefined,
+    Object? hasBookmarkedUsersWith = _undefined,
+  }) =>
       _then(Input$PostWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$PostWhereInput?),
@@ -9806,27 +9995,31 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
                       CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
               _fn) =>
       call(
-          and: _fn(_instance.and
-                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
-              ?.toList());
+          and: _fn(_instance.and?.map((e) => CopyWith$Input$PostWhereInput(
+                e,
+                (i) => i,
+              )))?.toList());
   TRes or(
           Iterable<Input$PostWhereInput>? Function(
                   Iterable<
                       CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
               _fn) =>
       call(
-          or: _fn(_instance.or
-                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
-              ?.toList());
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$PostWhereInput(
+                e,
+                (i) => i,
+              )))?.toList());
   TRes hasOwnerWith(
           Iterable<Input$UserWhereInput>? Function(
                   Iterable<
                       CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
               _fn) =>
       call(
-          hasOwnerWith: _fn(_instance.hasOwnerWith
-                  ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
-              ?.toList());
+          hasOwnerWith: _fn(
+              _instance.hasOwnerWith?.map((e) => CopyWith$Input$UserWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasHashtagsWith(
           Iterable<Input$HashtagWhereInput>? Function(
                   Iterable<
@@ -9835,17 +10028,21 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
               _fn) =>
       call(
           hasHashtagsWith: _fn(_instance.hasHashtagsWith
-                  ?.map((e) => CopyWith$Input$HashtagWhereInput(e, (i) => i)))
-              ?.toList());
+              ?.map((e) => CopyWith$Input$HashtagWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasWorkWith(
           Iterable<Input$WorkWhereInput>? Function(
                   Iterable<
                       CopyWith$Input$WorkWhereInput<Input$WorkWhereInput>>?)
               _fn) =>
       call(
-          hasWorkWith: _fn(_instance.hasWorkWith
-                  ?.map((e) => CopyWith$Input$WorkWhereInput(e, (i) => i)))
-              ?.toList());
+          hasWorkWith: _fn(
+              _instance.hasWorkWith?.map((e) => CopyWith$Input$WorkWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasCategoryWith(
           Iterable<Input$CategoryWhereInput>? Function(
                   Iterable<
@@ -9854,8 +10051,10 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
               _fn) =>
       call(
           hasCategoryWith: _fn(_instance.hasCategoryWith
-                  ?.map((e) => CopyWith$Input$CategoryWhereInput(e, (i) => i)))
-              ?.toList());
+              ?.map((e) => CopyWith$Input$CategoryWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasLikedUsersWith(
           Iterable<Input$UserWhereInput>? Function(
                   Iterable<
@@ -9863,8 +10062,10 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
               _fn) =>
       call(
           hasLikedUsersWith: _fn(_instance.hasLikedUsersWith
-                  ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
-              ?.toList());
+              ?.map((e) => CopyWith$Input$UserWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasBookmarkedUsersWith(
           Iterable<Input$UserWhereInput>? Function(
                   Iterable<
@@ -9872,8 +10073,10 @@ class _CopyWithImpl$Input$PostWhereInput<TRes>
               _fn) =>
       call(
           hasBookmarkedUsersWith: _fn(_instance.hasBookmarkedUsersWith
-                  ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
-              ?.toList());
+              ?.map((e) => CopyWith$Input$UserWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
 }
 
 class _CopyWithStubImpl$Input$PostWhereInput<TRes>
@@ -9882,93 +10085,94 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
 
   TRes _res;
 
-  call(
-          {Input$PostWhereInput? not,
-          List<Input$PostWhereInput>? and,
-          List<Input$PostWhereInput>? or,
-          String? id,
-          String? idNEQ,
-          List<String>? idIn,
-          List<String>? idNotIn,
-          String? idGT,
-          String? idGTE,
-          String? idLT,
-          String? idLTE,
-          String? createTime,
-          String? createTimeNEQ,
-          List<String>? createTimeIn,
-          List<String>? createTimeNotIn,
-          String? createTimeGT,
-          String? createTimeGTE,
-          String? createTimeLT,
-          String? createTimeLTE,
-          String? updateTime,
-          String? updateTimeNEQ,
-          List<String>? updateTimeIn,
-          List<String>? updateTimeNotIn,
-          String? updateTimeGT,
-          String? updateTimeGTE,
-          String? updateTimeLT,
-          String? updateTimeLTE,
-          String? title,
-          String? titleNEQ,
-          List<String>? titleIn,
-          List<String>? titleNotIn,
-          String? titleGT,
-          String? titleGTE,
-          String? titleLT,
-          String? titleLTE,
-          String? titleContains,
-          String? titleHasPrefix,
-          String? titleHasSuffix,
-          String? titleEqualFold,
-          String? titleContainsFold,
-          String? content,
-          String? contentNEQ,
-          List<String>? contentIn,
-          List<String>? contentNotIn,
-          String? contentGT,
-          String? contentGTE,
-          String? contentLT,
-          String? contentLTE,
-          String? contentContains,
-          String? contentHasPrefix,
-          String? contentHasSuffix,
-          String? contentEqualFold,
-          String? contentContainsFold,
-          Enum$PostPostType? type,
-          Enum$PostPostType? typeNEQ,
-          List<Enum$PostPostType>? typeIn,
-          List<Enum$PostPostType>? typeNotIn,
-          bool? spoiled,
-          bool? spoiledNEQ,
-          String? thumbnail,
-          String? thumbnailNEQ,
-          List<String>? thumbnailIn,
-          List<String>? thumbnailNotIn,
-          String? thumbnailGT,
-          String? thumbnailGTE,
-          String? thumbnailLT,
-          String? thumbnailLTE,
-          String? thumbnailContains,
-          String? thumbnailHasPrefix,
-          String? thumbnailHasSuffix,
-          bool? thumbnailIsNil,
-          bool? thumbnailNotNil,
-          String? thumbnailEqualFold,
-          String? thumbnailContainsFold,
-          bool? hasOwner,
-          List<Input$UserWhereInput>? hasOwnerWith,
-          bool? hasHashtags,
-          List<Input$HashtagWhereInput>? hasHashtagsWith,
-          bool? hasWork,
-          List<Input$WorkWhereInput>? hasWorkWith,
-          bool? hasCategory,
-          List<Input$CategoryWhereInput>? hasCategoryWith,
-          bool? hasLikedUsers,
-          List<Input$UserWhereInput>? hasLikedUsersWith,
-          bool? hasBookmarkedUsers,
-          List<Input$UserWhereInput>? hasBookmarkedUsersWith}) =>
+  call({
+    Input$PostWhereInput? not,
+    List<Input$PostWhereInput>? and,
+    List<Input$PostWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? createTime,
+    String? createTimeNEQ,
+    List<String>? createTimeIn,
+    List<String>? createTimeNotIn,
+    String? createTimeGT,
+    String? createTimeGTE,
+    String? createTimeLT,
+    String? createTimeLTE,
+    String? updateTime,
+    String? updateTimeNEQ,
+    List<String>? updateTimeIn,
+    List<String>? updateTimeNotIn,
+    String? updateTimeGT,
+    String? updateTimeGTE,
+    String? updateTimeLT,
+    String? updateTimeLTE,
+    String? title,
+    String? titleNEQ,
+    List<String>? titleIn,
+    List<String>? titleNotIn,
+    String? titleGT,
+    String? titleGTE,
+    String? titleLT,
+    String? titleLTE,
+    String? titleContains,
+    String? titleHasPrefix,
+    String? titleHasSuffix,
+    String? titleEqualFold,
+    String? titleContainsFold,
+    String? content,
+    String? contentNEQ,
+    List<String>? contentIn,
+    List<String>? contentNotIn,
+    String? contentGT,
+    String? contentGTE,
+    String? contentLT,
+    String? contentLTE,
+    String? contentContains,
+    String? contentHasPrefix,
+    String? contentHasSuffix,
+    String? contentEqualFold,
+    String? contentContainsFold,
+    Enum$PostPostType? type,
+    Enum$PostPostType? typeNEQ,
+    List<Enum$PostPostType>? typeIn,
+    List<Enum$PostPostType>? typeNotIn,
+    bool? spoiled,
+    bool? spoiledNEQ,
+    String? thumbnail,
+    String? thumbnailNEQ,
+    List<String>? thumbnailIn,
+    List<String>? thumbnailNotIn,
+    String? thumbnailGT,
+    String? thumbnailGTE,
+    String? thumbnailLT,
+    String? thumbnailLTE,
+    String? thumbnailContains,
+    String? thumbnailHasPrefix,
+    String? thumbnailHasSuffix,
+    bool? thumbnailIsNil,
+    bool? thumbnailNotNil,
+    String? thumbnailEqualFold,
+    String? thumbnailContainsFold,
+    bool? hasOwner,
+    List<Input$UserWhereInput>? hasOwnerWith,
+    bool? hasHashtags,
+    List<Input$HashtagWhereInput>? hasHashtagsWith,
+    bool? hasWork,
+    List<Input$WorkWhereInput>? hasWorkWith,
+    bool? hasCategory,
+    List<Input$CategoryWhereInput>? hasCategoryWith,
+    bool? hasLikedUsers,
+    List<Input$UserWhereInput>? hasLikedUsersWith,
+    bool? hasBookmarkedUsers,
+    List<Input$UserWhereInput>? hasBookmarkedUsersWith,
+  }) =>
       _res;
   CopyWith$Input$PostWhereInput<TRes> get not =>
       CopyWith$Input$PostWhereInput.stub(_res);
@@ -9983,22 +10187,23 @@ class _CopyWithStubImpl$Input$PostWhereInput<TRes>
 }
 
 class Input$UpdateDraftInput {
-  factory Input$UpdateDraftInput(
-          {String? updateTime,
-          String? praiseTitle,
-          String? letterTitle,
-          String? praiseContent,
-          String? letterContent,
-          bool? praiseSpoiled,
-          bool? letterSpoiled,
-          bool? clearOwner,
-          String? ownerID,
-          List<String>? addHashtagIDs,
-          List<String>? removeHashtagIDs,
-          bool? clearWork,
-          String? workID,
-          bool? clearCategory,
-          String? categoryID}) =>
+  factory Input$UpdateDraftInput({
+    String? updateTime,
+    String? praiseTitle,
+    String? letterTitle,
+    String? praiseContent,
+    String? letterContent,
+    bool? praiseSpoiled,
+    bool? letterSpoiled,
+    bool? clearOwner,
+    String? ownerID,
+    List<String>? addHashtagIDs,
+    List<String>? removeHashtagIDs,
+    bool? clearWork,
+    String? workID,
+    bool? clearCategory,
+    String? categoryID,
+  }) =>
       Input$UpdateDraftInput._({
         if (updateTime != null) r'updateTime': updateTime,
         if (praiseTitle != null) r'praiseTitle': praiseTitle,
@@ -10173,7 +10378,10 @@ class Input$UpdateDraftInput {
   }
 
   CopyWith$Input$UpdateDraftInput<Input$UpdateDraftInput> get copyWith =>
-      CopyWith$Input$UpdateDraftInput(this, (i) => i);
+      CopyWith$Input$UpdateDraftInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -10381,40 +10589,45 @@ class Input$UpdateDraftInput {
       _$data.containsKey('clearWork') ? l$clearWork : const {},
       _$data.containsKey('workID') ? l$workID : const {},
       _$data.containsKey('clearCategory') ? l$clearCategory : const {},
-      _$data.containsKey('categoryID') ? l$categoryID : const {}
+      _$data.containsKey('categoryID') ? l$categoryID : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$UpdateDraftInput<TRes> {
-  factory CopyWith$Input$UpdateDraftInput(Input$UpdateDraftInput instance,
-          TRes Function(Input$UpdateDraftInput) then) =
-      _CopyWithImpl$Input$UpdateDraftInput;
+  factory CopyWith$Input$UpdateDraftInput(
+    Input$UpdateDraftInput instance,
+    TRes Function(Input$UpdateDraftInput) then,
+  ) = _CopyWithImpl$Input$UpdateDraftInput;
 
   factory CopyWith$Input$UpdateDraftInput.stub(TRes res) =
       _CopyWithStubImpl$Input$UpdateDraftInput;
 
-  TRes call(
-      {String? updateTime,
-      String? praiseTitle,
-      String? letterTitle,
-      String? praiseContent,
-      String? letterContent,
-      bool? praiseSpoiled,
-      bool? letterSpoiled,
-      bool? clearOwner,
-      String? ownerID,
-      List<String>? addHashtagIDs,
-      List<String>? removeHashtagIDs,
-      bool? clearWork,
-      String? workID,
-      bool? clearCategory,
-      String? categoryID});
+  TRes call({
+    String? updateTime,
+    String? praiseTitle,
+    String? letterTitle,
+    String? praiseContent,
+    String? letterContent,
+    bool? praiseSpoiled,
+    bool? letterSpoiled,
+    bool? clearOwner,
+    String? ownerID,
+    List<String>? addHashtagIDs,
+    List<String>? removeHashtagIDs,
+    bool? clearWork,
+    String? workID,
+    bool? clearCategory,
+    String? categoryID,
+  });
 }
 
 class _CopyWithImpl$Input$UpdateDraftInput<TRes>
     implements CopyWith$Input$UpdateDraftInput<TRes> {
-  _CopyWithImpl$Input$UpdateDraftInput(this._instance, this._then);
+  _CopyWithImpl$Input$UpdateDraftInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$UpdateDraftInput _instance;
 
@@ -10422,22 +10635,23 @@ class _CopyWithImpl$Input$UpdateDraftInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? updateTime = _undefined,
-          Object? praiseTitle = _undefined,
-          Object? letterTitle = _undefined,
-          Object? praiseContent = _undefined,
-          Object? letterContent = _undefined,
-          Object? praiseSpoiled = _undefined,
-          Object? letterSpoiled = _undefined,
-          Object? clearOwner = _undefined,
-          Object? ownerID = _undefined,
-          Object? addHashtagIDs = _undefined,
-          Object? removeHashtagIDs = _undefined,
-          Object? clearWork = _undefined,
-          Object? workID = _undefined,
-          Object? clearCategory = _undefined,
-          Object? categoryID = _undefined}) =>
+  TRes call({
+    Object? updateTime = _undefined,
+    Object? praiseTitle = _undefined,
+    Object? letterTitle = _undefined,
+    Object? praiseContent = _undefined,
+    Object? letterContent = _undefined,
+    Object? praiseSpoiled = _undefined,
+    Object? letterSpoiled = _undefined,
+    Object? clearOwner = _undefined,
+    Object? ownerID = _undefined,
+    Object? addHashtagIDs = _undefined,
+    Object? removeHashtagIDs = _undefined,
+    Object? clearWork = _undefined,
+    Object? workID = _undefined,
+    Object? clearCategory = _undefined,
+    Object? categoryID = _undefined,
+  }) =>
       _then(Input$UpdateDraftInput._({
         ..._instance._$data,
         if (updateTime != _undefined) 'updateTime': (updateTime as String?),
@@ -10471,32 +10685,34 @@ class _CopyWithStubImpl$Input$UpdateDraftInput<TRes>
 
   TRes _res;
 
-  call(
-          {String? updateTime,
-          String? praiseTitle,
-          String? letterTitle,
-          String? praiseContent,
-          String? letterContent,
-          bool? praiseSpoiled,
-          bool? letterSpoiled,
-          bool? clearOwner,
-          String? ownerID,
-          List<String>? addHashtagIDs,
-          List<String>? removeHashtagIDs,
-          bool? clearWork,
-          String? workID,
-          bool? clearCategory,
-          String? categoryID}) =>
+  call({
+    String? updateTime,
+    String? praiseTitle,
+    String? letterTitle,
+    String? praiseContent,
+    String? letterContent,
+    bool? praiseSpoiled,
+    bool? letterSpoiled,
+    bool? clearOwner,
+    String? ownerID,
+    List<String>? addHashtagIDs,
+    List<String>? removeHashtagIDs,
+    bool? clearWork,
+    String? workID,
+    bool? clearCategory,
+    String? categoryID,
+  }) =>
       _res;
 }
 
 class Input$UpdateHashtagInput {
-  factory Input$UpdateHashtagInput(
-          {String? title,
-          List<String>? addPostIDs,
-          List<String>? removePostIDs,
-          List<String>? addDraftIDs,
-          List<String>? removeDraftIDs}) =>
+  factory Input$UpdateHashtagInput({
+    String? title,
+    List<String>? addPostIDs,
+    List<String>? removePostIDs,
+    List<String>? addDraftIDs,
+    List<String>? removeDraftIDs,
+  }) =>
       Input$UpdateHashtagInput._({
         if (title != null) r'title': title,
         if (addPostIDs != null) r'addPostIDs': addPostIDs,
@@ -10572,7 +10788,10 @@ class Input$UpdateHashtagInput {
   }
 
   CopyWith$Input$UpdateHashtagInput<Input$UpdateHashtagInput> get copyWith =>
-      CopyWith$Input$UpdateHashtagInput(this, (i) => i);
+      CopyWith$Input$UpdateHashtagInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -10701,30 +10920,35 @@ class Input$UpdateHashtagInput {
           ? l$removeDraftIDs == null
               ? null
               : Object.hashAll(l$removeDraftIDs.map((v) => v))
-          : const {}
+          : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$UpdateHashtagInput<TRes> {
-  factory CopyWith$Input$UpdateHashtagInput(Input$UpdateHashtagInput instance,
-          TRes Function(Input$UpdateHashtagInput) then) =
-      _CopyWithImpl$Input$UpdateHashtagInput;
+  factory CopyWith$Input$UpdateHashtagInput(
+    Input$UpdateHashtagInput instance,
+    TRes Function(Input$UpdateHashtagInput) then,
+  ) = _CopyWithImpl$Input$UpdateHashtagInput;
 
   factory CopyWith$Input$UpdateHashtagInput.stub(TRes res) =
       _CopyWithStubImpl$Input$UpdateHashtagInput;
 
-  TRes call(
-      {String? title,
-      List<String>? addPostIDs,
-      List<String>? removePostIDs,
-      List<String>? addDraftIDs,
-      List<String>? removeDraftIDs});
+  TRes call({
+    String? title,
+    List<String>? addPostIDs,
+    List<String>? removePostIDs,
+    List<String>? addDraftIDs,
+    List<String>? removeDraftIDs,
+  });
 }
 
 class _CopyWithImpl$Input$UpdateHashtagInput<TRes>
     implements CopyWith$Input$UpdateHashtagInput<TRes> {
-  _CopyWithImpl$Input$UpdateHashtagInput(this._instance, this._then);
+  _CopyWithImpl$Input$UpdateHashtagInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$UpdateHashtagInput _instance;
 
@@ -10732,12 +10956,13 @@ class _CopyWithImpl$Input$UpdateHashtagInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? title = _undefined,
-          Object? addPostIDs = _undefined,
-          Object? removePostIDs = _undefined,
-          Object? addDraftIDs = _undefined,
-          Object? removeDraftIDs = _undefined}) =>
+  TRes call({
+    Object? title = _undefined,
+    Object? addPostIDs = _undefined,
+    Object? removePostIDs = _undefined,
+    Object? addDraftIDs = _undefined,
+    Object? removeDraftIDs = _undefined,
+  }) =>
       _then(Input$UpdateHashtagInput._({
         ..._instance._$data,
         if (title != _undefined) 'title': (title as String?),
@@ -10758,36 +10983,38 @@ class _CopyWithStubImpl$Input$UpdateHashtagInput<TRes>
 
   TRes _res;
 
-  call(
-          {String? title,
-          List<String>? addPostIDs,
-          List<String>? removePostIDs,
-          List<String>? addDraftIDs,
-          List<String>? removeDraftIDs}) =>
+  call({
+    String? title,
+    List<String>? addPostIDs,
+    List<String>? removePostIDs,
+    List<String>? addDraftIDs,
+    List<String>? removeDraftIDs,
+  }) =>
       _res;
 }
 
 class Input$UpdatePostInput {
-  factory Input$UpdatePostInput(
-          {String? updateTime,
-          String? title,
-          String? content,
-          Enum$PostPostType? type,
-          bool? spoiled,
-          bool? clearThumbnail,
-          String? thumbnail,
-          bool? clearOwner,
-          String? ownerID,
-          List<String>? addHashtagIDs,
-          List<String>? removeHashtagIDs,
-          bool? clearWork,
-          String? workID,
-          bool? clearCategory,
-          String? categoryID,
-          List<String>? addLikedUserIDs,
-          List<String>? removeLikedUserIDs,
-          List<String>? addBookmarkedUserIDs,
-          List<String>? removeBookmarkedUserIDs}) =>
+  factory Input$UpdatePostInput({
+    String? updateTime,
+    String? title,
+    String? content,
+    Enum$PostPostType? type,
+    bool? spoiled,
+    bool? clearThumbnail,
+    String? thumbnail,
+    bool? clearOwner,
+    String? ownerID,
+    List<String>? addHashtagIDs,
+    List<String>? removeHashtagIDs,
+    bool? clearWork,
+    String? workID,
+    bool? clearCategory,
+    String? categoryID,
+    List<String>? addLikedUserIDs,
+    List<String>? removeLikedUserIDs,
+    List<String>? addBookmarkedUserIDs,
+    List<String>? removeBookmarkedUserIDs,
+  }) =>
       Input$UpdatePostInput._({
         if (updateTime != null) r'updateTime': updateTime,
         if (title != null) r'title': title,
@@ -11027,7 +11254,10 @@ class Input$UpdatePostInput {
   }
 
   CopyWith$Input$UpdatePostInput<Input$UpdatePostInput> get copyWith =>
-      CopyWith$Input$UpdatePostInput(this, (i) => i);
+      CopyWith$Input$UpdatePostInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -11339,44 +11569,49 @@ class Input$UpdatePostInput {
           ? l$removeBookmarkedUserIDs == null
               ? null
               : Object.hashAll(l$removeBookmarkedUserIDs.map((v) => v))
-          : const {}
+          : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$UpdatePostInput<TRes> {
-  factory CopyWith$Input$UpdatePostInput(Input$UpdatePostInput instance,
-          TRes Function(Input$UpdatePostInput) then) =
-      _CopyWithImpl$Input$UpdatePostInput;
+  factory CopyWith$Input$UpdatePostInput(
+    Input$UpdatePostInput instance,
+    TRes Function(Input$UpdatePostInput) then,
+  ) = _CopyWithImpl$Input$UpdatePostInput;
 
   factory CopyWith$Input$UpdatePostInput.stub(TRes res) =
       _CopyWithStubImpl$Input$UpdatePostInput;
 
-  TRes call(
-      {String? updateTime,
-      String? title,
-      String? content,
-      Enum$PostPostType? type,
-      bool? spoiled,
-      bool? clearThumbnail,
-      String? thumbnail,
-      bool? clearOwner,
-      String? ownerID,
-      List<String>? addHashtagIDs,
-      List<String>? removeHashtagIDs,
-      bool? clearWork,
-      String? workID,
-      bool? clearCategory,
-      String? categoryID,
-      List<String>? addLikedUserIDs,
-      List<String>? removeLikedUserIDs,
-      List<String>? addBookmarkedUserIDs,
-      List<String>? removeBookmarkedUserIDs});
+  TRes call({
+    String? updateTime,
+    String? title,
+    String? content,
+    Enum$PostPostType? type,
+    bool? spoiled,
+    bool? clearThumbnail,
+    String? thumbnail,
+    bool? clearOwner,
+    String? ownerID,
+    List<String>? addHashtagIDs,
+    List<String>? removeHashtagIDs,
+    bool? clearWork,
+    String? workID,
+    bool? clearCategory,
+    String? categoryID,
+    List<String>? addLikedUserIDs,
+    List<String>? removeLikedUserIDs,
+    List<String>? addBookmarkedUserIDs,
+    List<String>? removeBookmarkedUserIDs,
+  });
 }
 
 class _CopyWithImpl$Input$UpdatePostInput<TRes>
     implements CopyWith$Input$UpdatePostInput<TRes> {
-  _CopyWithImpl$Input$UpdatePostInput(this._instance, this._then);
+  _CopyWithImpl$Input$UpdatePostInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$UpdatePostInput _instance;
 
@@ -11384,26 +11619,27 @@ class _CopyWithImpl$Input$UpdatePostInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? updateTime = _undefined,
-          Object? title = _undefined,
-          Object? content = _undefined,
-          Object? type = _undefined,
-          Object? spoiled = _undefined,
-          Object? clearThumbnail = _undefined,
-          Object? thumbnail = _undefined,
-          Object? clearOwner = _undefined,
-          Object? ownerID = _undefined,
-          Object? addHashtagIDs = _undefined,
-          Object? removeHashtagIDs = _undefined,
-          Object? clearWork = _undefined,
-          Object? workID = _undefined,
-          Object? clearCategory = _undefined,
-          Object? categoryID = _undefined,
-          Object? addLikedUserIDs = _undefined,
-          Object? removeLikedUserIDs = _undefined,
-          Object? addBookmarkedUserIDs = _undefined,
-          Object? removeBookmarkedUserIDs = _undefined}) =>
+  TRes call({
+    Object? updateTime = _undefined,
+    Object? title = _undefined,
+    Object? content = _undefined,
+    Object? type = _undefined,
+    Object? spoiled = _undefined,
+    Object? clearThumbnail = _undefined,
+    Object? thumbnail = _undefined,
+    Object? clearOwner = _undefined,
+    Object? ownerID = _undefined,
+    Object? addHashtagIDs = _undefined,
+    Object? removeHashtagIDs = _undefined,
+    Object? clearWork = _undefined,
+    Object? workID = _undefined,
+    Object? clearCategory = _undefined,
+    Object? categoryID = _undefined,
+    Object? addLikedUserIDs = _undefined,
+    Object? removeLikedUserIDs = _undefined,
+    Object? addBookmarkedUserIDs = _undefined,
+    Object? removeBookmarkedUserIDs = _undefined,
+  }) =>
       _then(Input$UpdatePostInput._({
         ..._instance._$data,
         if (updateTime != _undefined) 'updateTime': (updateTime as String?),
@@ -11442,56 +11678,58 @@ class _CopyWithStubImpl$Input$UpdatePostInput<TRes>
 
   TRes _res;
 
-  call(
-          {String? updateTime,
-          String? title,
-          String? content,
-          Enum$PostPostType? type,
-          bool? spoiled,
-          bool? clearThumbnail,
-          String? thumbnail,
-          bool? clearOwner,
-          String? ownerID,
-          List<String>? addHashtagIDs,
-          List<String>? removeHashtagIDs,
-          bool? clearWork,
-          String? workID,
-          bool? clearCategory,
-          String? categoryID,
-          List<String>? addLikedUserIDs,
-          List<String>? removeLikedUserIDs,
-          List<String>? addBookmarkedUserIDs,
-          List<String>? removeBookmarkedUserIDs}) =>
+  call({
+    String? updateTime,
+    String? title,
+    String? content,
+    Enum$PostPostType? type,
+    bool? spoiled,
+    bool? clearThumbnail,
+    String? thumbnail,
+    bool? clearOwner,
+    String? ownerID,
+    List<String>? addHashtagIDs,
+    List<String>? removeHashtagIDs,
+    bool? clearWork,
+    String? workID,
+    bool? clearCategory,
+    String? categoryID,
+    List<String>? addLikedUserIDs,
+    List<String>? removeLikedUserIDs,
+    List<String>? addBookmarkedUserIDs,
+    List<String>? removeBookmarkedUserIDs,
+  }) =>
       _res;
 }
 
 class Input$UpdateUserInput {
-  factory Input$UpdateUserInput(
-          {String? name,
-          bool? clearUsername,
-          String? username,
-          bool? clearProfile,
-          String? profile,
-          bool? clearAvatarURL,
-          String? avatarURL,
-          bool? clearAge,
-          int? age,
-          bool? clearGender,
-          int? gender,
-          bool? clearInterests,
-          List<int>? interests,
-          List<String>? addPostIDs,
-          List<String>? removePostIDs,
-          List<String>? addLikedPostIDs,
-          List<String>? removeLikedPostIDs,
-          List<String>? addBookmarkedPostIDs,
-          List<String>? removeBookmarkedPostIDs,
-          List<String>? addFollowerIDs,
-          List<String>? removeFollowerIDs,
-          List<String>? addFollowingIDs,
-          List<String>? removeFollowingIDs,
-          List<String>? addDraftIDs,
-          List<String>? removeDraftIDs}) =>
+  factory Input$UpdateUserInput({
+    String? name,
+    bool? clearUsername,
+    String? username,
+    bool? clearProfile,
+    String? profile,
+    bool? clearAvatarURL,
+    String? avatarURL,
+    bool? clearAge,
+    int? age,
+    bool? clearGender,
+    int? gender,
+    bool? clearInterests,
+    List<int>? interests,
+    List<String>? addPostIDs,
+    List<String>? removePostIDs,
+    List<String>? addLikedPostIDs,
+    List<String>? removeLikedPostIDs,
+    List<String>? addBookmarkedPostIDs,
+    List<String>? removeBookmarkedPostIDs,
+    List<String>? addFollowerIDs,
+    List<String>? removeFollowerIDs,
+    List<String>? addFollowingIDs,
+    List<String>? removeFollowingIDs,
+    List<String>? addDraftIDs,
+    List<String>? removeDraftIDs,
+  }) =>
       Input$UpdateUserInput._({
         if (name != null) r'name': name,
         if (clearUsername != null) r'clearUsername': clearUsername,
@@ -11807,7 +12045,10 @@ class Input$UpdateUserInput {
   }
 
   CopyWith$Input$UpdateUserInput<Input$UpdateUserInput> get copyWith =>
-      CopyWith$Input$UpdateUserInput(this, (i) => i);
+      CopyWith$Input$UpdateUserInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -12292,50 +12533,55 @@ class Input$UpdateUserInput {
           ? l$removeDraftIDs == null
               ? null
               : Object.hashAll(l$removeDraftIDs.map((v) => v))
-          : const {}
+          : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$UpdateUserInput<TRes> {
-  factory CopyWith$Input$UpdateUserInput(Input$UpdateUserInput instance,
-          TRes Function(Input$UpdateUserInput) then) =
-      _CopyWithImpl$Input$UpdateUserInput;
+  factory CopyWith$Input$UpdateUserInput(
+    Input$UpdateUserInput instance,
+    TRes Function(Input$UpdateUserInput) then,
+  ) = _CopyWithImpl$Input$UpdateUserInput;
 
   factory CopyWith$Input$UpdateUserInput.stub(TRes res) =
       _CopyWithStubImpl$Input$UpdateUserInput;
 
-  TRes call(
-      {String? name,
-      bool? clearUsername,
-      String? username,
-      bool? clearProfile,
-      String? profile,
-      bool? clearAvatarURL,
-      String? avatarURL,
-      bool? clearAge,
-      int? age,
-      bool? clearGender,
-      int? gender,
-      bool? clearInterests,
-      List<int>? interests,
-      List<String>? addPostIDs,
-      List<String>? removePostIDs,
-      List<String>? addLikedPostIDs,
-      List<String>? removeLikedPostIDs,
-      List<String>? addBookmarkedPostIDs,
-      List<String>? removeBookmarkedPostIDs,
-      List<String>? addFollowerIDs,
-      List<String>? removeFollowerIDs,
-      List<String>? addFollowingIDs,
-      List<String>? removeFollowingIDs,
-      List<String>? addDraftIDs,
-      List<String>? removeDraftIDs});
+  TRes call({
+    String? name,
+    bool? clearUsername,
+    String? username,
+    bool? clearProfile,
+    String? profile,
+    bool? clearAvatarURL,
+    String? avatarURL,
+    bool? clearAge,
+    int? age,
+    bool? clearGender,
+    int? gender,
+    bool? clearInterests,
+    List<int>? interests,
+    List<String>? addPostIDs,
+    List<String>? removePostIDs,
+    List<String>? addLikedPostIDs,
+    List<String>? removeLikedPostIDs,
+    List<String>? addBookmarkedPostIDs,
+    List<String>? removeBookmarkedPostIDs,
+    List<String>? addFollowerIDs,
+    List<String>? removeFollowerIDs,
+    List<String>? addFollowingIDs,
+    List<String>? removeFollowingIDs,
+    List<String>? addDraftIDs,
+    List<String>? removeDraftIDs,
+  });
 }
 
 class _CopyWithImpl$Input$UpdateUserInput<TRes>
     implements CopyWith$Input$UpdateUserInput<TRes> {
-  _CopyWithImpl$Input$UpdateUserInput(this._instance, this._then);
+  _CopyWithImpl$Input$UpdateUserInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$UpdateUserInput _instance;
 
@@ -12343,32 +12589,33 @@ class _CopyWithImpl$Input$UpdateUserInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? name = _undefined,
-          Object? clearUsername = _undefined,
-          Object? username = _undefined,
-          Object? clearProfile = _undefined,
-          Object? profile = _undefined,
-          Object? clearAvatarURL = _undefined,
-          Object? avatarURL = _undefined,
-          Object? clearAge = _undefined,
-          Object? age = _undefined,
-          Object? clearGender = _undefined,
-          Object? gender = _undefined,
-          Object? clearInterests = _undefined,
-          Object? interests = _undefined,
-          Object? addPostIDs = _undefined,
-          Object? removePostIDs = _undefined,
-          Object? addLikedPostIDs = _undefined,
-          Object? removeLikedPostIDs = _undefined,
-          Object? addBookmarkedPostIDs = _undefined,
-          Object? removeBookmarkedPostIDs = _undefined,
-          Object? addFollowerIDs = _undefined,
-          Object? removeFollowerIDs = _undefined,
-          Object? addFollowingIDs = _undefined,
-          Object? removeFollowingIDs = _undefined,
-          Object? addDraftIDs = _undefined,
-          Object? removeDraftIDs = _undefined}) =>
+  TRes call({
+    Object? name = _undefined,
+    Object? clearUsername = _undefined,
+    Object? username = _undefined,
+    Object? clearProfile = _undefined,
+    Object? profile = _undefined,
+    Object? clearAvatarURL = _undefined,
+    Object? avatarURL = _undefined,
+    Object? clearAge = _undefined,
+    Object? age = _undefined,
+    Object? clearGender = _undefined,
+    Object? gender = _undefined,
+    Object? clearInterests = _undefined,
+    Object? interests = _undefined,
+    Object? addPostIDs = _undefined,
+    Object? removePostIDs = _undefined,
+    Object? addLikedPostIDs = _undefined,
+    Object? removeLikedPostIDs = _undefined,
+    Object? addBookmarkedPostIDs = _undefined,
+    Object? removeBookmarkedPostIDs = _undefined,
+    Object? addFollowerIDs = _undefined,
+    Object? removeFollowerIDs = _undefined,
+    Object? addFollowingIDs = _undefined,
+    Object? removeFollowingIDs = _undefined,
+    Object? addDraftIDs = _undefined,
+    Object? removeDraftIDs = _undefined,
+  }) =>
       _then(Input$UpdateUserInput._({
         ..._instance._$data,
         if (name != _undefined) 'name': (name as String?),
@@ -12420,44 +12667,46 @@ class _CopyWithStubImpl$Input$UpdateUserInput<TRes>
 
   TRes _res;
 
-  call(
-          {String? name,
-          bool? clearUsername,
-          String? username,
-          bool? clearProfile,
-          String? profile,
-          bool? clearAvatarURL,
-          String? avatarURL,
-          bool? clearAge,
-          int? age,
-          bool? clearGender,
-          int? gender,
-          bool? clearInterests,
-          List<int>? interests,
-          List<String>? addPostIDs,
-          List<String>? removePostIDs,
-          List<String>? addLikedPostIDs,
-          List<String>? removeLikedPostIDs,
-          List<String>? addBookmarkedPostIDs,
-          List<String>? removeBookmarkedPostIDs,
-          List<String>? addFollowerIDs,
-          List<String>? removeFollowerIDs,
-          List<String>? addFollowingIDs,
-          List<String>? removeFollowingIDs,
-          List<String>? addDraftIDs,
-          List<String>? removeDraftIDs}) =>
+  call({
+    String? name,
+    bool? clearUsername,
+    String? username,
+    bool? clearProfile,
+    String? profile,
+    bool? clearAvatarURL,
+    String? avatarURL,
+    bool? clearAge,
+    int? age,
+    bool? clearGender,
+    int? gender,
+    bool? clearInterests,
+    List<int>? interests,
+    List<String>? addPostIDs,
+    List<String>? removePostIDs,
+    List<String>? addLikedPostIDs,
+    List<String>? removeLikedPostIDs,
+    List<String>? addBookmarkedPostIDs,
+    List<String>? removeBookmarkedPostIDs,
+    List<String>? addFollowerIDs,
+    List<String>? removeFollowerIDs,
+    List<String>? addFollowingIDs,
+    List<String>? removeFollowingIDs,
+    List<String>? addDraftIDs,
+    List<String>? removeDraftIDs,
+  }) =>
       _res;
 }
 
 class Input$UpdateWorkInput {
-  factory Input$UpdateWorkInput(
-          {String? title,
-          bool? clearThumbnail,
-          String? thumbnail,
-          List<String>? addPostIDs,
-          List<String>? removePostIDs,
-          List<String>? addDraftIDs,
-          List<String>? removeDraftIDs}) =>
+  factory Input$UpdateWorkInput({
+    String? title,
+    bool? clearThumbnail,
+    String? thumbnail,
+    List<String>? addPostIDs,
+    List<String>? removePostIDs,
+    List<String>? addDraftIDs,
+    List<String>? removeDraftIDs,
+  }) =>
       Input$UpdateWorkInput._({
         if (title != null) r'title': title,
         if (clearThumbnail != null) r'clearThumbnail': clearThumbnail,
@@ -12553,7 +12802,10 @@ class Input$UpdateWorkInput {
   }
 
   CopyWith$Input$UpdateWorkInput<Input$UpdateWorkInput> get copyWith =>
-      CopyWith$Input$UpdateWorkInput(this, (i) => i);
+      CopyWith$Input$UpdateWorkInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -12703,32 +12955,37 @@ class Input$UpdateWorkInput {
           ? l$removeDraftIDs == null
               ? null
               : Object.hashAll(l$removeDraftIDs.map((v) => v))
-          : const {}
+          : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$UpdateWorkInput<TRes> {
-  factory CopyWith$Input$UpdateWorkInput(Input$UpdateWorkInput instance,
-          TRes Function(Input$UpdateWorkInput) then) =
-      _CopyWithImpl$Input$UpdateWorkInput;
+  factory CopyWith$Input$UpdateWorkInput(
+    Input$UpdateWorkInput instance,
+    TRes Function(Input$UpdateWorkInput) then,
+  ) = _CopyWithImpl$Input$UpdateWorkInput;
 
   factory CopyWith$Input$UpdateWorkInput.stub(TRes res) =
       _CopyWithStubImpl$Input$UpdateWorkInput;
 
-  TRes call(
-      {String? title,
-      bool? clearThumbnail,
-      String? thumbnail,
-      List<String>? addPostIDs,
-      List<String>? removePostIDs,
-      List<String>? addDraftIDs,
-      List<String>? removeDraftIDs});
+  TRes call({
+    String? title,
+    bool? clearThumbnail,
+    String? thumbnail,
+    List<String>? addPostIDs,
+    List<String>? removePostIDs,
+    List<String>? addDraftIDs,
+    List<String>? removeDraftIDs,
+  });
 }
 
 class _CopyWithImpl$Input$UpdateWorkInput<TRes>
     implements CopyWith$Input$UpdateWorkInput<TRes> {
-  _CopyWithImpl$Input$UpdateWorkInput(this._instance, this._then);
+  _CopyWithImpl$Input$UpdateWorkInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$UpdateWorkInput _instance;
 
@@ -12736,14 +12993,15 @@ class _CopyWithImpl$Input$UpdateWorkInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? title = _undefined,
-          Object? clearThumbnail = _undefined,
-          Object? thumbnail = _undefined,
-          Object? addPostIDs = _undefined,
-          Object? removePostIDs = _undefined,
-          Object? addDraftIDs = _undefined,
-          Object? removeDraftIDs = _undefined}) =>
+  TRes call({
+    Object? title = _undefined,
+    Object? clearThumbnail = _undefined,
+    Object? thumbnail = _undefined,
+    Object? addPostIDs = _undefined,
+    Object? removePostIDs = _undefined,
+    Object? addDraftIDs = _undefined,
+    Object? removeDraftIDs = _undefined,
+  }) =>
       _then(Input$UpdateWorkInput._({
         ..._instance._$data,
         if (title != _undefined) 'title': (title as String?),
@@ -12767,120 +13025,122 @@ class _CopyWithStubImpl$Input$UpdateWorkInput<TRes>
 
   TRes _res;
 
-  call(
-          {String? title,
-          bool? clearThumbnail,
-          String? thumbnail,
-          List<String>? addPostIDs,
-          List<String>? removePostIDs,
-          List<String>? addDraftIDs,
-          List<String>? removeDraftIDs}) =>
+  call({
+    String? title,
+    bool? clearThumbnail,
+    String? thumbnail,
+    List<String>? addPostIDs,
+    List<String>? removePostIDs,
+    List<String>? addDraftIDs,
+    List<String>? removeDraftIDs,
+  }) =>
       _res;
 }
 
 class Input$UserWhereInput {
-  factory Input$UserWhereInput(
-          {Input$UserWhereInput? not,
-          List<Input$UserWhereInput>? and,
-          List<Input$UserWhereInput>? or,
-          String? id,
-          String? idNEQ,
-          List<String>? idIn,
-          List<String>? idNotIn,
-          String? idGT,
-          String? idGTE,
-          String? idLT,
-          String? idLTE,
-          String? name,
-          String? nameNEQ,
-          List<String>? nameIn,
-          List<String>? nameNotIn,
-          String? nameGT,
-          String? nameGTE,
-          String? nameLT,
-          String? nameLTE,
-          String? nameContains,
-          String? nameHasPrefix,
-          String? nameHasSuffix,
-          String? nameEqualFold,
-          String? nameContainsFold,
-          String? username,
-          String? usernameNEQ,
-          List<String>? usernameIn,
-          List<String>? usernameNotIn,
-          String? usernameGT,
-          String? usernameGTE,
-          String? usernameLT,
-          String? usernameLTE,
-          String? usernameContains,
-          String? usernameHasPrefix,
-          String? usernameHasSuffix,
-          bool? usernameIsNil,
-          bool? usernameNotNil,
-          String? usernameEqualFold,
-          String? usernameContainsFold,
-          String? profile,
-          String? profileNEQ,
-          List<String>? profileIn,
-          List<String>? profileNotIn,
-          String? profileGT,
-          String? profileGTE,
-          String? profileLT,
-          String? profileLTE,
-          String? profileContains,
-          String? profileHasPrefix,
-          String? profileHasSuffix,
-          bool? profileIsNil,
-          bool? profileNotNil,
-          String? profileEqualFold,
-          String? profileContainsFold,
-          String? avatarURL,
-          String? avatarURLNEQ,
-          List<String>? avatarURLIn,
-          List<String>? avatarURLNotIn,
-          String? avatarURLGT,
-          String? avatarURLGTE,
-          String? avatarURLLT,
-          String? avatarURLLTE,
-          String? avatarURLContains,
-          String? avatarURLHasPrefix,
-          String? avatarURLHasSuffix,
-          bool? avatarURLIsNil,
-          bool? avatarURLNotNil,
-          String? avatarURLEqualFold,
-          String? avatarURLContainsFold,
-          int? age,
-          int? ageNEQ,
-          List<int>? ageIn,
-          List<int>? ageNotIn,
-          int? ageGT,
-          int? ageGTE,
-          int? ageLT,
-          int? ageLTE,
-          bool? ageIsNil,
-          bool? ageNotNil,
-          int? gender,
-          int? genderNEQ,
-          List<int>? genderIn,
-          List<int>? genderNotIn,
-          int? genderGT,
-          int? genderGTE,
-          int? genderLT,
-          int? genderLTE,
-          bool? genderIsNil,
-          bool? genderNotNil,
-          bool? hasPosts,
-          List<Input$PostWhereInput>? hasPostsWith,
-          bool? hasLikedPosts,
-          List<Input$PostWhereInput>? hasLikedPostsWith,
-          bool? hasBookmarkedPosts,
-          List<Input$PostWhereInput>? hasBookmarkedPostsWith,
-          bool? hasFollowers,
-          List<Input$UserWhereInput>? hasFollowersWith,
-          bool? hasFollowing,
-          List<Input$UserWhereInput>? hasFollowingWith,
-          bool? hasDrafts,
-          List<Input$DraftWhereInput>? hasDraftsWith}) =>
+  factory Input$UserWhereInput({
+    Input$UserWhereInput? not,
+    List<Input$UserWhereInput>? and,
+    List<Input$UserWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? name,
+    String? nameNEQ,
+    List<String>? nameIn,
+    List<String>? nameNotIn,
+    String? nameGT,
+    String? nameGTE,
+    String? nameLT,
+    String? nameLTE,
+    String? nameContains,
+    String? nameHasPrefix,
+    String? nameHasSuffix,
+    String? nameEqualFold,
+    String? nameContainsFold,
+    String? username,
+    String? usernameNEQ,
+    List<String>? usernameIn,
+    List<String>? usernameNotIn,
+    String? usernameGT,
+    String? usernameGTE,
+    String? usernameLT,
+    String? usernameLTE,
+    String? usernameContains,
+    String? usernameHasPrefix,
+    String? usernameHasSuffix,
+    bool? usernameIsNil,
+    bool? usernameNotNil,
+    String? usernameEqualFold,
+    String? usernameContainsFold,
+    String? profile,
+    String? profileNEQ,
+    List<String>? profileIn,
+    List<String>? profileNotIn,
+    String? profileGT,
+    String? profileGTE,
+    String? profileLT,
+    String? profileLTE,
+    String? profileContains,
+    String? profileHasPrefix,
+    String? profileHasSuffix,
+    bool? profileIsNil,
+    bool? profileNotNil,
+    String? profileEqualFold,
+    String? profileContainsFold,
+    String? avatarURL,
+    String? avatarURLNEQ,
+    List<String>? avatarURLIn,
+    List<String>? avatarURLNotIn,
+    String? avatarURLGT,
+    String? avatarURLGTE,
+    String? avatarURLLT,
+    String? avatarURLLTE,
+    String? avatarURLContains,
+    String? avatarURLHasPrefix,
+    String? avatarURLHasSuffix,
+    bool? avatarURLIsNil,
+    bool? avatarURLNotNil,
+    String? avatarURLEqualFold,
+    String? avatarURLContainsFold,
+    int? age,
+    int? ageNEQ,
+    List<int>? ageIn,
+    List<int>? ageNotIn,
+    int? ageGT,
+    int? ageGTE,
+    int? ageLT,
+    int? ageLTE,
+    bool? ageIsNil,
+    bool? ageNotNil,
+    int? gender,
+    int? genderNEQ,
+    List<int>? genderIn,
+    List<int>? genderNotIn,
+    int? genderGT,
+    int? genderGTE,
+    int? genderLT,
+    int? genderLTE,
+    bool? genderIsNil,
+    bool? genderNotNil,
+    bool? hasPosts,
+    List<Input$PostWhereInput>? hasPostsWith,
+    bool? hasLikedPosts,
+    List<Input$PostWhereInput>? hasLikedPostsWith,
+    bool? hasBookmarkedPosts,
+    List<Input$PostWhereInput>? hasBookmarkedPostsWith,
+    bool? hasFollowers,
+    List<Input$UserWhereInput>? hasFollowersWith,
+    bool? hasFollowing,
+    List<Input$UserWhereInput>? hasFollowingWith,
+    bool? hasDrafts,
+    List<Input$DraftWhereInput>? hasDraftsWith,
+  }) =>
       Input$UserWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -13979,7 +14239,10 @@ class Input$UserWhereInput {
   }
 
   CopyWith$Input$UserWhereInput<Input$UserWhereInput> get copyWith =>
-      CopyWith$Input$UserWhereInput(this, (i) => i);
+      CopyWith$Input$UserWhereInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -15425,121 +15688,123 @@ class Input$UserWhereInput {
           ? l$hasDraftsWith == null
               ? null
               : Object.hashAll(l$hasDraftsWith.map((v) => v))
-          : const {}
+          : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$UserWhereInput<TRes> {
-  factory CopyWith$Input$UserWhereInput(Input$UserWhereInput instance,
-          TRes Function(Input$UserWhereInput) then) =
-      _CopyWithImpl$Input$UserWhereInput;
+  factory CopyWith$Input$UserWhereInput(
+    Input$UserWhereInput instance,
+    TRes Function(Input$UserWhereInput) then,
+  ) = _CopyWithImpl$Input$UserWhereInput;
 
   factory CopyWith$Input$UserWhereInput.stub(TRes res) =
       _CopyWithStubImpl$Input$UserWhereInput;
 
-  TRes call(
-      {Input$UserWhereInput? not,
-      List<Input$UserWhereInput>? and,
-      List<Input$UserWhereInput>? or,
-      String? id,
-      String? idNEQ,
-      List<String>? idIn,
-      List<String>? idNotIn,
-      String? idGT,
-      String? idGTE,
-      String? idLT,
-      String? idLTE,
-      String? name,
-      String? nameNEQ,
-      List<String>? nameIn,
-      List<String>? nameNotIn,
-      String? nameGT,
-      String? nameGTE,
-      String? nameLT,
-      String? nameLTE,
-      String? nameContains,
-      String? nameHasPrefix,
-      String? nameHasSuffix,
-      String? nameEqualFold,
-      String? nameContainsFold,
-      String? username,
-      String? usernameNEQ,
-      List<String>? usernameIn,
-      List<String>? usernameNotIn,
-      String? usernameGT,
-      String? usernameGTE,
-      String? usernameLT,
-      String? usernameLTE,
-      String? usernameContains,
-      String? usernameHasPrefix,
-      String? usernameHasSuffix,
-      bool? usernameIsNil,
-      bool? usernameNotNil,
-      String? usernameEqualFold,
-      String? usernameContainsFold,
-      String? profile,
-      String? profileNEQ,
-      List<String>? profileIn,
-      List<String>? profileNotIn,
-      String? profileGT,
-      String? profileGTE,
-      String? profileLT,
-      String? profileLTE,
-      String? profileContains,
-      String? profileHasPrefix,
-      String? profileHasSuffix,
-      bool? profileIsNil,
-      bool? profileNotNil,
-      String? profileEqualFold,
-      String? profileContainsFold,
-      String? avatarURL,
-      String? avatarURLNEQ,
-      List<String>? avatarURLIn,
-      List<String>? avatarURLNotIn,
-      String? avatarURLGT,
-      String? avatarURLGTE,
-      String? avatarURLLT,
-      String? avatarURLLTE,
-      String? avatarURLContains,
-      String? avatarURLHasPrefix,
-      String? avatarURLHasSuffix,
-      bool? avatarURLIsNil,
-      bool? avatarURLNotNil,
-      String? avatarURLEqualFold,
-      String? avatarURLContainsFold,
-      int? age,
-      int? ageNEQ,
-      List<int>? ageIn,
-      List<int>? ageNotIn,
-      int? ageGT,
-      int? ageGTE,
-      int? ageLT,
-      int? ageLTE,
-      bool? ageIsNil,
-      bool? ageNotNil,
-      int? gender,
-      int? genderNEQ,
-      List<int>? genderIn,
-      List<int>? genderNotIn,
-      int? genderGT,
-      int? genderGTE,
-      int? genderLT,
-      int? genderLTE,
-      bool? genderIsNil,
-      bool? genderNotNil,
-      bool? hasPosts,
-      List<Input$PostWhereInput>? hasPostsWith,
-      bool? hasLikedPosts,
-      List<Input$PostWhereInput>? hasLikedPostsWith,
-      bool? hasBookmarkedPosts,
-      List<Input$PostWhereInput>? hasBookmarkedPostsWith,
-      bool? hasFollowers,
-      List<Input$UserWhereInput>? hasFollowersWith,
-      bool? hasFollowing,
-      List<Input$UserWhereInput>? hasFollowingWith,
-      bool? hasDrafts,
-      List<Input$DraftWhereInput>? hasDraftsWith});
+  TRes call({
+    Input$UserWhereInput? not,
+    List<Input$UserWhereInput>? and,
+    List<Input$UserWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? name,
+    String? nameNEQ,
+    List<String>? nameIn,
+    List<String>? nameNotIn,
+    String? nameGT,
+    String? nameGTE,
+    String? nameLT,
+    String? nameLTE,
+    String? nameContains,
+    String? nameHasPrefix,
+    String? nameHasSuffix,
+    String? nameEqualFold,
+    String? nameContainsFold,
+    String? username,
+    String? usernameNEQ,
+    List<String>? usernameIn,
+    List<String>? usernameNotIn,
+    String? usernameGT,
+    String? usernameGTE,
+    String? usernameLT,
+    String? usernameLTE,
+    String? usernameContains,
+    String? usernameHasPrefix,
+    String? usernameHasSuffix,
+    bool? usernameIsNil,
+    bool? usernameNotNil,
+    String? usernameEqualFold,
+    String? usernameContainsFold,
+    String? profile,
+    String? profileNEQ,
+    List<String>? profileIn,
+    List<String>? profileNotIn,
+    String? profileGT,
+    String? profileGTE,
+    String? profileLT,
+    String? profileLTE,
+    String? profileContains,
+    String? profileHasPrefix,
+    String? profileHasSuffix,
+    bool? profileIsNil,
+    bool? profileNotNil,
+    String? profileEqualFold,
+    String? profileContainsFold,
+    String? avatarURL,
+    String? avatarURLNEQ,
+    List<String>? avatarURLIn,
+    List<String>? avatarURLNotIn,
+    String? avatarURLGT,
+    String? avatarURLGTE,
+    String? avatarURLLT,
+    String? avatarURLLTE,
+    String? avatarURLContains,
+    String? avatarURLHasPrefix,
+    String? avatarURLHasSuffix,
+    bool? avatarURLIsNil,
+    bool? avatarURLNotNil,
+    String? avatarURLEqualFold,
+    String? avatarURLContainsFold,
+    int? age,
+    int? ageNEQ,
+    List<int>? ageIn,
+    List<int>? ageNotIn,
+    int? ageGT,
+    int? ageGTE,
+    int? ageLT,
+    int? ageLTE,
+    bool? ageIsNil,
+    bool? ageNotNil,
+    int? gender,
+    int? genderNEQ,
+    List<int>? genderIn,
+    List<int>? genderNotIn,
+    int? genderGT,
+    int? genderGTE,
+    int? genderLT,
+    int? genderLTE,
+    bool? genderIsNil,
+    bool? genderNotNil,
+    bool? hasPosts,
+    List<Input$PostWhereInput>? hasPostsWith,
+    bool? hasLikedPosts,
+    List<Input$PostWhereInput>? hasLikedPostsWith,
+    bool? hasBookmarkedPosts,
+    List<Input$PostWhereInput>? hasBookmarkedPostsWith,
+    bool? hasFollowers,
+    List<Input$UserWhereInput>? hasFollowersWith,
+    bool? hasFollowing,
+    List<Input$UserWhereInput>? hasFollowingWith,
+    bool? hasDrafts,
+    List<Input$DraftWhereInput>? hasDraftsWith,
+  });
   CopyWith$Input$UserWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$UserWhereInput>? Function(
@@ -15577,7 +15842,10 @@ abstract class CopyWith$Input$UserWhereInput<TRes> {
 
 class _CopyWithImpl$Input$UserWhereInput<TRes>
     implements CopyWith$Input$UserWhereInput<TRes> {
-  _CopyWithImpl$Input$UserWhereInput(this._instance, this._then);
+  _CopyWithImpl$Input$UserWhereInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$UserWhereInput _instance;
 
@@ -15585,108 +15853,109 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? not = _undefined,
-          Object? and = _undefined,
-          Object? or = _undefined,
-          Object? id = _undefined,
-          Object? idNEQ = _undefined,
-          Object? idIn = _undefined,
-          Object? idNotIn = _undefined,
-          Object? idGT = _undefined,
-          Object? idGTE = _undefined,
-          Object? idLT = _undefined,
-          Object? idLTE = _undefined,
-          Object? name = _undefined,
-          Object? nameNEQ = _undefined,
-          Object? nameIn = _undefined,
-          Object? nameNotIn = _undefined,
-          Object? nameGT = _undefined,
-          Object? nameGTE = _undefined,
-          Object? nameLT = _undefined,
-          Object? nameLTE = _undefined,
-          Object? nameContains = _undefined,
-          Object? nameHasPrefix = _undefined,
-          Object? nameHasSuffix = _undefined,
-          Object? nameEqualFold = _undefined,
-          Object? nameContainsFold = _undefined,
-          Object? username = _undefined,
-          Object? usernameNEQ = _undefined,
-          Object? usernameIn = _undefined,
-          Object? usernameNotIn = _undefined,
-          Object? usernameGT = _undefined,
-          Object? usernameGTE = _undefined,
-          Object? usernameLT = _undefined,
-          Object? usernameLTE = _undefined,
-          Object? usernameContains = _undefined,
-          Object? usernameHasPrefix = _undefined,
-          Object? usernameHasSuffix = _undefined,
-          Object? usernameIsNil = _undefined,
-          Object? usernameNotNil = _undefined,
-          Object? usernameEqualFold = _undefined,
-          Object? usernameContainsFold = _undefined,
-          Object? profile = _undefined,
-          Object? profileNEQ = _undefined,
-          Object? profileIn = _undefined,
-          Object? profileNotIn = _undefined,
-          Object? profileGT = _undefined,
-          Object? profileGTE = _undefined,
-          Object? profileLT = _undefined,
-          Object? profileLTE = _undefined,
-          Object? profileContains = _undefined,
-          Object? profileHasPrefix = _undefined,
-          Object? profileHasSuffix = _undefined,
-          Object? profileIsNil = _undefined,
-          Object? profileNotNil = _undefined,
-          Object? profileEqualFold = _undefined,
-          Object? profileContainsFold = _undefined,
-          Object? avatarURL = _undefined,
-          Object? avatarURLNEQ = _undefined,
-          Object? avatarURLIn = _undefined,
-          Object? avatarURLNotIn = _undefined,
-          Object? avatarURLGT = _undefined,
-          Object? avatarURLGTE = _undefined,
-          Object? avatarURLLT = _undefined,
-          Object? avatarURLLTE = _undefined,
-          Object? avatarURLContains = _undefined,
-          Object? avatarURLHasPrefix = _undefined,
-          Object? avatarURLHasSuffix = _undefined,
-          Object? avatarURLIsNil = _undefined,
-          Object? avatarURLNotNil = _undefined,
-          Object? avatarURLEqualFold = _undefined,
-          Object? avatarURLContainsFold = _undefined,
-          Object? age = _undefined,
-          Object? ageNEQ = _undefined,
-          Object? ageIn = _undefined,
-          Object? ageNotIn = _undefined,
-          Object? ageGT = _undefined,
-          Object? ageGTE = _undefined,
-          Object? ageLT = _undefined,
-          Object? ageLTE = _undefined,
-          Object? ageIsNil = _undefined,
-          Object? ageNotNil = _undefined,
-          Object? gender = _undefined,
-          Object? genderNEQ = _undefined,
-          Object? genderIn = _undefined,
-          Object? genderNotIn = _undefined,
-          Object? genderGT = _undefined,
-          Object? genderGTE = _undefined,
-          Object? genderLT = _undefined,
-          Object? genderLTE = _undefined,
-          Object? genderIsNil = _undefined,
-          Object? genderNotNil = _undefined,
-          Object? hasPosts = _undefined,
-          Object? hasPostsWith = _undefined,
-          Object? hasLikedPosts = _undefined,
-          Object? hasLikedPostsWith = _undefined,
-          Object? hasBookmarkedPosts = _undefined,
-          Object? hasBookmarkedPostsWith = _undefined,
-          Object? hasFollowers = _undefined,
-          Object? hasFollowersWith = _undefined,
-          Object? hasFollowing = _undefined,
-          Object? hasFollowingWith = _undefined,
-          Object? hasDrafts = _undefined,
-          Object? hasDraftsWith = _undefined}) =>
+  TRes call({
+    Object? not = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? id = _undefined,
+    Object? idNEQ = _undefined,
+    Object? idIn = _undefined,
+    Object? idNotIn = _undefined,
+    Object? idGT = _undefined,
+    Object? idGTE = _undefined,
+    Object? idLT = _undefined,
+    Object? idLTE = _undefined,
+    Object? name = _undefined,
+    Object? nameNEQ = _undefined,
+    Object? nameIn = _undefined,
+    Object? nameNotIn = _undefined,
+    Object? nameGT = _undefined,
+    Object? nameGTE = _undefined,
+    Object? nameLT = _undefined,
+    Object? nameLTE = _undefined,
+    Object? nameContains = _undefined,
+    Object? nameHasPrefix = _undefined,
+    Object? nameHasSuffix = _undefined,
+    Object? nameEqualFold = _undefined,
+    Object? nameContainsFold = _undefined,
+    Object? username = _undefined,
+    Object? usernameNEQ = _undefined,
+    Object? usernameIn = _undefined,
+    Object? usernameNotIn = _undefined,
+    Object? usernameGT = _undefined,
+    Object? usernameGTE = _undefined,
+    Object? usernameLT = _undefined,
+    Object? usernameLTE = _undefined,
+    Object? usernameContains = _undefined,
+    Object? usernameHasPrefix = _undefined,
+    Object? usernameHasSuffix = _undefined,
+    Object? usernameIsNil = _undefined,
+    Object? usernameNotNil = _undefined,
+    Object? usernameEqualFold = _undefined,
+    Object? usernameContainsFold = _undefined,
+    Object? profile = _undefined,
+    Object? profileNEQ = _undefined,
+    Object? profileIn = _undefined,
+    Object? profileNotIn = _undefined,
+    Object? profileGT = _undefined,
+    Object? profileGTE = _undefined,
+    Object? profileLT = _undefined,
+    Object? profileLTE = _undefined,
+    Object? profileContains = _undefined,
+    Object? profileHasPrefix = _undefined,
+    Object? profileHasSuffix = _undefined,
+    Object? profileIsNil = _undefined,
+    Object? profileNotNil = _undefined,
+    Object? profileEqualFold = _undefined,
+    Object? profileContainsFold = _undefined,
+    Object? avatarURL = _undefined,
+    Object? avatarURLNEQ = _undefined,
+    Object? avatarURLIn = _undefined,
+    Object? avatarURLNotIn = _undefined,
+    Object? avatarURLGT = _undefined,
+    Object? avatarURLGTE = _undefined,
+    Object? avatarURLLT = _undefined,
+    Object? avatarURLLTE = _undefined,
+    Object? avatarURLContains = _undefined,
+    Object? avatarURLHasPrefix = _undefined,
+    Object? avatarURLHasSuffix = _undefined,
+    Object? avatarURLIsNil = _undefined,
+    Object? avatarURLNotNil = _undefined,
+    Object? avatarURLEqualFold = _undefined,
+    Object? avatarURLContainsFold = _undefined,
+    Object? age = _undefined,
+    Object? ageNEQ = _undefined,
+    Object? ageIn = _undefined,
+    Object? ageNotIn = _undefined,
+    Object? ageGT = _undefined,
+    Object? ageGTE = _undefined,
+    Object? ageLT = _undefined,
+    Object? ageLTE = _undefined,
+    Object? ageIsNil = _undefined,
+    Object? ageNotNil = _undefined,
+    Object? gender = _undefined,
+    Object? genderNEQ = _undefined,
+    Object? genderIn = _undefined,
+    Object? genderNotIn = _undefined,
+    Object? genderGT = _undefined,
+    Object? genderGTE = _undefined,
+    Object? genderLT = _undefined,
+    Object? genderLTE = _undefined,
+    Object? genderIsNil = _undefined,
+    Object? genderNotNil = _undefined,
+    Object? hasPosts = _undefined,
+    Object? hasPostsWith = _undefined,
+    Object? hasLikedPosts = _undefined,
+    Object? hasLikedPostsWith = _undefined,
+    Object? hasBookmarkedPosts = _undefined,
+    Object? hasBookmarkedPostsWith = _undefined,
+    Object? hasFollowers = _undefined,
+    Object? hasFollowersWith = _undefined,
+    Object? hasFollowing = _undefined,
+    Object? hasFollowingWith = _undefined,
+    Object? hasDrafts = _undefined,
+    Object? hasDraftsWith = _undefined,
+  }) =>
       _then(Input$UserWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$UserWhereInput?),
@@ -15848,27 +16117,31 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
                       CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
               _fn) =>
       call(
-          and: _fn(_instance.and
-                  ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
-              ?.toList());
+          and: _fn(_instance.and?.map((e) => CopyWith$Input$UserWhereInput(
+                e,
+                (i) => i,
+              )))?.toList());
   TRes or(
           Iterable<Input$UserWhereInput>? Function(
                   Iterable<
                       CopyWith$Input$UserWhereInput<Input$UserWhereInput>>?)
               _fn) =>
       call(
-          or: _fn(_instance.or
-                  ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
-              ?.toList());
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$UserWhereInput(
+                e,
+                (i) => i,
+              )))?.toList());
   TRes hasPostsWith(
           Iterable<Input$PostWhereInput>? Function(
                   Iterable<
                       CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
               _fn) =>
       call(
-          hasPostsWith: _fn(_instance.hasPostsWith
-                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
-              ?.toList());
+          hasPostsWith: _fn(
+              _instance.hasPostsWith?.map((e) => CopyWith$Input$PostWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasLikedPostsWith(
           Iterable<Input$PostWhereInput>? Function(
                   Iterable<
@@ -15876,8 +16149,10 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
               _fn) =>
       call(
           hasLikedPostsWith: _fn(_instance.hasLikedPostsWith
-                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
-              ?.toList());
+              ?.map((e) => CopyWith$Input$PostWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasBookmarkedPostsWith(
           Iterable<Input$PostWhereInput>? Function(
                   Iterable<
@@ -15885,8 +16160,10 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
               _fn) =>
       call(
           hasBookmarkedPostsWith: _fn(_instance.hasBookmarkedPostsWith
-                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
-              ?.toList());
+              ?.map((e) => CopyWith$Input$PostWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasFollowersWith(
           Iterable<Input$UserWhereInput>? Function(
                   Iterable<
@@ -15894,8 +16171,10 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
               _fn) =>
       call(
           hasFollowersWith: _fn(_instance.hasFollowersWith
-                  ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
-              ?.toList());
+              ?.map((e) => CopyWith$Input$UserWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasFollowingWith(
           Iterable<Input$UserWhereInput>? Function(
                   Iterable<
@@ -15903,8 +16182,10 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
               _fn) =>
       call(
           hasFollowingWith: _fn(_instance.hasFollowingWith
-                  ?.map((e) => CopyWith$Input$UserWhereInput(e, (i) => i)))
-              ?.toList());
+              ?.map((e) => CopyWith$Input$UserWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasDraftsWith(
           Iterable<Input$DraftWhereInput>? Function(
                   Iterable<
@@ -15912,8 +16193,10 @@ class _CopyWithImpl$Input$UserWhereInput<TRes>
               _fn) =>
       call(
           hasDraftsWith: _fn(_instance.hasDraftsWith
-                  ?.map((e) => CopyWith$Input$DraftWhereInput(e, (i) => i)))
-              ?.toList());
+              ?.map((e) => CopyWith$Input$DraftWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
 }
 
 class _CopyWithStubImpl$Input$UserWhereInput<TRes>
@@ -15922,108 +16205,109 @@ class _CopyWithStubImpl$Input$UserWhereInput<TRes>
 
   TRes _res;
 
-  call(
-          {Input$UserWhereInput? not,
-          List<Input$UserWhereInput>? and,
-          List<Input$UserWhereInput>? or,
-          String? id,
-          String? idNEQ,
-          List<String>? idIn,
-          List<String>? idNotIn,
-          String? idGT,
-          String? idGTE,
-          String? idLT,
-          String? idLTE,
-          String? name,
-          String? nameNEQ,
-          List<String>? nameIn,
-          List<String>? nameNotIn,
-          String? nameGT,
-          String? nameGTE,
-          String? nameLT,
-          String? nameLTE,
-          String? nameContains,
-          String? nameHasPrefix,
-          String? nameHasSuffix,
-          String? nameEqualFold,
-          String? nameContainsFold,
-          String? username,
-          String? usernameNEQ,
-          List<String>? usernameIn,
-          List<String>? usernameNotIn,
-          String? usernameGT,
-          String? usernameGTE,
-          String? usernameLT,
-          String? usernameLTE,
-          String? usernameContains,
-          String? usernameHasPrefix,
-          String? usernameHasSuffix,
-          bool? usernameIsNil,
-          bool? usernameNotNil,
-          String? usernameEqualFold,
-          String? usernameContainsFold,
-          String? profile,
-          String? profileNEQ,
-          List<String>? profileIn,
-          List<String>? profileNotIn,
-          String? profileGT,
-          String? profileGTE,
-          String? profileLT,
-          String? profileLTE,
-          String? profileContains,
-          String? profileHasPrefix,
-          String? profileHasSuffix,
-          bool? profileIsNil,
-          bool? profileNotNil,
-          String? profileEqualFold,
-          String? profileContainsFold,
-          String? avatarURL,
-          String? avatarURLNEQ,
-          List<String>? avatarURLIn,
-          List<String>? avatarURLNotIn,
-          String? avatarURLGT,
-          String? avatarURLGTE,
-          String? avatarURLLT,
-          String? avatarURLLTE,
-          String? avatarURLContains,
-          String? avatarURLHasPrefix,
-          String? avatarURLHasSuffix,
-          bool? avatarURLIsNil,
-          bool? avatarURLNotNil,
-          String? avatarURLEqualFold,
-          String? avatarURLContainsFold,
-          int? age,
-          int? ageNEQ,
-          List<int>? ageIn,
-          List<int>? ageNotIn,
-          int? ageGT,
-          int? ageGTE,
-          int? ageLT,
-          int? ageLTE,
-          bool? ageIsNil,
-          bool? ageNotNil,
-          int? gender,
-          int? genderNEQ,
-          List<int>? genderIn,
-          List<int>? genderNotIn,
-          int? genderGT,
-          int? genderGTE,
-          int? genderLT,
-          int? genderLTE,
-          bool? genderIsNil,
-          bool? genderNotNil,
-          bool? hasPosts,
-          List<Input$PostWhereInput>? hasPostsWith,
-          bool? hasLikedPosts,
-          List<Input$PostWhereInput>? hasLikedPostsWith,
-          bool? hasBookmarkedPosts,
-          List<Input$PostWhereInput>? hasBookmarkedPostsWith,
-          bool? hasFollowers,
-          List<Input$UserWhereInput>? hasFollowersWith,
-          bool? hasFollowing,
-          List<Input$UserWhereInput>? hasFollowingWith,
-          bool? hasDrafts,
-          List<Input$DraftWhereInput>? hasDraftsWith}) =>
+  call({
+    Input$UserWhereInput? not,
+    List<Input$UserWhereInput>? and,
+    List<Input$UserWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? name,
+    String? nameNEQ,
+    List<String>? nameIn,
+    List<String>? nameNotIn,
+    String? nameGT,
+    String? nameGTE,
+    String? nameLT,
+    String? nameLTE,
+    String? nameContains,
+    String? nameHasPrefix,
+    String? nameHasSuffix,
+    String? nameEqualFold,
+    String? nameContainsFold,
+    String? username,
+    String? usernameNEQ,
+    List<String>? usernameIn,
+    List<String>? usernameNotIn,
+    String? usernameGT,
+    String? usernameGTE,
+    String? usernameLT,
+    String? usernameLTE,
+    String? usernameContains,
+    String? usernameHasPrefix,
+    String? usernameHasSuffix,
+    bool? usernameIsNil,
+    bool? usernameNotNil,
+    String? usernameEqualFold,
+    String? usernameContainsFold,
+    String? profile,
+    String? profileNEQ,
+    List<String>? profileIn,
+    List<String>? profileNotIn,
+    String? profileGT,
+    String? profileGTE,
+    String? profileLT,
+    String? profileLTE,
+    String? profileContains,
+    String? profileHasPrefix,
+    String? profileHasSuffix,
+    bool? profileIsNil,
+    bool? profileNotNil,
+    String? profileEqualFold,
+    String? profileContainsFold,
+    String? avatarURL,
+    String? avatarURLNEQ,
+    List<String>? avatarURLIn,
+    List<String>? avatarURLNotIn,
+    String? avatarURLGT,
+    String? avatarURLGTE,
+    String? avatarURLLT,
+    String? avatarURLLTE,
+    String? avatarURLContains,
+    String? avatarURLHasPrefix,
+    String? avatarURLHasSuffix,
+    bool? avatarURLIsNil,
+    bool? avatarURLNotNil,
+    String? avatarURLEqualFold,
+    String? avatarURLContainsFold,
+    int? age,
+    int? ageNEQ,
+    List<int>? ageIn,
+    List<int>? ageNotIn,
+    int? ageGT,
+    int? ageGTE,
+    int? ageLT,
+    int? ageLTE,
+    bool? ageIsNil,
+    bool? ageNotNil,
+    int? gender,
+    int? genderNEQ,
+    List<int>? genderIn,
+    List<int>? genderNotIn,
+    int? genderGT,
+    int? genderGTE,
+    int? genderLT,
+    int? genderLTE,
+    bool? genderIsNil,
+    bool? genderNotNil,
+    bool? hasPosts,
+    List<Input$PostWhereInput>? hasPostsWith,
+    bool? hasLikedPosts,
+    List<Input$PostWhereInput>? hasLikedPostsWith,
+    bool? hasBookmarkedPosts,
+    List<Input$PostWhereInput>? hasBookmarkedPostsWith,
+    bool? hasFollowers,
+    List<Input$UserWhereInput>? hasFollowersWith,
+    bool? hasFollowing,
+    List<Input$UserWhereInput>? hasFollowingWith,
+    bool? hasDrafts,
+    List<Input$DraftWhereInput>? hasDraftsWith,
+  }) =>
       _res;
   CopyWith$Input$UserWhereInput<TRes> get not =>
       CopyWith$Input$UserWhereInput.stub(_res);
@@ -16038,50 +16322,51 @@ class _CopyWithStubImpl$Input$UserWhereInput<TRes>
 }
 
 class Input$WorkWhereInput {
-  factory Input$WorkWhereInput(
-          {Input$WorkWhereInput? not,
-          List<Input$WorkWhereInput>? and,
-          List<Input$WorkWhereInput>? or,
-          String? id,
-          String? idNEQ,
-          List<String>? idIn,
-          List<String>? idNotIn,
-          String? idGT,
-          String? idGTE,
-          String? idLT,
-          String? idLTE,
-          String? title,
-          String? titleNEQ,
-          List<String>? titleIn,
-          List<String>? titleNotIn,
-          String? titleGT,
-          String? titleGTE,
-          String? titleLT,
-          String? titleLTE,
-          String? titleContains,
-          String? titleHasPrefix,
-          String? titleHasSuffix,
-          String? titleEqualFold,
-          String? titleContainsFold,
-          String? thumbnail,
-          String? thumbnailNEQ,
-          List<String>? thumbnailIn,
-          List<String>? thumbnailNotIn,
-          String? thumbnailGT,
-          String? thumbnailGTE,
-          String? thumbnailLT,
-          String? thumbnailLTE,
-          String? thumbnailContains,
-          String? thumbnailHasPrefix,
-          String? thumbnailHasSuffix,
-          bool? thumbnailIsNil,
-          bool? thumbnailNotNil,
-          String? thumbnailEqualFold,
-          String? thumbnailContainsFold,
-          bool? hasPosts,
-          List<Input$PostWhereInput>? hasPostsWith,
-          bool? hasDrafts,
-          List<Input$DraftWhereInput>? hasDraftsWith}) =>
+  factory Input$WorkWhereInput({
+    Input$WorkWhereInput? not,
+    List<Input$WorkWhereInput>? and,
+    List<Input$WorkWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? title,
+    String? titleNEQ,
+    List<String>? titleIn,
+    List<String>? titleNotIn,
+    String? titleGT,
+    String? titleGTE,
+    String? titleLT,
+    String? titleLTE,
+    String? titleContains,
+    String? titleHasPrefix,
+    String? titleHasSuffix,
+    String? titleEqualFold,
+    String? titleContainsFold,
+    String? thumbnail,
+    String? thumbnailNEQ,
+    List<String>? thumbnailIn,
+    List<String>? thumbnailNotIn,
+    String? thumbnailGT,
+    String? thumbnailGTE,
+    String? thumbnailLT,
+    String? thumbnailLTE,
+    String? thumbnailContains,
+    String? thumbnailHasPrefix,
+    String? thumbnailHasSuffix,
+    bool? thumbnailIsNil,
+    bool? thumbnailNotNil,
+    String? thumbnailEqualFold,
+    String? thumbnailContainsFold,
+    bool? hasPosts,
+    List<Input$PostWhereInput>? hasPostsWith,
+    bool? hasDrafts,
+    List<Input$DraftWhereInput>? hasDraftsWith,
+  }) =>
       Input$WorkWhereInput._({
         if (not != null) r'not': not,
         if (and != null) r'and': and,
@@ -16564,7 +16849,10 @@ class Input$WorkWhereInput {
   }
 
   CopyWith$Input$WorkWhereInput<Input$WorkWhereInput> get copyWith =>
-      CopyWith$Input$WorkWhereInput(this, (i) => i);
+      CopyWith$Input$WorkWhereInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -17194,63 +17482,65 @@ class Input$WorkWhereInput {
           ? l$hasDraftsWith == null
               ? null
               : Object.hashAll(l$hasDraftsWith.map((v) => v))
-          : const {}
+          : const {},
     ]);
   }
 }
 
 abstract class CopyWith$Input$WorkWhereInput<TRes> {
-  factory CopyWith$Input$WorkWhereInput(Input$WorkWhereInput instance,
-          TRes Function(Input$WorkWhereInput) then) =
-      _CopyWithImpl$Input$WorkWhereInput;
+  factory CopyWith$Input$WorkWhereInput(
+    Input$WorkWhereInput instance,
+    TRes Function(Input$WorkWhereInput) then,
+  ) = _CopyWithImpl$Input$WorkWhereInput;
 
   factory CopyWith$Input$WorkWhereInput.stub(TRes res) =
       _CopyWithStubImpl$Input$WorkWhereInput;
 
-  TRes call(
-      {Input$WorkWhereInput? not,
-      List<Input$WorkWhereInput>? and,
-      List<Input$WorkWhereInput>? or,
-      String? id,
-      String? idNEQ,
-      List<String>? idIn,
-      List<String>? idNotIn,
-      String? idGT,
-      String? idGTE,
-      String? idLT,
-      String? idLTE,
-      String? title,
-      String? titleNEQ,
-      List<String>? titleIn,
-      List<String>? titleNotIn,
-      String? titleGT,
-      String? titleGTE,
-      String? titleLT,
-      String? titleLTE,
-      String? titleContains,
-      String? titleHasPrefix,
-      String? titleHasSuffix,
-      String? titleEqualFold,
-      String? titleContainsFold,
-      String? thumbnail,
-      String? thumbnailNEQ,
-      List<String>? thumbnailIn,
-      List<String>? thumbnailNotIn,
-      String? thumbnailGT,
-      String? thumbnailGTE,
-      String? thumbnailLT,
-      String? thumbnailLTE,
-      String? thumbnailContains,
-      String? thumbnailHasPrefix,
-      String? thumbnailHasSuffix,
-      bool? thumbnailIsNil,
-      bool? thumbnailNotNil,
-      String? thumbnailEqualFold,
-      String? thumbnailContainsFold,
-      bool? hasPosts,
-      List<Input$PostWhereInput>? hasPostsWith,
-      bool? hasDrafts,
-      List<Input$DraftWhereInput>? hasDraftsWith});
+  TRes call({
+    Input$WorkWhereInput? not,
+    List<Input$WorkWhereInput>? and,
+    List<Input$WorkWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? title,
+    String? titleNEQ,
+    List<String>? titleIn,
+    List<String>? titleNotIn,
+    String? titleGT,
+    String? titleGTE,
+    String? titleLT,
+    String? titleLTE,
+    String? titleContains,
+    String? titleHasPrefix,
+    String? titleHasSuffix,
+    String? titleEqualFold,
+    String? titleContainsFold,
+    String? thumbnail,
+    String? thumbnailNEQ,
+    List<String>? thumbnailIn,
+    List<String>? thumbnailNotIn,
+    String? thumbnailGT,
+    String? thumbnailGTE,
+    String? thumbnailLT,
+    String? thumbnailLTE,
+    String? thumbnailContains,
+    String? thumbnailHasPrefix,
+    String? thumbnailHasSuffix,
+    bool? thumbnailIsNil,
+    bool? thumbnailNotNil,
+    String? thumbnailEqualFold,
+    String? thumbnailContainsFold,
+    bool? hasPosts,
+    List<Input$PostWhereInput>? hasPostsWith,
+    bool? hasDrafts,
+    List<Input$DraftWhereInput>? hasDraftsWith,
+  });
   CopyWith$Input$WorkWhereInput<TRes> get not;
   TRes and(
       Iterable<Input$WorkWhereInput>? Function(
@@ -17272,7 +17562,10 @@ abstract class CopyWith$Input$WorkWhereInput<TRes> {
 
 class _CopyWithImpl$Input$WorkWhereInput<TRes>
     implements CopyWith$Input$WorkWhereInput<TRes> {
-  _CopyWithImpl$Input$WorkWhereInput(this._instance, this._then);
+  _CopyWithImpl$Input$WorkWhereInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$WorkWhereInput _instance;
 
@@ -17280,50 +17573,51 @@ class _CopyWithImpl$Input$WorkWhereInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? not = _undefined,
-          Object? and = _undefined,
-          Object? or = _undefined,
-          Object? id = _undefined,
-          Object? idNEQ = _undefined,
-          Object? idIn = _undefined,
-          Object? idNotIn = _undefined,
-          Object? idGT = _undefined,
-          Object? idGTE = _undefined,
-          Object? idLT = _undefined,
-          Object? idLTE = _undefined,
-          Object? title = _undefined,
-          Object? titleNEQ = _undefined,
-          Object? titleIn = _undefined,
-          Object? titleNotIn = _undefined,
-          Object? titleGT = _undefined,
-          Object? titleGTE = _undefined,
-          Object? titleLT = _undefined,
-          Object? titleLTE = _undefined,
-          Object? titleContains = _undefined,
-          Object? titleHasPrefix = _undefined,
-          Object? titleHasSuffix = _undefined,
-          Object? titleEqualFold = _undefined,
-          Object? titleContainsFold = _undefined,
-          Object? thumbnail = _undefined,
-          Object? thumbnailNEQ = _undefined,
-          Object? thumbnailIn = _undefined,
-          Object? thumbnailNotIn = _undefined,
-          Object? thumbnailGT = _undefined,
-          Object? thumbnailGTE = _undefined,
-          Object? thumbnailLT = _undefined,
-          Object? thumbnailLTE = _undefined,
-          Object? thumbnailContains = _undefined,
-          Object? thumbnailHasPrefix = _undefined,
-          Object? thumbnailHasSuffix = _undefined,
-          Object? thumbnailIsNil = _undefined,
-          Object? thumbnailNotNil = _undefined,
-          Object? thumbnailEqualFold = _undefined,
-          Object? thumbnailContainsFold = _undefined,
-          Object? hasPosts = _undefined,
-          Object? hasPostsWith = _undefined,
-          Object? hasDrafts = _undefined,
-          Object? hasDraftsWith = _undefined}) =>
+  TRes call({
+    Object? not = _undefined,
+    Object? and = _undefined,
+    Object? or = _undefined,
+    Object? id = _undefined,
+    Object? idNEQ = _undefined,
+    Object? idIn = _undefined,
+    Object? idNotIn = _undefined,
+    Object? idGT = _undefined,
+    Object? idGTE = _undefined,
+    Object? idLT = _undefined,
+    Object? idLTE = _undefined,
+    Object? title = _undefined,
+    Object? titleNEQ = _undefined,
+    Object? titleIn = _undefined,
+    Object? titleNotIn = _undefined,
+    Object? titleGT = _undefined,
+    Object? titleGTE = _undefined,
+    Object? titleLT = _undefined,
+    Object? titleLTE = _undefined,
+    Object? titleContains = _undefined,
+    Object? titleHasPrefix = _undefined,
+    Object? titleHasSuffix = _undefined,
+    Object? titleEqualFold = _undefined,
+    Object? titleContainsFold = _undefined,
+    Object? thumbnail = _undefined,
+    Object? thumbnailNEQ = _undefined,
+    Object? thumbnailIn = _undefined,
+    Object? thumbnailNotIn = _undefined,
+    Object? thumbnailGT = _undefined,
+    Object? thumbnailGTE = _undefined,
+    Object? thumbnailLT = _undefined,
+    Object? thumbnailLTE = _undefined,
+    Object? thumbnailContains = _undefined,
+    Object? thumbnailHasPrefix = _undefined,
+    Object? thumbnailHasSuffix = _undefined,
+    Object? thumbnailIsNil = _undefined,
+    Object? thumbnailNotNil = _undefined,
+    Object? thumbnailEqualFold = _undefined,
+    Object? thumbnailContainsFold = _undefined,
+    Object? hasPosts = _undefined,
+    Object? hasPostsWith = _undefined,
+    Object? hasDrafts = _undefined,
+    Object? hasDraftsWith = _undefined,
+  }) =>
       _then(Input$WorkWhereInput._({
         ..._instance._$data,
         if (not != _undefined) 'not': (not as Input$WorkWhereInput?),
@@ -17403,27 +17697,31 @@ class _CopyWithImpl$Input$WorkWhereInput<TRes>
                       CopyWith$Input$WorkWhereInput<Input$WorkWhereInput>>?)
               _fn) =>
       call(
-          and: _fn(_instance.and
-                  ?.map((e) => CopyWith$Input$WorkWhereInput(e, (i) => i)))
-              ?.toList());
+          and: _fn(_instance.and?.map((e) => CopyWith$Input$WorkWhereInput(
+                e,
+                (i) => i,
+              )))?.toList());
   TRes or(
           Iterable<Input$WorkWhereInput>? Function(
                   Iterable<
                       CopyWith$Input$WorkWhereInput<Input$WorkWhereInput>>?)
               _fn) =>
       call(
-          or: _fn(_instance.or
-                  ?.map((e) => CopyWith$Input$WorkWhereInput(e, (i) => i)))
-              ?.toList());
+          or: _fn(_instance.or?.map((e) => CopyWith$Input$WorkWhereInput(
+                e,
+                (i) => i,
+              )))?.toList());
   TRes hasPostsWith(
           Iterable<Input$PostWhereInput>? Function(
                   Iterable<
                       CopyWith$Input$PostWhereInput<Input$PostWhereInput>>?)
               _fn) =>
       call(
-          hasPostsWith: _fn(_instance.hasPostsWith
-                  ?.map((e) => CopyWith$Input$PostWhereInput(e, (i) => i)))
-              ?.toList());
+          hasPostsWith: _fn(
+              _instance.hasPostsWith?.map((e) => CopyWith$Input$PostWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
   TRes hasDraftsWith(
           Iterable<Input$DraftWhereInput>? Function(
                   Iterable<
@@ -17431,8 +17729,10 @@ class _CopyWithImpl$Input$WorkWhereInput<TRes>
               _fn) =>
       call(
           hasDraftsWith: _fn(_instance.hasDraftsWith
-                  ?.map((e) => CopyWith$Input$DraftWhereInput(e, (i) => i)))
-              ?.toList());
+              ?.map((e) => CopyWith$Input$DraftWhereInput(
+                    e,
+                    (i) => i,
+                  )))?.toList());
 }
 
 class _CopyWithStubImpl$Input$WorkWhereInput<TRes>
@@ -17441,50 +17741,51 @@ class _CopyWithStubImpl$Input$WorkWhereInput<TRes>
 
   TRes _res;
 
-  call(
-          {Input$WorkWhereInput? not,
-          List<Input$WorkWhereInput>? and,
-          List<Input$WorkWhereInput>? or,
-          String? id,
-          String? idNEQ,
-          List<String>? idIn,
-          List<String>? idNotIn,
-          String? idGT,
-          String? idGTE,
-          String? idLT,
-          String? idLTE,
-          String? title,
-          String? titleNEQ,
-          List<String>? titleIn,
-          List<String>? titleNotIn,
-          String? titleGT,
-          String? titleGTE,
-          String? titleLT,
-          String? titleLTE,
-          String? titleContains,
-          String? titleHasPrefix,
-          String? titleHasSuffix,
-          String? titleEqualFold,
-          String? titleContainsFold,
-          String? thumbnail,
-          String? thumbnailNEQ,
-          List<String>? thumbnailIn,
-          List<String>? thumbnailNotIn,
-          String? thumbnailGT,
-          String? thumbnailGTE,
-          String? thumbnailLT,
-          String? thumbnailLTE,
-          String? thumbnailContains,
-          String? thumbnailHasPrefix,
-          String? thumbnailHasSuffix,
-          bool? thumbnailIsNil,
-          bool? thumbnailNotNil,
-          String? thumbnailEqualFold,
-          String? thumbnailContainsFold,
-          bool? hasPosts,
-          List<Input$PostWhereInput>? hasPostsWith,
-          bool? hasDrafts,
-          List<Input$DraftWhereInput>? hasDraftsWith}) =>
+  call({
+    Input$WorkWhereInput? not,
+    List<Input$WorkWhereInput>? and,
+    List<Input$WorkWhereInput>? or,
+    String? id,
+    String? idNEQ,
+    List<String>? idIn,
+    List<String>? idNotIn,
+    String? idGT,
+    String? idGTE,
+    String? idLT,
+    String? idLTE,
+    String? title,
+    String? titleNEQ,
+    List<String>? titleIn,
+    List<String>? titleNotIn,
+    String? titleGT,
+    String? titleGTE,
+    String? titleLT,
+    String? titleLTE,
+    String? titleContains,
+    String? titleHasPrefix,
+    String? titleHasSuffix,
+    String? titleEqualFold,
+    String? titleContainsFold,
+    String? thumbnail,
+    String? thumbnailNEQ,
+    List<String>? thumbnailIn,
+    List<String>? thumbnailNotIn,
+    String? thumbnailGT,
+    String? thumbnailGTE,
+    String? thumbnailLT,
+    String? thumbnailLTE,
+    String? thumbnailContains,
+    String? thumbnailHasPrefix,
+    String? thumbnailHasSuffix,
+    bool? thumbnailIsNil,
+    bool? thumbnailNotNil,
+    String? thumbnailEqualFold,
+    String? thumbnailContainsFold,
+    bool? hasPosts,
+    List<Input$PostWhereInput>? hasPostsWith,
+    bool? hasDrafts,
+    List<Input$DraftWhereInput>? hasDraftsWith,
+  }) =>
       _res;
   CopyWith$Input$WorkWhereInput<TRes> get not =>
       CopyWith$Input$WorkWhereInput.stub(_res);
@@ -17611,5 +17912,12 @@ Enum$PostPostType fromJson$Enum$PostPostType(String value) {
 }
 
 const possibleTypesMap = {
-  'Node': {'Category', 'Draft', 'Hashtag', 'Post', 'User', 'Work'}
+  'Node': {
+    'Category',
+    'Draft',
+    'Hashtag',
+    'Post',
+    'User',
+    'Work',
+  }
 };

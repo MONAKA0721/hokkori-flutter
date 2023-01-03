@@ -68,15 +68,19 @@ class _WorkPraisesState extends State<WorkPraises> {
       return _menuItems;
     }
 
-    List<int> _getDividersIndexes() {
-      List<int> _dividersIndexes = [];
+    List<double> _getCustomItemsHeights() {
+      List<double> _heights = [];
       for (var i = 0; i < ((widget.workCategories!.length + 1) * 2) - 1; i++) {
         //Dividers indexes will be the odd indexes
+        if (i.isEven) {
+          _heights.add(70);
+        }
+        //Dividers indexes will be the odd indexes
         if (i.isOdd) {
-          _dividersIndexes.add(i);
+          _heights.add(1);
         }
       }
-      return _dividersIndexes;
+      return _heights;
     }
 
     return Column(
@@ -104,8 +108,7 @@ class _WorkPraisesState extends State<WorkPraises> {
             width: 300,
             child: DropdownButton2(
               items: _addDividersAfterItems(),
-              customItemsIndexes: _getDividersIndexes(),
-              customItemsHeight: 1,
+              customItemsHeights: _getCustomItemsHeights(),
               value: categoryID,
               onChanged: (value) {
                 setState(() => {categoryID = value as String});

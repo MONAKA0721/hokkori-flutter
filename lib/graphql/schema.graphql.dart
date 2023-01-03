@@ -1,8 +1,9 @@
 class Input$LikePostInput {
-  factory Input$LikePostInput(
-          {String? clientMutationId,
-          required String userID,
-          required String postID}) =>
+  factory Input$LikePostInput({
+    String? clientMutationId,
+    required String userID,
+    required String postID,
+  }) =>
       Input$LikePostInput._({
         if (clientMutationId != null) r'clientMutationId': clientMutationId,
         r'userID': userID,
@@ -43,7 +44,10 @@ class Input$LikePostInput {
   }
 
   CopyWith$Input$LikePostInput<Input$LikePostInput> get copyWith =>
-      CopyWith$Input$LikePostInput(this, (i) => i);
+      CopyWith$Input$LikePostInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -82,25 +86,33 @@ class Input$LikePostInput {
     return Object.hashAll([
       _$data.containsKey('clientMutationId') ? l$clientMutationId : const {},
       l$userID,
-      l$postID
+      l$postID,
     ]);
   }
 }
 
 abstract class CopyWith$Input$LikePostInput<TRes> {
-  factory CopyWith$Input$LikePostInput(Input$LikePostInput instance,
-          TRes Function(Input$LikePostInput) then) =
-      _CopyWithImpl$Input$LikePostInput;
+  factory CopyWith$Input$LikePostInput(
+    Input$LikePostInput instance,
+    TRes Function(Input$LikePostInput) then,
+  ) = _CopyWithImpl$Input$LikePostInput;
 
   factory CopyWith$Input$LikePostInput.stub(TRes res) =
       _CopyWithStubImpl$Input$LikePostInput;
 
-  TRes call({String? clientMutationId, String? userID, String? postID});
+  TRes call({
+    String? clientMutationId,
+    String? userID,
+    String? postID,
+  });
 }
 
 class _CopyWithImpl$Input$LikePostInput<TRes>
     implements CopyWith$Input$LikePostInput<TRes> {
-  _CopyWithImpl$Input$LikePostInput(this._instance, this._then);
+  _CopyWithImpl$Input$LikePostInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$LikePostInput _instance;
 
@@ -108,10 +120,11 @@ class _CopyWithImpl$Input$LikePostInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? clientMutationId = _undefined,
-          Object? userID = _undefined,
-          Object? postID = _undefined}) =>
+  TRes call({
+    Object? clientMutationId = _undefined,
+    Object? userID = _undefined,
+    Object? postID = _undefined,
+  }) =>
       _then(Input$LikePostInput._({
         ..._instance._$data,
         if (clientMutationId != _undefined)
@@ -129,14 +142,20 @@ class _CopyWithStubImpl$Input$LikePostInput<TRes>
 
   TRes _res;
 
-  call({String? clientMutationId, String? userID, String? postID}) => _res;
+  call({
+    String? clientMutationId,
+    String? userID,
+    String? postID,
+  }) =>
+      _res;
 }
 
 class Input$UnlikePostInput {
-  factory Input$UnlikePostInput(
-          {String? clientMutationId,
-          required String userID,
-          required String postID}) =>
+  factory Input$UnlikePostInput({
+    String? clientMutationId,
+    required String userID,
+    required String postID,
+  }) =>
       Input$UnlikePostInput._({
         if (clientMutationId != null) r'clientMutationId': clientMutationId,
         r'userID': userID,
@@ -177,7 +196,10 @@ class Input$UnlikePostInput {
   }
 
   CopyWith$Input$UnlikePostInput<Input$UnlikePostInput> get copyWith =>
-      CopyWith$Input$UnlikePostInput(this, (i) => i);
+      CopyWith$Input$UnlikePostInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -216,25 +238,33 @@ class Input$UnlikePostInput {
     return Object.hashAll([
       _$data.containsKey('clientMutationId') ? l$clientMutationId : const {},
       l$userID,
-      l$postID
+      l$postID,
     ]);
   }
 }
 
 abstract class CopyWith$Input$UnlikePostInput<TRes> {
-  factory CopyWith$Input$UnlikePostInput(Input$UnlikePostInput instance,
-          TRes Function(Input$UnlikePostInput) then) =
-      _CopyWithImpl$Input$UnlikePostInput;
+  factory CopyWith$Input$UnlikePostInput(
+    Input$UnlikePostInput instance,
+    TRes Function(Input$UnlikePostInput) then,
+  ) = _CopyWithImpl$Input$UnlikePostInput;
 
   factory CopyWith$Input$UnlikePostInput.stub(TRes res) =
       _CopyWithStubImpl$Input$UnlikePostInput;
 
-  TRes call({String? clientMutationId, String? userID, String? postID});
+  TRes call({
+    String? clientMutationId,
+    String? userID,
+    String? postID,
+  });
 }
 
 class _CopyWithImpl$Input$UnlikePostInput<TRes>
     implements CopyWith$Input$UnlikePostInput<TRes> {
-  _CopyWithImpl$Input$UnlikePostInput(this._instance, this._then);
+  _CopyWithImpl$Input$UnlikePostInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$UnlikePostInput _instance;
 
@@ -242,10 +272,11 @@ class _CopyWithImpl$Input$UnlikePostInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? clientMutationId = _undefined,
-          Object? userID = _undefined,
-          Object? postID = _undefined}) =>
+  TRes call({
+    Object? clientMutationId = _undefined,
+    Object? userID = _undefined,
+    Object? postID = _undefined,
+  }) =>
       _then(Input$UnlikePostInput._({
         ..._instance._$data,
         if (clientMutationId != _undefined)
@@ -263,14 +294,20 @@ class _CopyWithStubImpl$Input$UnlikePostInput<TRes>
 
   TRes _res;
 
-  call({String? clientMutationId, String? userID, String? postID}) => _res;
+  call({
+    String? clientMutationId,
+    String? userID,
+    String? postID,
+  }) =>
+      _res;
 }
 
 class Input$BookmarkPostInput {
-  factory Input$BookmarkPostInput(
-          {String? clientMutationId,
-          required String userID,
-          required String postID}) =>
+  factory Input$BookmarkPostInput({
+    String? clientMutationId,
+    required String userID,
+    required String postID,
+  }) =>
       Input$BookmarkPostInput._({
         if (clientMutationId != null) r'clientMutationId': clientMutationId,
         r'userID': userID,
@@ -311,7 +348,10 @@ class Input$BookmarkPostInput {
   }
 
   CopyWith$Input$BookmarkPostInput<Input$BookmarkPostInput> get copyWith =>
-      CopyWith$Input$BookmarkPostInput(this, (i) => i);
+      CopyWith$Input$BookmarkPostInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -351,25 +391,33 @@ class Input$BookmarkPostInput {
     return Object.hashAll([
       _$data.containsKey('clientMutationId') ? l$clientMutationId : const {},
       l$userID,
-      l$postID
+      l$postID,
     ]);
   }
 }
 
 abstract class CopyWith$Input$BookmarkPostInput<TRes> {
-  factory CopyWith$Input$BookmarkPostInput(Input$BookmarkPostInput instance,
-          TRes Function(Input$BookmarkPostInput) then) =
-      _CopyWithImpl$Input$BookmarkPostInput;
+  factory CopyWith$Input$BookmarkPostInput(
+    Input$BookmarkPostInput instance,
+    TRes Function(Input$BookmarkPostInput) then,
+  ) = _CopyWithImpl$Input$BookmarkPostInput;
 
   factory CopyWith$Input$BookmarkPostInput.stub(TRes res) =
       _CopyWithStubImpl$Input$BookmarkPostInput;
 
-  TRes call({String? clientMutationId, String? userID, String? postID});
+  TRes call({
+    String? clientMutationId,
+    String? userID,
+    String? postID,
+  });
 }
 
 class _CopyWithImpl$Input$BookmarkPostInput<TRes>
     implements CopyWith$Input$BookmarkPostInput<TRes> {
-  _CopyWithImpl$Input$BookmarkPostInput(this._instance, this._then);
+  _CopyWithImpl$Input$BookmarkPostInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$BookmarkPostInput _instance;
 
@@ -377,10 +425,11 @@ class _CopyWithImpl$Input$BookmarkPostInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? clientMutationId = _undefined,
-          Object? userID = _undefined,
-          Object? postID = _undefined}) =>
+  TRes call({
+    Object? clientMutationId = _undefined,
+    Object? userID = _undefined,
+    Object? postID = _undefined,
+  }) =>
       _then(Input$BookmarkPostInput._({
         ..._instance._$data,
         if (clientMutationId != _undefined)
@@ -398,14 +447,20 @@ class _CopyWithStubImpl$Input$BookmarkPostInput<TRes>
 
   TRes _res;
 
-  call({String? clientMutationId, String? userID, String? postID}) => _res;
+  call({
+    String? clientMutationId,
+    String? userID,
+    String? postID,
+  }) =>
+      _res;
 }
 
 class Input$UnbookmarkPostInput {
-  factory Input$UnbookmarkPostInput(
-          {String? clientMutationId,
-          required String userID,
-          required String postID}) =>
+  factory Input$UnbookmarkPostInput({
+    String? clientMutationId,
+    required String userID,
+    required String postID,
+  }) =>
       Input$UnbookmarkPostInput._({
         if (clientMutationId != null) r'clientMutationId': clientMutationId,
         r'userID': userID,
@@ -446,7 +501,10 @@ class Input$UnbookmarkPostInput {
   }
 
   CopyWith$Input$UnbookmarkPostInput<Input$UnbookmarkPostInput> get copyWith =>
-      CopyWith$Input$UnbookmarkPostInput(this, (i) => i);
+      CopyWith$Input$UnbookmarkPostInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -486,25 +544,33 @@ class Input$UnbookmarkPostInput {
     return Object.hashAll([
       _$data.containsKey('clientMutationId') ? l$clientMutationId : const {},
       l$userID,
-      l$postID
+      l$postID,
     ]);
   }
 }
 
 abstract class CopyWith$Input$UnbookmarkPostInput<TRes> {
-  factory CopyWith$Input$UnbookmarkPostInput(Input$UnbookmarkPostInput instance,
-          TRes Function(Input$UnbookmarkPostInput) then) =
-      _CopyWithImpl$Input$UnbookmarkPostInput;
+  factory CopyWith$Input$UnbookmarkPostInput(
+    Input$UnbookmarkPostInput instance,
+    TRes Function(Input$UnbookmarkPostInput) then,
+  ) = _CopyWithImpl$Input$UnbookmarkPostInput;
 
   factory CopyWith$Input$UnbookmarkPostInput.stub(TRes res) =
       _CopyWithStubImpl$Input$UnbookmarkPostInput;
 
-  TRes call({String? clientMutationId, String? userID, String? postID});
+  TRes call({
+    String? clientMutationId,
+    String? userID,
+    String? postID,
+  });
 }
 
 class _CopyWithImpl$Input$UnbookmarkPostInput<TRes>
     implements CopyWith$Input$UnbookmarkPostInput<TRes> {
-  _CopyWithImpl$Input$UnbookmarkPostInput(this._instance, this._then);
+  _CopyWithImpl$Input$UnbookmarkPostInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$UnbookmarkPostInput _instance;
 
@@ -512,10 +578,11 @@ class _CopyWithImpl$Input$UnbookmarkPostInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? clientMutationId = _undefined,
-          Object? userID = _undefined,
-          Object? postID = _undefined}) =>
+  TRes call({
+    Object? clientMutationId = _undefined,
+    Object? userID = _undefined,
+    Object? postID = _undefined,
+  }) =>
       _then(Input$UnbookmarkPostInput._({
         ..._instance._$data,
         if (clientMutationId != _undefined)
@@ -533,14 +600,20 @@ class _CopyWithStubImpl$Input$UnbookmarkPostInput<TRes>
 
   TRes _res;
 
-  call({String? clientMutationId, String? userID, String? postID}) => _res;
+  call({
+    String? clientMutationId,
+    String? userID,
+    String? postID,
+  }) =>
+      _res;
 }
 
 class Input$FollowUserInput {
-  factory Input$FollowUserInput(
-          {String? clientMutationId,
-          required String userID,
-          required String followerID}) =>
+  factory Input$FollowUserInput({
+    String? clientMutationId,
+    required String userID,
+    required String followerID,
+  }) =>
       Input$FollowUserInput._({
         if (clientMutationId != null) r'clientMutationId': clientMutationId,
         r'userID': userID,
@@ -581,7 +654,10 @@ class Input$FollowUserInput {
   }
 
   CopyWith$Input$FollowUserInput<Input$FollowUserInput> get copyWith =>
-      CopyWith$Input$FollowUserInput(this, (i) => i);
+      CopyWith$Input$FollowUserInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -620,25 +696,33 @@ class Input$FollowUserInput {
     return Object.hashAll([
       _$data.containsKey('clientMutationId') ? l$clientMutationId : const {},
       l$userID,
-      l$followerID
+      l$followerID,
     ]);
   }
 }
 
 abstract class CopyWith$Input$FollowUserInput<TRes> {
-  factory CopyWith$Input$FollowUserInput(Input$FollowUserInput instance,
-          TRes Function(Input$FollowUserInput) then) =
-      _CopyWithImpl$Input$FollowUserInput;
+  factory CopyWith$Input$FollowUserInput(
+    Input$FollowUserInput instance,
+    TRes Function(Input$FollowUserInput) then,
+  ) = _CopyWithImpl$Input$FollowUserInput;
 
   factory CopyWith$Input$FollowUserInput.stub(TRes res) =
       _CopyWithStubImpl$Input$FollowUserInput;
 
-  TRes call({String? clientMutationId, String? userID, String? followerID});
+  TRes call({
+    String? clientMutationId,
+    String? userID,
+    String? followerID,
+  });
 }
 
 class _CopyWithImpl$Input$FollowUserInput<TRes>
     implements CopyWith$Input$FollowUserInput<TRes> {
-  _CopyWithImpl$Input$FollowUserInput(this._instance, this._then);
+  _CopyWithImpl$Input$FollowUserInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$FollowUserInput _instance;
 
@@ -646,10 +730,11 @@ class _CopyWithImpl$Input$FollowUserInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? clientMutationId = _undefined,
-          Object? userID = _undefined,
-          Object? followerID = _undefined}) =>
+  TRes call({
+    Object? clientMutationId = _undefined,
+    Object? userID = _undefined,
+    Object? followerID = _undefined,
+  }) =>
       _then(Input$FollowUserInput._({
         ..._instance._$data,
         if (clientMutationId != _undefined)
@@ -667,14 +752,20 @@ class _CopyWithStubImpl$Input$FollowUserInput<TRes>
 
   TRes _res;
 
-  call({String? clientMutationId, String? userID, String? followerID}) => _res;
+  call({
+    String? clientMutationId,
+    String? userID,
+    String? followerID,
+  }) =>
+      _res;
 }
 
 class Input$UnfollowUserInput {
-  factory Input$UnfollowUserInput(
-          {String? clientMutationId,
-          required String userID,
-          required String followerID}) =>
+  factory Input$UnfollowUserInput({
+    String? clientMutationId,
+    required String userID,
+    required String followerID,
+  }) =>
       Input$UnfollowUserInput._({
         if (clientMutationId != null) r'clientMutationId': clientMutationId,
         r'userID': userID,
@@ -715,7 +806,10 @@ class Input$UnfollowUserInput {
   }
 
   CopyWith$Input$UnfollowUserInput<Input$UnfollowUserInput> get copyWith =>
-      CopyWith$Input$UnfollowUserInput(this, (i) => i);
+      CopyWith$Input$UnfollowUserInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -755,25 +849,33 @@ class Input$UnfollowUserInput {
     return Object.hashAll([
       _$data.containsKey('clientMutationId') ? l$clientMutationId : const {},
       l$userID,
-      l$followerID
+      l$followerID,
     ]);
   }
 }
 
 abstract class CopyWith$Input$UnfollowUserInput<TRes> {
-  factory CopyWith$Input$UnfollowUserInput(Input$UnfollowUserInput instance,
-          TRes Function(Input$UnfollowUserInput) then) =
-      _CopyWithImpl$Input$UnfollowUserInput;
+  factory CopyWith$Input$UnfollowUserInput(
+    Input$UnfollowUserInput instance,
+    TRes Function(Input$UnfollowUserInput) then,
+  ) = _CopyWithImpl$Input$UnfollowUserInput;
 
   factory CopyWith$Input$UnfollowUserInput.stub(TRes res) =
       _CopyWithStubImpl$Input$UnfollowUserInput;
 
-  TRes call({String? clientMutationId, String? userID, String? followerID});
+  TRes call({
+    String? clientMutationId,
+    String? userID,
+    String? followerID,
+  });
 }
 
 class _CopyWithImpl$Input$UnfollowUserInput<TRes>
     implements CopyWith$Input$UnfollowUserInput<TRes> {
-  _CopyWithImpl$Input$UnfollowUserInput(this._instance, this._then);
+  _CopyWithImpl$Input$UnfollowUserInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$UnfollowUserInput _instance;
 
@@ -781,10 +883,11 @@ class _CopyWithImpl$Input$UnfollowUserInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? clientMutationId = _undefined,
-          Object? userID = _undefined,
-          Object? followerID = _undefined}) =>
+  TRes call({
+    Object? clientMutationId = _undefined,
+    Object? userID = _undefined,
+    Object? followerID = _undefined,
+  }) =>
       _then(Input$UnfollowUserInput._({
         ..._instance._$data,
         if (clientMutationId != _undefined)
@@ -802,14 +905,20 @@ class _CopyWithStubImpl$Input$UnfollowUserInput<TRes>
 
   TRes _res;
 
-  call({String? clientMutationId, String? userID, String? followerID}) => _res;
+  call({
+    String? clientMutationId,
+    String? userID,
+    String? followerID,
+  }) =>
+      _res;
 }
 
 class Input$DeleteDraftInput {
-  factory Input$DeleteDraftInput(
-          {String? clientMutationId,
-          required String draftId,
-          required String userID}) =>
+  factory Input$DeleteDraftInput({
+    String? clientMutationId,
+    required String draftId,
+    required String userID,
+  }) =>
       Input$DeleteDraftInput._({
         if (clientMutationId != null) r'clientMutationId': clientMutationId,
         r'draftId': draftId,
@@ -850,7 +959,10 @@ class Input$DeleteDraftInput {
   }
 
   CopyWith$Input$DeleteDraftInput<Input$DeleteDraftInput> get copyWith =>
-      CopyWith$Input$DeleteDraftInput(this, (i) => i);
+      CopyWith$Input$DeleteDraftInput(
+        this,
+        (i) => i,
+      );
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) {
@@ -890,25 +1002,33 @@ class Input$DeleteDraftInput {
     return Object.hashAll([
       _$data.containsKey('clientMutationId') ? l$clientMutationId : const {},
       l$draftId,
-      l$userID
+      l$userID,
     ]);
   }
 }
 
 abstract class CopyWith$Input$DeleteDraftInput<TRes> {
-  factory CopyWith$Input$DeleteDraftInput(Input$DeleteDraftInput instance,
-          TRes Function(Input$DeleteDraftInput) then) =
-      _CopyWithImpl$Input$DeleteDraftInput;
+  factory CopyWith$Input$DeleteDraftInput(
+    Input$DeleteDraftInput instance,
+    TRes Function(Input$DeleteDraftInput) then,
+  ) = _CopyWithImpl$Input$DeleteDraftInput;
 
   factory CopyWith$Input$DeleteDraftInput.stub(TRes res) =
       _CopyWithStubImpl$Input$DeleteDraftInput;
 
-  TRes call({String? clientMutationId, String? draftId, String? userID});
+  TRes call({
+    String? clientMutationId,
+    String? draftId,
+    String? userID,
+  });
 }
 
 class _CopyWithImpl$Input$DeleteDraftInput<TRes>
     implements CopyWith$Input$DeleteDraftInput<TRes> {
-  _CopyWithImpl$Input$DeleteDraftInput(this._instance, this._then);
+  _CopyWithImpl$Input$DeleteDraftInput(
+    this._instance,
+    this._then,
+  );
 
   final Input$DeleteDraftInput _instance;
 
@@ -916,10 +1036,11 @@ class _CopyWithImpl$Input$DeleteDraftInput<TRes>
 
   static const _undefined = {};
 
-  TRes call(
-          {Object? clientMutationId = _undefined,
-          Object? draftId = _undefined,
-          Object? userID = _undefined}) =>
+  TRes call({
+    Object? clientMutationId = _undefined,
+    Object? draftId = _undefined,
+    Object? userID = _undefined,
+  }) =>
       _then(Input$DeleteDraftInput._({
         ..._instance._$data,
         if (clientMutationId != _undefined)
@@ -937,5 +1058,10 @@ class _CopyWithStubImpl$Input$DeleteDraftInput<TRes>
 
   TRes _res;
 
-  call({String? clientMutationId, String? draftId, String? userID}) => _res;
+  call({
+    String? clientMutationId,
+    String? draftId,
+    String? userID,
+  }) =>
+      _res;
 }
