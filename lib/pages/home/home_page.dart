@@ -9,6 +9,7 @@ import 'package:hokkori/pages/home/letter_page.dart';
 import 'package:hokkori/pages/home/works.dart';
 import 'package:hokkori/pages/profile/profile_edit_page.dart';
 import 'package:hokkori/pages/profile/profile_page.dart';
+import 'package:hokkori/pages/search/work_page.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/header.dart';
 
@@ -36,6 +37,9 @@ class HomePageNavigator extends StatelessWidget {
             break;
           case '/edit':
             builder = (BuildContext context) => const ProfileEditPage();
+            break;
+          case '/work':
+            builder = (BuildContext context) => const WorkPage();
             break;
           default:
             throw Exception('Invalid route: ${settings.name}');

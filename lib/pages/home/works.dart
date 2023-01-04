@@ -57,8 +57,10 @@ class HomeWorks extends HookWidget {
                 separatorBuilder: (context, index) => const SizedBox(
                   width: 10,
                 ),
-                itemBuilder: (context, index) =>
-                    Work(work: works[index]!.node!),
+                itemBuilder: (context, index) => Work(
+                  work: works[index]!.node!,
+                  size: 125,
+                ),
                 itemCount: works.length,
               ))
         ]));
