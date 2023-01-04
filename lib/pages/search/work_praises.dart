@@ -36,16 +36,16 @@ class _WorkPraisesState extends State<WorkPraises> {
               child: Text(
                 "全て（$allCount件）",
               ))));
-      _menuItems.add(const DropdownMenuItem<String>(
-        enabled: false,
-        child: Divider(
-          color: blueButtonColor,
-          thickness: 0.5,
-        ),
-      ));
       for (var workCategory in widget.workCategories!) {
         _menuItems.addAll(
           [
+            const DropdownMenuItem<String>(
+              enabled: false,
+              child: Divider(
+                color: blueButtonColor,
+                thickness: 0.5,
+              ),
+            ),
             DropdownMenuItem<String>(
               value: workCategory!.id,
               child: Padding(
@@ -54,14 +54,6 @@ class _WorkPraisesState extends State<WorkPraises> {
                     "${workCategory.name}（${workCategory.count}件）",
                   )),
             ),
-            if (workCategory != widget.workCategories!.last)
-              const DropdownMenuItem<String>(
-                enabled: false,
-                child: Divider(
-                  thickness: 0.5,
-                  color: blueButtonColor,
-                ),
-              ),
           ],
         );
       }
