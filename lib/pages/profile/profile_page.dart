@@ -10,6 +10,7 @@ import 'package:hokkori/pages/profile/bookmarked_posts.dart';
 import 'package:hokkori/pages/profile/posted_works.dart';
 import 'package:hokkori/pages/profile/profile_edit_page.dart';
 import 'package:hokkori/pages/profile/profile_page.graphql.dart';
+import 'package:hokkori/pages/search/work_page.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -35,6 +36,9 @@ class ProfilePageNavigator extends StatelessWidget {
               break;
             case '/edit':
               builder = (BuildContext context) => const ProfileEditPage();
+              break;
+            case '/work':
+              builder = (BuildContext context) => const WorkPage();
               break;
             default:
               throw Exception('Invalid route: ${settings.name}');

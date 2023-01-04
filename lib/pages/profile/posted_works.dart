@@ -32,18 +32,25 @@ class PostedWorks extends HookWidget {
     final works = result.parsedData?.works.edges ?? [];
 
     var size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
-    final double itemWidth = size.width / 2;
+
+    final double itemWidth = (size.width - 40) / 3;
+    final double itemHeight = itemWidth + 26;
 
     return Container(
         margin: const EdgeInsets.only(top: 10),
         child: GridView.count(
           childAspectRatio: (itemWidth / itemHeight),
           crossAxisSpacing: 5,
+          mainAxisSpacing: 15,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           crossAxisCount: 3,
-          children: works.map((work) => Work(work: work!.node!)).toList(),
+          children: works
+              .map((work) => Work(
+                    work: work!.node!,
+                    size: itemWidth,
+                  ))
+              .toList(),
         ));
   }
 }
