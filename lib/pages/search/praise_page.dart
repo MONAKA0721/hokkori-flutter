@@ -40,7 +40,11 @@ class _PraisePageState extends State<PraisePage> with OverlayStateMixin {
   Widget build(BuildContext context) {
     final arguments =
         ModalRoute.of(context)!.settings.arguments as PraisePageArguments;
-    scroll = arguments.index * 380;
+
+    final windowSize = MediaQuery.of(context).size;
+    final width = windowSize.width - 20;
+
+    scroll = width * arguments.index - 10;
     final praises = arguments.praises;
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       SingleChildScrollView(
@@ -52,7 +56,7 @@ class _PraisePageState extends State<PraisePage> with OverlayStateMixin {
                 .entries
                 .map((entry) => Column(children: [
                       SizedBox(
-                          width: 380,
+                          width: width,
                           child: Praise(
                             praise: entry.value,
                             optimistic: false,
