@@ -25,8 +25,8 @@ class Header extends ConsumerWidget {
                     onPressed: () {
                       Navigator.of(context, rootNavigator: true).push(
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  const ProfilePageNavigator()));
+                              builder: (context) => const Scaffold(
+                                  body: ProfilePageNavigator())));
                     },
                     icon: avatarURL != ""
                         ? CircleAvatar(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:hokkori/pages/search/search_page.graphql.dart';
 import 'package:hokkori/pages/search/work_page.dart';
 import 'package:hokkori/utils/colors.dart';
@@ -10,6 +11,7 @@ class TopWorks extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final result = useQuery$TopicWorks(Options$Query$TopicWorks(
+            fetchPolicy: FetchPolicy.networkOnly,
             variables: Variables$Query$TopicWorks(first: 10)))
         .result;
 

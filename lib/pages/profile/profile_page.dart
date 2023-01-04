@@ -10,6 +10,8 @@ import 'package:hokkori/pages/profile/bookmarked_posts.dart';
 import 'package:hokkori/pages/profile/posted_works.dart';
 import 'package:hokkori/pages/profile/profile_edit_page.dart';
 import 'package:hokkori/pages/profile/profile_page.graphql.dart';
+import 'package:hokkori/pages/search/custom_popup_route.dart';
+import 'package:hokkori/pages/search/praise_page.dart';
 import 'package:hokkori/pages/search/work_page.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
@@ -40,6 +42,9 @@ class ProfilePageNavigator extends StatelessWidget {
             case '/work':
               builder = (BuildContext context) => const WorkPage();
               break;
+            case '/praise':
+              return CustomPopupRoute(
+                  builder: (_) => const PraisePage(), settings: settings);
             default:
               throw Exception('Invalid route: ${settings.name}');
           }
