@@ -322,6 +322,7 @@ class SubmitButton extends HookConsumerWidget {
               ref.watch(letterContentProvider) == "";
 
       return !ref.watch(workErrorProvider) &&
+          !ref.watch(workImageErrorProvider) &&
           !ref.watch(categoryErrorProvider) &&
           !ref.watch(praiseTitleErrorProvider) &&
           !ref.watch(praiseContentErrorProvider) &&

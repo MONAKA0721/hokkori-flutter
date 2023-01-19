@@ -81,7 +81,7 @@ class DraftPage extends HookConsumerWidget {
             height: 20,
           ),
           SizedBox(
-              height: 400,
+              height: 300,
               child: Scrollbar(
                   thumbVisibility: true,
                   child: ListView.separated(

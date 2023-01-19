@@ -58,7 +58,7 @@ void main() async {
 const bool isProduction = bool.fromEnvironment('dart.vm.product');
 const apiQueryURL = isProduction
     ? 'http://13.231.110.200:8080/query'
-    : 'https://e588-39-2-132-128.ngrok.io/query';
+    : 'https://50d6-240f-7a-db47-1-4490-f210-3728-e7a9.ngrok.io/query';
 final HttpLink httpLink = HttpLink(
   apiQueryURL,
 );
