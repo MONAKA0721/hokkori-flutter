@@ -372,8 +372,6 @@ class _Step1State extends ConsumerState<Step1> {
                     child: Column(children: [
                   GraphQLConsumer(
                       builder: (client) => DropdownSearch<WorkModel>(
-                            dropdownButtonProps:
-                                const DropdownButtonProps(isVisible: false),
                             dropdownDecoratorProps: DropDownDecoratorProps(
                                 dropdownSearchDecoration: InputDecoration(
                                     enabledBorder: UnderlineInputBorder(
