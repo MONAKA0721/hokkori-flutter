@@ -41,7 +41,7 @@ query TopicWorks($first: Int) {
 query SearchCandidates($searchText: String) {
   categories(
     first: 9
-    where: { nameContainsFold: $searchText }
+    where: { nameHasPrefix: $searchText }
     orderBy: { direction: ASC, field: NAME }
   ) {
     edges {
@@ -51,7 +51,7 @@ query SearchCandidates($searchText: String) {
       }
     }
   }
-  topicWorks(first: 9, where: { titleContainsFold: $searchText }) {
+  topicWorks(first: 9, where: { titleHasPrefix: $searchText }) {
     edges {
       node {
         id
@@ -60,7 +60,7 @@ query SearchCandidates($searchText: String) {
       }
     }
   }
-  topicHashtags(first: 9, where: { titleContainsFold: $searchText }) {
+  topicHashtags(first: 9, where: { titleHasPrefix: $searchText }) {
     edges {
       node {
         id

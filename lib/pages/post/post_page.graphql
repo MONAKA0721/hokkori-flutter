@@ -1,5 +1,5 @@
 query SearchWorks($searchText: String) {
-  works(where: { titleContainsFold: $searchText }) {
+  works(where: { titleHasPrefix: $searchText }) {
     edges {
       node {
         id
@@ -11,7 +11,7 @@ query SearchWorks($searchText: String) {
 }
 
 query SearchHashtags($searchText: String) {
-  hashtags(where: { titleContainsFold: $searchText }) {
+  hashtags(where: { titleHasPrefix: $searchText }) {
     edges {
       node {
         id

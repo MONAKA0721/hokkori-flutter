@@ -3377,7 +3377,7 @@ const documentNodeQuerySearchCandidates = DocumentNode(definitions: [
             name: NameNode(value: 'where'),
             value: ObjectValueNode(fields: [
               ObjectFieldNode(
-                name: NameNode(value: 'nameContainsFold'),
+                name: NameNode(value: 'nameHasPrefix'),
                 value: VariableNode(name: NameNode(value: 'searchText')),
               )
             ]),
@@ -3463,7 +3463,7 @@ const documentNodeQuerySearchCandidates = DocumentNode(definitions: [
             name: NameNode(value: 'where'),
             value: ObjectValueNode(fields: [
               ObjectFieldNode(
-                name: NameNode(value: 'titleContainsFold'),
+                name: NameNode(value: 'titleHasPrefix'),
                 value: VariableNode(name: NameNode(value: 'searchText')),
               )
             ]),
@@ -3543,7 +3543,7 @@ const documentNodeQuerySearchCandidates = DocumentNode(definitions: [
             name: NameNode(value: 'where'),
             value: ObjectValueNode(fields: [
               ObjectFieldNode(
-                name: NameNode(value: 'titleContainsFold'),
+                name: NameNode(value: 'titleHasPrefix'),
                 value: VariableNode(name: NameNode(value: 'searchText')),
               )
             ]),

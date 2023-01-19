@@ -267,7 +267,7 @@ const documentNodeQuerySearchWorks = DocumentNode(definitions: [
             name: NameNode(value: 'where'),
             value: ObjectValueNode(fields: [
               ObjectFieldNode(
-                name: NameNode(value: 'titleContainsFold'),
+                name: NameNode(value: 'titleHasPrefix'),
                 value: VariableNode(name: NameNode(value: 'searchText')),
               )
             ]),
@@ -1194,7 +1194,7 @@ const documentNodeQuerySearchHashtags = DocumentNode(definitions: [
             name: NameNode(value: 'where'),
             value: ObjectValueNode(fields: [
               ObjectFieldNode(
-                name: NameNode(value: 'titleContainsFold'),
+                name: NameNode(value: 'titleHasPrefix'),
                 value: VariableNode(name: NameNode(value: 'searchText')),
               )
             ]),
