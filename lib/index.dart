@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:hokkori/notification_page.dart';
+import 'package:hokkori/inquiry_page.dart';
 import 'package:hokkori/pages/home/home_page.dart';
-import 'package:hokkori/pages/mail/mail_page.dart';
 import 'package:hokkori/pages/post/post_page.dart';
 import 'package:hokkori/pages/search/search_page.dart';
 import 'package:hokkori/utils/colors.dart';
@@ -38,8 +37,13 @@ class _IndexState extends ConsumerState<Index> {
           });
         },
       ),
-      const MailPage(),
-      const NotificationPage(),
+      InquiryPage(
+        navigate: () {
+          setState(() {
+            _selectedIndex = 0;
+          });
+        },
+      ),
     ];
 
     return Scaffold(
@@ -94,15 +98,15 @@ class _IndexState extends ConsumerState<Index> {
                 ),
                 label: 'つたえる',
               ),
-              // BottomNavigationBarItem(
-              //   icon: SvgPicture.asset(
-              //     'assets/mail.svg',
-              //     color: _selectedIndex == 3
-              //         ? Colors.white
-              //         : Colors.white.withOpacity(0.5),
-              //   ),
-              //   label: 'メール',
-              // ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  'assets/mail.svg',
+                  color: _selectedIndex == 3
+                      ? Colors.white
+                      : Colors.white.withOpacity(0.5),
+                ),
+                label: '問い合わせ',
+              ),
             ],
           )),
     );
