@@ -42,10 +42,8 @@ class Header extends ConsumerWidget {
               color: primaryColor,
             ),
             const Spacer(),
-            SizedBox(
+            const SizedBox(
               width: 50,
-              child: IconButton(
-                  icon: Image.asset('assets/bell.png'), onPressed: () {}),
             )
           ],
         ));
