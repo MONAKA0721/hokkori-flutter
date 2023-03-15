@@ -575,6 +575,13 @@ const fragmentDefinitionLetterSummary = FragmentDefinitionNode(
           selectionSet: null,
         ),
         FieldNode(
+          name: NameNode(value: 'title'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
           name: NameNode(value: 'thumbnail'),
           alias: null,
           arguments: [],
@@ -893,22 +900,27 @@ class _CopyWithStubImpl$Fragment$LetterSummary$hashtags<TRes>
 class Fragment$LetterSummary$work {
   Fragment$LetterSummary$work({
     required this.id,
+    required this.title,
     this.thumbnail,
     required this.$__typename,
   });
 
   factory Fragment$LetterSummary$work.fromJson(Map<String, dynamic> json) {
     final l$id = json['id'];
+    final l$title = json['title'];
     final l$thumbnail = json['thumbnail'];
     final l$$__typename = json['__typename'];
     return Fragment$LetterSummary$work(
       id: (l$id as String),
+      title: (l$title as String),
       thumbnail: (l$thumbnail as String?),
       $__typename: (l$$__typename as String),
     );
   }
 
   final String id;
+
+  final String title;
 
   final String? thumbnail;
 
@@ -918,6 +930,8 @@ class Fragment$LetterSummary$work {
     final _resultData = <String, dynamic>{};
     final l$id = id;
     _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
     final l$thumbnail = thumbnail;
     _resultData['thumbnail'] = l$thumbnail;
     final l$$__typename = $__typename;
@@ -928,10 +942,12 @@ class Fragment$LetterSummary$work {
   @override
   int get hashCode {
     final l$id = id;
+    final l$title = title;
     final l$thumbnail = thumbnail;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$id,
+      l$title,
       l$thumbnail,
       l$$__typename,
     ]);
@@ -949,6 +965,11 @@ class Fragment$LetterSummary$work {
     final l$id = id;
     final lOther$id = other.id;
     if (l$id != lOther$id) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) {
       return false;
     }
     final l$thumbnail = thumbnail;
@@ -985,6 +1006,7 @@ abstract class CopyWith$Fragment$LetterSummary$work<TRes> {
 
   TRes call({
     String? id,
+    String? title,
     String? thumbnail,
     String? $__typename,
   });
@@ -1005,11 +1027,15 @@ class _CopyWithImpl$Fragment$LetterSummary$work<TRes>
 
   TRes call({
     Object? id = _undefined,
+    Object? title = _undefined,
     Object? thumbnail = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Fragment$LetterSummary$work(
         id: id == _undefined || id == null ? _instance.id : (id as String),
+        title: title == _undefined || title == null
+            ? _instance.title
+            : (title as String),
         thumbnail: thumbnail == _undefined
             ? _instance.thumbnail
             : (thumbnail as String?),
@@ -1027,6 +1053,7 @@ class _CopyWithStubImpl$Fragment$LetterSummary$work<TRes>
 
   call({
     String? id,
+    String? title,
     String? thumbnail,
     String? $__typename,
   }) =>
@@ -1597,6 +1624,7 @@ class Fragment$PraiseSummary {
     required this.content,
     required this.spoiled,
     this.hashtags,
+    required this.work,
     required this.owner,
     required this.category,
     this.likedUsers,
@@ -1612,6 +1640,7 @@ class Fragment$PraiseSummary {
     final l$content = json['content'];
     final l$spoiled = json['spoiled'];
     final l$hashtags = json['hashtags'];
+    final l$work = json['work'];
     final l$owner = json['owner'];
     final l$category = json['category'];
     final l$likedUsers = json['likedUsers'];
@@ -1628,6 +1657,8 @@ class Fragment$PraiseSummary {
           ?.map((e) => Fragment$PraiseSummary$hashtags.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
+      work: Fragment$PraiseSummary$work.fromJson(
+          (l$work as Map<String, dynamic>)),
       owner: Fragment$PraiseSummary$owner.fromJson(
           (l$owner as Map<String, dynamic>)),
       category: Fragment$PraiseSummary$category.fromJson(
@@ -1658,6 +1689,8 @@ class Fragment$PraiseSummary {
 
   final List<Fragment$PraiseSummary$hashtags>? hashtags;
 
+  final Fragment$PraiseSummary$work work;
+
   final Fragment$PraiseSummary$owner owner;
 
   final Fragment$PraiseSummary$category category;
@@ -1684,6 +1717,8 @@ class Fragment$PraiseSummary {
     _resultData['spoiled'] = l$spoiled;
     final l$hashtags = hashtags;
     _resultData['hashtags'] = l$hashtags?.map((e) => e.toJson()).toList();
+    final l$work = work;
+    _resultData['work'] = l$work.toJson();
     final l$owner = owner;
     _resultData['owner'] = l$owner.toJson();
     final l$category = category;
@@ -1707,6 +1742,7 @@ class Fragment$PraiseSummary {
     final l$content = content;
     final l$spoiled = spoiled;
     final l$hashtags = hashtags;
+    final l$work = work;
     final l$owner = owner;
     final l$category = category;
     final l$likedUsers = likedUsers;
@@ -1720,6 +1756,7 @@ class Fragment$PraiseSummary {
       l$content,
       l$spoiled,
       l$hashtags == null ? null : Object.hashAll(l$hashtags.map((v) => v)),
+      l$work,
       l$owner,
       l$category,
       l$likedUsers == null ? null : Object.hashAll(l$likedUsers.map((v) => v)),
@@ -1783,6 +1820,11 @@ class Fragment$PraiseSummary {
         }
       }
     } else if (l$hashtags != lOther$hashtags) {
+      return false;
+    }
+    final l$work = work;
+    final lOther$work = other.work;
+    if (l$work != lOther$work) {
       return false;
     }
     final l$owner = owner;
@@ -1861,6 +1903,7 @@ abstract class CopyWith$Fragment$PraiseSummary<TRes> {
     String? content,
     bool? spoiled,
     List<Fragment$PraiseSummary$hashtags>? hashtags,
+    Fragment$PraiseSummary$work? work,
     Fragment$PraiseSummary$owner? owner,
     Fragment$PraiseSummary$category? category,
     List<Fragment$PraiseSummary$likedUsers>? likedUsers,
@@ -1873,6 +1916,7 @@ abstract class CopyWith$Fragment$PraiseSummary<TRes> {
                   CopyWith$Fragment$PraiseSummary$hashtags<
                       Fragment$PraiseSummary$hashtags>>?)
           _fn);
+  CopyWith$Fragment$PraiseSummary$work<TRes> get work;
   CopyWith$Fragment$PraiseSummary$owner<TRes> get owner;
   CopyWith$Fragment$PraiseSummary$category<TRes> get category;
   TRes likedUsers(
@@ -1910,6 +1954,7 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
     Object? content = _undefined,
     Object? spoiled = _undefined,
     Object? hashtags = _undefined,
+    Object? work = _undefined,
     Object? owner = _undefined,
     Object? category = _undefined,
     Object? likedUsers = _undefined,
@@ -1936,6 +1981,9 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
         hashtags: hashtags == _undefined
             ? _instance.hashtags
             : (hashtags as List<Fragment$PraiseSummary$hashtags>?),
+        work: work == _undefined || work == null
+            ? _instance.work
+            : (work as Fragment$PraiseSummary$work),
         owner: owner == _undefined || owner == null
             ? _instance.owner
             : (owner as Fragment$PraiseSummary$owner),
@@ -1965,6 +2013,12 @@ class _CopyWithImpl$Fragment$PraiseSummary<TRes>
                     e,
                     (i) => i,
                   )))?.toList());
+  CopyWith$Fragment$PraiseSummary$work<TRes> get work {
+    final local$work = _instance.work;
+    return CopyWith$Fragment$PraiseSummary$work(
+        local$work, (e) => call(work: e));
+  }
+
   CopyWith$Fragment$PraiseSummary$owner<TRes> get owner {
     final local$owner = _instance.owner;
     return CopyWith$Fragment$PraiseSummary$owner(
@@ -2017,6 +2071,7 @@ class _CopyWithStubImpl$Fragment$PraiseSummary<TRes>
     String? content,
     bool? spoiled,
     List<Fragment$PraiseSummary$hashtags>? hashtags,
+    Fragment$PraiseSummary$work? work,
     Fragment$PraiseSummary$owner? owner,
     Fragment$PraiseSummary$category? category,
     List<Fragment$PraiseSummary$likedUsers>? likedUsers,
@@ -2025,6 +2080,8 @@ class _CopyWithStubImpl$Fragment$PraiseSummary<TRes>
   }) =>
       _res;
   hashtags(_fn) => _res;
+  CopyWith$Fragment$PraiseSummary$work<TRes> get work =>
+      CopyWith$Fragment$PraiseSummary$work.stub(_res);
   CopyWith$Fragment$PraiseSummary$owner<TRes> get owner =>
       CopyWith$Fragment$PraiseSummary$owner.stub(_res);
   CopyWith$Fragment$PraiseSummary$category<TRes> get category =>
@@ -2086,6 +2143,35 @@ const fragmentDefinitionPraiseSummary = FragmentDefinitionNode(
     ),
     FieldNode(
       name: NameNode(value: 'hashtags'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: SelectionSetNode(selections: [
+        FieldNode(
+          name: NameNode(value: 'id'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: 'title'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+        FieldNode(
+          name: NameNode(value: '__typename'),
+          alias: null,
+          arguments: [],
+          directives: [],
+          selectionSet: null,
+        ),
+      ]),
+    ),
+    FieldNode(
+      name: NameNode(value: 'work'),
       alias: null,
       arguments: [],
       directives: [],
@@ -2402,6 +2488,149 @@ class _CopyWithImpl$Fragment$PraiseSummary$hashtags<TRes>
 class _CopyWithStubImpl$Fragment$PraiseSummary$hashtags<TRes>
     implements CopyWith$Fragment$PraiseSummary$hashtags<TRes> {
   _CopyWithStubImpl$Fragment$PraiseSummary$hashtags(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? title,
+    String? $__typename,
+  }) =>
+      _res;
+}
+
+class Fragment$PraiseSummary$work {
+  Fragment$PraiseSummary$work({
+    required this.id,
+    required this.title,
+    required this.$__typename,
+  });
+
+  factory Fragment$PraiseSummary$work.fromJson(Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$title = json['title'];
+    final l$$__typename = json['__typename'];
+    return Fragment$PraiseSummary$work(
+      id: (l$id as String),
+      title: (l$title as String),
+      $__typename: (l$$__typename as String),
+    );
+  }
+
+  final String id;
+
+  final String title;
+
+  final String $__typename;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$$__typename = $__typename;
+    return Object.hashAll([
+      l$id,
+      l$title,
+      l$$__typename,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Fragment$PraiseSummary$work) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Fragment$PraiseSummary$work
+    on Fragment$PraiseSummary$work {
+  CopyWith$Fragment$PraiseSummary$work<Fragment$PraiseSummary$work>
+      get copyWith => CopyWith$Fragment$PraiseSummary$work(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Fragment$PraiseSummary$work<TRes> {
+  factory CopyWith$Fragment$PraiseSummary$work(
+    Fragment$PraiseSummary$work instance,
+    TRes Function(Fragment$PraiseSummary$work) then,
+  ) = _CopyWithImpl$Fragment$PraiseSummary$work;
+
+  factory CopyWith$Fragment$PraiseSummary$work.stub(TRes res) =
+      _CopyWithStubImpl$Fragment$PraiseSummary$work;
+
+  TRes call({
+    String? id,
+    String? title,
+    String? $__typename,
+  });
+}
+
+class _CopyWithImpl$Fragment$PraiseSummary$work<TRes>
+    implements CopyWith$Fragment$PraiseSummary$work<TRes> {
+  _CopyWithImpl$Fragment$PraiseSummary$work(
+    this._instance,
+    this._then,
+  );
+
+  final Fragment$PraiseSummary$work _instance;
+
+  final TRes Function(Fragment$PraiseSummary$work) _then;
+
+  static const _undefined = {};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? title = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Fragment$PraiseSummary$work(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        title: title == _undefined || title == null
+            ? _instance.title
+            : (title as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
+}
+
+class _CopyWithStubImpl$Fragment$PraiseSummary$work<TRes>
+    implements CopyWith$Fragment$PraiseSummary$work<TRes> {
+  _CopyWithStubImpl$Fragment$PraiseSummary$work(this._res);
 
   TRes _res;
 

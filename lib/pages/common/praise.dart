@@ -321,6 +321,14 @@ class _ContentState extends State<Content> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Text(
+          widget.praise.work.title,
+          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+          overflow: TextOverflow.ellipsis,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
         isShowed
             ? Text(
                 widget.praise.title,

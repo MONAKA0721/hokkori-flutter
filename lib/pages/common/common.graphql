@@ -11,6 +11,7 @@ fragment LetterSummary on Post {
   }
   work {
     id
+    title
     thumbnail
   }
   owner {
@@ -38,6 +39,10 @@ fragment PraiseSummary on Post {
   content
   spoiled
   hashtags {
+    id
+    title
+  }
+  work {
     id
     title
   }

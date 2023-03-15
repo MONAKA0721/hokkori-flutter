@@ -331,6 +331,14 @@ class _ContentState extends State<Content> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Text(
+          widget.letter.work.title,
+          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+          overflow: TextOverflow.ellipsis,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

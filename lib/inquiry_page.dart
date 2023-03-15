@@ -73,6 +73,7 @@ class InquiryPage extends ConsumerWidget {
                         keyboardType: TextInputType.multiline,
                         maxLines: 8,
                         decoration: const InputDecoration(
+                            hintText: "お問い合わせ内容を入力…",
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.all(15)),
                         onChanged: (value) {
@@ -112,7 +113,7 @@ class _SendInquiryButtonState extends ConsumerState<SendInquiryButton> {
               if (ref.watch(inquiryTextProvider) == "") return;
               setState(() => {isLoading = true});
               Uri url = Uri.parse(
-                  "https://hooks.slack.com/services/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");
+                  "https://hooks.slack.com/services/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");
               Map<String, String> headers = {
                 'content-type': 'application/json',
               };

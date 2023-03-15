@@ -84,10 +84,15 @@ class WorkPage extends HookWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                Image.network(
-                  work.thumbnail!,
-                  width: deviceWidth * 250 / 390,
-                ),
+                work.thumbnail != ""
+                    ? Image.network(
+                        work.thumbnail!,
+                        width: deviceWidth * 250 / 390,
+                      )
+                    : Image.asset(
+                        "assets/noimage.png",
+                        width: deviceWidth * 250 / 390,
+                      ),
                 Container(
                     height: deviceWidth * 1128 / 750,
                     decoration: const BoxDecoration(
