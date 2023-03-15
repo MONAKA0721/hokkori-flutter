@@ -5379,13 +5379,13 @@ class Query$BookmarkedPosts$posts$edges$node
     required this.content,
     required this.spoiled,
     this.hashtags,
+    required this.work,
     required this.owner,
     required this.category,
     this.likedUsers,
     this.bookmarkedUsers,
     required this.$__typename,
     this.thumbnail,
-    required this.work,
   });
 
   factory Query$BookmarkedPosts$posts$edges$node.fromJson(
@@ -5397,13 +5397,13 @@ class Query$BookmarkedPosts$posts$edges$node
     final l$content = json['content'];
     final l$spoiled = json['spoiled'];
     final l$hashtags = json['hashtags'];
+    final l$work = json['work'];
     final l$owner = json['owner'];
     final l$category = json['category'];
     final l$likedUsers = json['likedUsers'];
     final l$bookmarkedUsers = json['bookmarkedUsers'];
     final l$$__typename = json['__typename'];
     final l$thumbnail = json['thumbnail'];
-    final l$work = json['work'];
     return Query$BookmarkedPosts$posts$edges$node(
       type: fromJson$Enum$PostPostType((l$type as String)),
       id: (l$id as String),
@@ -5415,6 +5415,8 @@ class Query$BookmarkedPosts$posts$edges$node
           ?.map((e) => Query$BookmarkedPosts$posts$edges$node$hashtags.fromJson(
               (e as Map<String, dynamic>)))
           .toList(),
+      work: Query$BookmarkedPosts$posts$edges$node$work.fromJson(
+          (l$work as Map<String, dynamic>)),
       owner: Query$BookmarkedPosts$posts$edges$node$owner.fromJson(
           (l$owner as Map<String, dynamic>)),
       category: Query$BookmarkedPosts$posts$edges$node$category.fromJson(
@@ -5431,8 +5433,6 @@ class Query$BookmarkedPosts$posts$edges$node
           .toList(),
       $__typename: (l$$__typename as String),
       thumbnail: (l$thumbnail as String?),
-      work: Query$BookmarkedPosts$posts$edges$node$work.fromJson(
-          (l$work as Map<String, dynamic>)),
     );
   }
 
@@ -5450,6 +5450,8 @@ class Query$BookmarkedPosts$posts$edges$node
 
   final List<Query$BookmarkedPosts$posts$edges$node$hashtags>? hashtags;
 
+  final Query$BookmarkedPosts$posts$edges$node$work work;
+
   final Query$BookmarkedPosts$posts$edges$node$owner owner;
 
   final Query$BookmarkedPosts$posts$edges$node$category category;
@@ -5462,8 +5464,6 @@ class Query$BookmarkedPosts$posts$edges$node
   final String $__typename;
 
   final String? thumbnail;
-
-  final Query$BookmarkedPosts$posts$edges$node$work work;
 
   Map<String, dynamic> toJson() {
     final _resultData = <String, dynamic>{};
@@ -5481,6 +5481,8 @@ class Query$BookmarkedPosts$posts$edges$node
     _resultData['spoiled'] = l$spoiled;
     final l$hashtags = hashtags;
     _resultData['hashtags'] = l$hashtags?.map((e) => e.toJson()).toList();
+    final l$work = work;
+    _resultData['work'] = l$work.toJson();
     final l$owner = owner;
     _resultData['owner'] = l$owner.toJson();
     final l$category = category;
@@ -5494,8 +5496,6 @@ class Query$BookmarkedPosts$posts$edges$node
     _resultData['__typename'] = l$$__typename;
     final l$thumbnail = thumbnail;
     _resultData['thumbnail'] = l$thumbnail;
-    final l$work = work;
-    _resultData['work'] = l$work.toJson();
     return _resultData;
   }
 
@@ -5508,13 +5508,13 @@ class Query$BookmarkedPosts$posts$edges$node
     final l$content = content;
     final l$spoiled = spoiled;
     final l$hashtags = hashtags;
+    final l$work = work;
     final l$owner = owner;
     final l$category = category;
     final l$likedUsers = likedUsers;
     final l$bookmarkedUsers = bookmarkedUsers;
     final l$$__typename = $__typename;
     final l$thumbnail = thumbnail;
-    final l$work = work;
     return Object.hashAll([
       l$type,
       l$id,
@@ -5523,6 +5523,7 @@ class Query$BookmarkedPosts$posts$edges$node
       l$content,
       l$spoiled,
       l$hashtags == null ? null : Object.hashAll(l$hashtags.map((v) => v)),
+      l$work,
       l$owner,
       l$category,
       l$likedUsers == null ? null : Object.hashAll(l$likedUsers.map((v) => v)),
@@ -5531,7 +5532,6 @@ class Query$BookmarkedPosts$posts$edges$node
           : Object.hashAll(l$bookmarkedUsers.map((v) => v)),
       l$$__typename,
       l$thumbnail,
-      l$work,
     ]);
   }
 
@@ -5590,6 +5590,11 @@ class Query$BookmarkedPosts$posts$edges$node
     } else if (l$hashtags != lOther$hashtags) {
       return false;
     }
+    final l$work = work;
+    final lOther$work = other.work;
+    if (l$work != lOther$work) {
+      return false;
+    }
     final l$owner = owner;
     final lOther$owner = other.owner;
     if (l$owner != lOther$owner) {
@@ -5642,11 +5647,6 @@ class Query$BookmarkedPosts$posts$edges$node
     if (l$thumbnail != lOther$thumbnail) {
       return false;
     }
-    final l$work = work;
-    final lOther$work = other.work;
-    if (l$work != lOther$work) {
-      return false;
-    }
     return true;
   }
 }
@@ -5678,6 +5678,7 @@ abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node<TRes> {
     String? content,
     bool? spoiled,
     List<Query$BookmarkedPosts$posts$edges$node$hashtags>? hashtags,
+    Query$BookmarkedPosts$posts$edges$node$work? work,
     Query$BookmarkedPosts$posts$edges$node$owner? owner,
     Query$BookmarkedPosts$posts$edges$node$category? category,
     List<Query$BookmarkedPosts$posts$edges$node$likedUsers>? likedUsers,
@@ -5685,7 +5686,6 @@ abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node<TRes> {
         bookmarkedUsers,
     String? $__typename,
     String? thumbnail,
-    Query$BookmarkedPosts$posts$edges$node$work? work,
   });
   TRes hashtags(
       Iterable<Query$BookmarkedPosts$posts$edges$node$hashtags>? Function(
@@ -5693,6 +5693,7 @@ abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node<TRes> {
                   CopyWith$Query$BookmarkedPosts$posts$edges$node$hashtags<
                       Query$BookmarkedPosts$posts$edges$node$hashtags>>?)
           _fn);
+  CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> get work;
   CopyWith$Query$BookmarkedPosts$posts$edges$node$owner<TRes> get owner;
   CopyWith$Query$BookmarkedPosts$posts$edges$node$category<TRes> get category;
   TRes likedUsers(
@@ -5707,7 +5708,6 @@ abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node<TRes> {
                   CopyWith$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers<
                       Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers>>?)
           _fn);
-  CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> get work;
 }
 
 class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
@@ -5731,13 +5731,13 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
     Object? content = _undefined,
     Object? spoiled = _undefined,
     Object? hashtags = _undefined,
+    Object? work = _undefined,
     Object? owner = _undefined,
     Object? category = _undefined,
     Object? likedUsers = _undefined,
     Object? bookmarkedUsers = _undefined,
     Object? $__typename = _undefined,
     Object? thumbnail = _undefined,
-    Object? work = _undefined,
   }) =>
       _then(Query$BookmarkedPosts$posts$edges$node(
         type: type == _undefined || type == null
@@ -5760,6 +5760,9 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
             ? _instance.hashtags
             : (hashtags
                 as List<Query$BookmarkedPosts$posts$edges$node$hashtags>?),
+        work: work == _undefined || work == null
+            ? _instance.work
+            : (work as Query$BookmarkedPosts$posts$edges$node$work),
         owner: owner == _undefined || owner == null
             ? _instance.owner
             : (owner as Query$BookmarkedPosts$posts$edges$node$owner),
@@ -5780,9 +5783,6 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
         thumbnail: thumbnail == _undefined
             ? _instance.thumbnail
             : (thumbnail as String?),
-        work: work == _undefined || work == null
-            ? _instance.work
-            : (work as Query$BookmarkedPosts$posts$edges$node$work),
       ));
   TRes hashtags(
           Iterable<Query$BookmarkedPosts$posts$edges$node$hashtags>? Function(
@@ -5796,6 +5796,12 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
                     e,
                     (i) => i,
                   )))?.toList());
+  CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> get work {
+    final local$work = _instance.work;
+    return CopyWith$Query$BookmarkedPosts$posts$edges$node$work(
+        local$work, (e) => call(work: e));
+  }
+
   CopyWith$Query$BookmarkedPosts$posts$edges$node$owner<TRes> get owner {
     final local$owner = _instance.owner;
     return CopyWith$Query$BookmarkedPosts$posts$edges$node$owner(
@@ -5832,11 +5838,6 @@ class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
                 e,
                 (i) => i,
               )))?.toList());
-  CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> get work {
-    final local$work = _instance.work;
-    return CopyWith$Query$BookmarkedPosts$posts$edges$node$work(
-        local$work, (e) => call(work: e));
-  }
 }
 
 class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
@@ -5853,6 +5854,7 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
     String? content,
     bool? spoiled,
     List<Query$BookmarkedPosts$posts$edges$node$hashtags>? hashtags,
+    Query$BookmarkedPosts$posts$edges$node$work? work,
     Query$BookmarkedPosts$posts$edges$node$owner? owner,
     Query$BookmarkedPosts$posts$edges$node$category? category,
     List<Query$BookmarkedPosts$posts$edges$node$likedUsers>? likedUsers,
@@ -5860,18 +5862,17 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node<TRes>
         bookmarkedUsers,
     String? $__typename,
     String? thumbnail,
-    Query$BookmarkedPosts$posts$edges$node$work? work,
   }) =>
       _res;
   hashtags(_fn) => _res;
+  CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> get work =>
+      CopyWith$Query$BookmarkedPosts$posts$edges$node$work.stub(_res);
   CopyWith$Query$BookmarkedPosts$posts$edges$node$owner<TRes> get owner =>
       CopyWith$Query$BookmarkedPosts$posts$edges$node$owner.stub(_res);
   CopyWith$Query$BookmarkedPosts$posts$edges$node$category<TRes> get category =>
       CopyWith$Query$BookmarkedPosts$posts$edges$node$category.stub(_res);
   likedUsers(_fn) => _res;
   bookmarkedUsers(_fn) => _res;
-  CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> get work =>
-      CopyWith$Query$BookmarkedPosts$posts$edges$node$work.stub(_res);
 }
 
 class Query$BookmarkedPosts$posts$edges$node$hashtags
@@ -6019,6 +6020,172 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$hashtags<TRes>
     String? id,
     String? title,
     String? $__typename,
+  }) =>
+      _res;
+}
+
+class Query$BookmarkedPosts$posts$edges$node$work
+    implements Fragment$PraiseSummary$work, Fragment$LetterSummary$work {
+  Query$BookmarkedPosts$posts$edges$node$work({
+    required this.id,
+    required this.title,
+    required this.$__typename,
+    this.thumbnail,
+  });
+
+  factory Query$BookmarkedPosts$posts$edges$node$work.fromJson(
+      Map<String, dynamic> json) {
+    final l$id = json['id'];
+    final l$title = json['title'];
+    final l$$__typename = json['__typename'];
+    final l$thumbnail = json['thumbnail'];
+    return Query$BookmarkedPosts$posts$edges$node$work(
+      id: (l$id as String),
+      title: (l$title as String),
+      $__typename: (l$$__typename as String),
+      thumbnail: (l$thumbnail as String?),
+    );
+  }
+
+  final String id;
+
+  final String title;
+
+  final String $__typename;
+
+  final String? thumbnail;
+
+  Map<String, dynamic> toJson() {
+    final _resultData = <String, dynamic>{};
+    final l$id = id;
+    _resultData['id'] = l$id;
+    final l$title = title;
+    _resultData['title'] = l$title;
+    final l$$__typename = $__typename;
+    _resultData['__typename'] = l$$__typename;
+    final l$thumbnail = thumbnail;
+    _resultData['thumbnail'] = l$thumbnail;
+    return _resultData;
+  }
+
+  @override
+  int get hashCode {
+    final l$id = id;
+    final l$title = title;
+    final l$$__typename = $__typename;
+    final l$thumbnail = thumbnail;
+    return Object.hashAll([
+      l$id,
+      l$title,
+      l$$__typename,
+      l$thumbnail,
+    ]);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    }
+    if (!(other is Query$BookmarkedPosts$posts$edges$node$work) ||
+        runtimeType != other.runtimeType) {
+      return false;
+    }
+    final l$id = id;
+    final lOther$id = other.id;
+    if (l$id != lOther$id) {
+      return false;
+    }
+    final l$title = title;
+    final lOther$title = other.title;
+    if (l$title != lOther$title) {
+      return false;
+    }
+    final l$$__typename = $__typename;
+    final lOther$$__typename = other.$__typename;
+    if (l$$__typename != lOther$$__typename) {
+      return false;
+    }
+    final l$thumbnail = thumbnail;
+    final lOther$thumbnail = other.thumbnail;
+    if (l$thumbnail != lOther$thumbnail) {
+      return false;
+    }
+    return true;
+  }
+}
+
+extension UtilityExtension$Query$BookmarkedPosts$posts$edges$node$work
+    on Query$BookmarkedPosts$posts$edges$node$work {
+  CopyWith$Query$BookmarkedPosts$posts$edges$node$work<
+          Query$BookmarkedPosts$posts$edges$node$work>
+      get copyWith => CopyWith$Query$BookmarkedPosts$posts$edges$node$work(
+            this,
+            (i) => i,
+          );
+}
+
+abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> {
+  factory CopyWith$Query$BookmarkedPosts$posts$edges$node$work(
+    Query$BookmarkedPosts$posts$edges$node$work instance,
+    TRes Function(Query$BookmarkedPosts$posts$edges$node$work) then,
+  ) = _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$work;
+
+  factory CopyWith$Query$BookmarkedPosts$posts$edges$node$work.stub(TRes res) =
+      _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$work;
+
+  TRes call({
+    String? id,
+    String? title,
+    String? $__typename,
+    String? thumbnail,
+  });
+}
+
+class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$work<TRes>
+    implements CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> {
+  _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$work(
+    this._instance,
+    this._then,
+  );
+
+  final Query$BookmarkedPosts$posts$edges$node$work _instance;
+
+  final TRes Function(Query$BookmarkedPosts$posts$edges$node$work) _then;
+
+  static const _undefined = {};
+
+  TRes call({
+    Object? id = _undefined,
+    Object? title = _undefined,
+    Object? $__typename = _undefined,
+    Object? thumbnail = _undefined,
+  }) =>
+      _then(Query$BookmarkedPosts$posts$edges$node$work(
+        id: id == _undefined || id == null ? _instance.id : (id as String),
+        title: title == _undefined || title == null
+            ? _instance.title
+            : (title as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+        thumbnail: thumbnail == _undefined
+            ? _instance.thumbnail
+            : (thumbnail as String?),
+      ));
+}
+
+class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$work<TRes>
+    implements CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> {
+  _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$work(this._res);
+
+  TRes _res;
+
+  call({
+    String? id,
+    String? title,
+    String? $__typename,
+    String? thumbnail,
   }) =>
       _res;
 }
@@ -6603,152 +6770,6 @@ class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$bookmarkedUsers<
 
   call({
     String? id,
-    String? $__typename,
-  }) =>
-      _res;
-}
-
-class Query$BookmarkedPosts$posts$edges$node$work
-    implements Fragment$LetterSummary$work {
-  Query$BookmarkedPosts$posts$edges$node$work({
-    required this.id,
-    this.thumbnail,
-    required this.$__typename,
-  });
-
-  factory Query$BookmarkedPosts$posts$edges$node$work.fromJson(
-      Map<String, dynamic> json) {
-    final l$id = json['id'];
-    final l$thumbnail = json['thumbnail'];
-    final l$$__typename = json['__typename'];
-    return Query$BookmarkedPosts$posts$edges$node$work(
-      id: (l$id as String),
-      thumbnail: (l$thumbnail as String?),
-      $__typename: (l$$__typename as String),
-    );
-  }
-
-  final String id;
-
-  final String? thumbnail;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$id = id;
-    _resultData['id'] = l$id;
-    final l$thumbnail = thumbnail;
-    _resultData['thumbnail'] = l$thumbnail;
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$id = id;
-    final l$thumbnail = thumbnail;
-    final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$id,
-      l$thumbnail,
-      l$$__typename,
-    ]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (!(other is Query$BookmarkedPosts$posts$edges$node$work) ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$id = id;
-    final lOther$id = other.id;
-    if (l$id != lOther$id) {
-      return false;
-    }
-    final l$thumbnail = thumbnail;
-    final lOther$thumbnail = other.thumbnail;
-    if (l$thumbnail != lOther$thumbnail) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$BookmarkedPosts$posts$edges$node$work
-    on Query$BookmarkedPosts$posts$edges$node$work {
-  CopyWith$Query$BookmarkedPosts$posts$edges$node$work<
-          Query$BookmarkedPosts$posts$edges$node$work>
-      get copyWith => CopyWith$Query$BookmarkedPosts$posts$edges$node$work(
-            this,
-            (i) => i,
-          );
-}
-
-abstract class CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> {
-  factory CopyWith$Query$BookmarkedPosts$posts$edges$node$work(
-    Query$BookmarkedPosts$posts$edges$node$work instance,
-    TRes Function(Query$BookmarkedPosts$posts$edges$node$work) then,
-  ) = _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$work;
-
-  factory CopyWith$Query$BookmarkedPosts$posts$edges$node$work.stub(TRes res) =
-      _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$work;
-
-  TRes call({
-    String? id,
-    String? thumbnail,
-    String? $__typename,
-  });
-}
-
-class _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$work<TRes>
-    implements CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> {
-  _CopyWithImpl$Query$BookmarkedPosts$posts$edges$node$work(
-    this._instance,
-    this._then,
-  );
-
-  final Query$BookmarkedPosts$posts$edges$node$work _instance;
-
-  final TRes Function(Query$BookmarkedPosts$posts$edges$node$work) _then;
-
-  static const _undefined = {};
-
-  TRes call({
-    Object? id = _undefined,
-    Object? thumbnail = _undefined,
-    Object? $__typename = _undefined,
-  }) =>
-      _then(Query$BookmarkedPosts$posts$edges$node$work(
-        id: id == _undefined || id == null ? _instance.id : (id as String),
-        thumbnail: thumbnail == _undefined
-            ? _instance.thumbnail
-            : (thumbnail as String?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
-}
-
-class _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$work<TRes>
-    implements CopyWith$Query$BookmarkedPosts$posts$edges$node$work<TRes> {
-  _CopyWithStubImpl$Query$BookmarkedPosts$posts$edges$node$work(this._res);
-
-  TRes _res;
-
-  call({
-    String? id,
-    String? thumbnail,
     String? $__typename,
   }) =>
       _res;
