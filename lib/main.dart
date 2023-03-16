@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -48,6 +49,8 @@ query User(
 ''';
 
 void main() async {
+  await dotenv.load(fileName: '.env');
+
   // We're using HiveStore for persistence,
   // so we need to initialize Hive.
   await initHiveForFlutter();

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hokkori/utils/blue_button.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/header.dart';
@@ -112,8 +113,7 @@ class _SendInquiryButtonState extends ConsumerState<SendInquiryButton> {
             onPressed: () async {
               if (ref.watch(inquiryTextProvider) == "") return;
               setState(() => {isLoading = true});
-              Uri url = Uri.parse(
-                  "https://hooks.slack.com/services/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");
+              Uri url = Uri.parse(dotenv.get('SLACK_URL'));
               Map<String, String> headers = {
                 'content-type': 'application/json',
               };
