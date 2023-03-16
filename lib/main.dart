@@ -282,16 +282,13 @@ class _MyAppState extends ConsumerState<MyApp> {
                 color: backgroundColor,
                 child: SafeArea(
                     bottom: false,
-                    child: ref.watch(isBusyProvider)
-                        ? const Center(child: CircularProgressIndicator())
-                        : ref.watch(isLoggedInProvider)
-                            ? const Index(title: 'ほっこり')
-                            : doneTutorial
-                                ? Login(
-                                    loginAction: loginAction,
-                                    loginError: errorMessage,
-                                  )
-                                : TutorialNavigator(
-                                    loginAction: loginAction)))));
+                    child: ref.watch(isLoggedInProvider)
+                        ? const Index(title: 'ほっこり')
+                        : doneTutorial
+                            ? Login(
+                                loginAction: loginAction,
+                                loginError: errorMessage,
+                              )
+                            : TutorialNavigator(loginAction: loginAction)))));
   }
 }
