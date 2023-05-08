@@ -23,19 +23,19 @@ const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
 const bool isProduction = bool.fromEnvironment('dart.vm.product');
 const apiQueryURL = isProduction
-    ? 'http://13.231.110.200:8080/query'
+    ? 'https://hokkori.mo7ka.com/query'
     : 'https://0844-240f-7a-db47-1-e07c-1be3-3e32-1d4a.ngrok.io/query';
 final HttpLink httpLink = HttpLink(
   apiQueryURL,
 );
 
 const auth0Domain =
-    isProduction ? 'hokkori-stg.jp.auth0.com' : 'hokkori-dev.jp.auth0.com';
+    isProduction ? 'hokkori-prod.jp.auth0.com' : 'hokkori-dev.jp.auth0.com';
 const auth0ClientID = isProduction
-    ? 'mC95yrKdVubSfrJjNBUvnMcqHrpLvGIQ'
+    ? '4BT49qMgd07fRBibv6VOmmoyXkjoFJ15'
     : 'P5erAWsGpNGkVo6BhaX2qumufxcO5bwt';
 const auth0Audience =
-    isProduction ? 'https://hokkori-stg/api' : 'https://hokkori-dev/api';
+    isProduction ? 'https://hokkori-prod/api' : 'https://hokkori-dev/api';
 
 const auth0RedirectURI = 'com.hokkori.hokkori://login-callback';
 const auth0Issuer = 'https://$auth0Domain';
