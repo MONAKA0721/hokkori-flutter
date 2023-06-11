@@ -34,7 +34,7 @@ class PostedWorks extends HookWidget {
     var size = MediaQuery.of(context).size;
 
     final double itemWidth = (size.width - 40) / 3;
-    final double itemHeight = itemWidth + 26;
+    final double itemHeight = itemWidth + 28;
 
     return Container(
         margin: const EdgeInsets.only(top: 10),

@@ -7,6 +7,7 @@ import 'package:hokkori/graphql/schema.graphql.dart';
 import 'package:hokkori/pages/common/letters.dart';
 import 'package:hokkori/pages/common/praises.dart';
 import 'package:hokkori/pages/profile/bookmarked_posts.dart';
+import 'package:hokkori/pages/profile/logout_dialog.dart';
 import 'package:hokkori/pages/profile/posted_works.dart';
 import 'package:hokkori/pages/profile/profile_edit_page.dart';
 import 'package:hokkori/pages/profile/profile_page.graphql.dart';
@@ -99,6 +100,21 @@ class ProfilePage extends HookConsumerWidget {
                   : Navigator.of(context).pop();
             },
           ),
+          actions: [
+            user.id == ref.watch(userProvider).id
+                ? TextButton(
+                    child: Text("ログアウト",
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            decoration: TextDecoration.underline,
+                            decorationThickness: 2)),
+                    onPressed: () async {
+                      showDialog(
+                          context: context,
+                          builder: (_) => const LogoutDialog());
+                    },
+                  )
+                : Container()
+          ],
           title: Text(
             user.username!,
             style: const TextStyle(color: Colors.black),

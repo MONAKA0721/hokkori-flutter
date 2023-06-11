@@ -24,7 +24,7 @@ const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 const bool isProduction = bool.fromEnvironment('dart.vm.product');
 const apiQueryURL = isProduction
     ? 'http://13.231.110.200:8080/query'
-    : 'https://0844-240f-7a-db47-1-e07c-1be3-3e32-1d4a.ngrok.io/query';
+    : 'https://741a-240f-7a-db47-1-cd97-c2b3-f078-82f6.ngrok-free.app/query';
 final HttpLink httpLink = HttpLink(
   apiQueryURL,
 );
@@ -102,6 +102,11 @@ class _MyAppState extends ConsumerState<MyApp> {
     if (storedRefreshToken == null) {
       ref.watch(isBusyProvider.notifier).state = false;
       ref.watch(isLoggedInProvider.notifier).state = false;
+      if (box.get('doneTutorial') == true) {
+        setState(() {
+          doneTutorial = true;
+        });
+      }
       return;
     }
 
@@ -147,7 +152,9 @@ class _MyAppState extends ConsumerState<MyApp> {
       );
     } catch (e, s) {
       log('error on refresh token: $e - stack: $s');
-      logoutAction();
+      await secureStorage.delete(key: 'refresh_token');
+      ref.watch(isLoggedInProvider.notifier).state = false;
+      ref.watch(isBusyProvider.notifier).state = false;
     }
   }
 
@@ -201,6 +208,9 @@ class _MyAppState extends ConsumerState<MyApp> {
           updatedUser.avatarURL!,
         );
         box.put('doneTutorial', true);
+        setState(() {
+          doneTutorial = true;
+        });
         return;
       }
 
@@ -230,12 +240,6 @@ class _MyAppState extends ConsumerState<MyApp> {
         errorMessage = s.toString();
       });
     }
-  }
-
-  void logoutAction() async {
-    await secureStorage.delete(key: 'refresh_token');
-    ref.watch(isLoggedInProvider.notifier).state = false;
-    ref.watch(isBusyProvider.notifier).state = false;
   }
 
   Map<String, dynamic> parseIdToken(String idToken) {
