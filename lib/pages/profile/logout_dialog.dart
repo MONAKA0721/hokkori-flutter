@@ -10,6 +10,8 @@ class LogoutDialog extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AlertDialog(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15))),
         title: const Text(
           "ほっこりから\nログアウトしますか？",
           textAlign: TextAlign.center,
