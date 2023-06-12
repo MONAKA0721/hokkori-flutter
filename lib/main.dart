@@ -102,6 +102,11 @@ class _MyAppState extends ConsumerState<MyApp> {
     if (storedRefreshToken == null) {
       ref.watch(isBusyProvider.notifier).state = false;
       ref.watch(isLoggedInProvider.notifier).state = false;
+      if (box.get('doneTutorial') == true) {
+        setState(() {
+          doneTutorial = true;
+        });
+      }
       return;
     }
 
@@ -147,7 +152,9 @@ class _MyAppState extends ConsumerState<MyApp> {
       );
     } catch (e, s) {
       log('error on refresh token: $e - stack: $s');
-      logoutAction();
+      await secureStorage.delete(key: 'refresh_token');
+      ref.watch(isLoggedInProvider.notifier).state = false;
+      ref.watch(isBusyProvider.notifier).state = false;
     }
   }
 
@@ -201,6 +208,9 @@ class _MyAppState extends ConsumerState<MyApp> {
           updatedUser.avatarURL!,
         );
         box.put('doneTutorial', true);
+        setState(() {
+          doneTutorial = true;
+        });
         return;
       }
 
@@ -230,12 +240,6 @@ class _MyAppState extends ConsumerState<MyApp> {
         errorMessage = s.toString();
       });
     }
-  }
-
-  void logoutAction() async {
-    await secureStorage.delete(key: 'refresh_token');
-    ref.watch(isLoggedInProvider.notifier).state = false;
-    ref.watch(isBusyProvider.notifier).state = false;
   }
 
   Map<String, dynamic> parseIdToken(String idToken) {

@@ -7,6 +7,7 @@ import 'package:hokkori/graphql/schema.graphql.dart';
 import 'package:hokkori/pages/common/common.graphql.dart';
 import 'package:hokkori/pages/home/hashtag.dart';
 import 'package:hokkori/pages/profile/profile_page.dart';
+import 'package:hokkori/pages/search/work_page.dart';
 import 'package:hokkori/utils/categories.dart';
 import 'package:hokkori/utils/colors.dart';
 import 'package:hokkori/utils/providers.dart';
@@ -331,11 +332,16 @@ class _ContentState extends State<Content> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          widget.letter.work.title,
-          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
-          overflow: TextOverflow.ellipsis,
-        ),
+        GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed('/work',
+                  arguments: WorkPageArguments(widget.letter.work.id));
+            },
+            child: Text(
+              widget.letter.work.title,
+              style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+              overflow: TextOverflow.ellipsis,
+            )),
         const SizedBox(
           height: 10,
         ),
