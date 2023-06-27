@@ -25,9 +25,9 @@ class LogoutDialog extends ConsumerWidget {
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                           vertical: 16, horizontal: 20),
-                      backgroundColor: const Color(0xffF3F2F2),
+                      backgroundColor: const Color(0xffE8E9ED),
                       side:
-                          const BorderSide(color: Color(0xffF3F2F2), width: 2),
+                          const BorderSide(color: Color(0xffE8E9ED), width: 2),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
