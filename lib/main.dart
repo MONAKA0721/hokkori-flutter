@@ -30,12 +30,12 @@ final HttpLink httpLink = HttpLink(
 );
 
 const auth0Domain =
-    isProduction ? 'hokkori-prod.jp.auth0.com' : 'hokkori-dev.jp.auth0.com';
+    isProduction ? 'hokkori-stg.jp.auth0.com' : 'hokkori-dev.jp.auth0.com';
 const auth0ClientID = isProduction
-    ? '4BT49qMgd07fRBibv6VOmmoyXkjoFJ15'
+    ? 'mC95yrKdVubSfrJjNBUvnMcqHrpLvGIQ'
     : 'P5erAWsGpNGkVo6BhaX2qumufxcO5bwt';
 const auth0Audience =
-    isProduction ? 'https://hokkori-prod/api' : 'https://hokkori-dev/api';
+    isProduction ? 'https://hokkori-stg/api' : 'https://hokkori-dev/api';
 
 const auth0RedirectURI = 'com.hokkori.hokkori://login-callback';
 const auth0Issuer = 'https://$auth0Domain';
