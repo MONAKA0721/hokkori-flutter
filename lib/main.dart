@@ -23,8 +23,8 @@ const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
 const bool isProduction = bool.fromEnvironment('dart.vm.product');
 const apiQueryURL = isProduction
-    ? 'https://hokkori.mo7ka.com/query'
-    : 'https://0844-240f-7a-db47-1-e07c-1be3-3e32-1d4a.ngrok.io/query';
+    ? 'http://13.231.110.200:8080/query'
+    : 'http://13.231.110.200:8080/query';
 final HttpLink httpLink = HttpLink(
   apiQueryURL,
 );
