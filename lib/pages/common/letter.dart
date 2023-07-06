@@ -339,7 +339,12 @@ class _ContentState extends State<Content> {
             },
             child: Text(
               widget.letter.work.title,
-              style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+              style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 18,
+                  color: blueButtonColor,
+                  decoration: TextDecoration.underline,
+                  decorationThickness: 4),
               overflow: TextOverflow.ellipsis,
             )),
         const SizedBox(
@@ -360,9 +365,9 @@ class _ContentState extends State<Content> {
                     : const Text(
                         "ネタバレを含む投稿です",
                         style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 18,
-                            color: blueButtonColor),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18,
+                        ),
                       )),
             thumbnail != null
                 ? Image.network(
